@@ -1,3 +1,5 @@
-Old manuals from the Finnish language FLOSS Manuals project that was active around 2009-2015.
+# Suomenkielinen FLOSS Manuals
 
-If you have an idea about how to restart this project please email tomi@flossmanuals.net.
+Suomenkielisen [FLOSS Manualsin](https://fi.flossmanuals.net) arkisto.
+
+Ota yhteyttä Tomi Toivioon <tomi@flossmanuals.net>, jos [FLOSS Manuals](https://fi.flossmanuals.net) -projektin jatkaminen kiinnostaa.

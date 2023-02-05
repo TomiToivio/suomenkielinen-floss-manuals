@@ -1,0 +1,85 @@
+<div id="main-content"><h1>GTranscoden käyttöliittymä </h1>
+<div id="content">
+<p>Se on melko yksinkertainen käyttöliittymä, jossa on kätkettynä paljon tehokkaita vaihtoehtoja.</p>
+<p><br><img title="interface_2_en" src="_booki/gtranscode/static/GTranscode-Interface-interface_2_en-fi.jpg" alt="interface_2_en" width="600" height="436"></p>
+<p>Tärkeimmät ohjelman käyttöliittymän osat ovat sisääntuloalue (<strong>Input</strong>) vasemmalla ja ulostuloalue (<strong>Output</strong>) oikealla. </p>
+<h2>Sisääntulo</h2>
+<p>Tässä osassa valitset tiedostot, joita tahdot transkoodata (muuntaa).</p>
+<h3>Tiedostonvalitsin </h3>
+<p>Valitaksesi tiedoston tai hakemiston transkoodattavaksi, napsautat yksinkertaisesti <strong>Browse</strong>-nappia <strong>Video File or Directory</strong> -tekstin vieressä, ja tiedostoselain aukenee: </p>
+<p><img src="_booki/gtranscode/static/GTranscode-Interface-filebrowser_en-fi.jpg" alt="filebrowser.jpg" width="441" height="423"> </p>
+<p>Tietenkin voit luoda hakemistoja (<strong>Create Directories</strong>), poistaa tiedostoja (<strong>Delete Files</strong>) ja uudelleennimetä tiedostoja (<strong>Rename Files</strong>) tällä käyttöliittymällä, mutta yleensä tahdot käyttää sitä transkoodattavien tiedostojen valintaan. Kun olet selannut sen tiedoston kohdalle, jonka tahdot muuntaa toiseen muotoon, korosta se napsauttamalla tiedostonimeä ja paina <strong>OK</strong>. Jos tahdot transkoodata koko hakemiston, voit avata sen hakemiston kaksoisnapsauttamalla hakemiston nimeä tiedostoselaimessa, mutta älä valitse tiedostoa, vaan paina <strong>OK</strong>. </p>
+<p>Kun olet valinnut hakemiston tiedostolle, jonka aiot transkoodata, näet palautetta valinnastasi GTranscode -syöttöalueen keskellä: </p>
+<p><img src="_booki/gtranscode/static/GTranscode-Interface-feedbackfile_en-fi.jpg" alt="feedbackfile.jpg" width="469" height="269"> </p>
+<p>Yllä on palaute yhdestä tiedostosta. Jos olet ladannut hakemiston, palaute näyttää suunnilleen tältä: </p>
+<p><img src="_booki/gtranscode/static/GTranscode-Interface-feedbackdir_en-fi.jpg" alt="feedbackdir.jpg" width="462" height="251"></p>
+<p>Sinun tulisi aina katsoa palautteesta oletko valinnut oikean tiedoston. </p>
+<h3>Tuontimoduuli (import module)</h3>
+<p><img src="_booki/gtranscode/static/GTranscode-Interface-importmodule_en-fi.jpg" alt="importmodule.jpg" width="372" height="27"> </p>
+<p>Tuontimoduuli dekoodaa sisääntulevan tiedoston. On olemassa monta tuontimoduulia, mutta on parasta antaa sovelluksen tunnistaa automaattisesti tiedostomuoto ja valita käytettävä moduuli. Älä muuta automaattivalinnan oletusarvoa <strong>auto (use probed)</strong>, paitsi jos sinulla on ongelmia lukea tiedostoja tällä sovelluksella. </p>
+<h3>Ruudut (frames) </h3>
+<p><img src="_booki/gtranscode/static/GTranscode-Interface-frames_en-fi.jpg" alt="frames.jpg" width="418" height="27"> </p>
+<p>Voit transkoodata vain osan videotiedostosta. Siinä tapauksessa voit määritellä tähän kenttään alkuruudun ja loppuruudun osasta, joka transkoodataan. Silloin formaatti on <strong>f1-f2</strong>, jossa <strong>f1 </strong>on aloitusruutu ja <strong>f2 </strong>on loppuruutu. Tässä on esimerkki: </p>
+<p><img src="_booki/gtranscode/static/GTranscode-Interface-frames2_en-fi.jpg" alt="frames2.jpg" width="426" height="30"></p>
+<h2>Ulostuloalue</h2>
+<p>Käyttöliittymän oikealla puolella näet tietoa ja vaihtoehtoja, jotka liittyvät tiedostotyyppiin, jonka tahdot luoda.</p>
+<h3>Ulostulotiedosto (Output Video File) </h3>
+<p>Ulostulotiedosto on se alue, jota käytät valitaksesi tiedostojärjestelmästä alueen, johon tahdot tallettaa tiedostosi. Sinun tulee myös määritellä tiedostonimi transkoodatulle tiedostolle. Jos et ole varma tiedostotyypin loppuliitteestä, älä kirjoita sitä tässä vaiheessa. Seuraava riittää hyvin: </p>
+<p><img title="fileoutname_en" src="_booki/gtranscode/static/GTranscode-Interface-fileoutname_en-fi.jpg" alt="fileoutname_en" width="434" height="34">   <br>Voit valita sopivan loppupäätteen myöhemmin, mikäli on tarvetta. </p>
+<h3>Läpimeno vai täysi prosessointi (Pass Through vs Full Processing) </h3>
+<p>Käyttöliittymän oikealla puolella voit myös valita läpimenon<strong> </strong>(<strong>Pass Through</strong>) tai täysprosessoinnin (<strong>Full Processing</strong>).</p>
+<p>Täysprosessointi merkitsee, että videostreami dekoodataan ensin ja enkoodataan sen jälkeen uuteen tiedostoon. Läpimeno merkitsee, että se luetaan ilman dekoodausta ja kirjoitetaan ulostulotiedostoon, mikä on tapa muuttaa formaattia ilman menetyksiä. </p>
+<p><img src="_booki/gtranscode/static/GTranscode-Interface-videooptions_en-fi.jpg" alt="videooptions.jpg" width="282" height="83"></p>
+<p>  <br>Yleensä kannattaa valita täysi prosessointi. </p>
+<h3>Täyden prosessoinnin vaihtoehdot </h3>
+<p>Valittuasi täyden prosessoinnin näet seuraavat vaihtoehdot: </p>
+<p><img src="_booki/gtranscode/static/GTranscode-Interface-fullprocessing_1_en-fi.jpg" alt="fullprocessing_1.jpg" width="431" height="324"></p>
+<p>Nämä vaihtoehdot määrittelevät luomasi tiedoston muodon.</p>
+<h4>Vientimoduuli (Export Module) </h4>
+<p><img src="_booki/gtranscode/static/GTranscode-Interface-export_en-fi.jpg" alt="export.jpg" width="403" height="27"> </p>
+<p>Vientimoduulin asetus määrittelee luodun tiedoston formaatin. Nykyisin Transcode ja Gtranscode muuntavat moniin formaatteihin, joihin sisältyy <strong>DivX</strong>, <strong>XviD</strong>, <strong>DivX</strong> <strong>4</strong>, <strong>DivX 5</strong>, <strong>AVI</strong>,  <strong>MPEG</strong>, <strong>raw DV</strong> ja muitakin. Täyden listan näet <strong>Transcode Wikissä </strong><a href="http://www.transcoding.org/cgi-bin/transcode?Export_Modules)">(</a><a href="http://www.transcoding.org/cgi-bin/transcode?Export_Modules" target="_top">http://www.transcoding.org/cgi-bin/transcode?Export_Modules</a>). Valitettavasti GTranscodessa ei ole siistiä pudotusvalintoa, sen sijaan joudut kirjoittamaan tiedon tämän tiedon kenttään. Esimerkiksi transkoodataksesi muotoon DIVX 5 joudut kirjoittamaan kenttään <em>divx5</em>. Voisit kirjoittaa esimerkiksi nämä moduulit vientimoduulikenttään: </p>
+<ul><li>mpeg2enc</li>
+<li>xvid</li>
+<li>divx5</li>
+<li>mpe1</li>
+</ul><p>Lisäksi voit kirjoittaa muita vaihtoehtoja vientimoduulille, jonka olet valinnut. Tietääkseni tämän sinun pitäisi tietää muutamia komentorivin vaihtoehtoja Transcodesta, jotka voisit kirjoittaa vientimoduulikenttään. GTranscoden peruskäytössä tästä ei tarvitse välittää. </p>
+<h4>Ruututaajuus (frame rate)</h4>
+<p><img src="_booki/gtranscode/static/GTranscode-Interface-fps_en-fi.jpg" alt="fps.jpg" width="358" height="26"> </p>
+<p>Ruututaajuus on ulostulotiedoston ruutujen määrä sekunnissa. Jos jätät tämän kentän tyhjäksi, alkuperäisen tiedoston ruututaajuus säilytetään. </p>
+<h4>Limityksen poisto (deinterlace mode)</h4>
+<p><img src="_booki/gtranscode/static/GTranscode-Interface-deinterlace_en-fi.jpg" alt="deinterlace.jpg" width="377" height="27"> </p>
+<p><strong>Limitys</strong> jakaa videon kahdeksi erilliseksi skannauslinjaksi yhdessä ruudussa. Analoginen televisioformaatti käyttää limitettyä videota. Kun limitettyä videota katsotaan televisiossa se näyttää hyvälle, mutta tietokoneella video näyttää sarjan linjoja videossa. Limitetyistä videotiedostoista täytyy poistaa limitys, että ne näyttävät hyvälle tietokoneella. Transkoodaus voi tehdä tämän, ja limittämätöntä videota sanotaan progressiiviseksi tai limittämättömäksi videoksi. </p>
+<p>Jos tahdot poistaa limityksen, sinun pitää kokeilla saatavilla olevia vaihtoehtoja, aloittaen mahdollisesti valitsemalla valikosta vaihtoehdon interpoloida skannauslinjat (<strong>interpolate scanlines</strong>) pudotusvalikosta. </p>
+<h4>Antialias</h4>
+<p><img src="_booki/gtranscode/static/GTranscode-Interface-anitalias_en-fi.jpg" alt="anitalias.jpg" width="364" height="28"> </p>
+<p>Videoon voi tulla limityksen poiston seurauksena ylimääräisiä artifakteja, jotka ovat "sotkuisia" viivoja. Poistaaksesi tämän häiriön voit valita erilaisia anti-alias-menetelmiä. Anti-alias-menetelmät eivät poista häiriöitä, mutta piilottavat ne, joten ne eivät näy niin selvästi. Sinun tarvitsee ainoastaan kokeilla näillä eri vaihtoehdoilla, jos olet poistamassa videon limitystä. </p>
+<h4>Videon bittinopeus (video bitrate)</h4>
+<p>  <img src="_booki/gtranscode/static/GTranscode-Interface-bitrate_en-fi.jpg" alt="bitrate.jpg" width="403" height="31"></p>
+<p>Tämä vaihtoehto valitsee transkoodatun ulostulotiedoston bittinopeuden. Bittinopeus on hyvin olennainen asia videotiedoston lopullista laatua ajatellen. Mitä suurempi bittinopeus on, sitä suurempi laatu on, ja sitä suurempi tiedoston koko on. Jos olet enkoodaamassa tiedostoa välitettäväksi internetissä, tai jos sinulla on rajoittunut varastointitila, bittinopeudesta tulee hyvin tärkeä kysymys. Bittinopeuden asetus riippuu sinusta, mutta useimmiten et tahdo käyttää alle 64 kbps bittinopeutta. Voit kokeilla bittinopeuksia 100, 200 ja 1600 tarjotussa kentässä. </p>
+<h4>Säilytä kuvasuhde (preserve aspect ratio)</h4>
+<p><img src="_booki/gtranscode/static/GTranscode-Interface-aspect_en-fi.jpg" alt="aspect.jpg" width="282" height="27"> </p>
+<p>Jos tahdot muuttaa ulostulovideon korkeutta ja leveyttä, voit käyttää näitä kenttiä. Jos tahdot muuttaa videon kokoa mutta säilyttää korkeuden ja leveyden suhteen, voit painaa vasemmalla olevan laatikon pohjaan. Jos tehdot tehdä näin, voit kirjoittaa haluamasi korkeuden ja ohjelma laskee oikean leveyden tai päinvastoin. Voit kuitenkin päättää olla säilyttämättä kuvasuhdetta, missä tapauksessa saat outoja mutta kiinnostavia tuloksia. </p>
+<h4>Use YUV </h4>
+<p>Älä muuta tätä vaihtoehtoa, ellet tiedä mitä olet tekemässä! </p>
+<h4>Käännä, pyöräytä, peilaa (Swap, flip, mirror)</h4>
+<p>Näitä ei kannata käyttää, ellet tahdo muuttaa ulostulotiedostoa dramaattisesti. </p>
+<h2>Äänivaihtohdot (Audio Options) </h2>
+<p>Tämä alue määrittelee äänen transkoodauksen ulostulon vaihtoehdot. Voit taas valita täysprosessoinnin (<strong>Full Processing</strong>)<strong>  </strong>tai läpimenon (<strong>Pass-Through</strong>). Jos valitset täysprosessoinnin, näet monia eri vaihtoehtoja:</p>
+<h3>Täysprosessointi </h3>
+<p><img src="_booki/gtranscode/static/GTranscode-Interface-audiooptions_en-fi.jpg" alt="audiooptions.jpg" width="435" height="156"> </p>
+<h4>Ääniformaatti (audio format)</h4>
+<p>Valitse tämä pudotuslaatikosta, jossa on mahdolliset formaatit, joihin voit muuntaa äänen.  </p>
+<h4>Äänen bittinopeus (audio bitrate)</h4>
+<p>Tämä vaikuttaa merkittävästi äänen laatuun ja lopullisen videon kokoon, aivan kuin videon bittinopeus vaikutti videoon. Kokeile näillä arvoilla. </p>
+<h4>Äänen vahvistus (volume gain)</h4>
+<p><strong>Vahvistus </strong>on tapa tehostaa äänen kuuluvuutta. Jos alkuperäisen tiedoston ääni on liian hiljainen, voit kokeilla tällä arvolla, jätä se muuten arvoon 1.</p>
+<h2>Komentorivinäyttö </h2>
+<p>Transcoden komentorivin oppimista varten GTranscoden alaosassa on kenttä, jossa näet komennon, joka vastaa käyttöliittymässä valitsemiasi vaihtoehtoja. </p>
+<p><img src="_booki/gtranscode/static/GTranscode-Interface-command_en-fi.jpg" alt="command.jpg" width="600" height="31"> </p>
+<p> </p>
+</div></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/gtranscode/index">Johdanto</a></li>
+<li Class="booki-section">Asennus</li><li><a href="/gtranscode/ch003_asennus">Asennus</a></li>
+<li Class="booki-section">Käyttö</li><li><a href="/gtranscode/ch005_kayttoliittyma">Käyttöliittymä</a></li>
+<li><a href="/gtranscode/ch006_kaytto">Käyttö</a></li>
+<li Class="booki-section">Tekijät</li><li><a href="/gtranscode/ch008_tekijat">Tekijät</a></li>
+</ul>

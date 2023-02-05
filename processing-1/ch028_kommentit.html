@@ -1,0 +1,70 @@
+<div id="main-content"><h1>Kommentit</h1>
+<p><span id="result_box" class="long_text"><span>Koodin dokumentointi on tärkeää, jotta muut voivat korjata ja laajentaa koodia. Se mahdollistaa myös tietyn muuttujan tai metodin käytön tutkimisen. Kun ohjelmaa kirjoitetaan, ovat kommentit sen dokumentointi. Joskus kommentit näyttävät turhilta, mutta jos tahdot käyttää koodia uudestaan, kommenttien käyttö tekee siitä paljon helpompaa. </span><span> <br><br></span><span>Processing tarjoaa kaksi tapaa kommentoida koodia: kommentit riveillä ja monen rivin kommenttiblokit. <br></span></span></p>
+<h2><span id="result_box" class="long_text"><span>Yhden rivin kommentit</span></span></h2>
+<p><span id="result_box" class="long_text"><span>Vain yhden rivin kommenttien kirjoittamista varten voit laittaa merkit // kommentin alkuun. Kaikki näistä merkeistä oikealle oleva teksti lasketaan kommentiksi: sitä ei oteta huomioon ohjelmaa suoritettaessa. Esimerkkejä kommenteista riveillä: </span></span></p>
+<p> </p>
+<pre>void setup() {
+  // Määritellään ikkunan koko
+  size(400, 300);
+  smooth(); // Aktivoidaan ääriviivojen siistiminen
+}
+</pre>
+<h2>Kommenttiblokit</h2>
+<p><span id="result_box" class="long_text"><span>Jos selitys vaatii pidemmän kommentin, se voidaan kirjoittaa useammalle riville laittamalla ne merkkien "/*" kommentti "*/" väliin. Esimerkiksi: </span></span></p>
+<pre>/*
+<span id="result_box" class="long_text"><span>Metodi alustaa ohjelman setup(),</span></span>
+<span id="result_box" class="long_text"><span>voimme määritellä ikkunan koon, </span></span>
+<span id="result_box" class="long_text"><span>asettaa ohjelman alkutilan jne. </span></span>
+*/
+void setup() {
+
+}
+</pre>
+<p><span id="result_box" class="long_text"><span>Voit kommentoida rivin menemällä edit-valikkoon ja napsauttamalla "comment/uncomment" -nappia. Voimme tehdä saman poistaaksemme kommenttiblokin. </span></span></p>
+<h2><span id="result_box" class="long_text"><span>Kommenttien käyttö</span></span></h2>
+<p><span>Ohjelman kommentointi ei merkitse jokaisen rivin merkityksen selittämistä! Yleensä kommenttiblokki selittää metodien käyttötarkoituksen ja -tavan. Tämä vaatii jättämään tavalliset Processingin komennot selittämättä: esimerkiksi setup(), draw() jne. voidaan jättää selittämättä. Yleisiä komentoja ei tarvitse kommentoida. Esimerkiksi size(), fill() ja ellipse() ovat ilmeisiä. </span></p>
+<p><span id="result_box" class="long_text"><span> <br></span><span>Kun ohjelman rivit tekevät yhteisen kommentin, kannattaa laittaa erillisten kommenttien sijasta yksi kommentti. Esimerkiksi: </span></span></p>
+<pre>x = x + 10; //Lisätään 10 koordinaattiin x
+y = y + 10; //Lisätään 10 koordinaattiin y
+</pre>
+<p>Voitaisiin kirjoittaa:</p>
+<pre>//Koordinaattien x ja y muokkaaminen
+x = x + 10;
+y = y + 10;
+</pre></div><ul Class="menu-goes-here"><li Class="booki-section">Esittely</li><li><a href="/processing-1/index">Johdanto</a></li>
+<li><a href="/processing-1/ch002_esimerkkeja">Esimerkkejä</a></li>
+<li><a href="/processing-1/ch003_asennus">Asennus</a></li>
+<li Class="booki-section">Perusteet</li><li><a href="/processing-1/ch005_perusteet">Perusteet</a></li>
+<li Class="booki-section">Suunnittelu</li><li><a href="/processing-1/ch007_suunnittelutila">Suunnittelutila</a></li>
+<li><a href="/processing-1/ch008_muodot">Muodot</a></li>
+<li><a href="/processing-1/ch009_varit">Värit</a></li>
+<li><a href="/processing-1/ch010_kuvat">Kuvat</a></li>
+<li><a href="/processing-1/ch011_tekstit">Tekstit</a></li>
+<li Class="booki-section">Interaktiivisuus</li><li><a href="/processing-1/ch013_video">Video</a></li>
+<li><a href="/processing-1/ch014_videon-tuominen">Videon tuominen</a></li>
+<li><a href="/processing-1/ch015_mikrofoni">Mikrofoni</a></li>
+<li><a href="/processing-1/ch016_hiiri">Hiiri</a></li>
+<li><a href="/processing-1/ch017_nappaimisto">Näppäimistö</a></li>
+<li><a href="/processing-1/ch018_tulostaminen">Tulostaminen</a></li>
+<li Class="booki-section">Vienti</li><li><a href="/processing-1/ch020_verkkoon-vieminen">Verkkoon vieminen</a></li>
+<li Class="booki-section">Animaatio</li><li><a href="/processing-1/ch022_aanet">Äänet</a></li>
+<li><a href="/processing-1/ch023_draw-metodi">Draw-metodi</a></li>
+<li><a href="/processing-1/ch024_objektien-animointi">Objektien animointi</a></li>
+<li><a href="/processing-1/ch025_monien-objektien-animointi">Monien objektien animointi</a></li>
+<li><a href="/processing-1/ch026_aikajana">Aikajana</a></li>
+<li Class="booki-section">Ohjelmointi</li><li><a href="/processing-1/ch028_kommentit">Kommentit</a></li>
+<li><a href="/processing-1/ch029_objektit">Objektit</a></li>
+<li><a href="/processing-1/ch030_metodit">Metodit</a></li>
+<li><a href="/processing-1/ch031_listat">Listat</a></li>
+<li><a href="/processing-1/ch032_toistaminen">Toistaminen</a></li>
+<li><a href="/processing-1/ch033_ehdot">Ehdot</a></li>
+<li><a href="/processing-1/ch034_muuttujat">Muuttujat</a></li>
+<li><a href="/processing-1/ch035_muutokset">Muutokset</a></li>
+<li><a href="/processing-1/ch036_rajat">Rajat</a></li>
+<li Class="booki-section">Liitteet</li><li><a href="/processing-1/ch038_yleisia-virheita">Yleisiä virheitä</a></li>
+<li><a href="/processing-1/ch039_ulkoiset-kirjastot">Ulkoiset kirjastot</a></li>
+<li><a href="/processing-1/ch040_dokumentaatio">Dokumentaatio</a></li>
+<li><a href="/processing-1/ch041_arduino">Arduino</a></li>
+<li><a href="/processing-1/ch042_tasta-oppaasta">Tästä oppaasta</a></li>
+<li><a href="/processing-1/ch043_tekijat">Tekijät</a></li>
+</ul>

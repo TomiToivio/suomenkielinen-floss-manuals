@@ -1,0 +1,73 @@
+<div id="main-content"><h1>ffmpeg2theora-streamaus</h1>
+<p>Tämä menetelmä keskittyy videon streamaukseen digitaaliselta videokameralta tai Firewire-kameralta GNU/Linuxia käyttäen. Videostreami on Ogg Theoraa, joten katsojasi voivat nähdä sen käyttäen Theora-yhteensopivaa soitinta, kuten FireFox 3.5, tai Java-sovelmaa, kuten Cortado. Tätä seurataksesi sinun täytyy osata käyttää komentoriviä ja sinulla täytyy olla pääsy sudo-komennon käyttöön. Jos et tiedä mitä nämä asiat ovat, kannattaa lukea hyvä kirja komentorivin käytöstä.</p>
+<h2>Valmistautuminen</h2>
+<p>Huomaa: <strong>Firewire</strong>-kamera ei ole sama kuin digitaalinen videokamera. Kuitenkin tässä tapauksessa ne toimivat samoin. Firewire on Applen nimi <strong>IEEE 1394 </strong>-standardille, muuta valmistajat käyttävät esimerkiksi nimiä i.Link (Sony) tai Lynx (Texas Instruments) - mutta sillä ei ole väliä, kaikki ovat standardin IEEE 1394 mukaisia.</p>
+<p>Tarvitset seuraavat:</p>
+<ul><li>DV-kamera</li>
+<li>GNU/Linux-kone, jossa on Firewire-sisääntulot</li>
+<li>Firewire-kaapeli</li>
+<li>Internet-yhteys</li>
+<li>Pääsy "theora-yhteensopivalle" Icecast2-palvelimelle (tarvitset palvelimen <strong>IP-osoitteen</strong>, käytettävän <strong>port</strong>in, ja <strong>salasanan</strong>)</li>
+</ul><h2>Asetukset</h2>
+<p>Seuraavaksi asennetaan tarvittavat ohjelmat. Meidän täytyy asentaa seuraavat ohjelmat:</p>
+<ul><li>dvgrab</li>
+<li>ffmpeg2theora</li>
+<li>oggfwd</li>
+</ul><p>Ubuntussa voit ajaa tämän komentorivin:</p>
+<pre>sudo apt-get install dvgrab ffmpeg2theora oggfwd
+</pre>
+<p>Edellisen komennon pitäisi näkyä yhdellä rivillä. Sinulta kysytään salasanaa, kirjoita tämä ja asennusprosessi alkaa. Nyt sinulla on kaikki mitä tarvitset aloittamiseen. Ensin meidän täytyy yhdistää digitaalinen videokamera tai Firewire-kamera tietokoneeseen. Sinun täytyy kytkeä Firewire-kameraan Firewire-kaapeli, ja toinen kaapeli tietokoneesi Firewire-sisääntuloon.</p>
+<p>Käännä nyt kamera päälle. </p>
+<p>Seuraavaksi sinun täytyy kirjoittaa seuraava komentorivi, joka tarjoaa streamauspalvelimen yksityskohdat Icecast2-palvelimelle. Komento on:</p>
+<pre>sudo dvgrab --format raw - | ffmpeg2theora -a 0 -v 5 -f dv -x 320 -y 240 -o /dev/stdout - | oggfwd  icecastserver  8000 pwd /theora.ogv
+</pre>
+<p>Muista, että komennon täytyy olla kokonaan yhdellä rivillä (edellinen esimerkki ei ole). Korvaa myös alla olevat yksityiskohdat tiedoilla, joita sinulla on Icecast-palvelimesta:</p>
+<ul><li><em>icecastserver</em></li>
+<li><em>8000</em></li>
+<li><em>pwd</em></li>
+</ul><p><strong>icecastserver</strong> korvataan streamauspalvelimen <strong>nimellä</strong>tai <strong>IP-osoitteella</strong>. <strong>8000</strong> on portin numero ja on yleensä sama. <span>Salasanaksi</span> kirjoita palvelimesi salasana. Lopulta voit korvata kohdan <strong>/theora.ogv</strong> asennuspisteelläsi, tämän riippuu Icecast-palvelimesi asetuksista, mutta voi olla mitä tahansa, kunhan se alkaa eteenpäin kallistuvalla kenoviivalla (<strong>/</strong>) ja loppuu <strong>.ogg</strong> tai <strong>.ogv</strong>.</p>
+<p>Nyt sinun pitäisi voida streamata! Tarkastaaksesi yhteyden, kokeile sitä ohjelmilla <strong>VLC</strong> tai <strong>Firefox 3.5.</strong></p></div><ul Class="menu-goes-here"><li Class="booki-section">JOHDANTO</li><li><a href="/ogg-theora/index">OGG THEORA</a></li>
+<li><a href="/ogg-theora/ch002_tasta-kayttooppaasta">TÄSTÄ KÄYTTÖOPPAASTA</a></li>
+<li><a href="/ogg-theora/ch003_mita-video-on">MITÄ VIDEO ON?</a></li>
+<li><a href="/ogg-theora/ch004_mita-theora-on">MITÄ THEORA ON?</a></li>
+<li Class="booki-section">PERUSKÄSITTEET</li><li><a href="/ogg-theora/ch006_mika-on-koodekki">MIKÄ ON KOODEKKI?</a></li>
+<li><a href="/ogg-theora/ch007_sailot">SÄILÖT</a></li>
+<li Class="booki-section">TOISTO</li><li><a href="/ogg-theora/ch009_theoran-toistaminen">THEORAN TOISTAMINEN</a></li>
+<li><a href="/ogg-theora/ch010_toisto-vlclla">TOISTO VLC:LLÄ</a></li>
+<li><a href="/ogg-theora/ch011_miro">MIRO</a></li>
+<li Class="booki-section">THEORA VERKOSSA</li><li><a href="/ogg-theora/ch013_theora-verkossa">THEORA VERKOSSA</a></li>
+<li><a href="/ogg-theora/ch014_html5">HTML5</a></li>
+<li><a href="/ogg-theora/ch015_theora-sivuillasi">THEORA SIVUILLASI</a></li>
+<li><a href="/ogg-theora/ch016_hotelleja-theoralle">HOTELLEJA THEORALLE</a></li>
+<li Class="booki-section">ENKOODAUS</li><li><a href="/ogg-theora/ch018_johdanto-enkoodaukseen">JOHDANTO ENKOODAUKSEEN</a></li>
+<li><a href="/ogg-theora/ch019_firefogg">FIREFOGG</a></li>
+<li><a href="/ogg-theora/ch020_enkoodaus-vlclla">ENKOODAUS VLC:LLÄ</a></li>
+<li><a href="/ogg-theora/ch021_enkoodaus-ffmpeg2theoralla">ENKOODAUS FFMPEG2THEORALLA </a></li>
+<li><a href="/ogg-theora/ch022_thoggen">THOGGEN</a></li>
+<li Class="booki-section">TEKSTITYKSET</li><li><a href="/ogg-theora/ch024_tekstityksien-perusteet">TEKSTITYKSIEN PERUSTEET</a></li>
+<li><a href="/ogg-theora/ch025_jakelu">JAKELU</a></li>
+<li><a href="/ogg-theora/ch026_tekstityksien-liittaminen">TEKSTITYKSIEN LIITTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch027_tekstityksien-toistaminen">TEKSTITYKSIEN TOISTAMINEN</a></li>
+<li><a href="/ogg-theora/ch028_julkaiseminen">JULKAISEMINEN</a></li>
+<li Class="booki-section">SUORATOISTO</li><li><a href="/ogg-theora/ch030_suoratoiston-perusteet">SUORATOISTON PERUSTEET</a></li>
+<li><a href="/ogg-theora/ch031_icecast">ICECAST</a></li>
+<li><a href="/ogg-theora/ch032_tss">TSS</a></li>
+<li><a href="/ogg-theora/ch033_ffmpeg2theora-streamaus">FFMPEG2THEORA-STREAMAUS</a></li>
+<li><a href="/ogg-theora/ch034_suoratoisto-vlc-ohjelmalla">VLC-STREAMAUS</a></li>
+<li><a href="/ogg-theora/ch035_virtaustoiston-tallentaminen">VIRTAUSTOISTON TALLENTAMINEN</a></li>
+<li Class="booki-section">EDITOINTI</li><li><a href="/ogg-theora/ch037_johdanto-editointiin">JOHDANTO EDITOITIIN</a></li>
+<li><a href="/ogg-theora/ch038_pitivi">PITIVI</a></li>
+<li Class="booki-section">ESIKATSELU</li><li><a href="/ogg-theora/ch040_kuinka-esikatselua-kaytetaan">ESIKATSELUN KÄYTTÖ</a></li>
+<li><a href="/ogg-theora/ch041_tee-esikatselukuvia">TEE ESIKATSELUKUVIA</a></li>
+<li><a href="/ogg-theora/ch042_tee-diaesitys">TEE DIAESITYS</a></li>
+<li><a href="/ogg-theora/ch043_tee-esikatseluvideo">TEE ESIKATSELUVIDEO</a></li>
+<li Class="booki-section">EDITOINTI KOMENTORIVILTÄ</li><li><a href="/ogg-theora/ch045_komentorivi">THEORA JA KOMENTORIVI</a></li>
+<li><a href="/ogg-theora/ch046_theoran-teoria">THEORAN TEORIA</a></li>
+<li><a href="/ogg-theora/ch047_tiedoston-jakaminen">TIEDOSTON JAKAMINEN</a></li>
+<li><a href="/ogg-theora/ch048_tiedoston-leikkaaminen">TIEDOSTON LEIKKAAMINEN</a></li>
+<li><a href="/ogg-theora/ch049_tiedostojen-liittaminen">TIEDOSTOJEN LIITTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch050_tiedostojen-yhdistaminen">TIEDOSTOJEN YHDISTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch051_koon-muuttaminen">KOON MUUTTAMINEN</a></li>
+<li><a href="/ogg-theora/ch052_oggin-analysoiminen">OGGIN ANALYSOIMINEN</a></li>
+<li Class="booki-section">TEKIJÄT</li><li><a href="/ogg-theora/ch054_tekijat">TEKIJÄT</a></li>
+</ul>

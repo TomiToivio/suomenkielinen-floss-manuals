@@ -1,0 +1,37 @@
+<html dir="None"><body><div id="main-content"><h1>Komentorivi</h1>
+<h1><span class="Apple-style-span" style="font-family: trebuchet, verdana, sans-serif; font-size: 12px; font-weight: normal; letter-spacing: normal; line-height: 17px;">Ubuntun komentorivin käyttäminen ei ole välttämätöntä tavalliselle käyttäjälle, mutta se on usein hyödyllinen edistyneemmässä käytössä ja järjestelmänhallinnassa. </span></h1>
+<p>Nykyaikainen tietojenkäsittely on hyvin interaktiivista ja komentorivin käyttö on vain yksi interaktiivisuuden muoto. Useimmat ihmiset käyttävät tietokonetta sen graafisen käyttöliittymän avulla, interaktiivisuus tapahtuu nopeaan tahtiin. Käyttäjä napsauttaa kohdetta, vetää ja pudottaa sen, kaksoisnapsauttaa toista avatakseen sen, muuttaakseen sitä jne. </p>
+<p>Vaikka vuorovaikutteisuus tapahtuu niin nopeasti, ettet ajattele sitä, jokainen napsautus tai näppäimen painallus on komento tietokoneelle, johon se reagoi. Komentorivin käyttö on sama asia, mutta tarkoituksellisempi. Kirjoitat komennon ja painat rivinvaihtonäppäintä. Esimerkiksi kirjoitan terminaaliin:  </p>
+<pre>date
+</pre>
+<p>Ja tietokoneen vastaus on:</p>
+<pre>ke 2.9.2009 14.42.00 +0300
+</pre>
+<p>Tämä on aika tietokonemaista. Myöhemmissä luvuissa selitämme, miten voit kysyä päivämäärää ja aikaa mukavammassa muodossa. Kerromme myös, miten eri maissa ja eri kielillä työskentely muuttaa tietokoneen ulostuloa. Kuvaamamme tapahtuma tapahtui kuitenkin vuorovaikutuksessa tietokoneen kanssa. </p>
+<h2>Komentorivi voi toimia paljon paremmin</h2>
+<p><em>date</em>-komento, kuten yllä on nähty, toimii huonosti kalenterin tai kellon katsomiseen verrattuna. Tärkein ongelma ei ole ulostulon epämiellyttävä ulkoasu, joka on jo mainittu, vaan hankaluus käyttää ulostulon arvoa. Esimerkiksi katsoessani verkkokalenteristani päivämäärää lisätäkseni sen dokumenttiin, jota kirjoitan tai päivitän, joudun kirjoittamaan sen osittain uudelleen. Komentorivi voi toimia paljon paremmin. </p>
+<p>Kun olet oppinut joitain peruskomentoja ja siistejä tapoja säästää aikaasi, tässä kirjassa kuvaillaan komentojen ulostulon syöttämistä muille komennoille, toimintojen automatisointia, ja komentojen tallentamista myöhempää käyttöä varten. </p>
+<h2>Mitä tarkoitamme komennolla?</h2>
+<p>Tämän luvun alussa käytimme sanaa "komento" hyvin yleisesti viittaamaan mihin tahansa tapaan, jolla kerrotaan tietokoneelle mitä sen pitäisi tehdä. Tässä kirjassa komennolla on kuitenkin hyvin tarkka merkitys. Se on tietokoneellasi oleva tiedosto, joka voidaan suorittaa. Muutamia suoraan suoritettavia komentoja (sisäänrakennetut komennot) lukuunottamatta jokainen komento ajetaan etsimällä tiedosto, jolla on komennon nimi, ja ajamalla kyseinen tiedosto. Kerromme lisää yksityiskohtia kun ne ovat tarpeen. </p>
+<h2>Tapoja syöttää komentoja </h2>
+<p><br>Seurataksesi tätä kirjaa joudut avaamaan tietokoneellasi komentorivin (jota kutsutaan GNU/Linuxissa myös komentoliittymäksi, päätteeksi, shelliksi tai terminaaliksi). Grafiikkaa edeltävät tietokonenäytöt näyttivät tämän komentotulkin ensimmäisenä sisäänkirjautumisen jälkeen. Nyt lähes kaikki paitsi ammattimaiset tietokoneiden ylläpitäjät käyttävät graafista käyttöliittymää. Niinpä näytämme sinulle, kuinka voit avata komentorivin. </p>
+<h2>Päätteen löytäminen </h2>
+<p>Käytännössä jokainen tietokoneen käyttöliittymä tarjoaa ohjelman, joka matkii vanhanaikaisia vain tekstiin perustuvia päätteitä, joita tietokoneet tarjosivat ennen käyttöliittymiksi. Katso työpöytäsi valikkojen läpi, jos löydät päätteeksi (englanniksi usein "terminal" tai "shell") kutsutun ohjelman. Se on usein valikossa, jota kutsutaan "Apuohjelmiksi", mikä ei ole reilua, koska luettuasi tämän kirjan tulet käyttämään päätettä enemmän ja enemmän joka päivä. </p>
+<p>Ubuntussa voit valita <strong><span>Sovellukset</span></strong><strong> -&gt; Apuohjelmat -&gt; Pääte<strong>.</strong></strong></p>
+<p><img src="_booki/ubuntu-tutuksi/static/KomentorivinPerusteet-GettingStarted-valikko-fi.gif" alt=""></p>
+<p>Missä tahansa se onkin, voit melkein varmasti löytää Linuxistasi pääteohjelman. </p>
+<p>Kun suoritat pääteohjelman, se näyttää vain tyhjän ikkunan, ohjeita ei juurikaan ole näkyvissä. Oletetaan, että tiedät mitä pitää tehdä - sen näytämme sinulle. </p>
+<p>Seuraava kuva näyttää pääteikkunan avattuna Linuxin GNOME-työpöydällä.</p>
+<p><img src="_booki/ubuntu-tutuksi/static/KomentorivinPerusteet-GettingStarted-terminaali-fi.jpg" alt="" width="600" height="368"></p>
+<h2>Lisätietoa</h2>
+<p>Komentorivin käytöstä löydät lisää tietoa FLOSS Manualsin Komentorivin perusteet -oppaasta osoitteessa <a href="/komentorivin-perusteet/index">http://fi-new.flossmanuals.net/komentorivin-perusteet/index</a>. </p>
+<p> </p></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/ubuntu-tutuksi/index">Mikä on Linux?</a></li>
+<li><a href="/ubuntu-tutuksi/ch002_miten-ubuntu-eroaa-windowsista">Miten Ubuntu eroaa Windowsista?</a></li>
+<li Class="booki-section">Kokeileminen ja asentaminen</li><li><a href="/ubuntu-tutuksi/ch004_ubuntun-asentaminen">Ubuntun asentaminen</a></li>
+<li Class="booki-section">Käyttö</li><li><a href="/ubuntu-tutuksi/ch006_ubuntun-peruskaytto">Ubuntun peruskäyttö</a></li>
+<li><a href="/ubuntu-tutuksi/ch007_internet-selailu">Internet-selailu</a></li>
+<li><a href="/ubuntu-tutuksi/ch008_toimisto-ohjelmisto">Toimisto-ohjelmisto</a></li>
+<li Class="booki-section">Ylläpito</li><li><a href="/ubuntu-tutuksi/ch010_ubuntun-perusyllapito">Ubuntun perusylläpito</a></li>
+<li><a href="/ubuntu-tutuksi/ch011_komentorivi">Komentorivi</a></li>
+<li Class="booki-section">Liitteet</li><li><a href="/ubuntu-tutuksi/ch013_lisenssi">Lisenssi</a></li>
+</ul>

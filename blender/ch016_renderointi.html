@@ -1,0 +1,69 @@
+<div id="main-content"><h1>RENDERÖINTI BLENDERISSÄ</h1>
+<p>"Renderöinti" tarkoittaa koko prosessia, jossa lasketaan kuinka kohtauksen objektit reagoivat virtuaalivaloon, jonka jälkeen tulos esitetään. Tämä tulos piiretään tietokoneesi näytön alueelle tai yhteen kuvatiedostoon - tai molempiin samaan aikaan. Renderöidyt animaatiot ovat pitkä jono näitä kuvia, jotka on pakattu tiettyä koodekkia käyttäen (kuten Ogg Theora tai DivX) ja tallennettu säilytystiedostoon (kuten AVI tai MOV). </p>
+<div class="c4">
+<h2>Renderöintipaneeli</h2>
+<p>Renderöintiä pääsee käyttämään napsauttamalla yläpalkista <strong>Render </strong>ja sen jälkeen <strong>Render Image</strong> tai painamalla näppäintä <strong>F12</strong>. </p>
+<div class="c2"><img src="_booki/blender/static/ScreenHunter_26%20Apr.%2017%2023.49.gif" alt=""></div>
+<p>Ennen renderöintiä joudut kuitenkin tekemään muutamia asioita. Renderöinnin asetuksia voit muuttaa menemällä valikosta <strong>Properties</strong>-tilaan.</p>
+<p><img src="_booki/blender/static/ScreenHunter_27%20Apr.%2017%2023.55.gif" alt=""></p>
+<h3>Renderöintiformaatin muuttaminen</h3>
+<p>Kohdassa <strong>Output </strong>(ulostulo) muutamme renderöitävän kuvan ulottuvuuksia ja tyyppiä. On suuri joukko erilaisia kuvaformaatteja valittavaksi. <strong>PNG </strong>on oletusformaatti. </p>
+<div class="c2"><img src="_booki/blender/static/ScreenHunter_28%20Apr.%2018%2000.01.gif" alt=""><br><div class="c4">
+<h3>Kameran sijoittaminen</h3>
+<p>Voit renderöidä vain kameralla kohtauksessasi, koska renderöity kuva piiretään kameranäkymästä, ei kuvaikkunasta.</p>
+<p>Voit lisätä kameran kohtaukseesi valitsemalla valikosta <strong>Add </strong>valinnan <strong>Camera</strong>. </p>
+<p><img src="_booki/blender/static/ScreenHunter_29%20Apr.%2018%2000.21.gif" alt=""> </p>
+<p>Se lisätään aina niin, että kameran näkymätaso on vaakatasossa kuvaikkunaan itseensä nähden. Tämä voi olla hyvin käytännöllistä. Voit asettaa kameran kuvaikkunaan, jossa on kuvakulma, josta pidät, ja siirtää sitä sieltä, kunnes löydät oikean paikan. <strong>NUMERO-0</strong> vie sinut kameran kuvaan missä tahansa kuvaikkunassa.</p>
+<p>Kamera ilmestyy kohtaukseesi esineeksi ja valittuasi sen tavalliseen tapaan voit muuttaa sen ominaisuuksia oikealla olevista valikoista.</p>
+<p><img src="_booki/blender/static/ScreenHunter_34%20Apr.%2018%2000.44.gif" alt=""></p>
+<h3>Valoilla työskentely.</h3>
+<p>Kuten materiaalit, valot ovat olennainen osa renderöintiprosessia. Kohtaus voi olla täynnä elementtejä, mutta jos siinä ei ole valoja tai valaisevia pintoja, ainoastaan musta kuva renderöidään. </p>
+<p>Toistaiseksi olemme työskennelleet vain oletuslamppuobjektilla, joka ei anna paljonkaan mahdollisuuksia vaikuttaa kohtauksemme valaisuun.</p>
+<p>Valikosta <strong>Add </strong>-&gt; <strong>Lamp </strong>voit lisätä erilaisia valoja kohtaukseesi.</p>
+<p><img src="_booki/blender/static/ScreenHunter_31%20Apr.%2018%2000.28.gif" alt=""></p>
+<p>Lamppua voit säätää kohdassa <strong>Properties</strong>, kun olet valinnut lamppusi tavalliseen tapaan. Tässä on joukko vaihtoehtoja kohtauksesi valon jakauman, värin ja tyypin manipulointiin.  </p>
+<div class="c2"><img src="_booki/blender/static/ScreenHunter_33%20Apr.%2018%2000.37.gif" alt=""></div>
+<p>Voit muuttaa valon tyypin toiseksi napsauttamalla asiaankuuluvaa nappia. Tässä on esimerkki aluevalosta (<strong>Area</strong>), jonka väri on valkoinen. Huomaa, että energiaksi (<strong>Energy</strong>) kutsuttu liukusäädin määrittelee valon kirkkauden. </p>
+<p>Aivan kuin aineellisessa maailmassa, eri väriset valoyhdistelmät voivat luoda hyvin mielenkiintoisia varjoja ja luoda näkyviä yksityiskohtia pinnalla. </p>
+<h3>Renderöinti ja kuvan tallentaminen levykkeelle</h3>
+<p>Kun kohtauksesi asetukset ovat valmiina, olet valinnut kuvan ulottuvuudet ja formaatin ja sinulla on kamera kohtauksessasi. Tallenna nyt työsi. Sen jälkeen paina renderöi-nappia (<strong>Render</strong>-valikosta <strong>Render Image</strong>) tai<strong> F12</strong>-näppäintä aloittaaksesi renderöintiprosessin. Pieni ikkuna ilmestyy esille ja näet renderöinnin tapahtuvan osa osalta. </p>
+<p>Kun renderöinti on valmis, voit tallentaa tämän kuvan kovalevylle valitsemalla <strong>Image </strong>-&gt; <strong>Save Image</strong> (tai <strong>ALT-S</strong>-näppäin). Tämä avaa tiedostoselaimen, jolla voit valita kuvalle tallennuspaikan jossain kovalevylläsi. </p>
+</div>
+</div>
+<h2>Blenderin sisäinen renderöijä</h2>
+<p>Ladataanpa ensin kohtaus ja valmistellaan se renderöitäväksi.</p>
+<p>Blenderin renderöijät kiinnittävät erikoishuomiota materiaaleihin; huolimatta siitä, että näemme UV-tekstuurin tuolimme päällä, renderöijä ei ota sitä huomioon tehdessään laskelmiaan. Esimerkissämme tuoli renderöitäisiin vain harmaaksi aivan kuin varjostetussa kuvaikkunan piirtotilassa.  </p>
+<p>Huomaa: Blenderin pelimoottori ei tarvitse materiaaleja objektien päällä renderöidäkseen ne reaaliajassa. </p>
+<p>Materiaalit löytyvät kohteen valittuasi <strong>Properties</strong>-tilan kohdasta <strong>Material</strong>.</p>
+<p><img src="_booki/blender/static/ScreenHunter_39%20Apr.%2018%2000.55.gif" alt=""></p>
+<p>Lisätäksesi tuoliisi materiaalin, napsauta nappia <strong>New</strong>. </p>
+<p>Avautuu käyttöliittymä materiaalien manipulointiin ja niiden liittämiseen objekteihin.</p>
+<p><img src="_booki/blender/static/ScreenHunter_46%20Apr.%2018%2000.59.gif" alt=""></p>
+<p>Ainoa asetus, jota meidän täytyy säätää täällä, jotta voimme renderöidä tekstuurimuodossa, on <strong>Face Textures</strong> -nappula <strong>Options </strong>-kohdassa. Kun valitsemme tämän option, kerromme Blenderille, että sen täytyy varmistaa, että se ottaa UV-tekstuurit huomioon renderöidessään. </p>
+<div class="c2"><img src="_booki/blender/static/ScreenHunter_47%20Apr.%2018%2001.05.gif" alt=""></div>
+<p>Materiaalit-paneeli on hyvin tehokas: voisimme kehittää paljon monimutkaisemman materiaalin täällä renderöintiä varten. Esimerkiksi voisimme tehdä pinnoista valoa heijastavia, tehdä siitä valaisevan, tai jopa laittaa sen näyttämään "lommoiselta" käyttäen muita pintaefektejä. </p>
+<p>Nyt meillä on hyvin yksinkertainen materiaali, joten voimme siirtää eteenpäin tehdäksemme renderöintikameran asetukset. </p>
+<p>Perspektiivinäytössä voit yrittää löytää kuvakulman josta pidät. Kun olet valmis, lisää kamera komennolla <strong>Add </strong>-&gt; <strong>Camera</strong>. Napsauta nyt <strong>View </strong>-&gt;<strong> Align view </strong>-&gt; <strong>Align Active Camera to View</strong>. Tämä ottaa nykyisen kameran ja sijoittaa sen kuvaikkunan sijaintiin ja orientaatioon. </p>
+<div class="c2"><img src="_booki/blender/static/ScreenHunter_48%20Apr.%2018%2001.24.gif" alt=""></div>
+</div>
+<p>Juuri nyt katsomme tuon kameran kuvaa. Oranssi neliö tuolini ympärillä on kameraobjekti itsessään, joka on toisesta näkökulmasta pyramidin muotoinen. </p>
+<p>Tekniikka tämän tekemiseksi vaatii yleensä käyttämään muita näkökulmia (ylhäältä ja sivulta ovat hyviä), jotta kameraa voi siirtää ympäriinsä, kunnes perspektiivi näyttää suunnilleen oikealta. </p>
+<div class="c2">
+<div class="c4">Mene nyt ominaisuuksiin, valitse renderöintiformaatti ja koko (katso renderöintiformaatin muuttaminen yllä) ja paina F12-näppäintä. Tämä oli lopputulokseni: </div>
+<div class="c4">
+<p class="c3"><img src="_booki/blender/static/ScreenHunter_49%20Apr.%2018%2001.26.gif" alt=""></p>
+<p> </p>
+<p> </p>
+<div class="c2"> </div>
+</div>
+</div></div><ul Class="menu-goes-here"><li Class="booki-section">JOHDANTO</li><li><a href="/blender/index">JOHDANTO</a></li>
+<li Class="booki-section">ASENNUS</li><li><a href="/blender/ch003_asennus-windowsiin">ASENNUS WINDOWSIIN</a></li>
+<li Class="booki-section">KÄYTÄNNÖT</li><li><a href="/blender/ch005_kaytannot">KÄYTÄNNÖT</a></li>
+<li Class="booki-section">KÄYTTÖLIITTYMÄ</li><li><a href="/blender/ch007_kayttoliittyma">KÄYTTÖLIITTYMÄ</a></li>
+<li Class="booki-section">ASETUKSET</li><li><a href="/blender/ch009_asetukset">ASETUKSET</a></li>
+<li Class="booki-section">EDITOINTI</li><li><a href="/blender/ch011_editointi">EDITOINTI</a></li>
+<li><a href="/blender/ch012_esineen-luominen">ESINEEN LUOMINEN</a></li>
+<li Class="booki-section">TEKSTUURIT</li><li><a href="/blender/ch014_teksturointi">TEKSTUROINTI</a></li>
+<li Class="booki-section">RENDERÖINTI</li><li><a href="/blender/ch016_renderointi">RENDERÖINTI</a></li>
+<li Class="booki-section">LIITTEET</li><li><a href="/blender/ch018_tekijat">TEKIJÄT</a></li>
+</ul>

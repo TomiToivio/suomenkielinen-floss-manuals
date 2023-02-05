@@ -1,0 +1,110 @@
+<div id="main-content"><h1>TEKSTUURIT BLENDERISSÄ </h1>
+<p>Tässä luvussa opimme Blenderin tekstuurien perusteet. Tämä luku ei keskity lainkaan materiaaleihin. Sen sijaan keskitymme ainoastaan raakojen kuvien asettamiseen verkkosi tahkoihin, verkon valaistukseen ja lopputuloksen renderöintiin. Tähän on kaksi syytä: materiaalit ovat monimutkainen aihe ja tässä tekemämme asiat ovat riittäviä käytettäväksi reaaliaikaisissa kolmiulotteisissa projekteissa - kuten Blenderin pelimoottorissa. Seuraava luku keskittyy materiaalien kanssa työskentelyyn ja kehittyneempään renderöintiin.</p>
+<p>Tahkoilla on muoto, koko, sijainti avaruudessa ja jopa paikallinen orientaatio. Yksikään näistä asioista ei kuitenkaan auta meitä määrittelemään kuinka tekstuurit piirretään näiden tahkojen pinnalle. Tätä varten tarvitsemme järjestelmän, joka on tarkoitettu kartoittamaan tekstuuridataa verkon pinnalle. Tämän vuoksi keksittiin UV-kartoitus. Kartoitusta on paras ajatella kuvitteellisena kaksi- tai kolmiulotteisena muotona, jonka päälle tekstuuri projisoidaan ennen kuin sitä sovelletaan verkkoon itseensä. Ajattelemalla projisointityyppiä muutamme tapaa, jolla tekstuurit piirretään pinnalle. Kun olemme valinneet UV-kartoituksen voimme manipuloida sitä (skaalata, kierittää, editoida jne.) riippumatta verkosta, joten muutamme tapaa, jolla tekstuuri piirretään varsinaiselle verkkopinnalle.  </p>
+<p>Yksinkertaisin tapa ymmärtää tämä on että "U" ja "V" "UV-kartoituksessa" ovat erikoisarvoja, jotka viittaavat sijaintiin annetun verkon pinnalla, aivan kuin X ja Y ovat sijainteja kuvitteellisella tasolla kolmiulotteisessa maailmassa itsessään. Yksinkertaisimmillaan UV-kartoitus on kartoitusta tahko kerrallaan, jossa tekstuuri yksinkertaisesti piirretään jokaiselle verkon tahkolle; tämä on oletusarvo Blenderissä. Muut UV-kartoituksen tyypit kuvataan alla.</p>
+<p>Verkon asettaminen valmiiksi tekstuuria varten vaatii ymmärtämään tekstuurivälilehteä editointipaneelissa. UV-asetukset määritellään editointipaneelissa, koska editoimme verkon ominaisuutta, sen UV-dataa.</p>
+<h2>Tahkojen valitseminen</h2>
+<p>Katso aluksi, että editointitilassa (<strong>Edit Mode</strong>) ollessasi kaikki tahkosi ovat valittuna.</p>
+<p><img src="_booki/blender/static/ScreenHunter_01%20Apr.%2017%2019.35.gif" alt=""></p>
+<p>Siirry nyt <strong>UV/Image Editor</strong> -muokkaustilaantilaan. </p>
+<p><img src="_booki/blender/static/ScreenHunter_02%20Apr.%2017%2019.38.gif" alt=""></p>
+<p>Lataa alla oleva kuvatiedosto ja tallenna se samaan kansioon, johon olet laittanut tuolisi .blend-tiedoston. </p>
+<p class="c2"><img class="c1" src="_booki/blender/static/Blender-Texturing-wood1_sml_en-fi.png" alt="wood1_sml.png" width="320" height="245"></p>
+<p>Valitse oikealla olevasta tekstuurin tyyppi -valikosta tekstuurityyppi Image or Movie (kuva tai elokuva).</p>
+<p><img src="_booki/blender/static/ScreenHunter_05%20Apr.%2017%2019.45.gif" alt=""></p>
+<p>Alempana kohdassa Image on Open-nappi, josta voit avata äsken kovalevyllesi tallentamasi kuvatiedoston. </p>
+<p> </p>
+<p><img src="_booki/blender/static/ScreenHunter_06%20Apr.%2017%2019.46.gif" alt=""> </p>
+<p>Avautuu tiedostoselain, josta voit valita tallentamasi tekstuuritiedoston.</p>
+<p>Nyt voit valita kuvaikkunan alapuolella olevasta napista äsken valitsemasi tiedoston tekstuuriksi. </p>
+<p><img src="_booki/blender/static/ScreenHunter_07%20Apr.%2017%2019.53.gif" alt=""></p>
+<p>Siirry valikosta takaisin kolmiulotteiseen näkymään (<strong>3D View</strong>). </p>
+<p><img src="_booki/blender/static/ScreenHunter_13%20Apr.%2017%2019.56.gif" alt=""></p>
+<p> </p>
+<p>Nyt voit siirtää tekstuurit näkymään kolmiulotteisessa näkymässä valitsemalla valikosta <strong>Viewport Shading</strong> (näköikkunan varjostus) valinnan <strong>Textured </strong>(teksturoitu). </p>
+<p> </p>
+<p><img src="_booki/blender/static/ScreenHunter_14%20Apr.%2017%2019.59.gif" alt=""> </p>
+<p>Nyt tuolisi pitäisi olla teksturoitu.</p>
+<p><img src="_booki/blender/static/ScreenHunter_15%20Apr.%2017%2020.02.gif" alt=""></p>
+<p><img src="file:///C:/Users/TOMITO~1/AppData/Local/Temp/moz-screenshot.png" alt=""></p>
+<h2>UV-projektiotyypit</h2>
+<p>Kun olet muokkaustilassa, voit helposti ottaa käyttöön uuden projektion käyttäen UV-kartoitusvalikkoa (UV Mapping), johon pääset U-näppäimellä.</p>
+<p> <img src="_booki/blender/static/ScreenHunter_16%20Apr.%2017%2021.09.gif" alt=""></p>
+<p>Sieltä löydät joukon erilaisia projektiotyyppejä: </p>
+<p><strong>Unwrap (Poista kääriminen)</strong></p>
+<blockquote>
+<blockquote>
+<p>Projektiopinta on kuvitteellinen "käärimätön" versio verkosta. Käärimättömässä verkossa tahkot jaetaan kaksiulotteiselle tasolle, jossa on mahdollisimman vähän häiriöitä tai päällekkäisyyksiä, riippuen laskentatehosta. Tekstuuri projisoidaan sitten tälle pinnalle. Tämä on menetelmä, jota käytetään hyvin tarkkaan teksturointityöhön. </p>
+</blockquote>
+<blockquote>
+<p>Hyvä tapa "kääreiden poiston" kuvittelemiseen on ajatella maapallon paljasta karttaa, joka on käärimätön pallo, jossa on niin vähän vääristymiä kuin matemaattisesti mahdollista. Tätä tiettyä käärimättömyyttä kutsutaan nimellä Goodes Interrupted Homolosine Projection.</p>
+<p> </p>
+</blockquote>
+</blockquote>
+<p><strong>Cube Projektion (kuutioprojektio) <br></strong></p>
+<blockquote>
+<blockquote>
+<p>Projisoi tekstuurin kuvitteellisen kuution päälle. Kuutio on linjassa globaaliakselien X, Y ja Z kanssa. Etsii sen jälkeen kaikki tahkot todellisessa verkossa, jotka ovat lähimpänä tämän kuutio-objektin kuutta sivua, ja piirtää tekstuurin tahkoille vastaavasti. </p>
+</blockquote>
+</blockquote>
+<p><strong>Cylinder Projection (lieriöprojektio)</strong> </p>
+<blockquote>
+<blockquote>
+<p>Lieriöprojektio kartoittaa ensin tekstuurin lieriön päälle, jolla on sama orientaatio kuin kuvaikkunalla, ennen kuin projisoi sen aktiiviselle tahkolle. </p>
+</blockquote>
+</blockquote>
+<p><strong>Sphere Projection (palloprojektio) <br></strong></p>
+<blockquote>
+<blockquote>
+<p>Pelloprojektio kartoittaa ensin tekstuurin pallolle, jolla on sama orientaatio kuin kuvaikkunalla, ennen kuin projisoi sen aktiiviselle tahkolle. </p>
+</blockquote>
+</blockquote>
+<p><strong>Project From View (projisointi näkökulmasta) <br></strong></p>
+<blockquote>
+<blockquote>
+<p>Projisointi näkökulmasta (Project from View) kartoittaa tekstuurin näkötasolle jokaiselle toistuvalle tiilelle ja projisoi sen sitten suoraan aktiiviselle tahkolle. </p>
+</blockquote>
+</blockquote>
+<p>Huomaa, että projektiotyypit projisoidaan verkkoon kohtisuoraan näkötasoa vasten. Kuvittele kuvaikkunan olevan kuin katsoisit suoraan kameran linssin läpi. Näkymän taso on loputtoman suuri kuvitteellinen taso, joka on samalla tasolla linssin pinnan kanssa. Eli taso on yhdensuuntainen kuvaikkunan tangentin kanssa.</p>
+<h2>UV-kartoituksien muokkaaminen</h2>
+<p><strong>UV/Image Editor </strong>-tilassa (UV/kuvaeditorissa) tahkoja manipuloidaan paljolti samalla tavalla kuin verkkojakin: niissä on verteksejä, jotka voidaan valita yksittäin ja siirtää ympäriinsä <strong>G-näppäimellä</strong>, tahkoja voidaan kierittää<strong> R-näppäimellä</strong>, skaalata <strong>S-näppäimellä</strong> ja niin edelleen.</p>
+<p><img src="_booki/blender/static/ScreenHunter_17%20Apr.%2017%2022.00.gif" alt="" width="515" height="396"></p>
+<p>UV-tahkojen muutokset päivitetään välittömästi verkkoihin kuvaikkunassa. </p>
+<h2>UV-tekstuurieditorin navigointi</h2>
+<p>Vaikka et (tietenkään) voi kierittää näkökulmaa, voit vetää näkökulmaa ympäriinsä ja jopa zoomata. Käytä tähän samoja ohjaimia kuin kolmiulotteisessa näkymässä (<strong>3D View</strong>). </p>
+<h2>Tekstuurien päälle maalaaminen</h2>
+<p>Mene <strong>3D View</strong> -editoriinja muuta tila tekstuurimaalaukseksi (<strong>Texture Paint</strong>).</p>
+<div class="c4"><img src="_booki/blender/static/ScreenHunter_18%20Apr.%2017%2022.04.gif" alt=""></div>
+<p>Tämä tilassa vasemmalla käyttöliittymässä on esillä sivupaneeli, jossa on mahdollista muuttaa sivellintä ja muita asetuksia. </p>
+<div class="c4">
+<p><img src="_booki/blender/static/ScreenHunter_19%20Apr.%2017%2022.16.gif" alt=""></p>
+<p class="c5">Tässä voit muuttaa käytetyn siveltimen kokoa, väriä ja tyyppiä. Voit maalata suoraan teksturoidun verkon päälle kuvaikkunassa tai tekstuurin päälle UV/kuvaeditori-ikkunassa. </p>
+</div>
+<h2>Verteksin värit </h2>
+<p>Verteksien värittäminen on erittäin resursseja kuluttamaton tapa lisätä väriä verkkoosi. Kun verteksi on väritetty, tahko väritetään tuosta verteksistä. Jos sinulla on tahko, jossa on kolme verteksiä, joista jokainen on eri värinen. Värien sekoitus perustuu siihen, kuinka kaukana verteksi on toisesta verteksistä. </p>
+<p>Verteksien värejä ei tallenneta grafiikkakorttisi muistiin, toisin kuin tekstuureja. Sen sijaan verteksien värit vain lasketaan ja piirretään tarvittaessa. Laskutoimitus itsessään tehdään nykyaikaisen grafiikkakortin grafiikan prosessointiyksikössä, ja se on itsessään laskennallisesti vaatimaton: verteksit - ja niihin kiinnitetyt tahkot - ovat joka tapauksessa värillisiä (ja ne täytyy piirtää jonkun värisiksi), yleensä harmaita kolmiulotteisissa ohjelmissa, joten on vain tarpeen antaa niille uusi sopiva väri. Verteksien maalausta voidaan käyttää lisäämään yksityiskohtia väritykseen tai korostamaan jotain yksityiskohtaa, jopa tekstuuridatan puuttuessa kokonaan. </p>
+<p>Tästä syystä sinun ei tarvitse tehdä punaista tekstuuria, jos tahdot osan verkostasi punaiseksi. Väritä vain tarpeelliset verteksit punaiseksi ja tahkot seuraavat perässä.</p>
+<p>Verteksien väritystilaan pääset valitsemalla valikosta vaihtoehdon <strong>Vertex Paint</strong>.</p>
+<p><img src="_booki/blender/static/ScreenHunter_21%20Apr.%2017%2022.26.gif" alt=""></p>
+<p>Asettaaksesi verteksin värin tahkolle, varmista että se on aktiivinen tahkonvalintatilassa ja valitse väripaletista uusi väri. </p>
+<div class="c4">
+<p><img src="_booki/blender/static/ScreenHunter_22%20Apr.%2017%2023.02.gif" alt=""></p>
+<p>Napsauta seuraavaksi <strong>Paint</strong>-valikosta <strong>Set Vertex Colors</strong> asettaaksesi värin kaikkiin vertekseihin tahkossasi. Voit myös painaa <strong>SHIFT-K</strong>. </p>
+<p> <img src="_booki/blender/static/ScreenHunter_25%20Apr.%2017%2023.17.gif" alt="">e</p>
+</div>
+<p>Vaihtoehtoisesti voit "maalata" verteksivärejä suoraan verkollesi. Painaessasi VHN verteksin kohdalla sitä maalataan valitsemallasi värillä. </p>
+<div class="c4"> </div>
+<p><strong>Huomaa:</strong> voit yhdistää verteksin värejä ja tekstuureja työssäsi, yksi toisen "päällä". Jos esimerkiksi tahdot yhden teksturoidun verkon osan olevan hieman keltainen, voit värittää verteksit sillä alueella. Tekstuurin data ja verteksin data sekoitetaan riippuen miksaustilasta, jonka olet valinnut. </p>
+<h2>Kuvan pakkaaminen (tai äänen tai videon)</h2>
+<p>Yleinen ongelma multimediaprojektien kehittämisessä on monien eri tiedostojen tilan valvominen. Multimediaprojekti vaatii välttämättä lukuisia tiedostoja. Blender tarjoaa tähän oivan ratkaisun. </p>
+<p>Jokainen Blender-tiedosto (nimeltään <strong>*.blend</strong>) voidaan ymmärtää arkistona - hieman kuin ZIP-tiedosto. Kun lisäät ulkoista dataa Blender-projektiisi (tekstuurin, äänen tai videon), sinulla on mahdollisuus "pakata" se Blender-tiedostoosi, jotta et joudu jakelemaan sitä tiedostoa erikseen. Voit sitten luottavaisesti jaella Blender-projektisi tietäen, että kun joku muu avaa tiedoston jossain muualla, tämä data ei puutu kohtauksestasi. Missä tahansa vaiheessa voit myös "purkaa" nämä tiedostot, työskennellä niiden parissa ja pakata ne uudelleen.</p></div><ul Class="menu-goes-here"><li Class="booki-section">JOHDANTO</li><li><a href="/blender/index">JOHDANTO</a></li>
+<li Class="booki-section">ASENNUS</li><li><a href="/blender/ch003_asennus-windowsiin">ASENNUS WINDOWSIIN</a></li>
+<li Class="booki-section">KÄYTÄNNÖT</li><li><a href="/blender/ch005_kaytannot">KÄYTÄNNÖT</a></li>
+<li Class="booki-section">KÄYTTÖLIITTYMÄ</li><li><a href="/blender/ch007_kayttoliittyma">KÄYTTÖLIITTYMÄ</a></li>
+<li Class="booki-section">ASETUKSET</li><li><a href="/blender/ch009_asetukset">ASETUKSET</a></li>
+<li Class="booki-section">EDITOINTI</li><li><a href="/blender/ch011_editointi">EDITOINTI</a></li>
+<li><a href="/blender/ch012_esineen-luominen">ESINEEN LUOMINEN</a></li>
+<li Class="booki-section">TEKSTUURIT</li><li><a href="/blender/ch014_teksturointi">TEKSTUROINTI</a></li>
+<li Class="booki-section">RENDERÖINTI</li><li><a href="/blender/ch016_renderointi">RENDERÖINTI</a></li>
+<li Class="booki-section">LIITTEET</li><li><a href="/blender/ch018_tekijat">TEKIJÄT</a></li>
+</ul>

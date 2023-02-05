@@ -1,0 +1,119 @@
+<html dir="None"><body><div id="main-content"><h1>Värien valinta</h1>
+<p> </p>
+<p>Kaikkien asiakirjojen luomiseen liittyy värien valinta. Tämä valinta on joskus graafisen suunnittelijan sponsorin määrittelemä, jolloin sponsori luettelee kaikki fontit ja värit, jotka liittyvät sponsorin brändiin. Scribusissa on työkaluja ja ominaisuuksia, joilla voi luoda, muokata ja käyttää väripaletteja.</p>
+<h2>Väritilat</h2>
+<p> </p>
+<p>Ennen kuin käytät väripalettia, on ymmärrettävä miten väritiloja käytetään, miten ne on sopeutettava tukemaan julkaisua ja miten niiden käyttö optimoidaan.</p>
+<h2>Kirjo</h2>
+<p> </p>
+<p>Emme näe kaikkia värejä... Ja koneemme eivät kykene toistamaan niitä kaikkia. Värivalikoimaa tiettyjen värien välillä kutsutaan kirjoksi.</p>
+<p><img src="_booki/scribus-opas-1/static/ScreenHunter_09%20Jan.%2015%2022.34.gif" alt=""> </p>
+<p> </p>
+<p>Lähde: Wikimedia Commons, tekijä Christophe.moustier, Public Domain http://commons.wikimedia.org/wiki/File:Comparaison_de_diff% C3% A9rents_Gamuts.svg</p>
+<h2>RGB</h2>
+<p> </p>
+<p>Tämä on yleisin väritila, koska se perustuu näytön väreihin. Se perustuu additiivisen synteesin periaatteeseen, joka viittaa kolme värin sekoitukseen: nämä värit ovat punainen, vihreä ja sininen. Sekoitus kaikkia kolmea väriä tuottaa kirkkaan valkoisen taustavalon näytölle. Se on valonlähteestä projisoitu väri.</p>
+<p> </p>
+<p>Täydentävä väri: täydentävä väri on yleensä valkoinen.</p>
+<p> </p>
+<p>RGB tarjoaa laajan "kirjon", sillä voidaan näyttää useita värejä, joista jotkut ovat jopa ihmisen aistien havaintokyvyn tuolla puolen. Joten siinä tilassa on rikkaita sävyjä ja kontrasteja, jotka sopivat laadultaan jatkuvasti paraneville näytöille.</p>
+<p> </p>
+<p>Digitaaliset bittikarttakuvat hyödyntävät tätä laajennettua väriavaruutta, sillä sekä näyttö että myös hienous paranee. Siksi niitä ei ole välttämättä suositeltavaa muuntaa CMYK-kuviksi sisällytettäväksi tulostettaviin asiakirjoihin. Kuitenkaan graafikko ei voi keskittyä väripaletin väreihin tässä tilassa.</p>
+<h2>CMYK</h2>
+<p> </p>
+<p>"CMYK"-väritila (Syaani, Magenta, Keltainen, Musta) on ehdottoman tarpeellinen tulostamiseen, koska se perustuu vähentävään synteesi. Toisin kuin additiivinen synteesin tapauksessa, subtraktiivisen synteesin tuloksena ei ole projektio, vaan tuloksena on valon imeytyminen fyysiseen musteeseen. Sovellettava väri on itse asiassa vastaava kuin linssiin musteesta heijastuva valo heijastuu. Lisäksi yhdistelmä kolmea väriä (syaani, magenta ja keltainen) antaa tulokseksi hyvin tummanruskeaa. Mustasta saadaan todellisia harmaasävyjä, mikä täydentää CMY-seoksia.</p>
+<p><img src="_booki/scribus-opas-1/static/Scribus_fr-ChoixdesCouleurs-Synthese-_1-fr-old.png" alt=""> </p>
+<p> </p>
+<p><em>Subtraktiivinen väri: Värin lisääminen mustaan </em></p>
+<p> </p>
+<p>CMYK-väriavaruus on paljon pienempi kuin RGB-väriavaruus. Musteet eivät todellakaan pysty toistamaan samoja rikkaita vivahteita. Siksi on tärkeää pitää mielessä, että värien määrää tulostusta varten vähennetään välillä ruudulla olevasta työn alla olevasta asiakirjasta. Haasteena on ennakoida tämä vähennys, tai ainakin tajuta, että se tapahtuu.</p>
+<h2>Harmaasävy</h2>
+<p> </p>
+<p>Se on värin puute. Kaikki väritiedot on poistettu jättäen vain arvot musta, harmaa ja kevyempi ja voimakkaampi valkoinen. Tässä on vaikeaa säilyttää tai säätää kirkkautta. Valon sisältämä informaatio on osittain väritiedoissa ja poistamalla väritietoja voi enemmän tai vähemmän säätää koko kuvan kirkkautta.</p>
+<p> </p>
+<p>Aloittelijat ovat usein puroamassa yhteen sudenkuoppaan, joka on uskoa, että desaturoitu kuva on harmaasävyinen kuva. Se on virhe. Itse asiassa värikylläisyystiedon poistaminen ei poista kaikkia väritietoja, joten kuva säilyttää alkuperäisen väritilansa: harmaat tuotetaan seoksena värejä, ei vain mustana. Jos kyseessä on asiakirja, joka sisältää RGB- tai CMYK- kuvia ja joka on tarkoitettu näytölle, tämä virhe ei ole tärkeä (tuloksena tulee olemaan sekoitusväri joka tapauksessa), mutta painettavaksi tarkoitettu dokumentti tulee mitoittaa siten, että dokumentin ulkoasuun kuuluu vain musta, koska muuten voi syntyä lisäkustannuksia ja tahraisuutta.</p>
+<h2>Kaksiväri</h2>
+<p> </p>
+<p>Kaksiväri ja sen variaatiot (yksiväri, värien sekoittaminen) ovat tapa vapaaehtoisesti rajoittaa värien määrää riippuen graafikon tarpeista tai taloudellisista resursseista.</p>
+<p> </p>
+<p>Kuten harmaasävyt, kaksiväri vaatii jotain menetelmää, jolla huolehditaan värien määrän rajoittamisesta sekä kuvissa että muussa asiakirjassa. Yleensä tämäntyyppisessä toiminnassa on esiintynyt spottivärejä (ks. alla), että vältetään musteseokset.</p>
+<h2>Väripaletti</h2>
+<p> </p>
+<p>Olipa värit määritelty sopimuksessa tai luotava itse, väripaletti on olennainen askel luotaessa mikä tahansa asiakirja. Kompositio vaatii erilaisia menetelmiä, koska se määrittää paperin tunnelman ja sen luettavuuden.</p>
+<h2>Lajittele värit</h2>
+<p> </p>
+<p>Scribusissa on väreille omistettu ikkuna, jota kutsutaan myös "Värikirjastoksi", ja johon pääsee valikosta [Muokkaa] &gt; [Värit]. Tässä ikkunassa on oletuksena suoraan käytettävä määrä värejä. Värejä voi jo lajitella, riippuen dokumentin levitystavasta, joten on mahdollista poimia väritila, joka on edullisin:</p>
+<p> </p>
+<ul><li>CMYK: Scribus on tarkoitettu ensisijaisesti painettuihin julkaisuhin, useimmat lehdet käyttävät CMYK-tilaa. Se tässä tapauksessa on suositeltavaa poistaa viittaukset RGB-väreihin. Voit tehdä tämän valitsemalla värisävyn ja napsauttamalla Poista.</li>
+<li>RGB:n tapauksessa asiakirja on tarkoitettu näytölle, jolloin on mahdollista määritellä RGB värejä, ja tässä tapauksessa poistaa viittaukset CMYK-väreihin samalla menetelmällä kuin edellä on ehdotettu.</li>
+<li>Harmaasävy: tässä toimintoa [Poista käyttämättömät] on hyödyllistä käyttää avattaessa asiakirjaa, se säilyttää värit [Musta] ja [Seuranta]. Ensimmäinen on tarpeen harmaasävyjen toiminnan takia, ja toinen on väri, jota ei voi poistaa, koska sitä tarvitaan näyttämään leikkausmerkkejä ja asiakirjan ajoitus.</li>
+<li>Duotone: kuten harmaasävyjen tapauksessa, käyttämättömien värien poistaminen voisi olla suureksi avuksi tässä. Seuraava toimenpide on valita värit, jotka täydentävät kahta väriä.</li>
+</ul><p> </p>
+<p>Varoitus: värin poistaminen listasta ei tarkoita, että vastaavaa mustetta ei käytetä tulostettaessa asiakirjaa, vaan luettelon värejä käytetään taittoa toteutettaessa. Pysyvä väritiedon poisto merkitsee samaa toimenpidettä tuoduille kohteille, varsinkin kuville.</p>
+<h2>Luo värejä</h2>
+<p> </p>
+<p>Kun seulonta tehdään ja värejä vähennetään luettelosta, kunnes täytetään vain perustarpeet, on värien seulonta valmis.</p>
+<p> </p>
+<p>Voit lisätä värin valitsemalla valikosta [Uusi]. Voit muuttaa olemassa olevaan värin ominaisuuksia napsauttamalla [Muokkaa]. Avautuva ikkuna ehdottaa valittavaksi väritilaa luomiseen tai muokkaamiseen. Oikealla puolella on avattava valikko värikartan tai väriavaruuden värien valintaan. RGB-tilassa voit oletuksena valita värejä katsomalla värikoordinaatit kartalta. Värikartta voi toimia myös visuaalisena vihjeenä tunnelman määrittämiseen.</p>
+<p>CMYK tai RGB -liukusäätimillä voit syöttää erityisiä viittauksia tarkkaan väriin tai tarkentaa valitun värin värikartan. Ne ovat erittäin tärkeitä, koska ne toimivat viittauksena musteseoksiin ja ovat hyvä tapa nimetä uusia värejä.</p>
+<h2>Spottivärit</h2>
+<p> </p>
+<p>Ikkuna värien luomiseen ja muokkaamiseen voi myös muuttaa sekoituksen spottiväriksi yksinkertaisesti valinnalla [Spottiväri]. Toiminto sekoittaa CMYK-musteen käyttäen fyysisenä perusteena prosenttiosuutta seokseen määritellyistä syötetyistä arvoista.</p>
+<p> </p>
+<p>Spottivärit mahdollistavat suuren joustavuuden värinhallintaan, koska niiden avulla voidaan luopua perinteisistä väreistä ja saada hallintaan pienempi määrä värejä (kuten kaksisävy), tai eri syaanin, magentan, keltaisen ja mustan sävyt.</p>
+<p> </p>
+<p>Spottivärillä on kuitenkin se rajoitus, että sen on oltava valmistettavissa musteella. Siksi on olemassa väriviuhkat, joita myyvät kaupallisesti värien ammattilaiset, koska nämä värit muodostavat fyysisesti sen seoksen, josta tehdään värikartan määrittämät perusvärit. Pantone on tunnetuin, mutta muitakin on olemassa, kuten Focoltone. Viitaten värien käytön ammattimaisuuteen, voi olla suositeltavaa käyttää seoksia neljästä väriviuhkapaperista, jotta voi luoda luoda oman spottivärin osoittaen viittauksen Pantoneen tai muihin sopiviin väreihin, jotta painaja tietää, mitä on tekeillä.</p>
+<h2>Miten valita värit</h2>
+<p> </p>
+<p>Värivalikoima riippuu dokumentin tunnelmasta, ja se voi viestittää esimerkiksi toimeksiantajan brändiä. Mutta ei ole helppoa ymmärtää, miten värit ovat vuorovaikutuksessa ja täydentävät toisiaan. Ja usein, aloittelijat ovat siirtymässä kapeaan määrään sävyjä tai kontrasteja tilanteesta, jossa täydellistä värilistaa käytetään sekaisin.</p>
+<p> </p>
+<p>Scribus tarjoaa käyttäjilleen tehokkaan välineen tukemaan väripalettien luomista. Siirry valikossa kohtaan [Apuvälineet] &gt; [Väripyörä]. Ikkuna on hieman mutkikas, mutta se on riittävä ja asianmukainen toteuttamaan väripaletit täydentävyyden periaatteiden mukaisesti, jotka on tutkittu ja testattu.</p>
+<p> </p>
+<p>Kaikki alkaa pohjavärin valinnasta oikeassa ylänurkassa, josta löydämme värivalitsimen, joka on jo kohdattu uutta värisävyä luotaessa (ks. edellä), paitsi että on mahdollista valita pohjaväri suoraan luettelosta, johon vivahteet luotu aiemmin, napsauttamalla [Dokumentti].</p>
+<p> </p>
+<p>Kun pohjaväri on valittu, on tarpeen määritellä malli, jota käytetään sommittelemaan komplementtivärit, valitsemalla jokin valinta alasvetovalikosta vasemmalla puolella. Kuutta mallia, jotka ovat kohdan [Monokromaattinen] ja kohdan [Kolmiväri] välillä, käytetään määrittämään kolmesta neljään väriä, jotka ovat dokumentin perustana. Osa malleista perustuu sävyhen vastaavuuteen, kuten [Monochromaattinen] tai [Analoginen], toiset kontrastiin: näin on kaikkien toisiaan täydentävien (vastapäätä väriympyrässä olevien) värien tapauksessa.</p>
+<p> </p>
+<p>Lopuksi tarvitsee vain lisätä niitä vivahteita jo olemassa olevaan väripalettiin, joka on käsitelty tässä luvussa, tai täyttämällä alkuperäinen luettelo valikolla [Yhdistä] ikkunan oikeassa alareunassa, tai korvaamalla alkuperäiset sävyt käyttämällä viereistä painiketta [Korvike].</p>
+<p> </p>
+<h2>Korvaa värejä</h2>
+<p> </p>
+<p>Yksi vaikeuksista jokapäiväisessä graafisen editorin elämässä on väripaletin tai grafiikan editointi. Sen sijaan, että toistettaisiin koko asiakirjan värien vaihtaminen yksitellen, Scribus tarjoaa käyttäjälle mahdollisuuden käyttää valikkoa Muokkaa &gt; Korvaa väri, josta voit valita värejä palettiin, luotu tämän luvun alussa, ja korvata ne toisella vivahteella, joka oli ensin luotu Värit-ikkunassa .</p>
+<h2>Taustakuviot</h2>
+<p> </p>
+<p>On olemassa myös oliokirjasto, jota käytetään paljon harvemmin, mutta siellä on myös "tyylikirjasto." On hyvä käytäntö valmistella suunnittelua, kun valmistelet värit, joita haluat käyttää.</p>
+<p> </p>
+<h2>Tyylien hallinta</h2>
+<p> </p>
+<p>[Värit]-valikon [Muokkaa]-kohta tarjoaa myös tyylien hallinnan. [Tyylit] tarjoaa pääsyn samanlaisiin vaihtoehtoihin kuin [Värit], paitsi että ei ole mahdollista suoraan luoda kuviota. Ikkuna on rajoitettu pohjana toimivien tiedostojen lataamiseen. Luettelo hyväksytyistä muodoista on laaja ja monipuolinen, muodon lisääminen onnistuu helposti napsauttamalla [Lataa kuva]. On myös mahdollista ladata koko joukko malleja napsauttamalla [Lataa mallijoukko]. Joukko kuvioita kasataan monista syistä yhteen leikekirjaan (ks. luku mallien järjestäminen tässä osiossa). Voit muokata kuvioita napeilla [Nimeä uudestaan], [Poista] tai [Poista kaikki].</p>
+<p> </p>
+<h2>Luo kuvio</h2>
+<p><img src="_booki/scribus-opas-1/static/ScreenHunter_10%20Jan.%2015%2022.37.gif" alt=""> </p>
+<p> </p>
+<p>Designin luomista on helpotettu Scribusissa. Mikä tahansa muotoryhmä (kun se on kerran ryhmitetty komennolla Objekti &gt; Ryhmä) voidaan käyttää täyttökuviona, kun se on rekisteröity kuviokirjastoon käyttäen komentoa Objekti &gt; Lähetä pohjakuvioihin.</p></div><ul Class="menu-goes-here"><li Class="booki-section">SCRIBUS</li><li><a href="/scribus-opas-1/index">MIKÄ SCRIBUS ON?</a></li>
+<li><a href="/scribus-opas-1/ch002_ennakkovaatimukset">ENNAKKOVAATIMUKSET</a></li>
+<li><a href="/scribus-opas-1/ch003_tasta-oppaasta">TÄSTÄ OPPAASTA</a></li>
+<li><a href="/scribus-opas-1/ch004_esimerkkeja-scribusin-kaytosta">ESIMERKKEJÄ SCRIBUSIN KÄYTÖSTÄ</a></li>
+<li Class="booki-section">ASENTAMINEN</li><li><a href="/scribus-opas-1/ch006_scribusin-asentaminen">SCRIBUSIN ASENTAMINEN</a></li>
+<li Class="booki-section">PERUSTEET</li><li><a href="/scribus-opas-1/ch008_kayton-aloittaminen">KÄYTÖN ALOITTAMINEN</a></li>
+<li Class="booki-section">KÄYTTÖ</li><li><a href="/scribus-opas-1/ch010_scribusin-kaytto">SCRIBUSIN KÄYTTÖ</a></li>
+<li><a href="/scribus-opas-1/ch011_suunnittelu">SUUNNITTELU</a></li>
+<li><a href="/scribus-opas-1/ch012_teksti-ja-grafiikka">TEKSTI JA GRAFIIKKA</a></li>
+<li><a href="/scribus-opas-1/ch013_lahteiden-valmistelu">LÄHTEIDEN VALMISTELU</a></li>
+<li><a href="/scribus-opas-1/ch014_formaatti">FORMAATTI</a></li>
+<li><a href="/scribus-opas-1/ch015_varien-valinta">VÄRIEN VALINTA</a></li>
+<li><a href="/scribus-opas-1/ch016_fonttien-valinta">FONTTIEN VALINTA</a></li>
+<li Class="booki-section">KÄYTÄNTÖJÄ</li><li><a href="/scribus-opas-1/ch018_tiedostojen-jarjestely">TIEDOSTOJEN JÄRJESTELY</a></li>
+<li><a href="/scribus-opas-1/ch019_mallit">MALLIT</a></li>
+<li><a href="/scribus-opas-1/ch020_kompositio">KOMPOSITIO</a></li>
+<li><a href="/scribus-opas-1/ch021_tyylitiedostot">TYYLITIEDOSTOT</a></li>
+<li><a href="/scribus-opas-1/ch022_skriptaus">SKRIPTAUS</a></li>
+<li Class="booki-section">TUOTANTO</li><li><a href="/scribus-opas-1/ch024_kuvien-ja-tekstin-tuominen">KUVIEN JA TEKSTIN TUOMINEN</a></li>
+<li><a href="/scribus-opas-1/ch025_kehykset">KEHYKSET</a></li>
+<li><a href="/scribus-opas-1/ch026_varienhallinta">VÄRIENHALLINTA</a></li>
+<li><a href="/scribus-opas-1/ch027_typografia">TYPOGRAFIA</a></li>
+<li><a href="/scribus-opas-1/ch028_laadunvalvonta">LAADUNVALVONTA</a></li>
+<li><a href="/scribus-opas-1/ch029_asiakirjojen-kokoaminen">ASIAKIRJOJEN KOKOAMINEN</a></li>
+<li><a href="/scribus-opas-1/ch030_lopullinen-tuotos">LOPULLINEN TUOTOS</a></li>
+<li Class="booki-section">LIITTEET</li><li><a href="/scribus-opas-1/ch032_toistuvia-ongelmia">TOISTUVIA ONGELMIA</a></li>
+<li><a href="/scribus-opas-1/ch033_tekijat">TEKIJÄT</a></li>
+</ul>

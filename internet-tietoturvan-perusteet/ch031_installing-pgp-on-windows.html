@@ -1,0 +1,63 @@
+<div id="main-content"><h1>PGP:n asentaminen Windowsiin</h1>
+<p>PGP on protokolla, jota eri ohjelmat käyttävät sähköpostin salaamiseen. Jotta PGP saadaan toimimaan Thunderbirdissä, täytyy asentaa PGP:n avoimen lähdekoodin versio GPG. Lisäksi täytyy asentaa Thunderbirdin Enigmail-lisäosa, jonka avulla GPG:tä voidaan käyttää. Tämä on hieman sekavaa, mutta tässä kuvataan GPG:n ja Enigmailin asentaminen ja PGP:n käyttö. </p>
+<h2>GPG:n asentaminen Microsoft Windowsiin</h2>
+<p>GNU Privacy Guard (GnuPG) on ohjelma, jota tarvitaan PGP-salattujen tai allekirjoitettujen sähköpostien lähettämiseen. On tarpeen asentaa tämä ohjelma ennen kuin salausta voidaan käyttää.</p>
+<p>Mene Gpg4win-projektin verkkosivulle. Se on osoitteessa <a href="http://gpg4win.org/">http://gpg4win.org/</a></p>
+<p>Verkkosivun vasemmalla puolella on "Download"-latauslinkki. Sitä sopii napsauttaa. </p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/gpg_4_win.png" alt=""> </p>
+<p>Tämä vie sinut sivulle, josta voit ladata Gpg4Win-ohjelman. Napsauta nappia, joka tarjoaa sinulle Gpg4Win-ohjelman uusimman vakaan version. </p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/gpg_4_win_2.png" alt=""></p>
+<p>Tämä tarjoaa ladattavaksi .exe-tiedostoa. Selaimestasi riippuen joudut ehkä kaksoisnapsauttamaan tätä ladattua tiedostoa (jonka nimi voi olla suunnilleen gpg4qin-2.1.0.exe) ennen kuin jotain tapahtuu. Windows kysyy, oletko varma, että tahdot asentaa tämän ohjelman. Vastaa kyllä. </p>
+<p>Asenna sen jälkeen ohjelma hyväksymällä lisenssi, valitsemalla oikea kieli ja hyväksymällä oletusarvoiset asetukset napsauttamalla "Next", paitsi jos on joku syy tehdä muutoksia.</p>
+<p>Asennusohjelma kysyy mihin tietokoneesi hakemistoon sovellus asennetaan. Oletusarvoisen sijainnin pitäisi sopia, mutta kirjoita se ylös, koska voimme tarvita tätä tietoa myöhemmin. Napsauta "Next", kun sijainti on mielestäsi sopiva.</p>
+<p> </p>
+<h2>Enigmail-lisäosan asentaminen</h2>
+<p>Asennettuasi PGP-ohjelman yllä kuvatulla tavalla voit asentaa Enigmail-lisäosan. </p>
+<p>Enigmail on Thunderbirdin lisäosa, jonka avulla voit suojata sähköpostiviestiesi yksityisyyttä. Enigmail on yksinkertaisesti käyttöliittymä, jonka avulla PGP-salausta on mahdollista käyttää Thunderbirdin sisältä. </p>
+<p>Enigmail perustuu julkisen avaimen kryptografiaan. Tässä menetelmässä jokaisen ihmisen täytyy luoda henkilökohtainen avainparinsa. Ensimmäin avain on yksityinen avain. Yksityistä avainta suojaa salasana tai tunnussana, se täytyy piilottaa, eikä sitä saa koskaan antaa kenellekään. </p>
+<p>Toinen avain tunnetaan julkisena avaimena. Tämä avain voidaan jakaa niille ihmisille, joiden kanssa tahdotaan viestiä. Kun vastaparin julkinen avain on saatavilla, on mahdollista lähettää tälle henkilölle salattuja sähköposteja. Vain hän voi purkaa salauksen ja lukea sähköpostit, koska ainoastaan vastaanottaja voi käyttää omaa yksityistä avaintaan.</p>
+<p>Vastaavasti, jos lähetät kopion omasta julkisesta avaimestasi sähköpostikontakteillesi ja pidät vastaavan yksityisen avaimen salaisena, voit luekea näiden kontaktien lähettämiä viestejä. </p>
+<p>Enigmailin avulla voi lisäksi laittaa digitaaliset allekirjoitukset viesteihin. Viestin vastaanottaja, jolla on aito kopio julkisesta avaimesta, voi vahvistaa, että viesti tosiaan tulee sinulta, ja että sen sisältöä ei ole näperöity matkan varrella. Jos sinulla on vastaanottajan julkinen avain, voit vahvistaa hänen viestiensä digitaaliset allekirjoitukset. </p>
+<h2>Asennusohjeet</h2>
+<p>Asentaaksesi <strong>Enigmailin</strong> voit suorittaa seuraavat askeleet:</p>
+<p><strong>Askel 1</strong>. <strong>Avaa Thunderbird</strong>, valitse <strong>Select Tools &gt; Add-ons</strong> <em>Add-ons</em> -ikkunan aktivoimiseksi; <em>Add-ons</em> -ikkuna ilmestyy ja siinä on oletusarvoinen <em>Get Add-ons</em> välilehti avoinna.</p>
+<p><strong>Askel 2.</strong> Kirjoita hakukenttään enigmail, kuten alla, ja napsauta hakukuvaketta. </p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_install1.PNG" alt=""></p>
+<p><strong>Askel 3.</strong> Paina "Add to Thunderbird"-nappia aloittaaksesi asennuksen. </p>
+<p><strong>Askel 4.</strong> Thunderbird kysyy oletko varma, että tahdot asentaa tämän lisäosan. Luotamme tähän ohjelmaan, joten voimme painaa "Install Now"-nappia. </p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_install2.PNG" alt=""></p>
+<p><strong>Askel 5</strong>. Hetken päästä asennus on valmis ja seuraavan ikkunan pitäisi ilmestyä. Napsauta nappia "Restart Thunderbird". </p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_install3.PNG" alt=""></p></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/internet-tietoturvan-perusteet/index">Johdanto</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch002_why-use-a-manual-on-internet-security">Miksi käyttää internet-tietoturvaopasta?</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch003_understanding-basic-internet-security">Internet-tietoturvan perusteiden ymmärtäminen</a></li>
+<li Class="booki-section">Yleinen turvallisuus</li><li><a href="/internet-tietoturvan-perusteet/ch005_secure-your-computer-general">Turvaa tietokoneesi (yleistä)</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch006_internet-cafes">Internet-kahvilat</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch007_software-on-usb-or-cd">Ohjelmat USB-tikulla tai CD:llä</a></li>
+<li Class="booki-section">Salasanojen turvaaminen</li><li><a href="/internet-tietoturvan-perusteet/ch009_keeping-passwords-safe">Salasanojen turvaaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch010_installing-a-password-manager">Salasanojen hallintaohjelman asentaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch011_encrypting-passwords-with-a-password-manager">Salasanojen salaaminen salasanojen hallintaohjelman avulla</a></li>
+<li Class="booki-section">Henkilökohtaisten tietojen turvaaminen</li><li><a href="/internet-tietoturvan-perusteet/ch013_introduction-to-securing-personal-data">Johdanto henkilökohtaisten tietojen turvaamiseen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch014_installing-truecrypt">TrueCryptin asentaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch015_using-truecrypt">TrueCryptin käyttö</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch016_setting-up-a-hidden-volume">Kätketyn osion luominen</a></li>
+<li Class="booki-section">Turvallinen selaaminen</li><li><a href="/internet-tietoturvan-perusteet/ch018_introduction-to-safe-browsing">Johdanto turvalliseen selaamiseen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch019_accessing-firefox-on-ubuntu">Firefoxin asennus Ubuntuun</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch020_installing-firefox-on-windows">Firefoxin asentaminen Windowsiin</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch021_protecting-your-internet-passwords">Internet-salasanojen suojaaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch022_extending-firefox">Firefoxin laajentaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch023_proxy-setting-and-foxyproxy">Välityspalvelimet ja FoxyProxy</a></li>
+<li Class="booki-section">Sähköpostin tietoturvan perusteet</li><li><a href="/internet-tietoturvan-perusteet/ch025_introduction-to-e-mail-safety">Johdanto sähköpostin tietoturvaan</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch026_start-using-thunderbird-mail">Thunderbird-sähköpostin käyttö</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch027_setting-up-secure-connections">Salattujen yhteyksien luominen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch028_some-additional-security-settings">Lisää turvallisuusasetuksia</a></li>
+<li Class="booki-section">Sähköpostien salaaminen</li><li><a href="/internet-tietoturvan-perusteet/ch030_introduction-to-mail-encryption-pgp">Johdanto sähköpostien salaamiseen (PGP)</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch031_installing-pgp-on-windows">PGP:n asentaminen Windowsiin</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch032_installing-pgp-on-ubuntu">PGP:n asentaminen Ubuntuun</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch033_creating-your-pgp-keys">PGP-avainten luominen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch034_daily-pgp-usage">Päivittäinen PGP:n käyttö</a></li>
+<li Class="booki-section">TOR-opas</li><li><a href="/internet-tietoturvan-perusteet/ch036_using-tor">TOR-opas</a></li>
+<li Class="booki-section">Taustatietoa</li><li><a href="/internet-tietoturvan-perusteet/ch038_how-the-net-works">Kuinka verkko toimii</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch039_glossary">Sanasto</a></li>
+<li Class="booki-section">Tekijät</li><li><a href="/internet-tietoturvan-perusteet/ch041_tekijat">Tekijät</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch042_lisenssi">Lisenssi</a></li>
+</ul>

@@ -1,0 +1,96 @@
+<div id="main-content"><h1>Firefoxin asentaminen Ubuntuun</h1>
+<div id="content">
+<p>Firefox kuuluu Ubuntun perusasennukseen. On kuitenkin mahdollista asentaa toinen (yleensä uudempi) Firefoxin versio Ubuntuun (tai muihin GNU/Linux-järjestelmiin). Ohjeet tähän löytyvät myöhemmin tästä ohjeesta.</p>
+<p>Firefoxin aukaiseminen on helppoa. Jos Ubuntun perustyöpöytää ei ole muokattu, valitse:</p>
+<p><span>Sovellukset</span><em> &gt; Internet &gt; Firefox-selain</em></p>
+<p><img title="ubuntuopen_en" src="http://fi.flossmanuals.net/kirjoita/firefox/_draft/_v/1.0/static/Firefox-InstallingUbun-ubuntuopen_en-fi.jpg" alt="Käynnistä Firefox Ubuntussa" width="368" height="296"> </p>
+<p><span class="twikiNewLink">Firefox avautuu tervetuloruudulle</span>:</p>
+<p><img src="http://fi.flossmanuals.net/kirjoita/firefox/_draft/_v/1.0/static/Firefox-InstallingUbun-ubuntuopened_1_en-fi.jpg" alt="Firefox Ubuntussa" width="600" height="358"></p>
+<h2>Uudemman version asentaminen</h2>
+<p>Ubuntuun on mahdollista asentaa Firefoxin uudempi versio (kuten esim. beta-versio tai uudempi vakaa versio) kuin se mitä jakelusi tarjoaa automaattisesti.</p>
+<p>Yksityiskohtaiset ohjeet tähän löytyvät englanniksi Ubuntun wikistä nimellä FirefoxNewVersion.  Ohje on kirjoitettu erityisesti käyttäjille joilla on Ubuntun vanhempi jakelu, joka ei sisällä Firefoxin viimeisintä vakaata versiota, kuten esim. Firefox 3, jota ei ole Ubuntu 7.10:ssa (Gutsy Gibbon). Lukemalla loput tästä ohjeesta ja Ubuntun wiki-sivun saat täydellisen kuvan Firefoxin eri versioiden (ml. beta-versiot) asentamisesta ja hallinnasta Ubuntussa. Tämä ohje käsittelee Firefoxin beta-version asentamista normaalisti käyttämäsi Firefoxin perusversion <em>rinnalle</em>.</p>
+<h3>Profiilin varmuuskopiointi</h3>
+<p>Ennen kuin aloitat beta-version asentamisen, sinun kannattaa ottaa varmuuskopiot aikaisemmin käyttämäsi Firefoxin asetuksista ja lisäosista. Kaikki Firefoxiin liittyvät tiedostot löytyvät profiilikansiostasi, joka löytyy sijainnista:</p>
+<p><em>/home/user/.mozilla/firefox</em></p>
+<p>(Kaikissa tämän ohjeen esimerkeissä <em>user </em>tarkoittaa omaa Ubuntu-käyttäjätunnustasi.)</p>
+<p>Profiilikansion nimessä on kahdeksan sattumanvaraista merkkiä ja <em>.default</em>, kuten alla olevassa esimerkissä:</p>
+<p><em>/home/user/.mozilla/firefox/d1eukl01.default</em></p>
+<p>Löydät profiilikansion valitsemalla työpöydän yläpaneelista<em> Sijainnit &gt; Kotikansio</em> ja painamalla sitten CTRL+H joka tuo piilotetut tiedostot ja kansiot näkyviin (voit myös valita <em>Näytä &gt; Näytä piilotetut tiedostot</em>)</p>
+<p>Rullaa alaspäin kunnes löydät kansion "<em>.firefox"</em>. Avaa kansio.</p>
+<p>Oletusasetuksesi ja lisäosasi löytyvät profiilisi kansiosta, jonka nimi loppuu päätteeseen <em>.default</em> (paitsi jos olet käyttänyt profiilimanageria asentaessasi olemassaolevan Firefox-profiilisi, jolloin luultavasti tiedät itsekin mitä olet tekemässä ja mikä löytyy mistäkin).</p>
+<p>SEURAAVA VAIHE KANNATTAA TEHDÄ SILLOIN KUN FIREFOX EI OLE KÄYNNISSÄ: Tee profiilikansiosta kopio valitsemalla se (klikkaa kerran kansion kuvaketta) ja painamalla CTRL+c ja sen jälkeen CTRL+v (voit myös klikata kansiota kerran hiiren oikealla painikkeella ja valita aukeavasta valikosta <em>Kopioi</em> ja tämän jälkeen klikata hiiren oikealla painikkeella valkoista taustaa tiedostoselaimen ikkunassa ja valita aukeavasta valikosta <em>Liitä). </em></p>
+<p>Sinulla on nyt tarkka kopio Firefoxisi asetuksista ja lisäosista kansiossa, jonka nimi on muuten sama kuin alkuperäisen profiilikansiosi, mutta sen perässä on lisäys<em> "(kopio)</em>", kuten alla olevassa esimerkissä:</p>
+<p><em>/home/user/.mozilla/firefox/d1eukl01.default (kopio)</em></p>
+<p>Nyt voit aina halutessasi palauttaa kaikki vanhat asetuksesi käyttöön korvaamalla<em> .default</em>-kansion äsken tekemälläsi kopiolla.</p>
+<h3>Asennustiedoston lataaminen ja asennus</h3>
+<p>Seuraavaksi sinun täytyy ladata haluamasi beta-version asennustiedosto.  Asennustiedostot löytyvät osoitteesta:</p>
+<p><strong><a href="http://www.mozilla.com/en-US/firefox/all-beta.html">http://www.mozilla.com/en-US/firefox/all-beta.html</a></strong></p>
+<p>Etsi haluamasi version asennustiedosto ja lataa se koneellesi sellaiseen paikkaan josta löydät sen myöhemmin.</p>
+<p>Seuraavaksi sinun pitää luoda  <em>/opt/</em> -kansioon uusi kansio johon sinulla on käyttöoikeus. Tämä tapahtuu kahdessa vaiheessa. Avaa ensin Pääte-ohjelma. Löydät sen paikasta:</p>
+<p>Sovellukset &gt; Apuohjelmat &gt; Pääte</p>
+<p>Luo sitten uusi kansio kirjoittamalla tai kopioimalla alla oleva komento Päätteeseen.  (HUOM! Korvaa komennoissa <em>user</em> omalla käyttäjänimelläsi):</p>
+<p><em>sudo mkdir /opt/user   </em>(paina Enteriä)<em> <br></em></p>
+<p> </p>
+<p>Pääte kysyy salasanaasi. Syötä se Päätteeseen ja paina uudestaan Enteriä. Olet nyt luonut uuden kansion. Tämän jälkeen sinun tulee hankkia käyttöoikeus luomaasi kansioon. Syötä alla oleva komenta Päätteeseen:</p>
+<p><em>sudo chown user -v /opt/user</em></p>
+<p>Pääte kysyy taas salasanaasi. Syötä se Päätteeseen ja paina uudestaan Enteriä. Nyt sinulla on <em>/opt/</em> -kansiossa omalla nimelläsi oleva kansio johon sinulla on myös käyttöoikeus, joten voit purkaa Mozillan verkkosivuilta lataamasi asennustiedoston sinne. Etsi asennustiedosto (muistathan minne sen latasit?), klikkaa tiedostoa hiiren oikealla painikkeella ja valitse "Avaa ohjelmalla Pakettienkäsittelyohjelma"</p>
+<p><img src="http://fi.flossmanuals.net/kirjoita/firefox/_draft/_v/1.0/static/Firefox-InstallingUbun-Archive_Manager_en-fi.png" alt="Arkiston hallinta" width="610" height="509"></p>
+<p>Valitse Pakettienkäsittelyohjelmasta "Pura" ja navigoi äsken luomaasi kansioon. Löydät sen painamalla klikkaamalla kohtaa "Tiedostojärjestelmä" avautuneen tiedostonselausikkunan vasemmasta reunasta. Tämä vie sinut tiedostojärjestelmän juureen, josta löydät <em>/opt/ -</em>kansion ja sen alta luomasi kansion<em></em></p>
+<p>Pakettienkäsittelyohjelma luo sijaintiin <em>firefox</em> -nimisen kansion ja purkaa ohjelman tiedostot siihen. Uusi versio on nyt asennettu koneellesi.</p>
+<h3>Uuden profiilin luominen</h3>
+<p>Seuraavaksi sinun tulee luoda beta-versiolle uusi profiili. Tällöin uuden version käyttäminen ei sekoita aikaisemmin asennetun Firexofin asetuksia. Uuden profiilin luominen tapahtuu käynnistämällä Firefox Profile Managerin kera. Syötä alla oleva komento päätteeseen:</p>
+<p><em>/opt/user/firefox/</em><em>firefox -profilemanager</em></p>
+<p>Tämä avaa Firefoxin Profile Managerin, eli pienen dialogi-ikkunan, josta pystyy hallinnoimaan Firefoxin käyttäjäprofiileja.</p>
+<p><img title="profile_manager_en" src="http://fi.flossmanuals.net/kirjoita/firefox/_draft/_v/1.0/static/Firefox-InstallingUbun-profile_manager_en-fi.png" alt="Firefoxin profiilinhallinta" width="411" height="293"> </p>
+<p>Luo uusi profiili klikkaamalla <em>Create Profile </em>-nappulaa. Anna profiilille nimi joka käy järkeen kokeilusi kanssa ja jonka muistat myöhemmin, esimerkiksi <em>FF3.5b4</em>, jos testaat Firefoxin 3.5Beta4-versiota. Seuraa Profile Managerin ohjeita (dialogi on erittäin yksinkertainen) ja lopuksi klikkaa nappulaa <em>Start Firefox </em>niin että äsken luomasi profiili on valittuna listalla. Ja sillä selvä - käytät nyt Firefoxin beta-versiota!</p>
+<p>Voit nyt valita kahdesta eri tavasta jatkaa. Voit joko käyttää beta-versiota sellaisenaan, ns. tuoreena asennuksena, tai voit ottaa aikaisemman versiosi vanhat asetukset ja lisäosat käyttöön. Tuoreen asennuksen (eli oletusasetusten) käyttäminen on turvallisin vaihtoehto. Jos esimerkiksi siirrät asetukset Firefox 2 -versiosta Firefox 3:een, jotkin vanhat asetukset ovat yhteensopimattomia uuden Firefoxin version kanssa. Vanhojen asetusten käyttäminen ei ole suositeltavaa, mutta voit kokeilla sitä itse. Voi olla että et törmää hankaluuksiin. Jos valitset käyttää oletusasetuksia, sinun ei tarvitse tehdä enää mitään, vaan voit aloittaa beta-version käyttämisen normaalisti.</p>
+<h3>Vanhojen asetusten ja lisäosien käyttäminen</h3>
+<p>Vanhojen asetusten käyttäminen tapahtuu navigoimalla äsken luomasi profiilin kansioon. Se löytyy allaolevasta paikasta:</p>
+<p><em>/home/user/.mozilla/firefox</em></p>
+<p>Kansion nimi on muotoa <em>********.FF3.5b4</em> eli yhdeksän satunnaista merkkiä (kirjaimia tai numeroita), piste ja äsken luomasi profiilin nimi, esimerkiksi <em>dhytrklgs.FF3.5b4. </em>Poista kaikki sisältö tuosta kansiosta (mene kansioon sisälle ja paina CTRL+a ja sen jälkeen Delete-näppäintä) ja sen jälkeen kopioi alkuperäisen profiilikansiosi sisältö uuden profiilin kansioon. Alkuperäisen kansiosi tunnistat siitä että se loppuu päätteeseen <em>default</em>.</p>
+Se on siinä! Käytät nyt Firefoxin beta-versiota vanhojen asetustesi ja lisäosiesi kera. Uusi asennus ei millään tapaa haittaa aikaisemman, Firefoxin oletusasennuksen, asetuksia. Käynnistäessäsi Firefoxin ensimmäistä kertaa vanhojen asetusten kanssa, ohjelma tarkistaa onko käyttämillesi lisäosille olemassa päivityksiä. Jotkut lisäosasi saattavat olla yhteensopimattomia uuden version kanssa, jolloin Firefox poistaa ne käytöstä automaattisesti. <br><p>Jos jokin menee vikaan beta-versiota käyttäessäsi, joko vanhojen asetusten takia tai mistä tahansa syystä, voit yksinkertaisesti käynnistää ohjelman uudelleen Profile Managerin kera ja poistaa uutta versiota varten luomasi profiilin ja luoda täysin uuden profiilin. Tämä palauttaa uuden version oletusasetuksille (ja poistaa kokonaan uudessa versiossa olleet lisäosat), jolloin ohjelman pitäisi taas toimia normaalisti.</p>
+<p>Voit tehdä oletusasetusten palauttamisen myös poistamalla beta-versiota varten luomasi profiilin kansion sisällön (HUOM: älä poista itse kansiota) ja käynnistämällä Firefoxin uudelleen Profile Managerin kera. Profile Manager luo profiilin oletusasetukset uudelleen, jolloin beta-version pitäisi taas toimia normaalisti.</p>
+<p>Kun pääset kärryille siitä miten Firefox käsittelee eri käyttäjäprofiileja ja niiden sisältämiä asetuksia ja lisäosia, voit helposti siirtää vanhoja asetuksia ja lisäosia Firefoxin versioista toisiin. Tärkein asia joka sinun tulee kuitenkin muistaa on varmuuskopion tekeminen olemassaolevista asetuksistasi, jolloin voi aina palata niihin etkä joudu luomaan uudelleen asetuksesi, lisäosasi ja kirjanmerkkisi.</p>
+<h3>Pikakuvakkeen lisääminen</h3>
+<p>Pikakuvakkeen lisääminen Gnomen yläpaneeliin käy helposti. Tällöin sinun ei tarvitse aina käynnistää uutta versiota Päätteen kautta. Klikkaa hiiren oikealla painikkeella mitä tahansa tyhjää kohtaa paneelissa. Valitse esiin tulevasta valikosta <em>Lisää paneeliin... </em>ja kaksoisklikkaa seuraavasta ikkunasta <em>Muun sovelluksen käynnistin.</em></p>
+<p><img src="http://fi.flossmanuals.net/kirjoita/firefox/_draft/_v/1.0/static/Firefox-InstallingUbun-Add_to_Panel_en-fi.png" alt="Lisää Firefox Gnomen paneeliin" width="570" height="519"></p>
+<p>Syötä avautuvaan pikkuikkunaan seuraavat tiedot:</p>
+<em>Tyyppi: Sovellus <br> Nimi: [haluamasi nimi ohjelmalle, esim. "Firefox 3.5 Beta 4"] <br> Komento: </em> <em>/opt/user/firefox/</em><em>firefox -profilemanager <br> Kommentti: [haluamasi kuvaus pikakuvakkeen toiminnasta, esim. "Käynnistä Firefoxin 3.5. Beta 4 -versio"] </em>
+<p><img title="Create_Launcher_en" src="http://fi.flossmanuals.net/kirjoita/firefox/_draft/_v/1.0/static/Firefox-InstallingUbun-Create_Launcher_en-fi.png" alt="Luo Firefoxin käynnistin Ubuntussa" width="440" height="233"> </p>
+<p>Voit valita haluamasi ikonin pikakuvakkeelle klikkaamalla dialogi-ikkunan vasemmassa reunassa olevaa jousi-alustan kuvaa. Ruutuun avautuu uusi ikkuna josta voit valita haluamasi kuvakkeen. Firefoxin omat kuvakkeet löytyvät ohjelman asennuskansiosta. Löydät sen valitsemalla kuvakkeiden ikkunasta <em>Selaa..</em>., ja klikkaamalla kohtaa "Tiedostojärjestelmä" avautuneen tiedostoikkunan vasemmasta reunasta. Tämä vie sinut tiedostojärjestelmän juureen. Löydät beta-version asennuskansion polusta:</p>
+<p><em>/opt/user/firefox/</em></p>
+<p>Valitse kansio klikkaamalla sitä kerran ja paina sitten <em>Avaa</em>-nappulaa.</p>
+</div></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/internet-tietoturvan-perusteet/index">Johdanto</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch002_why-use-a-manual-on-internet-security">Miksi käyttää internet-tietoturvaopasta?</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch003_understanding-basic-internet-security">Internet-tietoturvan perusteiden ymmärtäminen</a></li>
+<li Class="booki-section">Yleinen turvallisuus</li><li><a href="/internet-tietoturvan-perusteet/ch005_secure-your-computer-general">Turvaa tietokoneesi (yleistä)</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch006_internet-cafes">Internet-kahvilat</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch007_software-on-usb-or-cd">Ohjelmat USB-tikulla tai CD:llä</a></li>
+<li Class="booki-section">Salasanojen turvaaminen</li><li><a href="/internet-tietoturvan-perusteet/ch009_keeping-passwords-safe">Salasanojen turvaaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch010_installing-a-password-manager">Salasanojen hallintaohjelman asentaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch011_encrypting-passwords-with-a-password-manager">Salasanojen salaaminen salasanojen hallintaohjelman avulla</a></li>
+<li Class="booki-section">Henkilökohtaisten tietojen turvaaminen</li><li><a href="/internet-tietoturvan-perusteet/ch013_introduction-to-securing-personal-data">Johdanto henkilökohtaisten tietojen turvaamiseen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch014_installing-truecrypt">TrueCryptin asentaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch015_using-truecrypt">TrueCryptin käyttö</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch016_setting-up-a-hidden-volume">Kätketyn osion luominen</a></li>
+<li Class="booki-section">Turvallinen selaaminen</li><li><a href="/internet-tietoturvan-perusteet/ch018_introduction-to-safe-browsing">Johdanto turvalliseen selaamiseen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch019_accessing-firefox-on-ubuntu">Firefoxin asennus Ubuntuun</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch020_installing-firefox-on-windows">Firefoxin asentaminen Windowsiin</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch021_protecting-your-internet-passwords">Internet-salasanojen suojaaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch022_extending-firefox">Firefoxin laajentaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch023_proxy-setting-and-foxyproxy">Välityspalvelimet ja FoxyProxy</a></li>
+<li Class="booki-section">Sähköpostin tietoturvan perusteet</li><li><a href="/internet-tietoturvan-perusteet/ch025_introduction-to-e-mail-safety">Johdanto sähköpostin tietoturvaan</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch026_start-using-thunderbird-mail">Thunderbird-sähköpostin käyttö</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch027_setting-up-secure-connections">Salattujen yhteyksien luominen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch028_some-additional-security-settings">Lisää turvallisuusasetuksia</a></li>
+<li Class="booki-section">Sähköpostien salaaminen</li><li><a href="/internet-tietoturvan-perusteet/ch030_introduction-to-mail-encryption-pgp">Johdanto sähköpostien salaamiseen (PGP)</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch031_installing-pgp-on-windows">PGP:n asentaminen Windowsiin</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch032_installing-pgp-on-ubuntu">PGP:n asentaminen Ubuntuun</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch033_creating-your-pgp-keys">PGP-avainten luominen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch034_daily-pgp-usage">Päivittäinen PGP:n käyttö</a></li>
+<li Class="booki-section">TOR-opas</li><li><a href="/internet-tietoturvan-perusteet/ch036_using-tor">TOR-opas</a></li>
+<li Class="booki-section">Taustatietoa</li><li><a href="/internet-tietoturvan-perusteet/ch038_how-the-net-works">Kuinka verkko toimii</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch039_glossary">Sanasto</a></li>
+<li Class="booki-section">Tekijät</li><li><a href="/internet-tietoturvan-perusteet/ch041_tekijat">Tekijät</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch042_lisenssi">Lisenssi</a></li>
+</ul>

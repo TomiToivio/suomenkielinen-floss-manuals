@@ -1,0 +1,151 @@
+<div id="main-content"><h1>Komentohistorian oikopolut</h1>
+<p>Komentotulkki antaa sinun hakea vanhoja komentoja ja syöttää ne uudelleen, voit myös muuttaa niitä tarvittaessa. Tämä on yksi helpoimmista ja tehokkaimmista tavoista vähentää kirjoittamista, sillä toistuvat komentojaksot ovat hyvin yleisiä. Esimerkiksi seuraavassa komentojaksossa käymme läpi eri hakemistoja, listaamme niiden sisällön, poistamme tarpeettomat tiedostot ja tallennamme tiedostoja eri nimillä:</p>
+<pre>cd Kuvat/                              
+ls -l status.log.*
+rm status.log.[3-5]
+mv status.log.1 status.log.bak
+
+cd ../Asiakirjat/
+ls -l status.log*                                                            
+rm status.log.[2-4]
+mv status.log.1 status.log.bak
+
+cd ../Videot/
+ls -l status.log*
+rm status.log.[2-5]
+mv status.log.1 status.log.bak
+</pre>
+<p>Jos joudut tekemään tällaista siivoamista usein, tahdot ehkä kirjoittaa skriptin, joka automatisoi sen, ja ehkä käyttää "cron"-tehtävää ajamaan sen säännöllisin väliajoin. Mutta toistaiseksi katsomme vain, kuinka voit suuresti vähentää kirjoittamisen määrää syöttäessäsi komentoja käsin.</p>
+<p>Edellisessä luvussa katsoimme, kuinka nuolinäppäimiä käytetään liikuttaessa ympäri komentohistoriaa aivan kuin olisit editoimassa tiedostoa. Tässä luvussa tarkastelemme monimutkaisempaa ja vanhempaa tapaa manipuloida komentohistoriaa. Joskus tämän luvun menetelmät tuntuvat helpommilta, joten on vaivan arvoista harjoitella niitä. Oleta esimerkiksi, että kirjoitit tunti sitten komennon "mv" ja tarvitset sitä nyt. On vaikeampaa painaa paluunuolta monta kertaa kuin käyttää tässä luvussa esiteltyä tekniikkaa. </p>
+<h2>Komennon palauttaminen merkkijonolla</h2>
+<p><em>Huutomerkkioperaattori</em> on nimetty huutomerkin "!" mukaan ja se antaa sinun toistaa tiedostohistoriassa olevia komentoja.</p>
+<p><em>"</em>!merkkijono<em>"</em> suorittaa viimeisimmän komennon, joka alkaa <em>merkkijonolla</em>. Niinpä täsmälleen saman <em>"</em>mv"-komennon suorittamiseksi voit kirjoittaa:</p>
+<pre>!mv</pre>
+<p>Ehkä et tahdo täsmälleen samaa komentoa? Jos tahdot muuttaa sitä hieman ennen sen suorittamista? Tai ehkä tahdot vain katsoa, mitä huutomerkkioperaattori palauttaa, jotta voit varmistaa, että se on oikea komento? Voit palauttaa sen ilman sen suorittamista lisäämällä valitsimen ":p" (joka tarkoittaa tulostamista):</p>
+<pre>!mv:p</pre>
+<p>Näytämme kohta komentojen editoinnin.</p>
+<p>Ehkä olet antanut paljon <code>"mv</code>"-komentoja, mutta tiedät, että komennon keskellä on ainutlaatuinen merkkijono, jonka tahdot? Ympäröi merkkijono kysymysmerkeillä, kuten seuraavassa: </p>
+<pre>!?log?</pre>
+<p>Kaksi huutomerkkiä peräkkäin toistaa viimeksi ajetun komennon. Erittäin hyödyllinen komentohistoriatekniikka on viimeisen komennon ajaminen pääkäyttäjän oikeuksilla: </p>
+<pre>sudo !!</pre>
+<p>sillä kirjoittelemme usein komentoja ilman oikeita käyttöoikeuksia.</p>
+<p>Viimeisimmän komennon ajaminen voi vaikuttaa melko hyödyttömältä, mutta tätä menetelmää voidaan muuttaa ajamaan vain osia viimeisestä komennostasi, kuten näemme myöhemmin.</p>
+<p> </p>
+<h2>Komennon palauttaminen numeron perusteella</h2>
+<p>Komentorivi numeroi jokaisen suoritetun komennon järjestyksessä. Jos tahdot palauttaa komentoja numeron perusteella, voit muuttaa komentokehotettasi sisältämään numeron (myöhempi luku näyttää tämän). Voit myös katsoa komentojen listaa ajamalla komennon <code>"history"</code>:</p>
+<pre>$ <strong>history</strong>                                                       
+...
+  502  cd Kuvat/
+  503  ls -l status.log*
+  504  rm status.log.[3-5]
+  505  mv status.log.1 status.log.bak
+  506  cd ../Asiakirjat/
+  507  history                                      
+$
+</pre>
+<p>Tässä olemme näyttäneet vain ulostulon viimeiset muutamat rivit. Jos tahdot suorittaa uudestaan viimeisimmän "rm<em>"</em>-komennon (komento numero 504), voit tehdä sen syöttämällä komennon: </p>
+<pre>!504
+</pre>
+<p>Mutta numerot ovat luultavasti käyttökelpoisempia, kun ajattelet takaperin. Jos esimerkiksi muistat antaneesi "rm"-komennon, jota seurasi kolme muuta komentoa, voit ajaa "rm"-komennon seuraavasti: </p>
+<pre>!-4
+</pre>
+<p>Tämä käskee komentotulkin aloittaa nykyisestä sijainnista, laskea taaksepäin neljä komentoa ja suorittaa siinä sijaitsevan komennon.</p>
+<h3>Parametrien toistaminen</h3>
+<p> </p>
+<p>Usein tahdot suorittaa edellisen komennon osia, joko tehtyäsi kirjoitusvirheen, tai koska ajat komentojen sarjaa tiettyä tehtävää varten. Me saamme tämän aikaan käyttämällä huutomerkkioperaattoria valitsimilla.</p>
+<p>Kolme hyödyllisintä valitsinta ovat: "*", "!^", ja "!$", jotka ovat oikotiet kaikkiin, ensimmäiseen ja viimeiseen parametriin. Katsotaan näitä järjestyksessä.</p>
+<p>"komennonNimi *" suorittaa komennon "komennonNimi" millä tahansa parametreillä, joita käytit viimeisessä komennossasi. Tämä voi olla hyödyllistä, jos teit kirjoitusvirheen. Esimerkiksi kirjoitettuasi "emasc" sen sijaan, että olisit kirjoittanut "emacs":  </p>
+<pre class="SCREEN">emasc /home/fred/mywork.java /tmp/testme.java</pre>
+<p>Tämä epäonnistuu selvästi. Nyt voit kirjoittaa:</p>
+<pre class="SCREEN">emacs !*</pre>
+<p>Tämä ajaa komennon <code>"emacs</code>" viimeksi kirjoittamillasi parametreillä. Se on sama, kuin jos kirjoittaisit:</p>
+<pre class="SCREEN">emacs /home/fred/mywork.java /tmp/testme.java</pre>
+<p><em>"komennonNimi !^"</em> toistaa ensimmäisen parametrin.</p>
+<pre class="SCREEN">emacs /home/fred/mywork.java /tmp/testme.java
+svn commit !^    # vastaa komentoa: svn commit /home/fred/mywork.java
+</pre>
+<p>"komennonNimi !$" toistaa viimeisen parametrin.</p>
+<pre class="SCREEN">mv /home/fred/downloads/sample_screen_config /home/fred/.screenrc
+emacs !$     # vastaa komentoa: emacs /home/fred/.screenrc
+</pre>
+<p>Voit käyttää näitä myös yhdistettynä. Ehkä kirjoitit:</p>
+<pre class="SCREEN">mv mywork.java mywork.java.backup</pre>
+<p>kun tahdoit oikeastaan tehdä kopion. Voit korjata tämän suorittamalla: </p>
+<pre class="SCREEN">cp mywork.java.backup mywork.java</pre>
+<p>Mutta koska käytät parametrejä päinvastaisessa järjestyksessä, hyödyllinen oikotie olisi:</p>
+<pre class="SCREEN">cp !$ !^</pre>
+<p> </p>
+<p>Hienovaraisempaa parametrien hallintaa varten voit käyttää kaksoishuutomerkkiä valitsimella ":N" valitaksesi parametrin numero N. Tämä on käyttökelpoisinta, kun ajat komennon sudona, sillä alkuperäisestä komennostasi tulee ensimmäinen parametri. Alla on esimerkki, joka esittelee sen tekemisen.</p>
+<pre class="SCREEN">sudo cp /etc/apache2/sites-available/siteconfig /home/fred/siteconfig.bak
+echo !^ !!:2  # vastaa komentoa echo cp /etc/apache2/sites-available/siteconfig
+</pre>
+<p>Kantama on mahdollinen myös valitsimella <code>"!!:M-N</code>".</p>
+<h3>Parametrien muokkaaminen</h3>
+<p>Usein tahdot suorittaa edellisen komennon, mutta muuttaa yhden merkkijonon sen sisällä. Oletetaanpa, että tahdot ajaa komennon tiedostolle "tiedosto1": </p>
+<pre>$ <strong>wc tiedosto1</strong>
+     443    1578    9800 tiedosto1</pre>
+<p>Nyt tahdot poistaa tiedoston "tiedosto2", jolla on melkein sama nimi kuin tiedostolla "tiedosto1". Voit käyttää edellisen komennon viimeistä parametriä merkeillä "!$", mutta muuta sitä seuraavasti:</p>
+<pre>$ <strong>rm !$:s/1/2/</strong>                                    
+rm tiedosto2
+</pre>
+<p>Tämä näyttää hieman monimutkaiselta, joten puretaan parametri:</p>
+<pre>!$   :   s/1/2/
+</pre>
+<p>Merkkiä "!$" seuraa kaksoispiste ja sitten "s"-komento, joka merkitsee "korvausta". Tämän jälkeen on merkkijono, jonka tahdot korvata (1) ja merkkijono, jonka tahdot laittaa sen tilalle (2), joita ympäröivät kauttaviivat. Komentotulkki tulostaa komennon samoin kuin se tulkitsee syötteesi, jonka jälkeen se suorittaa sen.</p>
+<p>Koska tällainen korvaaminen on niin yleistä, voit olla tyytyväinen kuullessasi, että on yksinkertaisempi tapa suorittaa komento uudestaan pienellä muutoksella. Voit muuttaa vain yhden merkkijonon komennossa tällä syntaksilla: </p>
+<pre>$ <strong>wc tiedosto1</strong>                                                  
+     443    1578    9800 tiedosto1
+$ <strong>^1^2</strong>                                        
+wc tiedosto2</pre>
+<p>Käytimme tarkemerkkiä "^", merkkijonoa, jonka tahdomme korvata, toista tarkemerkkiä "^", ja merkkijonoa, jonka tahdomme laittaa sen tilalle.</p>
+<h2>Komentohistorian läpi etsiminen</h2>
+<p>Käytä näppäinyhdistelmää <strong>Ctrl + R</strong> suorittaaksesi käänteisen haun (englanniksi "reverse-i-search"). Jos esimerkiksi tahdot käyttää komentoa, jota käytit käyttäessässi viimeksi komentoa "<code>snort</code>", aloita näppäimillä <strong>Ctrl + R</strong>. Terminaali-ikkunassa näet: </p>
+<pre>(reverse-i-search)`':</pre>
+<p>Kun kirjoitat jokaisen kirjaimen (s, n, jne.), komentotulkki näyttää viimeisimmät komennot, joissa tuo merkkijono on jossain. Kun lopetat merkkijonon "snort" kirjoittamisen, voit käyttää näppäimiä <strong>Ctrl + R</strong> toistuvasti etsiäksesi taaksepäin kaikkien merkkijonon "snort" sisältävien komentojen läpi. Kun löydät komennon, jota olet etsimässä, voit painaa oikeaa tai vasenta nuolta sijoittaaksesi komennon varsinaiselle komentoriville, jotta voit muokata sitä, tai vain painaa <strong>Enter</strong> suorittaaksesi komennon.</p>
+<h2>Bashin historian jakaminen</h2>
+<p>Bash-komentotulkki tallentaa komentohistorian, jotta voit palauttaa edellisten istuntojen komentoja. Mutta historia tallennetaan vain sulkiessasi päätteen. Jos työskentelet kahdella päätteellä samaan aikaan, tämä merkitsee, että et voi jakaa komentoja.</p>
+<p>Korjataksesi tämän - jos tahdot päätteen tallentavan jokaisen komennon heti sen suorittamisen jälkeen - lisää seuraavat rivit <em>"~/.bashrc"</em> -tiedostoosi:</p>
+<pre>shopt -s histappend
+PROMPT_COMMAND='history -a'
+</pre>
+<p>Näiden oikoteiden opetteleminen voi säästää sinulta valtavan määrän aikaa, joten ole hyvä ja kokeile!</p></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/komentorivin-perusteet/index">Ota komento</a></li>
+<li Class="booki-section">Perusteet</li><li><a href="/komentorivin-perusteet/ch003_aloittaminen">Käytön aloittaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch004_syntaksi">Syntaksi</a></li>
+<li><a href="/komentorivin-perusteet/ch005_ympariinsa-siirtyminen">Ympäriinsä siirtyminen</a></li>
+<li><a href="/komentorivin-perusteet/ch006_tiedostorakenne">Tiedostorakenne</a></li>
+<li Class="booki-section">Komennot</li><li><a href="/komentorivin-perusteet/ch008_peruskomennot">Peruskomennot</a></li>
+<li><a href="/komentorivin-perusteet/ch009_jarjestelmanvalvojat">Järjestelmänvalvoja</a></li>
+<li><a href="/komentorivin-perusteet/ch010_useammat-tiedostot">Useammat tiedostot</a></li>
+<li><a href="/komentorivin-perusteet/ch011_kirjoita-vahemman">Kirjoita vähemmän</a></li>
+<li Class="booki-section">Keskivaikeita komentoja</li><li><a href="/komentorivin-perusteet/ch013_putkitus">Putkitus</a></li>
+<li><a href="/komentorivin-perusteet/ch014_komentohistoria">Komentohistoria</a></li>
+<li><a href="/komentorivin-perusteet/ch015_standarditiedostot">Standarditiedostot</a></li>
+<li Class="booki-section">Kehittyneempiä komentoja</li><li><a href="/komentorivin-perusteet/ch017_kayttooikeudet">Käyttöoikeudet</a></li>
+<li><a href="/komentorivin-perusteet/ch018_interaktiivinen-muokkaus">Interaktiivinen muokkaus</a></li>
+<li><a href="/komentorivin-perusteet/ch019_poistumisen-tarkastaminen">Poistumisen tarkastaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch020_alikomennot">Alikomennot</a></li>
+<li><a href="/komentorivin-perusteet/ch021_hakemistot">Hakemistot</a></li>
+<li><a href="/komentorivin-perusteet/ch022_kustomisointi">Kustomisointi</a></li>
+<li><a href="/komentorivin-perusteet/ch023_parametrien-korvaaminen">Parametrien korvaaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch024_gnuscreen">GNUScreen</a></li>
+<li><a href="/komentorivin-perusteet/ch025_ssh">SSH</a></li>
+<li><a href="/komentorivin-perusteet/ch026_ohjelmien-asentaminen">Ohjelmien asentaminen</a></li>
+<li Class="booki-section">Tekstieditorit</li><li><a href="/komentorivin-perusteet/ch028_tekstieditorit">Tekstieditorit</a></li>
+<li><a href="/komentorivin-perusteet/ch029_nano">Nano</a></li>
+<li><a href="/komentorivin-perusteet/ch030_vi-ja-vim">Vi ja Vim</a></li>
+<li><a href="/komentorivin-perusteet/ch031_emacs">Emacs</a></li>
+<li><a href="/komentorivin-perusteet/ch032_kedit">Kedit</a></li>
+<li><a href="/komentorivin-perusteet/ch033_gedit">Gedit</a></li>
+<li Class="booki-section">Skriptaus</li><li><a href="/komentorivin-perusteet/ch035_skriptaus">Skriptaus</a></li>
+<li><a href="/komentorivin-perusteet/ch036_skriptien-huoltaminen">Skriptien huoltaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch037_muut-kielet">Muut kielet</a></li>
+<li><a href="/komentorivin-perusteet/ch038_sed">Sed</a></li>
+<li><a href="/komentorivin-perusteet/ch039_awk">AWK</a></li>
+<li><a href="/komentorivin-perusteet/ch040_saannolliset-lausekkeet">Säännölliset lausekkeet</a></li>
+<li><a href="/komentorivin-perusteet/ch041_perl">Perl</a></li>
+<li><a href="/komentorivin-perusteet/ch042_ruby">Ruby</a></li>
+<li><a href="/komentorivin-perusteet/ch043_python">Python</a></li>
+<li Class="booki-section">Komennot nopeasti</li><li><a href="/komentorivin-perusteet/ch045_komentojen-pikaopas">Komentojen pikaopas</a></li>
+<li Class="booki-section">Liitteet</li><li><a href="/komentorivin-perusteet/ch047_tasta-kayttooppaasta">Tästä käyttöoppaasta</a></li>
+<li><a href="/komentorivin-perusteet/ch048_tekijat">Tekijät</a></li>
+</ul>

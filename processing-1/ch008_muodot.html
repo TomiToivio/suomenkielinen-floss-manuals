@@ -1,0 +1,128 @@
+<div id="main-content"><h1>Muodot</h1>
+<p><span id="result_box"><span>Processing tarjoaa monia muotoja. Tässä ovat tärkeimmät. <br></span></span></p>
+<h2>Piste</h2>
+<p>Aloitamme piirtämisen pisteellä. Yksi piste vastaa pikseliä, joka on ikkunassa sijainnissa x leveyssuunnassa ja sijainnissa y korkeussuunnassa. Koordinaatit annetaan muodossa (x, y). Tässä esimerkissä piste on hyvin pieni. Se on keskipisteessä.</p>
+<pre>point(50, 50);
+</pre>
+<p><img title="point.tiff" src="_booki/processing-1/static/point-tiff-fi.png" alt="point.tiff" width="99" height="97"></p>
+<p><span id="result_box"><span>Huomaa, että kehys on 100x100, joten piste on keskellä. Jos piirrämme kehyksen ulkopuolelle, et näe pistettä. </span></span></p>
+<h2>Viiva</h2>
+<p>Viiva (AB) koostuu määritelmällisesti loputtomasta määrästä pisteitä alkupisteen A ja loppupisteen B välillä. Rakentaaksemme sen keskitymme vain pisteiden A ja B koordinaatteihin x ja y. Jos esimerkiksi oletusikkunassa piste A on ikkunan vasemmassa alanurkassa, ja piste B on oikeassa ylänurkassa, voimme piirtää tämän viivan komennolla <code>line(xA,yA,xB,yB)</code> :</p>
+<pre>line(15, 90, 95, 10);
+</pre>
+<p><img title="line.tiff" src="_booki/processing-1/static/line-tiff-fi.png" alt="line.tiff" width="101" height="98"></p>
+<h2>Suorakulmio</h2>
+<p>Suorakulmio piirretään neljällä arvolla komennolla <code>rect(x-yläkulma,y-yläkulma,leveys,korkeus)</code>. Ensimmäinen x ja y -arvojen pari merkitsee suorakulmion vasenta yläkulmaa, kuten pisteen tapauksessa. Sen sijaan seuraavat kaksi arvoa eivät merkitse vasenta alakulmaa, vaan tämän suorakulmion leveyttä (x-akseli, horisontaalinen) ja korkeutta (y-akselilla, vertikaalinen). <code></code></p>
+<p>Esimerkki:</p>
+<pre>rect(10, 10, 80, 80);</pre>
+<p><img src="_booki/processing-1/static/rectangle-tiff-fi_1.png" alt=""></p>
+<p><span id="result_box"><span>Koska kaksi viimeistä arvoa (leveys ja korkeus) ovat identtiset, saamme neliön. Muuttele arvoja ja katso tuloksia. </span><span> <br></span></span></p>
+<p>Käytä metodia CENTER saadaksesi kaksi ensimmäistä arvoa vastaamaan suorakulmion keskipistettä: </p>
+<pre>rectMode(CENTER);
+rect(50, 50, 80, 40);
+</pre>
+<p><img title="ScreenHunter_02_Feb._09_15.25" src="_booki/processing-1/static/Processing-ScreenHunter_02_Feb-_09_15-25-fi.gif" alt="ScreenHunter_02_Feb._09_15.25" width="116" height="118"></p>
+<h2>Ellipsi</h2>
+<p>Kuten suorakulmio, ellipsi luodaan tilassa CENTER (oletusarvoinen tila) tai tilassa CORNER. Niinpä seuraava komento luo neliön, jonka keskipisteen koordinaatit ovat kaksi ensimmäistä arvoa sulkujen sisällä. Kolmas arvo vastaa horisontaalisen akselin läpimittaa ja vastaa vertikaalisen akselin läpimittaa: huomaa, että jos kolmas ja neljäs arvo ovat identtisiä, saat ympyrän, muuten saat ellipsin:</p>
+<pre>ellipse(50, 50, 80, 80);
+</pre>
+<p>Kokeile kolmannen ja neljännen arvon muuttamista ja tarkkaile tuloksia.</p>
+<p><img title="ellipse.tiff" src="_booki/processing-1/static/ellipse-tiff-fi.png" alt="ellipse.tiff" width="100" height="97"></p>
+<h2>Kolmio</h2>
+<p>Kolmio on kolmen pisteen muodostama kuvio. Kolmio luodaan komennolla <code>triangle(x1,y1,x2,y2,x3,y3)</code>, jolla määritellään kolmion kolme kärkipistettä:</p>
+<pre>triangle(10, 90, 50, 10, 90, 90);</pre>
+<p><img src="_booki/processing-1/static/triangle-tiff-fi_1.png" alt=""></p>
+<h2>Kaari<span id="result_box"><span> <br></span></span></h2>
+<p>Ympyrän kaari voidaan tehdä komennolla <code>arc(<kbd>x</kbd>, <kbd>y</kbd>, leveys, korkeus, <kbd>alku</kbd>, <kbd>loppu</kbd>)</code>, jossa pari x, y määrittelee ympyrän keskipisteen, toinen ja kolmas pari määrittää kulman loppupisteen:</p>
+<pre>arc(50, 50, 90, 90, 0, PI);
+</pre>
+<p><img title="arc.tiff" src="_booki/processing-1/static/arc-tiff-fi.png" alt="arc.tiff" width="100" height="98"></p>
+<h2>Nelitahokas</h2>
+<p>Nelitahokas luodaan määrittelemällä neljä paria x ja y -koordinaatteja komennolla <code>quad(x1,y1,x2,y2,x3,y3,x4,y4)</code> myötäpäivään:</p>
+<pre>quad(10, 10, 30, 15, 90, 80, 20, 80);
+</pre>
+<p><img title="quad.tiff" src="_booki/processing-1/static/quad-tiff-fi.png" alt="quad.tiff" width="101" height="98"></p>
+<h2>Käyrä</h2>
+<p>Käyrä luodaan komennolla <code>curve(<kbd>x1</kbd>, <kbd>y1</kbd>, <kbd>x2</kbd>, <kbd>y2</kbd>, <kbd>x3</kbd>, <kbd>y3</kbd>, <kbd>x4</kbd>, <kbd>y4</kbd>)</code>, jossa x1 ja y1 määrittelevät käyrän ensimmäisen läpikulkupisteen, x4 ja y4 toisen läpikulkupisteen , x2 ja y2 alkupisteen ja x3, y3 loppupisteen:</p>
+<pre>curve(0, 300, 10, 60, 90, 60, 200, 100);
+</pre>
+<p><img src="_booki/processing-1/static/courbe1-tiff-fi_1.png" alt=""></p>
+<h2><strong>Bézier-käyrä</strong></h2>
+<p>Toisin kuin komento <code>curve()</code>, Bézier-käyrä luodaan komennolla <code>bezier(x1,y1,x2,y2,x3,y3,x4,y4)</code></p>
+<pre>bezier(10, 10, 70, 30, 30, 70, 90, 90);
+</pre>
+<p><img title="courbe2.tiff" src="_booki/processing-1/static/courbe2-tiff-fi.png" alt="courbe2.tiff" width="98" height="99"></p>
+<h2>Tasoitettu käyrä</h2>
+<p>Komento curveVertex() luo joukon x ja y -koordinaatteja kahden läpikulkupisteen välille komennolla  <code>curveVertex(ensimmäinen läpikulkupiste,xN,yN,xN,yN,xN,yN, viimeinen läpikulkupiste)</code> :</p>
+<pre>beginShape();
+curveVertex(0, 100);
+curveVertex(10, 90);
+curveVertex(25, 70);
+curveVertex(50, 10);
+curveVertex(75, 70);
+curveVertex(90, 90);
+curveVertex(100, 100);
+endShape();
+</pre>
+<p><img title="curveVertex.tiff" src="_booki/processing-1/static/curveVertex-tiff-fi.png" alt="curveVertex.tiff" width="100" height="101"></p>
+<h2>Vapaat muodot</h2>
+<p>Kokonainen joukko vapaita muotoja voidaan piirtää tasolle pisteiden sarjana, komennoilla <code>beginShape(),vertex(x,y),...,endShape()</code>. Jokainen piste luodaan koordinaateilla x ja y. Funktio  <code>CLOSE</code> komennossa <code>endShape(CLOSE)</code> osoittaa, että muoto suljetaan, ja että jälkimmäinen yhdistetään, kuten kuusikulmion esimerkissä:</p>
+<pre>beginShape();
+vertex(50, 10);
+vertex(85, 30);
+vertex(85, 70);
+vertex(50, 90);
+vertex(15, 70);
+vertex(15, 30);
+endShape(CLOSE);
+</pre>
+<p><img title="hexagone.tiff" src="_booki/processing-1/static/hexagone-tiff-fi.png" alt="hexagone.tiff" width="101" height="102"></p>
+<h2>Ääriviivat</h2>
+<p>Olemme havainneet, että tähän mennessä kaikilla mainituilla esimerkeillä on ääriviivat ja täytetty pinta. Jos tahdot tehdä näkymättömän ääriviivan, käytä komentoa <code>noStroke()</code>:</p>
+<pre>noStroke();
+quad(10, 10, 30, 15, 90, 80, 20, 80);
+</pre>
+<p><img src="_booki/processing-1/static/nostroke-tiff-fi_1.png" alt=""></p>
+<h2>Täyte</h2>
+<p>Vastaavasti voimme jättää pinnan täyttämättä käyttämällä komentoa <code>noFill()</code> :</p>
+<pre>noFill();
+quad(10, 10, 30, 15, 90, 80, 20, 80);
+</pre>
+<p><img src="_booki/processing-1/static/nofill-tiff-fi_1.png" alt=""></p>
+<p><span id="result_box" class="long_text"><span>Tähän mennessä ikkunan tausta on ollut harmaa, muotojen reunat ovat olleet mustat, ja täyttö on ollut valkoinen. Seuraavassa luvussa opit muuttamaan nämä värit. </span></span></p></div><ul Class="menu-goes-here"><li Class="booki-section">Esittely</li><li><a href="/processing-1/index">Johdanto</a></li>
+<li><a href="/processing-1/ch002_esimerkkeja">Esimerkkejä</a></li>
+<li><a href="/processing-1/ch003_asennus">Asennus</a></li>
+<li Class="booki-section">Perusteet</li><li><a href="/processing-1/ch005_perusteet">Perusteet</a></li>
+<li Class="booki-section">Suunnittelu</li><li><a href="/processing-1/ch007_suunnittelutila">Suunnittelutila</a></li>
+<li><a href="/processing-1/ch008_muodot">Muodot</a></li>
+<li><a href="/processing-1/ch009_varit">Värit</a></li>
+<li><a href="/processing-1/ch010_kuvat">Kuvat</a></li>
+<li><a href="/processing-1/ch011_tekstit">Tekstit</a></li>
+<li Class="booki-section">Interaktiivisuus</li><li><a href="/processing-1/ch013_video">Video</a></li>
+<li><a href="/processing-1/ch014_videon-tuominen">Videon tuominen</a></li>
+<li><a href="/processing-1/ch015_mikrofoni">Mikrofoni</a></li>
+<li><a href="/processing-1/ch016_hiiri">Hiiri</a></li>
+<li><a href="/processing-1/ch017_nappaimisto">Näppäimistö</a></li>
+<li><a href="/processing-1/ch018_tulostaminen">Tulostaminen</a></li>
+<li Class="booki-section">Vienti</li><li><a href="/processing-1/ch020_verkkoon-vieminen">Verkkoon vieminen</a></li>
+<li Class="booki-section">Animaatio</li><li><a href="/processing-1/ch022_aanet">Äänet</a></li>
+<li><a href="/processing-1/ch023_draw-metodi">Draw-metodi</a></li>
+<li><a href="/processing-1/ch024_objektien-animointi">Objektien animointi</a></li>
+<li><a href="/processing-1/ch025_monien-objektien-animointi">Monien objektien animointi</a></li>
+<li><a href="/processing-1/ch026_aikajana">Aikajana</a></li>
+<li Class="booki-section">Ohjelmointi</li><li><a href="/processing-1/ch028_kommentit">Kommentit</a></li>
+<li><a href="/processing-1/ch029_objektit">Objektit</a></li>
+<li><a href="/processing-1/ch030_metodit">Metodit</a></li>
+<li><a href="/processing-1/ch031_listat">Listat</a></li>
+<li><a href="/processing-1/ch032_toistaminen">Toistaminen</a></li>
+<li><a href="/processing-1/ch033_ehdot">Ehdot</a></li>
+<li><a href="/processing-1/ch034_muuttujat">Muuttujat</a></li>
+<li><a href="/processing-1/ch035_muutokset">Muutokset</a></li>
+<li><a href="/processing-1/ch036_rajat">Rajat</a></li>
+<li Class="booki-section">Liitteet</li><li><a href="/processing-1/ch038_yleisia-virheita">Yleisiä virheitä</a></li>
+<li><a href="/processing-1/ch039_ulkoiset-kirjastot">Ulkoiset kirjastot</a></li>
+<li><a href="/processing-1/ch040_dokumentaatio">Dokumentaatio</a></li>
+<li><a href="/processing-1/ch041_arduino">Arduino</a></li>
+<li><a href="/processing-1/ch042_tasta-oppaasta">Tästä oppaasta</a></li>
+<li><a href="/processing-1/ch043_tekijat">Tekijät</a></li>
+</ul>

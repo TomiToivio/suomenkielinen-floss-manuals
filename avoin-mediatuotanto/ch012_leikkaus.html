@@ -1,0 +1,103 @@
+<div id="main-content"><h1>LEIKKAUS</h1>
+<p> </p>
+<p>Leikkaamisella vaikutetaan suuresti video-ohjelman lopputulokseen kokonaisuutena. Hyvällä leikkauksella voit välittää haluamasi viestin tai vaikuttaa ohjelmasi yleistunnelmaan erilaisilla rytmityksillä ja montaaseilla. Yhdistämällä erilaisia kuvia peräkkäin luot mielikuvia ja assosiaatioita. Leikkaaminen on myös ajan hallintaa: lyhyessäkin ajassa voit kertoa suuren määrän tapahtumia ja asioita.</p>
+<p>Yleisohjeina leikkaamisessa voit käyttää kuvien <strong>keston </strong>vaihtelua sekä <strong>kuvakokojen</strong> hyödyntämistä. Pitkään kestävät rauhalliset kuvat ja toisaalta lyhyet välähdykset luovat vaihtelevan <strong>rytmin</strong>. Eri kuvakokoja kannattaa yhdistellä siten, että kuvakoon muutos on peräkkäisissä kuvissa tarpeeksi suuri. Käytännössä tämä tarkoittaa, että esimerkiksi haastateltavasta kannattaa laittaa peräkkäin kokokuva ja lähikuva, mieluummin kuin puolikuva ja puolilähikuva.</p>
+<p><img title="sekvenssit" src="http://fi.flossmanuals.net/kirjoita/avoin-mediatuotanto/_draft/_v/1.0/static/resized_600x385_sekvenssit-fi.jpg" alt="sekvenssit" width="600" height="385"></p>
+<p><em>Leikkaaminen tarkoittaa kuvien järjestämistä kerronnalliseksi kokonaisuudeksi. Kuvien kestoa vaihtelemalla syntyy leikkausrytmi.</em></p>
+<h2>OPENSHOTIN ASENNUS UBUNTUUN</h2>
+<p> </p>
+<p>Tässä oppaassa keskitytään pääsääntöisesti leikkaamiseen OpenShotilla.</p>
+<p>OpenShot vaatii 600 MHz prosessorin, 256 MB muistia ja 1 GB kiintolevytilaa. Tämä merkitsee, että voi käyttää OpenShottia melko vanhassa koneessa.</p>
+<p>Helpoin tapa asentaa OpenShot Ubuntu Linuxiin on asentaa se komentoriviltä.</p>
+<p>Voit asentaa OpenShotin Lucid Lynxissä (10.04 LTS) ajamalla komentoriviltä seuraavan komennon:</p>
+<pre id="sources-list-entries" class="wrap"><span> sudo apt-get install openshot</span></pre>
+<p>Huomaa, että joudut antamaan sudo-komennon vaatiman pääkäyttäjän salasanan.</p>
+<h2>DV-MATERIAALIN KAAPPAAMINEN KINOLLA</h2>
+<p> </p>
+<p>Koska OpenShot ei tarjoa mahdollisuutta kaapata materiaalia suoraan minidv-nauhalta, voit käyttää kaappaamiseen Kino -ohjelmaa. Kaappaamista varten tarvitset kameran (tai nauhurin) sekä Linux-tietokoneen, joissa on firewire-liitin.</p>
+<p>Jos koneessasi ei ole Kinoa, voit asentaa sen ajamalla komentoriviltä seuraavan komennon:</p>
+<pre id="sources-list-entries" class="wrap"><span> sudo apt-get install kino</span> </pre>
+<p>Kytke kamera dv-firewire-kaapelilla koneeseen ja tämän jälkeen käynnistä kamera. DV-Firewire -piuhan liitin löytyy useimmista kameroista.</p>
+<p>Jos koneessasi ei ole Firewire (IEEE 1394) porttia, voit ostaa siihen firewire-videokortin, jollaisen saa kaupasta noin 15 eurolla.</p>
+<p>-Avaa tietokoneen firewire-portti komentoriviltä alla olevalla komennolla  ja anna järjestelmänvalvojan salasana.</p>
+<pre id="sources-list-entries" class="wrap"><span> </span>sudo chmod 777 /dev/raw1394 </pre>
+<ul><li>Avaa Kino ja määrittele asetukset:</li>
+<li>Valitse normalisointi PAL, ääni 48 kHz stereo, kuvasuhde 16:9 tai 4:3 (riippuen kameran kuvausasetuksista, ts. millä kuvasuhteella olet kuvannut)</li>
+<li>Määrittele kaappauskansio ja valitse tiedostotyyppi AVI DV Type 2. Jos laitat ruksin kohtaan "Jaa tiedostot automaattisesti kahtia", Kino tekee aina uuden videotiedoston alkaen siitä kohdin, milloin kamera on laitettu nauhoittamaan.</li>
+<li>Kaappaa materiaali. Voit ohjata kameraa (tai nauhuria) Kinon ohjainpainikeilla.</li>
+<li>Voit avata kaapatut avi-tiedostot suoraan OpenShotissa. Mutta jos on tarpeen, voit tässä välissä tehdä äänentasojen säädön, johon tarvitaan Audacity-ohjelmaa.</li>
+</ul><h2>PROJEKTIN ALOITTAMINEN OPENSHOTILLA</h2>
+<p> </p>
+<p>Valikon alla on neljä projektinappulaa.</p>
+<p><img title="n__pp__imet" src="http://fi.flossmanuals.net/kirjoita/avoin-mediatuotanto/_draft/_v/1.0/static/OpenShot-n__pp__imet-fi.png" alt="n__pp__imet" width="157" height="39"></p>
+<p>Nämä nappulat ovat <strong>Uusi projekti</strong>, <strong>Tallenna projekti</strong>, <strong>Lisää tiedosto</strong> ja <strong>Vie video</strong>.</p>
+<p>Aloita painamalla uusi projekti -painiketta ja määritä projektillesi nimi, tallennuskansio, kesto (viitteellinen) sekä profiili (esim. DV PAL widescreen, jos olet kuvannut dv-kameralla 16:9 -kuvasuhteella).</p>
+<p>Tämän jälkeen voit tuoda projektiin Kinossa kaapatut avi-tiedostot, sekä muita video-, kuva- ja äänitiedostoja, joita haluat käyttää projektissasi, lisää tiedosto -painikkeella. Stillkuvat kannattaa skaalata (esimerkiksi Gimpillä) valmiiksi samaan resoluutioon, jota käytät videoissasi. PAL-resoluutio kuvasuhteessa 4:3 (vanhan tv-kuvan muotoinen kuva) on 720x576 px, 72 dpi ja kuvasuhteessa 16:9 (nykyään yleisempi, suorakaiteen muotoinen laajakuva) 1024×768 px. Kaikki ohjelmaan tuodut materiaalit sekä tekstiplanssit näkyvät ohjelman vasemmassa ylälaidassa listana ja niitä voi muokata aikajanalla miten tahansa ilman, että muutokset vaikuttavat listalla oleviin alkuperäisiin materiaaleihin.</p>
+<p>OpenShotilla leikatessa projekti kannattaa tehdä valmiiksi kronologisesti eli aloita alusta -logiikalla. Tämä siitä syystä, että toistaiseksi OpenShotissa ei ole mahdollista käytännöllisellä tavalla valita ja siirtää useita leikkeitä samanaikaisesti aikajanalla eri kohtiin. Tästä johtuen projekti kannattaa aloittaa alkuteksteistä.</p>
+<p>Tekstityksiin voit käyttää OpenShotin yksinkertaista otsikkoeditoria, joka löytyy ylälaidan tiputusvalikosta <strong>title/otsikko</strong>. Valitse <strong>Uusi</strong> ja aloita tekstin luominen seuraamalla oikeassa laidassa olevia painikkaita vaiheittain ylhäältä alas.</p>
+<p>Huom! Käytä laajempaa editoria -nappula vie sinut Inkscapeen, joka on astetta monimutkaisempi graafisen suunnittelun työkalu ja varsinkin alottelijoille suhteellisen haastava käyttää, mutta harjaantuneemmille käyttäjille hyvä väline.</p>
+<h3>Esikatseluruutu</h3>
+<p>OpenShot-ikkunan oikeassa yläosassa on videon esikatseluruutu, jossa voit katsoa yksittäisiä leikkeitä sekä aikajanalle valmistuvaa video-ohjelmaasi.</p>
+<p>Ruudun alla on vierityspalkki, jonka avulla voit siirtyä eri paikkoihin videossa.</p>
+<p>Vierityspalkin alla näet ohjainnäppäimet, jotka ovat samanlaisia kuin DVD-soittimessa.</p>
+<p><img title="videonauhurinappulat" src="http://fi.flossmanuals.net/kirjoita/avoin-mediatuotanto/_draft/_v/1.0/static/OpenShot-videonauhurinappulat-fi.png" alt="videonauhurinappulat" width="360" height="48"></p>
+<p>Nämä nappulat ovat <strong>Siirry alkuun</strong>, <strong>Edellinen merkki</strong>, <strong>Siirry taaksepäin</strong>, <strong>Toista</strong>, <strong>Siirry eteenpäin</strong>, <strong>Seuraava merkki</strong> ja <strong>Siirry loppuun</strong>.</p>
+<p>Vihje: Voit käyttää näppäimistön nuolinäppäimiä tarkkaan liikkumiseen aikajanalla tai leikkeen sisällä. Välilyönti-näppäin käynnistää ja pysäyttää toiston.</p>
+<h3>Aikajana</h3>
+<p>Video-ohjelma rakennetaan aikajanalla oleville raidoille. Aikajana alkaa nollasta minuutista ja jatkuu horisontaalisesti vasemmalta oikealle. Punainen pystyviiva on toistokärki, jota voit liikuttaa hiirellä tai esikatseluruudun ohjaimilla sekä nuoli- ja välilyöntinäppäimillä.</p>
+<p>Luo projektiisi riittävä määrä raitoja. Oletusarvoisesti raitoja on kaksi, mutta voit lisätä niitä tarpeesi mukaan. Kukin raita on samanaikaisesti video- ja ääniraita, mutta voit myös ruksia raidan pelkäksi ääni- tai videoraidaksi painikkeista raidan vasemmassa päässä. Jos käytät musiikkia tai jotain muuta yhtenäistä äänitaustaa, työskentelyn kannalta on selkeämpää, jos sijoitat ääniraidat videoraitojen alapuolelle.</p>
+<p><img title="kuvajaaani" src="http://fi.flossmanuals.net/kirjoita/avoin-mediatuotanto/_draft/_v/1.0/static/OpenShot-kuvajaaani-fi.png" alt="kuvajaaani" width="49" height="48"></p>
+<p>Aikajanan komentonappulat ovat <strong>Lisää raita</strong>, <strong>Nuolityökalu</strong>, <strong>Leikkaustyökalu</strong>, <strong>Venytystyökalu</strong>, <strong>Tarraustyökalu</strong> ja <strong>Lisää merkki</strong>.</p>
+<p><img title="aikajanannappaimet" src="http://fi.flossmanuals.net/kirjoita/avoin-mediatuotanto/_draft/_v/1.0/static/OpenShot-resized_324x180_aikajanannappaimet-fi.png" alt="aikajanannappaimet" width="324" height="180"></p>
+<p>Videoraitojen zoomausta voit säädellä zoomauspalkin avulla. Tämä määrittelee, kuinka monta sekuntia on kahden videoraidan pisteen välillä. Arvot voivat olla 1-200 sekuntia.  <img title="zoomaus" src="http://fi.flossmanuals.net/kirjoita/avoin-mediatuotanto/_draft/_v/1.0/static/OpenShot-zoomaus-fi.png" alt="zoomaus" width="333" height="38"></p>
+<p>Jos laitat videokuvaa samaan kohtaan kahdelle tai useammalle raidalle, ylin videoraidoista toistuu. Huomaa kuitenkin, että kaikkien päällekkäisten raitojen äänet toistuvat, ellei niitä ole mykistetty. Kustakin aikajanalle viedystä leikkeestä voit - kuvaketta napsauttamalla tai hiiren oikealla näppäimellä - erikseen valita käytetäänkö siitä pelkästään video tai ääni vaiko molemmat.</p>
+<p>Huom! Jos laitat samalle raidalle kaksi leikettä päällekäin, toistuu aikaisempi (alle jäänyt) leike (vaikka aikajanalla näkyykin nyt myöhemmin lisätyn leikkeen kuvake) - pyri välttämään tätä päällekäisyyttä.</p>
+<p>Napsauttamalla <strong>hiiren oikealla näppäimellä</strong> leikkeen päällä, voit muuttaa leikkeen kuva- ja ääniasetuksia (esim. määrittää häivytyksiä), tai poistaa leikkeen.</p>
+<h3>Työkalut</h3>
+<p><img title="nuolity__kalu" src="http://fi.flossmanuals.net/kirjoita/avoin-mediatuotanto/_draft/_v/1.0/static/OpenShot-nuolity__kalu-fi.png" alt="nuolity__kalu" width="46" height="45"></p>
+<p>Kun <strong>nuolityökalu</strong> on valittuna, voit siirtää projektisi leikkeitä aikajanan raidoille sekä vaihtaa niiden sijaintia aikajanalla.</p>
+<p><img title="aikajanalla" src="http://fi.flossmanuals.net/kirjoita/avoin-mediatuotanto/_draft/_v/1.0/static/OpenShot-resized_400x168_aikajanalla-fi.png" alt="aikajanalla" width="400" height="168"></p>
+<p><img title="leikkausty__kalu" src="http://fi.flossmanuals.net/kirjoita/avoin-mediatuotanto/_draft/_v/1.0/static/OpenShot-leikkausty__kalu-fi.png" alt="leikkausty__kalu" width="53" height="47"></p>
+<p>Valittuasi <strong>leikkaustyökalun</strong> voit napsauttaa leikkeen päällä, jolloin se leikkaantuu kahteen osaan.</p>
+<p><img title="leikattu" src="http://fi.flossmanuals.net/kirjoita/avoin-mediatuotanto/_draft/_v/1.0/static/OpenShot-leikattu-fi.png" alt="leikattu" width="282" height="186"></p>
+<p>Tämän jälkeen voit taas valita nuolityökalun ja vetää videopätkät erilleen.</p>
+<p><img title="erotettu" src="http://fi.flossmanuals.net/kirjoita/avoin-mediatuotanto/_draft/_v/1.0/static/OpenShot-erotettu-fi.png" alt="erotettu" width="330" height="181"></p>
+<p><img title="venytysty__kalu" src="http://fi.flossmanuals.net/kirjoita/avoin-mediatuotanto/_draft/_v/1.0/static/OpenShot-venytysty__kalu-fi.png" alt="venytysty__kalu" width="48" height="47"></p>
+<p><strong>Venytystyökalun</strong> avulla voit venyttää videoleikkeen ajallista kestoa, eli muuttaa aikajanalla olevan leikkeen alku- tai loppukohtaa. Tällä työkalulla on helppo poistaa leikkeiden turhat hännät.</p>
+<p>Vihje: Voit etsiä soittokärjellä (punainen pystyviiva) haluamasi leikkauskohdan ruudun (framen) tarkkuudella käyttämällä nuolinäppäimiä. Sen jälkeen voit venytystyökalulla poistaa hännän, mutta varmista että tarraustyökalu on valittuna.</p>
+<p><img title="tarrausty__kalu" src="http://fi.flossmanuals.net/kirjoita/avoin-mediatuotanto/_draft/_v/1.0/static/OpenShot-tarrausty__kalu-fi.png" alt="tarrausty__kalu" width="48" height="44"></p>
+<p><strong>Tarraustyökalun</strong> avulla videopätkät tarttuvat toisiinsa. Milkäli tarraustyökalu ei ole valittuna, on videoleikkeitä vaikeaa saada alkamaan täsmälleen edellisen leikkeen lopusta.Tavallisesti tarraustyökalu siis kannattaa pitää aina valittuna.</p>
+<p>Huom! Voit halutessasi kokeilla myös ohjelman tarjoamia erilaisia siirtymiä ja tehosteita.</p>
+<h2>MUSIIKIN TAI ÄÄNEN LISÄÄMINEN CCMIXTERISTÄ JA FREESOUNDISTA</h2>
+<p> </p>
+<p>Helpoin tapa aloittaa musiikin etsiminen on mennä osoitteeseen <a title="http://fi.flossmanuals.net/inkscape/" href="http://www.dig.ccmixter.org/">www.dig.ccmixter.org</a>  ja valita linkki <em>Instrumental Music for Film, YouTube™ Videos and Soundtracks</em>. Voit hakea musiikkia englanninkielisillä hakusanoilla tai käyttämällä <strong>advanced dig</strong> -toimintoa, jossa voit rajata hakuja erilaisilla määreillä, kuten genre, instrumentti jne. Voit kuunnella kappaleita napsauttamalla hiirellä kappaleen nimeä. Lataaminen onnistuu painamalla kappaleen nimen edessä olevaa alaspäin osoittavaa nuolta, josta avautuu latausikkuna. Latausikkunassa on uudestaan kappaleen nimi ja voit ladata sen pitämällä pohjassa hiiren oikeaa näppäintä nimen kohdalla ja valitsemalla<strong> save link as</strong>. Kappale latautuu koneesi työpöydälle tai downloads/lataukset kansioon. Kappaleet ovat useimmiten mp3, wav tai aiff -muodossa, ja ne voi tuoda sellaisinaan OpenShotiin. Tuominen tapahtuu samalla tavalla kuin videon tuominen eli <strong>Lisää tiedosto</strong> -toiminnon avulla (katso edellä).</p>
+<p>Muista, että ccMixterin musiikkia voi käyttää pääsääntöisesti vain epäkaupallisissa tarkoituksissa ja kappaleiden nimet, tekijät ja lisenssit (esim. NonCommercial Sampling Plus 1.0) tulee mainita ohjelman lopputeksteissä. Lisenssin nimen ja tarkat tiedot saat näkyviin napsauttamalla kappaleen perässä olevaa cc-lisenssin ikonia.</p>
+<p><img src="http://fi.flossmanuals.net/kirjoita/avoin-mediatuotanto/_draft/_v/1.0/static/resized_300x226_cc2_1-fi.png" alt="cc2_1.png" width="300" height="226"></p>
+<p><em>OpenShotin tekstityökalusta löytyy valmis lopputekstiplanssi, johon voi täydentää musiikin tiedot. </em></p>
+<p><strong>Freesound.org</strong> etusivun vasemmassa laidassa löytyy linkki <strong>search</strong>, joka avaa hakutoiminnon. Kirjoita kentään englanniksi hakusana, esim. traffic. Kannattaa kokeilla erilaisia hakusanoja. Voit kuunnella äänen pienestä <strong>play</strong>-nappulasta joka löytyy haettujen äänitiedostojen yläpuolelta. Napsauttamalla ääniteidoston nimeä pääset lataussivulle ja viimeistään tässä vaiheessa sinun tulee rekisteröityä tai kirjautua sisään sivulle. Lataaminen onnistuu lataussivun oikeassa yläkulmassa olevasta linkistä <strong>download</strong>. Paina hiiren oikeaa näppäintä ja valitse <strong>save link as</strong>. Mainitse nettisivun osoite, ääninäytteiden nimet ja tekijät lopputeksteissä.</p>
+<h2>VIE VIDEO</h2>
+<p> </p>
+<p>Kun video-ohjelmasi on leikkauksen osalta valmis, sinun pitää vielä viedä eli exportoida video.</p>
+<p>Paina punaista <strong>Vie video</strong> -nappulaa.</p>
+<p><img src="http://fi.flossmanuals.net/kirjoita/avoin-mediatuotanto/_draft/_v/1.0/static/resized_219x300_vie-fi.png" alt="vie.png" width="219" height="300"></p>
+<p>Määritä tiedostolle ensin nimi ja tallennuskansio. Sen jälkeen sinun tulee määrittää videon profiili, tiedostopääte ja pakkaustapa. <strong>Yksinkertainen</strong> -valikossa on valittavana muutamia vaihtoehtoja, joista voit valita esimerkiksi kuvassa (yllä) näkyvät vaihtoehdot. Yksi suositeltava formaatti on uusi HTML5:een suunniteltu avoin <strong>webM</strong><em>, </em>jonka asetukset löytyvät uusimmassa OpenShotin versiossa 1.3 suoraan yksinkertainen-valikosta. Esimerkiksi Youtube käyttää tätä Googlen sponsoroimaa laadukasta formaattia, mutta ihan kaikkialle webM-päätteiset tiedostot eivät välttämättä vielä kelpaa. WebM edellyttää vähintään 0.6 versiota FFMpeg-koodausohjelmasta, joka uusimmissa Ubuntuissa (10.10 alkaen) tulee mukana.</p>
+<p>Paina lopuksi <strong>Vie videoksi</strong>, ja OpenShot tekee videon tiedostoksi, jota voit katsella videosoitinohjelmilla ja jonka voit ladata verkkoon.</p>
+<h2>VINKKEJÄ PIDEMMÄLLE EHTINEILLE</h2>
+<p> </p>
+<p>Koska Kinon sekä OpenShotin äänenkäsittelyominaisuudet ovat hyvin rajalliset, kannattaa mahdolliset äänityöt tehdä Audacity-ohjelmalla. Voit tallentaa Kinosta kaapatun videon ääniraidan wav-tiedostona ja avata sen muokattavaksi Audacityssä. Huomaa ettei tällöin kannata muuttaa äänitiedoston kestoa, jos siis haluat liittää äänen takaisin kuvaan. Voit tuoda muokatun, wav-muotoon tallennetun äänitiedoston projektiisi Kinon äänisuotimen dubbaus-toiminnon avulla, joka löytyy tehosteista. Tämän jälkeen sinun on vielä tallennettava elokuva uuden ääniraidan kanssa.</p>
+<p>Äänen työstäminen Audacityssa on hyödyllistä silloin jos haluat nostaa äänen tasoja tai tehdä vaativamman mixauksen esimerkiksi musiikista, tehosteäänistä ja puheesta. Huomaa, että voit viedä Audacityssä työstämäsi äänen myös OpenShotiin. Käytännössä tämä tarkoitaa sitä, että käytössäsi on erillinen ääniraita, joka sinun tulee uudelleen synkata kuvan kanssa. Työprosessi on jossain määrin työläs, mutta ei mahdoton.</p>
+<p>Video-ohjelman lopputulokseen vaikuttaa kuvan ja äänen lisäksi myös paljon graafinen ilme (tekstin fontit, logot, graafiset esitykset jne). Voit halutessasi työstää grafiikoita <strong>Gimpillä</strong> tai <strong>Inkscapellä</strong>. Inkscape on integroitu OpenShotiin ja pääset ohjelmaan suoraan kun valitset yksinkertaisesta otsikkoeditorista kohdan <strong>käytä laajempaa editoria</strong>. Inkscapen oppaan löydät FLOSS manualsin sivulta <a title="http://fi.flossmanuals.net/inkscape/" href="http://fi.flossmanuals.net/inkscape/">http://fi.flossmanuals.net/inkscape/</a>.</p></div><ul Class="menu-goes-here"><li Class="booki-section">JOHDANTO</li><li><a href="/avoin-mediatuotanto/index">ALUKSI</a></li>
+<li Class="booki-section">YHTEISÖMEDIAN MAISEMA</li><li><a href="/avoin-mediatuotanto/ch003_verkko-ja-yhteisomedia">VERKKO- JA YHTEISÖMEDIA</a></li>
+<li><a href="/avoin-mediatuotanto/ch004_kevyt-tuotantotapa">KEVYT TUOTANTOTAPA</a></li>
+<li><a href="/avoin-mediatuotanto/ch005_avoimen-lahdekoodin-ohjelmistot">AVOIMEN LÄHDEKOODIN OHJELMISTOT</a></li>
+<li><a href="/avoin-mediatuotanto/ch006_avoimet-lisenssit-ja-vapaat-sisallot">AVOIMET LISENSSIT JA VAPAAT SISÄLLÖT</a></li>
+<li><a href="/avoin-mediatuotanto/ch007_julkaisupalvelut">JULKAISUPALVELUT</a></li>
+<li Class="booki-section">TUOTANTO</li><li><a href="/avoin-mediatuotanto/ch009_tuotantokalusto">TUOTANTOKALUSTO</a></li>
+<li><a href="/avoin-mediatuotanto/ch010_ohjelman-suunnittelu">OHJELMAN SUUNNITTELU</a></li>
+<li><a href="/avoin-mediatuotanto/ch011_kuvaukset">KUVAUKSET</a></li>
+<li><a href="/avoin-mediatuotanto/ch012_leikkaus">LEIKKAUS</a></li>
+<li Class="booki-section">JULKAISU</li><li><a href="/avoin-mediatuotanto/ch014_julkaiseminen-verkossa">JULKAISEMINEN VERKOSSA</a></li>
+<li><a href="/avoin-mediatuotanto/ch015_jakelu-ja-jakaminen">JAKELU JA JAKAMINEN</a></li>
+<li Class="booki-section">LIITTEET</li><li><a href="/avoin-mediatuotanto/ch017_oppaasta">OPPAASTA</a></li>
+<li><a href="/avoin-mediatuotanto/ch018_lisenssi">LISENSSI</a></li>
+</ul>

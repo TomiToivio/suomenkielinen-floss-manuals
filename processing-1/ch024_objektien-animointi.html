@@ -1,0 +1,238 @@
+<div id="main-content"><h1>Olioiden animointi</h1>
+<p><span id="result_box" class="long_text"><span> Olioiden animointi on näyttämö, jolle voimme ajatella laajempia käyttötarkoituksia. Olion animointi merkitsee toimintojen lisäämistä malliin: liike, pomppoilu, törmäysten testaus jne. Tämä luku näyttää esimerkkejä luvussa Oliot luodun pallon käsittelystä ja sen pomppoiluttamisesta ruudun neljän reunan välillä. <br></span><span> <br> Lopputulos on kuin seuraavassa kuvassa. Laitamme viivästysefektin näyttääksemme pallon liikeradan. </span><span> <br></span></span></p>
+<p><img title="Balle3" src="_booki/processing-1/static/Balle3-fi.png" alt="Balle3" width="400" height="200"></p>
+<h2>Koodiperusta</h2>
+<p>Alkupisteeksi otamme pallon koodin luvusta Kohteet. Se antaa meidän nähdä pallon ruudulla. Tämän proseduurin kuluessa lisäämme koodinpätkiä perusesimerkkiin. Uudet osat näytetään paksulla ja niissä on kommentit //LISÄÄ tai // LISÄYS ALKAA ja // LISÄYS LOPPUU. Voit myös kopioida koko koodiblokin ja korvata kyseessä olevan luokan tai metodin.</p>
+<p><img title="Balle" src="_booki/processing-1/static/Balle-fi.png" alt="Balle" width="400" height="200"></p>
+<pre>//Yhden pallon instanssin julistaminen
+Pallo myPallo = new Pallo(100, 100, color(255));
+
+void setup() {
+  smooth(); 
+  size(400, 200); //Ikkunan koko
+}
+
+void draw() {
+  background(0); //Mustan taustan luominen
+  noStroke(); //Ei ääriviivaa
+
+  myPallo.display(); //Näytetään pallo
+}
+
+class Pallo {
+  //Pallon ominaisuuksien julistus
+  float x;
+  float y;
+  color col;
+
+  //Pallon luominen
+  Pallo (float newX, float newY, color newColor) {
+    x      = newX;
+    y      = newY;
+    col    = newColor;
+  }
+
+  //Pallon suunnittelu
+  void display() {
+    fill(col);
+    ellipse(x, y, 40, 40);
+  }
+}
+</pre>
+<h2><span id="result_box" class="long_text"><span>Liike</span></span></h2>
+<p>Pallon täytyy liikkua x- ja y- akseleita pitkin. Luomme kaksi muuttujaa malliin ja olion toimintaa edustaa sen nopeus akseleita x ja y pitkin. Tämän jälkeen lisäämme olioon uuden metodin move(), jota kutsutaan ohjelman metodista draw(). Tämä metodi tulee kuitenkin, aina oliota näytettäessä, muuttamaan pallon sijaintia suhteessa sen nopeuteen. Se alustaa myös konstruktorin nopeuden kuvaavat muuttujat. Aluksi annamme niille pysyvän arvon.</p>
+<pre>class Pallo {
+  //Pallon ominaisuuksien julistus
+  float x;
+  float y;
+  float speedX; //LISÄÄ
+  float speedY; //LISÄÄ
+  color col;
+
+  //Pallon rakentaminen
+  Pallo (float newX, float newY, color newColor) {
+    x      = newX;
+    y      = newY;
+    col    = newColor;
+
+    speedX = 2; //LISÄÄ
+    speedY = 2; //LISÄÄ
+  }
+
+  //Pallon suunnittelu
+  void display() {
+    fill(col);
+    ellipse(x, y, 40, 40);
+  }
+
+  //LISÄYS ALKAA
+  void move() {
+   x = x + speedX;
+   y = y + speedY;
+  }
+  //LISÄYS LOPPUU
+}
+</pre>
+<p><span id="result_box" class="long_text"><span>Se kutsuu metodia move() metodista draw(). Voimme lisätä kutsun komentoon background pyyhkiäksemme ruudun jokaisen uuden kuvan jälkeen. </span></span></p>
+<pre>void draw() {
+  background(0); //Mustan taustan luominen
+  noStroke(); //Ei ääriviivoja
+
+  //Pallon liikuttaminen ja näyttäminen
+  myPallo.move(); //LISÄÄ
+  myPallo.display();
+}
+</pre>
+<h2><span id="result_box" class="long_text"><span>Törmäykset</span></span></h2>
+<p>Tällä hetkellä pallo jatkaa liikettään törmätessään ruudun seinään. Pallo pitäisi saada poukkoilemaan seinistä, joten lisäämme metodin testaaTormays, joka kääntää pallon liikesuunnan sen osuessa seinään.</p>
+<pre>class Pall {
+  //Pallon ominaisuuksien julistaminen
+  float x;
+  float y;
+  float speedX;
+  float speedY;
+  color col;
+
+  //Pallon luominen
+  Pallo (float newX, float newY, color newColor) {
+    x      = newX;
+    y      = newY;
+    col    = newColor;
+
+    speedX = 2;
+    speedY = 2;
+  }
+
+  //Pallon suunnittelu
+  void display() {
+    fill(col);
+    ellipse(x, y, 40, 40);
+  }
+
+  void move() {
+   x = x + speedX;
+   y = y + speedY;
+  }
+
+<strong><strong> </strong></strong> //LISÄYS ALKAA
+  void testaaTormays() {
+    //Pallo pomppaa törmätessään seinään
+    if (x &gt; width-20 || x &lt; 20) {
+      speedX = speedX * -1;
+    }
+    if (y &gt; height-20 || y &lt; 20) {
+      speedY = speedY * -1;
+    }
+  }
+  //LISÄYS LOPPUU
+}
+</pre>
+<p><span id="result_box" class="long_text"><span>Nyt lisätään kutsu metodiin testaaTormays metodista draw(). </span></span></p>
+<pre>void draw() {
+  //Korvataan komennolla background () näille kahdelle riville
+  fill(0, 0, 0, 1); // Läpinäkyvä väri
+  rect(0, 0, width, height);
+  noStroke();
+
+  //Pallon liikuttaminen ja näyttö
+  myPallo.move();
+  myPallo.testaaTormays(); //LISÄÄ
+  myPallo.display();
+}
+</pre>
+<h2>Lopullinen koodi</h2>
+<p><span id="result_box" class="long_text"><span> Tässä on lopullinen koodi kaikkien näiden muutosten jälkeen. <br></span></span></p>
+<pre>//Yhden olion pallo instanssin luominen
+Pallo myPallo = new Pallo(100, 100, color(255));
+
+void setup() {
+  smooth(); 
+  size(400, 200); //Ikkunan koko
+}
+void draw() {
+  fill(0, 0, 0, 1);
+  rect(0, 0, width, height);
+
+  noStroke();
+
+  //Pallon näyttö ja liikuttaminen
+  myPallo.move();
+  myPallo.testaaTormays();
+  myPallo.display();
+}
+
+class Pallo {
+  //Pallon luokan ominaisuuksien julistaminen
+  float x;
+  float y;
+  float speedX;
+  float speedY;
+  color col;
+
+  //Pallon luominen
+  Pallo (float newX, float newY, color newColor) {
+    x      = newX;
+    y      = newY;
+    col    = newColor;
+
+    speedX = 2;
+    speedY = 2;
+  }
+
+  //Pallon suunnittelu
+  void display() {
+    fill(col);
+    ellipse(x, y, 40, 40);
+  }
+
+  void move() {
+   x = x + speedX;
+   y = y + speedY;
+  }
+
+  void testaaTormays() {
+    //Pallo pomppaa törmätessään muuriin
+    if (x &gt; width-20 || x &lt; 20) {
+      speedX = speedX * -1;
+    }
+    if (y &gt; height-20 || y &lt; 20) {
+      speedY = speedY * -1;
+    }
+  }
+}</pre></div><ul Class="menu-goes-here"><li Class="booki-section">Esittely</li><li><a href="/processing-1/index">Johdanto</a></li>
+<li><a href="/processing-1/ch002_esimerkkeja">Esimerkkejä</a></li>
+<li><a href="/processing-1/ch003_asennus">Asennus</a></li>
+<li Class="booki-section">Perusteet</li><li><a href="/processing-1/ch005_perusteet">Perusteet</a></li>
+<li Class="booki-section">Suunnittelu</li><li><a href="/processing-1/ch007_suunnittelutila">Suunnittelutila</a></li>
+<li><a href="/processing-1/ch008_muodot">Muodot</a></li>
+<li><a href="/processing-1/ch009_varit">Värit</a></li>
+<li><a href="/processing-1/ch010_kuvat">Kuvat</a></li>
+<li><a href="/processing-1/ch011_tekstit">Tekstit</a></li>
+<li Class="booki-section">Interaktiivisuus</li><li><a href="/processing-1/ch013_video">Video</a></li>
+<li><a href="/processing-1/ch014_videon-tuominen">Videon tuominen</a></li>
+<li><a href="/processing-1/ch015_mikrofoni">Mikrofoni</a></li>
+<li><a href="/processing-1/ch016_hiiri">Hiiri</a></li>
+<li><a href="/processing-1/ch017_nappaimisto">Näppäimistö</a></li>
+<li><a href="/processing-1/ch018_tulostaminen">Tulostaminen</a></li>
+<li Class="booki-section">Vienti</li><li><a href="/processing-1/ch020_verkkoon-vieminen">Verkkoon vieminen</a></li>
+<li Class="booki-section">Animaatio</li><li><a href="/processing-1/ch022_aanet">Äänet</a></li>
+<li><a href="/processing-1/ch023_draw-metodi">Draw-metodi</a></li>
+<li><a href="/processing-1/ch024_objektien-animointi">Objektien animointi</a></li>
+<li><a href="/processing-1/ch025_monien-objektien-animointi">Monien objektien animointi</a></li>
+<li><a href="/processing-1/ch026_aikajana">Aikajana</a></li>
+<li Class="booki-section">Ohjelmointi</li><li><a href="/processing-1/ch028_kommentit">Kommentit</a></li>
+<li><a href="/processing-1/ch029_objektit">Objektit</a></li>
+<li><a href="/processing-1/ch030_metodit">Metodit</a></li>
+<li><a href="/processing-1/ch031_listat">Listat</a></li>
+<li><a href="/processing-1/ch032_toistaminen">Toistaminen</a></li>
+<li><a href="/processing-1/ch033_ehdot">Ehdot</a></li>
+<li><a href="/processing-1/ch034_muuttujat">Muuttujat</a></li>
+<li><a href="/processing-1/ch035_muutokset">Muutokset</a></li>
+<li><a href="/processing-1/ch036_rajat">Rajat</a></li>
+<li Class="booki-section">Liitteet</li><li><a href="/processing-1/ch038_yleisia-virheita">Yleisiä virheitä</a></li>
+<li><a href="/processing-1/ch039_ulkoiset-kirjastot">Ulkoiset kirjastot</a></li>
+<li><a href="/processing-1/ch040_dokumentaatio">Dokumentaatio</a></li>
+<li><a href="/processing-1/ch041_arduino">Arduino</a></li>
+<li><a href="/processing-1/ch042_tasta-oppaasta">Tästä oppaasta</a></li>
+<li><a href="/processing-1/ch043_tekijat">Tekijät</a></li>
+</ul>

@@ -1,0 +1,75 @@
+<div id="main-content"><h1>Tekstit</h1>
+<p><span id="result_box"><span>Kirjoitamme nyt tekstiä kuvaamme. Kuvaan kirjoittaminen ei muistuta kirjoittamista perinteisessä merkityksessä, kuten esimerkiksi tekstinkäsittelyohjelmassa. Processingin kirjoittaminen muistuttaa enemmän graffitin kaltaista kirjaimien maalaamista. Ne päätyvät kaikki toistensa päälle. Siinä keskitytään enemmän kirjaimien ja sanojen ulkoasuun. </span></span></p>
+<h2>Hei, Processing!</h2>
+<p><span id="result_box"><span>Kuten perusmuotojen tapauksessa, vain yksi komento tarvitaan piirrettäessä tekstiä kuvaan. Avaa uusi ikkuna Processingissa, kirjoita seuraava rivi, ja toista se: </span></span></p>
+<pre>text("Hei!", 10, 20);
+</pre>
+<p><span id="result_box"><span>Näet pienen ikkunan, joka on oletusarvoista kokoa 100x100 pikseliä, ja jossa lukee sana "Hei!" kirjoitettuna valkoisella: </span></span></p>
+<p><img title="ScreenHunter_03_Sep._29_19.55" src="_booki/processing-1/static/ScreenHunter_03_Sep-_29_19-55-fi.gif" alt="ScreenHunter_03_Sep._29_19.55" width="114" height="116"></p>
+<p><span id="result_box"><span>Kuten nimestä voisi olettaa, komento text () piirtää tekstiä kuvaamme. Se vaatii kolme parametriä: {viesti, jonka tahdomme kirjoittaa},{koordinaatti x},{koordinaatti y}. <br></span></span></p>
+<p><span id="result_box"><span>Tämä teksti voidaan myös värittää, aivan kuin mikä tahansa geometrinen muoto, vaihtamalla täyttöväriä: <br></span></span></p>
+<pre>fill(0);
+text("Heippa", 10, 20);
+
+fill(255);
+text("koko", 10, 40);
+
+fill(255,0,0);
+text("maailma!", 10, 60);
+</pre>
+<p><span id="result_box"><span>Tämän ohjelman pitäisi antaa seuraava tulos, jossa jokainen neljästä väristä on kirjoitettu omalla värillään: <br></span></span></p>
+<p><img title="ScreenHunter_04_Sep._29_19.56" src="_booki/processing-1/static/ScreenHunter_04_Sep-_29_19-56-fi.gif" alt="ScreenHunter_04_Sep._29_19.56" width="117" height="117"></p>
+<p><span id="result_box"><span>Määritä vain väri, piirrä sen jälkeen teksti tuolla värillä. Voit tietenkin valita vain yhden värin ja kirjoittaa monta viestiä samalla värillä, tai piirtää värien yhdistelmällä, kuten tässä esimerkissä. </span></span></p>
+<h2>Kasaaminen</h2>
+<p><span id="result_box"><span>Kuten tämän luvun johdannossa on mainittu, sanoja käytetään kuin piirroksessa, ei samalla tavalla kuin tekstinkäsittelyohjelmassa. Emme voi valita tai muokata tekstiä, ellemme kokonaan poista sitä ja kirjoita sen päälle. </span><span> <br><br></span><span>Tässä on esimerkki periaatteesta: </span></span></p>
+<pre>fill(0);
+text("sana voi", 10, 20);
+text("olla piilossa", 10, 40);
+
+fill(204);
+rect(28,25,50,20);
+
+fill(0);
+text("toinen", 10, 60);
+
+fill(255, 255, 255);
+text("toinen", 11, 61);</pre>
+<p><span id="result_box"><span>Olemme kirjoittaneet neljä viestiä, joskus samalla värillä, joskus toisella värillä. Huomaa, että sana "piilossa" on juuri piilotettu täyttövärillä, jolla on sama arvo kuin taustavärillä. </span></span></p>
+<p><img title="ScreenHunter_05_Sep._29_19.57" src="_booki/processing-1/static/ScreenHunter_05_Sep-_29_19-57-fi.gif" alt="ScreenHunter_05_Sep._29_19.57" width="115" height="119"></p>
+<p><span id="result_box"><span>Kuten missä tahansa suunnittelussa, toimenpiteiden järjestys on tärkeä määriteltäessä lopullinen kuva. Tämä periaate pätee myös Processing-ohjelman ulkopuolella: "pukeudu, mene ulos, mene töihin" ei anna samaa tulosta kuin "mene ulos, mene töihin, pukeudu." </span></span></p></div><ul Class="menu-goes-here"><li Class="booki-section">Esittely</li><li><a href="/processing-1/index">Johdanto</a></li>
+<li><a href="/processing-1/ch002_esimerkkeja">Esimerkkejä</a></li>
+<li><a href="/processing-1/ch003_asennus">Asennus</a></li>
+<li Class="booki-section">Perusteet</li><li><a href="/processing-1/ch005_perusteet">Perusteet</a></li>
+<li Class="booki-section">Suunnittelu</li><li><a href="/processing-1/ch007_suunnittelutila">Suunnittelutila</a></li>
+<li><a href="/processing-1/ch008_muodot">Muodot</a></li>
+<li><a href="/processing-1/ch009_varit">Värit</a></li>
+<li><a href="/processing-1/ch010_kuvat">Kuvat</a></li>
+<li><a href="/processing-1/ch011_tekstit">Tekstit</a></li>
+<li Class="booki-section">Interaktiivisuus</li><li><a href="/processing-1/ch013_video">Video</a></li>
+<li><a href="/processing-1/ch014_videon-tuominen">Videon tuominen</a></li>
+<li><a href="/processing-1/ch015_mikrofoni">Mikrofoni</a></li>
+<li><a href="/processing-1/ch016_hiiri">Hiiri</a></li>
+<li><a href="/processing-1/ch017_nappaimisto">Näppäimistö</a></li>
+<li><a href="/processing-1/ch018_tulostaminen">Tulostaminen</a></li>
+<li Class="booki-section">Vienti</li><li><a href="/processing-1/ch020_verkkoon-vieminen">Verkkoon vieminen</a></li>
+<li Class="booki-section">Animaatio</li><li><a href="/processing-1/ch022_aanet">Äänet</a></li>
+<li><a href="/processing-1/ch023_draw-metodi">Draw-metodi</a></li>
+<li><a href="/processing-1/ch024_objektien-animointi">Objektien animointi</a></li>
+<li><a href="/processing-1/ch025_monien-objektien-animointi">Monien objektien animointi</a></li>
+<li><a href="/processing-1/ch026_aikajana">Aikajana</a></li>
+<li Class="booki-section">Ohjelmointi</li><li><a href="/processing-1/ch028_kommentit">Kommentit</a></li>
+<li><a href="/processing-1/ch029_objektit">Objektit</a></li>
+<li><a href="/processing-1/ch030_metodit">Metodit</a></li>
+<li><a href="/processing-1/ch031_listat">Listat</a></li>
+<li><a href="/processing-1/ch032_toistaminen">Toistaminen</a></li>
+<li><a href="/processing-1/ch033_ehdot">Ehdot</a></li>
+<li><a href="/processing-1/ch034_muuttujat">Muuttujat</a></li>
+<li><a href="/processing-1/ch035_muutokset">Muutokset</a></li>
+<li><a href="/processing-1/ch036_rajat">Rajat</a></li>
+<li Class="booki-section">Liitteet</li><li><a href="/processing-1/ch038_yleisia-virheita">Yleisiä virheitä</a></li>
+<li><a href="/processing-1/ch039_ulkoiset-kirjastot">Ulkoiset kirjastot</a></li>
+<li><a href="/processing-1/ch040_dokumentaatio">Dokumentaatio</a></li>
+<li><a href="/processing-1/ch041_arduino">Arduino</a></li>
+<li><a href="/processing-1/ch042_tasta-oppaasta">Tästä oppaasta</a></li>
+<li><a href="/processing-1/ch043_tekijat">Tekijät</a></li>
+</ul>

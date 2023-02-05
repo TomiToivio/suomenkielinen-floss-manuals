@@ -1,0 +1,128 @@
+<div id="main-content"><h1>Kuvat</h1>
+<p><span id="result_box"><span>Processingin "kuva" ei ole pohjimmiltaan mitään muuta kuin kokoelma pikseleitä, jotka on koottu suorakulmion sisään. Piirtääksemme kuvan ruudulle laitamme jokaiselle suorakulmion pikselille värin, jonka jälkeen annamme sijainnin (x, y), johon tahdomme piirtää tämän pikselikokoelman. On myös mahdollista muuttaa kuvan kokoa (leveys, korkeus), vaikka nämä ulottuvuudet eivät olisi yhteensopivia kuvan alkuperäisen koon kanssa. </span></span></p>
+<h2>Etsi kuva</h2>
+<p><span id="result_box"><span>Piirtääksesi kuvan Processingissa, voit etsiä kuvan ja tuoda sen piirrokseen. Voit ottaa kuvan ja laittaa sen tietokoneellesi, ottaa kuvan kamerallasi, tai etsiä kuvia, jotka ovat koneellasi. Tässä harjoituksessa kuvan alkuperällä ei ole väliä. Aluksi neuvomme kokeilemaan melko pientä kuvaa, jonka koko on 400 x 300 pikseliä. </span><span> <br><br></span><span>Tässä aloitamme hieman kutistetulla kuvalla Ermenonvillen saarelta. Se löytyy Wikimedia Commonsista seuraavalta osoitteelta: </span></span></p>
+<p><a href="http://fr.wikipedia.org/wiki/Fichier:Erm6.JPG">http://fr.wikipedia.org/wiki/Fichier:Erm6.JPG</a></p>
+<p><img title="ile" src="_booki/processing-1/static/ile-fi.jpg" alt="ile" width="400" height="300"></p>
+<h2>Kuvaformaatit</h2>
+<p>Kolme kuvaformaattia hyväksytään Processingissa: PNG, JPEG tai GIF. Verkkosivuja suunnitelleiden ihmisten pitäisi tunnistaa nämä kolme kuvaformaattia, koska ne ovat suosituimpia WWW:ssä. Jokainen formaatti käyttää omia kuvanpakkauksen menetelmiään, joilla on etunsa ja haittansa:</p>
+<p><span id="result_box"><span>   </span><span>1. </span><span>JPEG -kuvilla esitetään usein pakattuja valokuvia. JPEG ei salli läpinäkyviä alueita. </span><span> <br>   </span><span>2. </span><span>GIF -kuva on usein käytössä käyttöliittymän napeissa ja muissa elementeissä. Siinä voi olla läpinäkyviä alueita. Se voi olla animoitu, mutta Processing ei kiinnitä huomiota animaatioihin.</span><span> <br>   </span><span>3. </span><span>PNG -kuvia käytetään molempiin edellämainittuihin käyttötarkoituksiin (kuvat ja käyttöliittymä) ja siinä voi olla läpinäkyviä alueita, jotka eivät ole binääriä, ja jossa on asteittaisina vaihtoehtoina läpinäkyvä, osittain läpinäkyvä ja täysin läpinäkymätön. </span></span></p>
+<h2><span id="result_box"><span>Vetäminen</span></span></h2>
+<p>Tuomme nyt kuvatiedoston Processing-ympäristöön. Saadaksemme tämän aikaan suosittelemme tallentamaan ensimmäisen luonnoksesi mieluiten Processing-tiedostoon, jonka pitäisi olla oletusarvoisesti My Documents tai Documents -hakemistossasi. </p>
+<p><span id="result_box"><span>Etsi nyt kuvatiedostosi ja vedä se suoraan Processing-ikkunaan: </span></span></p>
+<p><img title="illustration_glisser_deposer" src="_booki/processing-1/static/illustration_glisser_deposer-fi.png" alt="illustration_glisser_deposer" width="551" height="404"></p>
+<p><span id="result_box"><span>Kun siirrämme tiedostoja tällä tavalla, Processing osoittaa, että kuva lisättiin. Todellisuudessa Processing vain kopioi kuvan tiedostoon hakemistossa <strong>Data</strong>, jonka pitäisi näkyä nyt ohjelmasi vieressä. </span></span></p>
+<p><img title="dossier_data_ile" src="_booki/processing-1/static/dossier_data_ile-fi.png" alt="dossier_data_ile" width="598" height="256"></p>
+<p><span id="result_box"><span>Tässä tapauksessa hakemisto <strong>Data</strong>, johon itse asiassa laitamme kaikki kuvat - ja jopa muun median, kuten kirjasimet ja äänet - joita tahdomme käyttää kuvassamme. Jos tahdot päästä tähän hakemistoon nopeasti, esimerkiksi laittamalla sinne lisää kuvatiedostoja, valitse vain hakemistosta <strong>Sketch </strong>vaihtoehto <strong>Show Sketch Folder</strong>. Tähän vaihtoehtoon pääset myös valitsemalla pikavalinnan </span><span><strong>Ctrl-k</strong> Windowsissa ja Linuxissa tai <strong>Cmd-k</strong> Macissa:</span></span></p>
+<p><img src="_booki/processing-1/static/menu_show_sketch_folder-fi_1.png" alt=""></p>
+<h2>Lataa tiedosto</h2>
+<p>Nyt kun olemme asettaneet kuvan <strong>Data</strong>-hakemistoomme, voimme käyttää niitä ohjelmassamme.</p>
+<p><img title="sketch_exemple_image" src="_booki/processing-1/static/sketch_exemple_image-fi.png" alt="sketch_exemple_image" width="589" height="514"></p>
+<pre>size(500,400);
+PImage saari = loadImage("ile.jpg");
+image(saari,50,10);
+</pre>
+<p><span id="result_box" class="long_text"><span>Ensin olemme antaneet piirroksellemme alueen, joka on isokokoisempi kuin kuvamme, jotta voimme paremmin ymmärtää, kuinka se voidaan sijoittaa viimeiseen luonnokseen. <br><br></span><span>On kolme tapaa katsoa kuvaa Processingissa: <br><br>   </span><span>1. Luo muuttuja, joka sisältää kuvan datan (pikselit)</span><span>. <br>   </span><span>2. Tuo tiedoston pikselit muuttujaamme. </span><span> <br>   </span><span>3. Piirrä tämän muuttujan pikselit suunnittelutilassamme. </span></span></p>
+<p><span id="result_box" class="long_text"><span>Ensin Processingissa täytyy luoda muuttuja. Mutta mikä on muuttuja? Tässä tapauksessa se on ohjelman sisäinen nimi, joka sisältää kaikki pikselit tiedostosta</span><span> ile.jpg. </span><span>Kun kirjoitamme sanan "saari", ohjelmamme ymmärtää, että tämä on pikselikokoelma, joka tekee kuvan. Tämä on täsmälleen funktion loadImage("tiedostonimi") tarkoitus: se etsii nämä pikselit tiedostosta ja vie ne muuttujaan, jonka nimi on "saari". </span></span></p>
+<p><span id="result_box" class="long_text"><span>Olet ehkä huomannut myös oudon PImage-sanan edellisen koodin alussa. Tämä osoittaa, millaisen Processing-muuttujan se avaa. Muuttujalle varataan sopiva määrä tilaa. Kaava on {muuttujan tyyppi}{muuttujan nimi}={muuttujan arvo}. </span></span><span id="result_box" class="long_text"><span> <br></span></span></p>
+<p>Jos olisi esimerkiksi tarpeen tuoda koiran kuva Processingiin, voisimme käyttää komentoa <code>PikkuKoira milou = loadDog("milou.dog");</code> Kirjoitamme ensin olion tyypin ja sen jälkeen sen arvon. </p>
+<p>Tässä arvo annetaan funktiolla <code>loadImage()</code>, joka hakee kuvatiedoston pikselit ja tuo ne muuttujaan, jonka nimi on saari. </p>
+<p>Lisätietoa muuttujista ja muuttujatyypeistä on luvussa, joka käsittelee tätä aihetta. </p>
+<p>Lopulta, kun olemme täyttäneet muuttujamme, vedämme sen sijaintiin {x,y} kuvassamme. Jos tahdomme piirtää kuvan alkuperäisessä koossaan, käytämme lyhyttä versiota komennosta image, joka vaatii vain kolme muuttujaa: <code>{PImage}, {x}, {y}</code>.</p>
+<pre>image(saari,50,10)
+</pre>
+<h2>Tuo kuva verkosta</h2>
+<p><span id="result_box" class="long_text"><span>Voimme myös tuoda kuvan suoraan World Wide Webistä, osoittaen kuvan osoitteen tiedostonimen sijasta. <br></span></span></p>
+<pre>size(400,400);
+
+PImage webcam;
+webcam = loadImage("http://www.gutenberg.org/files/3913/3913-h/images/rousseau.jpg");
+image(webcam,10,20,width,height);</pre>
+<p><span id="result_box" class="long_text"><span>Jos ohjelmamme ei ole animoitu, kuten tässä tapauksessa, joudumme vain odottamaan, kun kuva latautuu Processingiin. <br><br></span><span>Varmista, että ohjelmasi ei lataa uusia kuvia käynnistyttyään, sillä muuten se pysähtyy aina ladatessaan. On olemassa muita tapoja tuoda kuvia tässä tapauksessa, mutta nämä tekniikat ovat liian kehittyneitä tähän kirjaan. Lisätietoa voit löytää Processing-foorumilta hakusanalla "thread".</span></span></p>
+<h2>Muuta kokoa</h2>
+<p>Lisäämällä kaksi parametriä voimme muuttaa kuvan kokoa. Tämä koko voi olla suurempi tai pienempi kuin alkuperäinen kuva, teoriassa rajaa ei ole olemassa. Kuitenkin kuvan alkuperäistä kokoa suurennettaessa Processing joutuu laajentamaan kuvan pikseleitä, mikä antaa pikselöityneen vaikutelman. Tämä tehoste voi usein olla käyttökelpoinen.</p>
+<p>Muittaaksesi kuvan kokoa, voit lisätä kaksi parametriä kuvaasi, <em>{leveys, korkeus}</em>, mikä antaa meille 5 parametriä: <em>{kuvamuuttuja, x, </em><em>y, leveys,korkeus}</em>.</p>
+<p><img title="sketch_exemple_image_1" src="_booki/processing-1/static/sketch_exemple_image_1-fi.png" alt="sketch_exemple_image_1" width="600" height="370"></p>
+<pre>size(500,250);
+
+PImage saari;
+saari = loadImage("ile.jpg");
+
+image(saari,10,10,20,15);
+image(saari,20,20,50,30);
+image(saari,45,45,100,75);
+image(saari,95,95,1000,750);</pre>
+<p>Huomaa, että olemme tuoneet vain kerran saaren kuvan muuttujaan, sitä voidaan käyttää nyt koko loppuohjelmassa. Huomaa myös, että olemme kunnioittaneet kuvan ulottuvuuksia {<em>x,y</em>} kokoa muuttaessamme, mutta ne voisivat ottaa minkä tahansa arvon, joka venyttäisi kuvaa toisella näistä akseleista. </p>
+<p><img src="_booki/processing-1/static/sketch_image_taille-fi_1.png" alt=""></p>
+<h2>Alfa</h2>
+<p><span id="result_box" class="long_text"><span>Usein täytyy tuoda kuvia, jotka eivät ole neliön tai suorakulmion muotoisia, kuten esimerkiksi pienten kaksiulotteisten videopelien tapauksessa. Emme näe valkoista neliötä Pacmanin tai Marion ympärillä. Valitettavasti pikseleihin perustuvat kuvat täytyy nykyisin tuoda neliömuodossa. Tämän esteen kiertämiseksi jotkin tiedostomuodot käyttävät alfakanavan konseptia. Tämä asetetaan kuvan muodostavan punaisen, sinisen ja vihreän päälle. Tämä kerros osoittaa jokaisen pikselin läpinäkyvyyden asteen, PNG-kuvissa voi myös olla osittain läpinäkyviä pikseleitä.</span><span> <br><br></span><span>Jos tahdot tallentaa kuvasi alfakanavan kanssa, sinulla on kolme vaihtoehtoa, jotka voit valita viedessäsi kuvaa valitsemallasi kuvankäsittelyohjelmalla: </span></span></p>
+<p><img src="_booki/processing-1/static/fenetre_png24-fi_1.png" alt=""></p>
+<p><span id="result_box" class="long_text"><span>Jokaisella ohjelmalla on tapa viedä kuvia. Sinun täytyy tietää, että esimerkiksi</span><span> GIF, PNG-8 ja PNG-24 kuvien välilä on eroja, kuten alfa-kanavan käsittely. Näistä kolmesta turvallisin ja eniten vaihtoehtoja antava on</span><span> PNG-24. <br><br></span><span>Tässä on kuva runoilija Lucretia Maria Davidsonista, jonka voit ladata osoitteesta <a href="http://upload.wikimedia.org/wikipedia/commons/1/17/LucretiaMariaDavidson_transparent.png">http://upload.wikimedia.org/wikipedia/commons/1/17/LucretiaMariaDavidson_transparent.png</a></span></span></p>
+<p><img title="LucretiaMariaDavidson_transparent" src="_booki/processing-1/static/LucretiaMariaDavidson_transparent-fi.png" alt="LucretiaMariaDavidson_transparent" width="300" height="376"></p>
+<p><span id="result_box" class="long_text"><span>Tämä kuva sopii täydellisesti tämän oppaan sivun pohjaan, koska siinä on ainoastaan alfakanava, joka kuvaa läpinäkyviä ja läpinäkymättömiä osia. Huomaa, että esimerkiksi Lucretian ympärillä olevat kuvat ovat läpinäkyviä, joten hänen otsansa ja niskansa ovat läpinäkymättömiä. Processing-kuvassamme näemme, että ne tosiaan ovat läpinäkymättömiä: </span></span></p>
+<p><img title="ScreenHunter_03_Feb._09_16.07" src="_booki/processing-1/static/ScreenHunter_03_Feb-_09_16-07-fi.gif" alt="ScreenHunter_03_Feb._09_16.07" width="393" height="293"></p>
+<pre>size(400,300);
+
+PImage saari = loadImage("ile.jpg");
+
+PImage lucretia;
+lucretia = loadImage("LucretiaMariaDavidson_transparent.png");
+
+image(saari,0,0);
+image(lucretia,20,20);</pre>
+<h2>Kuvien värittäminen</h2>
+<p><span id="result_box" class="long_text"><span>Voit myös värittää kuvia. Toisin sanottuna voimme muuttaa pikselien väriä, joko kaikkien tai yksittäisten pikselien. Yksinkertaisin näistä menetelmistä tarkoittaa kaikkien pikselien värittämistä. Tämä väritysmenetelmä näyttää neliöiden värittämiseltä, mutta se vaatii uuden komennon, <code>tint()</code>, jolla se erotetaan neliön pikselien suorasta värittämisestä. Tässä tapauksessa <code>tint()</code> muuttaa jokaisen pikselin väriä, kun se piirretään piirrustusavaruuteen. </span></span></p>
+<p><img src="_booki/processing-1/static/sketch_images_filtrer-fi_1.png" alt=""></p>
+<pre>size(500,130);
+
+PImage saari;
+saari = loadImage("ile.jpg");
+
+tint(255,0,0);
+image(saari, 10,10, 110,110);
+
+tint(255,255,0);
+image(saari, 130,10, 110,110);
+
+tint(255,255,255,127);
+image(saari, 250,10, 110,110);
+
+tint(0,0,255,127);
+image(saari, 320,10, 110,110);</pre>
+<p><span id="result_box" class="long_text"><span>Kuten komennot <code>fill()</code> ja <code>stroke()</code>, komento <code>tint()</code> voit ottaa yhden, kaksi, kolme tai neljä arvoa, mikä riippuu siitä, mitä olemme tekemässä. Kun määrittelet kolme arvoa, voit esimerkiksi lisätä/vähentää punaisen, vihreän tai sinisen kerroksen intensiteettiä kuvassamme. Määrittämällä neljä arvoa voimme lisätä/vähentää kuvan läpinäkyvyyttä/läpinäkymättömyyttä.</span></span></p></div><ul Class="menu-goes-here"><li Class="booki-section">Esittely</li><li><a href="/processing-1/index">Johdanto</a></li>
+<li><a href="/processing-1/ch002_esimerkkeja">Esimerkkejä</a></li>
+<li><a href="/processing-1/ch003_asennus">Asennus</a></li>
+<li Class="booki-section">Perusteet</li><li><a href="/processing-1/ch005_perusteet">Perusteet</a></li>
+<li Class="booki-section">Suunnittelu</li><li><a href="/processing-1/ch007_suunnittelutila">Suunnittelutila</a></li>
+<li><a href="/processing-1/ch008_muodot">Muodot</a></li>
+<li><a href="/processing-1/ch009_varit">Värit</a></li>
+<li><a href="/processing-1/ch010_kuvat">Kuvat</a></li>
+<li><a href="/processing-1/ch011_tekstit">Tekstit</a></li>
+<li Class="booki-section">Interaktiivisuus</li><li><a href="/processing-1/ch013_video">Video</a></li>
+<li><a href="/processing-1/ch014_videon-tuominen">Videon tuominen</a></li>
+<li><a href="/processing-1/ch015_mikrofoni">Mikrofoni</a></li>
+<li><a href="/processing-1/ch016_hiiri">Hiiri</a></li>
+<li><a href="/processing-1/ch017_nappaimisto">Näppäimistö</a></li>
+<li><a href="/processing-1/ch018_tulostaminen">Tulostaminen</a></li>
+<li Class="booki-section">Vienti</li><li><a href="/processing-1/ch020_verkkoon-vieminen">Verkkoon vieminen</a></li>
+<li Class="booki-section">Animaatio</li><li><a href="/processing-1/ch022_aanet">Äänet</a></li>
+<li><a href="/processing-1/ch023_draw-metodi">Draw-metodi</a></li>
+<li><a href="/processing-1/ch024_objektien-animointi">Objektien animointi</a></li>
+<li><a href="/processing-1/ch025_monien-objektien-animointi">Monien objektien animointi</a></li>
+<li><a href="/processing-1/ch026_aikajana">Aikajana</a></li>
+<li Class="booki-section">Ohjelmointi</li><li><a href="/processing-1/ch028_kommentit">Kommentit</a></li>
+<li><a href="/processing-1/ch029_objektit">Objektit</a></li>
+<li><a href="/processing-1/ch030_metodit">Metodit</a></li>
+<li><a href="/processing-1/ch031_listat">Listat</a></li>
+<li><a href="/processing-1/ch032_toistaminen">Toistaminen</a></li>
+<li><a href="/processing-1/ch033_ehdot">Ehdot</a></li>
+<li><a href="/processing-1/ch034_muuttujat">Muuttujat</a></li>
+<li><a href="/processing-1/ch035_muutokset">Muutokset</a></li>
+<li><a href="/processing-1/ch036_rajat">Rajat</a></li>
+<li Class="booki-section">Liitteet</li><li><a href="/processing-1/ch038_yleisia-virheita">Yleisiä virheitä</a></li>
+<li><a href="/processing-1/ch039_ulkoiset-kirjastot">Ulkoiset kirjastot</a></li>
+<li><a href="/processing-1/ch040_dokumentaatio">Dokumentaatio</a></li>
+<li><a href="/processing-1/ch041_arduino">Arduino</a></li>
+<li><a href="/processing-1/ch042_tasta-oppaasta">Tästä oppaasta</a></li>
+<li><a href="/processing-1/ch043_tekijat">Tekijät</a></li>
+</ul>

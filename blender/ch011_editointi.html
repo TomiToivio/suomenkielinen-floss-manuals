@@ -1,0 +1,139 @@
+<div id="main-content"><h1>ESINEIDEN EDITOINTI </h1>
+<p>Tässä luvussa esitellään useimmissa kolmiulotteisissa mallinnusohjelmissa käytettävät perustekniikat. Niillä pääsee alkuun omien projektien mallinnuksessa. </p>
+<p>Varmista ensin, että kohtauksessasi on objekti. Blenderissä objektina on oletusarvoisesti kuutio, jonka Blender tarjoaa käynnistäessäsi sen.</p>
+<p><img src="_booki/blender/static/ScreenHunter_59%20Apr.%2016%2020.31.gif" alt=""></p>
+<p><em>Blenderin oletusarvoinen kuutio.</em> </p>
+<h2>Valintatilat</h2>
+<p>Paina <strong>A-näppäintä</strong> objektisi päällä, jotta varmistat, että solmuja, tahkoja tai reunoja ei ole valittu. Valitsematon tahko on väriltään siniharmaa. </p>
+<p>Huomaa, että kuvaikkunan pohjalla - ja vain editointitilassa - on muutama kuvake, jotka näyttävät tältä: </p>
+<p><img src="_booki/blender/static/ScreenHunter_60%20Apr.%2016%2020.35.gif" alt=""></p>
+<p>Jos et näe näitä ikoneita kuvaikkunasi alaosassa, et ole editointitilassa. Voit siirtyä valikosta editointitilaan.</p>
+<p><img src="_booki/blender/static/ScreenHunter_61%20Apr.%2016%2020.36.gif" alt=""></p>
+<p>Nämä ikonit esittävät eri tyyppistä verkkodataa, jonka voimme valita. Solmuja edustaa pisteikoni, reunoja viistoviivaikoni ja tahkoja kolmioikoni. Huomaa, että kun valitset reunan, valitset kaksi solmua. Kun valitset tahkon, valitset kolme tai useampia solmuja (ja siten kolme tai useampia reunoja). </p>
+<p>Yritä napsauttaa tahkonvalintaikonia. Huomaa, kuinka pieni musta neliö ilmestyy kuution jokaiselle tahkolle. Napsauta <strong>OHN </strong>jotain tahkoa ja siitä tulee valittu. Kun tahko on valittu, sen reunoista tulee oransseja.</p>
+<p><img src="_booki/blender/static/ScreenHunter_62%20Apr.%2016%2020.40.gif" alt=""></p>
+<p>Yritä samaa sekä reunojen että solmujen valintatiloissa ja huomaa, kuinka solmujen ja reunojen värit muuttuvat, kun ne valitaan.</p>
+<p>Monta tahkoa, reunaa tai solmua voidaan valita käyttäen<strong> SHIFT+OHN</strong>-yhdistelmää.</p>
+<p>Harjoittele tahkojen tai reunojen siirtämistä valitsemalla ne <strong>G-näppäimellä</strong> ja siirtämällä hiiren kursoria ympäriinsä.</p>
+<p><img src="_booki/blender/static/ScreenHunter_63%20Apr.%2016%2020.42.gif" alt=""> </p>
+<p><strong>VHN </strong>tai <strong>rivinvaihto </strong>vahvistaa uuden sijainnin tahkolle. <strong>OHN </strong>tai <strong>ESC-näppäin</strong> peruuttaa liikkeen. <strong>CTRL-Z-näppäin</strong> kumoaa viimeisen toiminnon, kuten aina.</p>
+<h2>Globaalit ja paikalliset akselit</h2>
+<p>Monet alla olevista editointitekniikoista viittaavat akseleihin X, Y ja Z. Ennen työskentelyä akseleiden kanssa kolmiulotteisessa ympäristössä on tärkeää muistaa, että objekteilla ja tahkoilla voi olla sekä paikallisia että globaaleja akseleita.  </p>
+<p>Globaalit akselit pätevät koko kohtaukseen ja kaikkeen sen sisällä olevaan. Niitä ei voi muuttaa, aivan kuin tosimaailman itä ja länsi eivät muuta suuntaa. </p>
+<p>Paikalliset akselit edustavat kuitenkin vain esineen tai esineen osan sijaintia. Paikallisia akseleita voi ajatella termeillä edessä, takana, vasemmalla ja oikealla. Paikalliset akselit ovat suhteellisia, ne riippuvat siitä, mihin suuntaan objekti on käännetty. Esimerkiksi objektin paikallinen X-akseli voisi osoittaa globaalia Z-akselia pitkin. </p>
+<p>Ennen kuin käytät muutosta (esimerkiksi kieritystä tai skaalausta) päätä, tahdotko tehdä sen käyttäen valintasi paikallista akselistoa vai kohtauksesi globaalia akselistoa. Voit valita työskenteletkö globaalin vai lokaalin suunnistuksen parissa käyttäen muutossuunnistusta (Transform Orientation) alasvetovalikosta jokaisen kuvaikkunan pohjalla. </p>
+<p>Tämä alasvetovalikko on näkyvillä alla olevassa kuvassa:</p>
+<p><img src="_booki/blender/static/ScreenHunter_65%20Apr.%2016%2020.55.gif" alt=""></p>
+<p>Alasvetovalikossa:</p>
+<p><strong>View </strong>- näkymä</p>
+<p><strong>Normal </strong>- normaali</p>
+<p><strong>Gimbal</strong> - gimbaali </p>
+<p><strong>Local </strong>- paikallinen</p>
+<p><strong>Global </strong>- globaali </p>
+<h2>Kieritys</h2>
+<h3>Vapaa kieritys hiirellä</h3>
+<p>Mitä tahansa tahkojen yhdistelmää voidaan kierittää vapaasti painamalla <strong>R-näppäintä</strong>, jota seuraa joukko vapaita hiiren liikkeitä. Tämä on luonnollisesti hyvin epätarkkaa, varsinkin jos se tehdään perspektiivinäkymässä.</p>
+<p><img src="_booki/blender/static/ScreenHunter_66%20Apr.%2016%2020.59.gif" alt=""></p>
+<h3>Numerokieritys</h3>
+<p>Tahkoja voidaan kierittää myös annettua akselia pitkin antamalla asteluku numeroilla määriteltynä. Tehdäksesi tämän valitse tahkot, joita tahdot kierittää, paina <strong>R-näppäintä</strong>, valitse akseli, jota tahdot kierittää ympäriinsä, ja kirjoita sitten asteluku. </p>
+<p>Jos esimerkiksi tahdon kierittää tahkoa 45 astetta globaalin Z-akselin ympäri, painan <strong>R-näppäintä</strong>, <strong>Z-näppäintä,</strong> <strong>NUMERO-4</strong> ja <strong>NUMERO-5</strong>. </p>
+<p><strong>Tärkeää:</strong> kun kierität objekteja tai verkkoja käyttäen numeroita, kierität noita osia suhteellisesti, et absoluuttisesti! Esimerkiksi <strong>R-näppäin </strong>ja<strong> Y-näppäin</strong> ja <strong>NUMERO-45</strong> merkitsee: "kieritä Y-akselin ympäri toiset 45 astetta." </p>
+<div class="c2">
+<h2>Säännönmukainen ja säännötön skaalaus</h2>
+</div>
+<p>Säännönmukainen skaalaus viittaa tapaan skaalata sama määrä kaikilla akseleilla samaan aikaan. Tämä on oletusarvona Blenderissä. Säännötön skaalaus merkitsee valinnaista skaalausta vain yhdellä tai kahdella akselilla. Esimerkiksi tehdäksesi esineestä kaksi kertaa pidemmän tai yhtä leveän kuin korkean, voisit käyttää säännötöntä skaalausta vain yhtä akselia pitkin. </p>
+<h3>Säännönmukainen skaalaus: hiiri</h3>
+<p>Tämän tekeminen hiirellä on aika hankalaa, mutta se on hyvin kätevää, kun olet tottunut siihen. Tämä tekniikka vaatii kertomaan Blenderille mitä akselia pitkin tahdot skaalata hiiren liikkeellä.</p>
+<p>Valitse objektisi kaikki tahkot tai joitain niistä (kaikkien valitseminen tekee tästä harjoituksesta selkeämmän). Siirrä nyt hiiresi kursoria akselia pitkin, jolla tahdot skaalata tahkosi, ja paina <strong>KHN </strong>alas.</p>
+<p><img src="_booki/blender/static/ScreenHunter_67%20Apr.%2016%2021.06.gif" alt=""></p>
+<p>Tahkot skaalautuvat vain sitä akselia pitkin. Jos esimerkiksi tahdot skaalata koko verkkosi vain Y-akselia pitkin kun siirryt näkökulmaan ylhäältä (ortografiseen tietenkin), siirrä hiirtä ylhäältä alas -suunnassa ja paina <strong>KHN</strong>. Kuten tavallista, <strong>rivinvaihto </strong>tai <strong>OHN </strong>vahvistaa tämän muutoksen. </p>
+<h3>Säännötön skaalaus: numerot</h3>
+<p>Tämä tekniikka on hyvin samanlainen kuin säännönmukainen skaalaus numeroilla, joka on selostettu yllä, mutta sinun täytyy kertoa Blenderille mitä akselia pitkin tahdot skaalata. </p>
+<p>Valitse tahkot, joita tahdot skaalata, paina<strong> S-näppäintä</strong>, valitse akseli, ja kirjoita sitten skaalan kerroinnumero. Esimerkiksi: skaalataksesi kahdesti Z-akselia pitkin painaisit <strong>S-näppäin</strong> ja <strong>Z-näppäin </strong>ja <strong>NUMERO-2</strong>. </p>
+<h3>Säännötön rajoittunut skaalaus: numerot</h3>
+<p>On myös mahdollista laittaa Blender skaalaamaan kaikkia paitsi yhtä akselia pitkin. Skaalataksesi X ja Y -akseleita pitkin ja estääksesi skaalauksen Z-akselia pitkin, paina <strong>S-näppäin</strong> ja <strong>SHFT+Z-näppäin</strong> ja <strong>NUMERO-2</strong>.</p>
+<div class="c2">
+<h2>Alueiden valinta</h2>
+</div>
+<p>Kaksi valintatyökalun kaltaista valintatilaa on tarjolla. Nämä ovat erityisen hyödyllisiä solmujen ja/tai tahkojen valitsemiseen yksityiskohtaisissa verkoissa. Niitä voidaan käyttää myös valitsemaan useita objekteja objektitilassa. Luonnollisesti tämä tekniikka on kaikkein hyödyllisin sinulle, kun objektissasi on monta solmua. Valitse objektisi ja mene editointitilaan. </p>
+<h3>Laatikkovalinta</h3>
+<p>Kun kursorisi on kuvaikkunan päällä, jonka tahdot valita, paina <strong>B-näppäintä</strong>. Huomaa, että hiiren kursori muuttuu tähtäimeksi, josta lähtee kohtisuoria pisteytettyjä viivoja. Nyt voit painaa <strong>VHN </strong>ja vetää valintatyökalun objektisi verkon elementtien yli. <strong>ESC </strong>poistuu laatikkovalinnasta. </p>
+<h2>Solmujen, reunojen ja tahkojen luominen ja valinta</h2>
+<h3>Solmujen, reunojen ja tahkojen poistaminen.</h3>
+<p>Usein tahdot poistaa elementtejä editoinnin aikana. Voit esimerkiksi haluta poistaa tahkon mutta jättää vain reunat tai poistaa kaiken koko valinnasta. Tehdäksesi tämän valitse alue, jonka tahdot poistaa, ja paina <strong>DEL </strong>tai <strong>X-näppäintä</strong>. Ilmestyy valikko, jossa on lista poistovaihtoehdoista. Valitse yksi hiirellä tai <strong>nuolinäppäimillä </strong>ja paina <strong>VHN </strong>tai <strong>rivinvaihto</strong>.</p>
+<p><img src="_booki/blender/static/ScreenHunter_68%20Apr.%2016%2021.12.gif" alt=""></p>
+<h3>Solmujen, reunojen tai tahkojen tekeminen ilman kahdentamista.</h3>
+<p>Blenderillä voi piirtää uusia verkkoelementtejä hyvin nopeasti. Tämän tekemiseen on monta tapaa. Kuvaan tässä useimmin käytetyt.</p>
+<h3>Solmujen lisääminen</h3>
+<p><strong>CTRL-näppäimen </strong>pitäminen alhaalla kun painat <strong>VHN </strong>kuvaikkunassa lisää solmuja kursorin alle. Näitä solmuja yhdistävät reunat.</p>
+<p><img src="_booki/blender/static/ScreenHunter_69%20Apr.%2016%2021.15.gif" alt=""></p>
+<h3>Yhden tahkon lisääminen</h3>
+<p>Sekä reunat että tahkot riippuvat solmuista. Reunat tarvitsevat kaksi solmua ollakseen olemassa ja tahkot vähintään kolme solmua. Lisääksesi yhden tahkon, tee näin: </p>
+<ul><li>Valitse mitkä tahansa kolmesta tai neljästä solmusta ja paina<strong> F-näppäintä</strong>. Tahko luodaan automaattisesti.</li>
+<li>Valitse mitkä tahansa kaksi reunaa tai kolme jatkuvaa reunaa ja paina <strong>F-näppäintä</strong>. Kolme jatkumatonta reunaa ei tee tahkoa, sen sijaan näet valikon, jossa kysytään tahdotko tehdä FGon-erikoispinnan.</li>
+</ul><div class="c2">
+<h2>Jakaminen osiin</h2>
+<p> </p>
+</div>
+<p>Yhden tai useampia tahkoja voi jakaa osiin useammalla eri tavalla. Ensinnäkin, valitse tahkot, jotka tahdot jakaa osiin. Napsauta <strong>Mesh Tools</strong> -ikkunan kohdassa <strong>Add </strong>nappia <strong>Subdivide</strong>.</p>
+<p><img src="_booki/blender/static/ScreenHunter_72%20Apr.%2016%2021.29.gif" alt=""></p>
+<p>Aina napsauttaessasi <strong>Subdivide</strong>-nappulaa valitut tahkot leikataan kahtia.</p>
+<p><img src="_booki/blender/static/ScreenHunter_73%20Apr.%2016%2021.30.gif" alt=""></p>
+<div class="c2">
+<h2>Ekstruusio</h2>
+<p> </p>
+</div>
+<p>Ekstruusio on hyvin suosittu editointimenetelmä, jota käytetään usein verkkomallinnuksessa. Toisin kuin monet muut menetelmät, ekstruusio itse asiassa lisää verkkodataa alkuperäiseen verkkoon. Tahkoja, reunoja ja jopa solmuja voidaan ekstrusoida.</p>
+<p><img src="_booki/blender/static/ScreenHunter_75%20Apr.%2016%2021.34.gif" alt=""></p>
+<p><strong>Huomaa: </strong></p>
+<ul><li>Jos ekstrusoit neljän reunan tahkoa, neljä lisätahkoa luodaan, yksi jokaiselle uuden ekstrusoidun osan "puolelle". </li>
+<li>Jos ekstrusoit reunaa, yksi uusi tahko luodaan.</li>
+<li>Jos ekstusoit solmua, yksi lisäreuna luodaan. </li>
+</ul><p> </p>
+<h3>Ekstruusio: hiiri</h3>
+<p>Yhden tahkon ekstruusiota varten valitse tahko, paina <strong>E-näppäintä</strong> ja siirrä hiirtä. Tahko ekstrusoituu normaalia pitkin (eli pystysuoraan tahkon pintaa kohden). Pidä <strong>CTRL-näppäintä </strong>pohjassa ja hiiri rajoittaa (lukitsee) ekstruusion ruudukon yksiköihin.</p>
+<h3>Ekstruusio: numerot</h3>
+<p>Valitse tahko, paina<strong> E-näppäintä</strong> ja kirjoita numero. Ekstrusoidaksesi esimerkiksi tahkon kaksi kokonaista ruudukkoyhdikköä normaalia pitkin, paina<strong> E-näppäintä</strong> ja<strong> NUMERO-2</strong> ja paina <strong>rivinvaihtoa </strong>vahvistaaksesi muutoksen.</p>
+<h2>Tahkojen erottaminen ("osittaminen")</h2>
+<p>Joskus on hyödyllistä voida erottaa valitut tahkot muista verkossa, jolloin syntyy uusi objekti. Tee tämä käyttäen <strong>P-näppäintä</strong>. Tällöin näkyviin ilmestyy valikko.</p>
+<p><img src="_booki/blender/static/ScreenHunter_76%20Apr.%2016%2021.51.gif" alt=""></p>
+<p>Tässä tapauksessa voit valita kohdan <strong>Selection</strong>. </p>
+<p>Uusille objekteille annetaan automaattisesti uusi nimi perustuen alkuperäisen objektin nimeen. Näet uuden objektin kohdassa <strong>Scene</strong>. </p>
+<p><img src="_booki/blender/static/ScreenHunter_77%20Apr.%2016%2021.54.gif" alt=""></p>
+<div class="c2">
+<h2>Kaksintaminen</h2>
+<p> </p>
+</div>
+<p>Valitut tahkot, reunat tai solmut voidaan kaksintaa nopeasti painamalla <strong>SHIFT+D</strong>-näppäimiä. Kun ne on keksinnettu ne ovat automaattisesti nappaustilassa, joten voit siirtää hiirtä siirtääksesi kopion toisaalle. Jos et tee tätä, kopio pysyy tarkalleen alkuperäisen sijainnissa, etkä näe uutta kopiota!</p>
+<p><img src="_booki/blender/static/ScreenHunter_78%20Apr.%2016%2021.56.gif" alt=""></p>
+<div class="c3"> </div>
+<div class="c2">
+<h2>Objektien liittäminen</h2>
+<p> </p>
+</div>
+<p>Yksi objekti voidaan liittää toiseen (jolloin luodaan uusi objekti) käyttämällä <strong>CTRL+J-näppäimiä</strong>. </p>
+<h2>Verkkojen ja pintojen tasoittaminen</h2>
+<p>Tasoitusnappulan (<strong>Smooth Vertex</strong>) painaminen editointipaneelin verkkotyökalupalkissa (<strong>Mesh Tools</strong>) antaa verkosta orgaanisemman vaikutelman lisäämällä solmujen välisiä kulmia. Mitä enemmän painat nappia, sitä tasaisempi verkosta tulee. Lisäksi, mitä enemmän verkkoja, sitä tasaisempi siitä voi tulla. Alla oleva kuva näyttää, mistä tasoitusnappula löytyy. </p>
+<p class="c4"><img src="_booki/blender/static/ScreenHunter_79%20Apr.%2016%2022.04.gif" alt="">  </p>
+<p class="c4"> </p>
+<div class="c2">
+<h2>Siivoaminen</h2>
+<p> </p>
+</div>
+<p>Usein editoinnin aikana Blenderissä tapahtuu pikku vahinkoja, jotka johtavat solmujen kahdentamiseen. </p>
+<p>Yksi yleinen esimerkki tästä on ekstruusion aikana tapahtuva vahinko: valitset tahkon ekstruudattavaksi ja painat<strong> E-näppäintä</strong>, mutta muutat mieltäsi, joten peruutat ekstruusion. Olet juuri luonut kokonaisen tahkon, joka on juuri vanhan tahkon päällä. Toinen esimerkki on, että valitset koko verkon <strong>A-näppäimellä</strong>, ja kopioit sen <strong>SHIFT+D-näppäimellä</strong>. Sen sijaan että siitäisit sen oikeaan sijaintiin, jätät sen juurikin alkuperäisen päälle, jolloin monia tupla-tahkoja jää jäljelle (ja samalla tietenkin myös kaksinkertaistettuja solmuja ja reunoja). Nämä kaksinkertaiset tahkot, reunat ja solmut ovat näkymättömiä silmälle.</p>
+<p>On hyvä tapa puhdistaa nämä tupatut solmut käyttäen poista tuplat -nappia (<strong>Remove Doubles</strong>). Tämä toiminto etsii solmuja tietyn matkan päässä toisistaan, ja jos ne ovat tämän matkan päässä, se poistaa toisen ja siirtää jäljelle jäävän niiden puoliväliin. Kun se on säädetty hyvin pieneen numeroon (perusolettamus on oikea), tämä voi olla hyvin tehokas tapa puhdistaa verkkoa. <strong>Remove Doubles</strong> -nappi löytyy <strong>Mesh Tools</strong> -kohdan alta kohdasta <strong>Remove</strong>. </p>
+<p class="c4"><img src="_booki/blender/static/ScreenHunter_80%20Apr.%2016%2022.11.gif" alt=""></p>
+<div class="c3"> </div>
+<p class="c4"> </p>
+<div class="c3"> </div></div><ul Class="menu-goes-here"><li Class="booki-section">JOHDANTO</li><li><a href="/blender/index">JOHDANTO</a></li>
+<li Class="booki-section">ASENNUS</li><li><a href="/blender/ch003_asennus-windowsiin">ASENNUS WINDOWSIIN</a></li>
+<li Class="booki-section">KÄYTÄNNÖT</li><li><a href="/blender/ch005_kaytannot">KÄYTÄNNÖT</a></li>
+<li Class="booki-section">KÄYTTÖLIITTYMÄ</li><li><a href="/blender/ch007_kayttoliittyma">KÄYTTÖLIITTYMÄ</a></li>
+<li Class="booki-section">ASETUKSET</li><li><a href="/blender/ch009_asetukset">ASETUKSET</a></li>
+<li Class="booki-section">EDITOINTI</li><li><a href="/blender/ch011_editointi">EDITOINTI</a></li>
+<li><a href="/blender/ch012_esineen-luominen">ESINEEN LUOMINEN</a></li>
+<li Class="booki-section">TEKSTUURIT</li><li><a href="/blender/ch014_teksturointi">TEKSTUROINTI</a></li>
+<li Class="booki-section">RENDERÖINTI</li><li><a href="/blender/ch016_renderointi">RENDERÖINTI</a></li>
+<li Class="booki-section">LIITTEET</li><li><a href="/blender/ch018_tekijat">TEKIJÄT</a></li>
+</ul>

@@ -1,0 +1,80 @@
+<div id="main-content"><h1>Käytön aloittaminen</h1>
+<p>Nykyaikainen tietojenkäsittely on hyvin interaktiivista ja komentorivin käyttö on vain yksi interaktiivisuuden muoto. Useimmat ihmiset käyttävät tietokonetta sen graafisen käyttöliittymän avulla, interaktiivisuus tapahtuu nopeaan tahtiin. Käyttäjä napsauttaa kohdetta, vetää ja pudottaa sen, kaksoisnapsauttaa toista avatakseen sen, muuttaakseen sitä jne.</p>
+<p>Vaikka vuorovaikutteisuus tapahtuu niin nopeasti, ettet ajattele sitä, jokainen napsautus tai näppäimen painallus on komento tietokoneelle, johon se reagoi. Komentorivin käyttö on sama asia, mutta tarkoituksellisempi. Kirjoitat komennon ja painat rivinvaihtonäppäintä. Esimerkiksi kirjoitan terminaaliin:  </p>
+<pre>date
+</pre>
+<p>Ja tietokoneen vastaus on:</p>
+<pre>ke 2.9.2009 14.42.00 +0300
+</pre>
+<p>Tämä on aika tietokonemaista. Myöhemmissä luvuissa selitämme, miten voit kysyä päivämäärää ja aikaa mukavammassa muodossa. Kerromme myös, miten eri maissa ja eri kielillä työskentely muuttaa tietokoneen ulostuloa. Kuvaamamme tapahtuma tapahtui kuitenkin vuorovaikutuksessa tietokoneen kanssa.</p>
+<h2>Komentorivi voi toimia paljon paremmin</h2>
+<p><em>date</em>-komento, kuten yllä on nähty, toimii huonosti kalenterin tai kellon katsomiseen verrattuna. Tärkein ongelma ei ole ulostulon epämiellyttävä ulkoasu, joka on jo mainittu, vaan hankaluus käyttää ulostulon arvoa. Esimerkiksi katsoessani verkkokalenteristani päivämäärää lisätäkseni sen dokumenttiin, jota kirjoitan tai päivitän, joudun kirjoittamaan sen osittain uudelleen. Komentorivi voi toimia paljon paremmin.</p>
+<p>Kun olet oppinut joitain peruskomentoja ja siistejä tapoja säästää aikaasi, tässä kirjassa kuvaillaan komentojen ulostulon syöttämistä muille komennoille, toimintojen automatisointia, ja komentojen tallentamista myöhempää käyttöä varten.</p>
+<h2>Mitä tarkoitamme komennolla?</h2>
+<p>Tämän luvun alussa käytimme sanaa "komento" hyvin yleisesti viittaamaan mihin tahansa tapaan, jolla kerrotaan tietokoneelle mitä sen pitäisi tehdä. Tässä kirjassa komennolla on kuitenkin hyvin tarkka merkitys. Se on tietokoneellasi oleva tiedosto, joka voidaan suorittaa. Muutamia suoraan suoritettavia komentoja (sisäänrakennetut komennot) lukuunottamatta jokainen komento ajetaan etsimällä tiedosto, jolla on komennon nimi, ja ajamalla kyseinen tiedosto. Kerromme lisää yksityiskohtia kun ne ovat tarpeen.</p>
+<h2>Tapoja syöttää komentoja</h2>
+<p><br>Seurataksesi tätä kirjaa joudut avaamaan tietokoneellasi komentorivin (jota kutsutaan GNU/Linuxissa myös komentoliittymäksi, päätteeksi, shelliksi tai terminaaliksi). Grafiikkaa edeltävät tietokonenäytöt näyttivät tämän komentotulkin ensimmäisenä sisäänkirjautumisen jälkeen. Nyt lähes kaikki paitsi ammattimaiset tietokoneiden ylläpitäjät käyttävät graafista käyttöliittymää. Niinpä näytämme sinulle, kuinka voit avata komentorivin.</p>
+<h2>Päätteen löytäminen</h2>
+<p>Käytännössä jokainen tietokoneen käyttöliittymä tarjoaa ohjelman, joka matkii vanhanaikaisia vain tekstiin perustuvia päätteitä, joita tietokoneet tarjosivat ennen käyttöliittymiksi. Katso työpöytäsi valikkojen läpi, jos löydät päätteeksi (englanniksi usein "terminal" tai "shell") kutsutun ohjelman. Se on usein valikossa, jota kutsutaan "Apuohjelmiksi", mikä ei ole reilua, koska luettuasi tämän kirjan tulet käyttämään päätettä enemmän ja enemmän joka päivä.</p>
+<p>Esimerkiksi Ubuntussa voit valita <span>Sovellukset</span><strong> -&gt; Apuohjelmat -&gt; Pääte </strong></p>
+<p><img title="valikko" src="_booki/komentorivin-perusteet/static/KomentorivinPerusteet-GettingStarted-valikko-fi.gif" alt="valikko" width="536" height="456"></p>
+<p>Missä tahansa se onkin, voit melkein varmasti löytää Linuxistasi pääteohjelman. </p>
+<p>Kun suoritat pääteohjelman, se näyttää vain tyhjän ikkunan, ohjeita ei juurikaan ole näkyvissä. Oletetaan, että tiedät mitä pitää tehdä - sen näytämme sinulle.</p>
+<p>Seuraava kuva näyttää pääteikkunan avattuna Linuxin GNOME-työpöydällä.</p>
+<p> <img title="terminaali" src="_booki/komentorivin-perusteet/static/KomentorivinPerusteet-GettingStarted-terminaali-fi.jpg" alt="terminaali" width="600" height="375"></p>
+<h2>Yksittäisen komennon suorittaminen</h2>
+<p>Monissa graafisissa käyttöliittymissä on myös pieni ikkuna, jota kutsutaan "komennon suorittamiseksi". Siinä on tekstialue, johon voi kirjoittaa komennon, joka suoritetaan syöttöpainiketta ("enter") painamalla.</p>
+<p><img title="Screenshot_Run_Application" src="_booki/komentorivin-perusteet/static/KomentorivinPerusteet-Screenshot_Run_Application-fi.png" alt="Screenshot_Run_Application" width="520" height="187"> </p>
+<p>Tätä laatikkoa voidaan käyttää oikotienä pääteohjelman nopeaan käynnistämiseen, kunhan tiedät tietokoneellesi asennetun pääteohjelman nimen. Jos työskentelet tuntemattomalla käyttöjärjestelmällä etkä tiedä edes oletuspääteohjelman nimeä, yritä kirjoittaa "xterm" avataksesi tyypillisen pääteohjelman (ei hienoja valikkoja, jotka mahdollistavat värien tai kirjasintyyppien valinnan). </p>
+<h2>Kuinka näytämme komennot ja ulostulon tässä kirjassa </h2>
+<p>Komentoriviä käsittelevissä kirjoissa on yleinen käytäntö. Kun terminaali avataan, näet pienen merkkijonon, joka osoittaa, että pääte on valmis ottamaan sinulta komentoja. Tätä merkkijonoa kutsutaan kehotteeksi (englanniksi "prompt"), ja se voi olla näin yksinkertainen:  </p>
+<pre>$
+</pre>
+<p>Kun kirjoitat komentosi ja painat rivinvaihtoa, pääte näyttää komennon ulostulon (jos komennolla on ulostulo), sekä uuden kehotteen. Niinpä edellinen vuorovaikutukseni näytettäisiin kirjassa näin:</p>
+<pre>$ <strong>date</strong>
+
+ke 2.9.2009 14.57.35 +0300
+
+$
+</pre>
+<p>Sinun täytyy ymmärtää, kuinka edeltävän kaltaisia esimerkkejä tulkitaan. Tässä esimerkissä kirjoitat vain komennon "date". Ja sen jälkeen painat syöttönäppäintä. Sana "date" on lihavoitu, millä osoitetaan, että se on jotain, minkä sinä kirjoitat. Loput on päätteen ulostuloa.</p></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/komentorivin-perusteet/index">Ota komento</a></li>
+<li Class="booki-section">Perusteet</li><li><a href="/komentorivin-perusteet/ch003_aloittaminen">Käytön aloittaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch004_syntaksi">Syntaksi</a></li>
+<li><a href="/komentorivin-perusteet/ch005_ympariinsa-siirtyminen">Ympäriinsä siirtyminen</a></li>
+<li><a href="/komentorivin-perusteet/ch006_tiedostorakenne">Tiedostorakenne</a></li>
+<li Class="booki-section">Komennot</li><li><a href="/komentorivin-perusteet/ch008_peruskomennot">Peruskomennot</a></li>
+<li><a href="/komentorivin-perusteet/ch009_jarjestelmanvalvojat">Järjestelmänvalvoja</a></li>
+<li><a href="/komentorivin-perusteet/ch010_useammat-tiedostot">Useammat tiedostot</a></li>
+<li><a href="/komentorivin-perusteet/ch011_kirjoita-vahemman">Kirjoita vähemmän</a></li>
+<li Class="booki-section">Keskivaikeita komentoja</li><li><a href="/komentorivin-perusteet/ch013_putkitus">Putkitus</a></li>
+<li><a href="/komentorivin-perusteet/ch014_komentohistoria">Komentohistoria</a></li>
+<li><a href="/komentorivin-perusteet/ch015_standarditiedostot">Standarditiedostot</a></li>
+<li Class="booki-section">Kehittyneempiä komentoja</li><li><a href="/komentorivin-perusteet/ch017_kayttooikeudet">Käyttöoikeudet</a></li>
+<li><a href="/komentorivin-perusteet/ch018_interaktiivinen-muokkaus">Interaktiivinen muokkaus</a></li>
+<li><a href="/komentorivin-perusteet/ch019_poistumisen-tarkastaminen">Poistumisen tarkastaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch020_alikomennot">Alikomennot</a></li>
+<li><a href="/komentorivin-perusteet/ch021_hakemistot">Hakemistot</a></li>
+<li><a href="/komentorivin-perusteet/ch022_kustomisointi">Kustomisointi</a></li>
+<li><a href="/komentorivin-perusteet/ch023_parametrien-korvaaminen">Parametrien korvaaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch024_gnuscreen">GNUScreen</a></li>
+<li><a href="/komentorivin-perusteet/ch025_ssh">SSH</a></li>
+<li><a href="/komentorivin-perusteet/ch026_ohjelmien-asentaminen">Ohjelmien asentaminen</a></li>
+<li Class="booki-section">Tekstieditorit</li><li><a href="/komentorivin-perusteet/ch028_tekstieditorit">Tekstieditorit</a></li>
+<li><a href="/komentorivin-perusteet/ch029_nano">Nano</a></li>
+<li><a href="/komentorivin-perusteet/ch030_vi-ja-vim">Vi ja Vim</a></li>
+<li><a href="/komentorivin-perusteet/ch031_emacs">Emacs</a></li>
+<li><a href="/komentorivin-perusteet/ch032_kedit">Kedit</a></li>
+<li><a href="/komentorivin-perusteet/ch033_gedit">Gedit</a></li>
+<li Class="booki-section">Skriptaus</li><li><a href="/komentorivin-perusteet/ch035_skriptaus">Skriptaus</a></li>
+<li><a href="/komentorivin-perusteet/ch036_skriptien-huoltaminen">Skriptien huoltaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch037_muut-kielet">Muut kielet</a></li>
+<li><a href="/komentorivin-perusteet/ch038_sed">Sed</a></li>
+<li><a href="/komentorivin-perusteet/ch039_awk">AWK</a></li>
+<li><a href="/komentorivin-perusteet/ch040_saannolliset-lausekkeet">Säännölliset lausekkeet</a></li>
+<li><a href="/komentorivin-perusteet/ch041_perl">Perl</a></li>
+<li><a href="/komentorivin-perusteet/ch042_ruby">Ruby</a></li>
+<li><a href="/komentorivin-perusteet/ch043_python">Python</a></li>
+<li Class="booki-section">Komennot nopeasti</li><li><a href="/komentorivin-perusteet/ch045_komentojen-pikaopas">Komentojen pikaopas</a></li>
+<li Class="booki-section">Liitteet</li><li><a href="/komentorivin-perusteet/ch047_tasta-kayttooppaasta">Tästä käyttöoppaasta</a></li>
+<li><a href="/komentorivin-perusteet/ch048_tekijat">Tekijät</a></li>
+</ul>

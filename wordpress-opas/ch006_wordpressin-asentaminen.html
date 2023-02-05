@@ -1,0 +1,40 @@
+<div id="main-content"><h1>Suomenkielisen WordPressin asentaminen</h1>
+<p>Tässä ohjeessa kuvataan lyhyesti suomenkielisen WordPressin asentaminen Linux-palvelimelle SSH-yhteydellä.</p>
+<p>Viralliset asennusohjeet löytyvät sivulta <a href="http://codex.wordpress.org/WordPressin_asentaminen">http://codex.wordpress.org/WordPressin_asentaminen</a>.</p>
+<h2>Vaatimukset</h2>
+<p>Tässä ohjeessa oletetaan, että käytettävissä on Apache tai vastaava verkkopalvelin Linux-koneella, sekä SSH-yhteys palvelimelle.</p>
+<p>Lisäksi WordPressin vähimmäisvaatimukset ovat:</p>
+<ul><li>PHP 5.2.4 tai suurempi</li>
+<li>MySQL 5.0 tai suurempi</li>
+</ul><p>Lisäksi asennukseen tarvitaan MySQL-tietokannan nimi, käyttäjätunnus ja salasana. Nämä saa yleensä palvelimen ylläpidolta.</p>
+<h2>Asennus</h2>
+<ol><li>Ensin otetaan SSH-yhteys palvelimelle ja kirjaudutaan sisään. Asennus aloitetaan verkkokansiosta, joka voi olla palvelimesta riippuen esimerkiksi <strong>/var/www</strong>, <strong>~/public_html </strong>tai <strong>~/htdocs</strong>.</li>
+<li>Sivulla <a href="http://fi.wordpress.org/">http://fi.wordpress.org/</a> on ladattavissa WordPressin uusin suomenkielinen versio. Sivulta voi kopioida latauslinkin ja ladata sen päätteessä wget-komennolla, esimerkiksi <strong>wget http://fi.wordpress.org/wordpress-3.4.2-fi.zip</strong></li>
+<li>Puretaan ladattu tiedosto komennolla unzip: <strong>unzip wordpress-3.4.2-fi.zip</strong></li>
+<li>Nyt mennään selaimella verkkotunnuksen hakemistoon<strong> /wordpress/. Esimerkiksi kirjoitetaan selaimen osoitekenttään www.esimerkki.fi/wordpress/</strong></li>
+<li>Napsautetaan<strong> Luo asetustiedosto.</strong></li>
+<li>Napsautetaan<strong> Jatketaan!</strong></li>
+<li>Seuraavaan ruutuun tulee syöttää<strong> tietokannan nimi, käyttäjänimi, salasana, tietokantapalvelin ja tietokantataulujen etuliite.</strong> Tietokantapalvelin on yleensä<strong> localhost.</strong> Tietokantataulujen etuliite voi olla oletusarvoinen<strong> wp_</strong>, mikäli samaan tietokantaan ei ole asennettu toista WordPressiä. Painetaan<strong> Lähetä.</strong></li>
+<li>Painetaan<strong> Asenna WordPress.</strong></li>
+<li>Seuraavassa ruudussa kysytään<strong> sivuston otsikkoa, käyttäjänimeä, salasanaa, sähköpostiosoitetta </strong>ja<strong> sivuston näkyvyyttä hakukoneissa.</strong> Arvot voi asettaa mieleisikseen. Hakukonenäkyvyys on syytä ottaa pois päältä, mikäli tahtoo sivujen olevan aluksi piilossa.</li>
+<li>WordPress ilmoittaa asennuksen onnistuneen. Nyt voidaan napsauttaa<strong> Kirjaudu sisään </strong>ja WordPressin käyttö voi alkaa.</li>
+</ol></div><ul Class="menu-goes-here"><li Class="booki-section">Perusteet</li><li><a href="/wordpress-opas/index">Johdanto</a></li>
+<li><a href="/wordpress-opas/ch002_mika-on-blogi">Mikä on blogi?</a></li>
+<li Class="booki-section">Wordpress.com</li><li><a href="/wordpress-opas/ch004_wordpresscom">Wordpress.com</a></li>
+<li Class="booki-section">Asennus</li><li><a href="/wordpress-opas/ch006_wordpressin-asentaminen">Suomenkielisen WordPressin asentaminen</a></li>
+<li Class="booki-section">Peruskäyttö</li><li><a href="/wordpress-opas/ch008_kirjautuminen-wordpressiin">Kirjautuminen Wordpressiin</a></li>
+<li><a href="/wordpress-opas/ch009_lisaa-artikkeli">Lisää artikkeli</a></li>
+<li><a href="/wordpress-opas/ch010_kuvien-lisaaminen">Kuvien lisääminen</a></li>
+<li><a href="/wordpress-opas/ch011_linkkien-lisaaminen">Linkkien lisääminen</a></li>
+<li><a href="/wordpress-opas/ch012_valikot">Valikot</a></li>
+<li Class="booki-section">Video</li><li><a href="/wordpress-opas/ch014_liita-sulautettu-video-youtube">Liitä sulautettu video (Youtube)</a></li>
+<li><a href="/wordpress-opas/ch015_liita-video">Liitä video</a></li>
+<li Class="booki-section">Äänipodcast</li><li><a href="/wordpress-opas/ch017_luo-striimaava-aanisoitin">Luo streamaava äänisoitin</a></li>
+<li><a href="/wordpress-opas/ch018_ilmainen-audiopodcast">Ilmainen podcast</a></li>
+<li Class="booki-section">Suunnittelu</li><li><a href="/wordpress-opas/ch020_vimpaimet">Vimpaimet</a></li>
+<li><a href="/wordpress-opas/ch021_ulkoasu">Teemat</a></li>
+<li Class="booki-section">Toiminnan laajentaminen</li><li><a href="/wordpress-opas/ch023_esimerkkeja-lisaosista">WordPressin lisäosat</a></li>
+<li><a href="/wordpress-opas/ch024_lisaosat">Lisäosan asentaminen</a></li>
+<li Class="booki-section">WordPressin suomentaminen</li><li><a href="/wordpress-opas/ch026_kaannosalusta">Käännösalusta</a></li>
+<li Class="booki-section">Liitteet</li><li><a href="/wordpress-opas/ch028_tekijat">Tekijät</a></li>
+</ul>

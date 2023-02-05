@@ -1,0 +1,191 @@
+<div id="main-content"><h1>Listat</h1>
+<p><span id="result_box" class="long_text"><span> <br></span><span>Voimme laittaa monenlaisia asioita muuttujaan: numeron, murtoluvun, tekstin lauseen tai vaikka kokonaisen kuvan. Mutta vaikka muuttujat voivat teoriassa sisältää minkä tahansa tyypin arvon, ne voivat sisältää vain yhden näistä arvoista kerrallaan. Joissain tapauksissa olisi mukavaa ryhmittää joukko asioita yhteen, jolloin ne olisivat ainakin jonkinlaisessa yksittäisessä oliossa. Tästä syystä on keksitty erityinen muuttujatyyppi, listat. </span><span> <br><br></span><span>Listoja käytetään tallentamaan ennalta määrätty joukko tietoa tai olioita yhdessä muuttujassa. Sen sijaan että loisit 20 muuttujaa tallentamaan 20 erilaista arvoa, voit luoda yhden säilön näille 20 arvolle ja käsitellä niitä yksi kerrallaan. </span></span></p>
+<h2><span id="result_box" class="long_text"><span>Luo lista</span></span></h2>
+<p><span id="result_box" class="long_text"><span>Jos käytämme peruselementtejä, kuten numeroita, on hyvin helppo tehdä lista: <br></span></span></p>
+<p> </p>
+<pre>int[] numerot = {90,150,30};
+</pre>
+<p><span id="result_box" class="long_text"><span>Aaltosulut tarkoittavat, että sisällä ei ole vain yksittäinen kokonaisluku, vaan kokonainen lista kokonaislukuja, joiden sisällä on useampia arvoja. Niinpä voimme täyttää tämän listan aaltosulkeiden sisällä olevilla arvoilla. </span><span> <br><br></span><span>Tietokone luo tarpeeksi muistipaikkoja, jotta jokaiselle arvolle löytyy sopiva laatikko: </span></span></p>
+<p><img src="_booki/processing-1/static/illustration_remplissage_liste-fi_1.png" alt=""></p>
+<p><span id="result_box" class="long_text"><span>Tästä syystä käytämme sanaa int, koska Processingin täytyy tietää jokaisen listan laatikon arvo. Jos ne olisivat kuvia, jokainen listan solu tarvitsisi paljon enemmän tilaa. </span><span> <br><br></span></span></p>
+<h2><span id="result_box" class="long_text"><span>Luo tyhjä lista </span></span></h2>
+<p><span id="result_box" class="long_text"><span> <br></span><span>Tämä suoran luomisen menetelmä ei toimi epätavallisempien elementtien, kuten äänien tai kuvien kanssa.</span></span></p>
+<p><span id="result_box" class="long_text"><span> <br> Yleensä</span><span> lista julistetaan seuraavasti: tyyppi [] LISTA NIMI= new LISTAN TYYPPI [KOHTEIDEN MÄÄRÄ LISTASSA ]. Esimerkki alla luo kolmen kokonaisluvun listan. Ole tarkkana, kun luomme listan. Tämä on sarja tyhjiä laatikoita: ne eivät sisällä arvoa.  </span></span></p>
+<pre>int[] numerot = new int[3]; </pre>
+<p> <img title="illustration_creation_liste" src="_booki/processing-1/static/illustration_creation_liste-fi.png" alt="illustration_creation_liste" width="292" height="122"></p>
+<h2>Kokonainen lista</h2>
+<p>Arvojen sijoittaminen listaan toimii samalla tavalla kuin arvon laittaminen muuttujaan. Täytyy olla myös tarkennus, mihin sijaintiin listalla arvo lisätään.</p>
+<pre>numerot[0] = 90;
+numerot[1] = 150;
+numerot[2] = 30;
+</pre>
+<p><span id="result_box" class="long_text"><span>Nämä arvot numeroidaan automaattisesti arvosta 0 arvoon listan pituus miinus yksi. </span></span></p>
+<h2><span id="result_box" class="long_text"><span>Listan sisällön käyttö</span></span></h2>
+<p><span id="result_box" class="long_text"><span>Listan elementin käyttö on samanlaista kuin muuttujan käyttö. Määrittelet vain kyseisen elementin sijainnin listalla:</span></span></p>
+<p> </p>
+<pre>println( numerot[0] );
+</pre>
+<p><span id="result_box" class="long_text"><span>Huomaa, että tietokone aloittaa sijainnista 0, ei 1. Jos kutsumme arvoa numerot[2], Processing antaa meille kolmannen sijainnin arvon eikä toisen sijainnin arvoa. Processingin muisti toimii seuraavaksi: nollas ensin, sitten ensimmäinen, toinen jne. Nollas arvo on listan alussa. </span><span> <br><br></span><span>Tässä esimerkissä käytämme silmukkaa laskeaksemme kaikkien aiemmin julistettujen elementtien summan: </span></span></p>
+<pre>int[] numerot = new int[3];
+
+numerot[0] = 90;
+numerot[1] = 150;
+numerot[2] = 30;
+
+int summa = 0;
+
+for (int i = 0; i &lt; 3; i++) {
+    summa = summa + numerot[i];
+}
+
+println(summa);
+</pre>
+<p><span id="result_box" class="long_text"><span>Tämän ohjelman pitäisi näyttää seuraava ulostulo konsolissasi, Processing-ikkunan alaosassa: <br></span></span></p>
+<p><img title="processing_listes_console_1" src="_booki/processing-1/static/processing_listes_console_1-fi.png" alt="processing_listes_console_1" width="486" height="540"></p>
+<p><span id="result_box"><span>Ensin loimme muuttujan, joka sisältää kaikkien arvojen summan. Se alkaa arvosta nolla. </span><span> <br><br></span><span>Tämän jälkeen lisäämme silmukan, joka toistaa itsensä kolme kertaa, ja lisäämme joka kerralla seuraavan arvon summaan. Tässä näemme läheisen suhteen, joka on olemassa listan ja for () -silmukan välillä. Arvo i voi kulkea listan arvojen läpi yksitellen, aloittaen arvosta nolla, siirtyen arvoon 1 ja sen jälkeen arvoon 2. </span><span> <br></span></span></p>
+<h2><span id="result_box"><span>Kuvat seuraavat toisiaan <br></span></span></h2>
+<p><span id="result_box"><span>Yksi tapa käyttää listoja on kuvien tuominen Processingiin. Oletetaanpa, että tahdomme tuoda viisi kuvaa Processingiin. Kun emme käytä listoja, voimme kirjoittaa jotain tällaista: </span></span></p>
+<pre>PImage kuva1;
+kuva1 = loadImage("kuva_1.png");
+image(kuva1,0,0);
+
+PImage kuva2;
+kuva2 = loadImage("kuva_2.png");
+image(kuva2,50,0);
+
+PImage kuva3;
+kuva3 = loadImage("kuva_3.png");
+image(kuva3,100,0);
+
+PImage kuva4;
+kuva4 = loadImage("kuva_4.png");
+image(kuva4,150,0);
+
+PImage kuva5;
+kuva5 = loadImage("kuva_5.png");
+image(kuva5,200,0);</pre>
+<p><span id="result_box"><span>Äärimmillään tämä esimerkki on hallittavissa, mutta kirjoitusvirheitä tulee helposti. Jopa kirjoittaessani näitä rivejä tähän kirjaan tein paljon kirjoitusvirheitä tai unohdin muuttaa edelliseltä riviltä kopioimani tekstin. </span><span> <br><br></span><span>Parempi tapa kirjoittaa tämä esimerkki on listojen käyttö: </span></span></p>
+<pre>PImage[] kuvat = new PImage[5];
+
+kuvat[0] = loadImage("kuva_0.png");
+kuvat[1] = loadImage("kuva_1.png");
+kuvat[2] = loadImage("kuva_2.png");
+kuvat[3] = loadImage("kuva_3.png");
+kuvat[4] = loadImage("kuva_4.png");
+
+image( kuvat[0], 0, 0);
+image( kuvat[1], 50, 0);
+image( kuvat[2], 100, 0);
+image( kuvat[3], 150, 0);
+image( kuvat[4], 200, 0);
+</pre>
+<p><span id="result_box"><span>Listaa käyttäen voimme laittaa kaikki kuvamme yhteen muuttujaan, joka initialisoidaan vain kerran: PiMag [] = new PiMag [5]. Tämän jälkeen voimme täyttää jokaisen tiedoston jokaisen arvon sijaintien listaan. </span><span> <br><br></span><span>Mutta näinkin kirjoittamiseen menee liikaa aikaa. Mitä teet, jos sinulla on 200 tai jopa 2000 kuvaa? Kirjoitatko todella kaiken 200 kertaa? Ja mitä teet, kun tahdot tuoda uudelleennimetyn tiedoston? </span><span> <br><br></span><span>Tässä on paras tapa tuoda kuvasarja: </span></span></p>
+<pre>size(500,500);
+
+PImage[] kuvat = new PImage[20];
+
+for(int i=0; i&lt;images.size(); i++) {
+kuvat[i] = loadImage("kuva_" + i + ".png");
+  image( kuvat[i], random(width), random(height) );
+}</pre>
+<p><span id="result_box"><span>Käyttäen silmukkaa for() voimme nyt tuoda niin monta kuvaa kuin tahdomme. <br><br></span><span>Ensin luomme kuvalistan. Se on aluksi tyhjä lista: </span></span></p>
+<pre>PImage[] kuvat = new PImage[20];
+</pre>
+<p> </p>
+<p><span id="result_box"><span>Tämän jälkeen saamme listan pituuden kysymällä siltä montako kuvaa se sisältää komennolla  images.size(). Tämän jälkeen voimme käyttää tätä komentoa antamaan for() -silmukan toistojen määrän. </span></span></p>
+<pre>for(int i=0; i&lt;images.size(); i++)
+</pre>
+<p><span id="result_box"><span>Voimme jopa automatisoida kuvien tuomisen käyttäen arvoa i kutsuaksemme kuvien tiedostonimiä. Merkillä "+" voimme yhdistää kaksi sanaa, mikä merkitsee, että kaksi sanaa tai merkkiä voidaan yhdistää yhteen viestiin. </span></span></p>
+<pre>kuvat[i] = loadImage("kuva_" + i + ".png");
+</pre>
+<p><span id="result_box"><span>Liittämällä sanat "kuva_", muuttujan i arvon ja tiedostopäätteen ".png", saamme viestin, joka sisältää tekstin "kuva_42.png". Näin voimme käyttää yhtä riviä koodia luomaan niin monta kuvaa kuin tahdomme. Jos muuttuja i sisältää arvon 9, tuodun tiedoston nimi on kuva_9.png. Jos muuttuja i sisältää arvon 101, tuodun tiedoston arvo on kuva_101.png. </span><span> <br><br></span><span>Jotta tämä tekniikka toimisi, sinun täytyy vain laittaa tiedostot valmiiksi data-hakemistoosi. Tässä on datahakemisto, joka sisältää 20 kuvatiedostoa: </span></span></p>
+<p><img src="_booki/processing-1/static/fenetre_importer_20_images-fi_1.png" alt=""></p>
+<p><span id="result_box"><span>Kun jokainen näistä kuvista tulee ohjelmaamme, piirrämme sen johonkin luonnoksessamme. <br></span></span></p>
+<pre>image ( kuvat[i], random(width), random(height) );
+</pre>
+<p><span id="result_box"><span>Tämä lause piirtää kuvan (0,1,2,3,...) satunnaiseen paikkaan x ja y -akseleilla. Se käyttää leveyden ja korkeuden nykyistä arvoa sijaintina. Nämä kaksi arvoa vastaavat kuvan kokoa piirroksessa, mikä merkitsee, että jokainen kuva piirretään satunnaiseen paikkaan piirroksessamme. </span></span></p>
+<h2>Pikselisarja</h2>
+<p><span id="result_box"><span>Jos luit kuvia käsittelevän luvun, näit että PiMag-muuttuja ei sisällä yhtä muuttujaa vaan monia, ellei kuvasi ole yhden pikselin korkuinen ja levyinen. Tästä harvinaisesta poikkeamasta huolimatta kuvasi sisältää sarjan muutoksia, jotka edustavat kaikkia kuvan muodostavia pikseleitä. Tätä sarjaa kutsutaan listaksi. </span><span> <br><br></span><span>Voit päästä suoraan pikseleihin pyytämällä suoraa pääsyä alimuuttujaan nimeltä "pixels". <br><br></span><span>Kuvitelkaapa, että meidän täytyy aloittaa mystisen naisen kuva tiedostossa lhooq.png. </span></span></p>
+<p><em></em><img title="lhooq" src="_booki/processing-1/static/lhooq-fi.png" alt="lhooq" width="256" height="256"></p>
+<p><span id="result_box"><span>Jos tuomme tämän kuvan Processingiin, voimme ottaa tietyn pikselin kuvan menemällä kuvalistan sisään. Tätä listaa kutsutaan funktiolla pixels []. </span></span></p>
+<p><img title="mona_pixel2.tiff" src="_booki/processing-1/static/mona_pixel2-tiff-fi.png" alt="mona_pixel2.tiff" width="511" height="256"></p>
+<pre>size(512,256);
+
+PImage lhooq;
+lhooq = loadImage("lhooq.png");
+image(lhooq,0,0);
+
+int x = 119;
+int y = 119;
+
+<strong>int index = x + (y * lhooq.width); color c = lhooq.pixels[index];</strong>
+
+noStroke();
+fill(c);
+rect(256,0,256,256);
+
+stroke(0);
+line(x-5,y,x+5,y);
+line(x,y-5,x,y+5);
+</pre>
+<p><span id="result_box"><span>Kaksi tärkeintä riviä on lihavoitu:</span></span></p>
+<pre><strong>int index = x + (y * lhooq.width); color c = lhooq.pixels[index];</strong></pre>
+<p><span id="result_box"><span>Huomautamme, että kuva ei ole mitään muuta kuin lista pikseleitä. Tyypin PiMag muuttujat tallentavat pikselien arvot pitkään listaan. </span></span></p>
+<p><img src="_booki/processing-1/static/illustration_liste_pixels_lineaire_1-fi_1.png" alt=""> </p>
+<p><span id="result_box"><span>Näemme listan kahdella (x, y) ulottuvuudella, PiMag nähdään yhdestä suunnasta. Jos löydämme arvon sijainnissa (2,1), todellisuudessa sen pitäisi osoittaa, että tahdomme laittaa sen sijaintiin 17 kuvassa. Todellisuudessa rivin pisteen ja vastaavan seuraavan rivin pisteen välillä on 16 pikseliä. Toisin sanottuna meillä on 16 pikseliä jokaista riviä kohden. </span><span> <br><br></span><span>Tästä syystä pikselin kaava kirjoitetaan (x + (leveys * y)). Jokaista y-riviä kohden on paljon x-arvoja, joiden arvot täytyy saada. </span></span></p>
+<p> </p>
+<h2><span id="result_box"><span>Kuvan pikselien värittäminen</span></span></h2>
+<p><span id="result_box"><span>Voit jopa luoda omat PiMag-muuttujasi ja antaa sille pikselien värit. Kuvapikseleitä käytetään nollasta alkaen, kuten mitä tahansa listaa. </span></span></p>
+<p><img title="illustration_liste_p_image02" src="_booki/processing-1/static/illustration_liste_p_image02-fi.png" alt="illustration_liste_p_image02" width="200" height="100"></p>
+<p><span id="result_box"><span>Tässä esimerkissä piirrämme kolme kertaa kolmen pikselin ruudukon. Piirrämme suuremman kuvan venyttämällä sen 80 x 80 pikseliin. </span></span></p>
+<pre>PImage img = createImage(3, 3, ARGB);
+img.loadPixels();
+img.pixels[0] = color(255, 0, 0);
+img.pixels[1] = color(0, 255, 0);
+img.pixels[2] = color(0, 0, 255);
+img.pixels[3] = color(255, 0, 255);
+img.pixels[4] = color(255, 255, 0);
+img.pixels[5] = color(0, 255, 255);
+img.pixels[6] = color(0, 0, 0);
+img.pixels[7] = color(127, 127, 127, 255);
+img.pixels[8] = color(255, 255, 255, 0);
+img.updatePixels();
+image(img, 10, 10, 80, 80);
+</pre>
+<p><span id="result_box"><span>Huomaa, että muunnamme Processingissa kuvaan komennolla loadPixels () ja lopetamme kuvan muokkaamisen komennolla updatePixels (). Muuten emme näe listaan tekemiemme muutosten seurauksia. </span><span> <br><br></span><span>Huomaa, että voit myös tehdä tällaisen maalauksen käyttäen toistoja. </span></span></p></div><ul Class="menu-goes-here"><li Class="booki-section">Esittely</li><li><a href="/processing-1/index">Johdanto</a></li>
+<li><a href="/processing-1/ch002_esimerkkeja">Esimerkkejä</a></li>
+<li><a href="/processing-1/ch003_asennus">Asennus</a></li>
+<li Class="booki-section">Perusteet</li><li><a href="/processing-1/ch005_perusteet">Perusteet</a></li>
+<li Class="booki-section">Suunnittelu</li><li><a href="/processing-1/ch007_suunnittelutila">Suunnittelutila</a></li>
+<li><a href="/processing-1/ch008_muodot">Muodot</a></li>
+<li><a href="/processing-1/ch009_varit">Värit</a></li>
+<li><a href="/processing-1/ch010_kuvat">Kuvat</a></li>
+<li><a href="/processing-1/ch011_tekstit">Tekstit</a></li>
+<li Class="booki-section">Interaktiivisuus</li><li><a href="/processing-1/ch013_video">Video</a></li>
+<li><a href="/processing-1/ch014_videon-tuominen">Videon tuominen</a></li>
+<li><a href="/processing-1/ch015_mikrofoni">Mikrofoni</a></li>
+<li><a href="/processing-1/ch016_hiiri">Hiiri</a></li>
+<li><a href="/processing-1/ch017_nappaimisto">Näppäimistö</a></li>
+<li><a href="/processing-1/ch018_tulostaminen">Tulostaminen</a></li>
+<li Class="booki-section">Vienti</li><li><a href="/processing-1/ch020_verkkoon-vieminen">Verkkoon vieminen</a></li>
+<li Class="booki-section">Animaatio</li><li><a href="/processing-1/ch022_aanet">Äänet</a></li>
+<li><a href="/processing-1/ch023_draw-metodi">Draw-metodi</a></li>
+<li><a href="/processing-1/ch024_objektien-animointi">Objektien animointi</a></li>
+<li><a href="/processing-1/ch025_monien-objektien-animointi">Monien objektien animointi</a></li>
+<li><a href="/processing-1/ch026_aikajana">Aikajana</a></li>
+<li Class="booki-section">Ohjelmointi</li><li><a href="/processing-1/ch028_kommentit">Kommentit</a></li>
+<li><a href="/processing-1/ch029_objektit">Objektit</a></li>
+<li><a href="/processing-1/ch030_metodit">Metodit</a></li>
+<li><a href="/processing-1/ch031_listat">Listat</a></li>
+<li><a href="/processing-1/ch032_toistaminen">Toistaminen</a></li>
+<li><a href="/processing-1/ch033_ehdot">Ehdot</a></li>
+<li><a href="/processing-1/ch034_muuttujat">Muuttujat</a></li>
+<li><a href="/processing-1/ch035_muutokset">Muutokset</a></li>
+<li><a href="/processing-1/ch036_rajat">Rajat</a></li>
+<li Class="booki-section">Liitteet</li><li><a href="/processing-1/ch038_yleisia-virheita">Yleisiä virheitä</a></li>
+<li><a href="/processing-1/ch039_ulkoiset-kirjastot">Ulkoiset kirjastot</a></li>
+<li><a href="/processing-1/ch040_dokumentaatio">Dokumentaatio</a></li>
+<li><a href="/processing-1/ch041_arduino">Arduino</a></li>
+<li><a href="/processing-1/ch042_tasta-oppaasta">Tästä oppaasta</a></li>
+<li><a href="/processing-1/ch043_tekijat">Tekijät</a></li>
+</ul>

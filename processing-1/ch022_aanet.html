@@ -1,0 +1,185 @@
+<div id="main-content"><h1>Äänentoisto</h1>
+<p><span id="result_box"><span>Lähtökohtaisesti Processing on kuvan luomiseen tarkoitettu ympäristö. Sitä ei suunniteltu soittamaan ääntä ja vielä vähemmän kehittämään ääniaaltoja. Tätä varten on esimerkiksi Pure Data. Monet ulkoiset kirjastot on luotu juurikin laajentamaan äänenkäsittelymahdollisuuksia, ja voit liittää milloin tahansa nämä ulkoiset kirjastot ohjelmiisi: syntetisaattoreita, samplereita, audioliittymiä, MIDI-sekvenssereitä jne. Mutta tämä ei kuitenkaan ole Processingin perustarkoitus, joka on erilaisten visuaalisten muotojen luominen. <br></span><span> <br>Kuitenkin ääni on olennainen osa interaktiivisuutta, ja on vaikea kuvitella tehokasta interaktiivisuustyökalua ilman ääntä. <br></span><span> <br></span></span></p>
+<h2><span id="result_box"><span>Minim</span></span></h2>
+<p>Processingin jakeluversioon päätettiin liittää Minim -äänikirjasto, joka soittaa ääntä ja osaa tallentaa mikrofonista tulevan äänen. Tämä kirjasto on jo asennettu koneellesi. Tarkastaaksesi sen asennuksen ja liittääksesi sen ohjelmaasi mene hakemistoon <strong>Sketch</strong> &gt; <strong>Import Library</strong> <strong>...</strong> &gt; <strong>Minim audio</strong>.</p>
+<p><img title="menu_import_minim" src="_booki/processing-1/static/resized_500x194_menu_import_minim-fi.png" alt="menu_import_minim" width="500" height="194"></p>
+<p><span id="result_box"><span>Riippuen alustasta ja versiosta, Processing lisää tähän toimintoon enemmän tai vähemmän koodirivejä ohjelmasi alkuun. Tässä tapauksessa tarvitaan ainakin seuraava komento: </span></span></p>
+<p><img title="processing_importer" src="_booki/processing-1/static/processing_importer-fi.png" alt="processing_importer" width="473" height="148"></p>
+<pre>import ddf.minim.*;
+</pre>
+<p><span id="result_box"><span>Tämä komento tuo kaikki Minim-kirjaston toiminnot ohjelmamme käytettäväksi. Tämän ddf.minim.* -kirjaston avulla soitamme äänetä ohjelmassamme. </span></span></p>
+<h2><span id="result_box"><span>Minim-asetukset</span></span></h2>
+<p><span>Kun ajamme ohjelmamme <strong>Run</strong>-napin avulla, meidän täytyy aktivoida äänikone Minim. Tämän esimerkin pitäisi pyytää pääsyä äänikorttiin käyttöjärjestelmän kautta, jotta ohjelma voi soittaa ääniä. Tämä merkitsee, että ohjelman lopussa voimme myös sulkea Minim-kirjaston. </span></p>
+<p><span id="result_box"><span>Ei haittaa, vaikka et vielä ymmärtäisi kaikkea sanomaamme. Olennaista on se, että jokaisen Minimiä käyttävän ohjelman alussa tulee olla seuraava koodi: <br></span><span> <br></span></span></p>
+<pre>import ddf.minim.*;
+
+Minim minim;
+
+void setup() {
+  minim = new Minim(this);
+}
+</pre>
+<p><span id="result_box"><span>Ohjelman loppuun tulee myös kirjoittaa muutama rivi: <br></span></span></p>
+<pre>void stop() {
+  minim.stop();
+  super.stop();
+}
+</pre>
+<p><span id="result_box"><span>Mikä sana "this" on ohjelmassamme? Sana "this" tarkoittaa tätä ohjelmaa. Minimin täytyy tietää tämän ohjelman osoite, jotta se voi kommunikoida ohjelman ja äänikortin kanssa. Tätä ei tarvitse ymmärtää vielä. Nämä ovat vain taikasanoja, jotka täytyy sanoa jokaisen ääntä käyttävän ohjelman alussa ja lopussa. </span></span></p>
+<h2><span id="result_box"><span>Äänen tuominen <br></span></span></h2>
+<p><span id="result_box">Tuomme kuvan ohjelmaamme aivan kuin kuvan tai kirjasintyypin. Kannattaa tallentaa ohjelma ennen tätä askelta.</span></p>
+<p><span id="result_box"><span> <br></span><span>Ääni voi tulla monesta eri lähteestä: ne voidaan ladata netistä, tehdä Audacityllä, ja on jopa ääniä, jotka voivat olla osa käyttöjärjestelmääsi. <br><br></span><span>Etsi nyt äänitiedosto ja vedä se suoraan Processing-ikkunaan: </span></span></p>
+<p><img src="_booki/processing-1/static/processing_importer_son_1-fi_1.png" alt=""></p>
+<p><span id="result_box" class="long_text"><span>Tämä toiminto laittaa äänitiedoston hakemistoon "data" ohjelmassasi. Jos tahdot nähdä tämän tiedoston, paina</span><span> <strong>ctrl-k</strong> (Windows / Linux) tai <strong>cmd-k</strong> (Mac), muuten voit valita valikosta <strong>Sketch</strong> &gt; <strong>Show Sketch Folder</strong>. <br></span></span></p>
+<h2><span id="result_box" class="long_text"><span>Äänitiedostot </span></span></h2>
+<p><span>Voit käyttää kolmea ääniformaattia Minimin kanssa: WAV, AIFF ja MP3. </span><span>Kaksi ensimmäistä formaattia voidaan viedä oletusarvoisesti ilmaisella ohjelmalla, kuten Audacityllä. Kolmas formaatti vaatii lisäosan Audacityssä, mutta se on melko helppo asentaa.  </span></p>
+<p><span id="result_box" class="long_text"><span> <br></span><span>Kuten kuvien tapauksessa, eri formaateilla on etunsa ja haittansa. <br><br></span></span></p>
+<ol><li><span id="result_box" class="long_text"><span>WAV ja AIFF -tiedostot ovat melkein identtisiä ja molemmat formaatit ovat pakkaamattomia. Niitä Minim voi lukea ilman suurempia hankaluuksia, koska niitä ei tarvitse purkaa. Niitä käytetään usein lyhyisiin ääniin, kuten ääniefekteihin. Molemmat formaatit ovat paljon isompia kuin vastaavan pituiset MP3-tiedostot. </span></span></li>
+<li><span id="result_box" class="long_text"><span>MP3-formaatti on pakattu formaatti. Se on usein paljon lyhempi kuin WAV ja AIFF. MP3-toisto vaatii enemmän tietokojenkäsittelytehoja koneelta, koska tiedosto täytyy purkaa, kun se soitetaan. </span></span></li>
+</ol><p> </p>
+<h2><span id="result_box" class="long_text"><span>Kello</span></span></h2>
+<p><span id="result_box" class="long_text"><span>Tässä on yksinkertainen ohjelma, joka näyttää ellipsin tietokoneesi kellon sekunneilla. Käytämme tätä ohjelmaa pohjana luodaksemme kelloäänen, joka soi joka minuutti. Koska minuutin odottelu on pitkä aika, esitämme sekuntien kulumisen ellipsillä, joka kasvaa kuvan keskellä. </span></span></p>
+<p> </p>
+<p><img title="sketch_son_seconds" src="_booki/processing-1/static/sketch_son_seconds-fi.png" alt="sketch_son_seconds" width="183" height="206"></p>
+<pre>void draw() {
+  background(255);
+  ellipse(50,50,second(),second());
+}
+</pre>
+<p><span id="result_box" class="long_text"><span>Tehdäksemme kellomme käytämme yksinkertaisesti järjestelmän kellon sekunteja asettaaksemme ellipsin parametrit (korkeus, leveys). Jos sekuntiarvo on 42, meillä on 42 x 42 kokoinen ellipsi. Jos sekunnit ovat 2, meidän ellipsimme on 2 x 2 pikseliä. </span><span> <br><br></span><span>Voisimme lisätä uuden ehdon, jolla osoitamme minuuttien muutoksen aina kun sekunnit ovat nollassa. Tällöin ruutu on punainen.</span></span></p>
+<p><img src="_booki/processing-1/static/processing_horloge_rouge-fi_1.png" alt=""></p>
+<pre>void draw() {
+
+  if (second() == 0) {
+    background(255,0,0);
+  } else {
+<strong> </strong>background(255);<strong> }</strong>
+
+  ellipse(50,50,second(),second());
+}
+</pre>
+<p><span id="result_box" class="long_text"><span>Ehto if (second () == 0) {} vertailee jälkimmäistä arvoon 0. Jos molemmat vastaavat toisiaan, tausta on punainen, muuten tausta on valkoinen. </span></span></p>
+<h2><span id="result_box" class="long_text"><span>Kellon ääni</span></span></h2>
+<p>Meillä on nyt ohjelmassa ääni, joka toistetaan aina kellon sekuntien ollessa kohdassa 0.</p>
+<p><span id="result_box" class="long_text"><span>Aloittaaksemme piirrämme kellon draw () -metodissa. Kaikki ääneen tarvittavat metodit ovat tässä osassa. <br></span><span> <br></span></span></p>
+<pre>import ddf.minim.*;
+
+Minim minim;
+AudioSnippet ping;
+
+void setup() {
+  minim = new Minim(this);
+  ping = minim.loadSnippet("ping.wav");
+}
+
+void draw() {
+
+  if (second() == 0) {
+
+    if (ping.isPlaying() == false){
+      ping.play();
+    }
+
+    background(255,0,0);
+
+  } else {
+    background(255);
+  }
+
+  ellipse(50,50,second(),second());
+}
+
+void stop() {
+  ping.close();
+  minim.stop();
+  super.stop();
+}
+</pre>
+<p><img src="_booki/processing-1/static/processing_lire_son_1-fi_1.png" alt=""> </p>
+<p>Tämä ohjelma vaatii monta askelta toimiakseen:<span id="result_box" class="long_text"><span> <br><br></span></span></p>
+<ol><li><span id="result_box" class="long_text"><span>   </span><span>Tuodaan Minim ohjelmaan. </span></span></li>
+<li><span id="result_box" class="long_text"><span>   </span><span>Luodaan kaksi muuttujaa, joista toinen sisältää Minim-koneen ja toinen äänidataa. </span></span></li>
+<li><span id="result_box" class="long_text"><span>   </span><span>Käynnistetään kone Minimin alettua. </span></span></li>
+<li><span id="result_box" class="long_text"><span>   </span><span>Kopioidaan data muuttujaan äänitiedostosta. </span></span></li>
+<li><span id="result_box" class="long_text"><span>   </span><span>Ehdollisesti soitetaan ääni ja näytetään punainen ruutu, kun sekunnit ovat nollassa (tarkastetaan ettei ääni ole jo soimassa). </span></span></li>
+<li><span id="result_box" class="long_text"><span>   </span><span>Piirretään ellipsi kellon sekuntien pohjalta. </span></span></li>
+<li><span id="result_box" class="long_text"><span>   </span><span>Lopetetaan ääni ohjelman lopussa. </span></span></li>
+<li><span id="result_box" class="long_text"><span>   </span><span>Lopetataan Minim ohjelman lopussa. </span></span></li>
+</ol><p><span id="result_box" class="long_text"><span> <br></span><span>Olemme jo selittäneet Minim-koneen käynnistämisen ja lopettamisen. Tässä tulee kiinnittää huomio ohjelman osiin 2, 4 ja 5, jotka kuvaavat tuonnin ja toiston. </span><span> <br><br></span><span>Ensin luomme muuttujan tyyppiä AudioSnippet. AudioSnippet -tyyppi on muuttuja, joka on määritelty Minimin koodissa. Muistutamme, että jokaisen muuttujan tapauksessa kaava on tyyppiä (tyyppi)(muuttujan nimi) = (muuttujan arvot). Jos on esimerkiksi mahdollista tuoda Processingiin söpö pieni lintu, riittää kirjoittaa PikkuLintu loadLintu = ("lintu.bird"). Kirjoitamme ensin olion tyypin, sen nimen, ja lopulta sen arvon. Tässä arvo annetaan funktiolle loadSnippet(), joka hakee wave-äänitiedoston arvot ja tuo ne muuttujaan nimeltä "ping". </span><span> <br><br></span><span>Lisätietoa muuttujista ja erilaisista muuttujatyypeistä saat aiheelle omistetusta luvusta. <br><br></span><span>Kun muuttujaan on ladattu ääni, voit vain toistaa sen. AudioSnippetin soittamiseksi kutsutaan komentoa play().  Tässä voidaan myös kysyä onko ääni jo toistettavana, jolloin komento isplaying kertoo meille toistuuko ääni jo (true) vai eikö toistu (false). Jos tämä komento unohdetaan, komento laukaistaan monta kertaa metodin second() ollessa nollassa. </span></span></p>
+<h2><span id="result_box" class="long_text"><span>AudioSnippet, AudioSample, AudioPlayer</span></span></h2>
+<p><span id="result_box" class="long_text"><span>Minimin dokumentaation mukaan Processingissa on monta tapaa soittaa ääniä. Periaatteessa valintasi perustuu äänen rooliin ohjelmassasi. Minimin dokumentaation mukaan AudioSnippetiä käytetään lyhyen äänen soittoon, AudioSamplea nopeaan toistuvan äänen lukemiseen, esimerkiksi rumpukoneen äänen, ja AudioPlayer on käytössä pidempien äänien (usein MP3) tapauksessa. Nämä pidemmät äänet toistetaan suoraan kovalevyltä, jotta vältetään ohjelman sisäisen muistin käyttöä. Tässä on esimerkki, joka käyttää kaikkia kolmea toistotapaa. </span></span></p>
+<p> </p>
+<pre>import ddf.minim.*;
+
+Minim minim;
+AudioSample ping;
+AudioSnippet pop;
+AudioPlayer song;
+
+void setup() {
+  minim = new Minim(this);
+  ping = minim.loadSample("ping.aiff");
+  pop = minim.loadSnippet("pop.aiff");
+  song = minim.loadFile("song.mp3");
+}
+
+void draw() {
+
+}
+
+void keyPressed() {
+  if (key == 'a') ping.trigger();
+  if (key == 'b') {
+    pop.rewind();
+    pop.play();
+  }
+  if (key == 'c') song.play();
+}
+
+void stop() {
+  ping.close();
+  pop.close();
+  song.close();
+  minim.stop();
+  super.stop();
+}</pre>
+<p><span id="result_box" class="long_text"><span>Huomaa, että AudioPlayer ja AudioSample käyttävät molemmat play()-metodia, koska niiden lukema on aina ainutlaatuinen (yksi ääni kerrallaan). AudioSample vaatii monen samanaikaisen äänen lukemista ja käyttää komentoa trigger äänen laukaisemiseen. Englanniksi sana "trigger" tarkoittaa liipaisinta. </span></span></p>
+<h2><span id="result_box" class="long_text"><span>Dokumentaatio</span></span></h2>
+<p><span id="result_box" class="long_text"><span>Minimistä löytyy lisää tietoa sivulta <a href="http://code.compartmental.net/tools/Min/">http://code.compartmental.net/tools</a></span><span><a href="http://code.compartmental.net/tools/Min/">/Min/</a> ja vaikeampaa teknistä dokumentaatiota sivulta <a href="http://code.compartmental.net/minim/javadoc/ddf/minim/package-tree.html.">http://code.compartmental.net/minim/javadoc/ddf/minim/package-tree.html</a>.</span></span></p>
+<p> </p></div><ul Class="menu-goes-here"><li Class="booki-section">Esittely</li><li><a href="/processing-1/index">Johdanto</a></li>
+<li><a href="/processing-1/ch002_esimerkkeja">Esimerkkejä</a></li>
+<li><a href="/processing-1/ch003_asennus">Asennus</a></li>
+<li Class="booki-section">Perusteet</li><li><a href="/processing-1/ch005_perusteet">Perusteet</a></li>
+<li Class="booki-section">Suunnittelu</li><li><a href="/processing-1/ch007_suunnittelutila">Suunnittelutila</a></li>
+<li><a href="/processing-1/ch008_muodot">Muodot</a></li>
+<li><a href="/processing-1/ch009_varit">Värit</a></li>
+<li><a href="/processing-1/ch010_kuvat">Kuvat</a></li>
+<li><a href="/processing-1/ch011_tekstit">Tekstit</a></li>
+<li Class="booki-section">Interaktiivisuus</li><li><a href="/processing-1/ch013_video">Video</a></li>
+<li><a href="/processing-1/ch014_videon-tuominen">Videon tuominen</a></li>
+<li><a href="/processing-1/ch015_mikrofoni">Mikrofoni</a></li>
+<li><a href="/processing-1/ch016_hiiri">Hiiri</a></li>
+<li><a href="/processing-1/ch017_nappaimisto">Näppäimistö</a></li>
+<li><a href="/processing-1/ch018_tulostaminen">Tulostaminen</a></li>
+<li Class="booki-section">Vienti</li><li><a href="/processing-1/ch020_verkkoon-vieminen">Verkkoon vieminen</a></li>
+<li Class="booki-section">Animaatio</li><li><a href="/processing-1/ch022_aanet">Äänet</a></li>
+<li><a href="/processing-1/ch023_draw-metodi">Draw-metodi</a></li>
+<li><a href="/processing-1/ch024_objektien-animointi">Objektien animointi</a></li>
+<li><a href="/processing-1/ch025_monien-objektien-animointi">Monien objektien animointi</a></li>
+<li><a href="/processing-1/ch026_aikajana">Aikajana</a></li>
+<li Class="booki-section">Ohjelmointi</li><li><a href="/processing-1/ch028_kommentit">Kommentit</a></li>
+<li><a href="/processing-1/ch029_objektit">Objektit</a></li>
+<li><a href="/processing-1/ch030_metodit">Metodit</a></li>
+<li><a href="/processing-1/ch031_listat">Listat</a></li>
+<li><a href="/processing-1/ch032_toistaminen">Toistaminen</a></li>
+<li><a href="/processing-1/ch033_ehdot">Ehdot</a></li>
+<li><a href="/processing-1/ch034_muuttujat">Muuttujat</a></li>
+<li><a href="/processing-1/ch035_muutokset">Muutokset</a></li>
+<li><a href="/processing-1/ch036_rajat">Rajat</a></li>
+<li Class="booki-section">Liitteet</li><li><a href="/processing-1/ch038_yleisia-virheita">Yleisiä virheitä</a></li>
+<li><a href="/processing-1/ch039_ulkoiset-kirjastot">Ulkoiset kirjastot</a></li>
+<li><a href="/processing-1/ch040_dokumentaatio">Dokumentaatio</a></li>
+<li><a href="/processing-1/ch041_arduino">Arduino</a></li>
+<li><a href="/processing-1/ch042_tasta-oppaasta">Tästä oppaasta</a></li>
+<li><a href="/processing-1/ch043_tekijat">Tekijät</a></li>
+</ul>

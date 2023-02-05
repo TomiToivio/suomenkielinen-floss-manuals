@@ -1,0 +1,68 @@
+<div id="main-content"><h1>Kätketyn osion luominen</h1>
+<p>Kätketty TrueCrypt-osio sijaitsee tyypillisen TrueCrypt-osion vapaassa tilassa. Jos tämä "ulkoinen osio" on otettu käyttöön, on melkein mahdotonta saada selville, että tämän sisällä on kätketty osio. TrueCrypt täyttää aina salatun osion tilan satunnaisella tiedolla. Niinpä kätketty osio näyttää samalle kuin tyhjä TrueCrypt-osio.</p>
+<p>Luodaksesi ja käyttääksesi kätkettyä osiota tarvitset kaksi salasanaa - yksi ulkoiselle ja yksi sisäiselle osiolle. Kun otat osion käyttöön, voit käyttää jompaa kunpaa salasanaa, jolloin päätetään, kumpi näistä kahdesta otetaan käyttöön. Jos tahdot avata vain kätketyn osion, voit käyttää yhtä salasanaa, ja jos tahdot käyttää vain kätkemätöntä salattua osiota, voit käyttää toista salasanaa.</p>
+<p>Luodaksesi kätketyn osion voit avata TrueCryptin ja painaa "Create Volume"-nappia:</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/truecrypt_ubuntu_createvolume.png" alt="" width="600" height="553"></p>
+<p>Tässä tapauksessa useimmat valinnat ovat melkein samoja kuin luotaessa tavallista TrueCrypt-osiota. Tämän jälkeen prosessi asentaa salatun osion. Käydäänpä kuitenkin prosessi läpi askel askeleelta. Alla näkyvässä ikkunassa voit käyttää oletusarvoa "Create an encrypted file container":</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/truecrypt_ubuntu_wizard1_1.png" alt="" width="600" height="381"></p>
+<p>Paina "Next &gt;" ja jatka seuraavaan ruutuun.</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/TrueCrypt%20Volume%20Creation%20Wizard%20choose%20hidden.png" alt="" width="600" height="381"></p>
+<p>Edellisessä ruudussa tahdot ehkä olla varma, että valitset toisen vaihtoehdon "Hidden TrueCrypt Volume". Valitse tämä ja paina "Next &gt;". Tämän jälkeen voit valita ulomman TrueCrypt-osion sijainnin ja nimen. </p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/truecrypt_ubuntu_wizard3.png" alt="" width="600" height="381"></p>
+<p>Valitse "Select File..." ja mene selaimella uuden TrueCrypt-osion sijaintiin. Käytämme tässä tiedoston nimenä "myencryptedfile". Se on sama nimi kuin edellisessä esimerkissä, joten varmista, että jos olet käyttänyt noita ohjeita, voit nyt luoda uuden osion uudella nimellä.</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/truecrypt_ubuntu_wizard4_namefile.png" alt=""></p>
+<p>Selaa hakemistoon, johon tahdot laittaa ulomman osion, ja kirjoita osion nimi kenttään, jossa lukee "Name". Kun kaikki on oikein, paina "Save". Tiedostoselain sulkeutuu ja palaat asetusvelhoon. Paina "Next &gt;". Tässä näet joitain hyvin teknisiä vaihtoehtoja. Älä välitä niistä. Jätä ne oletusarvoihin ja paina "Next &gt;". Seuraava ruutu pyytää valitsemaan ulomman osion koon. Huomaa, että kun teet tämän, TrueCrypt määrittelee "kätketyn" sisemmän osion koon. Maksimikoko on tietysti pienempi kuin koko, jonka asetat ruudulla. Jos et ole varma ulomman ja sisemmän osion koon suhteesta, voit kokeilla tätä prosessia harjoituskierroksena. Voit aina poistaa salatun osion ja aloittaa alusta (tästä ei tule vahinkoa).  </p>
+<p>Valitsen siis ulomman osion koon. Tässä tapauksessa valitsen 20MB, kuten alla näytetään.</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/truecrypt_ubuntu_wizard6.png" alt="" width="550" height="349"></p>
+<p>Ulomman osion koko ei voi olla suurempi kuin levyllä olevan vapaan tilan määrä. TrueCrypt kertoo suurimman mahdollisimman koon paksuilla kirjaimilla, joten luo sitä pienempi osio. Paina sen jälkeen "Next &gt;" ja ilmestyy ruutu, jossa kysytään ulomman osion salasanaa. Sisemmän osion salasana asetetaan myöhemmin. </p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/truecrypt_ubuntu_wizard7.png" alt="" width="600" height="381"></p>
+<p>Kirjoita vahva salasana (katso hyviä salasanoja käsittelevää lukua) ja paina "Next &gt;". Nyt voit auttaa TrueCryptiä luomaan satunnaista dataa, jolla tila täytetään. Heiluttele siis hiirtäsi ympäriinsä, selaa verkkoa, ja tee mitä tahansa tahdotkin niin kauan kuin jaksat. Kun TrueCryptillä pitäisi olla tarpeeksi tietoa, paina "Format". Näet edistymispalkin liikkuvan ja sen jälkeen seuraava ruutu ilmestyy:</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/TrueCrypt%20Volume%20Creation%20Wizard%20outerdone.png" alt="" width="600" height="381"></p>
+<p>Voit avata ulomman osion tarvittaessa, mutta nyt keskitymme luomaan kätketyn osion. Paina "Next &gt;" ja TrueCrypt ottaa selville kätketyn osion suurimman mahdollisen koon. </p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/TrueCrypt%20Volume%20Creation%20Wizard_hiddenstart.png" alt="" width="600" height="381"> </p>
+<p>Kun näet yllä olevan ruudun, paina vain "Next &gt;". Nyt voit valita salaustavan kätketylle osiolle. Jätä se oletusarvoihinsa ja paina "Next &gt;".</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/TrueCrypt%20Volume%20Creation%20Wizard_hiddenencrypt.png" alt="" width="600" height="381"></p>
+<p>Nyt sinua pyynnetään valitsemaan kätketyn osion koko. </p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/TrueCrypt%20Volume%20Creation%20Wizard_hiddensize.png" alt="" width="600" height="381"> </p>
+<p>Olen asettanut maksimikooksi 10MB. Kun olet asettanut maksimikoon, paina "Next &gt;" ja sinua pyydetään luomaan salasana kätketylle osiolle. </p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/TrueCrypt%20Volume%20Creation%20Wizard_hiddenpass.png" alt="" width="600" height="381"></p>
+<p>Kun luot salatanaa kätketylle osiolle, varmista, että se on tarpeeksi erilainen kuin ulomman osion salasana. Jos joku todella pääsee käsiksi kovalevyysi ja löytää ulomman osion salasanan, he voivat yrittää erilaisia salasanan versiota nähdäkseen, onko olemassa myös salattu osio. Varmista, että kaksi salasanaa eivät ole samanlaisia.</p>
+<p>Kirjoita salasanasi näihin kahteen kenttään ja paina "Next &gt;".</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/TrueCrypt%20Volume%20Creation%20Wizard_hiddenformat.png" alt="" width="600" height="381"></p>
+<p>Jätä tämä ikkuna oletusarvoihinsa ja paina "Next &gt;". Näet saman ikkunan, jonka näit ennen kuin aloit luoda satunnaista tietoa TrueCryptiä varten. Kun olet tyytyväinen, napsauta "Format" ja näet seuraavan:</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/TrueCrypt_hiddenwarning.png" alt=""></p>
+<p>Tässä ei viitata tähän käyttöoppaaseen. Viestissä tarkoitettu käyttöopas on tämä: http://www.truecrypt.org/docs/</p>
+<p>Napsauta "OK" ja poistu TrueCryptistä. Voit nyt ottaa osion käyttöön, kuten edellisessä luvussa on kuvattu.</p></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/internet-tietoturvan-perusteet/index">Johdanto</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch002_why-use-a-manual-on-internet-security">Miksi käyttää internet-tietoturvaopasta?</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch003_understanding-basic-internet-security">Internet-tietoturvan perusteiden ymmärtäminen</a></li>
+<li Class="booki-section">Yleinen turvallisuus</li><li><a href="/internet-tietoturvan-perusteet/ch005_secure-your-computer-general">Turvaa tietokoneesi (yleistä)</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch006_internet-cafes">Internet-kahvilat</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch007_software-on-usb-or-cd">Ohjelmat USB-tikulla tai CD:llä</a></li>
+<li Class="booki-section">Salasanojen turvaaminen</li><li><a href="/internet-tietoturvan-perusteet/ch009_keeping-passwords-safe">Salasanojen turvaaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch010_installing-a-password-manager">Salasanojen hallintaohjelman asentaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch011_encrypting-passwords-with-a-password-manager">Salasanojen salaaminen salasanojen hallintaohjelman avulla</a></li>
+<li Class="booki-section">Henkilökohtaisten tietojen turvaaminen</li><li><a href="/internet-tietoturvan-perusteet/ch013_introduction-to-securing-personal-data">Johdanto henkilökohtaisten tietojen turvaamiseen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch014_installing-truecrypt">TrueCryptin asentaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch015_using-truecrypt">TrueCryptin käyttö</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch016_setting-up-a-hidden-volume">Kätketyn osion luominen</a></li>
+<li Class="booki-section">Turvallinen selaaminen</li><li><a href="/internet-tietoturvan-perusteet/ch018_introduction-to-safe-browsing">Johdanto turvalliseen selaamiseen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch019_accessing-firefox-on-ubuntu">Firefoxin asennus Ubuntuun</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch020_installing-firefox-on-windows">Firefoxin asentaminen Windowsiin</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch021_protecting-your-internet-passwords">Internet-salasanojen suojaaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch022_extending-firefox">Firefoxin laajentaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch023_proxy-setting-and-foxyproxy">Välityspalvelimet ja FoxyProxy</a></li>
+<li Class="booki-section">Sähköpostin tietoturvan perusteet</li><li><a href="/internet-tietoturvan-perusteet/ch025_introduction-to-e-mail-safety">Johdanto sähköpostin tietoturvaan</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch026_start-using-thunderbird-mail">Thunderbird-sähköpostin käyttö</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch027_setting-up-secure-connections">Salattujen yhteyksien luominen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch028_some-additional-security-settings">Lisää turvallisuusasetuksia</a></li>
+<li Class="booki-section">Sähköpostien salaaminen</li><li><a href="/internet-tietoturvan-perusteet/ch030_introduction-to-mail-encryption-pgp">Johdanto sähköpostien salaamiseen (PGP)</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch031_installing-pgp-on-windows">PGP:n asentaminen Windowsiin</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch032_installing-pgp-on-ubuntu">PGP:n asentaminen Ubuntuun</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch033_creating-your-pgp-keys">PGP-avainten luominen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch034_daily-pgp-usage">Päivittäinen PGP:n käyttö</a></li>
+<li Class="booki-section">TOR-opas</li><li><a href="/internet-tietoturvan-perusteet/ch036_using-tor">TOR-opas</a></li>
+<li Class="booki-section">Taustatietoa</li><li><a href="/internet-tietoturvan-perusteet/ch038_how-the-net-works">Kuinka verkko toimii</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch039_glossary">Sanasto</a></li>
+<li Class="booki-section">Tekijät</li><li><a href="/internet-tietoturvan-perusteet/ch041_tekijat">Tekijät</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch042_lisenssi">Lisenssi</a></li>
+</ul>

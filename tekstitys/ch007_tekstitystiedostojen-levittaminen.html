@@ -1,0 +1,55 @@
+<div id="main-content"><h1>Tekstitystiedostojen levittäminen</h1>
+<p>Elokuvan käännös tekstitystiedostojen avulla on melko hyödytöntä, mikäli tiedostoja ei voida jaella. On monta ongelmaa, jotka kohdataan pohdittaessa tekstitetyn videon jakelua. Ensinnäkin tiedostomuotojen erot voivat helposti vaikuttaa tuotetun sisällön käytettävyyteen. Toiseksi jakelumenetelmän valinta voi olla ongelma. Kolmanneksi videotiedoston säilytyspaikka on tärkeä. Viimeiseksi sisällön lisenssi ja uudelleenkäytettävyys ovat merkittäviä asioita. Kaikki nämä asiat riippuvat sekä videolle asetuista tavoitteista että yleisöstä, jotka voivat vaihdella paljon projektista toiseen. Niinpä joitain perusmäärityksiä ja käsitteitä selkeytetään, jotta tarjolla olevia vaihtoehtoja voidaan käsitellä tarkemmin.</p>
+<div id="content">
+<p>Voit päättää polttaa tekstitykset videoon, eli videoeditointiohjelma renderöi tekstityksen pysyvästi tekstitystiedoston ajastuksen osoittamiin oikeisiin aikoihin, jolloin tekstitys jää pysyvästi videokuvan päälle. Tämä merkitsee, että video voidaan jaella vain yhtenä tiedostona, ja käyttäjien ei tarvitse murehtia erillisistä tekstitystiedostoista tai tekstitystiedostojen ottamisesta erikseen käyttöön videosoittimissaan. Kuitenkaan et voi poistaa tekstityksiä tästä videosta, jolloin jokaista käännöstä varten täytyy tuottaa erillinen videotiedosto.</p>
+<p>Toisaalta voit vain tuottaa erilliset tekstitystiedostot jokaiselle kielelle, mikä tekee prosessista joustavamman sinulle ja yleisöllesi. Joudut jakelemaan vain yhden version videostasi, mutta joudut jakamaan tekstityksiä monille eri kielille, yleensä erikseen ladattavina tiedostoina.</p>
+<p>On myös mahdollista tutkia videoiden säilytysmuotoja, jotka sallivat tekstitysten laittamisen multimediasäiliötiedoston sisään, mikä tarjoaa parhaat puolet molemmista yllä mainituista vaihtoehdoista: mahdollisuuden olla kokonaan näyttämättä tekstitystä tai mahdollisuuden valita yhden kaikista tarjoamistasi käännöksistä, kaikki tämä on mahdollista yhden tiedoston puitteissa. Tätä tukevat copyleft-formaatit, joita patentit eivät kuormita. Näihin kuuluvat Ogg ja Matroska Multimedia Container (MKV) -säiliömuodot.</p>
+<p>Kuvaillaanpa nopeasti työkaluja, joita käyttäisit renderöidäksesi tai jaellaksesi tekstitystiedostot, joita tuotat videoosi. Avidemux on avoimen lähdekoodin videoeditori, joka mahdollistaa tekstitysten renderöinnin videon päälle, jolloin tämän videon teksti voidaan jaella pysyvästi videoon liitettynä. Verkkovideon jakelua varten voit yhdistää tietyt avoimen lähdekoodin videosoittimet, kuten Flowplayerin ja .srt-tiedostot, jolloin voit liittää videosi verkkosivulle. Käyttäjät näkevät tekstityksen renderöityvän videon päälle. Uusimpana uutuutena voit kokeilla HTML5-kuvauskielen &lt;video&gt; -tagia Ogg Theoran toistamiseen Firefox-selaimella, jolloin voit hallita .srt-tiedostojen tekstitysten toistoa JavaScriptin avulla.</p>
+<h2>Tekstityksien lisääminen videoon</h2>
+<p>On muutamia tapoja, joilla tekstitykset voidaan liittää videoon:</p>
+<h3>Tekstityksen lisääminen erillisenä tiedostona </h3>
+<p>Tarjoaa enemmän joustavuutta median ja tekstitysten kokonaisuudelle, tekstitysten lisääminen erillisenä tiedostona mahdollistaa tuon tiedoston käsittelyn, muuttamisen ja jopa poistamisen ilman muutoksia videotiedostoon itseensä. Hankaluutena on tekstitysformaatin valinta. Soittimien täytyy hyväksyä formaatti, jotta ne voivat toistaa tekstitykset oikein.</p>
+<h3>Tekstityksien polttaminen videoon itseensä</h3>
+<p>Tekstityksien polttaminen suoraan videoon merkitsee, että erillisiä tekstitystiedostoja ei tarvita. Tämä mahdollistaa kaikkialla toistettavan tekstitetyn videon. Samaan aikaan videota ei kuitenkaan voida toistaa ilman tekstityksiä, ja teksityksiä itseään ei voida muokata tai käsitellä. Ne ovat joka suhteessa muuttuneet osaksi videokuvaa itseään.</p>
+<h3>Useampia kieliä yhdessä videotiedostossa</h3>
+<p>Uusi avoimen lähdekoodin videoteknologia ryhmittää monia erikielisiä tekstityksiä yhteen videosäilöön. On olemassa multimediasäiliöformaatteja, jotka pitävät monta erillistä datavirtaa yhden multimediatiedoston sisällä. Ääni ja video ovat erillisiä virtoja yhdessä elokuvatiedostossa, tämä tekniikka taas sijoittaa erikielisten tekstityksien virrat tiedoston sisälle, mikä mahdollistaa sekä helpomman toistettavuuden että kielten valinnan yhdessä videossa. Ogg ja Matroska -säiliöformaatit tukevat eri tekstitysformaattien lisäämistä video- ja äänivirtojen rinnalle, jolloin ne on liitetty yhdeksi digitaaliseksi tiedostoksi.</p>
+<h2>Tekstitetyn videon jakaminen verkossa</h2>
+<p>Onneksi on olemassa monta avoimen lähdekoodin videopalvelua, joihin ihmiset koko maailmassa voivat levittää videonsa ja perehtyä itselleen tärkeään tietoon. Yksi avoimen lähdekoodin verkkopalvelun käytön eduista on se, että sekä multimediasisältö että ohjelmistoalusta ovat avoimia yhteisöllistä yhteistyötä varten. Kuten useimmissa verkkopalveluissa, jokaisella on oma tyylinsä ja etunsa.</p>
+<ul><li><strong>EngageMedia </strong><a href="http://engagemedia.org%20">http://engagemedia.org </a></li>
+</ul><div id="content">EngageMedia.org on videopalvelu, joka on keskittynyt yhteiskunnalliseen oikeudenmukaisuuteen ja ympäristökysymyksiin Aasian ja Tyynenmeren alueella. He pyrkivät luomaan verkkoyhteisön, joka perustuu avoimeen videoon. Voittoa tuottamaton Engage Media -yhteisö sponsoroi Plumi-ohjelmiston kehitystä - <a href="http://plumi.org/" target="_top">http://plumi.org/</a> - joka on avoimen lähdekoodin videojakelualusta, johon EngageMedia.org perustuu. </div>
+<div> </div>
+<div>EngageMedia on myös tuottanut aktivisteille ja kansalaisjärjestöille oppaan videon jakeluun verkossa - <a href="http://www.engagemedia.org/guide-to-digital-video-distro" target="_top">http://www.engagemedia.org/guide-to-digital-video-distro</a></div>
+<ul><li><strong>Archive.org </strong><a href="http://www.archive.org%20">http://www.archive.org</a></li>
+</ul><div>Internet Archive on yhdysvaltalainen voittoa tuottamaton järjestö, joka pyrkii tarjoamaan julkisen pääsyn historialliseen sisältöön ja mediaan verkkokirjastossaan. Sisältö koostuu tekstistä, äänestä, kuvista, videosta ja ohjelmista. Historian arkistointi merkitsee sitä, että tämä sivusto keskittyy kulttuurin maamerkkeihin, Yhdysvaltojen kansalliseen historiaan ja päivittäiseen elämään. Rekisteröityneet käyttäjät voivat ladata sisältöä, kuten videota, mikäli heillä on tekijänoikeudet siihen.</div>
+<ul><li><strong>V2V.cc </strong><a href="http://v2v.cc%20">http://v2v.cc </a></li>
+</ul>
+V2V.cc on käyttäjien videosisällön jakeluun keskittynyt verkosto, joka keskittyy Creative Commonsin Tarttuva-lisenssiin. Lisenssitekstin mukaan: "Jos teet muutoksia tai käytät teosta oman teoksesi pohjana, tulee syntynyt teos jakaa lisenssillä joka on identtinen alkuperäisen teoksen lisenssin kanssa." <br> <br><ul><li><strong>Miro </strong><a href="http://www.getmiro.com%20">http://www.getmiro.com </a></li>
+</ul>
+Miro on internet-videosovellus. Miro on ilmainen avoimen lähdekoodin ohjelma ja rohkaisee yhteisöä osallistumaan sekä alustan kehitykseen että videosisältöjen luomiseen. Julkaisut Miro laittaa RSS-syötteeseen, joten käyttäjät eri puolilla maailmaa voivat "tilata" kanavasi ja saavat ilmoituksen, kun uutta sisältöä liitetään kanavallesi.<br><h2><strong>BitTorrent</strong> </h2>
+<p>Toinen vaihtoehto videosisällön jakeluun verkossa on BitTorrentin käyttö. Tässä menetelmässä sisältö jaetaan käyttäjältä käyttäjälle. Muut käyttäjät voivat ladata sisällön ja tulla samalla itse jakajiksi. Tällä tavalla suuri määrä sisältöä leviää suurelle määrälle käyttäjiä, kun useammat ja useammat ihmiset lataavat sisällön. Yhä useammat ihmiset jakelevat sisältöä ja latauksesta tulee yhä nopeampaa. Tämä menetelmä on paras tapa levittää sisältöä, joka tarvitsee tehokasta jakelumenetelmää pikemminkin kuin julkisuutta tai visuaalista näkyvyyttä.</p>
+<p>Suomalaista videosisältöä löytyy esimerkiksi Lailliset Torrentit -sivustolta.</p>
+<ul><li><strong>Lailliset Torrentit</strong>: <a href="http://laillisettorrentit.net/">http://laillisettorrentit.net/</a></li>
+</ul><p>Suomenkielinen BitTorrent-jakelusivusto, jonka kaikki sisältö on julkaistu lisenssillä, joka mahdollistaa vapaan jakelun. Bittorrent-tiedostojen lataamiseen tarvitset asiakasohjelman. <a class="external text" href="http://www.utorrent.com/" rel="nofollow">µTorrent</a> toimii Windows-käyttöjärjestelmässä ja useimmissa Linux-jakeluissa on valmiina jokin BitTorrent-asiakasohjelma.</p>
+<p> </p>
+<p> </p>
+</div></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/tekstitys/index">Tekstitys</a></li>
+<li Class="booki-section">Yleiskatsaus</li><li><a href="/tekstitys/ch003_elokuvien-tekstitys">Elokuvien tekstitys</a></li>
+<li><a href="/tekstitys/ch004_tekstitysformaatit">Tekstitysformaatit</a></li>
+<li><a href="/tekstitys/ch005_tekstityksen-hakeminen">Tekstityksen hakeminen</a></li>
+<li><a href="/tekstitys/ch006_videon-tekstittaminen">Videon tekstittäminen</a></li>
+<li><a href="/tekstitys/ch007_tekstitystiedostojen-levittaminen">Tekstitystiedostojen levittäminen</a></li>
+<li Class="booki-section">Tekstitysohjelma Jubler</li><li><a href="/tekstitys/ch009_tekstitysohjelma-jubler">Tekstitysohjelma Jubler</a></li>
+<li><a href="/tekstitys/ch010_jublerin-asetukset">Jublerin asetukset</a></li>
+<li><a href="/tekstitys/ch011_jublerin-aaniraita">Jublerin ääniraita</a></li>
+<li><a href="/tekstitys/ch012_tekstityksen-luominen">Tekstityksen luominen</a></li>
+<li><a href="/tekstitys/ch013_tiedostojen-kaytto">Tiedostojen käyttö</a></li>
+<li Class="booki-section">Tekstityksen näyttäminen</li><li><a href="/tekstitys/ch015_tekstityksen-nayttaminen">Tekstityksen näyttäminen</a></li>
+<li Class="booki-section">Avidemux</li><li><a href="/tekstitys/ch017_avidemuxin-kaytto">Avidemuxin käyttö</a></li>
+<li><a href="/tekstitys/ch018_tekstityksien-polttaminen">Tekstityksen polttaminen</a></li>
+<li Class="booki-section">Tekstitystyökalut</li><li><a href="/tekstitys/ch020_gnome-subtitles">GNOME Subtitles</a></li>
+<li><a href="/tekstitys/ch021_gaupol">Gaupol</a></li>
+<li><a href="/tekstitys/ch022_subtitle-editor">Subtitle Editor</a></li>
+<li Class="booki-section">Jakelu</li><li><a href="/tekstitys/ch024_verkkovideon-kaantaminen">Käännetyn tekstityksen levittäminen verkossa</a></li>
+<li><a href="/tekstitys/ch025_videon-cms-jakelu">Videon CMS-jakelu</a></li>
+<li Class="booki-section">Tekijät</li><li><a href="/tekstitys/ch027_tekijat">Tekijät</a></li>
+</ul>

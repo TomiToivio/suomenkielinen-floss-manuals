@@ -1,0 +1,83 @@
+<div id="main-content"><h1>TrueCryptin asentaminen</h1>
+<p>TrueCrypt voidaan asentaa Windowsiin, Linuxiin ja MacOSX-käyttöjärjestelmään. Asennustiedostot löytyvät täältä: <a href="http://www.truecrypt.org/downloads" target="_blank">http://www.truecrypt.org/downloads</a></p>
+<p>Seuraavassa annetaan täydellinen kuvaus TrueCryptin asentamisesta jokaiselle näistä käyttöjärjestelmistä, alkaen Ubuntusta.</p>
+<h2>Asennus Ubuntuun</h2>
+<p>TrueCryptiä ei ole Ubuntun tavallisissa ohjelmavarastoissa. Tämän vuoksi et voi käyttää sen asentamiseen Ubuntu-ohjelmistovalikoimaa tai komentoa <em>apt-get</em>. Sen sijaan joudut menemään TrueCryptin lataussivulle  (<a href="http://www.truecrypt.org/downloads" target="_blank">http://www.truecrypt.org/downloads</a>).</p>
+<p>Näet pudotusvalikon otsikon <em>Linux</em> alla.</p>
+<p><img style="border-width: 1px; border-style: solid;" src="_booki/internet-tietoturvan-perusteet/static/truecrypt_ubuntu_download.png" alt="" width="463" height="99"></p>
+<p>Pudotusvalikosta "(Select a package)" tipahtavista vaihtoehdoista voit valita neljä:</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/truecrypt_ubuntu_packages.png" alt=""></p>
+<p>Tämä on hieman teknistä - konsoliversio sopii valittavaksi, jos olet hyvin tekninen etkä pidä graafisista käyttöliittymistä tai tahdot tehdä tämän etätyönä koneella, johon pääset vain terminaalilla (komentorivi tai pääte).</p>
+<p>Olettaen, että ajat ohjelmaa läppärillä, on parasta valita "standard"-vaihtoehto - tämän avulla käytössä on kiva käyttöliittymä. Näistä kahdesta vaihtoehdosta sopii valita tietokoneen arkkitehtuuriin sopivin. Etkö tiedä mitä tämä merkitsee? Periaatteessa on olemassa kaksi erilaista prosessoria, jotka voivat olla tietokoneen ytimessä: 32-bittinen ja 64-bittinen. Valitettavasti Ubuntussa ei ole helppoa löytää tätä tietoa, jos et tiedä sitä jo ennestään. Täytyy avata "pääte" kohdasta Applications-&gt;Accessories ja kirjoittaa seuraava komento: </p>
+<pre> uname -a
+</pre>
+<p>Tietokoneen antama on muotoa "Linux bigsy 2.6.32-30-generic #59-Ubuntu SMP Tue Mar 1 21:30:46 UTC 2011 <strong>x86_64</strong> GNU/Linux". Tässä tapauksessa arkkitehtuuri on 64-bittinen ("x86_64"). Tässä esimerkissä voisin valita vaihtoehdon "Standard - 64-bit (x64)". Jos näet "i686" jossain kohdassa uname-komennon ulostuloa, voit valita standardivaihtoehdon ladattavaksi. </p>
+<p>Kun se on valittu, voit painaa "download"-nappia ja tallentaa tiedoston johonkin tietokoneellasi.</p>
+<p>Joten asennusprosessi ei ole ohi. Lataamasi tiedosto on pakattu tiedosto (jotta sen lataaminen on nopeampaa) ja joudut ensin purkamaan tiedoston ennen sen asentamista. Onneksi tämä on helppoa Ubuntussa. Etsi vain tiedosto koneeltasi ja valitse "Extract Here".</p>
+<p><img style="border-width: 1px; border-style: solid;" src="_booki/internet-tietoturvan-perusteet/static/truecryt_ubuntu_xtract.png" alt="" width="368" height="476"></p>
+<p>Näet uuden tiedoston ilmestyvän pakatun tiedoston viereen:</p>
+<p><img style="border-width: 1px; border-style: solid;" src="_booki/internet-tietoturvan-perusteet/static/truecryot_ubuntu_xtracted.png" alt="" width="300" height="99"></p>
+<p>Melkein valmista! Nyt voit napsauttaa oikealla napilla uutta tiedostoa ja valita "Open": <img style="border-width: 1px; border-style: solid;" src="_booki/internet-tietoturvan-perusteet/static/truecrypt_ubuntu_openinstaller.png" alt="" width="435" height="465"></p>
+<p>Jos kaikki sujuu hyvin, ilmestyy uusi ikkuna:</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/truecrypt_ubuntu_run.png" alt=""></p>
+<p>Valitse "Run" ja näet seuraavan:</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/truecryot_ubuntu_installer.png" alt=""></p>
+<p>Nyt pääsemme eteenpäin... Paina "Install TrueCrypt". Näet nyt käyttäjäsopimuksen. Paina alhaalla olevaa nappia "I accept and agree to be bound by the license terms". Tämän jälkeen näet toisen tietoruudun, jossa kerrotaan, että voit asentaa TrueCryptin. Paina "OK", jonka jälkeen kysytään salasanaa ohjelman asentamiseksi tietokoneelle. Kirjoita salasana ja näet tällaisen ruudun: </p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/truecrypt_ubuntu_installed.png" alt=""></p>
+<p>Usko tai älä, mutta olet nyt valmis... TrueCrypt on asennettu ja voit käyttää sitä valikosta Applications-&gt;accessories. Sulje nyt asetusikkuna. Voit nyt käyttää TrueCryptiä.</p>
+<h2>Asennus OSX-käyttöjärjestelmään</h2>
+<p>1. Asentaaksesi TrueCryptin OSX-käyttöjärjestelmään voit ensin mennä lataussivulle (<a href="http://www.truecrypt.org/downloads" target="_blank">http://www.truecrypt.org/downloads</a>) ja painaa latausnappia osassa OSX.</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/Truecrypt_OSX_download1.jpg" alt=""></p>
+<p>2. Lataa tämä tietokoneellesi ja etsi .dmg-tiedosto, jonka voit avata päästäksesi käyttämään asennuspakettia. </p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/Truecrypt_OSX_install2.jpg" alt=""></p>
+<p>3. Avaa asennuspaketti ja napsauttele ruutujen läpi.</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/Truecrypt_OSX_install4.jpg" alt="" width="600" height="426"></p>
+<p>4. Valitse standardiasennus. </p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/Truecrypt_OSX_install5.jpg" alt="" width="600" height="426"></p>
+<p>6. Asennuksen jälkeen näet ohjelman Applications-kansiossasi.</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/Truecrypt_OSX_install7.jpg" alt=""></p>
+<h2>Asennus Windowsiin</h2>
+<p>Asentaaksesi TrueCryptin Windowsiin voit ensin mennä lataussivulle (<a href="http://www.truecrypt.org/downloads" target="_blank">http://www.truecrypt.org/downloads</a>) ja painaa latausnappia osassa <em>Windows</em>.</p>
+<p><img style="border-width: 1px; border-style: solid;" src="_booki/internet-tietoturvan-perusteet/static/truecrypt%20windows%20downloadSelection_008.png" alt="" width="432" height="66"></p>
+<p>Lataa tämä tietokoneellesi ja kaksoisnapsauta tiedostoa. Näet lisenssisopimuksen.</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/TrueCrypt%20windoze%20Setup7.0a_006.png" alt=""></p>
+<p>Napsauta "I accept and agree to be bound by the license terms" ja napsauta sen jälkeen "Accept".</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/TrueCrypt%20windows%20Setup%207.0a_009.png" alt=""></p>
+<p>Poistu edellisestä ruudusta oletusasetuksia muuttamatta ja paina "Next &gt;". Näet nyt Setup Options -ikkunan:</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/TrueCrypt%20windows%20Setup%207.0a_010.png" alt=""></p>
+<p>Voit jättää tähän ruutuun oletusasetukset. Jos tahdot asentaa TrueCryptin vain itsellesi, älä valitse kohtaa 'Install for all users'. Jos asennat tätä omalle koneellesi, jota kukaan muu ei käytä, näin ei tarvitse tehdä. Voit myös harkita TrueCryptin asentamista johonkin muuhun kuin oletusarvoiseen kansioon. Siinä tapauksessa voit napsauttaa "Browse" ja valita toisen sijainnin. Kun olet tehnyt tämä, napsauta "Install" ja asennusprosessi alkaa: </p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/TrueCrypt%20%20windows%20Setup%207.0a_011.png" alt=""></p>
+<p>Kun asennus on valmis, näet ponnahdusikkunan, joka kertoo sen onnistuneen. Sulje ikkuna, paina "Finish" ja kaikki on valmiina. Nyt voit käyttää TrueCryptiä.</p></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/internet-tietoturvan-perusteet/index">Johdanto</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch002_why-use-a-manual-on-internet-security">Miksi käyttää internet-tietoturvaopasta?</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch003_understanding-basic-internet-security">Internet-tietoturvan perusteiden ymmärtäminen</a></li>
+<li Class="booki-section">Yleinen turvallisuus</li><li><a href="/internet-tietoturvan-perusteet/ch005_secure-your-computer-general">Turvaa tietokoneesi (yleistä)</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch006_internet-cafes">Internet-kahvilat</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch007_software-on-usb-or-cd">Ohjelmat USB-tikulla tai CD:llä</a></li>
+<li Class="booki-section">Salasanojen turvaaminen</li><li><a href="/internet-tietoturvan-perusteet/ch009_keeping-passwords-safe">Salasanojen turvaaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch010_installing-a-password-manager">Salasanojen hallintaohjelman asentaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch011_encrypting-passwords-with-a-password-manager">Salasanojen salaaminen salasanojen hallintaohjelman avulla</a></li>
+<li Class="booki-section">Henkilökohtaisten tietojen turvaaminen</li><li><a href="/internet-tietoturvan-perusteet/ch013_introduction-to-securing-personal-data">Johdanto henkilökohtaisten tietojen turvaamiseen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch014_installing-truecrypt">TrueCryptin asentaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch015_using-truecrypt">TrueCryptin käyttö</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch016_setting-up-a-hidden-volume">Kätketyn osion luominen</a></li>
+<li Class="booki-section">Turvallinen selaaminen</li><li><a href="/internet-tietoturvan-perusteet/ch018_introduction-to-safe-browsing">Johdanto turvalliseen selaamiseen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch019_accessing-firefox-on-ubuntu">Firefoxin asennus Ubuntuun</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch020_installing-firefox-on-windows">Firefoxin asentaminen Windowsiin</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch021_protecting-your-internet-passwords">Internet-salasanojen suojaaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch022_extending-firefox">Firefoxin laajentaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch023_proxy-setting-and-foxyproxy">Välityspalvelimet ja FoxyProxy</a></li>
+<li Class="booki-section">Sähköpostin tietoturvan perusteet</li><li><a href="/internet-tietoturvan-perusteet/ch025_introduction-to-e-mail-safety">Johdanto sähköpostin tietoturvaan</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch026_start-using-thunderbird-mail">Thunderbird-sähköpostin käyttö</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch027_setting-up-secure-connections">Salattujen yhteyksien luominen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch028_some-additional-security-settings">Lisää turvallisuusasetuksia</a></li>
+<li Class="booki-section">Sähköpostien salaaminen</li><li><a href="/internet-tietoturvan-perusteet/ch030_introduction-to-mail-encryption-pgp">Johdanto sähköpostien salaamiseen (PGP)</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch031_installing-pgp-on-windows">PGP:n asentaminen Windowsiin</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch032_installing-pgp-on-ubuntu">PGP:n asentaminen Ubuntuun</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch033_creating-your-pgp-keys">PGP-avainten luominen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch034_daily-pgp-usage">Päivittäinen PGP:n käyttö</a></li>
+<li Class="booki-section">TOR-opas</li><li><a href="/internet-tietoturvan-perusteet/ch036_using-tor">TOR-opas</a></li>
+<li Class="booki-section">Taustatietoa</li><li><a href="/internet-tietoturvan-perusteet/ch038_how-the-net-works">Kuinka verkko toimii</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch039_glossary">Sanasto</a></li>
+<li Class="booki-section">Tekijät</li><li><a href="/internet-tietoturvan-perusteet/ch041_tekijat">Tekijät</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch042_lisenssi">Lisenssi</a></li>
+</ul>

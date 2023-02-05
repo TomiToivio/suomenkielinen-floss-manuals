@@ -1,0 +1,180 @@
+<div id="main-content"><h1>Komentojen putkitus</h1>
+<p>Putket antavat ohjelmien toimia yhteistyössä yhdistämällä yhden ohjelman ulostulon toisen ohjelman sisääntuloon. Käsitteellä "ulostulo" on tässä tarkka merkitys: ohjelma kirjoittaa sen standardiulostuloon C-ohjelmointikielen komentojen avulla. Näitä komentoja ovat "printf" ja vastaavat. Normaalisti ulostulo näkyy terminaalin ruudulla. "Sisääntulo" tarkoittaa standardisisääntuloa, joka tulee yleensä näppäimistöltä. Putket rakennetaan käyttämällä pystysuoraa palkkia ("|") putken symbolina.</p>
+<p>Niinpä voit auttaa englanninkielistä Hortense-tätiäsi järjestelemään yksityistä kirjakokoelmaansa. Sinulla on <em>"</em>kirjat"-niminen tiedosto, joka sisältää hänen kirjansa, yksi kirja jokaisella rivillä, muodossa "kirjoittaja:kirja", jotenkin tähän malliin: </p>
+<pre>$ <strong>cat kirjat</strong>
+Carroll, Lewis:Through the Looking-Glass
+Shakespeare, William:Hamlet
+Bartlett, John:Familiar Quotations
+Mill, John Stuart:On Nature
+London, Jack:John Barleycorn
+Bunyan, John:Pilgrim's Progress, The
+Defoe, Daniel:Robinson Crusoe
+Mill, John Stuart:System of Logic, A
+Milton, John:Paradise Lost
+Johnson, Samuel:Lives of the Poets
+Shakespeare, William:Julius Caesar
+Mill, John Stuart:On Liberty
+Bunyan, John:Saved by Grace
+</pre>
+<p>Tämä on melko epäjärjestelmällistä, sillä ne eivät ole missään järkevässä järjestyksessä. Käytetäänpä komentoa "sort" järjestämään ne: </p>
+<pre>$ <strong>sort kirjat</strong>
+Bartlett, John:Familiar Quotations
+Bunyan, John:Pilgrim's Progress, The
+Bunyan, John:Saved by Grace
+Carroll, Lewis:Through the Looking-Glass
+Defoe, Daniel:Robinson Crusoe
+Johnson, Samuel:Lives of the Poets
+London, Jack:John Barleycorn
+Mill, John Stuart:On Liberty
+Mill, John Stuart:On Nature
+Mill, John Stuart:System of Logic, A
+Milton, John:Paradise Lost
+Shakespeare, William:Hamlet
+Shakespeare, William:Julius Caesar
+</pre>
+<p>Nyt tuloksena on siisti kirjoittajan mukaan järjestetty lista. Entäpä pelkästään kirjoittajien nimien listaaminen ilman kirjojen nimiä? Voit tehdä tämän komennolla "cut": </p>
+<pre>$ <strong>cut -d: -f1 kirjat</strong>
+Carroll, Lewis
+Shakespeare, William
+Bartlett, John
+Mill, John Stuart
+London, Jack
+Bunyan, John
+Defoe, Daniel
+Mill, John Stuart
+Milton, John
+Johnson, Samuel
+Shakespeare, William
+Mill, John Stuart
+Bunyan, John
+</pre>
+<p>Pieni selvitys tarvitaan. Valitsin <code>"-d</code>" valitsi kaksoispisteen erottimeksi. Tämä käskee komennon "<code>cut</code>" leikata jokainen rivi erottimen ilmestyessä. Jokaista rivin erillistä osaa kutsutaan kentäksi. Meidän formaatissamme kirjoittajan nimi näkyy ensimmäisenä kenttänä, joten meidän täytyy laittaa "1 -f" valitsimeen kertoaksemme komennolle<code></code> "<code>cut"</code> mitä tahdomme nähdä tässä kentässä.</p>
+<p>Mutta näet, että lista on taas järjestämättä. Putket apuun!</p>
+<pre>$ <strong>sort kirjat | cut -d: -f1</strong>
+Bartlett, John
+Bunyan, John
+Bunyan, John
+Carroll, Lewis
+Defoe, Daniel
+Johnson, Samuel
+London, Jack
+Mill, John Stuart
+Mill, John Stuart
+Mill, John Stuart
+Milton, John
+Shakespeare, William
+Shakespeare, William
+</pre>
+<p>Hyvä! Olet ottanut aakkosjärjestyksessä kirjoitetun listan, joka on komennon "sort" ulostulo, ja syöttänyt sen sisääntulona komennolle "cut". Älä anna komennolle "cut" tiedostonimeä käytettäväksi, sillä tahdot sen käsittelevän tekstiä, joka on putkitettu ulos "sort"-komennosta. </p>
+<p>Putket ovat niin yksinkertaisia - teksti virtaa putkea pitkin komennosta toiseen.</p>
+<p>Entäpä jos tahtoisitkin järjestetyn listan kirjojen nimistä? Koska kirjojen nimet ovat toisessa kentässä, kokeillaan käyttää valitsinta <code>"-f2"</code> "<code>cut</code>" -komennossa valitsimen "<code>-f1"</code> sijasta:</p>
+<pre>$ <strong>sort kirjat | cut -d: -f2</strong>
+Familiar Quotations
+Pilgrim's Progress, The
+Saved by Grace
+Through the Looking-Glass
+Robinson Crusoe
+Lives of the Poets
+John Barleycorn
+On Liberty
+On Nature
+System of Logic, A
+Paradise Lost
+Hamlet
+Julius Caesar
+</pre>
+<p>Hups. Mitä tapahtui? Kun katsot putkea, sinun pitää katsoa vasemmalta oikealle. Tässä tapauksessa järjestimme ensimmäisen tiedoston ennen kirjojen nimien uuttamista. Niinpä se järjesti rivit velvollisuudentuntoisesti ensimmäisellä rivillä olevien kirjailijoiden nimien mukaan. Saadaksesi <em>kirjojen nimet</em> oikeaan järjestykseen, joudut järjestämään ne vasta niiden uuttamisen <em>jälkeen</em>:</p>
+<pre>$ <strong>cut -d: -f2 kirjat | sort</strong>
+Familiar Quotations
+Hamlet
+John Barleycorn
+Julius Caesar
+Lives of the Poets
+On Liberty
+On Nature
+Paradise Lost
+Pilgrim's Progress, The
+Robinson Crusoe
+Saved by Grace
+System of Logic, A
+Through the Looking-Glass
+</pre>
+<p>Paljon parempi. Tämä kaikki on hienoa, mutta ehkä olisit voinut tehdä nämä asiat taulukkolaskentaohjelmalla. Yksinkertaisempien tehtävien suhteen tämä on luultavasti totta. Mutta oleta, että täti Hortensen tapana on kysyä outoja kysymyksiä kokoelmastaan. Hän tahtoo esimerkiksi tietää, kuinka monta kirjaa hänellä on John-nimisiltä kirjailijoilta. Taulukkolaskentaohjelmalla tai muulla graafisella ohjelmalla voi olla vaikeuksia käsitellä kysymyksiä, joita ohjelman tekijät eivät odottaneet. Komentotulkki tarjoaa kuitenkin monia yksinkertaisia komentoja, jotka voidaan yhdistää ennennäkemättömillä tavoilla monimutkaisten tehtävien toteuttamiseksi.</p>
+<p>Löytääksesi tietyn merkkijonon tekstiriviltä voit käyttää "grep"-komentoa. Huomaa, että yhdistäessäsi komentoja niiden täytyy olla oikeassa järjestyksessä. Et voi käyttää komentoa "grep" tiedostoon ensin, sillä se sopii otsikkoon <code></code><code></code>"John Barleycorn" John-nimisten kirjoittajien lisäksi. Joten lisää se putken loppuun:</p>
+<pre>$ <strong>cut -d: -f1 kirjat | sort | grep "John"</strong>
+Bartlett, John
+Bunyan, John
+Bunyan, John
+Johnson, Samuel
+Mill, John Stuart
+Mill, John Stuart
+Mill, John Stuart
+Milton, John
+</pre>
+<p>Tämä vie meidät lähemmäs, mutta nyt et tahdo saada nimeä "Samuel Johnson" listalle ja suututtaa Hortense-tätiä. Usein työskennelläsi "grep"-komennolla joudut tarkentamaan sopivaa tekstiä täsmälleen siihen, mitä tarvitset. Komento grep tarjoaa "-w" -valitsimen, joka antaa sen sovittaa "John" ainoastaan kun "John" on kokonainen sana, ei sen ollessa osa sanaa "Johnson". Mutta ratkaisemme tämän ongelman lisäämällä pilkun ja välilyönnin sovitettavan merkkijonon eteen, jolloin se sopii ainoastaan Johnin ollessa etunimi: </p>
+<pre>$ <strong>cut -d: -f1 kirjat | sort | grep ", John"</strong>
+Bartlett, John
+Bunyan, John
+Bunyan, John
+Mill, John Stuart
+Mill, John Stuart
+Mill, John Stuart
+Milton, John
+</pre>
+<p>Tämä on parempi. Nyt joudut vain laskemaan yhteen kirjojen määrän jokaiselta kirjoittajalta. Pieni komento, jota kutsutaan nimellä <code>"uniq</code>" toimii hyvin. Se poistaa samanlaiset rivit (niiden täytyy olla toisiaan seuraavia rivejä, joten varmista, että tekstisi on järjestetty ensin) ja valitsimen "-c" kanssa se tarjoaa myös laskee samanlaiset rivit:</p>
+<pre>$ <strong>cut -d: -f1 kirjat | sort | grep ", John" | uniq -c</strong>
+      1 Bartlett, John
+      2 Bunyan, John
+      3 Mill, John Stuart
+      1 Milton, John
+</pre>
+<p>Siinäpä se! Hyvin järjestetty lista Johneja ja heidän kirjojaan. Esimerkkimme on yksinkertainen homma ja voisit tehdä sen kynällä ja paperilla. Mutta tämä sama putki voisi käsitellä paljon suurempia tietomääriä - se ei välittäisi, vaikka täti Hortensella olisi satojatuhansia kirjoja navetassaan.</p>
+<p>Järjestelmänvalvojat käyttävät tämän kaltaisia putkia usein käsitelläkseen verkko- ja sähköpostipalvelinten lokitiedostoja. Sellaiset tiedostot voivat venyä kymmeniin tai satoihin megatavuihin ja komentoputki voi olla nopea tapa luoda tilastoja ilman koko lokin lukemista.</p>
+<p>Hyvä puoli putkien rakentamisessa on, että voit tehdä sen komento kerrallaan, nähden täsmälleen jokaisen vaikutuksen ulostuloon. Tämä voi auttaa sinua havaitsemaan koska tarvitset valitsinten muuttamista tai komentojen järjestyksen vaihtamista. Esimerkiksi laittaaksesi kirjoittajat järjestykseen kirjojen lukumäärän mukaan voit vain lisätä komennon <code>"sort -nr"</code> edelliseen putkeen:</p>
+<pre>$<strong> cut -d: -f1 kirjat | sort | grep ", John" | uniq -c | sort -nr</strong>
+      3 Mill, John Stuart
+      2 Bunyan, John
+      1 Milton, John
+      1 Bartlett, John
+</pre>
+<p>Kokeile!</p></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/komentorivin-perusteet/index">Ota komento</a></li>
+<li Class="booki-section">Perusteet</li><li><a href="/komentorivin-perusteet/ch003_aloittaminen">Käytön aloittaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch004_syntaksi">Syntaksi</a></li>
+<li><a href="/komentorivin-perusteet/ch005_ympariinsa-siirtyminen">Ympäriinsä siirtyminen</a></li>
+<li><a href="/komentorivin-perusteet/ch006_tiedostorakenne">Tiedostorakenne</a></li>
+<li Class="booki-section">Komennot</li><li><a href="/komentorivin-perusteet/ch008_peruskomennot">Peruskomennot</a></li>
+<li><a href="/komentorivin-perusteet/ch009_jarjestelmanvalvojat">Järjestelmänvalvoja</a></li>
+<li><a href="/komentorivin-perusteet/ch010_useammat-tiedostot">Useammat tiedostot</a></li>
+<li><a href="/komentorivin-perusteet/ch011_kirjoita-vahemman">Kirjoita vähemmän</a></li>
+<li Class="booki-section">Keskivaikeita komentoja</li><li><a href="/komentorivin-perusteet/ch013_putkitus">Putkitus</a></li>
+<li><a href="/komentorivin-perusteet/ch014_komentohistoria">Komentohistoria</a></li>
+<li><a href="/komentorivin-perusteet/ch015_standarditiedostot">Standarditiedostot</a></li>
+<li Class="booki-section">Kehittyneempiä komentoja</li><li><a href="/komentorivin-perusteet/ch017_kayttooikeudet">Käyttöoikeudet</a></li>
+<li><a href="/komentorivin-perusteet/ch018_interaktiivinen-muokkaus">Interaktiivinen muokkaus</a></li>
+<li><a href="/komentorivin-perusteet/ch019_poistumisen-tarkastaminen">Poistumisen tarkastaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch020_alikomennot">Alikomennot</a></li>
+<li><a href="/komentorivin-perusteet/ch021_hakemistot">Hakemistot</a></li>
+<li><a href="/komentorivin-perusteet/ch022_kustomisointi">Kustomisointi</a></li>
+<li><a href="/komentorivin-perusteet/ch023_parametrien-korvaaminen">Parametrien korvaaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch024_gnuscreen">GNUScreen</a></li>
+<li><a href="/komentorivin-perusteet/ch025_ssh">SSH</a></li>
+<li><a href="/komentorivin-perusteet/ch026_ohjelmien-asentaminen">Ohjelmien asentaminen</a></li>
+<li Class="booki-section">Tekstieditorit</li><li><a href="/komentorivin-perusteet/ch028_tekstieditorit">Tekstieditorit</a></li>
+<li><a href="/komentorivin-perusteet/ch029_nano">Nano</a></li>
+<li><a href="/komentorivin-perusteet/ch030_vi-ja-vim">Vi ja Vim</a></li>
+<li><a href="/komentorivin-perusteet/ch031_emacs">Emacs</a></li>
+<li><a href="/komentorivin-perusteet/ch032_kedit">Kedit</a></li>
+<li><a href="/komentorivin-perusteet/ch033_gedit">Gedit</a></li>
+<li Class="booki-section">Skriptaus</li><li><a href="/komentorivin-perusteet/ch035_skriptaus">Skriptaus</a></li>
+<li><a href="/komentorivin-perusteet/ch036_skriptien-huoltaminen">Skriptien huoltaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch037_muut-kielet">Muut kielet</a></li>
+<li><a href="/komentorivin-perusteet/ch038_sed">Sed</a></li>
+<li><a href="/komentorivin-perusteet/ch039_awk">AWK</a></li>
+<li><a href="/komentorivin-perusteet/ch040_saannolliset-lausekkeet">Säännölliset lausekkeet</a></li>
+<li><a href="/komentorivin-perusteet/ch041_perl">Perl</a></li>
+<li><a href="/komentorivin-perusteet/ch042_ruby">Ruby</a></li>
+<li><a href="/komentorivin-perusteet/ch043_python">Python</a></li>
+<li Class="booki-section">Komennot nopeasti</li><li><a href="/komentorivin-perusteet/ch045_komentojen-pikaopas">Komentojen pikaopas</a></li>
+<li Class="booki-section">Liitteet</li><li><a href="/komentorivin-perusteet/ch047_tasta-kayttooppaasta">Tästä käyttöoppaasta</a></li>
+<li><a href="/komentorivin-perusteet/ch048_tekijat">Tekijät</a></li>
+</ul>

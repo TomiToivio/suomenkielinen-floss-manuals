@@ -1,0 +1,88 @@
+<div id="main-content"><h1>Esikatselun käyttö</h1>
+<p>Jos tahdot leikkiä Ogg-tiedostoillasi, sinun ei tarvitse avata kokonaista editointiohjelmaa. Joukko hyödyllisiä ohjelmia on olemassa yksinkertaisten asioiden tekemiseen Ogg-tiedostojen kanssa komentoriviltä. <strong>Ogg Video Tools</strong> on työkalulaatikko Theora-videotiedostoja varten, se sisältää joukon käteviä komentorivin työkaluja Theora-tiedostojen manipulointia varten. Käytä niitä leikkaamiseen ja liittämiseen tai esikatselukuvien tekemiseen, ilman että täytyy keskittyä monimutkaiseen editointiprosessiin.</p>
+<h2>Ogg Video Toolsin asentaminen</h2>
+<p>Useimmat GNU/Linux -distrot tarjoavat Ogg Video Toolsin ohjelmavarastoissaan (esim. Fedora, openSuSE). Jos työkaluja ei ole saatavilla suosikkidistroosi, tai jos tahdot päivittää se uusimpaan versioon, jatka kohtaan asentaminen lähdekoodista alempana. Tämä pätee myös BSD ja Mac OS -käyttäjille.</p>
+<p>Windowsin käyttäjät voivat ladata ZIP-tiedoston, joka sisältää ajettavat komentorivin työkalut, osoitteesta: <a title="Get Ogg Video Tools for Windows" href="http://sourceforge.net/projects/oggvideotools/files/">http://sourceforge.net/projects/oggvideotools/files/</a>.</p>
+<h3>Lähdekoodista asentaminen </h3>
+<p>Käy sivulla <a href="http://sourceforge.net/projects/oggvideotools%20" target="_blank">http://sourceforge.net/projects/oggvideotools</a> ja klkkaa <em>Download Now</em> saadaksesi kopion lähdekoodista.</p>
+<p>Ennen kuin jatkat asentamista, katso että kaikki vaadittavat kehityspaketit on asennettu. Ogg Video Tools riippuu seuraavista muista paketeista:</p>
+<ul><li>theora ja theora-dev</li>
+<li>vorbis ja vorbis-dev</li>
+<li>ogg ja ogg-dev</li>
+<li>GD-lib ja sen kehitysosat</li>
+<li>SDL ja SDL-dev (jos tahdot kompiloida oggScrollin)</li>
+</ul><p>Ogg Video Tools kompiloituu onnistuneesti vaikka nämä kaikki kirjastot puuttuisivat, mutta silloin vain osa editointityökaluista kompiloidaan. Muut työkalut eivät toimi asennuksen jälkeen.</p>
+<p>Kun olet varmistanut vaadittavien pakettien läsnäolon, avaa terminaali ja kirjoita seuraava komento (ilman alun dollarimerkkiä):</p>
+<pre>$ tar xzvf oggvideotools*.tar.gz
+$ cd oggvideotools*
+$ ./configure
+$ make
+$ su
+&lt;type root password&gt;
+$ make install
+</pre>
+<p>Jossa <em>./configure</em> -komennon kolmannella rivillä pitäisi antaa tämän tapainen ulostulo:</p>
+<pre>[ ... ]
+checking for bzero... yes
+checking for memset... yes
+configure: creating ./config.status
+
+Creating the following tools:
+
+oggJoin
+oggSplit
+oggCut
+oggCat
+oggDump
+
+oggSlideshow
+oggThumb
+oggResize
+oggSilence
+
+oggScroll
+</pre></div><ul Class="menu-goes-here"><li Class="booki-section">JOHDANTO</li><li><a href="/ogg-theora/index">OGG THEORA</a></li>
+<li><a href="/ogg-theora/ch002_tasta-kayttooppaasta">TÄSTÄ KÄYTTÖOPPAASTA</a></li>
+<li><a href="/ogg-theora/ch003_mita-video-on">MITÄ VIDEO ON?</a></li>
+<li><a href="/ogg-theora/ch004_mita-theora-on">MITÄ THEORA ON?</a></li>
+<li Class="booki-section">PERUSKÄSITTEET</li><li><a href="/ogg-theora/ch006_mika-on-koodekki">MIKÄ ON KOODEKKI?</a></li>
+<li><a href="/ogg-theora/ch007_sailot">SÄILÖT</a></li>
+<li Class="booki-section">TOISTO</li><li><a href="/ogg-theora/ch009_theoran-toistaminen">THEORAN TOISTAMINEN</a></li>
+<li><a href="/ogg-theora/ch010_toisto-vlclla">TOISTO VLC:LLÄ</a></li>
+<li><a href="/ogg-theora/ch011_miro">MIRO</a></li>
+<li Class="booki-section">THEORA VERKOSSA</li><li><a href="/ogg-theora/ch013_theora-verkossa">THEORA VERKOSSA</a></li>
+<li><a href="/ogg-theora/ch014_html5">HTML5</a></li>
+<li><a href="/ogg-theora/ch015_theora-sivuillasi">THEORA SIVUILLASI</a></li>
+<li><a href="/ogg-theora/ch016_hotelleja-theoralle">HOTELLEJA THEORALLE</a></li>
+<li Class="booki-section">ENKOODAUS</li><li><a href="/ogg-theora/ch018_johdanto-enkoodaukseen">JOHDANTO ENKOODAUKSEEN</a></li>
+<li><a href="/ogg-theora/ch019_firefogg">FIREFOGG</a></li>
+<li><a href="/ogg-theora/ch020_enkoodaus-vlclla">ENKOODAUS VLC:LLÄ</a></li>
+<li><a href="/ogg-theora/ch021_enkoodaus-ffmpeg2theoralla">ENKOODAUS FFMPEG2THEORALLA </a></li>
+<li><a href="/ogg-theora/ch022_thoggen">THOGGEN</a></li>
+<li Class="booki-section">TEKSTITYKSET</li><li><a href="/ogg-theora/ch024_tekstityksien-perusteet">TEKSTITYKSIEN PERUSTEET</a></li>
+<li><a href="/ogg-theora/ch025_jakelu">JAKELU</a></li>
+<li><a href="/ogg-theora/ch026_tekstityksien-liittaminen">TEKSTITYKSIEN LIITTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch027_tekstityksien-toistaminen">TEKSTITYKSIEN TOISTAMINEN</a></li>
+<li><a href="/ogg-theora/ch028_julkaiseminen">JULKAISEMINEN</a></li>
+<li Class="booki-section">SUORATOISTO</li><li><a href="/ogg-theora/ch030_suoratoiston-perusteet">SUORATOISTON PERUSTEET</a></li>
+<li><a href="/ogg-theora/ch031_icecast">ICECAST</a></li>
+<li><a href="/ogg-theora/ch032_tss">TSS</a></li>
+<li><a href="/ogg-theora/ch033_ffmpeg2theora-streamaus">FFMPEG2THEORA-STREAMAUS</a></li>
+<li><a href="/ogg-theora/ch034_suoratoisto-vlc-ohjelmalla">VLC-STREAMAUS</a></li>
+<li><a href="/ogg-theora/ch035_virtaustoiston-tallentaminen">VIRTAUSTOISTON TALLENTAMINEN</a></li>
+<li Class="booki-section">EDITOINTI</li><li><a href="/ogg-theora/ch037_johdanto-editointiin">JOHDANTO EDITOITIIN</a></li>
+<li><a href="/ogg-theora/ch038_pitivi">PITIVI</a></li>
+<li Class="booki-section">ESIKATSELU</li><li><a href="/ogg-theora/ch040_kuinka-esikatselua-kaytetaan">ESIKATSELUN KÄYTTÖ</a></li>
+<li><a href="/ogg-theora/ch041_tee-esikatselukuvia">TEE ESIKATSELUKUVIA</a></li>
+<li><a href="/ogg-theora/ch042_tee-diaesitys">TEE DIAESITYS</a></li>
+<li><a href="/ogg-theora/ch043_tee-esikatseluvideo">TEE ESIKATSELUVIDEO</a></li>
+<li Class="booki-section">EDITOINTI KOMENTORIVILTÄ</li><li><a href="/ogg-theora/ch045_komentorivi">THEORA JA KOMENTORIVI</a></li>
+<li><a href="/ogg-theora/ch046_theoran-teoria">THEORAN TEORIA</a></li>
+<li><a href="/ogg-theora/ch047_tiedoston-jakaminen">TIEDOSTON JAKAMINEN</a></li>
+<li><a href="/ogg-theora/ch048_tiedoston-leikkaaminen">TIEDOSTON LEIKKAAMINEN</a></li>
+<li><a href="/ogg-theora/ch049_tiedostojen-liittaminen">TIEDOSTOJEN LIITTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch050_tiedostojen-yhdistaminen">TIEDOSTOJEN YHDISTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch051_koon-muuttaminen">KOON MUUTTAMINEN</a></li>
+<li><a href="/ogg-theora/ch052_oggin-analysoiminen">OGGIN ANALYSOIMINEN</a></li>
+<li Class="booki-section">TEKIJÄT</li><li><a href="/ogg-theora/ch054_tekijat">TEKIJÄT</a></li>
+</ul>

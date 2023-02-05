@@ -1,0 +1,81 @@
+<div id="main-content"><h1>Käännetyn tekstityksen julkaiseminen</h1>
+<div id="content">
+<p>Tutkailemme joitain esimerkkejä käsityönä toimivista videon jakelutekniikoista. Tässä tarkoitamme menetelmiä, joissa teemme kaikki tarpeelliset toimenpiteet käsin. Päämääränä on laittaa videomme verkkopalvelimelle ja julkaista tekstitykset, mikäli ne ovat erillisiä.</p>
+<h2>Videoon poltetun tekstityksen julkaiseminen</h2>
+<p>Oletamme, että olet polttanut tekstitykset videoon itseensä. Tämän lisäksi tarvitset FTP-tilin verkkopalvelimella, johon aiot ladata videot. Aiomme julkaista videomme verkossa, jotta kuka tahansa voi ladata sen, ja luoda selaimella toimivan HTML-pohjaisen esikatselun. Tämän lisäksi tarjoamme  linkin videon lataamiseen. Tämän kaiken tekeminen vaatii muutaman askeleen.</p>
+<strong>1. Muunna videosi Ogg Theora -videokoodekkiin.</strong><a title="http://fi.flossmanuals.net/ogg-theora/ch014_html5" href="http://fi.flossmanuals.net/bin/view/VideoTranslation/%20http://fi.flossmanuals.net/FFmpeg2Theora/Introduction"> <br></a><a title="http://fi.flossmanuals.net/ogg-theora/ch014_html5" href="http://fi.flossmanuals.net/ffmpeg2theora/">http://fi.flossmanuals.net/ffmpeg2theora/</a><br><p>ffmpeg2theora on muunnosohjelma, jolla monia videokoodekkeja muutetaan Ogg Theoraan.</p>
+<p>Theora-keittokirja voi myös antaa sinulle ideoita ja vinkkejä Theoran kanssa työskentelemisestä: <br><a title="http://fi.flossmanuals.net/ogg-theora/ch014_html5" href="http://fi.flossmanuals.net/ogg-theora/">http://fi.flossmanuals.net/ogg-theora/</a></p>
+<strong>Videon siirtäminen File Transfer Protocol (FTP) -tiedostonsiirtoprotokollalla. </strong><br><p align="left">Tämän askeleen lopputuloksen pitäisi olla URL, jolla voit viitata julkisesti saatavilla olevaan videoosi, joka on verkkopalvelimellasi. Voit antaa tämän URLin ihmisille, jotta he voivat ladata videosi.<strong></strong></p>
+<p align="left"><strong>Luo yksinkertainne HTML-verkkosivu videosi katseluun.</strong></p>
+<p align="left">Mahdollistaaksesi Theora-videon esikatselun verkossa voit käyttää ainakin kahta menetelmää. Yksi on Cortado, Java-sovelma, joka antaa verkkoselaimien katsella videota verkkosivulla. Katso lisää tästä menetelmästä Theoran keittokirjasta:</p>
+<p align="left"><a title="http://fi.flossmanuals.net/ogg-theora/ch014_html5" href="http://fi.flossmanuals.net/ogg-theora/ch014_html5">http://fi.flossmanuals.net/ogg-theora/ch014_html5</a></p>
+<p>Toinen tapa on käyttää uusimman HTML5-standardin &lt;video&gt; -tagiä, jota Firefox ja Safari (Xiph Qt-komponenteilla) tukee: <br><a title="http://fi.flossmanuals.net/ogg-theora/ch014_html5" href="http://www.xiph.org/quicktime">http://www.xiph.org/quicktime/ </a></p>
+<p>Voit nähdä Ogg Theora -kirjassa tarpeellisen HTML5-koodin, jonka joudut laittamaan palvelimellesi:<br><a title="http://fi.flossmanuals.net/ogg-theora/ch014_html5" href="http://fi.flossmanuals.net/ogg-theora/ch014_html5">http://fi.flossmanuals.net/ogg-theora/ch014_html5</a><br><br>Yksinkertainen HTML-dokumentti näkyy alla. Se esittelee &lt;video&gt; -tägin. Sinun tulisi käyttää URLissa, jonka sait kohdassa 2, esimerkin URLin <em>http://my-server.org/video.ogm</em> tilalla.</p>
+<pre>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"&gt;&lt;head&gt;&lt;title&gt;My Video Test&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;video src="http://my-server.org/video.ogm" width="480" height="320" autoplay="autoplay" controls="controls"&gt;
+Sorry, your browser does not support the video tag. Try using Firefox 3.5+
+&lt;/video&gt;&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p>Voit nähdä toimivan esimerkin täällä: <br><a title="http://fi.flossmanuals.net/ogg-theora/ch014_html5" href="http://andycat.engagemedia.org/videotranslation/example1.html">http://andycat.engagemedia.org/videotranslation/example1.html </a></p>
+<p>Sinun tulisi tutkia tuon verkkosivun HTML-lähdekoodia nähdäksesi viitteen todelliseen Theora-videoon, joka on tässä tapauksessa linkki EngageMedia.orgin palvelimella olevaan videoon.</p>
+<h2>Ulkoisen tekstitystiedoston laittaminen verkkoon videon kanssa</h2>
+<p>Oletamme, että et ole polttanut tekstityksiäsi videoon itseensä, eli sinulla on kenties useampia tekstitystiedostoja (SRT-muodossa) ja video. Lisäksi sinulla on FTP-tili palvelimella, jossa voit pitää verkkosivuja ja tiedostoja. Aiomme julkaista tekstitetyn videon verkossa ja antaa kenen tahansa ladata sen, sekä näyttää heille HTML-esikatselusivun verkkoselaimessam sekä linkin videon lataamiseen. Tämä vaatii muutamia askelia.</p>
+<ol><ol><li><strong>Muunna videosi Ogg Theora -videokoodekkiin.</strong></li>
+</ol></ol><br><ol><ol>Sinun tulisi aloittaa viemällä videosi Ogg Theoraan, mitä tahansa videoeditoria käytätkin. Jos sinulla on jo viety videotiedosto, mutta se ei ole Ogg Theora -muodossa, tahdot ehkä katsoa ffmpeg2theora-käyttöopasta FLOSS Manualsissa:</ol></ol><a title="http://fi.flossmanuals.net/ogg-theora/ch014_html5" href="http://fi.flossmanuals.net/FFmpeg2Theora/Introduction">http://fi.flossmanuals.net/FFmpeg2Theora/Introduction </a>
+<p>ffmpeg2theora on muunnosohjelma, jolla voit transkoodata eri videokoodekkeja Ogg Theoraan.</p>
+<p>Theoran keittokirjassa on myös joitain ideoita ja vinkkejä, joista voit hyötyä Theora-videon parissa työskennellessäsi: <a title="http://fi.flossmanuals.net/ogg-theora/ch014_html5" href="http://fi.flossmanuals.net/TheoraCookbook/Introduction%20%20">http://fi.flossmanuals.net/TheoraCookbook/Introduction </a></p>
+<ol><ol><li><strong>Videon siirtäminen palvelimellesi File Transfer Protocol (FTP) -tiedostonsiirtoprotokollan avulla. </strong></li>
+Oletetaan, että sinulla on käyttäjänimi ja salasana, ja voit siirtää videotiedostosi ja tekstitystiedostosi verkkopalvelimelle. Jos tarvitset apua FTP-asiakasohjelman asentamisessa ja käytössä, katso FireFox-käyttöopasta FLOSS Manualsissa, varsinkin kohtaa, jossa käsitellään FireFTP-lisäosan käyttöä:</ol></ol><a title="http://fi.flossmanuals.net/ogg-theora/ch014_html5" href="http://fi.flossmanuals.net/bin/view/VideoTranslation/%20http://fi.flossmanuals.net/Firefox/FireFtp%20"> <br></a><a title="http://fi.flossmanuals.net/ogg-theora/ch014_html5" href="http://fi.flossmanuals.net/bin/view/VideoTranslation/%20http://fi.flossmanuals.net/Firefox/FireFtp%20">http://fi.flossmanuals.net/Firefox/FireFtp </a>
+<p align="left">Tämän askeleen lopputuloksena pitäisi olla URLeja, joilla voit viitata julkisesti saatavilla oleviin video- ja tekstitystiedostoihisi, jotka ovat verkkopalvelimellasi. Voit antaa nämä URLit ihmisille, jotta he voivat ladata videosi ja tekstitystiedostosi.</p>
+<ol><ol><li><strong>Yksinkertaisen HTML-verkkosivun tekeminen videon esikatselua varten.</strong></li>
+</ol></ol><p><br>Theora-videon esikatselun mahdollistamiseksi on kaksi tapaa. Yksi on käyttää Cortadoa, mutta Cortado ei valitettavasti näytä vielä tekstityksiä. <br><br>Toinen tapa on käyttää viimeisimmän HTML5-standardin &lt;video&gt; -tägiä, jota tukee Theoralle Firefox 3.5 ja Safari 4 (Xiph QT -komponenteilla): <br><a title="http://fi.flossmanuals.net/ogg-theora/ch014_html5" href="http://www.xiph.org/quicktime/">http://www.xiph.org/quicktime/</a> ja prototyypiasteella olevat JavaScript-teknologiat tekstien näyttämiseksi synkronisoituna videon kanssa. <br><br>Esikatselua varten tarvittava HTML-koodi löytyy Theoran keittokirjasta: <br><a title="http://fi.flossmanuals.net/ogg-theora/ch014_html5" href="http://fi.flossmanuals.net/TheoraCookbook/HTML5">http://fi.flossmanuals.net/TheoraCookbook/HTML5 </a> <br><br>Alla näkyy yksinkertainen HTML-dokumentti, joka sisältää &lt;video&gt; -tägin. Sinun tulisi käyttää kohdassa 2 saamasi URL esimerkissä olevan URLin <em>http://my-server.org/video.ogm</em> sijasta.</p>
+<pre>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"&gt;&lt;head&gt;&lt;title&gt;My Video Test&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;video src="http://my-server.org/video.ogm" width="480" height="320" autoplay="autoplay" controls="controls"&gt;
+Sorry, your browser does not support the video tag. Try using Firefox 3.5+
+&lt;/video&gt;&lt;/body&gt;
+&lt;/html&gt;</pre>
+<ol><ol><li><strong>HTML5 -videotägi ja SRT-tiedostoformaattiteknologiat.</strong></li>
+</ol></ol><br><p>Voimme nyt muokata edellisen HTML-sivun, joka sisältää videotägin, sisältämään SRT-tiedostomme dynaamisesti, jotta se näkyy videossa. <br><br>Huomaa ensin, että integroimme JQueryn - GPL-JavaScript-kirjaston, joka on saatavilla osoitteesta (<a title="http://fi.flossmanuals.net/ogg-theora/ch014_html5" href="http://jquery.com/" target="_top">http://jquery.com/</a>), ja esimerkkinä olevan JavaScript-sovelluksen, joka näyttää tekstitykset verkkosivulla SRT-tiedostosta, ja on saatavilla osoitteesta: </p>
+<p><a title="http://fi.flossmanuals.net/ogg-theora/ch014_html5" href="http://v2v.cc/~j/jquery.srt/jquery.srt.js">http://v2v.cc/~j/jquery.srt/jquery.srt.js</a></p>
+<p>Yksinkertainen HTML-dokumentti näkyy alla, se sisältää muutoksen JavaScript-tiedostojen liittämiseen ja viittaamiseen tekstitystiedostoosi. Vain yhteen tekstitystiedostoon voidaan viitata kerrallaan, paitsi jos tahdot kehittää sitä pidemmälle JavaScriptin avulla. Kustomoidaksesi tätä pidemmälle videotasi ja tekstitystäsi varten sinun tulisi käyttää kohdassa 2 saamiasi URLeja esimerkkiURLien <em>http://my-server.org/video.ogm </em>ja <em>http://my-server.org/video.srt </em>tilalla.<code> </code></p>
+<p> </p>
+<p> </p>
+<pre><code>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt; &lt;html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"&gt;&lt;head&gt;&lt;title&gt;My Video Test&lt;/title&gt; &lt;script type="text/javascript" src="http://v2v.cc/~j/jquery.srt/jquery.js"&gt;&lt;/script&gt; &lt;script type="text/javascript" src="http://v2v.cc/~j/jquery.srt/jquery.srt.js"&gt;&lt;/script&gt; &lt;/head&gt; &lt;body&gt; &lt;video id="video" src="</code>http://my-server.org/video.ogm<code>" width="480" height="320" autoplay="autoplay" controls="controls"&gt; Sorry, your browser does not support the video tag. Try using Firefox 3.5+ &lt;/video&gt; &lt;div class="srt" data-video="video" data-srt="</code>http://my-server.org/video.srt<code>"&gt; subtitle content &lt;/div&gt; &lt;/body&gt; &lt;/html&gt; </code></pre>
+<div align="left">
+<p>Voit nähdä toimivan esimerkin täällä: <br><a title="http://fi.flossmanuals.net/ogg-theora/ch014_html5" href="http://andycat.engagemedia.org/videotranslation/example2.html">http://andycat.engagemedia.org/videotranslation/example2.html </a></p>
+<p>Sinun tulisi tarkastaa HTML-lähdekoodi tällä verkkosivulla nähdäksesi viittauksen oikeaan Theora-videoon ja oikeaan SRT-tiedostoon.</p>
+<p>Alkuperäinen esimerkki SubRip (.srt) -tekstityksen näyttämisestä Ogg Theora -videossa, käyttäen HTML5-tägiä, löytyy osoitteesta: <br><a title="http://fi.flossmanuals.net/ogg-theora/ch014_html5" href="http://v2v.cc/~j/jquery.srt/">http://v2v.cc/~j/jquery.srt/</a></p>
+<p>Tutkiaksesi avoimien standardien ilmaantumista verkkovideoita varten HTML5:ssä, katso whatwg-postilistoja, varsinkin keskustelua verkkovideon tekstityksistä:</p>
+<p><a title="http://fi.flossmanuals.net/ogg-theora/ch014_html5" href="http://lists.whatwg.org/htdig.cgi/whatwg-whatwg.org/2009-February/018600.html">http://lists.whatwg.org/htdig.cgi/whatwg-whatwg.org/2009-February/018600.html </a></p>
+<p><a title="http://fi.flossmanuals.net/ogg-theora/ch014_html5" href="http://wiki.whatwg.org/wiki/Video_accessibility">http://wiki.whatwg.org/wiki/Video_accessibility </a></p>
+<p> </p>
+<p> </p>
+<p> </p>
+</div>
+<p> </p>
+</div></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/tekstitys/index">Tekstitys</a></li>
+<li Class="booki-section">Yleiskatsaus</li><li><a href="/tekstitys/ch003_elokuvien-tekstitys">Elokuvien tekstitys</a></li>
+<li><a href="/tekstitys/ch004_tekstitysformaatit">Tekstitysformaatit</a></li>
+<li><a href="/tekstitys/ch005_tekstityksen-hakeminen">Tekstityksen hakeminen</a></li>
+<li><a href="/tekstitys/ch006_videon-tekstittaminen">Videon tekstittäminen</a></li>
+<li><a href="/tekstitys/ch007_tekstitystiedostojen-levittaminen">Tekstitystiedostojen levittäminen</a></li>
+<li Class="booki-section">Tekstitysohjelma Jubler</li><li><a href="/tekstitys/ch009_tekstitysohjelma-jubler">Tekstitysohjelma Jubler</a></li>
+<li><a href="/tekstitys/ch010_jublerin-asetukset">Jublerin asetukset</a></li>
+<li><a href="/tekstitys/ch011_jublerin-aaniraita">Jublerin ääniraita</a></li>
+<li><a href="/tekstitys/ch012_tekstityksen-luominen">Tekstityksen luominen</a></li>
+<li><a href="/tekstitys/ch013_tiedostojen-kaytto">Tiedostojen käyttö</a></li>
+<li Class="booki-section">Tekstityksen näyttäminen</li><li><a href="/tekstitys/ch015_tekstityksen-nayttaminen">Tekstityksen näyttäminen</a></li>
+<li Class="booki-section">Avidemux</li><li><a href="/tekstitys/ch017_avidemuxin-kaytto">Avidemuxin käyttö</a></li>
+<li><a href="/tekstitys/ch018_tekstityksien-polttaminen">Tekstityksen polttaminen</a></li>
+<li Class="booki-section">Tekstitystyökalut</li><li><a href="/tekstitys/ch020_gnome-subtitles">GNOME Subtitles</a></li>
+<li><a href="/tekstitys/ch021_gaupol">Gaupol</a></li>
+<li><a href="/tekstitys/ch022_subtitle-editor">Subtitle Editor</a></li>
+<li Class="booki-section">Jakelu</li><li><a href="/tekstitys/ch024_verkkovideon-kaantaminen">Käännetyn tekstityksen levittäminen verkossa</a></li>
+<li><a href="/tekstitys/ch025_videon-cms-jakelu">Videon CMS-jakelu</a></li>
+<li Class="booki-section">Tekijät</li><li><a href="/tekstitys/ch027_tekijat">Tekijät</a></li>
+</ul>

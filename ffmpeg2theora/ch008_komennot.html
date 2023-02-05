@@ -1,0 +1,19 @@
+<div id="main-content"><h1>Kehittyneempiä enkoodauskomentoja </h1>
+<p> </p>
+<div id="content">
+<p><strong> DV-tiedostot putkeen: </strong></p>
+<pre>  cat jotain.dv | ffmpeg2theora -f dv -o ulostulo.ogg -
+</pre>
+<p><strong> Suora enkoodaus DV-kamerasta (tarvitsee nopean koneen):</strong></p>
+<pre>  dvgrab - | ffmpeg2theora -f dv -x 352 -y 288 -o ulostulo.ogg -
+</pre>
+<p><strong>Suora koodaus ja streamaus Icecast-palvelimelle: </strong></p>
+<pre>  dvgrab --format raw - | \n   ffmpeg2theora -f dv -x 160 -y 128 -o /dev/stdout - | \n   oggfwd icecast2palvelin 8000 salasana /theora.ogg</pre>
+</div></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/ffmpeg2theora/index">Johdanto</a></li>
+<li Class="booki-section">Asennus</li><li><a href="/ffmpeg2theora/ch003_asennus-windowsiin">Asennus Windowsiin</a></li>
+<li Class="booki-section">Perusteet</li><li><a href="/ffmpeg2theora/ch005_enkoodauksen-perusteet">Enkoodauksen perusteet</a></li>
+<li><a href="/ffmpeg2theora/ch006_peruskaytto-windowsissa">Peruskäyttö Windowsissa</a></li>
+<li Class="booki-section">Kehittyneempi käyttö</li><li><a href="/ffmpeg2theora/ch008_komennot">Komennot</a></li>
+<li><a href="/ffmpeg2theora/ch009_dv-virtaustoisto">DV-virtaustoisto</a></li>
+<li Class="booki-section">Tekijät</li><li><a href="/ffmpeg2theora/ch011_tekijat">Tekijät</a></li>
+</ul>

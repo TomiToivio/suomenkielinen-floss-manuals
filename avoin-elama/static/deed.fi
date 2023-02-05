@@ -1,0 +1,722 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://creativecommons.org/ns#"
+      xmlns:dc="http://purl.org/dc/elements/1.1/"
+      xmlns:dct="http://purl.org/dc/terms/"
+      xmlns:frbr="http://purl.org/vocab/frbr/core#"
+      lang="fi">
+  <head about="http://creativecommons.org/licenses/by-sa/2.0/">
+    <title>Creative Commons &mdash; Nimeä-Tarttuva 2.0 Raakaversio
+  &mdash; CC BY-SA 2.0</title>
+
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+
+    <link rel="stylesheet" type="text/css"
+          href="http://yui.yahooapis.com/2.6.0/build/container/assets/skins/sam/container.css"/>
+
+    <link rel="stylesheet" type="text/css"
+          href="/includes/deed3.css"
+          media="screen" />
+    
+    <link rel="stylesheet" type="text/css" media="print"
+          href="/includes/deed3-print.css" />
+    <link rel="stylesheet" type="text/css"
+          href="/includes/jurisdictions.css"
+          media="screen" />
+
+    <!--[if lt IE 7]>
+      <link rel="stylesheet" type="text/css"
+            href="/includes/deed3-ie.css"
+            media="screen" />
+    <![endif]-->
+
+    <link rel="alternate" type="application/rdf+xml" href="rdf" />
+    <script type="text/javascript">
+function setCookie(name, value, expires, path, domain, secure) {
+    document.cookie= name + "=" + escape(value) +
+        ((expires) ? "; expires=" + expires.toGMTString() : "") +
+        ((path) ? "; path=" + path : "") +
+        ((domain) ? "; domain=" + domain : "") +
+        ((secure) ? "; secure" : "");
+}
+var expiry = new Date();
+expiry.setTime(expiry.getTime()+(5*365*24*60*60*1000));
+setCookie('lang','%s', expiry, '/');
+</script>
+
+    <script type="text/javascript"
+            src="http://yui.yahooapis.com/2.6.0/build/yahoo-dom-event/yahoo-dom-event.js">
+    </script>
+    <script type="text/javascript"
+            src="http://yui.yahooapis.com/2.6.0/build/connection/connection-min.js">
+    </script>
+    <script type="text/javascript"
+            src="http://yui.yahooapis.com/2.6.0/build/json/json-min.js">
+    </script>
+
+    <script type="text/javascript" src="http://scraper.creativecommons.org/js/deed.js">
+    </script>
+
+    <script type="text/javascript"
+            src="http://yui.yahooapis.com/2.6.0/build/container/container-min.js">
+    </script>
+
+    <script type="text/javascript"
+            src="/includes/help.js">
+    </script>
+
+    
+  </head>
+
+  <body typeof="cc:License" about="http://creativecommons.org/licenses/by-sa/2.0/"
+        class="yui-skin-sam">
+
+      <!-- START Stop SOPA header -->
+      <div id="stop-sopa-banner" style="background-color: black; color: white; font-weight: bold; font-size: x-large; padding: 2em;">
+        <div class="container">
+          <div class="row">
+            <div class="sixteen columns">
+              Stop SOPA, the Internet Blacklist bill.
+              <a href="https://www.eff.org/deeplinks/2011/12/fight-blacklist-toolkit-anti-sopa-activists">12 things you can do <stron>NOW</strong></a>.
+              <a href="https://creativecommons.org/weblog/entry/30836">Read more</a>.
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END Stop SOPA header -->
+
+    
+  <!-- RDF code here for backwards compatibility.  Please use the
+       license's RDFa instead. -->
+  <!-- <rdf:RDF xmlns="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <License rdf:about="http://creativecommons.org/licenses/by-sa/2.0/">
+    <permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+    <permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+    <permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+    <requires rdf:resource="http://creativecommons.org/ns#Attribution"/>
+    <requires rdf:resource="http://creativecommons.org/ns#Notice"/>
+    <requires rdf:resource="http://creativecommons.org/ns#ShareAlike"/>
+  </License>
+</rdf:RDF> -->
+
+
+    <div id="deed"
+         class="green"
+         dir="ltr"
+         style="text-align: left">
+
+      <div id="deed-head">
+        <div id="cc-logo">
+          <img src="/images/deed/cc-logo.jpg"
+               alt="cc logo" />
+        </div>
+        <div id="cc-link">
+          <a rel="dc:creator dct:creator" href="http://creativecommons.org/">
+            <span property="dc:title dct:title">Creative Commons</span>
+          </a>
+        </div>
+        <h1><span>Creative Commons License Deed</span></h1>
+
+        <div id="deed-license">
+          <h2>
+  <span property="dc:title dct:title"
+        style="display: inline;">Nimeä-Tarttuva 2.0 Raakaversio</span>
+  (<span property="dc:identifier dct:identifier"
+         style="display: inline;">CC BY-SA 2.0</span>)
+</h2>
+        </div>
+      </div>
+
+      <div id="deed-main" dir="ltr" style="text-align: left">
+        <div id="legalcode-block">
+            
+              <!--- hidden disclaimer text -->
+            <div id="help_disclaimer_popup" class="help_panel">
+              <div class="hd">Vastuuvapauslauseke</div>
+              
+                <div class="bd">
+                  <p>
+The Commons Deed ei ole lisenssi. Se on ainoastaan yksinkertainen ja kätevä lyhennelmä juridisen lisenssin ymmärtämiseksi. Deed on tehty helposti ymmärrettäväksi paketiksi kuvaamaan joitakin juridisen lisenssin avainehtoja. Voit ajatella sitä käyttäjäystävällisenä käyttöliittymänä juridiseen lisenssisopimukseen. Deedillä ei itsessään ole oikeudellista arvoa, ja sen sisältö ei sellaisenaan esiinny varsinaisessa lisenssissä.
+</p>
+
+<p>
+Creative Commons ei ole lakiasiaintoimisto eikä tarjoa juridisia palveluita. Tämän tai muunkaan näillä sivuilla olevan dokumentin käyttäminen, näyttäminen, levittäminen tai linkittäminen ei luo mitään suhdetta Creative Commonssin kanssa.
+</p>
+                </div>
+              
+            </div>
+  
+            <div id="deed-disclaimer">
+              
+                <div class="summary">
+                  Tämä on tiivistelmä <a href="legalcode" class="fulltext">(täydellisestä)juridisesta lisenssistä</a>.
+                </div>
+              
+  
+              <div class="disclaimer">
+                <a href="#" id="disclaimer_popup" class="helpLink">
+                  Vastuuvapauslauseke
+                </a>
+              </div>
+            </div>
+          
+        </div>
+
+        <div id="deed-main-content" class="">
+          
+  
+    <div id="libre">
+      <a href="http://freedomdefined.org/">
+        <img src="/images/deed/seal.png" style="border: 0"
+             alt="Tämä lisenssi on hyväksyttävä vapaan kulttuurin teoksille." />
+      </a>
+    </div>
+  
+
+  <div id="deed-rights"
+       dir="ltr" style="text-align: left">
+    
+
+    
+
+    <h3 resource="http://creativecommons.org/ns#Reproduction"
+        rel="cc:permits">Sinulla on vapaus:</h3>
+    <ul class="license-properties">
+      <li class="license share"
+          rel="cc:permits"
+          resource="http://creativecommons.org/ns#Distribution">
+        <strong>Jakaa</strong> — kopioida, levittää, näyttää ja esittää teosta
+      </li>
+
+      
+        <li class="license remix"
+            rel="cc:permits"
+            resource="http://creativecommons.org/ns#DerivativeWorks">
+          <strong>Remiksata</strong> — valmistaa muutettuja teoksia
+        </li>
+      
+
+      
+        <li class="license commercial">
+          käyttää teosta kaupallisiin tarkoituksiin
+        </li>
+      
+      <li id="more-container"
+          class="license-hidden">
+        <span id="devnations-container" />
+      </li>
+    </ul>
+
+  </div>
+  <div id="deed-conditions">
+    <h3>Seuraavilla ehdoilla</h3>
+
+    <ul dir="ltr" style="text-align: left"
+        class="license-properties">
+      
+      <li class="license by"
+          rel="cc:requires" resource="http://creativecommons.org/ns#Attribution">
+          <p>
+            <strong>Nimeä</strong> &mdash;
+            
+              <span id="attribution-container">
+                Teoksen tekijä on ilmoitettava siten kuin tekijä tai teoksen lisensoija on sen määrännyt (mutta ei siten että ilmoitus viittaisi lisenssinantajan tukevan lisenssinsaajaa tai Teoksen käyttötapaa).
+              </span>
+            
+            <span id="by-more-container" />
+          </p>
+  
+          
+            <p id="work-attribution-container" style="display:none;">
+              <strong>
+                Teoksen yhteydessä on ilmoitettava tekijän nimi:
+              </strong>
+              <br/>
+              <input id="work-attribution" value="" type="text"
+                     readonly="readonly" onclick="this.select()"
+                     onfocus="document.getElementById('work-attribution').select();"/>
+              <input id="license-code" type="hidden"
+                     value="CC BY-SA 2.0" />
+              <input id="license-url" type="hidden"
+                     value="http://creativecommons.org/licenses/by-sa/2.0/" />
+              <a href="" id="attribution_help" class="helpLink">
+                <img src="/images/information.png"
+                     alt="Tiedot" />
+              </a>
+            </p>
+  
+            <div id="help_attribution_help" class="help_panel">
+              <div class="hd">
+                Mitä "tekijä tulee ilmoittaa" tarkoittaa?
+              </div>
+              <div class="bd">
+                Sivu, jolta saavuit, sisälsi lisenssi metadataa, jossa ilmoitetaan tekijän toiveesta tulla ilmoitetuksi teoksen tekijänä. Voit käyttää seuraavaa HTML koodia tämän toiveen täyttämiseksi. Näin mahdollistat myös muiden löytää alkuperäisen teoksen.
+              </div>
+            </div>
+          
+        </li>
+      
+      <li class="license sa"
+          rel="cc:requires" resource="http://creativecommons.org/ns#ShareAlike">
+          <p>
+            <strong>Tarttuva</strong> &mdash;
+            
+              Jos teet muutoksia tai käytät teosta oman teoksesi pohjana, tulee syntynyt teos jakaa lisenssillä joka on identtinen alkuperäisen teoksen lisenssin kanssa.
+            
+            <span id="sa-more-container" />
+          </p>
+  
+          
+        </li>
+      
+    </ul>
+  </div>
+
+  <div id="deed-understanding">
+    <h3>
+      Sovittuna, että:
+    </h3>
+
+    <ul class="understanding license-properties">
+      <li class="license">
+        <strong>Luopuminen</strong>
+        &mdash;
+        Tämän lisenssin rajoituksista voidaan <a href="#" id="waived" class="helpLink">luopua </a>tekijänoikeuden omistajan antamalla luvalla.
+      </li>
+
+      <li class="license">
+        <strong>Public Domain</strong>
+        &mdash;
+        Jos teoksesi tai sen osa on <a href="http://wiki.creativecommons.org/Public_domain" id="public_domain" class="helpLink">public domainia</a> sovellettavan lain mukaan, lisenssi ei vaikuta sen juridiseen statukseen.
+      </li>
+
+      <li class="license">
+        <strong>Muut oikeudet</strong>
+        &mdash;
+        Lisenssi ei vaikuta seuraaviin oikeuksiin:
+
+        <ul>
+          <li>
+            Tämä lisenssi ei vaikuta tekijänoikeuslain <a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#Do_Creative_Commons_licenses_affect_fair_use.2C_fair_dealing_or_other_exceptions_to_copyright.3F" id="fair_use" class="helpLink">rajoituksiin </a> tai muiden lakien myöntämiin oikeuksiin.
+          </li>
+
+          
+            <li>
+              Lisenssi ei rajoita tekijän <a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#I_don.E2.80.99t_like_the_way_a_person_has_used_my_work_in_a_derivative_work_or_included_it_in_a_collective_work.3B_what_can_I_do.3F" id="moral_rights" class="helpLink">moraalisia</a>oikeuksia.
+            </li>
+          
+          
+          </span>
+
+          <li>
+            Muilla henkilöillä voi olla oikeuksia teokseen tai siihen miten sitä käytetään <a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#When_are_publicity_rights_relevant.3F" class="helpLink" id="publicity_rights">julkisuudssa</a>.
+          </li>
+        </ul>
+      </li>
+
+      <li rel="cc:requires"
+          resource="http://creativecommons.org/ns#Notice">
+        <strong>Ilmoitus</strong>
+        &mdash;
+        Uudelleenkäyttäessäsi tai levittäessäsi tätä teosta, sinun tulee tehdä selväksi muille tämän teoksen käyttäjille nämä lisenssiehdot. Voit tehdä sen esimerkiksi linkillä tähän sivuun.
+      </li>
+    </ul>
+
+    
+      <div id="deed-newer" tal:condition="">
+        <p>
+          Tämän lisenssin on syrjäyttänyt uusi <a href="http://creativecommons.org/licenses/by-sa/3.0/">lisenssiversio</a>. Tätä lisenssiä suositellaan käytettäväksi uusien teosten lisensoimiseksi sekä jo lisensoitujen teosten uudelleen lisensoimiseen. Teokset eivät <em>automaattisesti</em> siirry uuden lisenssin alle.
+        </p>
+      </div>
+    
+
+    <div id="help_waived" class="help_panel">
+      <div class="hd">
+        Mitä \ "ehdoista voidaan luopua " tarkoittaa?
+      </div>
+      <div class="bd">
+        <p>
+          CC lisenssit ennakoivat, että lisenssinantaja voi haluta 
+\ t	luopua noudattamasta erityistä edellytystä, kuten
+		nimen mainitsemista.
+        </p>
+        <p>
+          <a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#Can_I_change_the_terms_of_a_CC_license_or_waive_some_of_its_conditions.3F">Opi lisää</a>.
+        </p>
+      </div>
+    </div>
+
+    <div id="help_public_domain" class="help_panel">
+      <div class="hd">
+        Mitä "Public Domain" tarkoittaa?
+      </div>
+      <div class="bd">
+        <p>
+          Teos on Public domainissa, kun sen tekijänoikeudet ovat rauenneet eikä sitä koske tekijänoikeus rajoitteet.
+        </p>
+
+        <p>
+          <a href="http://wiki.creativecommons.org/Public_domain"
+             >Opi lisää</a>.</p>
+      </div>
+
+    </div>
+
+    <div id="help_fair_use" class="help_panel">
+      <div class="hd">
+        Mitä \ "tekijän oikeuden rajoitukset" tarkoittaa?
+      </div>
+      <div class="bd">
+        <p>
+          Kaikki oikeusjärjestelmät\ n sallivat tekijänoikeuksien suojaaman materiaalia käytön rajoitetusti ilman \ n lupaa. CC lisenssit eivät vaikuta näihin oikeuksiin \ n jotka käyttäjille näiden tekijänoikeuden rajoituksien ja poikkeuksien \ n nojalla on annettu.
+        </p>
+
+        <p>
+          <a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#Do_Creative_Commons_licenses_affect_fair_use.2C_fair_dealing_or_other_exceptions_to_copyright.3F">Opi lisää</a>.</p>
+      </div>
+    </div>
+
+    <div id="help_moral_rights" class="help_panel">
+      <div class="hd">
+        Mitä ovat \ "moraaliset oikeudet "?
+      </div>
+      <div class="bd">
+        <p>
+          Lisäksi lisenssinantajalla on oikeus pyytää nimensä poistamista teoksesta, jos sitä käytetään osana muunneltua teosta tai osana yhteen liitettyä teosta. Tekijänoikeuslait useimmissa oikeusjärjestelmissä ympäri maailmaa (poikkeuksena Yhdysvaltain paitsi hyvin rajoitetuissa olosuhteissa ) myöntävät tekijöille \ "moraalisia oikeuksia " jotka antavat tekijälle oikeuden kieltää teoksensa \ "halventavan kohtelun ".
+        </p>
+
+        <p>
+          <a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#I_don.E2.80.99t_like_the_way_a_person_has_used_my_work_in_a_derivative_work_or_included_it_in_a_collective_work.3B_what_can_I_do.3F">Opi lisää</a>.
+        </p>
+
+      </div>
+    </div>
+
+    <div id="help_publicity_rights" class="help_panel">
+      <div class="hd">
+        Mitä tarkoitetaan "henkilön oikeudella omaan kuvaan/nimeen"?
+      </div>
+      <div class="bd">
+        <p>
+          Julkisuutta
+ koskevat oikeudet sallivat yksityishenkilöiden valvoa, miten heidän ääntä,
+ kuvaa tai muotokuvaa käytetään kaupallisiin tarkoituksiin
+ julkisuudessa. Jos CC-lisensoituun teos kuuluu ääntä tai
+ kuvaa, teoksen käyttöön voidaan tarvita jonku muun kuin lisenssinantajan lupa.
+        </p>
+
+        <p>
+          <a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#When_are_publicity_rights_relevant.3F">Opi lisää</a>.
+        </p>
+      </div>
+    </div>
+
+  </div>
+  <span id="referrer-metadata-container" />
+
+        </div>
+      </div>
+
+    </div>
+    <div id="footer">
+      <p>
+        
+          
+            <a id="get_this" href="/choose/results-one?license_code=by-sa&jurisdiction=&version=2.0&lang=fi"
+               >Käytä tätä lisenssiä omassa työssäsi.</a>
+          
+        
+      </p>
+      <div id="languages">
+  <span dir="ltr" style="text-align: left">
+    Tämä sivu on saatavilla seuraavilla kielillä:
+  </span>
+  <br/>
+
+  
+    <a title="Armenian"
+       rel="alternate nofollow frbr:translation" 
+       rev="frbr:translationOf"
+       href="./deed.hy"
+       hreflang="hy"
+       xml:lang="hy">Armenian</a>
+  
+    <a title="Belarusian"
+       rel="alternate nofollow frbr:translation" 
+       rev="frbr:translationOf"
+       href="./deed.be"
+       hreflang="be"
+       xml:lang="be">Belarusian</a>
+  
+    <a title="Castellano"
+       rel="alternate nofollow frbr:translation" 
+       rev="frbr:translationOf"
+       href="./deed.es"
+       hreflang="es"
+       xml:lang="es">Castellano</a>
+  
+    <a title="Castellano (España)"
+       rel="alternate nofollow frbr:translation" 
+       rev="frbr:translationOf"
+       href="./deed.es_ES"
+       hreflang="es_ES"
+       xml:lang="es_ES">Castellano (España)</a>
+  
+    <a title="Català"
+       rel="alternate nofollow frbr:translation" 
+       rev="frbr:translationOf"
+       href="./deed.ca"
+       hreflang="ca"
+       xml:lang="ca">Català</a>
+  
+    <a title="Dansk"
+       rel="alternate nofollow frbr:translation" 
+       rev="frbr:translationOf"
+       href="./deed.da"
+       hreflang="da"
+       xml:lang="da">Dansk</a>
+  
+    <a title="Deutsch"
+       rel="alternate nofollow frbr:translation" 
+       rev="frbr:translationOf"
+       href="./deed.de"
+       hreflang="de"
+       xml:lang="de">Deutsch</a>
+  
+    <a title="Eesti"
+       rel="alternate nofollow frbr:translation" 
+       rev="frbr:translationOf"
+       href="./deed.et"
+       hreflang="et"
+       xml:lang="et">Eesti</a>
+  
+    <a title="English"
+       rel="alternate nofollow frbr:translation" 
+       rev="frbr:translationOf"
+       href="./deed.en"
+       hreflang="en"
+       xml:lang="en">English</a>
+  
+    <a title="Esperanto"
+       rel="alternate nofollow frbr:translation" 
+       rev="frbr:translationOf"
+       href="./deed.eo"
+       hreflang="eo"
+       xml:lang="eo">Esperanto</a>
+  
+    <a title="français"
+       rel="alternate nofollow frbr:translation" 
+       rev="frbr:translationOf"
+       href="./deed.fr"
+       hreflang="fr"
+       xml:lang="fr">français</a>
+  
+    <a title="hrvatski"
+       rel="alternate nofollow frbr:translation" 
+       rev="frbr:translationOf"
+       href="./deed.hr"
+       hreflang="hr"
+       xml:lang="hr">hrvatski</a>
+  
+    <a title="Italiano"
+       rel="alternate nofollow frbr:translation" 
+       rev="frbr:translationOf"
+       href="./deed.it"
+       hreflang="it"
+       xml:lang="it">Italiano</a>
+  
+    <a title="Latviski"
+       rel="alternate nofollow frbr:translation" 
+       rev="frbr:translationOf"
+       href="./deed.lv"
+       hreflang="lv"
+       xml:lang="lv">Latviski</a>
+  
+    <a title="Magyar"
+       rel="alternate nofollow frbr:translation" 
+       rev="frbr:translationOf"
+       href="./deed.hu"
+       hreflang="hu"
+       xml:lang="hu">Magyar</a>
+  
+    <a title="Nederlands"
+       rel="alternate nofollow frbr:translation" 
+       rev="frbr:translationOf"
+       href="./deed.nl"
+       hreflang="nl"
+       xml:lang="nl">Nederlands</a>
+  
+    <a title="Người Việt/Tiếng Việt"
+       rel="alternate nofollow frbr:translation" 
+       rev="frbr:translationOf"
+       href="./deed.vi"
+       hreflang="vi"
+       xml:lang="vi">Người Việt/Tiếng Việt</a>
+  
+    <a title="Norsk"
+       rel="alternate nofollow frbr:translation" 
+       rev="frbr:translationOf"
+       href="./deed.no"
+       hreflang="no"
+       xml:lang="no">Norsk</a>
+  
+    <a title="polski"
+       rel="alternate nofollow frbr:translation" 
+       rev="frbr:translationOf"
+       href="./deed.pl"
+       hreflang="pl"
+       xml:lang="pl">polski</a>
+  
+    <a title="Português"
+       rel="alternate nofollow frbr:translation" 
+       rev="frbr:translationOf"
+       href="./deed.pt"
+       hreflang="pt"
+       xml:lang="pt">Português</a>
+  
+    <a title="Português (BR)"
+       rel="alternate nofollow frbr:translation" 
+       rev="frbr:translationOf"
+       href="./deed.pt_BR"
+       hreflang="pt_BR"
+       xml:lang="pt_BR">Português (BR)</a>
+  
+    <a title="română"
+       rel="alternate nofollow frbr:translation" 
+       rev="frbr:translationOf"
+       href="./deed.ro"
+       hreflang="ro"
+       xml:lang="ro">română</a>
+  
+    <a title="srpski (latinica)"
+       rel="alternate nofollow frbr:translation" 
+       rev="frbr:translationOf"
+       href="./deed.sr_LATN"
+       hreflang="sr_LATN"
+       xml:lang="sr_LATN">srpski (latinica)</a>
+  
+    <a title="Suomeksi"
+       rel="alternate nofollow frbr:translation" 
+       rev="frbr:translationOf"
+       href="./deed.fi"
+       hreflang="fi"
+       xml:lang="fi">Suomeksi</a>
+  
+    <a title="svenska"
+       rel="alternate nofollow frbr:translation" 
+       rev="frbr:translationOf"
+       href="./deed.sv"
+       hreflang="sv"
+       xml:lang="sv">svenska</a>
+  
+    <a title="Türkçe"
+       rel="alternate nofollow frbr:translation" 
+       rev="frbr:translationOf"
+       href="./deed.tr"
+       hreflang="tr"
+       xml:lang="tr">Türkçe</a>
+  
+    <a title="čeština"
+       rel="alternate nofollow frbr:translation" 
+       rev="frbr:translationOf"
+       href="./deed.cs"
+       hreflang="cs"
+       xml:lang="cs">čeština</a>
+  
+    <a title="Ελληνικά"
+       rel="alternate nofollow frbr:translation" 
+       rev="frbr:translationOf"
+       href="./deed.el"
+       hreflang="el"
+       xml:lang="el">Ελληνικά</a>
+  
+    <a title="македонски"
+       rel="alternate nofollow frbr:translation" 
+       rev="frbr:translationOf"
+       href="./deed.mk"
+       hreflang="mk"
+       xml:lang="mk">македонски</a>
+  
+    <a title="Русский"
+       rel="alternate nofollow frbr:translation" 
+       rev="frbr:translationOf"
+       href="./deed.ru"
+       hreflang="ru"
+       xml:lang="ru">Русский</a>
+  
+    <a title="српски "
+       rel="alternate nofollow frbr:translation" 
+       rev="frbr:translationOf"
+       href="./deed.sr"
+       hreflang="sr"
+       xml:lang="sr">српски </a>
+  
+    <a title="العربية"
+       rel="alternate nofollow frbr:translation" 
+       rev="frbr:translationOf"
+       href="./deed.ar"
+       hreflang="ar"
+       xml:lang="ar">العربية</a>
+  
+    <a title="ไทย"
+       rel="alternate nofollow frbr:translation" 
+       rev="frbr:translationOf"
+       href="./deed.th"
+       hreflang="th"
+       xml:lang="th">ไทย</a>
+  
+    <a title="ქართული"
+       rel="alternate nofollow frbr:translation" 
+       rev="frbr:translationOf"
+       href="./deed.ka"
+       hreflang="ka"
+       xml:lang="ka">ქართული</a>
+  
+    <a title="中文 (香港)"
+       rel="alternate nofollow frbr:translation" 
+       rev="frbr:translationOf"
+       href="./deed.zh_HK"
+       hreflang="zh_HK"
+       xml:lang="zh_HK">中文 (香港)</a>
+  
+    <a title="日本語"
+       rel="alternate nofollow frbr:translation" 
+       rev="frbr:translationOf"
+       href="./deed.ja"
+       hreflang="ja"
+       xml:lang="ja">日本語</a>
+  
+    <a title="華語 (台灣)"
+       rel="alternate nofollow frbr:translation" 
+       rev="frbr:translationOf"
+       href="./deed.zh_TW"
+       hreflang="zh_TW"
+       xml:lang="zh_TW">華語 (台灣)</a>
+  
+    <a title="한국어"
+       rel="alternate nofollow frbr:translation" 
+       rev="frbr:translationOf"
+       href="./deed.ko"
+       hreflang="ko"
+       xml:lang="ko">한국어</a>
+  
+</div>
+
+    </div>
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-2010376-1']);
+      _gaq.push(['_trackPageview']);
+    
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <script type="text/javascript">
+      document.write("<" + "script type='text/javascript' src='http://scraper.creativecommons.org/apps/deed?url=" + encodeURIComponent(document.referrer) + "&license_uri=" + encodeURIComponent(document.URL) + "&callback=YAHOO.cc.success'" + "><" + "/script>");
+    </script>
+  </body>
+</html>

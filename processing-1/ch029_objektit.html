@@ -1,0 +1,201 @@
+<div id="main-content"><h1>Oliot</h1>
+<p><span id="result_box" class="long_text"><span>Olio-ohjelmoinnissa ohjelma rakennetaan elementeistä, jotka ovat olemassa ohjelmassa (luodit, seinät, hahmot...). Olio on malli, joka voidaan kopioida, ja jonka jokainen kopio on yksilöllinen, ne ovat sovelluksen rakennuspalikoita. Olio rakentuu ominaisuuksista ja metodeista. Jokainen olion instanssi omaa erilaiset ominaisuudet, mutta sillä on käytössään samat metodit. </span></span></p>
+<p><span id="result_box" class="long_text"><span>Tässä luvussa näytämme objektien käsittelyn ja piirrämme kaksi palloa (yksinkertaista ympyrää) ruudulle Tässä esimerkissä on pallon malli (olio) ja sen kopiot (instanssit), joista jokaisella on erilaiset oinaisuudet. </span><span> <br><br></span><span>Pallon malli rakentuu ominaisuuksista (muuttujista) seuraavasti: <br><br></span></span></p>
+<ul><li><span id="result_box" class="long_text"><span>    </span><span><strong>x</strong> - sijainti x-akselilla. </span></span></li>
+<li><span id="result_box" class="long_text"><span>    </span><span><strong>y</strong> - sijainti y-akselilla. </span></span></li>
+<li><span id="result_box" class="long_text"><span>    </span><span><strong>col </strong>- värit. </span></span></li>
+</ul><p><span id="result_box" class="long_text"><span> <br></span><span>Malli sisältää seuraavan pallon toiminnon (metodin). <br><br></span></span></p>
+<ul><li><span id="result_box" class="long_text"><span>    </span><span><strong>display()</strong> - pallo näkyviin.  </span></span></li>
+</ul><p><span id="result_box" class="long_text"><span> <br></span></span></p>
+<h2><span id="result_box" class="long_text"><span>Olion luominen</span></span></h2>
+<p>Kuinka voidaan piirtää joukko palloja ruudulle? Selkein selitys on palloa esittävien muuttujien kopiointi. Lisäksi tarvitaan ohjeet pallojen näyttämistä ja hallintaa varten. Koodin koko on suhteessa ruudulla oleviin kohteisiin. Kaksi ongelmaa ilmenee: jos tahtoo muuttaa tai monimutkaistaa kohdetta, koodi täytyy kopioida yhtä monta kertaa kuin kohteita on. Pian koodia on mahdoton pitää järjestyksessä ja se vaatii uutta rakennetta. <span id="result_box" class="long_text"><span> <br><br></span><span>Välttääksemme tämän ongelman me muunnamme oliota pallo. Kun olento ohjelmassasi muuttuu liian monimutkaiseksi tai sen täytyy olla olemassa lukemattomina kopioina, sen täytyy olla olio. </span></span></p>
+<h2><span id="result_box" class="long_text"><span>Luo olio</span></span></h2>
+<p><span id="result_box" class="long_text">Olion </span><span>luominen tapahtuu kahdessa askeleessa:</span></p>
+<ol><li><span>Oliomallin määrittely</span></li>
+<li><span>Yhden olion kopion (instanssin) luominen. </span></li>
+</ol><p> </p>
+<h2>Malli</h2>
+<p>Processing käyttää avainsanaa class määrittelemään olion. Sitä käytetään metodin määritelmänä: class (objektinNimi). Kaikki toiminnot ja ominaisuudet kirjoitetaan sen sisälle. Yleisesti ottaen kirjoitamme olion määritelmän koodimme lopussa. Varsinkin jos olio on monimutkainen, kannattaa luoda uusi välilehti, joka on erillään muusta koodista.</p>
+<h2> </h2>
+<pre>class Pallo {
+}
+</pre>
+<h2>Instanssi</h2>
+<p><span id="result_box" class="long_text"><span>Kun malli on määritelty, meidän täytyy luoda yksittäinen kopio tästä mallista. Processing käyttää avainsanoja luodakseen uuden instanssin oliosta: new objektinNimi(). Tämä olio pitäisi varastoida muuttujaan, jotta sitä voidaan manipuloida myöhemmin. </span></span></p>
+<div id="gt-res-tools" class="g-section">
+<div id="gt-res-listen" class="gt-icon-c"><span class="gt-icon-text">Listen</span></div>
+<div id="gt-res-roman" class="gt-icon-c"><span class="gt-icon-text">Read phonetically</span></div>
+</div>
+<pre>Pallo myPallo = new Pallo();
+</pre>
+<p><span id="result_box" class="long_text"><span>Edellisessä esimerkissä julistamme muuttujan myPallo, joka on kopio oliosta Pallo. myPallo viittaa tähän olioon ja voi toimia myöhemmin ohjelmassa. Jotta tämä olio on käytettävissä koko ohjelmassa, laitamme sen julistuksen ohjelman alkuun. </span></span></p>
+<h2>Ominaisuudet</h2>
+<p><span id="result_box" class="long_text"><span>Olioilla on ominaisuuksia, jotka määrittelevät ne ja tekevät niistä ainutlaatuisia. Nämä ovat muuttujia, jotka tehdään objektin alussa. </span></span></p>
+<div id="gt-res-tools" class="g-section"> </div>
+<pre>class Pallo {
+  //Pallon parametrien julistus
+  float x;
+  float y;
+  color col;
+}
+</pre>
+<p><span id="result_box" class="long_text"><span>Editoidaksesi ominaisuutta objektin luomisen jälkeen täytyy edetä seuraavaksi: instanssinNimi.ominaisuudenNimi = arvo. Esimerkiksi: </span></span></p>
+<pre> myPallo.x = 100;</pre>
+<h2>Konstruktori</h2>
+<p><span id="result_box" class="long_text"><span>Konstruktori on metodi, jota kutsutaan oliota luotaessa. Sitä vastaa metodi setup (). Sillä on edelleenkin sama nimi kuin oliolla. Konstruktori ottaa joukon muuttujia ja laittaa ne olion parametriin: </span></span></p>
+<div id="gt-res-tools" class="g-section"> </div>
+<pre>class Pallo {
+  //Pallon parametrien julistus 
+  float x;
+  float y;
+  color col;
+
+  Pallo (float newX, float newY, color newColor) {
+    x      = newX;
+    y      = newY;
+    col    = newColor;
+  }
+}
+</pre>
+<p><span id="result_box" class="long_text"><span>Kun luomme olion instanssin, annamme sille suoraan sen omat ominaisuudet parametreinä. Esimerkki alla luo valkoisen pallon, joka on sijainnissa 100, 100. </span></span></p>
+<pre>myPallo = new Pallo(100, 100, color(255));
+</pre>
+<p><span id="result_box" class="long_text"><span><strong>Varoitus!</strong> Meidän täytyy vain luoda kopio olion mallista. Sitä ei vielä näytetä ruudulla. </span></span></p>
+<h2>Toiminnot</h2>
+<p>Olion toiminnot edustavat eri asioita, joita olio voi tehdä. Nämä metodit julistetaan olion sisällä. Olion instanssin kutsu toimintaan on seuraava: instanssinNimi.metodinNimi(); <br><span id="result_box" class="long_text"><span> <br></span><span>Pallollamme on vain yksi toiminto: olla näkyvillä. Käytämme komentoja fill() ja ellipse() piirtääksemme sen. </span></span></p>
+<div id="gt-res-tools" class="g-section"> </div>
+<pre>class Pallo{
+  //Pallon parametrien julistus
+  float x;
+  float y;
+  color col;
+
+  Pallo (float newX, float newY, color newColor) {
+    x      = newX;
+    y      = newY;
+    col    = newColor;
+  }
+
+  void display() {
+    fill(col);
+    ellipse(x, y, 40, 40);
+  }
+}</pre>
+<p><span id="result_box" class="long_text"><span>Katsoaksemme palloamme voimme kutsua metodia display() sen kopiosta ohjelman metodissa draw(). <br></span></span></p>
+<pre>void draw() {
+  myPallo.display();
+}
+</pre>
+<h2>Lopullinen ohjelma</h2>
+<p><img title="Balle" src="_booki/processing-1/static/Balle-fi.png" alt="Balle" width="400" height="200"> </p>
+<pre>//Pallon instanssin ja parametrien julistus
+Pallo myPallo = new Pallo(100, 100, color(255));
+
+void setup() {
+  smooth();
+  size(400, 200); //Ikkunan koko
+}
+
+void draw() {
+  background(0); //Mustan taustan julistus 
+  noStroke(); //Ei ääriviivoja
+
+  myPallo.display(); //Pallo näkyviin
+}
+
+class Pallo {
+  //Pallon parametrien julistus
+  float x;
+  float y;
+  color col;
+
+  //Pallon luominen
+    Pallo (float newX, float newY, color newColor) {
+    x      = newX;
+    y      = newY;
+    col    = newColor;
+  }
+
+  //Pallon näyttäminen
+  void display() {
+    fill(col);
+    ellipse(x, y, 40, 40);
+  }
+}
+</pre>
+<h2>Monta palloa</h2>
+<p><span id="result_box" class="long_text"><span>Luo toinen pallo julistamalla se esimerkiksi nimellä myPallo2 ja laita se näkyville. </span></span></p>
+<p><img title="Balle2" src="_booki/processing-1/static/Balle2-fi.png" alt="Balle2" width="400" height="200"> </p>
+<pre>//Kahden pallo-instanssin julistus
+Pallo myPallo1 = new Pallo(100, 100, color(255));
+Pallo myPallo2 = new Pallo(200, 100, color(128));
+
+void setup() {
+  smooth(); 
+  size(400, 200); //Ikkunan koko
+}
+
+void draw() {
+  background(0); //Mustan taustan julistus 
+  noStroke(); //Ei ääriviivoja 
+
+  myPallo1.display(); //Pallo 1 näkyviin
+  myPallo2.display(); //Pallo 2 näkyviin
+}
+
+class Pallo {
+  //Pallo-luokan parametrien julistus 
+  float x;
+  float y;
+  color col;
+
+  //Pallon konstruktori 
+  Pallo (float newX, float newY, color newColor) {
+    x      = newX;
+    y      = newY;
+    col    = newColor;
+  }
+
+  //Pallo näkyviin
+   void display() {
+    fill(col);
+    ellipse(x, y, 40, 40);
+  }
+}
+</pre></div><ul Class="menu-goes-here"><li Class="booki-section">Esittely</li><li><a href="/processing-1/index">Johdanto</a></li>
+<li><a href="/processing-1/ch002_esimerkkeja">Esimerkkejä</a></li>
+<li><a href="/processing-1/ch003_asennus">Asennus</a></li>
+<li Class="booki-section">Perusteet</li><li><a href="/processing-1/ch005_perusteet">Perusteet</a></li>
+<li Class="booki-section">Suunnittelu</li><li><a href="/processing-1/ch007_suunnittelutila">Suunnittelutila</a></li>
+<li><a href="/processing-1/ch008_muodot">Muodot</a></li>
+<li><a href="/processing-1/ch009_varit">Värit</a></li>
+<li><a href="/processing-1/ch010_kuvat">Kuvat</a></li>
+<li><a href="/processing-1/ch011_tekstit">Tekstit</a></li>
+<li Class="booki-section">Interaktiivisuus</li><li><a href="/processing-1/ch013_video">Video</a></li>
+<li><a href="/processing-1/ch014_videon-tuominen">Videon tuominen</a></li>
+<li><a href="/processing-1/ch015_mikrofoni">Mikrofoni</a></li>
+<li><a href="/processing-1/ch016_hiiri">Hiiri</a></li>
+<li><a href="/processing-1/ch017_nappaimisto">Näppäimistö</a></li>
+<li><a href="/processing-1/ch018_tulostaminen">Tulostaminen</a></li>
+<li Class="booki-section">Vienti</li><li><a href="/processing-1/ch020_verkkoon-vieminen">Verkkoon vieminen</a></li>
+<li Class="booki-section">Animaatio</li><li><a href="/processing-1/ch022_aanet">Äänet</a></li>
+<li><a href="/processing-1/ch023_draw-metodi">Draw-metodi</a></li>
+<li><a href="/processing-1/ch024_objektien-animointi">Objektien animointi</a></li>
+<li><a href="/processing-1/ch025_monien-objektien-animointi">Monien objektien animointi</a></li>
+<li><a href="/processing-1/ch026_aikajana">Aikajana</a></li>
+<li Class="booki-section">Ohjelmointi</li><li><a href="/processing-1/ch028_kommentit">Kommentit</a></li>
+<li><a href="/processing-1/ch029_objektit">Objektit</a></li>
+<li><a href="/processing-1/ch030_metodit">Metodit</a></li>
+<li><a href="/processing-1/ch031_listat">Listat</a></li>
+<li><a href="/processing-1/ch032_toistaminen">Toistaminen</a></li>
+<li><a href="/processing-1/ch033_ehdot">Ehdot</a></li>
+<li><a href="/processing-1/ch034_muuttujat">Muuttujat</a></li>
+<li><a href="/processing-1/ch035_muutokset">Muutokset</a></li>
+<li><a href="/processing-1/ch036_rajat">Rajat</a></li>
+<li Class="booki-section">Liitteet</li><li><a href="/processing-1/ch038_yleisia-virheita">Yleisiä virheitä</a></li>
+<li><a href="/processing-1/ch039_ulkoiset-kirjastot">Ulkoiset kirjastot</a></li>
+<li><a href="/processing-1/ch040_dokumentaatio">Dokumentaatio</a></li>
+<li><a href="/processing-1/ch041_arduino">Arduino</a></li>
+<li><a href="/processing-1/ch042_tasta-oppaasta">Tästä oppaasta</a></li>
+<li><a href="/processing-1/ch043_tekijat">Tekijät</a></li>
+</ul>

@@ -1,0 +1,179 @@
+<div id="main-content"><h1>Inkscapen käyttöliittymä</h1>
+<p><strong>Inkscapen</strong> käyttöliittymä koostuu osioista, jotka on suunniteltu niin että toiminnallisuuksien käyttö olisi mahdollisimman yksinkertaista, selkeää ja eri käyttötavat huomioivaa. Tärkein osio on ikkuna, jossa piirroksia luodaan ja muokataan. Tämä luku käy läpi ikkunan sisältä löytyvät käyttöliittymäelementit, joiden avulla ohjelmistossa voi helposti liikkua.</p>
+<p><img title="inkscape_window_overview_3_en" src="_booki/inkscape/static/Inkscape-Interface-inkscape_window_overview_3_en-fi.png" alt="Käyttöliittymä" width="600" height="553"> </p>
+<p>Ikkunasta löytyy yhdeksän päävyöhykettä: </p>
+<ol><li><strong>Valikko (ikkunan yläreunassa) </strong></li>
+<li><strong>Komentopalkki</strong></li>
+<li><strong><span>Tarttumisen hallinnan työkalurivi</span></strong></li>
+<li><strong>Viivaimet, apuviivat ja <span>ruudukot</span></strong></li>
+<li><strong>Ominaisuusrivi </strong></li>
+<li><strong>Työkalurivi </strong></li>
+<li><strong>Piirtoalue</strong></li>
+<li><strong>Paletti</strong></li>
+<li><strong>Tilarivi </strong></li>
+</ol><p>Inkscapen eri työkalupalkit voivat viedä paljon tilaa näytölläsi. Työkalupalkin voi pienentää valitsemalla <strong>Tiedosto</strong> <em>&gt;</em> <strong>Inkscape Asetukset</strong><em>...</em> ja <strong>Käyttöliittymä</strong>.  Täällä voit erikseen säätää kuvakekoon Komentopalkkiin, Ominaisuusriviin ja Työkaluriviin.</p>
+<h2>Valikko</h2>
+<p><img title="topbar" src="_booki/inkscape/static/Inkscape-Interface-inkscape_002-fi.png" alt="Käyttöliittymä" width="575" height="23"></p>
+<p>Kuten monissa <strong>GTK</strong>-sovelluksissa, myös Inkscapessa valikko sisältää ohjelman olennaiset perustoiminnot: <span class="dialog"><strong>Uusi</strong>, <strong>Avaa</strong>, <strong>Tallenna</strong>, <strong>Vie</strong>, <strong>Lopeta</strong> jne</span>.  Valikkoon sisältyy myös piirrostoimintoja.</p>
+<h2>Komentopalkki</h2>
+<p><img src="_booki/inkscape/static/Inkscape-_index-Manual-Manual_fr-resized_600x20_barrecommandes-en.png" alt="Käyttöliittymä" width="600" height="20"></p>
+<p><strong>Komentopalkki</strong> sijaitsee työtilan yläosassa heti valikon alla. Sen kuvakkeilla käynnistetään toimintoja, jotka löytyvät muista valikoista tai jotka voi suorittaa myös näppäinkomennoilla. Palkissa on myös kuvakkeet tiedostojen muokkaukseen ja kohteiden piirtämiseen. Komentopalkista voi esimerkiksi luoda uuden tai avata jo luodun tiedoston, tulostaa, tuoda kuvan, perua aiemman komennon, zoomata, avata valintaikkunan dokumentin ominaisuuksien määrittelyyn. Osoittimen vieminen kuvakkeen päälle näyttää toiminnon <strong>työkaluvihjeen</strong>. </p>
+<p>Komentopalkin oikealla puolella voi olla alas osoittava nuoli. Tämän napsauttaminen näyttää pikakomennot, jotka eivät näy palkissa näyttökoon tai resoluution asetusten johdosta.</p>
+<p><img title="overflow" src="_booki/inkscape/static/Inkscape-Interface-inkscape_003-fi.png" alt="Käyttöliittymä" width="292" height="311"> </p>
+<h2>Työkalurivi ja ominaisuusrivi</h2>
+<p><img title="outils" src="_booki/inkscape/static/Inkscape-Interface-outils_en-fi.png" alt="Käyttöliittymä" width="623" height="26"></p>
+<p><strong>Työkalurivi</strong> koostuu pystysuoraan asetelluista kuvakkeista ikkunan vasemmalla reunalla ja se on Inkscapen tärkein muokkausvalikko. Työkaluriviltä löytyvät piirtämisen perusvälineet, erityisesti kuvioiden luomiseen ja muokkaukseen tarkoitetut toiminnot. Työkalu geometrisille ja vapaamuotoisille kuvioille ja viivoille sekä tekstille ja täytöille (värit ja liukuvärit). </p>
+<p>Komentopalkin alta löytyy <strong>Ominaisuusrivi</strong>.   </p>
+<p><img title="toolbar_1" src="_booki/inkscape/static/Inkscape-Interface-toolbar_1_en-fi.png" alt="Käyttöliittymä" width="600" height="150"></p>
+<p>Kun työkalurivistä valitsee työkalun, näyttää ominaisuusrivi sen mahdollistamat toiminnot. Käyttötapauksesta riippuen jotkut toiminnot vaikuttavat valittuun kohteeseen<strong>,</strong> toiset taas astuvat voimaan vasta uutta kohdetta piirrettäessä; eräät vaikuttavat joko olemassaoleviin tai uusiin kohteisiin. </p>
+<h2>Piirtoalue</h2>
+<p><img src="_booki/inkscape/static/Inkscape-Interface-resized_600x327_canevas_en-fi.png" alt="Käyttöliittymä" width="600" height="327"></p>
+<p><strong>Piirtoalue</strong> on Inkscapen tärkein työtila. Se on käyttöliittymän keskeinen osa, jossa käyttäjä luo ja katselee piirroksia. Ikkunan keskellä sijaitseva alue näkyy tyhjän tilan ympäröimänä "sivuna". <strong>Pikseleitä</strong> (SVG:n standardiyksikkö) mittaavat viivaimet löytyvät oletusarvoisesti piirtoalueen ylä- ja vasemmasta laidasta, mutta oletusarvoja (<em>viivaimen näkyvyys</em> ja <em>yksikkö</em>) voi säätää dokumentin <strong>Ominaisuuksista</strong>.</p>
+<p>"Sivu" määrittää rajat tietyille mediatyypeille (tulostus, vienti jne.), mutta sen reunat eivät rajoita itse SVG-kuvan rajoja. Itse asiassa käyttäjä voi säätää sivun rajan ja varjostuksen näkymättömäksi dokumentin ominaisuuksista. Jotkut tekijät haluavat käyttää sivurajauksen luomaa valkoista tilaa "luonnosvihkon" tapaan; toisille mieluisampaa on työskennellä ilman sivun luomia rajoja. </p>
+<h2>Viivaimet</h2>
+<p><strong>Viivaimet</strong> ovat pykälöityjä viivoja, jotka löytyvät piirtoalueen ylä- ja vasemmasta reunasta. Ensimmäistä kutsutaan "vaakasuoraksi" ja toista "pystysuoraksi". Pykälät esittävät mittoja, joiden yksikön voi säätää  <strong>Yksiköt</strong><em>-</em>valinnasta  <strong>Sivu</strong>-välilehdeltä, joka löytyy  <strong>Tiedosto</strong> <em>&gt;</em> <strong>Dokumentin ominaisuudet</strong><span><strong> </strong><em>-</em>valikosta</span><em>. </em></p>
+<p>Kun hiiren asettaa piirtoalueelle, viivaimiin ilmestyy kaksi kolmiota, jotka näyttävät hiiren X- ja Y-koordinaatit laskettuna sivun vasemmasta alareunasta. Koordinaatit näytetään myös tilarivissä oikealla, Zoomaus-kontrollin vieressä.</p>
+<div class="tips"><strong>Huom! </strong>SVG-grafiikassa koordinaatit alkavat kartesiolaisen geometrian mukaisesti sivun vasemmasta alakulmasta. </div>
+<p><strong><span class="keyboard_shortcuts">Ctrl</span></strong> + <strong><span class="keyboard_shortcuts">R</span></strong> on nopea tapa näyttää tai piilottaa viivaimet. Saman voi tehdä myös valikosta valitsemalla <strong>Näytä</strong><em> &gt;</em><strong> Näytä</strong> tai <strong>Piilota </strong><em>&gt;</em><strong> Viivaimet</strong><span class="menu">.</span></p>
+<p><img title="regles" src="_booki/inkscape/static/Inkscape-Interface-resized_600x385_regles_en-fi.png" alt="Käyttöliittymä" width="600" height="385"></p>
+<h2>Apuviivat</h2>
+<p>Apuviivat ovat käyttäjän itse määrittämiä "magneettisia" linjoja. Niiden avulla kohteiden sijoittelu on helppoa myös hiiren avulla. Kun haluat luoda apuviivan, napsauta ja vedä hiirtä viivaimista pisteeseen, johon toivot apuviivan, ja päästä sitten irti.  Vaakasuorasta viivaimesta napsauttamalla ja vetämällä syntyy vaakasuora ja pystysuorasta vastaavasti pystysuora apuviiva.</p>
+<div class="simplesect" lang="en" xml:lang="en">
+<div class="titlepage">
+<div>
+<h2 class="title">Käyttöohjeita</h2>
+</div>
+</div>
+</div>
+<div class="simplesect" lang="en" xml:lang="en">
+<div class="titlepage">
+<div>
+<h3>Apuviivojen siirtäminen</h3>
+</div>
+</div>
+</div>
+<blockquote>
+<div class="simplesect" lang="en" xml:lang="en">
+<p>Kun valintatyökalu <span class="keyboard_shortcuts"><strong>F1</strong></span> on päällä ja liikutat hiirtä apuviivan yli, sen väri vaihtuu punaiseksi. Silloin voit napsauttaa ja vetää apuviivan haluamaasi kohtaan.</p>
+</div>
+</blockquote>
+<div class="simplesect" lang="en" xml:lang="en">
+<div class="titlepage">
+<div>
+<h3>Apuviivojen poistaminen</h3>
+</div>
+</div>
+</div>
+<blockquote>
+<div class="simplesect" lang="en" xml:lang="en">
+<p>Jos haluat poistaa apuviivan, vedä se oikeaan viivaimeen valintatyökalulla <strong>F1</strong>. </p>
+</div>
+</blockquote>
+<h3>Apuviivojen näkyvyys</h3>
+<blockquote>
+<p>Jos tahdot apuviivat näkymättömäksi ilman että poistat niitä, valitse Valikosta <strong>Näytä</strong> <em>&gt;</em> <strong>Apuviivat</strong>. Näppäimistön pikakomento apuviivojen näkymisen vaihtoon on <strong><span class="keyboard_shortcuts">Shift</span></strong> <strong><em><span class="keyboard_shortcuts">|</span> </em></strong>(paina Shift alas ja napsauta | -näppäintä, joka yleensä löytyy kauttaviivanäppäimen takaa.) </p>
+<p> <img title="GuidePrefsEN" src="_booki/inkscape/static/Inkscape-Interface-inkscape_008-fi.png" alt="Käyttöliittymä" width="431" height="163"><br><br><span class="dialog"><strong>Tiedosto</strong></span> &gt; <span class="menu"><strong>Dokumentin ominaisuudet</strong></span> -valinnalla voit määrittää apuviivojen näkymisen oletusarvot, lisäksi myös apuviivan värin sekä tehostevärin, kun osoitin ylittää apuviivan.</p>
+<p>Apuviivoja käytetään usein tarttumisessa, mikä tekee kohteiden sijoittelusta piirtoalueella helpompaa varsinkin piirrettäessä tarkkuutta vaativia tai teknisiä piirroksia. Tämän toiminnon voit valita ruksaamalla <span><strong>Kiinnitä apuviivat raahattaessa </strong>-ruudun.</span></p>
+</blockquote>
+<h2>Ruudukot</h2>
+<p>Usean apuviivan sijaan voi olla hyödyllistä käyttää <strong>Ruudukoita</strong>. Tämän voit tehdä <strong>Näytä</strong> &gt; <strong>Ruudukko</strong> -valinnalla tai painamalla <strong>#</strong> (<strong><span class="keyboard_shortcuts">Shift</span></strong> + <strong><span class="keyboard_shortcuts">3</span></strong>).</p>
+<p>Ruudukoita on kahdenlaisia: suorakulmaisia ja <strong>aksonometrisiä</strong>. Ne voi määrittää <strong>Tiedosto</strong> <em>&gt;</em> <strong>Dokumentin ominaisuudet</strong><em> -</em>valikosta<em>.<span class="menu"> </span></em> Yleisimmin käytetään suorakulmaista ruudukkoa, jossa on pysty- ja vaakasuora viivasto.</p>
+<p>Aksonometriset <strong>Ruudukot</strong> antavat käyttäjälle mahdollisuuden määrittää ruudukolle erilaisia kulmia, joita tarvitaan esimerkiksi teknisissä tai arkkitehtuuripiirroksissa.</p>
+<p><img title="GridRectPrefsEN" src="_booki/inkscape/static/Inkscape-Interface-inkscape_009-fi.png" alt="Käyttöliittymä" width="438" height="516"></p>
+<p>Tässä on esimerkki tyypillisestä aksonometrisestä ruudukosta ja suorakulmaisesta ruudukosta.</p>
+<p><img title="grilles" src="_booki/inkscape/static/Inkscape-Interface-resized_600x315_grilles_en-fi.png" alt="Käyttöliittymä" width="600" height="315"></p>
+<h2>Käyttöohjeita </h2>
+<p>Valitse <strong>Dokumentin ominaisuudet</strong> -pudotusvalikosta minkälaista ruudukkoa haluat käyttää ja napsauta <strong>Uusi</strong>-painiketta.<em> </em><strong>Määritellyt ruudukot</strong> -otsikon alle syntyy uusi välilehti (samalle tiedostolle voi luoda useita ruudukoita). Määritä sitten haluamasi mittayksiköt sekä alkupisteet ja etäisyys (välistys) ruudukon kahden viivan välillä.  Aksonometristen ruudukkojen kohdalla voit myös määrittää ruudukon viivojen väliset kulmat.</p>
+<h3>Käytössä</h3>
+<blockquote>
+<p>Rastita ruutu, jos haluat käyttää ruudukkoa tiedostossa. Tällä voit jättää näkymättömät ruudukot auttamaan tarttumista ruudukon linjoihin.</p>
+</blockquote>
+<h3>Näkyvissä</h3>
+<blockquote>
+<p>Rastita, kun haluat näyttää ruudukon piirtoalueella ja poista, kun haluat ruudukon näkymättömäksi. Tämä valinta toimii oletuksena eri ruudukoille niin, että jos <strong>Näkyvissä</strong> on rastittu, voit edelleen vaihtaa näkyvyyttä valikosta tai <strong>#</strong> -näppäimestä. Jos <strong>Näytä</strong> <em>&gt;</em> <strong>Ruudukko</strong> -valintaa ei ole rastittu, Ruudukko ei näy piirtoalueella, vaikka näkyvissä olisi rastittu tässä.</p>
+</blockquote>
+<h3>Ruudukon yksikkö</h3>
+<blockquote>
+<p>Tarjolla on useita yleisesti käytettyjä mittayksiköitä, kuten jalka ja pikseli. Valitse näistä se, joka sopii parhaiten tarpeisiisi. Jos erityistarpeita ei ole, pysy oletusarvon pikseleissä.</p>
+</blockquote>
+<h3>Alkupiste X ja Y</h3>
+<blockquote>
+<p>Määrittää ruudukon alkukohdan. Tavallisesti asetuksena on "0" (nolla), mutta asetuksen muuttaminen voi olla tarpeen erityisesti halutessasi määrittää marginaaleja piirtoalueen reunasta.</p>
+</blockquote>
+<h3>Välistys X ja Y</h3>
+<blockquote>
+<p>Määrittää etäisyyden ruudukon kahden viivan välillä. Vaaka- ja pystysuorien viivojen välistys voi olla eri kokoinen, jolloin ruudukon kuviota voi muokata mihin tahansa suorakulmaiseen muotoon. </p>
+</blockquote>
+<h3>X-kulma ja Z-kulma</h3>
+<blockquote>
+<p>Tämä valinta tarjotaan vain aksonometrisille ruudukoille. Se määrittää ruudukon kulmat X- ja Z-akseleilla.</p>
+</blockquote>
+<h3>Ruudukon väri</h3>
+<blockquote>
+<p>Ruudukon oletusväri on sininen, mutta se voidaan vaihtaa tästä. Viivoja on myös kahdenlaisia. Yleisimmin käytetään vain ruudukon viivoitusta, mutta jos välistys on pieni ja viivoja on paljon, voi ruudukon pääviivoitus auttaa etäisyyksien arvioinnissa. Tällöin viivatyypeille voi asettaa eri värit ja myös pääviivoituksen tiheyden voi säätää (useimmin 5 tai 10).</p>
+</blockquote>
+<h3>Näytä pisteitä viivojen sijaan </h3>
+<blockquote>
+<p>Tämä tarjotaan vain suorakulmaiselle ruudukolle. Koska viivat helposti tukkivat näytön, voi piirtotyökaluilla työskentelystä tulla hankalaa, kun ruudukko on näkyvissä. Tällä valinnalla voi vaihtaa viivat ja pisteiksi, jotta näytöllä on enemmän väljyyttä. </p>
+</blockquote>
+<h2>Apuviivojen kiinnitystyökalut</h2>
+<p><strong>Apuviivojen kiinnitys</strong>-työkaluilla voi helpottaa kohteisiin tarttumista vaihtamalla toiminnon päälle tai pois tarpeen mukaan. Täältä voit myös säätää tarttumistoimintoa valitsemalla minkälaisiin kohteisiin voi tarttua ja mihin ne voi kiinnittää.</p>
+<h2>Väripaletti</h2>
+<p><img title="palette" src="_booki/inkscape/static/Inkscape-Interface-resized_600x17_palette_en-fi.png" alt="Käyttöliittymä" width="600" height="17"></p>
+<p><strong>Väripaletilla</strong> voi nopeasti lisätä värejä muotoihin.  Se löytyy piirtoalueen alalaidasta ja avautuu ikkunaan valitsemalla <strong>Näytä </strong><em>&gt;</em> <strong>Väripaletti</strong> (<strong><span class="keyboard_shortcuts">Shift</span></strong> + <strong><span class="keyboard_shortcuts">Ctrl</span></strong> + <strong><span class="keyboard_shortcuts">W</span></strong>)</p>
+<h3>Käyttöohjeita</h3>
+<p>Vieritä väripaletin väritilkkuviivaa ja valitse haluamasi sävy. Voit vaihtaa väripaletin toiseen napsauttamalla rivin yläreunasta löytyvää kolmiota ja valitsemalla uuden paletin.</p>
+<p>Kun käytät väriä muodon "Täyttöväriksi", napsauta väriä, kun olet valinnut yhden tai useamman muodon.</p>
+<p>Kun tahdot värin "Viivan väriksi", paina <strong><span class="keyboard_shortcuts">Shift</span></strong> napsauttaessasi.</p>
+<h2>Tilarivi</h2>
+<p><img title="status_bar" src="_booki/inkscape/static/Inkscape-Interface-inkscape_012-fi.png" alt="Käyttöliittymä" width="588" height="27"> </p>
+<p>Tilarivi löytyy Inkscape-käyttöliittymän alapuolelta. Siihen sisältyvät (vasemmalta oikealle):</p>
+<ul><li>Kohteen värin näyttö</li>
+<li>Nopea tason valinta</li>
+<li>Apuviestien alue</li>
+<li>Hiiren koordinaattinäyttö</li>
+<li>ja lopuksi suurennoskerroin, johon voit kirjoittaa haluamasi prosenttiarvon.</li>
+</ul></div><ul Class="menu-goes-here"><li Class="booki-section">INKSCAPEN KÄYTTÖOHJE</li><li><a href="/inkscape/index">INKSCAPE-OHJE</a></li>
+<li><a href="/inkscape/ch002_svg">SVG-VEKTORIGRAFIIKKA</a></li>
+<li Class="booki-section">ASENNUS</li><li><a href="/inkscape/ch004_asennus-windowsiin">ASENNUS WINDOWSIIN</a></li>
+<li Class="booki-section">PERUSTEET</li><li><a href="/inkscape/ch006_kayttoliittyma">KÄYTTÖLIITTYMÄ</a></li>
+<li><a href="/inkscape/ch007_tiedostojen-kaytto">TIEDOSTOJEN KÄYTTÖ</a></li>
+<li Class="booki-section">PIKAOPAS</li><li><a href="/inkscape/ch009_kuvakkeiden-luominen">KUVAKKEIDEN LUOMINEN</a></li>
+<li Class="booki-section">TYÖKALULAATIKKO</li><li><a href="/inkscape/ch011_valinta">VALINTA</a></li>
+<li><a href="/inkscape/ch012_solmu">SOLMU</a></li>
+<li><a href="/inkscape/ch013_muokkaus">MUOKKAUS</a></li>
+<li><a href="/inkscape/ch014_zoomaus">ZOOMAUS</a></li>
+<li><a href="/inkscape/ch015_suorakulmio">SUORAKULMIO</a></li>
+<li><a href="/inkscape/ch016_kolmiulotteinen-laatikko">KOLMIULOTTEINEN LAATIKKO</a></li>
+<li><a href="/inkscape/ch017_ellipsi">ELLIPSI</a></li>
+<li><a href="/inkscape/ch018_tahti">TÄHTI</a></li>
+<li><a href="/inkscape/ch019_spiraali">SPIRAALI</a></li>
+<li><a href="/inkscape/ch020_lyijykyna">LYIJYKYNÄ</a></li>
+<li><a href="/inkscape/ch021_kuulakarkikyna">BÉZIER</a></li>
+<li><a href="/inkscape/ch022_kalligrafia">KALLIGRAFIA</a></li>
+<li><a href="/inkscape/ch023_pyyhekumi">PYYHEKUMI</a></li>
+<li><a href="/inkscape/ch024_sankotaytto">SANKOTÄYTTÖ</a></li>
+<li><a href="/inkscape/ch025_teksti">TEKSTI</a></li>
+<li><a href="/inkscape/ch026_liitin">LIITIN</a></li>
+<li><a href="/inkscape/ch027_liukuvari">LIUKUVÄRI</a></li>
+<li><a href="/inkscape/ch028_pipetti">PIPETTI</a></li>
+<li Class="booki-section">POLUT</li><li><a href="/inkscape/ch030_muuta-polkua">MUUTA POLKUA</a></li>
+<li Class="booki-section">TEKSTI</li><li><a href="/inkscape/ch032_tekstin-tyyli">TEKSTIN TYYLI</a></li>
+<li><a href="/inkscape/ch033_tekstin-efektit">TEKSTIN EFEKTIT</a></li>
+<li><a href="/inkscape/ch034_teksti-ja-polut">TEKSTI JA POLUT</a></li>
+<li Class="booki-section">USEAMMAN OBJEKTIN OPERAATIOT</li><li><a href="/inkscape/ch036_kopioi-kloonaa-ja-monista">KOPIOI, KLOONAA JA MONISTA</a></li>
+<li><a href="/inkscape/ch037_leikkaus-ja-peitteet">LEIKKAUS JA PEITTEET</a></li>
+<li Class="booki-section">KOHTEIDEN SIJOITTELU</li><li><a href="/inkscape/ch039_sijoittelu">SIJOITTELU</a></li>
+<li><a href="/inkscape/ch040_jaa-ja-tasaa">JAA JA TASAA</a></li>
+<li Class="booki-section">KOHTEIDEN JÄRJESTELY</li><li><a href="/inkscape/ch042_tasot">TASOT</a></li>
+<li><a href="/inkscape/ch043_ryhmittely">RYHMITTELY</a></li>
+<li Class="booki-section">KOHTEIDEN TYYLI</li><li><a href="/inkscape/ch045_tyyli">TYYLI</a></li>
+<li><a href="/inkscape/ch046_taytto-ja-viiva">TÄYTTÖ JA VIIVA</a></li>
+<li Class="booki-section">POLKUTEHOSTE</li><li><a href="/inkscape/ch048_polkutehosteet">POLKUTEHOSTEET</a></li>
+<li><a href="/inkscape/ch049_hammasrattaat">HAMMASRATTAAT</a></li>
+<li><a href="/inkscape/ch050_muoto-polkua-pitkin">MUOTO POLKUA PITKIN</a></li>
+<li Class="booki-section">SVG-SUODATTIMET</li><li><a href="/inkscape/ch052_suodattimet">SUODATTIMET</a></li>
+<li Class="booki-section">ASETUKSET</li><li><a href="/inkscape/ch054_varinhallinta">VÄRINHALLINTA</a></li>
+<li Class="booki-section">LIITTEET</li><li><a href="/inkscape/ch056_oppaasta">KÄYTTÖOHJEESTA</a></li>
+<li><a href="/inkscape/ch057_lisenssi">LISENSSI</a></li>
+</ul>

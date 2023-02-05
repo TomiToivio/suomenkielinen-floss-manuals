@@ -1,0 +1,78 @@
+<div id="main-content"><h1>Tiedon kerääminen paperilla ja kynällä</h1>
+<p>Tässä osassa näemme, kuinka voimme tallentaa paikkojen koordinaatit ilman GPS-vastaanotinta. Voimme käyttää Walking Papersiksi kutsuttua työkalua, osoitteesta <a href="http://walking-papers.org/">http://walking-papers.org/</a> tulostaaksemme alueen kartan, piirtääksemme sille ja lisätäksemme muistiinpanoja, ja ladataksemme paperin takaisin OSM-editoriin, jossa voit lisätä sijaintisi OpenStreetMapiin. </p>
+<h3>Walking Papersin yleiskatsaus</h3>
+<p>Ennen kuin käsittelemme Walking Papersia yksityiskohtaisesti, käsittelemme yleisluontoisella tasolla prosessin pääpiirteet. Tarvitset tietokoneen, jossa on internet-yhteys, tulostin ja skanneri tai kamera, joka voi ottaa korkean resoluution kuvia. Tässä ovat prosessin aloitusvaiheet:</p>
+<p><strong>Vaihe 1: Tulosta kävelykartta alueesta<br><br></strong>Etsi Walking Papers -verkkosivulta alue, josta tahdot tulostaa kartan. Tulosta kartta tästä alueesta. Voit tulostaa alueen nykyisen OpenStreetMap-kartan tai voit tulostaa satelliittikuvan, jos sellainen on alueesta saatavilla.</p>
+<p><strong>Vaihe 2: Lisää tietoa tulostettuun karttaasi <br><br></strong>Kartoita alue tulostamallesi kartalle, eli lisää siihen sijainteja piirtämällä. Piirrä viivoja, jotka kuvaavat teitä, rakennuksien muotoja ja niin edelleen. Kirjoita muistiinpanot jokaisesta paikasta suoraan kartalle, tai piirrä kartalle numeroita, jotka liittyvät numeroihin muistikirjassasi, johon voit kirjoittaa yksityiskohtaista tietoa jokaisesta kohteesta.</p>
+<p><strong>Vaihe 3: Skannaa paperisi tietokoneelle <br><br></strong>Jos sinulla ei ole skanneria, voit ottaa valokuvan paperista, jos kamerasi tai älypuhelimesi voi ottaa korkealaatuisia kuvia (esimerkiksi 1600x1200 toimii). Lataa kuva Walking Papers -verkkosivulle. Varmista, että Walking Papers -viivakoodi on skannaamassasi kuvassa, Walking Papers -verkkosivu tarvitsee sitä.</p>
+<p><img src="http://fi.flossmanuals.net/kirjoita/openstreetmap/_draft/_v/1.0/static/static/barcode.png" alt="" width="142" height="135"> </p>
+<p><em>Walking Papers -viivakoodi</em></p>
+<p><strong>Askel 4: Lataa Walking Paper JOSM:iin tai Potlatch 2:een<br><br></strong>Käytä piirtämiäsi kohteita referenssinä lisätäksesi ne digitaalisesti OpenStreetMapiin.</p>
+<h2>Walking Papersin yksityiskohtainen käyttö</h2>
+<p>Käsittelemme nyt yksityiskohtaisesti Walking Papersin käyttöä.</p>
+<h3>Luo ja tulosta Walking Paper</h3>
+<p>Mene verkkosivulle <a href="http://walking-papers.org/">walking-papers.org</a>.</p>
+<p><img src="http://fi.flossmanuals.net/kirjoita/openstreetmap/_draft/_v/1.0/static/static/walking-papersorgsite.png" alt="" width="456" height="655"></p>
+<p><em>Walking Papers -sivusto<br></em></p>
+<p>Vieritä alas sivulla, kunnes näet kartan, kuten tässä näytetään:</p>
+<p><img src="http://fi.flossmanuals.net/kirjoita/openstreetmap/_draft/_v/1.0/static/static/walkingpaper_map.png" alt="" width="538" height="664"></p>
+<h3><strong>Luo tulostettu kartta käyttäen Walking Papersia <br></strong></h3>
+<p>Kartta, jonka näet, näyttää alueen, jonka tahtoisit tulostaa paperille. Voit liikuttaa karttaa samalla tavalla kuin liikutat karttaa OpenStreetMap-verkkosivulla, käyttäen vasenta hiiren nappia vierittääksesi karttaa ja käyttäen vieritysrullaa zoomataksesi sisään ja ulos. Voit myös napsauttaa vasemmalla hiiren napilla + ja - -painikkeita zoomataksesi sisään ja ulos.</p>
+<p>Kartan yläpuolella on hakulaatikko, jonka vieressä on "Find"-nappi. Voit käyttää tätä etsiäksesi sijaintia ja siirtääksesi kartan sinne automaattisesti. Kokeile kirjoittaa kotikaupunkisi nimi laatikkoon ja napsauta "Find". Jos Walking Papers löytää kirjoittamasi sijainnin, kartta siirtyy sinne automaattisesti.</p>
+<p>Kartan alapuolella on joitain lisävalintoja. Ensimmäinen valinta on "Orientation". Tämä antaa sinun muuttaa tulostettavan kartan kokoa ja paperin suuntaa. Yritä muuttaa tätä napsauttamalla nappia tekstin "Orientation" vieressä ja valitsemalla arvo "Landscape (A4)". Sinun tulisi nähdä kartan koon ja muodon muuttuvan leveäksi, jolloin se on sopivan kokoinen tulostettavaksi A4-kokoiselle paperille.</p>
+<p>Napsauta laatikkoa sanan “Provider:” vieressä. Tässä voit valita erilaisista valinnoista, jotka muuttavat kartan ulkoasua. Useimmat valinnoista näyttävät erilaisia kartan tyylejä, kuten ohuemmat viivat, ja eri värit ja tekstit. Napsauta "Bing Aerial Imagery" ja kartan sijasta näet Microsoftin tarjoaman satelliittikartan sijainnista, jota olet katsomassa. Huomaa, että kaikkia sijainteja ei ole katettu korkealaatuisilla kuvilla, joten saatat nähdä sumean kuvan, josta ei ole apua karttoja tehtäessä!</p>
+<p>Varmista, että kartta näyttää alueen, jonka tahdot kartoittaa. Tahdot ehkä siirtää karttaa ympäriinsä valitaksesi oikean alueen. Kun zoomaat sisään tai ulos kartalta, muutat "zoomaustasoksi" kutsuttua muuttujaa. Nämä merkitsevät vain sitä, kuinka lähelle olet zoomannut kartalla. Kun olet zoomannut mahdollisimman kauas, voit nähdä koko maapallon, jolloin olet zoomitasolla 0. Kun zoomaat lähemmäs niin pitkälle kuin kykenet, olet zoomaustasolla 18. Nykyinen zoomaustaso näkyy aivan kartan yläpuolella. Yleensä zoomaustaso 15, 16 tai 17 on hyvä Walking Papersien tulostamiseen.</p>
+<p>Nyt voimme tulostaa kartan. Jos olet löytänyt alueen, jonka tahdot kartoittaa, ja valinnut oikeat vaihtoehdot, jotta paperisi näyttää hyvältä, olet valmis. Napsauta nappia "Make", joka on juuri kartan alapuolella.</p>
+<p>Näet uuden sivun, joka sanoo, että tulostettavaa paperia käsitellään. Kun se on valmis, näet tulostettavan paperin tällä sivulla. Yleensä prosessi voi kestää muutamasta minuutista 20 minuuttiin asti.</p>
+<p><img src="http://fi.flossmanuals.net/kirjoita/openstreetmap/_draft/_v/1.0/static/static/08.png" alt="" width="536" height="311"></p>
+<h3>Walking Papersin käsittely</h3>
+<p>Kun tulosteesi on valmis, napsauta “Download map PDF for print”. Walking Paperin latauksen pitäisi alkaa.</p>
+<p>Kun lataus on valmis, avaa PDF-tiedosto. Kytke tietokoneesi tulostimeen ja tulosta paperi. Jos kaikki menee hyvin, sinulla pitäisi nyt olla paperille tulostettu kartta.</p>
+<h3>Kartoita Walking Papersin avulla</h3>
+<p>Vie Walking Paper ulos, käytä sitä oppaana kävellessäsi, ja etsi uusia paikkoja, joita ei ole kartalla.</p>
+<p>Piirrä viivoja kuvaamaan teitä, muotoja kuvaamaan rakennuksia ja niin edelleen. Kirjoita muistiinpanot jokaisesta sijainnista kartalle, tai kirjoita kartalle numeroita, jotka viittaavat muistikirjassasi oleviin numeroihin. Voit kirjoittaa muistikirjaasi tarkempaa tietoa jokaisesta kohteesta.</p>
+<p>Kun olet tyytyväinen paperikartalle lisäämiisi kohteisiin, voit lisätä ne digitaalisesti OpenStreetMapiin.</p>
+<p><img src="http://fi.flossmanuals.net/kirjoita/openstreetmap/_draft/_v/1.0/static/static/walkingpapers600.jpg" alt="" width="600" height="411"> <br> </p>
+<p><em>Tulostettu Walking Papers -kartta valmiina skannattavaksi <br></em></p>
+<h3>Skannaa ja lataa</h3>
+<p>Walking Papersit ovat erittäin hyödyllisiä kartoitettaessa pelkällä paperilla, mutta ne eivät ole täysin maaginen ratkaisu. Joudumme edelleenkin lisäämään paperimme OSM-editoriin ja lisäämään tietomme digitaalisesti, sekä tallentamaan muutoksemme OpenStreetMapiin. </p>
+<p>Ensimmäinen askel on skannata Walking Paper tietokoneelle. Voit tehdä tämän liittämällä skannerin tietokoneeseesi, skannaamalla paperin ja tallentamalla sen kuvatiedostona. Jos sinulla ei ole skanneria, voit ottaa valokuvan paperista, mutta sinun pitäisi olla tarkka ja ottaa erittäin hyvä kuva. Varmista, että paperi on tasainen ja että kamerasi on suoraan sen edessä. Varmista, että kuvassa on viivakoodi, sillä Walking Papers ei toimi ilman sitä. Tässä on esimerkki skannatusta kuvasta:</p>
+<p><img src="http://fi.flossmanuals.net/kirjoita/openstreetmap/_draft/_v/1.0/static/static/101.jpg" alt="" width="464" height="640"></p>
+<p>Kun olet skannannut Walking Paperin ja tallentanut sen tietokoneelle, avaa verkkoselaimesi ja palaa sivulle walking-papers.org, aivan kuin ennenkin.</p>
+<p>Napsauta “Upload” -välilehteä.</p>
+<p><img src="http://fi.flossmanuals.net/kirjoita/openstreetmap/_draft/_v/1.0/static/static/111.png" alt="" width="600" height="337"></p>
+<p>Napsauta “Browse…” ja etsi tiedosto, johon skannasit tai valokuvasit Walking Paperin.</p>
+<p>Napsauta “Send.”</p>
+<p>Paperin latautuminen voi kestää muutaman minuutin. Tämä riippuu internet-yhteytesi nopeudesta. Kun lataus loppuu, näet uuden sivun, jossa on pari kysymystä skannaamastasi tiedostosta. <img style="display: block; margin-left: auto; margin-right: auto;" src="http://fi.flossmanuals.net/kirjoita/openstreetmap/_draft/_v/1.0/static/static/121.png" alt="" width="600" height="631" align="text-top"></p>
+<p>Kysymyksen “Do you plan to edit this yourself?” kohdalla voit valita “No”. Tämä tekee paperistasi julkisen, jotta muutkin kartoittajat voivat nähdä sen.</p>
+<p>Alaosassa olevassa tyhjässä laatikossa voit kuvailla kartoittamiasi asioita. Tähän voisi liittyä sijainti ja lisäämiesi kohteiden tyyppi.</p>
+<p>Napsauta “Save.” Walking Paperisi käsittely alkaa. Tämä voi kestää 20 minuuttia tai enemmän. Jos teit paperistasi julkisen valitsemalla "No" edellisellä sivulla, voit sulkea selaimesi ja palata myöhemmin, kun paperisi on prosessoitu.</p>
+<h3>Avaa JOSMissa</h3>
+<p>Kun skannauksesi on prosessoitu, voit ladata sen JOSMiin ja käyttää sitä lisätäksesi informaatiosi OpenStreetMapiin. Palaa Walking Papers -verkkosivulle kirjoittamalla osoite walking-papers.org selaimeesi, aivan kuin ennenkin.</p>
+<p>Napsauta “Scans”.</p>
+<p>Etsi paperisi listalta ja napsauta sitä. Sinun pitäisi nähdä jotain tällaista:</p>
+<p><img src="http://fi.flossmanuals.net/kirjoita/openstreetmap/_draft/_v/1.0/static/static/132.png" alt="" width="600" height="337"></p>
+<p>Ladataksesi paperin JOSMiin joudut kopioimaan skannaamasi Walking Paperin ID-tunnuksen. URL-palkissa verkkoselaimesi yläosassa voit valita tekstin ja painaa CTRL+X näppäimistölläsi kopioidaksesi sen. Tekstin pitäisi näyttää suunnilleen tältä: http://walking-papers.org/scan.php?id=fmxcgdqd</p>
+<p>Avaa JOSM ja napsauta ylävalikossa “Walking Papers”. Napsauta tämän jälkeen “Scanned Map…”</p>
+<p>Paina CTRL+V näppäimistölläsi liittääksesi Walking Papers -verkkosivulta kopioimasi tekstin. Napsauta OK.</p>
+<p>Jos kaikki meni hyvin, sinun pitäisi nähdä Walking Paperin latautuvan JOSMiin. Seuraavassa luvussa näemme, kuinka voit lisätä kartoittamasi sijainnit OpenStreetMapiin.</p>
+<h3>Uudestaan!</h3>
+<p>Kun olet lisännyt muutoksesi OSMiin ne tallennetaan kartalle. Seuraavan kerran kun tahdot parannella karttaa, voit tulostaa Walking Paperin, joka sisältää tekemäsi muutokset. Kun tämä prosessi toistetaan, kartasta tulee parempi.</p></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/openstreetmap-suomeksi/index">Yhteisöllisen kartanteon löytäminen</a></li>
+<li><a href="/openstreetmap-suomeksi/ch002_tervetuloa-openstreetmapin-kayttajaksi">Tervetuloa OpenStreetMapin käyttäjäksi</a></li>
+<li><a href="/openstreetmap-suomeksi/ch003_tasta-kirjasta">Tästä kirjasta</a></li>
+<li Class="booki-section">Aloittaminen</li><li><a href="/openstreetmap-suomeksi/ch005_ensimmainen-muokkauksesi">Ensimmäinen muokkauksesi</a></li>
+<li><a href="/openstreetmap-suomeksi/ch006_tiedon-keraaminen">Tiedon kerääminen GPS-vastaanottimella</a></li>
+<li><a href="/openstreetmap-suomeksi/ch007_tiedon-keraaminen-paperilla-ja-kynalla">Tiedon kerääminen paperilla ja kynällä</a></li>
+<li><a href="/openstreetmap-suomeksi/ch008_karttojen-jakaminen">Karttojen jakaminen</a></li>
+<li Class="booki-section">OpenStreetMapin editoiminen</li><li><a href="/openstreetmap-suomeksi/ch010_johdanto-openstreetmapin-editointiin">Johdanto OpenStreetMapin editointiin</a></li>
+<li><a href="/openstreetmap-suomeksi/ch011_editointi-potlatch-2-editorilla">Editointi Potlatch 2 -editorilla</a></li>
+<li><a href="/openstreetmap-suomeksi/ch012_editointi-josmilla">Johdanto editointiin JOSMilla</a></li>
+<li><a href="/openstreetmap-suomeksi/ch013_osm-kartan-editointi-josmilla">OSM-kartan editointi JOSMilla</a></li>
+<li><a href="/openstreetmap-suomeksi/ch014_viela-lisaa-josmia">Vielä lisää JOSMia</a></li>
+<li><a href="/openstreetmap-suomeksi/ch015_editointi-mobiilieditoreilla">Editointi mobiilieditoreilla</a></li>
+<li Class="booki-section">Tee kartasta omasi</li><li><a href="/openstreetmap-suomeksi/ch017_ota-openstreetmap-mukaasi">Ota OpenStreetMap mukaasi</a></li>
+<li><a href="/openstreetmap-suomeksi/ch018_openstreetmapin-tietomalli">OpenStreetMapin tietomalli</a></li>
+<li Class="booki-section">Lisätietoa</li><li><a href="/openstreetmap-suomeksi/ch020_tutkimusmatka-openstreetmap-yhteisoon">Tutkimusmatka OpenStreetMap-yhteisöön</a></li>
+<li><a href="/openstreetmap-suomeksi/ch021_hyodylliset-verkkosivut-ja-lahteet">Hyödylliset verkkosivut ja lähteet</a></li>
+<li><a href="/openstreetmap-suomeksi/ch022_tekijat">Tekijät</a></li>
+</ul>

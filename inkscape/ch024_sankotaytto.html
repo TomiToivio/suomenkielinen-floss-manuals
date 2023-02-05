@@ -1,0 +1,87 @@
+<div id="main-content"><h1>Täytä suljettuja alueita </h1>
+<div id="content">
+<p><strong>Täytä suljettuja alueita </strong>-työkalu on yksinkertainen - se täyttää täyttämättömät alueet värillä. Vektorityökaluna <strong>Inkscapen</strong> maalisanko luo kuitenkin uuden <strong>polun</strong>, joka "täyttää" alueen, jota napsautit.</p>
+<p>On tärkeää huomata, että työkalun toiminta on <strong>aistittavaa</strong>, ei geometristä.Tämä merkitsee, että kun se etsii napsauttamasi pisteen ympärillä olevia rajoja, se ottaa rajoiksi mitkä tahansa <em>näkyvät</em> värimuutokset. Tämä merkitsee, että täyttö pysähtyy <strong>liukuväreihin</strong>, sumennukseen, tai jopa bittikartoista tuotuihin värien rajoihin, mutta se ei ota huomioon polkuja tai muita kohteita, jotka ovat täysin (tai melkein täysin) läpinäkyviä tai eivät erotu taustasta jostain muusta syystä. Lyhyesti sanottuna se toimii täsmälleen kuin täyttäisit kuvasi <strong>rasteroitua</strong> versiota bittikarttaeditorissa, kuten <strong>Photoshopissa</strong> tai <strong>Gimpissä</strong> - mutta työskentelet <strong>vektorikohteen</strong> kanssa.</p>
+<p>Sisäisesti työkalu toimii tekemällä bittikarttaan perustuvan <strong>tulvatäytön</strong> näkyvän <strong>kankaan</strong> <strong>renderöidyllä</strong> versiolla, jonka jälkeen se jäljittää tuloksena olevan täytön käyttäen <strong>potracea</strong> ja sijoittamalla jäljitetyn polun dokumenttiin. </p>
+<p>Se sijoittaa renderöidyn polun nykyiseen tasoon, jotta sinulla voi olla taso sen päällä (esimerkiksi "Musteet"), ja voit valita alla olevan tason (esimerkiksi "Värit"), ja tehdä täytön niin, että ne näkyvät aina Musteet-tason alla.  </p>
+<p>Koska työkalu toimii näin, voit esimerkiksi skannata lyijykynällä tehdyn piirrustuksen, tuoda bittikartan Inkscapeen, ja täyttää nopeasti kaikki sen <strong>solut</strong> väreillä jäljittämättä ensin bittikarttaa. Tämä on hyvin käytännöllinen ja interaktiivinen tapa digitoida paperipiirroksiasi, tehden usein perinteisestä bittikartan jäljityksestä hyödytöntä. </p>
+Bittikarttakuvan <strong>resoluutio</strong> riippuu nykyisestä <strong>tarkennustasosta</strong> - mitä enemmän olet "zoomannut" alueelle jossa olet, sitä korkeampi bittikarttaan perustuvan tulvatäytön resoluutio on. Joten jos sinulla on täyttö, joka on liian epätarkka, jossa on epätasaisia kulmia, tai joka ei mene sinne minne sen pitäisi mennä, tee se (<strong>CTRL </strong>+ <strong>z</strong>), "zoomaa" lähemmäs ja tee täyttö uudestaan samasta pisteestä. Vastaavasti, jos täyte vuotaa ulos pienestä aukosta, zoomaa ulos tehdäksesi aukosta vähemmän näkyvän ja täytä uudestaan (tai käytä automaattista <strong>sulje välit</strong>-toimintoa - katso alla). 
+<p><img title="PaintFill" src="_booki/inkscape/static/Inkscape-BucketFillTool-PaintFill_en-fi.png" alt="PaintFill_en.png" width="568" height="184"> </p>
+<h2>Kuinka käytetään</h2>
+<p><strong>Täytä suljettuja alueita </strong>-työkalu toimii melko intuitiivisesti: napsauta mitä tahansa aluetta, jolla on rajat kaikilla puolilla, ja täytä se värillä - tai todellisuudessa, polulla, joka voidaan täyttää ja säätää kuin mitä tahansa satunnaista polkua. </p>
+<h3>Tyyli</h3>
+<blockquote>
+<p>Kuten kaikki kohteita luovat työkalut, täytä suljettuja alueita voi käyttää <strong>viimeksi asetettua tyyliä</strong> niille kohteille, hoita se luo (tämä on oletusarvo), tai se voi käyttää omaa pysyvää tyyliään. Voit vaihtaa näiden tilojen välillä työkalun sivulla (Ctrl+Shift+P). Kuten kaikki muutkin työkalut, <strong>Inkscapen asetuksissa </strong>tyylinvaihto hallintapalkin oikealla puolella näyttää tyylin, jota käytetään seuraavaa luomaasi täyttökohdetta varten.</p>
+</blockquote>
+<h3>Hallinta</h3>
+<blockquote>
+<p><strong>Työkalun halintapalkki</strong>: Täytä suljettuja alueita -työkalun havaittava täyttö voi käyttää kaikkia näkyviä värejä tai tiettyjä <strong>värikanavia</strong>. Käyttäen <strong>Täyttö</strong> -pudotusvalikkoa, voit rajoittaa algoritmin yhteen seuraavista kanavista: </p>
+<ul><li>Punainen </li>
+<li>Vihreä</li>
+<li>Sininen</li>
+<li>Sävy</li>
+<li>Kylläisyys</li>
+<li>Kirkkaus</li>
+<li>Alfa</li>
+</ul><p><strong>Raja-arvo</strong> (prosenttiyksiköinä) määrittelee kuinka suuri värien eron täytyy olla tietyssä pisteessä (verrattuna alkuperäiseen napsautuspisteeseen) lopettaakseen täytön. "Nollatoleranssi" merkitsee, että ainoastaan tarkalleen samaa väriä oleva alue täytetään; mitä korkeampi toleranssi, sitä helpompaa täytevärin on vuotaa lähellä oleviin erivärisiin alueisiin. Oletusarvo on 10%. </p>
+<p>Käyttäen <strong>Kasvata tai kutista</strong> -parametriä voit hallita luodun täyttöpolun sisennystä ja ulonnusta. Positiivinen arvo saa kaikki täyttöpolut isommiksi kuin täytetyn bittikartan alueen (hyvä poistettaessa <strong>anti-aliasing</strong> virheitä), mutta negatiivisen arvon asettaminen tekee polusta pienemmän. Tämä toimii samalla tavalla kuin polun komennot sisennys ja ulkoistus, mutta se se tehdään automaattisesti jokaisen täytön jälkeen. </p>
+<p>Muuttujalla <strong>Sulje välit</strong> saat täytä suljetut välit -työkalun jättämään huomiotta aukot alueiden rajoissa, jotka saisivat normaalisti täytön vuotamaan ulos halutulta alueelta. On neljä asetusta automaattista aukkoa varten: </p>
+</blockquote>
+<ul><ul><li>Ei mitään</li>
+<li>Pieni (sulkee korkeintaan 2 pikselin kokoiset aukot)</li>
+<li>Keskikokoinen (4 pikseliä)</li>
+<li>Suuri (6 pikseliä)</li>
+</ul></ul><blockquote>
+<div class="tips"><strong>Huomaa</strong>: tämän parametrin asettaminen mihin tahansa muuhun kuin <strong>Ei mitään</strong> voi hidastaa Inkscapea huomattavasti, kun alueita täytetään.</div>
+</blockquote>
+<h2>Näppäinkomennot</h2>
+<p>Työkalun <strong>näppäinkomennot</strong> ovat:</p>
+<ul><li><strong>Napsautus</strong> tekee täytön napsautuspisteestä.</li>
+</ul><ul><li><strong><span class="keyboard_shortcuts">Shift</span></strong><strong>+napsautus</strong> tekee täytön napsautuspisteestä ja yhdistää tuloksena olevan polun valitun polun kanssa. Jos ensimmäinen yrityksesi ei täyttänyt haluttua aluetta kokonaan, voit painaa <strong>shift</strong> ja napsauttaa jäljellä olevaa kulmaa täyttääksesi sen erikseen ja yhdistää tuloksen edellisen täytön tuloksen kanssa.</li>
+</ul><ul><li><strong><span class="keyboard_shortcuts">Ctrl</span>+napsautus</strong> on kohde, joka yksinkertaisesti muuttaa sen kohteen täytön työkalun nykyiseen täyttöväriin, ja <strong><span class="keyboard_shortcuts">Shift</span>+<span class="keyboard_shortcuts">Ctrl</span>+napsautus</strong> muuttaa <strong>viivan</strong> nykyiseen viivan väriin.</li>
+</ul><ul><li><strong>Napsautus+veto</strong> tekee täytön kaikista pisteistä joiden läpi kuljet vetäessäsi (näet polkusi visualisoituna punaisella viivalla). Jokaisesta pisteestä täyttö leviää naapureihinsa, vaikka värit ovat samanalaisia tämän pisteen kanssa - toisin sanottuna, se on kuin napsauttaisit tällä työkalulla jokaista vetopolun pistettä ja yhdistäisit tulokset. Tämä sallii sinun helposti täyttää alueen, joka on sumennuksen tai liukuvärin täyttämä - vedä vain tummimmista pisteistä vaaleimpiin pisteisiin sillä alueella, jonka tahdot täyttää. </li>
+</ul><ul><li><strong><span class="keyboard_shortcuts">Alt</span>+napsautus</strong> ja veto toimii samoin kuin yksinkertainen veto, paitsi että jokaisesta vetopolun pisteestä leviää täyttö naapureihin (jos sellaisia on) väreillä, jotka ovat samanlaiset kuin <em>aloituspisteessä</em> (piste, josta aloitit vedon). Tämän vuoksi voit vetää sarjan miltei samanvärisiä mutta erillisiä alueita (esimerkiksi monia soluja sarjakuvassa) aloittamalla vedon yhdestä alueesta, ja painamalla <strong>Alt</strong> + vetämällä työkalun kaikkien muiden alueiden läpi. </li>
+</ul></div></div><ul Class="menu-goes-here"><li Class="booki-section">INKSCAPEN KÄYTTÖOHJE</li><li><a href="/inkscape/index">INKSCAPE-OHJE</a></li>
+<li><a href="/inkscape/ch002_svg">SVG-VEKTORIGRAFIIKKA</a></li>
+<li Class="booki-section">ASENNUS</li><li><a href="/inkscape/ch004_asennus-windowsiin">ASENNUS WINDOWSIIN</a></li>
+<li Class="booki-section">PERUSTEET</li><li><a href="/inkscape/ch006_kayttoliittyma">KÄYTTÖLIITTYMÄ</a></li>
+<li><a href="/inkscape/ch007_tiedostojen-kaytto">TIEDOSTOJEN KÄYTTÖ</a></li>
+<li Class="booki-section">PIKAOPAS</li><li><a href="/inkscape/ch009_kuvakkeiden-luominen">KUVAKKEIDEN LUOMINEN</a></li>
+<li Class="booki-section">TYÖKALULAATIKKO</li><li><a href="/inkscape/ch011_valinta">VALINTA</a></li>
+<li><a href="/inkscape/ch012_solmu">SOLMU</a></li>
+<li><a href="/inkscape/ch013_muokkaus">MUOKKAUS</a></li>
+<li><a href="/inkscape/ch014_zoomaus">ZOOMAUS</a></li>
+<li><a href="/inkscape/ch015_suorakulmio">SUORAKULMIO</a></li>
+<li><a href="/inkscape/ch016_kolmiulotteinen-laatikko">KOLMIULOTTEINEN LAATIKKO</a></li>
+<li><a href="/inkscape/ch017_ellipsi">ELLIPSI</a></li>
+<li><a href="/inkscape/ch018_tahti">TÄHTI</a></li>
+<li><a href="/inkscape/ch019_spiraali">SPIRAALI</a></li>
+<li><a href="/inkscape/ch020_lyijykyna">LYIJYKYNÄ</a></li>
+<li><a href="/inkscape/ch021_kuulakarkikyna">BÉZIER</a></li>
+<li><a href="/inkscape/ch022_kalligrafia">KALLIGRAFIA</a></li>
+<li><a href="/inkscape/ch023_pyyhekumi">PYYHEKUMI</a></li>
+<li><a href="/inkscape/ch024_sankotaytto">SANKOTÄYTTÖ</a></li>
+<li><a href="/inkscape/ch025_teksti">TEKSTI</a></li>
+<li><a href="/inkscape/ch026_liitin">LIITIN</a></li>
+<li><a href="/inkscape/ch027_liukuvari">LIUKUVÄRI</a></li>
+<li><a href="/inkscape/ch028_pipetti">PIPETTI</a></li>
+<li Class="booki-section">POLUT</li><li><a href="/inkscape/ch030_muuta-polkua">MUUTA POLKUA</a></li>
+<li Class="booki-section">TEKSTI</li><li><a href="/inkscape/ch032_tekstin-tyyli">TEKSTIN TYYLI</a></li>
+<li><a href="/inkscape/ch033_tekstin-efektit">TEKSTIN EFEKTIT</a></li>
+<li><a href="/inkscape/ch034_teksti-ja-polut">TEKSTI JA POLUT</a></li>
+<li Class="booki-section">USEAMMAN OBJEKTIN OPERAATIOT</li><li><a href="/inkscape/ch036_kopioi-kloonaa-ja-monista">KOPIOI, KLOONAA JA MONISTA</a></li>
+<li><a href="/inkscape/ch037_leikkaus-ja-peitteet">LEIKKAUS JA PEITTEET</a></li>
+<li Class="booki-section">KOHTEIDEN SIJOITTELU</li><li><a href="/inkscape/ch039_sijoittelu">SIJOITTELU</a></li>
+<li><a href="/inkscape/ch040_jaa-ja-tasaa">JAA JA TASAA</a></li>
+<li Class="booki-section">KOHTEIDEN JÄRJESTELY</li><li><a href="/inkscape/ch042_tasot">TASOT</a></li>
+<li><a href="/inkscape/ch043_ryhmittely">RYHMITTELY</a></li>
+<li Class="booki-section">KOHTEIDEN TYYLI</li><li><a href="/inkscape/ch045_tyyli">TYYLI</a></li>
+<li><a href="/inkscape/ch046_taytto-ja-viiva">TÄYTTÖ JA VIIVA</a></li>
+<li Class="booki-section">POLKUTEHOSTE</li><li><a href="/inkscape/ch048_polkutehosteet">POLKUTEHOSTEET</a></li>
+<li><a href="/inkscape/ch049_hammasrattaat">HAMMASRATTAAT</a></li>
+<li><a href="/inkscape/ch050_muoto-polkua-pitkin">MUOTO POLKUA PITKIN</a></li>
+<li Class="booki-section">SVG-SUODATTIMET</li><li><a href="/inkscape/ch052_suodattimet">SUODATTIMET</a></li>
+<li Class="booki-section">ASETUKSET</li><li><a href="/inkscape/ch054_varinhallinta">VÄRINHALLINTA</a></li>
+<li Class="booki-section">LIITTEET</li><li><a href="/inkscape/ch056_oppaasta">KÄYTTÖOHJEESTA</a></li>
+<li><a href="/inkscape/ch057_lisenssi">LISENSSI</a></li>
+</ul>

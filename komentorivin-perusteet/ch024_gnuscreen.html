@@ -1,0 +1,90 @@
+<div id="main-content"><h1>GNU Screen</h1>
+<p>GNU Screen auttaa sinua saamaan kaiken irti koneesi tehoista, mikäli sinun täytyy toimia useammassa kuin yhdessä päätteessä samanaikaisesti. Käyttämällä GNU Screeniä sinulla voi olla niin monta prosessia kuin tahdot, esimerkiksi editoreja, verkkoselaimia ja päätteitä, kaikki yhdessä pääteikkunassa. Jokainen työpöytäjärjestelmä antaa sinun avata useampia terminaaleja eri ikkunoissa, ja useimmat terminaaliohjelmat antavat sinun ajaa useampia istuntoja samaan aikaan välilehtiä käyttäen, mutta GNU Screen on usein helpommin hallittavissa ja vähemmän hämmentävä, kun sinulla on useita eri istuntoja. Lisäksi GNU Screen tarjoaa kopioi ja liitä -toiminnon, jolla voi helposti siirtää tekstinpätkiä useiden eri istuntojen välillä. Sitä voi käyttää tavallisessa tekstiterminaalissa ja työpöydällä, ja useimpia käyttötarkoituksia varten se on vaihtoehto useampien pääteistuntojen käytölle ja niiden välillä siirtymiselle  <strong>Alt + F#</strong> näppäinyhdistelmällä.</p>
+<p>Aloita kirjoittamalla <code>"screen"</code> komentokehotteessasi.</p>
+<pre>$<strong> screen</strong>  
+</pre>
+<p>Saat tervetuloviestin ja versiotietoa, tai järjestelmäsi asetukset voivat olla sellaiset, että se menee suoraan päätteen komentokehotteeseen.</p>
+<p><img title="screen_en" src="_booki/komentorivin-perusteet/static/KomentorivinPerusteet-GNUScreen-screen_en-fi.png" alt="screen_en" width="507" height="366"> </p>
+<p>Jos painat <strong>Enter</strong> saat komentokehotteen, aivan kuin ennen screenin käynnistämistä. Toimit nyt screenin yhden istunnon sisällä. Luodaksesi toisen istunnon omalla komentotulkillaan, paina <strong>ctrl + a</strong>, jota seuraa <strong>c</strong> tai <strong>ctrl + c</strong>. Kaikki ruudun komennot alkavat näppäimillä <strong>ctrl + a</strong>, mutta jos tahdot käyttää tuota näppäinyhdistelmää muihin tarkoituksiin, voit vaihtaa käytettyjä näppäimiä. Katso sitä käyttöoppaasta (kirjoita "man screen" Bashin komentokehotteessa) nähdäksesi näppäinkomentojen muuttamisen ja monia muita asioita, joita emme käsittele tässä oppaassa. </p>
+<p>Jos tahdot ajaa vain yhden komennon uudessa ruudussa ja sitten sulkea ruudun, määrittele komento parametrinä:</p>
+<p> </p>
+<pre>$<strong> screen</strong> <strong>irssi</strong>
+</pre>
+<h2>Istuntojen välillä siirtyminen</h2>
+<p>Siirtyäksesi seuraavaan istuntoon, paina <strong>ctrl + a</strong>, jota seuraa näppäin <strong>p</strong>. Mennäksesi taas eteenpäin, paina <strong>ctrl + a</strong>, jota seuraa näppäin <strong>n</strong>. Voit nähdä kaikkien luomiesi istuntojen listan käyttäen näppäimiä <strong>ctrl + a</strong>, jota seuraa näppäin <strong>"</strong>. Tämä näyttää vieritysvalikon, joka listaa kaikki avoimet istunnot (tosi hyödyllistä, kun olet luonut monta istuntoa). Jos tahdot säästää edes sen puolisekuntisen, jonka valikon vierittäminen kestää, mutta näet samalla listan saatavilla olevista istunnoista ja hyppäät suoraan toiseen istuntoon, paina <strong>ctrl + a</strong> <strong>w</strong>. Tämä pitää sinut nykyisessä ikkunassa, mutta lisää ruudun pohjalle listan istunnoista, joista jokaiselle on eri numero. Paina sitten <strong>ctrl + a <em>istunnon_numero</em></strong> hypätäksesi valitsemaasi istuntoon.</p>
+<p>Oletetaan, että loit muutamia istuntoja GNU Screenillä. Yhdessä istunnossa on avoinna Vim-editori, paria muuta istuntoa käytät etäpalvelimille kirjautumiseen, yhdessä istunnossa käytät FTP:tä, ja niin edelleen. Oletusarvoisesti <strong>ctrl + a</strong> <strong>"</strong> näyttää ohjelman, jota käytit jokaisen istunnon käynnistämiseen. Normaalisti aloitit sen komentotulkissa, joten <strong>ctrl + a</strong> <strong>"</strong> näyttää "bash" jokaiselle istunnolle (tai mikä päätteesi onkaan). Tämä ei ole kovinkaan hyvä, jos tahdot nopeasti löytää istunnon, joka ajaa Vimiä tai FTP:tä.</p>
+<p>Paljastuu, että näytön kustomointi on helppoa. Kun olet istunnossa - esimerkiksi Vim-editoinnissa - paina  <strong>ctrl + a</strong><span> A</span> ja ikkunan pohjaan ilmestyy rivi, jossa on istuntosi nimi, jonka voit muuttaa haluamaksesi. </p>
+<h2>Kopioi ja liitä</h2>
+<p>Kopioiminen ja liittäminen toimii graafisissa käyttöliittymissä toimivissa komentotulkeissa. Voit käyttää hiirtä valitsemaan tekstin yhdessä istunnossa ja liittämään sen toiseen istuntoon tai päätteeseen. Ohjelmalla screen on omat menetelmänsä tekstin kopiointiin, kuten tämä:</p>
+<ol><li>Paina <strong>ctrl + a</strong> <strong>[</strong> mennäksesi <em>ruudun kopionti</em> -tilaan.</li>
+<li>Navigoi tekstin läpi missä tahansa ikkunassasi, käyttäen nuolinäppäimiä tai editorin komentoja tai mikä tahansa toimiikin tuossa istunnossa. Kopioitavan alueen alussa paina <strong>välilyöntiä</strong>.</li>
+<li>Navigoi kopioitavan alueen loppuun (teksti korostetaan, kun teet valintaasi).</li>
+<li>Paina <strong>välilyöntiä</strong> uudestaan kopioidaksesi tekstin leikepöydälle.</li>
+<li>Siirry istuntoon, johon tahdot kopioida tekstin, navigoi oikeaan paikkaan, ja paina <strong>ctrl + a</strong> <strong>]</strong>. Tämä liittää valitun tekstin editointipuskuriin tai komentoriville tai minne tahansa, riippuen siitä, mitä tuo istunto tekee.</li>
+<li>Toista askel 5 kuten tahdot.</li>
+</ol><p>Joko hiirimenetelmällä tai ruutumenetelmällä teksti otetaan videomuistista, joka ei säilytä pakomerkkejä, jotka tekevät värejä, lihavointeja ja niin edelleen. Luultavasti tahdot sen toimivan näin, jos kopioit osia käyttöoppaasta komentoriville, mutta ehkä tahtoisit muotoilut, mikäli kopioit otteita yhdestä tiedostosta toiseen.</p>
+<h2>Ruudun jakaminen</h2>
+<p>Useiden monen yhden ikkunan screenien lisäksi Screen tarjoaa myös mahdollisuuden laittaa monta ohjelmaa samaan screeniin.</p>
+<p>Käytä komentoa <strong>ctrl + a</strong> <strong>S</strong> (iso S) jakamaan screenisi kahteen osaan. Alkuperäinen istuntosi on ylhäällä ja uusi tyhjä istunto alhaalla. Ole varovainen, että et vahingossa paina näppäimiä <strong>ctrl + s</strong>. Tämä voi lukita päätteesi. Jos painat vahingossa <strong>ctrl + s</strong>, voit purkaa päätteen lukituksen näppäimillä <strong>ctrl + q</strong>.) Oletusarvoisesti tällä uudella alueella ei ole suoritettava ohjelmaa, mutta voit aloittaa uuden painamalla <strong>ctrl + tab</strong> siirtyäksesi tuolle alueelle ja kirjoittamalla sitten <strong>ctrl + a c</strong>.</p>
+<p>Jokainen alue toimii erillisenä istuntona, ja voit siirtyä istuntojen välillä aivan kuin kokoruudun tilassa.</p>
+<p>Voit poistaa nykyisen alueen käyttämällä näppäimiä <strong>ctrl + a X</strong>. Tämä ei tuhoa istuntoa tai siinä toimivaa ohjelmaa. Se vain muuttaa toisen istunnon takaisin täysikokoiseksi ikkunaksi.</p>
+<h2>Istunnon irrottaminen</h2>
+<p>Yksi Screenin tehokkaimmista ominaisuuksista on istuntojen pysäyttäminen ja palauttaminen. Ehkä teet jotain todella mielenkiintoista tietokoneellasi, mutta joudut jättämään sen ja menemään töihin. Sanotaanpa, että kun olet poissa, tahdot päästä käsiksi siihen, mitä olit tekemässä. Jos molemmille koneille pääsee internetin kautta, voit tehdä tämän Screenin avulla. Voit esimerkiksi aloittaa istunnon etäkoneella käyttäen komentoa <code>telnet</code> tai turvallisempaa <code>ssh</code> -protokollaa, ja kutsua sitten komentoa <code>screen</code>. Kun sinun täytyy lähteä, voit turvallisesti sulkea etänä toimivan Screen -istunnon ja palauttaa sen myöhemmin, kenties ottaen yhteyttä etäkoneelle kolmannelta koneelta, joka sijaitsee toisella mantereella. </p>
+<p>Kirjoita <strong>ctrl + a d</strong> screen-istunnossasi. Palaat alkuperäiseen päätteeseesi ja screen poistuu, tulostaen tekstin <strong>[detached]</strong>. Jos käytät nyt komentoa <code>ps</code>, huomaat että screen toimii edelleenkin taustalla. Hanki lista kaikista toimivista istunnoista antamalla komennolle <code>"screen"</code> <code>valitsin "list"</code>.</p>
+<p> </p>
+<pre>$ <strong>screen -list</strong>
+There is a screen on:
+12056.pts-0.hostname
+(Detached)
+1 Socket in
+/var/run/screen/S-user_name.
+$</pre>
+<p>Voit kytkeytyä uudestaan tähän istuntoon kirjoittamalla:</p>
+<pre>$<strong> screen -r 12056.pts-0.hostname</strong></pre>
+<p>Tai voit vain käyttää:</p>
+<pre>$<strong> screen -R</strong></pre>
+<p>Tämä kytkeytyy takaisin ensimmäiseen löytämäänsä istuntoon.</p>
+<p>Nyt sinun tarvitsee vain kirjautua sisään kotikoneellesi miltä tahansa etäkoneelta ja näet mitä olitkin tekemässä, aivan kuin se oli sen jättäessäsi. Käytä samaa toimintatapaa laittaaksesi <code>wget</code> tai <code>ftp </code>-latauksen taustalle. Irrotettu istunto on olemassa, vaikka kirjautuisit ulos koneelta.  </p>
+<p> </p>
+<h2>Ruudun lopettaminen</h2>
+<p>Jos avoinna on vain muutama ohjelma, voit poistua ruudusta yksinkertaisesti lopettamalla ne kaikki. Jos sinulla on kuitenkin monia sovelluksia ja ikkunoita avoinna, voit poistua niistä kaikista kirjoittamalla  <strong>ctrl + a \</strong>. Sinulta kysytään vahvistusta, ja jos valitset kyllä, Screen lopettaa kaikki ohjelmansa ja poistuu. </p></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/komentorivin-perusteet/index">Ota komento</a></li>
+<li Class="booki-section">Perusteet</li><li><a href="/komentorivin-perusteet/ch003_aloittaminen">Käytön aloittaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch004_syntaksi">Syntaksi</a></li>
+<li><a href="/komentorivin-perusteet/ch005_ympariinsa-siirtyminen">Ympäriinsä siirtyminen</a></li>
+<li><a href="/komentorivin-perusteet/ch006_tiedostorakenne">Tiedostorakenne</a></li>
+<li Class="booki-section">Komennot</li><li><a href="/komentorivin-perusteet/ch008_peruskomennot">Peruskomennot</a></li>
+<li><a href="/komentorivin-perusteet/ch009_jarjestelmanvalvojat">Järjestelmänvalvoja</a></li>
+<li><a href="/komentorivin-perusteet/ch010_useammat-tiedostot">Useammat tiedostot</a></li>
+<li><a href="/komentorivin-perusteet/ch011_kirjoita-vahemman">Kirjoita vähemmän</a></li>
+<li Class="booki-section">Keskivaikeita komentoja</li><li><a href="/komentorivin-perusteet/ch013_putkitus">Putkitus</a></li>
+<li><a href="/komentorivin-perusteet/ch014_komentohistoria">Komentohistoria</a></li>
+<li><a href="/komentorivin-perusteet/ch015_standarditiedostot">Standarditiedostot</a></li>
+<li Class="booki-section">Kehittyneempiä komentoja</li><li><a href="/komentorivin-perusteet/ch017_kayttooikeudet">Käyttöoikeudet</a></li>
+<li><a href="/komentorivin-perusteet/ch018_interaktiivinen-muokkaus">Interaktiivinen muokkaus</a></li>
+<li><a href="/komentorivin-perusteet/ch019_poistumisen-tarkastaminen">Poistumisen tarkastaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch020_alikomennot">Alikomennot</a></li>
+<li><a href="/komentorivin-perusteet/ch021_hakemistot">Hakemistot</a></li>
+<li><a href="/komentorivin-perusteet/ch022_kustomisointi">Kustomisointi</a></li>
+<li><a href="/komentorivin-perusteet/ch023_parametrien-korvaaminen">Parametrien korvaaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch024_gnuscreen">GNUScreen</a></li>
+<li><a href="/komentorivin-perusteet/ch025_ssh">SSH</a></li>
+<li><a href="/komentorivin-perusteet/ch026_ohjelmien-asentaminen">Ohjelmien asentaminen</a></li>
+<li Class="booki-section">Tekstieditorit</li><li><a href="/komentorivin-perusteet/ch028_tekstieditorit">Tekstieditorit</a></li>
+<li><a href="/komentorivin-perusteet/ch029_nano">Nano</a></li>
+<li><a href="/komentorivin-perusteet/ch030_vi-ja-vim">Vi ja Vim</a></li>
+<li><a href="/komentorivin-perusteet/ch031_emacs">Emacs</a></li>
+<li><a href="/komentorivin-perusteet/ch032_kedit">Kedit</a></li>
+<li><a href="/komentorivin-perusteet/ch033_gedit">Gedit</a></li>
+<li Class="booki-section">Skriptaus</li><li><a href="/komentorivin-perusteet/ch035_skriptaus">Skriptaus</a></li>
+<li><a href="/komentorivin-perusteet/ch036_skriptien-huoltaminen">Skriptien huoltaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch037_muut-kielet">Muut kielet</a></li>
+<li><a href="/komentorivin-perusteet/ch038_sed">Sed</a></li>
+<li><a href="/komentorivin-perusteet/ch039_awk">AWK</a></li>
+<li><a href="/komentorivin-perusteet/ch040_saannolliset-lausekkeet">Säännölliset lausekkeet</a></li>
+<li><a href="/komentorivin-perusteet/ch041_perl">Perl</a></li>
+<li><a href="/komentorivin-perusteet/ch042_ruby">Ruby</a></li>
+<li><a href="/komentorivin-perusteet/ch043_python">Python</a></li>
+<li Class="booki-section">Komennot nopeasti</li><li><a href="/komentorivin-perusteet/ch045_komentojen-pikaopas">Komentojen pikaopas</a></li>
+<li Class="booki-section">Liitteet</li><li><a href="/komentorivin-perusteet/ch047_tasta-kayttooppaasta">Tästä käyttöoppaasta</a></li>
+<li><a href="/komentorivin-perusteet/ch048_tekijat">Tekijät</a></li>
+</ul>

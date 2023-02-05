@@ -1,0 +1,106 @@
+<div id="main-content"><h1>Tiedon kerääminen</h1>
+<p>Helpoin ja tehokkain tapa soveltuvien tietojen keräämiseen on hyödyntää omaa paikallistuntemustasi. Esimerkiksi tietosi alueesta oman kotisi tai työpaikkasi ympäristössä on erittäin ajantasaista ja tarkkaa pelkästään siitä syystä, että vietät suuren osan ajastasi alueella. Mahdollisesti käytettävissä olevien ilmakuvien avulla näiden tietojesi syöttäminen OpenStreetMapin kartalle on erittäin helppoa, ja lähialuiden valmistuttua voit jatkaa laajentamalla paikallistuntemustasi aina vähän kauemmas.</p>
+<p>Tällä kartoitustyylillä tuottamasi karttatieto on niin hyvää ja ajantasaista, kuin vain OpenStreetMapista voi löytää. Toinen merkittävä seuraus on se, että näin sinulla on henkilökohtainen kiinnostus pitää oma alueesi virheettömänä ja ajan tasalla.</p>
+<p>Voit kuitenkin hyödyntää kahta näppärää apuvälinettä tehostamaan karttatiedon keräämistä ja kartan työstämistä. Useat OpenStreetMapin piirtäjät käyttävät GPS-paikantimia (Global Positioning System), ja myöhemmin tässä luvussa kerrotaan miten sellainen toimii ja miten sitä voi hyödyntää.</p>
+<p>Jos sinulla ei ole GPS:ää, tai et halua käyttää sellaista tietojen keräämiseen, kätevä apuväline on Walking Papers -palvelu. Tässä luvussa kerrotaan myös, miten pääset alkuun kummankin menetelmän kanssa. Myöhemmissä luvuissa opetetaan OpenStreetMapin muokkausohjelmien Potlach 2 ja JOSM käyttöä keräämiesi tietojen syöttämiseen.</p>
+<h2>Tiedon kerääminen GPS:n avulla</h2>
+<p>Tämä luku opettaa sinulle GPS:n käytön karttojen luomiseen. Tarkalleen ottaen esittelemme Garmin eTrex Vista HCx:n käytön. Tämä on yleisesti kartoitustarkoituksiin käytetty GPS. On olemassa monta muuta GPS-mallia, jotka tekevät saman asian, joten jos käytät jotain muuta, älä huolestu, periaatteet pysyvät samoina. Jos sinulla ei ole GPS-vastaanotinta älä huolestu, katso vain Walking Papersin käyttöä tiedonkeruussa käsittelevää osaa.</p>
+<h3>Mikä on GPS?</h3>
+<p>GPS on kuin kännykkä, mutta sen sijaan että se vastaanottaisi radiosignaaleja puhelinyhtiöiltä se vastaanottaa signaaleja maapalloa kiertäviltä satelliiteilta.</p>
+<p><img src="http://fi.flossmanuals.net/kirjoita/openstreetmap/_draft/_v/1.0/static/static/wahtisagps358.jpeg" alt="" width="358" height="400"> </p>
+<p><em>Garmin eTrex Vista HCx.</em></p>
+<p>GPS voi laskea tarkan sijaintisi planeetalla vastaanottamalla signaaleja satelliiteilta. Se tallentaa tämän sijainnin koordinaateilla, jotka ovat kaksi pitkää numeroa. Yksi numero kertoo sinulle sijaintisi itä–länsi-suunnassa. Tätä kutsutaan pituuspiiriksi eli longitudiksi. Toinen numero kertoo sijaintisi pohjois–etelä-suunnassa: sitä kutsutaan leveyspiiriksi eli latitudiksi. Jokaisella maapallon sijainnilla on omat maantieteelliset koordinaattinsa.</p>
+<p>Esimerkki: Jyväskylä sijaitsee koordinaateissa 62,241667 longitudi, 25,741667 latitudi.</p>
+<p><em></em><em><img src="_booki/openstreetmap-suomeksi/static/google_earth_jyvaskyla.jpg" alt="" width="941" height="519"><br></em></p>
+<p><em>Google Earth näyttää Jyväskylän koordinaatit</em></p>
+<h3>Käännä GPS päälle</h3>
+<p>Ennen kuin kytket GPS-vastaanottimesi päälle, mene ulos paikkaan, jossa sinulla on selkeä näkymä taivaalle. Koska GPS mittaa sijaintisi vastaanottamalla signaaleja satelliiteilta, se ei toimi sisätiloissa.</p>
+<p>GPS-vastaanottimesi sivulla on virtanappi, jota voit painaa. GPS käynnistyy ja sen pitäisi näyttää sinulle sivu, jolla on satelliitit. Voit nähdä jotain allaolevan kaltaista. GPS-vastaanottimesi hakee satelliittisignaaleja. Kun se on kytkeytynyt kolmeen tai useampaan satelliittiin se voi määritellä sijaintisi.</p>
+<p><img src="http://fi.flossmanuals.net/kirjoita/openstreetmap/_draft/_v/1.0/static/static/acquiring_sattelites.jpg" alt="" width="600" height="666"> </p>
+<p><em>Satelliittien haku<br></em></p>
+<p>Kun laite on määritellyt sijaintisi, satelliittiruutu katoaa ja näet päävalikon (kuten seuraavassa kuvassa näytetään).</p>
+<h3>Navigointi GPS-valikoissa</h3>
+<p>Tässä GPS-vastaanottimessa on erilaisia ruutuja ja valikkoja, jotka antavat sinun tehdä eri asioita. Vaihtaaksesi ruutujen välillä paina nappia, joka on merkitty "X"-kirjaimella (Page/Cancel valokuvassa, jossa on Garmin eTrex Vista HCx), juuri virtanapin yläpuolella laitteen oikealla sivulla. Tämän napin avulla voit myös siirtyä taaksepäin. Jos painoit jotain vahingossa ja tahdot mennä taaksepäin, paina "X"-nappia.</p>
+<p>Alla on OpenStreetMap -tiedonkeruun kannalta tärkeimmät Garmin eTrex Vista HCx -vastaanottimen ruudut. </p>
+<div align="center"><img style="display: block; margin-left: auto; margin-right: auto;" src="http://fi.flossmanuals.net/kirjoita/openstreetmap/_draft/_v/1.0/static/static/gps12.jpg" alt="" width="600" height="305" align="text-top"></div>
+<div align="center"><em>GPS-päävalikko ja GPS-polun loki  <br></em></div>
+<p> </p>
+<p>Painamalla "X"-nappia voit sivua eri ruutujen välillä, mikä näyttää suunnilleen tältä:</p>
+<p>    <img src="http://fi.flossmanuals.net/kirjoita/openstreetmap/_draft/_v/1.0/static/static/gps45_1.jpg" alt="" width="600" height="305" align="text-top"></p>
+<div align="center"> <em>GPS-satelliitit ja GPS-kartta</em><em></em></div>
+<p> </p>
+<p>Jos palaat satelliittisivulle (vasen ruutu yllä), näet olevasi yhteydessä kolmeen tai useampaan satelliittiin. Vasemmassa ylänurkassa ovat koordinaattisi eli longitudisi ja latitudisi.</p>
+<p>Siirry karttasivulle (oikealla oleva ruutu yllä), ja näet kartan sijainnistasi. Jos olet lisännyt OSM-kartat GPS-vastaanottimeesi, voit nähdä teitä ja sijainteja. Muuten kartta voi näyttää aika tyhjältä. Zoomaa sisään ja ulos painamalla ylös ja alas osoittavia nuolia GPS-vastaanottimen vasemmalla puolella.</p>
+<h3>Polut ja koordinaatit</h3>
+<p>GPS-vastaanottimesi tallentaa kahdenlaista tietoa, josta on hyötyä luodessasi karttoaj tai tallentaessasi sijainnin koordinaatteja. Ensinnäkin se antaa sinun tallentaa sijaintisi GPS-vastaanottimen muistiin. Kun tallennat sijainnin, koordinaatit tallennetaan nimen kanssa. Esimerkiksi ensimmäinen koordinaattipisteesi on 001, toinen on 002 ja niin edelleen. Kun tallennat pisteen voit kirjoittaa esimerkiksi paperilapulle sen numeron ja muistiinpanon siitä, mikä sijainti on, sekä mitä tahansa muita tarpeellisia tietoja. GPS-vastaanottimellesi tallennettuja sijainteja kutsutaan koordinaattipisteiksi.</p>
+<p>Lisäksi GPS-vastaanottimesi voi tallentaa polkuja. Kun koordinaattipiste tallentaa vain yhden sijainnin, polku tallentaa sarjan pisteitä, jotka osoittavat reittisi. Polku esimerkiksi tallentaa sijaintisi kerran sekunnissa, tai metrin välein, ja tuloksena on sarja pisteitä, joka osoittaa polun, jota pitkin olet liikkunut. Plut ovat hyödyllisiä kartoitettaessa kohteita, joita edustavat viivat tai muodot, kuten tien reitti tai kentän muoto.</p>
+<p>GPS voi tallentaa yksittäisen pisteen tai kulkemasi polun. Joillain kartoilla pisteet numeroidaan tallennusjärjestyksessä. Polku näytetään vihreällä tai sinivihreällä värillä.</p>
+<p><img src="http://fi.flossmanuals.net/kirjoita/openstreetmap/_draft/_v/1.0/static/static/tracelinegreen.jpg" alt="" width="600" height="353"><em></em></p>
+<p><em>Polku näytettynä Potlatch 2 -verkkoeditorissa <br></em></p>
+<h3>Tallenna sijaintisi</h3>
+<p>Tallentaaksesi nykyisen sijaintisi koordinaattipisteenä voit painaa "X"-nappia kunnes saavut päävalikkoon. Käytä joystickiä siirtääksesi sitä niin, että ruudulla on korostettuna "Mark". Paina joystickin nappia alas avataksesi koordinaattipisteiden tallentamissivun.</p>
+<p align="center"><img src="http://fi.flossmanuals.net/kirjoita/openstreetmap/_draft/_v/1.0/static/static/gpswaypoints250px.jpg" alt="" width="234" height="292"></p>
+<div align="center"><em>Koordinaattipisteen tallentaminen <br></em></div>
+<p> </p>
+<p>Näet tällä sivulla tietoa koordinaattipisteestä, jota olet tallentamassa. Ensin on numero. Jos tämä on ensimmäinen koordinaattipisteesi, numero on luultavasti "001". Tämä numero sinun kannattaa kirjoittaa paperille niiden lisätietojen kanssa, joita tahdot liittää tähän kohteeseen. Seuraavaksi näet ajan ja päivämäärän, jolloin koordinaattipiste tallennettiin. Alla on koordinaatit ja korkeus merenpinnasta.</p>
+<p>Käytä joystickiä siirtyäksesi "OK"-nappiin ruudun alaosassa. Paina joystickin nappi alas tallentaaksesi tämän pisteen. Varmista, että olet kirjoittanut ylös pisteen numeron, sekä paikan nimen ja minkä tahansa tiedon, jonka tahdot tallentaa sijainnista.</p>
+<p>Paina "X"-nappia mennäksesi karttasivulle. Sinun pitäisi nyt nähdä pisteesi kartalla.</p>
+<h3>Käännä polkuloki päälle</h3>
+<p>Nyt olemme oppineet tallentamaan pisteitä, joten opetellaanpa kääntämään polku päälle ja pois. Kun polkuloki on käännetty päälle, se tallentaa automaattisesti polkusi. On hyvä tapa kääntää loki päälle, kun aloitat kartoituksen, ja kääntää se pois päältä, kun olet lopettanut. Tämän jälkeen olet valmis katsomaan polkua tietokoneella ja näet kartoittamasi polun. Jos tahdot kartoittaa tien reitin, on hyvä idea tallentaa koordinaattipiste tien alussa ja lopussa, sekä kirjoittaa muistikirjaasi tien nimi ja tyyppi, sekä mikä tahansa muu tärkeä tieto tiestä.</p>
+<p>Kääntääksesi polkulokin päälle, napsauta "X"-nappia, kunnes pääset sivulle, jolla on polkuloki. <em></em></p>
+<p>Jos tahdot tyhjentää polkulokin poistaaksesi aiemmat tallennukset, käytä joystickiä valitaksesi kohdan "Clear", ja paina joystick pohjaan. Ylhäällä olevan palkin tulisi sanoa "0%".</p>
+<p>Kääntääksesi lokin päälle, siirrä joystick korostamaan "On", ja paina joystick alas. Polkuloki tallentaa nyt polkusi.</p>
+<p>Paina “X”-nappia mennäksesi karttasivulle. Kun siirryt, näet polkusi näytettynä sarjana pisteitä.</p>
+<h3>Kuinka voit kopioida koordinaattipisteet ja polut tietokoneellesi</h3>
+<p>Kun olet lopettanut kartoittamisen GPS-vastaanottimella, tahdot kopioida pisteet ja polut tietokoneellesi, jolloin voit avata ne OSM-editorissa.</p>
+<p><strong>Askel 1: Liitä GPS tietokoneeseesi <br></strong></p>
+<p>Ensinnäkin käännä GPS-vastaanottimesi polkuloki pois päältä menemällä polkusivulle ja valitsemalla "Off".</p>
+<p>Liitä GPS tietokoneeseesi kaapelilla. Yhden kaapelin pään pitäisi mennä tietokoneesi USB-porttiin, toisen pitäisi mennä GPS-vastaanottimen takaosaan, ylhäällä olevan kumiläpän alle. GPS pitäisi kääntää päälle polkujen ja pisteiden kopioimista varten.</p>
+<p><strong>Askel 2: Asenna GPS-ajurit <br></strong></p>
+<p>Sinun täytyy ehkä asentaa GPS-ajurit koneellesi. Jos sinulla on kopio tiedostosta USBDrivers_23.exe Windows-koneellasi, kaksoisnapsauta sitä ja asenna se.</p>
+<p>Jos sinulla ei ole tätä tiedostoa, voit ladata sen. Avaa verkkoselaimesi ja mene osoitteeseen:<a class="vt-p" href="http://www8.garmin.com/support/download_details.jsp?id=591"> http://www8.garmin.com/support/download_details.jsp?id=591</a></p>
+<p>Napsauta "Download" ladataksesi asennustiedoston. Etsi se tietokoneeltasi ja kaksoisnapsauta asentaaksesi sen.</p>
+<p><strong>Askel 3: Hanki GPSBabel-asennusohjelma <br></strong></p>
+<p>GPSBabel on ohjelma, joka antaa meidän kopioida tietoa GPS-vastaanottimesta. Jos sinulla on kopio GPSBabelista CD:llä tai USB flash-muistissa, voit siirtyä seuraavaan osaan.</p>
+<p>Jos sinulla ei ole valmiiksi GPSBabel-ohjelmaa, avaa selaimesi ja mene osoitteeseen <a class="vt-p" href="http://www.gpsbabel.org/download.html">www.gpsbabel.org/download.html</a>.</p>
+<p>Napsauta "Downloads" sivun yläosassa.</p>
+<p>Vieritä sivua alas.</p>
+<ul><li>Jos tietokoneesi käyttää Windows-käyttöjärjestelmää, tahdot ensin ladata asennustiedoston Windowsiin. Napsauta  “GPSBabel-1.4.2-Setup.exe” ladataksesi tiedoston tietokoneellesi.</li>
+<li>Jos tietokoneesi käyttöjärjestelmä on Mac OS, napsauta .dmg-tiedoston nappia.</li>
+<li>Jos tietokoneesi käyttöjärjestelmä on Linux, napsauta .tar.gz-nappia.</li>
+</ul><p><strong>Askel 4: Asenna GPSBabel</strong></p>
+<p>Etsi GPSBabel-asennustiedosto koneeltasi. Kaksoisnapsauta sitä aloittaaksesi asennuksen.</p>
+<p>Windowsissa voit napsauttaa "Next" ja hyväksyä kaikki oletusarvot, kun ohjelma asentuu. Kun ohjelman asennus on päättynyt, napsauta "Finish" aloittaaksesi GPSBabelin.</p>
+<p>Mac ja Linux -käyttöjärjestelmissä ohjelma käynnistyy sen avaamisen ja purkamisen jälkeen.</p>
+<p> <img src="http://fi.flossmanuals.net/kirjoita/openstreetmap/_draft/_v/1.0/static/static/gpsbabel.png" alt="" width="600" height="547"></p>
+<p><em>GPSBabel-käyttöliittymä<br></em></p>
+<p><strong>Askel 5: Kopioi polut ja koordinaattipisteet </strong><strong></strong></p>
+<p>Kohdassa Input voit napsauttaa ympyrää, joka on sanan “Device” vieressä ikkunan yläosassa.</p>
+<p>Pudotusvalikossa, jonka otsikko on “Format”, voit valita “Garmin serial/USB protocol”.</p>
+<p>Mene alas ikkunan keskiosaan, kohtaan Output. Pudotusvalikossa, jonka otsikko on "Format", valitse "GPX XML":</p>
+<p> <img src="http://fi.flossmanuals.net/kirjoita/openstreetmap/_draft/_v/1.0/static/static/gpx.png" alt="" width="540" height="233"></p>
+<p><em>Valitse GPX XML</em></p>
+<p>Napsauta “File Name” ja kirjoita nimi tallennetulle tiedostollesi. Sen pitäisi olla jotain, joka kuvaa tietoa, kuten päivämäärä ja sijainti. Esimerkiksi jakarta-07-07-2011.</p>
+<p>Varmista, että GPS on kytketty tietokoneeseen ja käännetty päälle.</p>
+<p>Napsauta "Apply" ikkunan oikeassa alakulmassa.</p>
+<p>Jos kaikki menee hyvin, sinun pitäisi nähdä palkin liikkuvan ruudun poikki, jolloin näet, että tieto on haettu GPS:stä. Kun tämä on lopussa, pisteesi ja polkusi on tallennettu tiedostoon, jonka olet valinnut.</p>
+<p>Jos näet virheen, joudut ehkä lataamaan polkusi ja koordinaattipisteesi käyttäen Garminin verkkokäyttöliittymää. Katso lisätietoa osoitteesta <a class="vt-p" href="http://connect.garmin.com/">connect.garmin.com</a>.</p>
+<p> </p></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/openstreetmap-suomeksi/index">Yhteisöllisen kartanteon löytäminen</a></li>
+<li><a href="/openstreetmap-suomeksi/ch002_tervetuloa-openstreetmapin-kayttajaksi">Tervetuloa OpenStreetMapin käyttäjäksi</a></li>
+<li><a href="/openstreetmap-suomeksi/ch003_tasta-kirjasta">Tästä kirjasta</a></li>
+<li Class="booki-section">Aloittaminen</li><li><a href="/openstreetmap-suomeksi/ch005_ensimmainen-muokkauksesi">Ensimmäinen muokkauksesi</a></li>
+<li><a href="/openstreetmap-suomeksi/ch006_tiedon-keraaminen">Tiedon kerääminen GPS-vastaanottimella</a></li>
+<li><a href="/openstreetmap-suomeksi/ch007_tiedon-keraaminen-paperilla-ja-kynalla">Tiedon kerääminen paperilla ja kynällä</a></li>
+<li><a href="/openstreetmap-suomeksi/ch008_karttojen-jakaminen">Karttojen jakaminen</a></li>
+<li Class="booki-section">OpenStreetMapin editoiminen</li><li><a href="/openstreetmap-suomeksi/ch010_johdanto-openstreetmapin-editointiin">Johdanto OpenStreetMapin editointiin</a></li>
+<li><a href="/openstreetmap-suomeksi/ch011_editointi-potlatch-2-editorilla">Editointi Potlatch 2 -editorilla</a></li>
+<li><a href="/openstreetmap-suomeksi/ch012_editointi-josmilla">Johdanto editointiin JOSMilla</a></li>
+<li><a href="/openstreetmap-suomeksi/ch013_osm-kartan-editointi-josmilla">OSM-kartan editointi JOSMilla</a></li>
+<li><a href="/openstreetmap-suomeksi/ch014_viela-lisaa-josmia">Vielä lisää JOSMia</a></li>
+<li><a href="/openstreetmap-suomeksi/ch015_editointi-mobiilieditoreilla">Editointi mobiilieditoreilla</a></li>
+<li Class="booki-section">Tee kartasta omasi</li><li><a href="/openstreetmap-suomeksi/ch017_ota-openstreetmap-mukaasi">Ota OpenStreetMap mukaasi</a></li>
+<li><a href="/openstreetmap-suomeksi/ch018_openstreetmapin-tietomalli">OpenStreetMapin tietomalli</a></li>
+<li Class="booki-section">Lisätietoa</li><li><a href="/openstreetmap-suomeksi/ch020_tutkimusmatka-openstreetmap-yhteisoon">Tutkimusmatka OpenStreetMap-yhteisöön</a></li>
+<li><a href="/openstreetmap-suomeksi/ch021_hyodylliset-verkkosivut-ja-lahteet">Hyödylliset verkkosivut ja lähteet</a></li>
+<li><a href="/openstreetmap-suomeksi/ch022_tekijat">Tekijät</a></li>
+</ul>

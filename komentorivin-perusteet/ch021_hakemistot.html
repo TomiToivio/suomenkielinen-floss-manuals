@@ -1,0 +1,110 @@
+<div id="main-content"><h1>Liikutaan taas</h1>
+<p>Tähän asti olet varmaankin jo käyttänyt <code>"cd</code>" -komentoa ja "<code>pwd"</code> -komentoa saadaksesi selville nykyisen työhakemistosi. Kun työskentelet komentorivin parissa jonkin aikaa, huomaat vaihtavasi hakemistoa koko ajan. Tämän helpottamiseksi Bash tarjoaa "hakemistopakan", jota voit käyttää liikkuaksesi nopeasti hakemistoissa, joissa teet työtä. (Näytämme pian esimerkkejä, jotka auttavat ymmärtämään "pakan" idean.) Sinulla on käytössäsi seuraavat komennot:</p>
+<table border="1" cellspacing="1" cellpadding="1"><tbody><tr><td>Komento</td>
+<td>Toiminto</td>
+</tr><tr><td>dirs</td>
+<td>Näyttää hakemistopakan, päällimmäinen taso ensin (vasemmalla); muut komennot tekevät tämän päätöimintonsa jälkeen. Kaikkia komentovalitsimia ei näytetä tässä taulukossa.</td>
+</tr><tr><td>pushd hakemisto</td>
+<td>Työnnä hakemisto pakan päälle ja muuta nykyinen työhakemisto siksi.</td>
+</tr><tr><td>pushd</td>
+<td>Vaihtaa pakan kaksi ylintä tasoa ja siirtyy uuteen pakan päällimmäiseen tasoon.</td>
+</tr><tr><td>pushd <strong>+N </strong></td>
+<td>Kierittää koko pakkaa <strong>vasemmalle</strong> <strong>N</strong> askelta ja siirtyy pakan uuteen päällimmäiseen tasoon</td>
+</tr><tr><td>pushd <strong>-N</strong></td>
+<td>Kierittää koko pakkaa<strong> oikealle</strong> <strong>N+1</strong> askelta ja siirtyy pakan uuteen päällimmäiseen tasoon</td>
+</tr><tr><td>popd</td>
+<td>Poistaa pakan täällä olevan hakemiston ja siirtyy uuteen pakan päällimmäiseen tasoon</td>
+</tr></tbody></table><p>Jos tarvitset lisää visuaalista apua "pakan" ymmärtämiseen, yksinkertaisin tapa ajatella pakkaa on pitää pakkaa korttipakkana pöydälläsi. Työnnät ("push") uusia kortteja pakan päälle ja poistat ("pop") päällimmäisen kortin pakasta. Molemmat menetelmät toimivat periaatteella viimeinen lisätty kortti on ensimmäinen poistettava kortti.</p>
+<p>Voit leikkiä näillä komennoilla ymmärtääksesi niiden toiminnan. Esimerkiksi seuraava taulukko tarjoaa listan komentoja, niiden vaikutuksen nykyiseen työhakemistoon ja niiden vaikutuksen pakkaan.</p>
+<p> </p>
+<table border="1" cellspacing="1" cellpadding="1"><tbody><tr><td>Komento</td>
+<td>
+<p>Nykyinen työhakemisto komennon jälkeen</p>
+</td>
+<td>Pakka komennon jälkeen</td>
+</tr><tr><td>cd</td>
+<td>~</td>
+<td>~</td>
+</tr><tr><td>pushd /</td>
+<td>/</td>
+<td>
+<p>/</p>
+<p>~</p>
+</td>
+</tr><tr><td>pushd /usr/bin</td>
+<td>/usr/bin</td>
+<td>
+<p>/usr/bin</p>
+<p>/</p>
+<p>~</p>
+</td>
+</tr><tr><td>pushd +1</td>
+<td>/</td>
+<td>
+<p>/</p>
+<p>~</p>
+<p>/usr/bin</p>
+</td>
+</tr><tr><td>pushd +1</td>
+<td>~</td>
+<td>
+<p>~</p>
+<p>/usr/bin</p>
+<p>/</p>
+</td>
+</tr><tr><td>popd</td>
+<td>/usr/bin</td>
+<td>
+<p>/usr/bin</p>
+<p>/</p>
+</td>
+</tr><tr><td>pushd +1</td>
+<td>/</td>
+<td>
+<p>/</p>
+<p>/usr/bin</p>
+</td>
+</tr><tr><td>popd</td>
+<td>/usr/bin</td>
+<td>/usr/bin</td>
+</tr></tbody></table></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/komentorivin-perusteet/index">Ota komento</a></li>
+<li Class="booki-section">Perusteet</li><li><a href="/komentorivin-perusteet/ch003_aloittaminen">Käytön aloittaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch004_syntaksi">Syntaksi</a></li>
+<li><a href="/komentorivin-perusteet/ch005_ympariinsa-siirtyminen">Ympäriinsä siirtyminen</a></li>
+<li><a href="/komentorivin-perusteet/ch006_tiedostorakenne">Tiedostorakenne</a></li>
+<li Class="booki-section">Komennot</li><li><a href="/komentorivin-perusteet/ch008_peruskomennot">Peruskomennot</a></li>
+<li><a href="/komentorivin-perusteet/ch009_jarjestelmanvalvojat">Järjestelmänvalvoja</a></li>
+<li><a href="/komentorivin-perusteet/ch010_useammat-tiedostot">Useammat tiedostot</a></li>
+<li><a href="/komentorivin-perusteet/ch011_kirjoita-vahemman">Kirjoita vähemmän</a></li>
+<li Class="booki-section">Keskivaikeita komentoja</li><li><a href="/komentorivin-perusteet/ch013_putkitus">Putkitus</a></li>
+<li><a href="/komentorivin-perusteet/ch014_komentohistoria">Komentohistoria</a></li>
+<li><a href="/komentorivin-perusteet/ch015_standarditiedostot">Standarditiedostot</a></li>
+<li Class="booki-section">Kehittyneempiä komentoja</li><li><a href="/komentorivin-perusteet/ch017_kayttooikeudet">Käyttöoikeudet</a></li>
+<li><a href="/komentorivin-perusteet/ch018_interaktiivinen-muokkaus">Interaktiivinen muokkaus</a></li>
+<li><a href="/komentorivin-perusteet/ch019_poistumisen-tarkastaminen">Poistumisen tarkastaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch020_alikomennot">Alikomennot</a></li>
+<li><a href="/komentorivin-perusteet/ch021_hakemistot">Hakemistot</a></li>
+<li><a href="/komentorivin-perusteet/ch022_kustomisointi">Kustomisointi</a></li>
+<li><a href="/komentorivin-perusteet/ch023_parametrien-korvaaminen">Parametrien korvaaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch024_gnuscreen">GNUScreen</a></li>
+<li><a href="/komentorivin-perusteet/ch025_ssh">SSH</a></li>
+<li><a href="/komentorivin-perusteet/ch026_ohjelmien-asentaminen">Ohjelmien asentaminen</a></li>
+<li Class="booki-section">Tekstieditorit</li><li><a href="/komentorivin-perusteet/ch028_tekstieditorit">Tekstieditorit</a></li>
+<li><a href="/komentorivin-perusteet/ch029_nano">Nano</a></li>
+<li><a href="/komentorivin-perusteet/ch030_vi-ja-vim">Vi ja Vim</a></li>
+<li><a href="/komentorivin-perusteet/ch031_emacs">Emacs</a></li>
+<li><a href="/komentorivin-perusteet/ch032_kedit">Kedit</a></li>
+<li><a href="/komentorivin-perusteet/ch033_gedit">Gedit</a></li>
+<li Class="booki-section">Skriptaus</li><li><a href="/komentorivin-perusteet/ch035_skriptaus">Skriptaus</a></li>
+<li><a href="/komentorivin-perusteet/ch036_skriptien-huoltaminen">Skriptien huoltaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch037_muut-kielet">Muut kielet</a></li>
+<li><a href="/komentorivin-perusteet/ch038_sed">Sed</a></li>
+<li><a href="/komentorivin-perusteet/ch039_awk">AWK</a></li>
+<li><a href="/komentorivin-perusteet/ch040_saannolliset-lausekkeet">Säännölliset lausekkeet</a></li>
+<li><a href="/komentorivin-perusteet/ch041_perl">Perl</a></li>
+<li><a href="/komentorivin-perusteet/ch042_ruby">Ruby</a></li>
+<li><a href="/komentorivin-perusteet/ch043_python">Python</a></li>
+<li Class="booki-section">Komennot nopeasti</li><li><a href="/komentorivin-perusteet/ch045_komentojen-pikaopas">Komentojen pikaopas</a></li>
+<li Class="booki-section">Liitteet</li><li><a href="/komentorivin-perusteet/ch047_tasta-kayttooppaasta">Tästä käyttöoppaasta</a></li>
+<li><a href="/komentorivin-perusteet/ch048_tekijat">Tekijät</a></li>
+</ul>

@@ -1,0 +1,74 @@
+<div id="main-content"><h1>Ogg-tiedoston leikkaus</h1>
+<div id="content">
+<p>Video- ja audiostriimeistä muodostuvan Ogg-tiedoston leikkaaminen osiin ajan mukaan, säilyttäen samalla synkroniteetin ulostulon tiedostojen striimien välillä, on hieman hankalaa. Tämän vuoksi sen tekemiseen on monta eri tapaa, tämä luku antaa sinulle kuvan mahdollisuuksista ja niiden hyvistä ja huonoista puolista.</p>
+<p>Videotiedostojen editointiin käytetyt työkalut voidaan jakaa tappiottomiin ja tappiollisiin työkaluihin. Tappiottomat työkalut käsittelevät vain Ogg-striimin (ogg-sivut ja ogg-paketit). Niinpä datan laatu säilyy. Tappiollisten työkalujen täytyy ensin dekoodata data mahdollistaakseen editoinnin ja sitten koodata ne uudestan, mikä johtaa laadun menetykseen. Tällainen editointi tarjoaa suurempaa joustavuutta (esimerkiksi se sallii kuvien asettamisen toistensa päälle) laadun kustannuksella. Tämän lisäksi dekoodaus ja koodaus -prosessit vaativat paljon enemmän aikaa kuin pelkkä Ogg-striimin pakettien käsittely.</p>
+<p>Tämä kappale käsittelee vain työkaluja, jotka leikkaavat videotiedostoja tappiotta.</p>
+<h2>Komento oggCut</h2>
+<p>Komentorivin työkalu oggCut on työkalu, joka voi leikata Ogg-tiedostoja kuva kuvalta. Käytä sitä näin:</p>
+<pre>oggCut -s &lt;StartTime&gt; -e &lt;EndTime&gt; originalFile.ogv createdFile.ogv
+</pre>
+<p>jossa <em>&lt;StartTime&gt;</em> ja <em>&lt;EndTime&gt;</em> annetaan millisekunteina. Vaihtoehtoisesti voit leikata käyttäen aloitusaikaa ja pituutta optiolla -s:</p>
+<pre>oggCut -s &lt;StartTime&gt; -l &lt;Length&gt; originalFile.ogv createdFile.ogv
+</pre>
+<p>Myös tässä <em>&lt;Length&gt;</em> mitataan millisekunteina.</p>
+<p>Kun oggCut ajetaan, se etsii ensimmäistä Ogg Theora -pakettia, jossa aikaleima on myöhemmin tai samaan aikaan -s optiolla annetun ajan kanssa. Jos tämä paketti löytyy, ohjelma etsii seuraavan avainkuvaruudun ja luo uuden tiedoston, jossa tuo avainruutu on ensimmäinen ruutu. </p>
+<p>Kun ohjelma löytää paketin, jossa aikaleima on suurempi kuin loppuaika, se sulkee uuden tiedoston ja lopettaa.</p>
+<p>Aloitusaika ei luultavasti ole avainkuvaruudun sijainti, luodusta tiedostosta tulee luultavasti oletettua pienempi.</p>
+<h3>Videon ja audion synkronisointiongelmat oggCutilla</h3>
+<p>Koska oggCut toimii vain pakettien rajoilla, ja koska Vorbis ja Theora striimipaketit eivät ole synkronisia, audio- ja videopaketit alkavat yleensä eri aikaan. </p>
+<p>Kun oggCut luo uuden tiedoston, joka alkaa aikaan <strong>t</strong>, seuraava audiopaketti tulee luultavasti alkamaan hetkellä <strong>t+x</strong>, jossa x on aikaväli avainruudun videon ja seuraavan audiopaketin välillä.</p>
+<p>Kun nämä kaksi striimiä kirjoitetaan uuteen tiedostoon, aikaväliin liittyvä informaatio hukataan. Niinpä soittimen täytyy olettaa, että molemmat tiedostot alkavat ajasta 0. Niinpä audiostriimi on aina hieman etuajassa. Kuitenkin, koska audioblokki on aika lyhyt, ero on yleensä vain muutama millisekunti ja sitä ei juurikaan huomaa.</p>
+<h2>Komento oggz-chop</h2>
+<p>Ohjelma oggz-chop paketista oggz-tools leikkaa Theora-videoita mistä tahansa pyydetystä kohdasta. Jos välttämätöntä, se leikkaa ei-avainkuvaruutujen kohdalta tai jopa keskeltä ruudun esitysaikaa.</p>
+<p>Teknisesti tämän kaltainen hienojyväinen leikkaus ei ole mahdollista Theora-videotekniikalla. Se saavutetaan tempulla: sen sijaan että video todella leikattaisiin pyydetystä kohdasta, se leikataan lähimmästä sijainnista, jolloin tuloksena oleva videotiedosto on pidempi kuin pyydetään. Sitten niinsanottu Ogg-kehyksen otsikko lisätään videoon, ja se ohjaa soittimen soittamaan vain todellisuudessa pyydetyn osan videosta. </p>
+<p>Ylimääräiset videoruudut, joita ei voitu leikata videosta, ovat edelleenkin paikallaan, ne on vain piilotettu toiston aikana.</p>
+<p>Tämän toimintatavan huonot puolet ovat selkeitä: toisaalta levytilaa hukataan tallentamalla turhaa tietoa, toisaalta leikattu uusi tiedosto toistuu oikein vain soittimissa, jotka ymmärtävät Ogg-kehikon tietoja. Toinen vähemmän selkeä ongelma on, että tällä tavalla tehtyjä tiedostoja ei voi liittää ilman, että piilotettu osa ilmestyy esiin. Tämä johtuu siitä, että Ogg-kehys voi piilottaa vain kuvaruutuja videon alussa ja lopussa. Kahden videon yhdistäminen tällä tavalla jättää kätkettyjä ruutuja videon keskelle - tätä Ogg-kehys ei tue.</p>
+<p>Kun nyt ymmärrät oggz-chopin käyttöön liityvät ilmiöt, voimme kokeilla sen käyttöä:</p>
+<pre>oggz-chop -s &lt;StartTime&gt; -e &lt;EndTime&gt; originalFile.ogv createdFile.ogv</pre>
+<p>Tässä <em>&lt;StartTime&gt;</em> ja <em>&lt;EndTime&gt;</em> on spesifioitu muodossa <em>&lt;Hour&gt;:&lt;Minute&gt;:&lt;Second&gt;</em>. <em>&lt;Second&gt;</em> voi sisältää murto-osan, joten olet vapaa spesifioimaan sen millä tahansa resoluutiolla.</p>
+<p>Meidän täytyy mainita toinen vaihtoehto: voit ajaa oggz-chopin lipulla <em>-k </em>pakottaaksesi sen jättämään pois kaiken Ogg-kehyksen tiedon. Tällä tavalla leikkauksen jyvällisyys on rajotettu avainkuvaruutuihin ja voit olla varma, että luotu tiedosto toistuu oikein jopa vanhemmissa soittimissa, jotka eivät tue kehystä.</p>
+</div></div><ul Class="menu-goes-here"><li Class="booki-section">JOHDANTO</li><li><a href="/ogg-theora/index">OGG THEORA</a></li>
+<li><a href="/ogg-theora/ch002_tasta-kayttooppaasta">TÄSTÄ KÄYTTÖOPPAASTA</a></li>
+<li><a href="/ogg-theora/ch003_mita-video-on">MITÄ VIDEO ON?</a></li>
+<li><a href="/ogg-theora/ch004_mita-theora-on">MITÄ THEORA ON?</a></li>
+<li Class="booki-section">PERUSKÄSITTEET</li><li><a href="/ogg-theora/ch006_mika-on-koodekki">MIKÄ ON KOODEKKI?</a></li>
+<li><a href="/ogg-theora/ch007_sailot">SÄILÖT</a></li>
+<li Class="booki-section">TOISTO</li><li><a href="/ogg-theora/ch009_theoran-toistaminen">THEORAN TOISTAMINEN</a></li>
+<li><a href="/ogg-theora/ch010_toisto-vlclla">TOISTO VLC:LLÄ</a></li>
+<li><a href="/ogg-theora/ch011_miro">MIRO</a></li>
+<li Class="booki-section">THEORA VERKOSSA</li><li><a href="/ogg-theora/ch013_theora-verkossa">THEORA VERKOSSA</a></li>
+<li><a href="/ogg-theora/ch014_html5">HTML5</a></li>
+<li><a href="/ogg-theora/ch015_theora-sivuillasi">THEORA SIVUILLASI</a></li>
+<li><a href="/ogg-theora/ch016_hotelleja-theoralle">HOTELLEJA THEORALLE</a></li>
+<li Class="booki-section">ENKOODAUS</li><li><a href="/ogg-theora/ch018_johdanto-enkoodaukseen">JOHDANTO ENKOODAUKSEEN</a></li>
+<li><a href="/ogg-theora/ch019_firefogg">FIREFOGG</a></li>
+<li><a href="/ogg-theora/ch020_enkoodaus-vlclla">ENKOODAUS VLC:LLÄ</a></li>
+<li><a href="/ogg-theora/ch021_enkoodaus-ffmpeg2theoralla">ENKOODAUS FFMPEG2THEORALLA </a></li>
+<li><a href="/ogg-theora/ch022_thoggen">THOGGEN</a></li>
+<li Class="booki-section">TEKSTITYKSET</li><li><a href="/ogg-theora/ch024_tekstityksien-perusteet">TEKSTITYKSIEN PERUSTEET</a></li>
+<li><a href="/ogg-theora/ch025_jakelu">JAKELU</a></li>
+<li><a href="/ogg-theora/ch026_tekstityksien-liittaminen">TEKSTITYKSIEN LIITTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch027_tekstityksien-toistaminen">TEKSTITYKSIEN TOISTAMINEN</a></li>
+<li><a href="/ogg-theora/ch028_julkaiseminen">JULKAISEMINEN</a></li>
+<li Class="booki-section">SUORATOISTO</li><li><a href="/ogg-theora/ch030_suoratoiston-perusteet">SUORATOISTON PERUSTEET</a></li>
+<li><a href="/ogg-theora/ch031_icecast">ICECAST</a></li>
+<li><a href="/ogg-theora/ch032_tss">TSS</a></li>
+<li><a href="/ogg-theora/ch033_ffmpeg2theora-streamaus">FFMPEG2THEORA-STREAMAUS</a></li>
+<li><a href="/ogg-theora/ch034_suoratoisto-vlc-ohjelmalla">VLC-STREAMAUS</a></li>
+<li><a href="/ogg-theora/ch035_virtaustoiston-tallentaminen">VIRTAUSTOISTON TALLENTAMINEN</a></li>
+<li Class="booki-section">EDITOINTI</li><li><a href="/ogg-theora/ch037_johdanto-editointiin">JOHDANTO EDITOITIIN</a></li>
+<li><a href="/ogg-theora/ch038_pitivi">PITIVI</a></li>
+<li Class="booki-section">ESIKATSELU</li><li><a href="/ogg-theora/ch040_kuinka-esikatselua-kaytetaan">ESIKATSELUN KÄYTTÖ</a></li>
+<li><a href="/ogg-theora/ch041_tee-esikatselukuvia">TEE ESIKATSELUKUVIA</a></li>
+<li><a href="/ogg-theora/ch042_tee-diaesitys">TEE DIAESITYS</a></li>
+<li><a href="/ogg-theora/ch043_tee-esikatseluvideo">TEE ESIKATSELUVIDEO</a></li>
+<li Class="booki-section">EDITOINTI KOMENTORIVILTÄ</li><li><a href="/ogg-theora/ch045_komentorivi">THEORA JA KOMENTORIVI</a></li>
+<li><a href="/ogg-theora/ch046_theoran-teoria">THEORAN TEORIA</a></li>
+<li><a href="/ogg-theora/ch047_tiedoston-jakaminen">TIEDOSTON JAKAMINEN</a></li>
+<li><a href="/ogg-theora/ch048_tiedoston-leikkaaminen">TIEDOSTON LEIKKAAMINEN</a></li>
+<li><a href="/ogg-theora/ch049_tiedostojen-liittaminen">TIEDOSTOJEN LIITTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch050_tiedostojen-yhdistaminen">TIEDOSTOJEN YHDISTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch051_koon-muuttaminen">KOON MUUTTAMINEN</a></li>
+<li><a href="/ogg-theora/ch052_oggin-analysoiminen">OGGIN ANALYSOIMINEN</a></li>
+<li Class="booki-section">TEKIJÄT</li><li><a href="/ogg-theora/ch054_tekijat">TEKIJÄT</a></li>
+</ul>

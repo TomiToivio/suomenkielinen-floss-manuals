@@ -1,0 +1,98 @@
+<div id="main-content"><h1>Kolmiulotteinen laatikko -työkalu</h1>
+<div id="content">
+<p><strong>Inkscape</strong> on kaksiulotteinen piirrustustyökalu. Kuitenkin sitä usein käytetään kolmiulotteisen näköisten piirrosten tai kohteiden tekemiseen. <strong>Kolmiulotteinen laatikko</strong> - työkalu mahdollistaa sellaisten piirrosten tekemisen automatisoimalla kaikkein yleisimmän toiminnon: laatikon tekemisen annetulla <strong>kolmiulotteisella</strong> perspektiivillä. Tämä työkalu varmistaa automaattisesti, että kaikki laatikon tahkot ovat vastaavilla perspektiiviviivoilla. </p>
+<p><img title="3DBoxRoom" src="_booki/inkscape/static/Inkscape-3DBoxTool-3DBoxRoom_en-fi.png" alt="3DBoxRoom_en.png" width="368" height="330"></p>
+<h2>Peruskäyttö</h2>
+<p>Esittääksesi kohteen kolmiulotteisena (se on emuloitua kolmiulotteisuutta, eli oikeastaan 2,5 -ulotteisuutta), kolmiulotteinen laatikko -työkalu käsittelee <strong>akseleita</strong> (XYZ), <strong>tasoja </strong>(XY, XZ, YZ), <strong>samansuuntaisia viivoja</strong> (parallel lines, PL), <strong>lähentyviä viivoja</strong> ja <strong>katoamispisteitä</strong> (vanishing point, VP).</p>
+<p>Jokainen ulottuvuus voi olla samansuuntaisilla tai lähentyvillä viivoilla. Nämä viivat piirretään eri väreillä, joten käyttäjät voivat erottaa yhden viivan toisesta: </p>
+<ul><li>punaiset viivat merkitsevät <strong>X-ulottuvuutta </strong>(leveys);</li>
+<li>siniset viivat merkitsevät <strong>Y-ulottuvuutta</strong> (korkeus);</li>
+<li>keltaiset viivat merkitsevät <strong>Z-ulottuvuutta</strong> (syvyys).</li>
+</ul><p>Jos viivat ovat yhteneviä, niillä on katoamispiste eli piste, jossa ne leikkaavat. Tässä on esimerkki, joka osoittaa miten katoamispiste toimii: </p>
+<p><img title="3DAxes" src="_booki/inkscape/static/Inkscape-3DBoxTool-3DAxesV3_en-fi.png" alt="3DAxesV3_en.png" width="337" height="215"></p>
+<p><strong>X</strong> on katoamispiste X-tasolle</p>
+<p><strong>Z</strong> on katoamispiste Z-tasolle</p>
+<p><strong>Y</strong> on samansuuntaiset viivat Y-tasolle</p>
+<p>Näin tapahtuu, kun pidät X- ja Z- tasojen liikkuvat rajat lähellä katoamispisteitä:</p>
+<p><img title="3DNearVP" src="_booki/inkscape/static/Inkscape-3DBoxTool-3DNearVP_en-fi.png" alt="3DNearVP" width="283" height="160"></p>
+<p>X- ja Z- tasot lähes yhdistyneinä, mutta Y on enemmän tai vähemmän sama.  </p>
+<p>Oletusarvoisesti Inkscape tekee X- ja Z- tasoista yhdistyvät, koska se esittää tavanomaista perspektiiviä. </p>
+<div class="tips"><strong>Huomaa:</strong> Samansuuntaisten viivojen ei välttämättä tarvitse olla 90 astetta X-akseliin - kulman muuttaminen vinouttaa jonkin verran kohdetta.</div>
+<h3>Kolmiulotteisen laatikon piirtäminen</h3>
+<blockquote>
+<p>Paina <strong><span class="keyboard_shortcuts">X</span></strong> tai<span class="keyboard_shortcuts"> <strong>Shift</strong></span><strong>+</strong><span class="keyboard_shortcuts"><strong>F4</strong></span> siirtyäksesi kolmiulotteinen laatikko -työkaluun. Vedä kursoria kankaalla. Voit käyttää <strong><span class="keyboard_shortcuts">Shift</span></strong>+<strong>vedä </strong>päästämättä hiirennappia vetääksesi laatikkoa ulos Z-suunnassa.</p>
+<p><img title="3DBoxVPointShared" src="_booki/inkscape/static/Inkscape-3DBoxTool-3DBoxVPointSharedV3_en-fi.png" alt="3DBoxVPointSharedV3_en.png" width="323" height="216"> </p>
+<p>Jos sinun täytyy piirtää uusi kolmiulotteinen laatikko samalla katoamispisteellä, pidä vain edellinen laatikko valittuna ja ala piirtää uuta laatikkoa. </p>
+</blockquote>
+<h3>Kolmiulotteisen laatikon muokkaaminen</h3>
+<blockquote>
+<p>Muokkaa mitä tahansa sen kolmesta ulottuvuudesta kahvojen avulla. Neljä kahvaa X/Y -etupuolella muuttaa sen kokoa, neljä kahvaa X/Y -takapuolella laajentaa tai supistaa laatikkoa Z-suunnassa. <strong><span class="keyboard_shortcuts">Shift</span></strong> -näppäimellä kahvojen toiminnot etu- ja takapuolella käännetään ympäri. <strong><span class="keyboard_shortcuts">Ctrl</span></strong>-näppäimellä tahkojen koon muuttamiskahvat napsahtavat koordinaattien akseleille tai lävistäjiin. </p>
+</blockquote>
+<h3>Kolmiulotteisen laatikon siirtäminen</h3>
+<blockquote>
+<p>Voit siirtää kolmiulotteista laatikkoa perspektiivissä siirtämällä sen keskusta, joka on merkitty X-kirjaimella; ilman muuttujia siirtyminen tapahtuu XY-tasoa pitkin (paina <strong><span class="keyboard_shortcuts">Ctrl</span></strong> rajoittaaksesi liikettä akselien tai lävistäjien suuntaan), <strong><span class="keyboard_shortcuts">Shift</span></strong>-näppäimellä laatikko siirtyy Z-akselin mukaisesti. </p>
+<p><img title="3DBoxCenter" src="_booki/inkscape/static/Inkscape-3DBoxTool-3DBoxCenterV3_en-fi.png" alt="3DBoxCenterV3_en.png" width="334" height="204"> </p>
+</blockquote>
+<h3>Katoamispisteiden käsittely</h3>
+<blockquote>
+<p>Säädä perspektiivin katoamispisteitä vetämällä niitä kankaalla (katso alta) tai vaihtamalla niiden tiloja; kaikki tämän perspektiivin jakavat laatikot ovat katoamispisteen siirtämisen vaikutuksen alaisia. </p>
+<p>Kun useampia laatikoita valitaan, kaikki niihin liittyvien perspektiivien katoamispisteet näytetään kankaalla. Jos eri perspektiivien katoamispisteet sattuvat yhteen, ne yhdistetään yhteen "vetopisteeseen". Tämän vetopisteen siirtäminen siirtää kaikkia katoamispisteitä samaan aikaan ja muuttaa siihen liittyvät laatikot vastaavasti. Huomaa, että jotkin vaitsemattomat laatikot voivat myös muuttua, mikäli niiden perspektiiveillä on sama katoamispiste.  <strong><span class="keyboard_shortcuts">Shift</span></strong>-näppäimen painaminen vetopistettä vedettäessä muuttaa vain valitut laatikot, erottaen niiden perspektiivit valitsemattomista laatikoista. Toisaalta katoamispisteen vetäminen lähelle toista johtaa niiden yhdistymiseen yhdeksi vetopisteeksi. </p>
+<p><img title="3DhandlingVP" src="_booki/inkscape/static/Inkscape-3DBoxTool-3DhandlingVP_en-fi.png" alt="3DhandlingVP" width="242" height="198"> </p>
+</blockquote>
+<h3>Perspektiiviviivojen kierittäminen</h3>
+<blockquote>
+<p>Erilaisia sulkumerkkejä, kuten <strong>[</strong> <strong>]</strong>, <strong>(</strong> <strong>)</strong>, <strong>{</strong> <strong>}</strong>, voidaan käyttää kierittämään loputtomia (eli rinnakkaisia) perspektiiviviivoja X-, Y-, ja Z-suunnassa, vastaavasti. Sulkevat sulkumerkit kierittävät kellon suuntaan ja avaavat sulkumerkit kierittävät kellon vastaiseen suuntaan. Näppäimen <span class="keyboard_shortcuts"><strong>Alt</strong></span> painaminen vähentää kierityksen määrän yhteen pikseliin ruudulla. </p>
+</blockquote>
+<h3>Perspektiiviviivojen tilan vaihtaminen</h3>
+<blockquote>
+<p>Kun kolmiulotteinen työkalulaatikko on aktiivinen, <span class="keyboard_shortcuts"><strong>Shift</strong></span><strong>+<span class="keyboard_shortcuts">X</span></strong>, <span class="keyboard_shortcuts"><strong>Shift</strong></span><strong>+<span class="keyboard_shortcuts">Y</span></strong>, ja <span class="keyboard_shortcuts"><strong>Shift</strong></span><strong>+</strong><span class="keyboard_shortcuts"><strong>Z</strong></span> vaihtavat perspektiiviviivoja vastaavassa suunnassa "yhdistyvän" ja "samansuuntaisen" välillä.</p>
+</blockquote>
+<h2>Vinkit</h2>
+<h3>Kolmiulotteisen työkalulaatikon sisällä</h3>
+<blockquote>
+<p>SVG-kuvaformaatissa, kolmiulotteista laatikkoa edustaa <span>ryhmä</span> (group, svg:g), jolla on erityinen laajuusominaisuus (Inkscapen nimiavaruudessa); tämä ryhmä sisältää kuusi neljään suuntaan samansuuntaista <strong>polkua</strong>, jotka edustavat laatikon tahkoja. Vain kolmiulotteinen laatikkotyökalu käsittelee tätä kohdetta laatikkona, kaikille muille työkaluille se on vain ryhmä, joten voit valita minkä tahansa poluista Ctrl+napsahduksen avulla, soveltaa siihen mitä tahansa tyyliä, poistaa sen jne. Voit tietenkin muuntaa koko laatikon tai minkä tahansa sen tahkon käyttäen valinta- tai solmutyökaluja. </p>
+</blockquote>
+</div></div><ul Class="menu-goes-here"><li Class="booki-section">INKSCAPEN KÄYTTÖOHJE</li><li><a href="/inkscape/index">INKSCAPE-OHJE</a></li>
+<li><a href="/inkscape/ch002_svg">SVG-VEKTORIGRAFIIKKA</a></li>
+<li Class="booki-section">ASENNUS</li><li><a href="/inkscape/ch004_asennus-windowsiin">ASENNUS WINDOWSIIN</a></li>
+<li Class="booki-section">PERUSTEET</li><li><a href="/inkscape/ch006_kayttoliittyma">KÄYTTÖLIITTYMÄ</a></li>
+<li><a href="/inkscape/ch007_tiedostojen-kaytto">TIEDOSTOJEN KÄYTTÖ</a></li>
+<li Class="booki-section">PIKAOPAS</li><li><a href="/inkscape/ch009_kuvakkeiden-luominen">KUVAKKEIDEN LUOMINEN</a></li>
+<li Class="booki-section">TYÖKALULAATIKKO</li><li><a href="/inkscape/ch011_valinta">VALINTA</a></li>
+<li><a href="/inkscape/ch012_solmu">SOLMU</a></li>
+<li><a href="/inkscape/ch013_muokkaus">MUOKKAUS</a></li>
+<li><a href="/inkscape/ch014_zoomaus">ZOOMAUS</a></li>
+<li><a href="/inkscape/ch015_suorakulmio">SUORAKULMIO</a></li>
+<li><a href="/inkscape/ch016_kolmiulotteinen-laatikko">KOLMIULOTTEINEN LAATIKKO</a></li>
+<li><a href="/inkscape/ch017_ellipsi">ELLIPSI</a></li>
+<li><a href="/inkscape/ch018_tahti">TÄHTI</a></li>
+<li><a href="/inkscape/ch019_spiraali">SPIRAALI</a></li>
+<li><a href="/inkscape/ch020_lyijykyna">LYIJYKYNÄ</a></li>
+<li><a href="/inkscape/ch021_kuulakarkikyna">BÉZIER</a></li>
+<li><a href="/inkscape/ch022_kalligrafia">KALLIGRAFIA</a></li>
+<li><a href="/inkscape/ch023_pyyhekumi">PYYHEKUMI</a></li>
+<li><a href="/inkscape/ch024_sankotaytto">SANKOTÄYTTÖ</a></li>
+<li><a href="/inkscape/ch025_teksti">TEKSTI</a></li>
+<li><a href="/inkscape/ch026_liitin">LIITIN</a></li>
+<li><a href="/inkscape/ch027_liukuvari">LIUKUVÄRI</a></li>
+<li><a href="/inkscape/ch028_pipetti">PIPETTI</a></li>
+<li Class="booki-section">POLUT</li><li><a href="/inkscape/ch030_muuta-polkua">MUUTA POLKUA</a></li>
+<li Class="booki-section">TEKSTI</li><li><a href="/inkscape/ch032_tekstin-tyyli">TEKSTIN TYYLI</a></li>
+<li><a href="/inkscape/ch033_tekstin-efektit">TEKSTIN EFEKTIT</a></li>
+<li><a href="/inkscape/ch034_teksti-ja-polut">TEKSTI JA POLUT</a></li>
+<li Class="booki-section">USEAMMAN OBJEKTIN OPERAATIOT</li><li><a href="/inkscape/ch036_kopioi-kloonaa-ja-monista">KOPIOI, KLOONAA JA MONISTA</a></li>
+<li><a href="/inkscape/ch037_leikkaus-ja-peitteet">LEIKKAUS JA PEITTEET</a></li>
+<li Class="booki-section">KOHTEIDEN SIJOITTELU</li><li><a href="/inkscape/ch039_sijoittelu">SIJOITTELU</a></li>
+<li><a href="/inkscape/ch040_jaa-ja-tasaa">JAA JA TASAA</a></li>
+<li Class="booki-section">KOHTEIDEN JÄRJESTELY</li><li><a href="/inkscape/ch042_tasot">TASOT</a></li>
+<li><a href="/inkscape/ch043_ryhmittely">RYHMITTELY</a></li>
+<li Class="booki-section">KOHTEIDEN TYYLI</li><li><a href="/inkscape/ch045_tyyli">TYYLI</a></li>
+<li><a href="/inkscape/ch046_taytto-ja-viiva">TÄYTTÖ JA VIIVA</a></li>
+<li Class="booki-section">POLKUTEHOSTE</li><li><a href="/inkscape/ch048_polkutehosteet">POLKUTEHOSTEET</a></li>
+<li><a href="/inkscape/ch049_hammasrattaat">HAMMASRATTAAT</a></li>
+<li><a href="/inkscape/ch050_muoto-polkua-pitkin">MUOTO POLKUA PITKIN</a></li>
+<li Class="booki-section">SVG-SUODATTIMET</li><li><a href="/inkscape/ch052_suodattimet">SUODATTIMET</a></li>
+<li Class="booki-section">ASETUKSET</li><li><a href="/inkscape/ch054_varinhallinta">VÄRINHALLINTA</a></li>
+<li Class="booki-section">LIITTEET</li><li><a href="/inkscape/ch056_oppaasta">KÄYTTÖOHJEESTA</a></li>
+<li><a href="/inkscape/ch057_lisenssi">LISENSSI</a></li>
+</ul>

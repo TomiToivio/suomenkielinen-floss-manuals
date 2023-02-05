@@ -1,0 +1,79 @@
+<div id="main-content"><h1>Komentorivin käyttö editointiin</h1>
+<p>Komentorivi on tekstiin perustuva menetelmä hyötyohjelmien kutsumiseen päätteen komentotulkilta. Useimmissa Linux-käyttöjärjestelmissä on ohjelma, jota kutsutaan päätteeksi. Useimmiten tämä pääte on Bourne-Again Shell, "bash", joka on alkuperäisen Bourne Shellin, "sh", seuraaja, mutta monia erilaisia päätteitä on käytössä.</p>
+<p>Jokaisen käyttäjän tulisi tietää, kuinka voi käyttää yksinkertaisia tekstikomentoja, kuten "df -h", joka on levytilan käyttöraportti ihmiselle ymmärrettävissä yksiköissä (megatavuina levyn sektoreiden sijaan). Komentorivin perusteet ja monia edistyneempiä asioita on dokumentoitu FLOSS Manualsin kirjassa <em>Komentorivin perusteet</em>, joka on saatavilla osoitteessa <a href="/KomentorivinPerusteet/Introduction">http://fi.flossmanuals.net/KomentorivinPerusteet/Introduction</a>. Tuo kirja on hyvä lukea ennen kuin kokeilee mitään tässä luvussa kuvailtuja asioita. Kirjan avulla on helppo ymmärtää komentorivin perusteita, jolloin on mahdollista astua kehittyneemmän käytön kynnyksen yli. Kehittyneempi komentorivin käyttö Linuxissa merkitsee kahta asiaa: kaikkien komentoon sisältyvien vaihtoehtojen käyttöä (jotka man-komento listaa - kokeile komentoa "man man"), ja muutamaa riviä pidempien ohjelmien kirjoittamista käyttäen muitakin kuin yksinkertaisimpia komentoja. </p>
+<p>Monet videoeditointityökalut toimivat sekä koko ruudun graafisena käyttöliittymänä että komentoriviversiona. Graafinen käyttöliittymä kuitenkin käyttää usein komentoriviä tehtävien suorittamiseen. Esimerkkinä tästä ovat Ubuntun ja Debianin käyttämät paketinhallintaohjelmat. Koko ruudun graafinen käyttöliittymä on Synaptic, ja tekstiin perustuva käyttöliittymä on Aptitude. Hyvin kirjoitettu käyttöliittymä voi tehdä komentojen käytöstä paljon helpompaa kuin komentorivin käytöstä, mutta komentorivin käyttö antaa paljon suuremmat mahdollisuudet komentojen kehittyneempään käyttöön. Lisäksi komentorivin komennot voi tallentaa tekstitiedostoihin, jolloin niistä tulee ajettavia ohjelmia, kunhan tekstitiedostoista tekee suoritettavia chmod-komennon avulla. </p>
+<h2>Tappioton videoeditointi</h2>
+<p>Videoeditointi on hyvin kallis hanke tietokoneesi laskentatehon ja muistinkäytön suhteen. Tämä johtuu siitä, että monimutkaiset videoeditointityökalut joutuvat antamaan sinulle mahdollisuuden työskennellä videon jokaisen ruudun ja äänen jokaisen sämplen parissa.</p>
+<p>Jokaisen yksittäisen ruudun käsittely ei kuitenkaan ole aina tarpeen. Joissain tapauksissa ihmiset tahtovat vain erottaa ääni- tai kuvastreamin tiedostosta, tai yhdistää ääni- ja kuvatiedostot yhteen streamiin, tai he eivät välitä videon leikkauksesta yhden ruudun tarkkuudella.</p>
+<p>Tällöin video- ja äänistreameja ei tarvitse koodata uudelleen, mikä tekee videon käsittelystä paljon vähemmän tietokoneen resursseja vaativaa. Se merkitsee myös, että editointityökalut ovat hyvin nopeita. </p>
+<p>Tätä editointiprosessia kutsutaan tappiottomaksi, sillä uudelleenkoodausta ei vaadita. Videon uudelleenkoodaus aiheuttaa aina videon laadun heikkenemisen ja videon editointi ilman uudelleenkoodausta on täten tappiotonta. Koodatut paketit, jotka ovat joko videota tai ääntä, eivät joudu toimenpiteiden kohteiksi. Ne pidetään sellaisina kuin ne ovat, joten ne koodataan samalla laadulla, joka niillä oli ennen editointiprosessia. </p>
+<h2>Työkalut</h2>
+<p>On kaksi pääasiallista työkalupakkia tappiottomaan videoeditointiin: <strong>Ogg Video Tools</strong> ja <strong>Oggz Tools</strong>. Molemmat ovat komentorivityökalujen kokoelmia. Ogg Video Tools ja Oggz Tools toimivat Linuxissa, OSX:ssä ja Windowsissa.</p>
+<p>Oggz löytyy täältä: <a href="http://www.xiph.org/oggz/" target="_blank">http://www.xiph.org/oggz/</a></p>
+<p>Ogg Tools löytyy täältä: <a href="http://oggvideotools.sourceforge.net/" target="_blank">http://sourceforge.net/projects/oggvideotools</a></p>
+<p>Joissain tapauksissa nämä kaksi työkalupakkia omaavat samanlaisen toiminnallisuuden. Oggz Tools on suuntautunut kehittäjiä varten ja Ogg Video Tools on suuntautunut loppukäyttäjiä varten. Ogg Video Tools tarjoaa työkaluja ogg-videotiedostojen luomista ja käsittelyä varten, mutta Oggz Tools tarjoaa joukon muita työkaluja, varsinkin ogg-tiedostojen analysointia varten.</p>
+<p>Ogg Video Tools voi käsitellä videostreameja, jotka on luotu Theora-koodaajalla ja äänistreameja, jotka on luotu Vorbis-koodaajalla. Oggz voi käsitellä muita stream-formaatteja, kuten FLAC, Speex, CELT jne.</p>
+<p><strong>Ogg Video Tools</strong> komentorivityökaluihin sisältyy:</p>
+<p> </p>
+<ul><li><strong>oggSplit:</strong> jakaa useamman streamin ogg-tiedoston useampaan tiedostoon, joista jokaisessa on yksi streami.</li>
+<li><strong>oggJoin</strong>: yhdistää Ogg-ääni (vorbis) ja Ogg-video (theora) -tiedostot yhteen Ogg-tiedostoon.</li>
+<li><strong>oggCut</strong>: luo uuden Ogg-tiedoston alkuperäisen Ogg-tiedoston aliosana.</li>
+<li><strong>oggCat</strong>: liittää kaksi tai useampia Ogg-tiedstoja.</li>
+<li><strong>oggResize</strong>: muuttaa Theora tai Vorbis -streameja useammilla tavoilla. </li>
+<li><strong>oggDump</strong>: tulsotaa kasan paketteja tai sivuja annetun Ogg-tiedoston sisältä.</li>
+<li><strong>oggLength</strong>: palauttaa annetun Ogg-tiedoston pituuden.</li>
+<li><strong>oggSilence</strong>: luo vorbis-äänitiedoston, jolla on annettu pituus, ja joka on täynnä hiljaisuutta.</li>
+</ul><p><strong>Oggz Tools</strong> -komentorivityökalut sisältävät:</p>
+<ul><li><strong>oggz-chop</strong>: erottaa osan Ogg-tiedostosta annettujen alku- ja loppuaikojen välistä.</li>
+<li><strong>oggz-merge</strong>: yhdistää Ogg-tiedostot yhteen, lomittaen tiedostot esitysaikajärjestykseen.</li>
+<li><strong>oggz-sort</strong>: järjestää Ogg-tiedoston sivut esitysajan mukaan.</li>
+<li><strong>oggz-rip</strong>: erottaa yhden tai useamman loogisen bittistreamin Ogg-tiedostosta.</li>
+<li><strong>oggz-info</strong>: näyttää tiedon Ogg-tiedoston käyttämistä koodekeista.</li>
+<li><strong>oggz-comment</strong>: listaa tai muokkaa kommentteja Ogg-streamin otsikkojen sisällä.</li>
+<li><strong>oggz-validate</strong>: tarkastaa Ogg-tiedoston yleisten ongelmien varalta.</li>
+<li><strong>oggz-dump</strong>: tulostaa vedoksen pakettistreameista annetun Ogg-tiedoston sisällä</li>
+</ul></div><ul Class="menu-goes-here"><li Class="booki-section">JOHDANTO</li><li><a href="/ogg-theora/index">OGG THEORA</a></li>
+<li><a href="/ogg-theora/ch002_tasta-kayttooppaasta">TÄSTÄ KÄYTTÖOPPAASTA</a></li>
+<li><a href="/ogg-theora/ch003_mita-video-on">MITÄ VIDEO ON?</a></li>
+<li><a href="/ogg-theora/ch004_mita-theora-on">MITÄ THEORA ON?</a></li>
+<li Class="booki-section">PERUSKÄSITTEET</li><li><a href="/ogg-theora/ch006_mika-on-koodekki">MIKÄ ON KOODEKKI?</a></li>
+<li><a href="/ogg-theora/ch007_sailot">SÄILÖT</a></li>
+<li Class="booki-section">TOISTO</li><li><a href="/ogg-theora/ch009_theoran-toistaminen">THEORAN TOISTAMINEN</a></li>
+<li><a href="/ogg-theora/ch010_toisto-vlclla">TOISTO VLC:LLÄ</a></li>
+<li><a href="/ogg-theora/ch011_miro">MIRO</a></li>
+<li Class="booki-section">THEORA VERKOSSA</li><li><a href="/ogg-theora/ch013_theora-verkossa">THEORA VERKOSSA</a></li>
+<li><a href="/ogg-theora/ch014_html5">HTML5</a></li>
+<li><a href="/ogg-theora/ch015_theora-sivuillasi">THEORA SIVUILLASI</a></li>
+<li><a href="/ogg-theora/ch016_hotelleja-theoralle">HOTELLEJA THEORALLE</a></li>
+<li Class="booki-section">ENKOODAUS</li><li><a href="/ogg-theora/ch018_johdanto-enkoodaukseen">JOHDANTO ENKOODAUKSEEN</a></li>
+<li><a href="/ogg-theora/ch019_firefogg">FIREFOGG</a></li>
+<li><a href="/ogg-theora/ch020_enkoodaus-vlclla">ENKOODAUS VLC:LLÄ</a></li>
+<li><a href="/ogg-theora/ch021_enkoodaus-ffmpeg2theoralla">ENKOODAUS FFMPEG2THEORALLA </a></li>
+<li><a href="/ogg-theora/ch022_thoggen">THOGGEN</a></li>
+<li Class="booki-section">TEKSTITYKSET</li><li><a href="/ogg-theora/ch024_tekstityksien-perusteet">TEKSTITYKSIEN PERUSTEET</a></li>
+<li><a href="/ogg-theora/ch025_jakelu">JAKELU</a></li>
+<li><a href="/ogg-theora/ch026_tekstityksien-liittaminen">TEKSTITYKSIEN LIITTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch027_tekstityksien-toistaminen">TEKSTITYKSIEN TOISTAMINEN</a></li>
+<li><a href="/ogg-theora/ch028_julkaiseminen">JULKAISEMINEN</a></li>
+<li Class="booki-section">SUORATOISTO</li><li><a href="/ogg-theora/ch030_suoratoiston-perusteet">SUORATOISTON PERUSTEET</a></li>
+<li><a href="/ogg-theora/ch031_icecast">ICECAST</a></li>
+<li><a href="/ogg-theora/ch032_tss">TSS</a></li>
+<li><a href="/ogg-theora/ch033_ffmpeg2theora-streamaus">FFMPEG2THEORA-STREAMAUS</a></li>
+<li><a href="/ogg-theora/ch034_suoratoisto-vlc-ohjelmalla">VLC-STREAMAUS</a></li>
+<li><a href="/ogg-theora/ch035_virtaustoiston-tallentaminen">VIRTAUSTOISTON TALLENTAMINEN</a></li>
+<li Class="booki-section">EDITOINTI</li><li><a href="/ogg-theora/ch037_johdanto-editointiin">JOHDANTO EDITOITIIN</a></li>
+<li><a href="/ogg-theora/ch038_pitivi">PITIVI</a></li>
+<li Class="booki-section">ESIKATSELU</li><li><a href="/ogg-theora/ch040_kuinka-esikatselua-kaytetaan">ESIKATSELUN KÄYTTÖ</a></li>
+<li><a href="/ogg-theora/ch041_tee-esikatselukuvia">TEE ESIKATSELUKUVIA</a></li>
+<li><a href="/ogg-theora/ch042_tee-diaesitys">TEE DIAESITYS</a></li>
+<li><a href="/ogg-theora/ch043_tee-esikatseluvideo">TEE ESIKATSELUVIDEO</a></li>
+<li Class="booki-section">EDITOINTI KOMENTORIVILTÄ</li><li><a href="/ogg-theora/ch045_komentorivi">THEORA JA KOMENTORIVI</a></li>
+<li><a href="/ogg-theora/ch046_theoran-teoria">THEORAN TEORIA</a></li>
+<li><a href="/ogg-theora/ch047_tiedoston-jakaminen">TIEDOSTON JAKAMINEN</a></li>
+<li><a href="/ogg-theora/ch048_tiedoston-leikkaaminen">TIEDOSTON LEIKKAAMINEN</a></li>
+<li><a href="/ogg-theora/ch049_tiedostojen-liittaminen">TIEDOSTOJEN LIITTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch050_tiedostojen-yhdistaminen">TIEDOSTOJEN YHDISTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch051_koon-muuttaminen">KOON MUUTTAMINEN</a></li>
+<li><a href="/ogg-theora/ch052_oggin-analysoiminen">OGGIN ANALYSOIMINEN</a></li>
+<li Class="booki-section">TEKIJÄT</li><li><a href="/ogg-theora/ch054_tekijat">TEKIJÄT</a></li>
+</ul>

@@ -1,0 +1,60 @@
+<div id="main-content"><h1>Johdanto sähköpostin tietoturvaan</h1>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/Pictogram_Message%20Open.png" alt="" align="left">Sähköposti on yksi internetin vanhimmista viestintämuodoista. Käytämme sitä usein kommunikoidaksemme hyvin henkilökohtaista tai muuten arkaluontoista aineistoa. On hyvin tärkeää ymmärtää, miksi sähköposti <em>ei ole turvallinen</em> peruasetuksillaan. Seuraavissa luvuissa kuvailemme erilaisia menetelmiä, joita tarvitaan sähköpostin turvaamiseen tunnetuilta uhilta. Tarjoamme myös perustiedot sähköpostin lähettämiseen ja vastaanottamiseen liittyvien riskien arviointiin. Tämä osa alkaa kuvailemalla sähköpostin käytön turvallisuuteen vaikuttavia seikkoja.</p>
+<h2>Ei lähettäjän varmistusta: et voi luottaa "lähettäjän" osoitteeseen</h2>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/pictogram_pgp_1.jpg" alt="" align="right">Useimmat ihmiset eivät ymmärrä, kuinka helposti kuka tahansa henkilö internetissä voi väärentää sähköpostin yksinkertaisesti muuttamalla identiteettinsä profiilia omassa sähköpostiohjelmassaan. Tämä mahdollistaa sen, että kuka tahansa voi lähettää sinulle sägköpostin jostain tunnetusta sähköpostiosoitteesta, teeskennellen olevansa joku muu. Tätä voidaan verrata normaaliin postiin; voit kirjoittaa mitä tahansa kirjekuoreen palautusosoitteeksi, ja se välitetään silti vastaanottajalle (olettaen, että vastaanottajan osoite on oikein). Kuvailemme menetelmää <em>sähköpostiviestien allekirjoittamiseksi</em>, joka estää väärennökset. Sähköpostiviestien allekirjoittaminen selitetään luvussa PGP:stä (Pretty Good Privacy).</p>
+<h2>Sähköpostiviestintää voidaan salakuunnella, aivan kuin puhelimiakin </h2>
+<p>Sähköpostiviesti kulkee monen verkkopalvelimen läpi ennen kuin se päätyy lopulliselle vastaanottajalleen. Jokainen näistä palvelimista voi tarkastella viestien sisältöä, mihin sisältyy aihe, teksti ja liitetiedostot. Jokainen näistä palvelimista voi olla luotettujen infrastruktuurin tarjoajien hallussa, mutta silti hakkeri tai juonikas työntekijä on voinut murtautua niille, tai hallituksen agentit ovat voineet ottaa laitteet haltuunsa ja viedä henkilökohtaiset viestisi. </p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/salaamaton_1.jpg" alt="" width="600" height="142"> </p>
+<p>On kaksi turvallisuustasoa, jotka turvaavat sähköpostin tällaista urkintaa vastaan. Ensimmäinen on varmistaa, että yhteys sähköpostipalvelimeen on salausmekanismin turvaama. Toinen on viestin itsensä salaaminen, jotta kukaan muu kuin vastaanottaja ei ymmärrä sen sisältöä. Yhteyden turvaaminen käsitellään laajalti tässä osassa ja VPN-osassa. Sähköpostin salaaminen käsitellään yksityiskohtaisesti PGP:tä käsittelevissä luvuissa. </p>
+<h2>Postihuijaukset, virukset ja spämmi</h2>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/Pictogram_Message.png" alt="" align="left">Yli 80% kaikesta tyypilliseltä sähköpostipalvelimelta tulevista viesteistä sisältää joko spämmiviestejä, viruksia tai tietokoneesi vahingoittamiseen tarkoitettuja liitetiedostoja. Näiltä vihamielisiltä sähköposteilta suojautuminen vaatii pitämään sähköpostiohjelmasi ajan tasalla ja pitämään yllä epäluuloista asennetta kaikkia autentikoimattomia sähköpostiviestejä kohtaan. </p>
+<p> </p>
+<h3>Huijausviestit, joissa pyydetään "henkilökohtaisia tietoja"</h3>
+<p>Internet-palveluntarjoajasi, puhelinyhtiösi, pankkisi tai mikään kunnioitettava järjestö ei <em>koskaan</em> pyydä sinua antamaan käyttäjätunnustasi tai salasanaasi. He eivät myöskään koskaan pyydä sinua sähköpostilla tai puhelimella ja kysy luottamuksellista tietoa käyttäjätilistäsi tai asetuksistasi. He eivät myöskään koskaan pyydä sinua käymään jollain verkkosivulla, jotta voivat "korjata" jotain tietokoneellasi. Jos saat tällaisen pyynnön, voit olla varma, että se on kolmannen osapuolen vihamielinen yritys varastaa käyttäjätilisi tiedot. Tällaisia yrityksiä kutsutaan "phishing-hyökkäyksiksi" internet-jargonissa. Ne ovat hyvin yleisiä. Muista, että hyvämaineiset yritykset pitävät tietojasi tallessa, eikä niiden pitäisi joutua pyytämään tietoja sinulta.</p>
+<h3>Varmistamattomat viestit organisaatioilta tai yksilöiltä, jotka tarjoavat sinulle "palvelua"</h3>
+<p>Phishing-hyökkäykset voivat tulla monista erilaisista lähteistä. Voit saada sähköpostia organisaatiolta tai yksilöltä. Postissa ehkä luvataan auttaa sinua ratkaisemaan joku ongelma tai tarjotaan sinulle jotain palvelua. Voit esimerkiksi saada sähköpostin, joka on yhtiöltä, joka tekee käyttämäsi virustorjuntaohjelman. Tämä viesti sanoo, että heidän ohjelmaansa on tärkeä päivitys. He ovat sopivasti liittäneet mukaan kätevän suoritettavan tiedoston, joka korjaa ohjelmasi automaattisesti.</p>
+<p>Koska viestin lähettäjää ei voida varmistaa, tällaiset viestit tulisi heti heittää roskakoriin, koska liitetiedosto on lähes varmasti virus tai vihamielinen ohjelma. </p>
+<h3>Sähköpostiviestit, joissa on liitetiedosto</h3>
+<p>Voit saada ystävältäsi viestin, joka sisältää liitteen. Viestissä ystäväsi voi sanoa, että liite on mahtava peli, tai käyttökelpoinen apuohjelma, tai mitä tahansa muuta. Viruksien tartuttamat tietokonejärjestelmät voivat "kaapata" sähköpostitilejä ja lähettää tällaisia viestejä kaikille henkilön osoitekirjassa. Viesti ei ole ystävältäsi - se on virukselta, joka on tartuttanut ystäväsi tietokonejärjestelmän.</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/Paper%20Clip.png" alt="" align="right">Avaa liitetiedostot vasta varmistettuasi lähettäjän osoitteen. Tämä pätee kaikenlaisiin liitetiedostoihin, ei vain suoritettaviin tiedostoihin. Viruksia voi olla melkein missä tahansa tiedostotyypissä: videoissa, kuvissa, äänitiedostoissa, toimistodokumenteissa. Virusturvaohjelman tai roskapostisuodattimen ajaminen antaa jonkin verran turvaa näitä vihamielisiä viestejä vastaan, sillä ne varoittavat sinua, jos lataat virusten tartuttaman tiedoston tai troijalaisen. Kuitenkaan sinun ei pitäisi luottaa täysin virustorjuntaohjelmiisi tai roskapostisuodattimiisi, koska ne tehoavat vain uhkiin, joista ne tietävät. Ne eivät voi suojata sinua uhilta, joita ei ole vielä lisätty niiden määritystiedostoihin. (Tämän vuoksi olisi tärkeää pitää virus- ja roskapostimääritystiedostosi ajan tasalla.)</p>
+<p>Turvallisin lähestymistapa sähköpostin liitetiedostoihin on olla avaamatta liitetiedostoa, kunnes olet täysin varma, että se tulee tunnetusta, luotetusta lähteestä. </p>
+<h3>Haittaohjelmien uhka</h3>
+<p>Vaikka olisit vahvistanut kaikki saapuneet sähköpostit ja olisit avannut vain ne liitetiedostot, jotka ovat mielestäsi turvallisia, tietokoneesi voi olla viruksen saastuttama. Esimerkiksi ystäväsi on voinut vahingossa lähettää sinulle asiakirjan, jossa on virus. Haittaohjelmien havaitseminen voi olla vaikeaa, vaikka ne löytyvät usein virustorjuntaohjelmilla (olettaen, että määritystiedostosi ovat ajan tasalla, kuten yllä on kuvattu). Merkkejä haittaohjelmien toiminnasta ovat: </p>
+<ul><li>äkillinen tietokoneesi tai internet-yhteytesi hidastuminen </li>
+<li>oudot ponnahdusikkunat, joissa on hassuja viestejä </li>
+<li>internet-palveluntarjoajasi valitukset, joissa väitetään sinun käyttävän tiliäsi väärin (esimerkiksi että olet lähettänyt roskapostiviestejä) </li>
+</ul><p>Jos sinulle tapahtuu näin, varmista, että virustorjuntaohjelmasi on ajan tasalla ja skannaa sen jälkeen järjestelmäsi kokonaan. </p>
+<p> </p></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/internet-tietoturvan-perusteet/index">Johdanto</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch002_why-use-a-manual-on-internet-security">Miksi käyttää internet-tietoturvaopasta?</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch003_understanding-basic-internet-security">Internet-tietoturvan perusteiden ymmärtäminen</a></li>
+<li Class="booki-section">Yleinen turvallisuus</li><li><a href="/internet-tietoturvan-perusteet/ch005_secure-your-computer-general">Turvaa tietokoneesi (yleistä)</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch006_internet-cafes">Internet-kahvilat</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch007_software-on-usb-or-cd">Ohjelmat USB-tikulla tai CD:llä</a></li>
+<li Class="booki-section">Salasanojen turvaaminen</li><li><a href="/internet-tietoturvan-perusteet/ch009_keeping-passwords-safe">Salasanojen turvaaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch010_installing-a-password-manager">Salasanojen hallintaohjelman asentaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch011_encrypting-passwords-with-a-password-manager">Salasanojen salaaminen salasanojen hallintaohjelman avulla</a></li>
+<li Class="booki-section">Henkilökohtaisten tietojen turvaaminen</li><li><a href="/internet-tietoturvan-perusteet/ch013_introduction-to-securing-personal-data">Johdanto henkilökohtaisten tietojen turvaamiseen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch014_installing-truecrypt">TrueCryptin asentaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch015_using-truecrypt">TrueCryptin käyttö</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch016_setting-up-a-hidden-volume">Kätketyn osion luominen</a></li>
+<li Class="booki-section">Turvallinen selaaminen</li><li><a href="/internet-tietoturvan-perusteet/ch018_introduction-to-safe-browsing">Johdanto turvalliseen selaamiseen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch019_accessing-firefox-on-ubuntu">Firefoxin asennus Ubuntuun</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch020_installing-firefox-on-windows">Firefoxin asentaminen Windowsiin</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch021_protecting-your-internet-passwords">Internet-salasanojen suojaaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch022_extending-firefox">Firefoxin laajentaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch023_proxy-setting-and-foxyproxy">Välityspalvelimet ja FoxyProxy</a></li>
+<li Class="booki-section">Sähköpostin tietoturvan perusteet</li><li><a href="/internet-tietoturvan-perusteet/ch025_introduction-to-e-mail-safety">Johdanto sähköpostin tietoturvaan</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch026_start-using-thunderbird-mail">Thunderbird-sähköpostin käyttö</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch027_setting-up-secure-connections">Salattujen yhteyksien luominen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch028_some-additional-security-settings">Lisää turvallisuusasetuksia</a></li>
+<li Class="booki-section">Sähköpostien salaaminen</li><li><a href="/internet-tietoturvan-perusteet/ch030_introduction-to-mail-encryption-pgp">Johdanto sähköpostien salaamiseen (PGP)</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch031_installing-pgp-on-windows">PGP:n asentaminen Windowsiin</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch032_installing-pgp-on-ubuntu">PGP:n asentaminen Ubuntuun</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch033_creating-your-pgp-keys">PGP-avainten luominen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch034_daily-pgp-usage">Päivittäinen PGP:n käyttö</a></li>
+<li Class="booki-section">TOR-opas</li><li><a href="/internet-tietoturvan-perusteet/ch036_using-tor">TOR-opas</a></li>
+<li Class="booki-section">Taustatietoa</li><li><a href="/internet-tietoturvan-perusteet/ch038_how-the-net-works">Kuinka verkko toimii</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch039_glossary">Sanasto</a></li>
+<li Class="booki-section">Tekijät</li><li><a href="/internet-tietoturvan-perusteet/ch041_tekijat">Tekijät</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch042_lisenssi">Lisenssi</a></li>
+</ul>

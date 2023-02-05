@@ -1,0 +1,58 @@
+<div id="main-content"><h1>Luo PGP-avaimesi</h1>
+<p>Voit nyt salata sähköpostisi PGP:llä. Voit tehdä tämän käyttämällä Enigmailia Thunderbirdin sisältä. Enigmailissa on hieno asetusohjelma, jonka avulla voit tehdä asetukset ja oman avainparin, jossa on julkinen ja yksityinen avain. Voit käynnistää asennusohjelman koska tahansa Thunderbirdissä valitsemalla ylävalikosta <strong>OpenPGP &gt; Setup Wizard</strong>.</p>
+<p><strong>Askel 1.</strong> Tältä asetusohjelma näyttää. Lue tarkkaan eri ikkunoissa olevat tekstit. Niissä on hyödyllistä tietoa, jonka avulla PGP:lle voi tehdä henkilökohtaiset asetukset. Napsauta ensimmäisessä ikkunassa Next aloittaaksesi asetusten tekemisen. </p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/pgpwizard_ubuntu11.04_step1.png" alt=""></p>
+<p><strong>Askel 2.</strong> Asetusohjelma kysyy tahdotko allekirjoittaa kaikki lähettämäsi viestit. Jos et tahdo allekirjoittaa kaikkia viestejä, joudut määrittelemään sen erikseen jokaisen vastaanottajan kohdalla. Kaikkien viestien allekirjoittaminen on hyvä valinta. Napsauta seuraavaksi "Next"-nappia, kun olet tehnyt päätöksesi. </p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/pgpwizard_ubuntu11.04_step2.png" alt=""></p>
+<p><strong>Askel 3.</strong> Seuraavassa ruudussa asetusohjelma kysyy tahdotko salata kaikki lähettämäsi viestit. Viestien allekirjoittaminen ei vaadi sitä, että vastaanottajilla on PGP asennettuna, mutta salattujen viestien vastaanottaminen vaatii sitä. Niinpä voit vastata "ei" tähän kysymykseen, jotta voit varmasti lähettää tavallisia sähköposteja. Vastaa tähän "kyllä" ainoastaan, jos tahdot estää Thunderbirdiä lähettämästä salaamattomia viestejä. Tehtyäsi päätöksesi voit painaa "Next"-nappia. </p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/pgpwizard_ubuntu11.04_step3.png" alt=""></p>
+<p><strong>Askel 4:</strong> Seuraavassa ruudussa asennusohjelma kysyy voiko se muuttaa joitain sähköpostin muotoiluasetuksia, jotta se toimii paremmin PGP:n kanssa. On hyvä valinta vastata tässä "Yes". Ainoa vakava seikka on se, että se estää sinua lähettämästä HTML-sähköposteja. Napsauta "Next"-nappia tehtyäsi päätöksesi.</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/pgpwizard_ubuntu11.04_step4.png" alt=""></p>
+<p><strong>Askel 5:</strong> Nyt on aika aloittaa avainten luominen. Seuraavassa ruudussa voit valita yhden sähköpostitilisi, muuten käytössä on oletusarvoinen sähköpostitili, jos käytössä on vain yksi sähköpostitili. Kohtaan "Passphrase" voit kirjoittaa salasanasi. Tämä on uusi salasana, jota käytetään yksityisen avaimen turvaamiseen. On erittäin tärkeää muistaa tämä salasana, koska omia salattuja sähköposteja ei voi lukea, jos se unohtuu. Sen pitää myös olla vahva salasana. Sen pitäisi olla vähintään 8 merkkiä pitkä, siinä ei saa olla sanakirjasta löytyviä sanoja, ja sen pitäisi mieluiten olla ainutlaatuinen salasana. Saman salasanan käyttämistä moneen eri tarkoitukseen lisää riskejä huomattavasti. Kun olet valinnut käyttäjätilisi ja luonut salasanan, paina "Next"-nappia. </p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/pgpwizard_ubuntu11.04_step9.png" alt=""></p>
+<p><strong>Askel 6:</strong> Seuraavassa ruudussa asetusohjelma tekee kaikki ne asiat, joita joutuu tekemään mahdollistaakseen käyttäjätilisi PGP-salauksen. Jos olet tyytyväinen edellisessä ikkunassa tehtyihin valintoihin, paina "Next"-nappia.</p>
+<p><strong><img src="_booki/internet-tietoturvan-perusteet/static/pgpwizard_ubuntu11.04_step14.png" alt=""></strong></p>
+<p><strong>Askel 7:</strong> Asetusohjelma luo avaimesi. Ole kärsivällinen. Edistymispalkin pitäisi siirtyä vähitellen oikealle. Asetusohjelma kertoo, kun avaimet on luotu, jonka jälkeen voit taas painaa "Next"-nappia.</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/pgpwizard_ubuntu11.04_step7.png" alt=""></p>
+<p><strong>Askel 8:</strong> Sinulla on nyt oma PGP-avainparisi. Asetusohjelma kysyy tahdotko lyödä myös erikoistiedoston, jota kutsutaan nimellä "Revocation certificate". Tämän tiedoston avulla voit ilmoittaa muille, että avainparisi ei enää ole voimassa. Ajattele sitä tapana lopettaa PGP-identiteettisi. Voit käyttää tätä sertifikaattia, mikäli olet luonut uuden avainparin tai jos vanha avainparisi on hukassa. On hyvä idea luoda tämä tiedosto ja pitää sitä turvallisessa paikassa. Napsauta nappia "Generate Certificate", jos tahdot luoda tiedoston, paina muuten "Skip". </p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/pgpwizard_ubuntu11.04_step16.png" alt=""></p>
+<p><strong>Askel 9:</strong> Olettaen, että olet päättänyt luoda avaimen peruuttamissertifikaatin, asetusohjelma kysyy minne tiedosto tulisi tallentaa. Dialogi voi näyttää hieman erilaiselta eri käyttöjärjestelmissä. On hyvä idea nimetä tiedosto järkevällä nimellä, kuten minun_kumoamissertifikaattini. Napsauta "Save", kun olet päättänyt sijainnin. </p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/pgpwizard_ubuntu11.04_step17.png" alt=""></p>
+<p><strong>Askel 10:</strong> Jos olet päättänyt luoda kumoamissertifikaatin, asetusohjelma ilmoittaa, että se on tallennettu onnistuneesti. </p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/pgpwizard_ubuntu11.04_step18.png" alt=""></p>
+<p><strong>Askel 11:</strong> Asetusohjelma ilmoittaa, että asetukset ovat valmiina.</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/pgpwizard_ubuntu11.04_step8.png" alt=""></p>
+<p>Onnittelut, sinulla on nyt sähköpostiasiakas PGP-asetuksilla. Seuraavaksi kerromme kuinka voit hallita avaimiasi, allekirjoittaa viestejä ja salata ne. Thunderbird voi tehdä ison osan näistä asioista automaattisesti. </p></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/internet-tietoturvan-perusteet/index">Johdanto</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch002_why-use-a-manual-on-internet-security">Miksi käyttää internet-tietoturvaopasta?</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch003_understanding-basic-internet-security">Internet-tietoturvan perusteiden ymmärtäminen</a></li>
+<li Class="booki-section">Yleinen turvallisuus</li><li><a href="/internet-tietoturvan-perusteet/ch005_secure-your-computer-general">Turvaa tietokoneesi (yleistä)</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch006_internet-cafes">Internet-kahvilat</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch007_software-on-usb-or-cd">Ohjelmat USB-tikulla tai CD:llä</a></li>
+<li Class="booki-section">Salasanojen turvaaminen</li><li><a href="/internet-tietoturvan-perusteet/ch009_keeping-passwords-safe">Salasanojen turvaaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch010_installing-a-password-manager">Salasanojen hallintaohjelman asentaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch011_encrypting-passwords-with-a-password-manager">Salasanojen salaaminen salasanojen hallintaohjelman avulla</a></li>
+<li Class="booki-section">Henkilökohtaisten tietojen turvaaminen</li><li><a href="/internet-tietoturvan-perusteet/ch013_introduction-to-securing-personal-data">Johdanto henkilökohtaisten tietojen turvaamiseen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch014_installing-truecrypt">TrueCryptin asentaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch015_using-truecrypt">TrueCryptin käyttö</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch016_setting-up-a-hidden-volume">Kätketyn osion luominen</a></li>
+<li Class="booki-section">Turvallinen selaaminen</li><li><a href="/internet-tietoturvan-perusteet/ch018_introduction-to-safe-browsing">Johdanto turvalliseen selaamiseen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch019_accessing-firefox-on-ubuntu">Firefoxin asennus Ubuntuun</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch020_installing-firefox-on-windows">Firefoxin asentaminen Windowsiin</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch021_protecting-your-internet-passwords">Internet-salasanojen suojaaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch022_extending-firefox">Firefoxin laajentaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch023_proxy-setting-and-foxyproxy">Välityspalvelimet ja FoxyProxy</a></li>
+<li Class="booki-section">Sähköpostin tietoturvan perusteet</li><li><a href="/internet-tietoturvan-perusteet/ch025_introduction-to-e-mail-safety">Johdanto sähköpostin tietoturvaan</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch026_start-using-thunderbird-mail">Thunderbird-sähköpostin käyttö</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch027_setting-up-secure-connections">Salattujen yhteyksien luominen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch028_some-additional-security-settings">Lisää turvallisuusasetuksia</a></li>
+<li Class="booki-section">Sähköpostien salaaminen</li><li><a href="/internet-tietoturvan-perusteet/ch030_introduction-to-mail-encryption-pgp">Johdanto sähköpostien salaamiseen (PGP)</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch031_installing-pgp-on-windows">PGP:n asentaminen Windowsiin</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch032_installing-pgp-on-ubuntu">PGP:n asentaminen Ubuntuun</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch033_creating-your-pgp-keys">PGP-avainten luominen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch034_daily-pgp-usage">Päivittäinen PGP:n käyttö</a></li>
+<li Class="booki-section">TOR-opas</li><li><a href="/internet-tietoturvan-perusteet/ch036_using-tor">TOR-opas</a></li>
+<li Class="booki-section">Taustatietoa</li><li><a href="/internet-tietoturvan-perusteet/ch038_how-the-net-works">Kuinka verkko toimii</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch039_glossary">Sanasto</a></li>
+<li Class="booki-section">Tekijät</li><li><a href="/internet-tietoturvan-perusteet/ch041_tekijat">Tekijät</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch042_lisenssi">Lisenssi</a></li>
+</ul>

@@ -1,0 +1,51 @@
+<div id="main-content"><h1>GTranscoden käyttö </h1>
+<div id="content">
+<p>On monta tapaa käyttää GTranscodea, joten on vaikeaa näyttää niitä kaikkia, tässä on kuitenkin esimerkki avi-tiedoston muuttamisesta divx-tiedostoksi, ja kuvasuhteen, videon bittinopeuden ja kuvataajuuden muuttamisesta. </p>
+<h2>Avaa lähdetiedosto </h2>
+<p>Ensin lataamme oikean tiedoston avaamalla GTranscoden ja painamalla <strong>Browse</strong>: </p>
+<p><img title="browse_en" src="_booki/gtranscode/static/GTranscode-Using-browse_en-fi.jpg" alt="browse_en" width="431" height="31"></p>
+<p>Tämä avaa tiedostoselaimen, ja sinun tulisi valita tiedosto transkoodattavaksi: </p>
+<p><img src="_booki/gtranscode/static/GTranscode-Using-filebrowser_en-fi.jpg" alt="filebrowser.jpg" width="441" height="423"></p>
+<p>Tässä vaihtoehdossa valitsemme <strong>caro.avi</strong> -videon: </p>
+<p><img src="_booki/gtranscode/static/GTranscode-Using-caro_en-fi.jpg" alt="caro.jpg" width="441" height="423"></p>
+<p>Valitse (korosta) tiedosto, jonka tahdot, paina <strong>OK</strong>, ja näet käyttöliittymän päänäkymässä tietoa tiedostosta: </p>
+<p><img src="_booki/gtranscode/static/GTranscode-Using-carofileinfo_en-fi.jpg" alt="carofileinfo.jpg" width="457" height="398"> </p>
+<h2>Ulostulon asetukset </h2>
+<p>Nyt tahdot valita ulostulotiedoston formaatin. </p>
+<h3>Valitse ulostulotiedosto (Choose Output File) </h3>
+<p>Sinun täytyy tallentaa lopullinen transkoodattu tiedosto johonkin, tehdäksesi tämän sinun täytyy kirjoittaa polku ja tiedostonimi kohtaan ulostulotiedosto (<strong>Output Video File</strong>). Jos et tiedä mikä polku on, paina <strong>Browse</strong>:</p>
+<p><img src="_booki/gtranscode/static/GTranscode-Using-outputbrowse_en-fi.jpg" alt="outputbrowse.jpg" width="432" height="33"></p>
+<p>Kun olet painanut <strong>Browse</strong>, näet taas tiedostoselaimen: </p>
+<p><img src="_booki/gtranscode/static/GTranscode-Using-filebrowser_en-fi.jpg" alt="filebrowser.jpg" width="441" height="423"></p>
+<p>Selaa nyt hakemistoon, johon tahdot tallentaa transkoodatun tiedoston, ja kirjoita tiedostonimi alimpaan kenttään:</p>
+<p><img src="_booki/gtranscode/static/GTranscode-Using-saveas_en-fi.jpg" alt="saveas.jpg" width="441" height="423"></p>
+<p>Paina nyt <strong>OK</strong> ja uuden tiedostopolkusi nimi ja polku tulee näkyviin: </p>
+<p><img src="_booki/gtranscode/static/GTranscode-Using-savefeedback_en-fi.jpg" alt="savefeedback.jpg" width="425" height="32"></p>
+<h3>Täysprosessointitila (Full Processing Mode)</h3>
+<p>Paina nyt nappia <strong>Full Processing Mode</strong>. Näet nyt joitain vaihtoehtoja, joista voit valita, ja jotka määrittävät ulostulotiedoston formaatin. </p>
+<p><img src="_booki/gtranscode/static/GTranscode-Using-carofp_en-fi.jpg" alt="carofp.jpg" width="438" height="321"> </p>
+<p>Emme käytä useimpia näistä, mutta valitsemme asetukset vientimoduulille, ruututaajuudelle, videon bittinopeudelle ja kuvasuhteelle.</p>
+<p>Nyt valitsemme seuraavat vaihtoehdot: </p>
+<ul><li><strong>export module : </strong>divx5</li>
+<li><strong>frame rate : </strong>12</li>
+<li><strong>video bitrate : </strong>64</li>
+<li><strong>aspect ratio : </strong>200 x 150</li>
+</ul><p>Jos täytät nämä vaihtoehdot käyttöliittymään, se näyttää suunnilleen tältä: </p>
+<p><img src="_booki/gtranscode/static/GTranscode-Using-carosettings_en-fi.jpg" alt="carosettings.jpg" width="433" height="210"> </p>
+<h2>Komentorivin ulostulo </h2>
+<p>Jos katsot käyttöliittymän alaosaa, näet tiedot komennosta, jota käyttäisit komentorivillä: </p>
+<pre> transcode -i "/home/eset/movies/caro.avi" -P 2 -y divx5 -f 12 -w 64 -Z 200x150 -V
+-o "/home/eset/movies/newfile.divx"
+</pre>
+<h2>Aloita transkoodaus</h2>
+<p>Valitse nyt go valikosta <strong>File</strong>: </p>
+<p><img src="_booki/gtranscode/static/GTranscode-Using-go_en-fi.jpg" alt="go.jpg" width="144" height="92"> </p>
+<p>Jos kaikki menee hyvin, näet jotain tällaista: </p>
+<p><img src="_booki/gtranscode/static/GTranscode-Using-going_en-fi.jpg" alt="going.jpg" width="600" height="419"> </p>
+<p>Kun tiedoston transkoodaus on valmis, voit katsoa sen! </p>
+</div></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/gtranscode/index">Johdanto</a></li>
+<li Class="booki-section">Asennus</li><li><a href="/gtranscode/ch003_asennus">Asennus</a></li>
+<li Class="booki-section">Käyttö</li><li><a href="/gtranscode/ch005_kayttoliittyma">Käyttöliittymä</a></li>
+<li><a href="/gtranscode/ch006_kaytto">Käyttö</a></li>
+<li Class="booki-section">Tekijät</li><li><a href="/gtranscode/ch008_tekijat">Tekijät</a></li>
+</ul>

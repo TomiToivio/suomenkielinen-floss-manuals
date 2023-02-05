@@ -1,0 +1,503 @@
+<div id="main-content"><h1>Komentojen pikaopas</h1>
+<p>Jokaisessa tämän luvun komentoesimerkissä dollarimerkki ($) rivin alussa on minimaalinen GNU/Linux komentokehote. (Oletusarvoinen komentokehotteesi on yleensä monimutkaisempi.)</p>
+<p>Loppurivillä on komento, jolla on valitsimia ja parametrejä. Seuraavassa ovat oppaan käytännöt.</p>
+<ul><li>Rivit, jotka eivät ala dollarimerkillä  "$" ovat komennon suorittamisesta tulevaa palautetta.</li>
+<li>Merkki "|" putkittaa komennon ulostulon toiselle komennolle.</li>
+<li>Merkki "&gt;" uudelleenohjaa komennon ulostulon tiedostoon.</li>
+<li>Lisätäksesi ulostulon tiedostoon, käytä merkkejä "&gt;&gt;".</li>
+<li>Monilla komennoilla ei ole ulostuloa. Ne onnistuvat tai epäonnistuvat hiljaa, mutta palauttavat virhekoodin, jota skripti voi käyttää päättääkseen mitä tekee seuraavaksi.</li>
+<li>Merkki ";" jakaa komennot samalla rivillä. Ne tehdään järjestyksessä, vasemmalta alkaen.</li>
+<li>Merkki "&amp;" komentorivin lopussa suorittaa komennon taustalla ja antaa käyttäjälle heti kehotteen seuraavan komennon antamiseksi.</li>
+<li>Merkki "\" rivin lopussa tarkoittaa, että komento jatkuu seuraavalla rivillä. Vaikka tässä oppaassa annetut komennot ovat aika lyhyitä, on tapauksia, joissa skriptitiedoston komento voi olla viiden tai kuuden rivin pituinen.</li>
+<li>Tapauksissa '<em>tekstiä välilyönneillä</em> ' ja "<em>lisää tekstiä välilyönneillä</em>" heitto- ja lainausmerkit merkitsevät, että teksti on yksi parametri, mukaan lukien ensimmäisen esimerkin lopussa olevan välilyönnin. Muuten komentotulkki tulkitsisi jokaisen sanan erilliseksi parametriksi ja hylkäisi välilyönnit.</li>
+<li>Tarkemerkit "``" merkitsevät komennot suoritettaviksi. Lopputulos korvaa komennon.</li>
+<li>Monilla komennoilla on valitsin, joka kirjoitetaan joko <code>-r</code> tai <code>-R</code>, jolla komento toimii jokaiseen alihakemiston. Tämä tapahtuu jokaisessa alkihakemistossa, joka kuuluu sille hakemistolle, jossa komento suoritetaan. Koska näitä valitsimia voidaan käyttää muille toiminnoille, sinun tulisi tarkastaa jokaisen komennon dokumentaatio, jolla tahdot käyttää tätä toimintoa.</li>
+</ul><p>Muutos, jonka monet ihmiset tekevät, on laittaa tämä komento käynnistystiedostoon, joka on <em>.bashrc</em> tai <em>.profile</em>.</p>
+<p><span style="font-family: Verdana,Arial,Helvetica,sans-serif;">$<strong> PATH=$PATH:.</strong></span></p>
+<p>Tämä lisää nykyisen hakemiston (.) polkuun, joten voit käynnistää omat komentosi hakemistostasi siirtymällä hakemistoon ja kirjoittamalla komennon nimen. Muuten joudut kirjoittamaan <code><span>.</span>/komento </code> suorittaaksesi komennon nykyisessä hakemistossa. Jotkut ihmiset pitävät tätä turvallisuusriskinä. Joidenkin mielestä on parempi käyttää komentoa</p>
+<p> </p>
+<p><span><span style="font-family: Verdana,Arial,Helvetica,sans-serif;">$<strong> PATH=</strong></span></span></p>
+<pre><strong><span><span style="font-family: Verdana,Arial,Helvetica,sans-serif;">~/bin</span></span>:<span><span style="font-family: Verdana,Arial,Helvetica,sans-serif;">$PATH</span></span></strong>
+</pre>
+<p>jotta he voivat suorittaa komentoja valitsemissaan ja omistamissaan hakemistoissa, ja nämä skriptit toimivat muiden saman nimisten sijasta. Kuitenkaan he eivät voi käyttää skriptejä satunnaisesti missä tahansa ohjelmistojärjestelmässä, jossa he sattuvat olemaan.</p>
+<h2>ls</h2>
+<p> </p>
+<p><code>ls</code> on komento tiedostonimien listaamiseen.</p>
+<p>Siinä voi olla valitsimia (lippuja) lisättynä komennon jälkeen miinusmerkillä "-".</p>
+<p>Parametrejä voidaan myös lisätä.</p>
+<p> </p>
+<table border="0" cellspacing="1" cellpadding="2" align="left"><tbody><tr><td>
+<p>$ ls</p>
+</td>
+<td>tavallinen tiedostolistaus</td>
+</tr><tr><td>
+<p>$ ls | less</p>
+</td>
+<td>putkittaa listauksen komennolle less, joka näyttää sivun kerrallaan</td>
+</tr><tr><td>
+<p>$ ls &gt; tiedostolista</p>
+</td>
+<td>uudelleensuuntaa listauksen tiedostoon, jonka nimi on "tiedostolista"</td>
+</tr><tr><td>
+<p>$ ls -l</p>
+</td>
+<td>pitkä tiedostolista (tiedostojen koot, muutosajat, ...)</td>
+</tr><tr><td>
+<p>$ ls -a</p>
+</td>
+<td>listaa myös "."-alkuiset tiedostonimet, joita ei normaalisti lista</td>
+</tr><tr><td>
+<p>$ ls -l -a</p>
+</td>
+<td>käyttää molempia yllä mainittuja valitsimia</td>
+</tr><tr><td>
+<p>$ ls -la</p>
+</td>
+<td>vastaa edellistä komentoa</td>
+</tr><tr><td>
+<p>$ ls *.fort</p>
+</td>
+<td>listaa tiedostot, joiden nimi on "mitätahansa.fort"</td>
+</tr><tr><td>
+<p>$ ls -lat *.fort</p>
+</td>
+<td>t merkitsee tiedostojen listaamista aikajärjestyksessä eikä aakkosjärjestyksessä</td>
+</tr></tbody></table><p> </p>
+<div id="content"><br> </div>
+<div> </div>
+<div> </div>
+<div> </div>
+<div> </div>
+<div> </div>
+<div> </div>
+<div> </div>
+<div> </div>
+<div> </div>
+<div> </div>
+<div> </div>
+<div>Nämä esimerkit näyttävät kaikkien GNU/Linux -komentojen tärkeimmät piirteet. Ne ovat lyhyitä, ne ottavat valitsimia, ne ottavat parametrejä, voit käyttää useita valitsimia yhdessä, voit ketjuttaa komentoja yhteen putkilla, voit suunnata komentojen ulostulon tiedostoon. </div>
+<p>Käytä valitsinta -R listataksesi kaikki tiedostot tietyn hakemiston alla<code></code>.</p>
+<pre>$ <strong>ls -R</strong>
+kuvat1 kuvat2 kuvat3
+
+./kuvat1:
+rautatieasema.jpg    makkaratalo.jpg
+
+./kuvat2:
+suomenlinna.jpeg     korkeasaari.jpeg
+
+./kuvat3:
+kansallisteatteri.jpeg   kaupunginteatteri.jpeg    junassa.odt
+</pre>
+<p>"R" tarkoittaa "rekursiivista". Huomaa, että rekursiivinen valitsin on -R kirjoitettuna isolla kirjaimella komennossa ls. (-r kääntää hakemiston sisällön toisin päin). Komennossa rm -R voi olla isolla tai pienellä kirjaimella.</p>
+<h2>man, info</h2>
+<p>Nyt kun tunnet päätetulkin komentojen perusteet, käytä näitä komentoja usein; voit oppia melkein mitä tahansa niiden tarjoamasta runsaasta (joskin niukkasanaisesta) dokumentaatiosta.</p>
+<p>Voit saada yleiskuvan melkein mistä tahansa GNU/Linux -komennosta käyttämällä komentoa <code>man</code> tai uudempaa komentoa <code>info</code>. Jos <code>man</code>-komento ei toimi, se johtuu luultavasti siitä, että komentotulkkisi ei löydä käyttöopassivuja. Tämä vaatii sinua asettamaan muuttujan MANPATH oikeisiin hakemistoihin. Löytääksesi käyttöopassivuja sisältävät hakemistot, yritä seuraavaa komentoa. Se tarkoittaa: "tulosta sivut, jotka sisältävät sanan man": </p>
+<pre>$ <strong>find / -type d -name man -print </strong>
+</pre>
+<p>Opassivut noudattavat melko tiukkaa muotoilua. Ne alkavat komennon synopsilla, jonka jälkeen ne sisältävät kaikki komennon valitsimet ja parametrit. Mukana voi olla myös lyhyt kuvaus, esimerkkejä, yleiskatsaus, oletusarvot, lopetustila, ympäristömuuttujat ja tunnetut viat. </p>
+<p>Info esittää vastaavaa materiaalia, mutta usein yksityiskohtaisemmin, ja se on jaettu useisiin sivuihin, joissa on navigointilinkkejä.</p>
+<h2>apropos</h2>
+<p>Komento <code>apropos</code> kertoo sinulle opastiedostoista, joissa on määrittelemäsi avainsana, sisältäen myös opassivut, jotka käsittelevät muita asioita kuin komentoja. Sinun voisi olla vaikea arvata joidenkin näiden sivujen nimet ilman <code>apropos</code>-komennon apua. </p>
+<pre>$<strong> apropos -a samba password</strong>
+smbpasswd (5)        - The Samba encrypted password file
+</pre>
+<h2>pwd</h2>
+<p>GNU/Linuxissa on hakemistoja, jotka auttavat sinua järjestämään tiedostosi. Komento <code>pwd</code> kertoo sinulle "nykyisen työskentelyhakemistosi" eli CWD:n (englanniksi "Current Working Directory"). Hakemistojen määrittelyissä "." tarkoittaa nykyistä hakemistoa ja ".." sen ylähakemistoa. Merkillä "/" alkavat polut ovat absoluuttisia, eivätkä ole riippuvia nykyisestä hakemistosta. Ilman merkkiä "/" alkavat hakemistot ovat suhteessa nykyiseen hakemistoon.</p>
+<p>Esimerkkihakemisto voisi olla <em>/home/tomi/kivat/skriptit</em>. Koko nimi alkaa kauttaviivalla "/" ja tiedostojen nimet erotetaan kauttaviivoilla. Tämä eroaa Windowsista, joka käyttää kenoviivaa "/" ja Macintoshista, joka käyttää kaksoispistettä ":".</p>
+<pre>$<strong> pwd</strong>
+/home/minunnimeni</pre>
+<h2>cd</h2>
+<p>Muuttaa työskentelyhakemistosi.</p>
+<p> </p>
+<table style="width: 611px;" border="0" cellspacing="1" cellpadding="4" align="left"><tbody><tr><td>$ cd</td>
+<td>siirtää sinut kotihakemistoosi</td>
+</tr><tr><td>$ cd  ..</td>
+<td>vie sinut nykyisen hakemiston ylähakemistoon, esimerkiksi hakeistosta /usr/lib hakemistoon /usr</td>
+</tr><tr><td>$ cd Dokumentit</td>
+<td>siirtyy nykyisen hakemiston alla olevaan Dokumentit-hakemistoon, jos sellainen on olemassa (käyttää suhteellista polkua) </td>
+</tr><tr><td>$ cd  /usr/lib</td>
+<td>vie sinut hakemistoon "/usr/lib" mistä tahansa (käyttää absoluuttista polkua)</td>
+</tr><tr><td>$ cd /</td>
+<td>juurihakemisto - tämän yläpuolella ei ole mitään.</td>
+</tr></tbody></table><p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>"Kotihakemisto" on hakemisto, jossa olet kirjautuessasi sisään. Se määritellään tiedostossa <em>/etc/passwd</em> (paitsi jos joku erikoinen verkkojärjestelmä on käytössä, jolloin se löytyy komennon <code>ypcat passwd </code>ulostulosta).</p>
+<h2>mkdir</h2>
+<p> </p>
+<p>Tee hakemisto.</p>
+<pre>$<strong> mkdir hakemistoni</strong>
+</pre>
+<h2>rmdir</h2>
+<p>Poista hakemito</p>
+<pre>$<strong> rmdir hakemistoni</strong>
+</pre>
+<h2>touch</h2>
+<p>Jos tiedosto on olemassa, tämä päivittää sen muutosajan ja -päivämäärän. Jos sellaista tiedostoa ei ole, tämä komento luo sen tyhjänä.</p>
+<pre>$<strong> touch uusitiedosto</strong>
+</pre>
+<h2>rm</h2>
+<p>Tämä komento poistaa tiedostoja (ja hakemistoja). </p>
+<p><em>Oletusarvoisesti et saa toista mahdollisuutta, sillä poistettuja tiedostoja ei voi palauttaa. </em>Ilkeä uusille käyttäjille tehty jekku on neuvoa heitä tekemään komento "<code>rm -r *</code>" korjauksena mihin tahansa heidän ongelmaansa. Älä tee tätä, ellet tahdo asentaa uutta käyttöjärjestelmää joka tapauksessa, muista myös tehdä varmuuskopio kaikista tiedostoistasi. </p>
+<p> </p>
+<table border="0" cellspacing="1" cellpadding="2" align="left"><tbody><tr><td>$ rm tiedosto(t)    </td>
+<td> </td>
+</tr><tr><td>$ rm -r  tiedosto(t)</td>
+<td>Poistaa hakemistot ja kaiken niiden sisällön.  </td>
+</tr><tr><td>$ rm -i  tiedosto(t)</td>
+<td>Kysyy jokaisen tiedoston poistamista erikseen (suositeltu!)</td>
+</tr><tr><td>$ rm -f tiedosto(t)</td>
+<td>
+<p>Ei valita, jos tiedostoa ei ole olemassa. Ohittaa myös -i -valinnan.</p>
+</td>
+</tr></tbody></table><p> </p>
+<p><br><br><br><br><br> </p>
+<h2>ln</h2>
+<p>Tee kovia linkkejä tai symbolisia (eli "pehmeitä") linkkejä tiedostoihin. Sekä kovat että pehmeät linkit ovat viitteitä toisiin tiedostoihin. Jos et tiedä mikä "inode" on, käytä vain pehmeitä linkkejä. (Vaikka tietäisit mikä "inode" on, käyttäisit silti luultavasti pehmeitä linkkejä suurimman osan ajasta). </p>
+<p>Pehmeä linkki on erityislaatuinen tiedosto, joka toimii toisen tiedoston (tai hakemiston) peitenimenä - perusajatus on sama kuin Windowsin "työpöydän pikakuvakkeissa", eli muualla tietokoneellasi olevaan tiedostoon, hakemistoon tai ohjelmaan osoittavissa kuvakkeissa työpöydälläsi. Tiedosto tai hakemisto, johon linkki osoittaa, on linkin "kohde".</p>
+<p>Käyttäessäsi komentoa <code>ln</code> muista liittää mukaan<code>-s</code> valitsin valitaksesi pehmeän linkin ja laita polku kohteeseen ennen uuden linkin kohdepolkua.</p>
+<p>Luodaksesi pehmeän linki, jonka nimi on "linkkinimi" osoittamaan kohteeseen, jonka nimi on "tiedosto":</p>
+<pre>$<strong> ln -s tiedosto linkkinimi </strong></pre>
+<p>Luodaksesi linkkejä nykyiseen hakemistoon (tunnetaan myös nimellä "."), jotka osoittavat tiedostoihin, jotka päättyvät ".so" ja sijaitsevat ../lib -hakemistossa, sekä antaaksesi linkeille samat nimet kuin alkuperäisillä tiedostoilla: </p>
+<pre>$<strong> ln -s ../lib/*.so .</strong>
+</pre>
+<h2>cp</h2>
+<p>Tämä komento kopioi tiedostoja.</p>
+<p> </p>
+<table border="0" cellspacing="1" cellpadding="4" align="left"><tbody><tr><td>$ cp tiedosto1 tiedosto2</td>
+<td>
+<p>Kopioi tiedosto1 tiedosto2 päälle, jos se on olemassa. <br>Luo tiedosto2, jos sitä ei ole olemassa.</p>
+</td>
+</tr><tr><td>$ cp /etc /home/tomi     </td>
+<td>Kopioi hakemiston /etc hakemistoon home/tomi/etc</td>
+</tr><tr><td>$ cp -r hakemistoni uusihakemistoni</td>
+<td>
+<p>Valitsimella -r kopioi myös tiedostot.</p>
+</td>
+</tr></tbody></table><p> </p>
+<h2>mv</h2>
+<p>Tämä siirtää ja nimeää uudelleen tiedostoja ja hakemistoja.</p>
+<p> </p>
+<table border="0" cellspacing="1" cellpadding="4" align="left"><tbody><tr><td>$ mv tiedosto2 tiedosto3</td>
+<td>Nimeää tiedoston tai hakemiston uudelleen</td>
+</tr><tr><td>$ mv /home/tomi/etc /tmp</td>
+<td>Siirtää tiedoston tai hakemiston</td>
+</tr></tbody></table><p><br><br></p>
+<h2>whoami</h2>
+<p>Tämä kertoo käyttäjätunnuksesi, esimerkiksi "tomi". </p>
+<p>Voit siis kirjoittaa</p>
+<pre>$<strong> grep `whoami` /etc/passwd</strong>
+</pre>
+<p>nähdäksesi kotihakemistosi ja muita asioita.</p>
+<pre>tomi:!:5037:1:P. Tomi:/u/tomi:/bin/csh
+</pre>
+<p>Komentoa <code>grep</code> käytetään etsimään merkkijonoja tekstitiedostoista.</p>
+<p>Tarkemerkit `` aiheuttavat komennon suorittamisen sisällä. Tulos, tässä tapauksessa "tomi", korvataan ulompaan komentoon, aivan kuin käyttäjä olisi kirjoittanut <code>grep tomi /etc/passwd</code>.</p>
+<p>Merkki ! toisessa kentässä kertoo tietokoneelle, että salattu salasana on toisessa tiedostossa. Tämän vuoksi epärehellisten ihmisten on vaikeampi löytää salasanasi.</p>
+<h2>passwd</h2>
+<p>Tämän pitäisi olla yksi ensimmäisistä komennoista, jotka suoritat saatuasi uuden käyttäjätunnuksen. Se asettaa salasanasi ja voi tehdä muutamia muitakin asioita. Sinulta kysytään vanha salasana (jos se on olemassa) ja sinulta kysytään uutta salasanaa kaksi kertaa. (Pituus on 8 merkkiä.)</p>
+<p>ESIMERKKI</p>
+<pre>$<strong> passwd</strong>
+Changing password for "tomi"
+tomi's Old password:
+tomi's New password:
+Enter the new password again:
+$
+</pre>
+<p>On olemassa rajoituksia sille, mitä voit valita, mutta ne ovat hakemistossa <em>/etc/security</em> ja niitä ei voi lukea!</p>
+<p>Hyvä salasana on vaikeasti arvattava, mutta se on myös vaikea muistaa. On paras käyttää kaikki 8 merkkiä ja käyttää ainakin yhtä merkeistä [a-z], [A-Z] ja [0-9].  On olemassa ohjelmia, jotka arvaavat monia salasanoja, joten on epäviisasta käyttää nimiin, oikeisiin sanoihin, käyttäjätunnukseen, koneen nimeen tai muihin arvattaviin asioihin liittyviä salasanoja.</p>
+<h2>exit</h2>
+<p>Tämä lopettaa istuntosi tai vain yhden ikkunan (jos olet ikkunassa). <code>exit</code> löytää työt, jotka ovat pysäytettyinä (esimerkiksi painamalla <strong>Ctrl + z</strong>), koska ne kuolisivat, jos käyttäisit komentoa <code>exit</code>. Kirjoita <code>exit</code> uudelleen, jos olet tyytyväinen siihen. Taustatöiden suorittaminen jatkuu.</p>
+<p>Kun käytät graafista käyttöliittymää, hiirellä käytettävää valikkoa voi käyttää lopettamaan koko istuntosi. Ikkunoiden hallintaohjemia ei ole rakennettu GNU/Linuxin sisään, ja niiden toiminta vaihtelee suuresti.</p>
+<h2>ps</h2>
+<p>Näyttää listan toimivista prosesseista. Oletusarvoisesti ps näyttää vain nykyisen komentotulkin prosessit. Nähdäksesi kaikki prosessisi käytä komentoa<code></code> <code>ps -e</code>.</p>
+<pre>$<strong> ps</strong>
+  PID TTY          TIME CMD
+29477 pts/0    00:00:00 bash
+29811 pts/0    00:00:00 ps</pre>
+<h2>kill</h2>
+<p>Lopettaa toimivan prosessin antamatta sen päättyä. Erityisen hyödyllinen, mikäli ohjelma on joutunut loputtomaan silmukkaan, jossa se ei saa tai käsittele näppäinkomentoja.</p>
+<pre>$<strong> kill 29477</strong>
+</pre>
+<p>Tappaa prosessin, jonka prosessitunnus on 29477. Edellisessä ps-komennon esimerkissä tämä olisi nykyinen komentotulkki<code></code>.</p>
+<h2>chown</h2>
+<p>Jokaisella tiedostolla on omistaja ja ryhmä, kuten voit nähdä komennolla <code>ls</code>. Sinulla tulisi olla ryhmä, joka on nimetty samoin kuin tunnuksesi. Vaihda käyttäjää -komento <code>chown</code> antaa sinun asettaa nämä omistajuusparametrit tiedostoille, joihin sinulla on oikeus kirjoittaa.</p>
+<p>Voit antaa kokonaiselle ryhmälle oikeuden lukea, kirjoittaa tai suorittaa tiedostoja yhdellä komennolla. Jos tahdot pitää tiedostot yksityisenä, aseta ryhmä sisältämään vain itsesi, ja käytä <code>chmod</code> -komentoa (alla) rajoittaaksesi muiden pääsyä tiedostoon. Seuraava olettaa, että kun käyttäjätunnuksesi luotiin, sinua varten luotiin ryhmä samalla nimellä. Tämä on totta monissa nykyaikaisissa järjestelmissä, mutta ei kaikissa.</p>
+<pre>$<strong> chown käyttäjä:käyttäjä tiedostoni</strong></pre>
+<p>Jos olet tuonut jotain hakemistoja, jotka tulivat väärällä omistajuudella, voit muuttaa ne kaikki yhdellä komennolla. Käytä komentoa <code>cd</code> päästäksesi ylätason hakemistoon ja tee tämä komento, vaihda siihen vain oikeat käyttäjän ja ryhmän nimet. Valitsin -R kertoo komennolle<code></code> <code>chown</code>, että sen täytyy käydä jokaisen alihakemiston läpi, ja jokerimerkki * kertoo sille, että jokaisen sen löytämän tiedoston ja hakemiston omistajuutta on muutettava.</p>
+<pre>$<strong> chown -R käyttäjä:ryhmä *</strong>
+</pre>
+<h2>chmod</h2>
+<p>Jokaisella tiedostolla tai hakemistolla on "tila", joka koostuu joukosta parametrejä.</p>
+<p>Voit nähdä tämän komennolla <code>ls -l</code>.</p>
+<pre>$<strong> cd ; ls -la</strong>
+</pre>
+<p>Merkki ";" erottaa kaksi komentoa samalla rivillä.</p>
+<p>Tämä näyttää sinulle tiedostojen tilat kotihakemistossasi.</p>
+<p>Listalla tulisi olla kaksi kohtaa, joissa lukee "." ja "..", jotka viittaavat nykyiseen hakemistoosi ja sen ylähakemistoon.</p>
+<p>Näet listan merkkejä, joka näyttää tiedoston käyttöoikeudet, jota seuraa omistaja (luultavasti oma käyttäjätunnuksesi kaikissa kohdissa, paitsi kohdassa "..") ja ryhmät (ehkä ryhmä "staff"), tiedoston koko, viimeisen muutoksen aika ja päivämäärä ja tiedoston nimi. Tämä lista muistuttanee seuraavaa:</p>
+<pre>total 312
+drwxr-x---  16 allen    staff       1024 Oct 21 14:07 .
+drwxr-xr-x  21 sys      sys          512 Oct 13 16:25 ..
+-rwxr-----   1 allen    staff        896 Oct 20 14:44 .cshrc
+drwx------   2 allen    staff        512 Oct  6 08:51 .elm
+-rw-r--r--   1 allen    staff         59 Oct 17 13:59 .exrc
+-rwxr-----   1 allen    staff        461 Oct 17 12:18 .login
+...
+</pre>
+<p>Kirjain "d" ensimmäisessä kohdassa merkitsee, että kyseessä on hakemisto. Merkki "-" merkitsee tiedostoa.</p>
+<p>Katso mahdollisten tiedostotyyppien lista ls-komennon oppaasta komennolla man. Se on valitsimen -l alla. </p>
+<p>Seuraavana on yhdeksän muuta merkkiä kolmessa kolmen merkin ryhmässä.</p>
+<p>Merkit 2-4 ovat tiedoston omistajalle. </p>
+<p>Merkit 5-7 ovat tiedoston ryhmälle.</p>
+<p>Merkit 8-10 ovat kaikille muille, paitsi pääkäyttäjälle, jolla on aina kaikki käyttöluvat.</p>
+<ul><li>"r" antaa lukuoikeuden.</li>
+<li>"w" antaa kirjoitusoikeuden.</li>
+<li>"x" antaa suoritusoikeuden. Hakemiston tapauksessa tämä tarkoittaa hakuoikeutta.</li>
+<li>"-" ei anna oikeuksia kyseiseen sijaintiin.</li>
+</ul><p>Katso <code>man ls</code> -komennolla käyttöopasta valitsimen <code>-l</code> alta nähdäksesi muut mahdolliset tilat. Huomaa, että kirjoitusoikeus hakemistossa antaa sinun poistaa tiedostoja tuosta hakemistosta, vaikka et omista tiedostoja. <em></em></p>
+<pre>chmod 640     tiedosto1   # asettaa tiedosto1 tilaksi -rw-r-----
+chmod 755     tiedosto2   # asettaa tiedosto2 tilaksi -rwxr-xr-x
+chmod go=     tiedosto3   # asettaa tiedosto3 tilaksi -???-------  (poistaa ryhmän ja muut)
+chmod -R go-w $HOME       # HYVÄ TURVALLINEN KOMENTO: vain sinä voit kirjoittaa kotihakemistoosi
+</pre>
+<h2>more, less, pg, cat</h2>
+<p>Nämä komennot antavat sinun katsoa tekstitiedostoja.</p>
+<pre>$<strong> more .bashrc</strong>
+$<strong> less /etc/motd</strong>
+$<strong> cat /etc/fstab</strong>
+</pre>
+<p>Komennot <code>more</code>, <code>less</code> ja <code>pg</code> antavat sinun käydä tiedoston läpi ja etsiä merkkijonoja. Hupaisasti komennolla <code>less</code> on enemmän vaihtoehtoja kuin komennolla more.</p>
+<p>Kun olet komennossa <code>more</code>, <code>less</code> tai <code>pg,</code>paina <strong>h</strong>-kirjainta nähdäksesi, mitä komentoja voit käyttää.</p>
+<p>Komento <code>cat</code> näyttää koko tiedoston, joten se on hyvä vain tiedostoille, jotka sopivat kahteen tai useampaan ruutuun. Komennon <code>cat</code> alkuperäinen tarkoitus on liittää tiedostot yhteen, mutta se on erittäin käyttökelpoinen lyhyiden yksittäisten tiedostojen näyttämiseen.</p>
+<pre>$<strong> cat tiedosto1 tiedosto2 &gt; tiedosto3</strong>
+</pre>
+<h2>grep</h2>
+<p>Etsii ja näyttää rivejä yhdessä tai useammassa tiedostossa. Ensimmäinen versio, grep, on nimetty yleisen komentomuodon mukaan varhaisessa rivieditorissa. Komento etsii koko tiedoston läpi ja näyttää rivit, joilla kirjainjono on. Säännölliset lausekkeet, jotka on kuvailtu tämän oppaan toisessa osassa, antavat menetelmiä tekstin hahmottamiseen. Valitsimet mahdollistavat tiedostoryhmien etsimisen, sisältäen kaikki aloituspisteen alihakemistot. Yksi grepin yleisimmistä käyttötavoista on etsiä tietyn käyttäjän tai ohjelman rivejä asetus- ja lokitiedostoista.</p>
+<pre>$<strong> grep `whoami` /etc/passwd</strong></pre>
+<p>etsii whoami-komennon tuloksen salasanatiedostosta ja palauttaa käyttäjän tunnuksen tiedot, tosin salasana on salattuna.</p>
+<h2>df</h2>
+<p>Vapaa tila kovalevyllä. Näyttää kovalevyjen koot, käytetyn tilan ja vapaan tilan. Näyttää koon blokkeina (koko, joka vaihtelee tiedostojärjestelmästä toiseen) oletusarvoisesti, joten käytä -h valitsinta nähdäksesi koot ihmisillä luettavassa muodossa: K on tuhat tavua, M on miljoona tavua ja G on miljardi tavua. </p>
+<p> </p>
+<pre>$<strong> df -h</strong>
+Filesystem            Size  Used Avail Use% Mounted on
+/dev/sda1             143G   41G   96G  30% /
+tmpfs                 941M     0  941M   0% /lib/init/rw
+varrun                941M  380K  941M   1% /var/run
+varlock               941M     0  941M   0% /var/lock
+udev                  941M  2.7M  939M   1% /dev
+tmpfs                 941M  844K  940M   1% /dev/shm
+lrm                   941M  2.4M  939M   1% /lib/modules/2.6.27-11-generic/volatile</pre>
+<h2>echo</h2>
+<p>Toista jälkeeni, korvaavia komentoja voidaan käyttää tarvittaessa. Echo-komennot ovat melko hyödyllisiä skripteissä.</p>
+<pre>$<strong> echo "Hei, maailma."</strong>
+Hei, maailma.
+$<strong> echo $PATH</strong>
+/home/nimeni/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+</pre>
+<h2>file</h2>
+<p>Tämä yrittää tunnistaa tiedostoja, luokitellen ne tekstiksi, suoritettaviksi tiedostoiksi tai dataksi.</p>
+<p>Kirjoita:</p>
+<pre>$<strong> file * | less</strong></pre>
+<p>nähdäksesi joitain esimerkkejä.</p>
+<h2>diff</h2>
+<p>Erot kahden tekstitiedoston välillä. Kertoo sinulle myös onko kahdella binääritiedostolla eroa.</p>
+<pre>$<strong> diff .profile~ .profile</strong>
+ 23a22
+&gt; scim -d &amp;
+</pre>
+<p>Tämä sanoo, että rivi 23 on lisätty (tässä tapauksessa useamman kielen ja kirjainmerkistön käytön tuen lisäämiseksi), ja näyttää rivin uuden sisällön.</p>
+<h2>wc</h2>
+<p> </p>
+<p>Laskee sanat, sekä rivit ja merkit.</p>
+<pre>$<strong> wc .login </strong>6       7     461 .login
+</pre>
+<p>Tiedostossa <em>.login</em> on 6 riviä, 7 sanaa ja 461 merkkiä.</p>
+<p>Ohjelma laskee minkä tahansa merkkijonon, jossa on tulostettavia merkkejä välilyöntien välissä sanaksi, joten se voi antaa outoja tuloksia ihmisten näkökulmasta.</p>
+<h2>find</h2>
+<p>Listataksesi kaikki nykyisen työhakemiston alla olevat tiedostot ja hakemistot, joiden nimi on core: </p>
+<pre>$<strong> find . -name core -ls</strong></pre>
+<p>Poistaaksesi nykyisen työhakemiston alta kaikki tiedostot, joiden nimi on core (hyödyllistä, sillä ohjelmat luovat näitä tiedostoja, kun ne lopettavat toimintansa ohjelmointivirheen vuoksi, mutta tiedostoista on sinulle vähän hyötyä, ellet osaa lukea ohjelman lähdekoodia): </p>
+<pre>$<strong> find . -name core -exec rm {} \;</strong>
+</pre>
+<p>Listataksesi kaikki tiedostot ja hakemistot, joiden nimi on<em> "jotain</em>.core" nykyisen työhakemiston alla:</p>
+<pre>$<strong> find . -name '*.core' -ls</strong>
+</pre>
+<p>Nimetäksesi kaikki nimellä <em>man</em> kutsutut tiedostot hakemiston <em>/usr</em> alla:</p>
+<pre>$<strong> find /usr -name man -type d -print</strong>
+</pre>
+<p>Seuraavat kaksi esimerkkiä ovat käyttökelpoisia sellaisten tilapäisten tiedostojen poistamiseen, joita et enää tarvitse.</p>
+<pre>$<strong> find /tmp /var/tmp -mtime +3 -type f -user allen -exec rm {} \;</strong>
+$<strong> find /var/preserve -mtime +8 -type f -user allen -exec rm {} \;</strong>
+</pre>
+<p>Seuraavassa esimerkissä nimetään tiedostot ja hakemistot, jotka ovat joko muuttuneet edellisten kahden päivän aikana, tai joiden omistajalla on suoritusoikeudet. </p>
+<pre>$<strong> find . \( -mtime -2  -o -perm -100 \) -print</strong>
+</pre>
+<p>Kahden edellisen päivän aikana tapahtuneiden muutosten tarkastaminen on hyvä tapa saada selville, miksi tietokoneesi ei toimi enää!</p>
+<h2>ftp</h2>
+<p>Lataa tiedostoja File Transfer Protocol -tiedonsiirtoprotokollan avulla. Käytä:</p>
+<pre>$<strong> ftp verkkonimi</strong>
+</pre>
+<p>yhdistääksesi ftp-arkistoon osoitteessa<em> verkkonimi</em>. FTP-protokolla määrittelee kuinka kirjaudutaan sisään, navigoidaan arkiston hakemistoissa, ladataan tiedostoja tai tiedostoryhmiä ja paljon muuta. Tämä esitys antaa sinulle tarpeeksi komentoja, jotta voit navigoida arkistossa ja ladata tiedostoja.</p>
+<p>Kun otat yhteyden arkistoon, näet komentokehotteen &gt;, johon voit kirjoittaa komentoja.</p>
+<pre>&gt;<strong> binary</strong></pre>
+<p>Siirtyy binääritilaan, joka siirtää jokaisen tiedoston tavun muuttamattomana. Tämän pitäisi olla ensimmäinen komento, jonka annat, paitsi jos olet varma, että lataat vain tekstitiedostoja.</p>
+<pre>&gt;<strong> ascii</strong>
+</pre>
+<p>Siirtyy tekstitilaan, joka muuttaa rivinvaihdot. Tämä on oletustila, kun FTP alkaa. Se on turvallinen ASCII-tekstille, muille kahdeksanbittisille koodauksille, sekä Unicode UTF-8 -koodaukselle. <strong>Älä käytä tätä ohjelmille, kuville, musiikille ja muille binääritiedostoille. </strong></p>
+<pre>&gt;<strong> dir</strong></pre>
+<p>Listaa tiedostot isäntäkoneen nykyisessä hakemistossa.</p>
+<pre>&gt;<strong> cd hakemisto</strong></pre>
+<p>Vaihtaa hakemistoa.</p>
+<pre>&gt;<strong> cdup</strong></pre>
+<p>Siirtyy nykyisen hakemiston ylätason hakemistoon.</p>
+<pre>&gt;<strong> get etätiedosto [paikallistiedosto]</strong>
+</pre>
+<p>Lataa tiedoston ja nimeää sen tarvittaessa uudelleen.</p>
+<pre>&gt;<strong> put paikallistiedosto [etätiedosto]</strong>
+</pre>
+<p>Lataa tiedoston etäkoneelle ja nimeää sen tarvittaessa uudelleen.</p>
+<pre>&gt;<strong> bye</strong></pre>
+<p>Lopettaa <code>ftp</code>-istunnon.</p>
+<h2>wget</h2>
+<p>Lataa tiedostoja netistä luotettavasti, jopa epäluotettavilla yhteyksillä. Jos yhteys katkeaa latauksen aikana, wget jatkaa yhteyden palatessa. </p>
+<pre>$<strong> wget URL</strong></pre>
+<p>lataa tiedoston URL-osoitteesta nykyiseen hakemistoon, käyttäen samaa nimeä. Vaihtoehtoja on paljon, kuten voit kuvitella.</p>
+<h2>tar</h2>
+<p>Tar-komento luo yhden tar-tiedoston, joka sisältää yhden tai useamman tiedoston sisällön, tai purkaa tiedostot tar-tiedostosta. Vaikka se suunniteltiin alunperin luomaan tiedostojen yhdistelmiä varmuuskopionauhalle, se on edelleenkin standardiohjelma tiedostojen pakkaamiseen, jotta voit siirtää niitä ympäriinsä yhtenä yksikkönä. Vaihtoehtoisesti tiedostot voidaan pakata tgz-tiedostoon.</p>
+<p> </p>
+<pre>$<strong> tar -cf nimi.tar hakemisto/</strong></pre>
+<p>Tallentaa hakemiston<em> hakemisto</em> tiedostoon<em> tiedosto.tar</em>. Valitsin <code>-c</code> luo tar-tiedoston. Valitsin -f määrää käyttäämään annettua tiedostonimeä. Ilman valitsinta -f tulos menee standardiulostuloon. Voit käyttää tätä muotoa putkessa käyttääksesi erilaista pakkausmenetelmää, kuten bzip2, joka kuvaillaan alla.</p>
+<pre>$<strong> tar -cvfz tiedosto.tgz hakemisto/</strong></pre>
+<p>Varastoi hakemiston <em>hakemisto</em> pakatun sisällön tiedostoon <em>tiedosto.tgz</em>, ja antaa melko monisanaisen ulostulon konsoliin kun jokainen tiedosto käsitellään. Monisanaisempi ulostulo on saatavilla vv-valitsimella. </p>
+<pre>$<strong> tar -xf tiedosto.tar</strong></pre>
+<p>Purkaa tiedoston <em>tiedosto.tar</em> nykyiseen hakemistoon. <br><br></p>
+<pre>$<strong> tar -xzf tiedosto.tgz</strong></pre>
+<p>Purkaa gzip-tiedoston <em>tiedosto.tgz</em>. Loppupääte tgz on lyhenne aiemmin yleisestä tiedostomuodosta .tar.gz, jota käytettiin, kun tiedostojen yhdistäminen ja lopputuloksen pakkaaminen vaati tar-komennon putkittamista gzip-komennon sisääntuloon. </p>
+<h2>gzip, gunzip, zcat, bzip2, bunzip2, bzcat</h2>
+<p>Komennot zip ja bzip2 ovat tiedostonpakkausalgoritmeja, jotka ovat suosituimpia monista tiedostojen pakkaustavoista (alunperin näitä käytettiin tiedostonsiirtoon hitailla modeemiyhteyksillä), joten nämä käänteiset algoritmit purkavat alkuperäiset tiedostot muuttumattomina. Vaikka bzip2-menetelmä saavuttaa paremman pakkauksen kuin zip, se vaatii myös enemmän prosessoriaikaa. Näytämme molempia varten komennon pakkaamiseen, purkamiseen ja useamman tiedoston yhdistämiseen. Tar-ohjelma voi käyttää gzip-pakkausta. </p>
+<pre>$<strong> gzip tiedosto</strong>
+</pre>
+<p>tai</p>
+<pre>$<strong> bzip2 tiedosto </strong></pre>
+<p>pakkaa tiedoston arkistoon. Arkistotiedoston nimi on sama kuin alkuperäinen tiedosto, loppupäätte ".gz" tai ".bz2" lisätään. </p>
+<pre>$<strong> gunzip tiedosto.gz</strong></pre>
+<p>Purkaa arkiston <em>tiedosto.gz</em> alkuperäiseen tiedostoon.</p>
+<p>Komento <code>gunzip</code> vastaa komentoa <code>gzip -d</code>, jossa valitsin <code>-d</code> tarkoittaa purkamista. Vastaavasti komento <code>bunzip2</code> vastaa komentoa <code>bzip2 -d</code>.</p>
+<p>Komento <code>zcat</code> vastaa komentoa <code>gunzip -c</code>, jossa valitsin <code>-c</code> käskee kirjoittamaan purkamattomat tulokset yhteen tiedostoon. Tämä on usein hyödyllistä, kun hakemisto sisältää joukon pakattuja tekstitiedostoja. Esimerkiksi:</p>
+<pre>$<strong> zcat *.txt.gz </strong></pre>
+<p> </p>
+<p>Ulostulon yhdistäminen yhteen tiedostoon tekee siitä helpommin etsittävän. Voisit putkittaa tämän komennon ulostulon komentoon <code>grep</code>. Vastaavasti <code>bzcat</code> vastaa komentoa <code>bzip2 -c</code>.</p>
+<h2>Lynx</h2>
+<p>World-Wide Web on niin yleinen, että monet ihmiset luulevat sen olevan koko internet, mutta alunperin Web suunniteltiin sisältämään ainoastaan tekstiä, ja käytössä on edelleenkin monia tekstiselaimia. Lynx on edelleenkin suosittu niiden keskuudessa, jotka käyttävät enemmän aikaa komentorivillä tai Emacsissa kuin graafisessa käyttöliittymässä.</p>
+<p>Tekstiselain voi vain jättää huomiotta kaiken materiaalin, joka on merkitty HTML-tageilla, jotka käsittelevät graafista materiaalia, tai se voi näyttää ALT-tekstin, joka on usein liitetty kuviin, sekä tekstiselainten vuoksi että huononäköisille ihmisille.</p>
+<pre>$<strong> lynx <em>url</em></strong></pre>
+<p>aloittaa Lynxin. Jos määrittelet URL-osoitteen, Lynx aloittaa sillä sivulla. Muuten se menee nykyiselle oletusarvoiselle kotisivulleen, jonka voit laittaa osoittamaan minne tahansa.</p>
+<p>Seuraava taulukko antaa sinulle tarpeeksi komentoja Lynxin käyttöön, mutta on myös monia muitakin.</p>
+<p> </p>
+<table style="width: 376px;" border="1" cellspacing="1" cellpadding="1"><tbody><tr><td> ?</td>
+<td> Apua</td>
+</tr><tr><td> K</td>
+<td> Listaa komennot</td>
+</tr><tr><td>+</td>
+<td> Vieritä yksi ruutu alas</td>
+</tr><tr><td> -</td>
+<td> Vieritä yksi ruutu ylös</td>
+</tr><tr><td> ↓</td>
+<td> Seuraava linkki</td>
+</tr><tr><td> ↑</td>
+<td> Edellinen linkki</td>
+</tr><tr><td> Return tai →</td>
+<td> Seuraa linkkiä</td>
+</tr><tr><td> ←</td>
+<td> Takaisin</td>
+</tr><tr><td> a</td>
+<td> Lisää nykyinen linkki kirjanmerkiksi</td>
+</tr><tr><td> d</td>
+<td> Lataa nykyinen linkki tiedostoon</td>
+</tr><tr><td> g</td>
+<td> Mene URL-osoitteeseen</td>
+</tr><tr><td> o</td>
+<td> Vaihda asetukset</td>
+</tr><tr><td> p</td>
+<td> Tulosta</td>
+</tr><tr><td> s</td>
+<td> Etsi</td>
+</tr><tr><td> v</td>
+<td> Katso kirjanmerkit</td>
+</tr><tr><td> q</td>
+<td> Poistu Lynxistä.</td>
+</tr></tbody></table><p> </p>
+<h2>emacs, vi, nano, pico</h2>
+<p>On olemassa monta erilaista tekstinkäsittelyohjelmaa eri käyttötarkoituksiin. Eräs vanhimmista on Emacs, joka on kirjoitettu LISP-ohjelmointikielellä, jolloin siihen voi lisätä komentoja LISPin avulla, sekä muuttaa näppäinkomentoja. Siinä on mahdollisuus suorittaa ulkoisia komentoja, kuten sähköpostia, joten jotkin käyttäjät tekevät kaiken Emacsin sisältä. Jotkut käyttävät mielummin vi-tekstinkäsittelyohjelmaa, jossa on samankaltainen mahdollisuus lisätä komentoja ja muuttaa näppäinkomentoja, mutta se ei korvaa komentoriviä käyttäjilleen. Monet muut, varsinkin sellaiset, jotka eivät ohjelmoi työkseen, käyttävät mielellään nanon ja picon kaltaisia yksinkertaisempia tekstinkäsittelyohjelmia.</p>
+<p>Joka tapauksessa tekstinkäsittelyohjelman voi käynnistää ja siihen ladata tiedoston seuraavan muotoisella komennolla:</p>
+<pre>$<strong> tekstinkäsittelyohjelma tiedostonimi</strong>
+</pre>
+<p>Katso eri ohjelmien dokumentaatiota nähdäksesi muita komentorivin valitsimia ja tekstinkäsittelyohjelman komentoja. Esimerkiksi:</p>
+<p><a href="http://www.gnu.org/software/emacs/">http://www.gnu.org/software/emacs/</a> </p>
+<p><a href="http://www.ccsf.edu/Pub/Fac/vi.html">http://www.ccsf.edu/Pub/Fac/vi.html</a> </p>
+<p><a href="http://www.nano-editor.org/">http://www.nano-editor.org/</a> </p>
+<p><a href="http://www.itd.umich.edu/itcsdocs/r1168/">http://www.itd.umich.edu/itcsdocs/r1168/</a> </p>
+<h2>pr</h2>
+<p>Tämä lisää otsikot ja sivunumerot tekstitiedostoihisi.</p>
+<pre>$<strong> pr /etc/sendmail.cf | less  </strong>
+</pre>
+<p>Paina rivinvaihtoa nähdäksesi tiedoston vierivän hitaasti. Voit käyttää myös näppäimiä <strong>Page Up</strong> ja <strong>Page Down</strong> tai nuolinäppäimiä.</p>
+<h2>lpr</h2>
+<p>tulostaa tiedoston. Hyödyllinen pelkälle tekstille, mutta voi tulostaa myös muita tiedostomuotoja (kuten PostScript ja PDF), jos järjestelmässä on tulostinajurit, jotka ymmärtävät näitä tiedostomuotoja.</p>
+<pre>$<strong> lpr .profile</strong>
+</pre>
+<h2>split</h2>
+<p>Oletetaanpa, että sinulla on 600MB kokoinen ISO-tiedosto, jonka tahdot jakaa useampaan osaan helpompaa varastointia varten. Voit tehdä niin komennolla: </p>
+<pre>$<strong> split -b 200m kuva.iso kuva_iso_</strong></pre>
+<p>Tämä esimerkki luo kolme tiedostoa, joiden nimet ovat <span>kuva</span><em>.iso_aa</em>, <span>kuva</span><em>.iso_ab</em> ja <span>kuva</span><em>.iso_ac</em>, joista jokaisen koko on 200MB. Jos tahdot liittää ne takaisin yhteen, käytä komentoa:</p>
+<pre>$<strong> cat kuva.iso_* &gt; uusi-kuva.iso</strong></pre>
+<p>Muista: mitä enemmän harjoittelet, sitä helpommin ja tehokkaammin voit työskennellä. Kokeile näillä komennoilla - ainoastaan harjoitus tekee mestarin!</p></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/komentorivin-perusteet/index">Ota komento</a></li>
+<li Class="booki-section">Perusteet</li><li><a href="/komentorivin-perusteet/ch003_aloittaminen">Käytön aloittaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch004_syntaksi">Syntaksi</a></li>
+<li><a href="/komentorivin-perusteet/ch005_ympariinsa-siirtyminen">Ympäriinsä siirtyminen</a></li>
+<li><a href="/komentorivin-perusteet/ch006_tiedostorakenne">Tiedostorakenne</a></li>
+<li Class="booki-section">Komennot</li><li><a href="/komentorivin-perusteet/ch008_peruskomennot">Peruskomennot</a></li>
+<li><a href="/komentorivin-perusteet/ch009_jarjestelmanvalvojat">Järjestelmänvalvoja</a></li>
+<li><a href="/komentorivin-perusteet/ch010_useammat-tiedostot">Useammat tiedostot</a></li>
+<li><a href="/komentorivin-perusteet/ch011_kirjoita-vahemman">Kirjoita vähemmän</a></li>
+<li Class="booki-section">Keskivaikeita komentoja</li><li><a href="/komentorivin-perusteet/ch013_putkitus">Putkitus</a></li>
+<li><a href="/komentorivin-perusteet/ch014_komentohistoria">Komentohistoria</a></li>
+<li><a href="/komentorivin-perusteet/ch015_standarditiedostot">Standarditiedostot</a></li>
+<li Class="booki-section">Kehittyneempiä komentoja</li><li><a href="/komentorivin-perusteet/ch017_kayttooikeudet">Käyttöoikeudet</a></li>
+<li><a href="/komentorivin-perusteet/ch018_interaktiivinen-muokkaus">Interaktiivinen muokkaus</a></li>
+<li><a href="/komentorivin-perusteet/ch019_poistumisen-tarkastaminen">Poistumisen tarkastaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch020_alikomennot">Alikomennot</a></li>
+<li><a href="/komentorivin-perusteet/ch021_hakemistot">Hakemistot</a></li>
+<li><a href="/komentorivin-perusteet/ch022_kustomisointi">Kustomisointi</a></li>
+<li><a href="/komentorivin-perusteet/ch023_parametrien-korvaaminen">Parametrien korvaaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch024_gnuscreen">GNUScreen</a></li>
+<li><a href="/komentorivin-perusteet/ch025_ssh">SSH</a></li>
+<li><a href="/komentorivin-perusteet/ch026_ohjelmien-asentaminen">Ohjelmien asentaminen</a></li>
+<li Class="booki-section">Tekstieditorit</li><li><a href="/komentorivin-perusteet/ch028_tekstieditorit">Tekstieditorit</a></li>
+<li><a href="/komentorivin-perusteet/ch029_nano">Nano</a></li>
+<li><a href="/komentorivin-perusteet/ch030_vi-ja-vim">Vi ja Vim</a></li>
+<li><a href="/komentorivin-perusteet/ch031_emacs">Emacs</a></li>
+<li><a href="/komentorivin-perusteet/ch032_kedit">Kedit</a></li>
+<li><a href="/komentorivin-perusteet/ch033_gedit">Gedit</a></li>
+<li Class="booki-section">Skriptaus</li><li><a href="/komentorivin-perusteet/ch035_skriptaus">Skriptaus</a></li>
+<li><a href="/komentorivin-perusteet/ch036_skriptien-huoltaminen">Skriptien huoltaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch037_muut-kielet">Muut kielet</a></li>
+<li><a href="/komentorivin-perusteet/ch038_sed">Sed</a></li>
+<li><a href="/komentorivin-perusteet/ch039_awk">AWK</a></li>
+<li><a href="/komentorivin-perusteet/ch040_saannolliset-lausekkeet">Säännölliset lausekkeet</a></li>
+<li><a href="/komentorivin-perusteet/ch041_perl">Perl</a></li>
+<li><a href="/komentorivin-perusteet/ch042_ruby">Ruby</a></li>
+<li><a href="/komentorivin-perusteet/ch043_python">Python</a></li>
+<li Class="booki-section">Komennot nopeasti</li><li><a href="/komentorivin-perusteet/ch045_komentojen-pikaopas">Komentojen pikaopas</a></li>
+<li Class="booki-section">Liitteet</li><li><a href="/komentorivin-perusteet/ch047_tasta-kayttooppaasta">Tästä käyttöoppaasta</a></li>
+<li><a href="/komentorivin-perusteet/ch048_tekijat">Tekijät</a></li>
+</ul>

@@ -1,0 +1,171 @@
+<div id="main-content"><h1>Skriptaaminen</h1>
+<p> Jos sinulla on kokoelma komentoja, jotka tahtoisit suorittaa yhdessä, voit yhdistää ne skriptiin eli komentosarjaan, ja suorittaa ne kaikki kerralla. Voit myös antaa skripteille argumentteja, jotta se voi toimia eri tiedostojen tai muun sisääntulon pohjalta.  </p>
+<p> </p>
+<p>Kuten elokuvan käsikirjoitusta lukeva näyttelijä, tietokone lukee jokaisen komennon komentotulkkisi komentosarjassa, odottamatta sinua kuiskaamaan jokaista komentoa sen korvaan. Skripti on helppo tapa:</p>
+<ul><li>Välttyä kirjoittamasta komentoja, jotka ajaisit usein sarjassa.</li>
+<li>Muistaa monimutkaisia komentoja, jotta et joudu etsimään, tai unohda, tiettyä syntaksia joka kerta sitä käyttäessäsi.</li>
+<li>Käyttää hallintarakenteita, kuten silmukoita ja tapauslauseita, jotta skriptisi voivat tehdä monimutkaisia toimenpiteitä. Näiden rakenteiden kirjoittaminen skriptiin tekee niistä mukavampia kirjoittaa ja helpompia lukea. <em><strong> <br></strong></em></li>
+</ul><p>Sanotaanpa, että sinulla on kokoelma kuvia (esimerkiksi digitaalikamerasta) ja tahdot tehdä niistä esikatselukuvia. Avattuasi satoja kuvia kuvankäsittelyohjelmassasi päätät tehdä homman nopeasti komentoriviltä. Ja koska joudut ehkä tekemään saman homman tulevaisuudessa joudut kirjoittamaan komentosarjan. Tällöin esikatselukuvien tekeminen vaatii sinua kirjoittamaan vain kaksi komentoa:</p>
+<pre>$ <strong>cd kuvat/digikamera/lomakuvat_maaliskuu_2009 </strong>
+<strong></strong>$ <strong>tee_esikatselukuvat.sh</strong></pre>
+<p>Seuraava komento, <code>tee_esikatselukuvat.sh</code>, on skripti, joka tekee työt. Se voisi näyttää suunnilleen tältä:</p>
+<pre>#!/bin/bash
+mkdir esikatselu
+cp *.jpg esikatselu
+cd esikatselu
+mogrify -resize 400x300 *.jpg</pre>
+<p>Ensimmäinen rivi ei ole pakollinen. Ensimmäinen ristikkomerkki (#) muuttaa sen kommentiksi, jonka pääte jättää huomiotta ajaessaan skriptiä. Se on kuitenkin käyttökelpoinen rivi, sillä ajaessasi ohjelman rivi osoittaa, että /bin/bash -ohjelma pitäisi kutsua ajamaan skripti. Tämä rivi on myös hyödyllistä dokumentaatiota kaikille, jotka ihmettelevät mitä tiedostossa on. </p>
+<p>Jokainen seuraavista riveistä on komento. Olemme nähneet kolme niistä aiemmin: mkdir, cp ja cd. Viimeinen komento, mogrify, on ohjelma, joka voi muuttaa kuvien kokoa (ja tehdä sen lisäksi paljon muita asioita). Lue sen opassivu oppiaksesi siitä lisää. </p>
+<h2>Skriptien muuttaminen suoritettaviksi</h2>
+<p>Tehdäksesi skriptin jollaisen juuri näytimme, avaa suosikkitekstieditorisi ja kirjoita komennot, jotka tahtoisit suorittaa. Voit kirjoittaa monta komentoa yhdelle riville, kunhan laitat puolipisteen jokaisen komennon jälkeen, jotta pääte tietää, että uusi komento alkaa.</p>
+<p>Tallenna skripti. Yksi yleinen käytäntö on .sh -loppupäätteen käyttö - esimerkiksi <em>tee_esikatselukuvat.sh</em>.</p>
+<p>On vielä yksi askel ennen kuin voit suorittaa skriptin: sen täytyy olla suoritettava tiedosto. Muista, että käyttöoikeuksia antaessasi oikeus ajaa tiedosto on yksi oikeuksista, joka tiedostolla voi olla, joten voit tehdä skriptistä ajettavan antamalla oikeuden execute (x). Seuraava komento antaa kenelle tahansa käyttäjälle oikeuden ajaa skripti: </p>
+<pre> chmod +x tee_esikatselukuvat.sh
+</pre>
+<p>Koska tahdot varmaankin käyttää skriptiä usein, voi olla hyvä idea tarkastaa PATH ja lisätä skripti yhteen sen hakemistoista (esimerkiksi <em>/home/jdoe/bin</em> on hyvä valinta tässä näytetyn PATH-tiedon perusteella).</p>
+<pre>$ <strong>echo $PATH</strong>
+/usr/bin:/usr/local/bin:/home/jdoe/bin</pre>
+<p>Yksinkertaista testaamista varten voit suorittaa skriptin näin, jos olet hakemistossa, joka sisältää sen:</p>
+<pre>$ <strong>./tee_esikatselukuvat.sh</strong></pre>
+<p>Mihin tarvitset edeltävää polkua ./? Koska useimmat käyttäjät eivät ole asettaneet nykyistä hakemistoaan PATH -ympäristömuuttujiinsa. Voit lisätä sen, mutta monet käyttäjät pitävät sitä turvallisuusriskinä.</p>
+<p>Voit myös suorittaa skriptin, ilman että sen suorituskäyttöoikeus olisi asetettu, antamalla sen parametrinä komentotulkille:</p>
+<pre> bash tee_esikatselukuvat.sh</pre>
+<h2>Lisää hallintaa</h2>
+<p>Komentotulkki tarjoaa mahdollisuuden tehdä valintoja skriptissä ja suorittaa komennot monta kertaa eri sisääntuloilla. Tässä suhteessa komentotulkki on oikeastaan ohjelmointikieli ja mukava tapa tutustua ohjelmointikielen tarjoamiin tehokkaisiin ominaisuuksiin. Näytämme tässä perusteet komentotulkin tarjoamista hallintalauseista.</p>
+<h4>if </h4>
+<p>Tämä komento esiteltiin jo virheiden tarkistusta käsittelevässä osassa, mutta tarkastelemme sitä uudestaan tässä. if tarkoittaa jos ja se toimii aikalailla kuten olettaisit, joskin sen syntaksi on hieman erilainen kuin muissa kielissä. Se noudattaa tätä rakennetta: </p>
+<pre>if [ <em>testiehto</em> ]
+then
+  <em>tee jotain</em>
+else
+  <span>tee</span> jotain muuta
+fi
+</pre>
+<p>Luet oikein: rakenne täytyy lopettaa avainsanalla <em>fi</em>.  Osa <em>else</em> on vaihtoehtoinen. Varmista, että jätät tilaa aloitus- ja lopetushakasulkujen sisälle, muuten <em>if</em> ilmoittaa syntaksivirheestä.</p>
+<p>Jos tahdot tutkia voitko lukea tiedoston, voit kirjoittaa tällaisen ohjelman:</p>
+<pre>if [ -r /home/joe/salatieto.txt ]
+then
+    echo "Voit lukea tiedoston"
+else
+    echo "Et voi lukea tiedostoa!"
+fi
+</pre>
+<p> </p>
+<p><em>if</em> tarjoaa joukon erilaisia tarkastuksia. Voit laittaa minkä tahansa joukon komentoja <em>testiehdoksi</em>, mutta useimmat <em>if</em>-lauseet käyttävät hakasulkusyntaksin tarjoamia testejä. Nämä ovat itse asiassa synonyymi komennolle <em>test</em>. Joten ensimmäinen rivi edellisessä esimerkissä olisi yhtä hyvin voitu kirjoittaa seuraavasti: </p>
+<pre>if test -r /home/joe/salatieto.txt
+</pre>
+<p>Tietoja testeistä kuten <em>-r</em> löytyy komennon <em>test</em> opassivulta. Kaikkia testioperaattoreita voidaan käyttää hakasuluissa, kuten me olemme tehneet.</p>
+<p>Joitain hyödyllisiä <em>test</em> -operaattoreita ovat: <br><br></p>
+<table border="1" cellspacing="1" cellpadding="1"><tbody><tr><td>-r</td>
+<td>Tiedosto on luettava</td>
+</tr><tr><td>-x</td>
+<td>Tiedosto on suoritettava</td>
+</tr><tr><td>-e</td>
+<td>Tiedosto on olemassa</td>
+</tr><tr><td>-d</td>
+<td>Tiedosto on olemassa ja hakemisto</td>
+</tr></tbody></table><p>Näitä on paljon enemmänkin, ja voit jopa testata useampia ehtoja samaan aikaan. Katso komennon <em>test</em> opassivua. </p>
+<h2>while (ja until)</h2>
+<p><em>while</em> on silmukkarakenne. Se käy kierroksia läpi, kunnes sen testiehdot eivät enää ole totta. Se ottaa seuraavan muodon:</p>
+<pre>while <em>testiehto</em>
+do
+  askel1
+  askel2
+  ...
+done
+</pre>
+<p>Voit luoda myös silmukoita, jotka toimivat, kunnes käyttäjä keskeyttää ne. Tässä on yksi tapa (ehkei kuitenkaan paras mahdollinen) katsoa kuka on kirjautunut järjestelmääsi 30 sekunnin välein:</p>
+<pre>while true
+do
+    who
+    sleep 30
+done
+</pre>
+<p>Tämä ei ole tyylikästä, koska käyttäjän täytyy painaa CTRL-C tai tappaa ohjelma jollain muulla tavalla. <em>Break</em>-komennolla voit kirjoittaa silmukan, joka loppuu kohdatessaan ehdon. Esimerkiksi seuraava skripti käyttää komentoa <em>read</em> (joka on erittäin hyödyllinen interaktiivisissa skripteissä) lukeakseen rivin syötettä käyttäjältä. Tallennamme syötteen muuttujaan<em> userinput</em> ja tarkastamme sen seuraavalla rivillä. Skripti käyttää jo näkemäämme <em>if</em>-komentoa <em>while</em>-blokin sisällä, mikä antaa meidän päättää koska lopetamme <em>while</em>-blokin. Komento <em>break</em> päättää <em>while</em>-blokin ja jatkaa kohti skriptin loppua (jota emme näe tässä). Huomaa, että käytämme kahta testiä valitsimella <em>-o</em>, mikä merkitsee "tai". Käyttäjä voi kirjoittaa Q joko isoin tai pienin kirjaimin lopettaakseen ohjelman.</p>
+<pre>while true
+do
+  echo "Kirjoita käsiteltävä syöte (kirjoita Q lopettaaksesi)"
+  read userinput
+
+  if [ $userinput == "q" -o $userinput == "Q" ]
+  then
+    break
+  fi
+
+  <em>käsittele syöte...</em>
+
+done
+</pre>
+<p><em>until</em> toimii täsmälleen samalla tavalla, paitsi että silmukka toimii, kunnes testiehto on totta. </p>
+<h2>case</h2>
+<p><em>case</em> on skriptin tapa vastata pieneen joukkoon ehtoja. Se toimii samalla tavalla kuin muiden ohjelmointikielten <em>case</em>-lauseet, tosin sillä on oma omituinen syntaksinsa, joka esitellään parhaiten esimerkin avulla.</p>
+<pre>user=`whoami` # laittaa skriptin suorittavan käyttäjän käyttäjänimen
+              # muuttujaan $user.
+case $user in
+    joe)
+        echo "Hei Joe. Tiedän että tahtoisit tietää kellonajan, joten näytän sen alla."
+        date
+        ;;
+    amy)
+        echo "Hyvää päivää, Amy. Tässä on tehtävälistasi."
+        cat /home/amy/amy-todo.txt
+        ;;
+    sam|tex)
+        echo "Hei hemmo. Älä unohda katsoa järjestelmäkuormitusta. Nykyinen järjestelmäkuormitus on:"
+        uptime
+        ;;
+    *)
+        echo "Tervetuloa, kuka tahansa oletkin. Töihin siitä."
+        ;;
+esac
+</pre>
+<p>Jokaista tapausta täytyy seurata merkki ), jonka jälkeen tulee uusi rivi, jonka jälkeen lista otettavista askelista, sitten puolipiste tuplana (;;). Ehtoon "*)" sopii kaikki, aivan kuin <em>default</em> -avainsanaan joidenkin kielten <em>case</em>-rakenteissa. Jos muut tapaukset eivät sovi, tämä lista komentoja suoritetaan. Lopulta avainsana <em>esac</em> lopettaa <em>case</em>-lauseen. Huomaaa, että näytetyssä esimerkissä on tapaus, joka sopii sekä merkkijonoon "sam" että "tex". </p>
+<h2>for</h2>
+<p><em>for</em> on käyttökelpoinen tapa käydä läpi listaa. Se voi olla mikä tahansa merkkijonojen lista, mutta se on erityisen hyödyllinen käytäessä läpi tiedostolistaa. Seuraava esimerkki käy läpi kaikki tiedostot hakemistossa <em>myfiles</em> ja luo jokaisesta varmuuskopion. (Se tukehtuisi hakemistoihin, mutta pidetäänpä esimerkki yksinkertaisena, eikä testata onko tiedosto hakemisto.)</p>
+<pre>for filename in myfiles/*
+do
+    cp $filename $filename.bak
+done
+</pre>
+<p>Kuten mikä tahansa muuttujan luova komento, ensimmäinen komento <em>for</em>-blokissa asettaa muuttujan nimeltä <strong>filename</strong> ilman dollarimerkkiä.</p>
+<p> </p></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/komentorivin-perusteet/index">Ota komento</a></li>
+<li Class="booki-section">Perusteet</li><li><a href="/komentorivin-perusteet/ch003_aloittaminen">Käytön aloittaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch004_syntaksi">Syntaksi</a></li>
+<li><a href="/komentorivin-perusteet/ch005_ympariinsa-siirtyminen">Ympäriinsä siirtyminen</a></li>
+<li><a href="/komentorivin-perusteet/ch006_tiedostorakenne">Tiedostorakenne</a></li>
+<li Class="booki-section">Komennot</li><li><a href="/komentorivin-perusteet/ch008_peruskomennot">Peruskomennot</a></li>
+<li><a href="/komentorivin-perusteet/ch009_jarjestelmanvalvojat">Järjestelmänvalvoja</a></li>
+<li><a href="/komentorivin-perusteet/ch010_useammat-tiedostot">Useammat tiedostot</a></li>
+<li><a href="/komentorivin-perusteet/ch011_kirjoita-vahemman">Kirjoita vähemmän</a></li>
+<li Class="booki-section">Keskivaikeita komentoja</li><li><a href="/komentorivin-perusteet/ch013_putkitus">Putkitus</a></li>
+<li><a href="/komentorivin-perusteet/ch014_komentohistoria">Komentohistoria</a></li>
+<li><a href="/komentorivin-perusteet/ch015_standarditiedostot">Standarditiedostot</a></li>
+<li Class="booki-section">Kehittyneempiä komentoja</li><li><a href="/komentorivin-perusteet/ch017_kayttooikeudet">Käyttöoikeudet</a></li>
+<li><a href="/komentorivin-perusteet/ch018_interaktiivinen-muokkaus">Interaktiivinen muokkaus</a></li>
+<li><a href="/komentorivin-perusteet/ch019_poistumisen-tarkastaminen">Poistumisen tarkastaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch020_alikomennot">Alikomennot</a></li>
+<li><a href="/komentorivin-perusteet/ch021_hakemistot">Hakemistot</a></li>
+<li><a href="/komentorivin-perusteet/ch022_kustomisointi">Kustomisointi</a></li>
+<li><a href="/komentorivin-perusteet/ch023_parametrien-korvaaminen">Parametrien korvaaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch024_gnuscreen">GNUScreen</a></li>
+<li><a href="/komentorivin-perusteet/ch025_ssh">SSH</a></li>
+<li><a href="/komentorivin-perusteet/ch026_ohjelmien-asentaminen">Ohjelmien asentaminen</a></li>
+<li Class="booki-section">Tekstieditorit</li><li><a href="/komentorivin-perusteet/ch028_tekstieditorit">Tekstieditorit</a></li>
+<li><a href="/komentorivin-perusteet/ch029_nano">Nano</a></li>
+<li><a href="/komentorivin-perusteet/ch030_vi-ja-vim">Vi ja Vim</a></li>
+<li><a href="/komentorivin-perusteet/ch031_emacs">Emacs</a></li>
+<li><a href="/komentorivin-perusteet/ch032_kedit">Kedit</a></li>
+<li><a href="/komentorivin-perusteet/ch033_gedit">Gedit</a></li>
+<li Class="booki-section">Skriptaus</li><li><a href="/komentorivin-perusteet/ch035_skriptaus">Skriptaus</a></li>
+<li><a href="/komentorivin-perusteet/ch036_skriptien-huoltaminen">Skriptien huoltaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch037_muut-kielet">Muut kielet</a></li>
+<li><a href="/komentorivin-perusteet/ch038_sed">Sed</a></li>
+<li><a href="/komentorivin-perusteet/ch039_awk">AWK</a></li>
+<li><a href="/komentorivin-perusteet/ch040_saannolliset-lausekkeet">Säännölliset lausekkeet</a></li>
+<li><a href="/komentorivin-perusteet/ch041_perl">Perl</a></li>
+<li><a href="/komentorivin-perusteet/ch042_ruby">Ruby</a></li>
+<li><a href="/komentorivin-perusteet/ch043_python">Python</a></li>
+<li Class="booki-section">Komennot nopeasti</li><li><a href="/komentorivin-perusteet/ch045_komentojen-pikaopas">Komentojen pikaopas</a></li>
+<li Class="booki-section">Liitteet</li><li><a href="/komentorivin-perusteet/ch047_tasta-kayttooppaasta">Tästä käyttöoppaasta</a></li>
+<li><a href="/komentorivin-perusteet/ch048_tekijat">Tekijät</a></li>
+</ul>

@@ -1,0 +1,121 @@
+<div id="main-content"><h1>HTML5-video</h1>
+<div id="content">
+<p>Jos luot videon, tahdot ehkä näyttää sen verkkosivulla. Koodi, jolla verkkosivu luodaan, perustuu sääntöihin, joita kutsutaan HTML:ksi, ja näistä säännöistä on tullut juuri uusi versio, jota kutsutaan HTML5:ksi.</p>
+<p>HTML5 sisältää uuden ominaisuuden: videotägin. "Tägi" on muutama rivi HTML-koodia, joka käskee selainta näyttämään jotain tai tekemään jotain. HTML5 videotägi sallii yksinkertaisen videoiden integraation samaan tapaan kuin kuvia liitetään verkkosivulle.</p>
+<p>Videota voidaan myös näyttää hyvin käyttökelpoisten ohjaimien kanssa. Ohjaimilla videon voi toistaa, pysäyttää, äänenvoimakkuutta voi vaihtaa, ja videon aikajanaa voi vierittää. </p>
+<p><img title="Firefox_video_tag_en" src="_booki/ogg-theora/static/TheoraCookbook-HTML5-Firefox_video_tag_en-fi.png" alt="Firefox_video_tag_en" width="406" height="228"> </p>
+<h2>Perussyntaksi</h2>
+<p>Tässä on perusesimerkki videon sisällyttämisestä sivulle HTML5-koodin avulla:</p>
+<p> </p>
+<pre>&lt;video src="video.ogv"&gt;&lt;/video&gt;</pre>
+<p> </p>
+<p>Edellinen esimerkki liittää videotiedoston 'video.ogv' verkkosivulle. Tämän esimerkin tiedoston pitäisi olla samassa hakemistossa kuin HTML-tiedoston, koska "src"-parametri viittaa paikalliseen tiedostoon. Jos tahdot viitata toisessa hakemistossa olevaan tiedostoon samalla verkkopalvelimella, joudut tarjoamaan polkutiedot aivan kuin tekisit kuvatiedoston tapauksessa. </p>
+<pre>&lt;video src="/bin/edit/myvideofiles/video.ogv"&gt;&lt;/video&gt;</pre>
+<p>Voit myös määritellä toisella palvelimella olevan tiedoston:</p>
+<pre>&lt;video src="http://mysite.com/video.ogv"&gt;&lt;/video&gt;</pre>
+<h2>Parametrit</h2>
+<p>Lisäparametrien lisääminen antaa lisää hallintaa videon suhteen. </p>
+<pre>&lt;video tabindex="0" src="video.ogv"&gt;&lt; height="320" width="480"&gt;
+</pre>
+<p>Tässä esimerkissä videon korkeus (height) ja leveys (width) on määritelty. Jos et tahdo kuvan näyttävän vääristyneeltä, on tärkeää asettaa korkeus- ja leveysulottuvuudet oikein. autoplay merkitsee, että video soitetaan automaattisesti sivun latauduttua. controls merkitsee, että videon toistamiseen ja pysäyttämiseen liittyvät ohjaimet ovat näkyvillä.</p>
+<p>On mahdollista liittää tekstiä tai muuta HTML-sisältöä videotägiin vaihtoehtoisena sisältönä, joka näytetään, jos selain ei tue videotägiä. </p>
+<h2><strong>Omien ohjaintesi tai soittimen kuoren käyttö </strong> </h2>
+<p>Jos osaat hieman JavaScriptiä, voit hallita helposti videon toistoa. Sen sijaan, että käyttäisit selaimen tarjoamia ohjaimia, voit luoda oman käyttöliittymän ja ohjailla videoelementtejä JavaScriptin avulla. On kaksi asiaa, jotka sinun täytyy muistaa tätä metodia käyttäessäsi:</p>
+<ol><li>Älä unohda pudottaa controls-attribuuttia</li>
+<li>Video tarvitsee id-parametrin, kuten tässä: <br><pre>&lt;video src="video.ogv" id="omavideo"&gt;&lt;/video&gt;</pre>
+</li>
+</ol><p>Joitain JavaScript-funktioita: </p>
+<pre>video = document.getElementById("omavideo");
+//toista video
+video.play();
+//pysäytä video
+video.pause();
+//mene 10 sekunnin kohdalle videossa
+video.currentTime = 10;
+</pre>
+<p>Jos sinulla on monta videotägiä yhdellä verkkosivulla, sinun tulee antaa jokaiselle yksilöllinen id, jotta JavaScript tietää, mihin videoon ohjaimet viittaavat. </p>
+<p>Videotägien tarjoamien funktioiden ja tapahtumien koko lista löytyy HTML5-spesifikaatiosta sivulla <a href="http://www.whatwg.org/specs/web-apps/current-work/#video%20">http://www.whatwg.org/specs/web-apps/current-work/#video </a></p>
+<h2><strong>Manuaaliset vaihtoehdot</strong> </h2>
+<p>Edellisessä yksinkertaisessa esimerkissä videoelementti näyttää tekstin videoelementin sisällä, jos selain ei tue sitä. <br><br>Tekstin sijasta on mahdollista käyttää Cortadoa vaihtoehtona, jos selain tukee Javaa. Cortado on avoimen lähdekoodin useamman alustan ja selaimen Ogg Theora -soitin, joka on kirjoitettu Javalla. Hieno asia on, että käyttäjän ei tarvitse ladata mitään ylimääräisiä Java-paketteja, koska sovelma käyttää selaimen sisäistä Javaa. Cortadon kotisivu löytyy täältä: </p>
+<div class="level2">
+<p><a href="http://www.theora.org/cortado/">http://www.theora.org/cortado/</a> <br><del> </del></p>
+<p>Esikäännetty sovelman versio on myös saatavilla tästä osoitteesta:</p>
+</div>
+<p><a href="http://www.theora.org/cortado.jar%20">http://www.theora.org/cortado.jar </a></p>
+<p>Voit ladata jar-tiedoston tai voit viitata siihen suoraan. Seuraavassa esimerkissä Cortado liitetään sivulle (kaikkia parametrejä ei vaadita, mutta tämä lista antaa kuvan mahdollisista vaihtoehdoista):</p>
+<pre class="code">    &lt;applet code="com.fluendo.player.Cortado.class"
+            archive="http://www.theora.org/cortado.jar"<del> </del>	    width="352" height="288"&gt;<ins> </ins>      &lt;param name="url" value="http://myserver.com/theora.ogv"/&gt;
+      &lt;param name="framerate" value="29"/&gt;
+      &lt;param name="keepAspect" value="true"/&gt;
+      &lt;param name="video" value="true"/&gt;
+      &lt;param name="audio" value="true"/&gt;
+      &lt;param name="bufferSize" value="100"/&gt;
+      &lt;param name="userId" value="user"/&gt;
+      &lt;param name="password" value="test"/&gt;
+    &lt;/applet&gt;
+</pre>
+<p>Jos tahdot ladata jar-tiedoston vaihtoehtona, varmista että laitat sen (<strong>cortado.jar)</strong> ja edellisen HTML-sivun samaan hakemistoon. Vaihda sitten seuraava rivi sisältämään viite (linkki) omaan OGG-striimiisi (suoraan lähetykseen tai esinauhoitettuun): </p>
+<pre class="code">&lt;param name="url" value="http://palvelimeni.fi/theora.ogv"/&gt;</pre>
+</div>
+<p>Jos nyt avaat verkkosivun selaimessasi, se soittaa videon. </p>
+<p>Käyttääksesi Cortadoa vaihtoehtona, aseta Cortado-tägi HTML5-videotägin sisään - kuten seuraavassa esimerkissä: </p>
+<pre>&lt;video src="video.ogv" width="352" height="288"&gt;
+  &lt;applet code="com.fluendo.player.Cortado.class"
+          archive="http://theora.org/cortado.jar" width="352" height="288"&gt;<del> </del>    &lt;param name="url" value="video.ogv"/&gt;<ins> </ins>  &lt;/applet&gt;
+&lt;/video&gt;  </pre>
+<h2>Javascriptiin perustuvat soittimet</h2>
+<p>On olemassa JavaScript-kirjastoja, jotka hoitelevat vaihtoehdon valinnan. Nämä kirjastot mahdollistavat yksinkertaisen sivulle liittämisen, vaikka säilyttävät vaihtoehtoiset soittimet ja toistomenetelmät eri selaimissa.</p>
+<p><strong>Mv_Embed</strong></p>
+<p>Mv_embed -kirjastoa on helppo käyttää. Yksi JavaScript-tiedosto mahdollistaa HTML5-videotägin käytön ja ominaisuuksien uudelleenkirjoittamisen soittimelle, joka toimii monissa selaimissa ja lisäosissa. <a title="mv_embed" href="http://metavid.org/wiki/mv_embed" target="_blank">Lisätietoa aiheesta mv_embed <br></a></p>
+<pre>&lt;script type="text/javascript" src="http://metavid.org/w/mwScriptLoader.php?class=mv_embed"&gt;&lt;/script&gt;
+...
+&lt;video src="elokuvani.ogg" poster="elokuvani.jpeg"&gt;
+</pre>
+<p><strong>Itheora</strong></p>
+<p><a title="itheora" href="http://itheora.org/" target="_blank">ITheora</a> on PHP-skripti, joka mahdollistaa ogg/theora/vorbis-videon (ja audion) toistamisen. Se on helposti asennettava ja käytettävä. Itheoran sivulla on dokumentaatiota soittimen ja kuorien käytöstä. </p>
+<h2>Tuki selaimissa</h2>
+<p>Juuri nyt Firefox 3.5 on ainoa julkaistu selain, joka tukee Theoraa. Opera ja Google Chrome tarjoavat Theora-tuen beta-versioissaan. Safari tukee videotägiä, mutta tukee koodekkeja vain QuickTimen kautta - tämä merkitsee, että se ei tue Theoraa. XiphQT (<a href="http://xiph.org/quicktime">http://xiph.org/quicktime</a>) lisää Theora-tuen QuickTimeen ja Safariin.</p></div><ul Class="menu-goes-here"><li Class="booki-section">JOHDANTO</li><li><a href="/ogg-theora/index">OGG THEORA</a></li>
+<li><a href="/ogg-theora/ch002_tasta-kayttooppaasta">TÄSTÄ KÄYTTÖOPPAASTA</a></li>
+<li><a href="/ogg-theora/ch003_mita-video-on">MITÄ VIDEO ON?</a></li>
+<li><a href="/ogg-theora/ch004_mita-theora-on">MITÄ THEORA ON?</a></li>
+<li Class="booki-section">PERUSKÄSITTEET</li><li><a href="/ogg-theora/ch006_mika-on-koodekki">MIKÄ ON KOODEKKI?</a></li>
+<li><a href="/ogg-theora/ch007_sailot">SÄILÖT</a></li>
+<li Class="booki-section">TOISTO</li><li><a href="/ogg-theora/ch009_theoran-toistaminen">THEORAN TOISTAMINEN</a></li>
+<li><a href="/ogg-theora/ch010_toisto-vlclla">TOISTO VLC:LLÄ</a></li>
+<li><a href="/ogg-theora/ch011_miro">MIRO</a></li>
+<li Class="booki-section">THEORA VERKOSSA</li><li><a href="/ogg-theora/ch013_theora-verkossa">THEORA VERKOSSA</a></li>
+<li><a href="/ogg-theora/ch014_html5">HTML5</a></li>
+<li><a href="/ogg-theora/ch015_theora-sivuillasi">THEORA SIVUILLASI</a></li>
+<li><a href="/ogg-theora/ch016_hotelleja-theoralle">HOTELLEJA THEORALLE</a></li>
+<li Class="booki-section">ENKOODAUS</li><li><a href="/ogg-theora/ch018_johdanto-enkoodaukseen">JOHDANTO ENKOODAUKSEEN</a></li>
+<li><a href="/ogg-theora/ch019_firefogg">FIREFOGG</a></li>
+<li><a href="/ogg-theora/ch020_enkoodaus-vlclla">ENKOODAUS VLC:LLÄ</a></li>
+<li><a href="/ogg-theora/ch021_enkoodaus-ffmpeg2theoralla">ENKOODAUS FFMPEG2THEORALLA </a></li>
+<li><a href="/ogg-theora/ch022_thoggen">THOGGEN</a></li>
+<li Class="booki-section">TEKSTITYKSET</li><li><a href="/ogg-theora/ch024_tekstityksien-perusteet">TEKSTITYKSIEN PERUSTEET</a></li>
+<li><a href="/ogg-theora/ch025_jakelu">JAKELU</a></li>
+<li><a href="/ogg-theora/ch026_tekstityksien-liittaminen">TEKSTITYKSIEN LIITTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch027_tekstityksien-toistaminen">TEKSTITYKSIEN TOISTAMINEN</a></li>
+<li><a href="/ogg-theora/ch028_julkaiseminen">JULKAISEMINEN</a></li>
+<li Class="booki-section">SUORATOISTO</li><li><a href="/ogg-theora/ch030_suoratoiston-perusteet">SUORATOISTON PERUSTEET</a></li>
+<li><a href="/ogg-theora/ch031_icecast">ICECAST</a></li>
+<li><a href="/ogg-theora/ch032_tss">TSS</a></li>
+<li><a href="/ogg-theora/ch033_ffmpeg2theora-streamaus">FFMPEG2THEORA-STREAMAUS</a></li>
+<li><a href="/ogg-theora/ch034_suoratoisto-vlc-ohjelmalla">VLC-STREAMAUS</a></li>
+<li><a href="/ogg-theora/ch035_virtaustoiston-tallentaminen">VIRTAUSTOISTON TALLENTAMINEN</a></li>
+<li Class="booki-section">EDITOINTI</li><li><a href="/ogg-theora/ch037_johdanto-editointiin">JOHDANTO EDITOITIIN</a></li>
+<li><a href="/ogg-theora/ch038_pitivi">PITIVI</a></li>
+<li Class="booki-section">ESIKATSELU</li><li><a href="/ogg-theora/ch040_kuinka-esikatselua-kaytetaan">ESIKATSELUN KÄYTTÖ</a></li>
+<li><a href="/ogg-theora/ch041_tee-esikatselukuvia">TEE ESIKATSELUKUVIA</a></li>
+<li><a href="/ogg-theora/ch042_tee-diaesitys">TEE DIAESITYS</a></li>
+<li><a href="/ogg-theora/ch043_tee-esikatseluvideo">TEE ESIKATSELUVIDEO</a></li>
+<li Class="booki-section">EDITOINTI KOMENTORIVILTÄ</li><li><a href="/ogg-theora/ch045_komentorivi">THEORA JA KOMENTORIVI</a></li>
+<li><a href="/ogg-theora/ch046_theoran-teoria">THEORAN TEORIA</a></li>
+<li><a href="/ogg-theora/ch047_tiedoston-jakaminen">TIEDOSTON JAKAMINEN</a></li>
+<li><a href="/ogg-theora/ch048_tiedoston-leikkaaminen">TIEDOSTON LEIKKAAMINEN</a></li>
+<li><a href="/ogg-theora/ch049_tiedostojen-liittaminen">TIEDOSTOJEN LIITTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch050_tiedostojen-yhdistaminen">TIEDOSTOJEN YHDISTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch051_koon-muuttaminen">KOON MUUTTAMINEN</a></li>
+<li><a href="/ogg-theora/ch052_oggin-analysoiminen">OGGIN ANALYSOIMINEN</a></li>
+<li Class="booki-section">TEKIJÄT</li><li><a href="/ogg-theora/ch054_tekijat">TEKIJÄT</a></li>
+</ul>

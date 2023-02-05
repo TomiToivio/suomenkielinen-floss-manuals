@@ -1,0 +1,117 @@
+<div id="main-content"><h1>TSS</h1>
+<div id="content">
+<p><strong>TSS</strong> (<strong>Theora Streaming Studio</strong>) on erinomainen koodaaja Ogg Theora -streamien lähettämiseen Icecast-serverille. TSS-kotisivut kannattaa lukea, sillä niillä on yleiskatsaus sen toimintoihin ja asennusohjelmia:</p>
+<p><a href="http://gollum.artefacte.org/tss/" target="_blank">http://gollum.artefacte.org/tss/</a></p>
+<p><img title="tss01_en" src="_booki/ogg-theora/static/TheoraCookbook-TSS-tss01_en-fi.png" alt="tss01_en" width="600" height="517"></p>
+<p>TSS toimii graafisen käyttöliittymän avulla, joten ei ole tarpeen tehdä mitään komentorivillä. TSS voi lähettää yhden tai useampia streameja eri asetuksilla samasta videolähteestä. Videolähde voi olla digitaalinen video tai analoginen video videokaappauslaitteen kautta, jollainen voi olla verkkokamera, USB-videosisääntulo tai video-in-liitäntä. Pidä mielessäsi, että nopea tietokone, jossa on ainakin kaksi gigaa RAM-muistia tarvitaan streamaamaan kahteen kohteeseen ilman freimien menetyksiä tai audiosynkronisaation menetystä.</p>
+<p>TSS voi myös näyttää ulos menevän streamin esikatselun, se voi samaan aikaan arkistoida streamit levykkeelle (mutta tämä riippuu hieman siitä, kuinka nopea tietokoneesi on).</p>
+<p>TSS hallinnoi komentorivin ohjelmia: </p>
+<ol><li><strong>dvgrab</strong> - kaappaa videon suorasta lähteestä, kuten kamerasta</li>
+<li><strong>ffmpeg2theora</strong> - muuntaa videotiedostot Ogg Theoraksi</li>
+<li><strong>oggfwd</strong> - lähettää videot streamauspalvelimeen</li>
+</ol><p>TSS ottaa graafisessa käyttöliittymässäsi asettamasi konfiguraation ja luo asiaankuuluvan komentorivin käyttäen näitä kolmea ohjelmaa, jotta et joudu asettamaan niitä monimutkaissa komennoissa käsin.</p>
+<p>Voidaan aina kopioida kometorivi, jota TSS käyttää, se printataan statusikkunaan, pieneen mustaa tilaan, joka näkyy <strong>Execute</strong> ja <strong>Stop</strong> -nappuloiden alla. Vieritä hiiren osoittimella ja valitse teksti. Voit sen jälkeen ajaa nämä komennot suoraan komentoriviltä, säästäen joitain resursseja välttämällä graafisen järjestelmän avaamisen.</p>
+<p>TSS:n pääkehittäjä on Lluis Gómez i Bigordà, nykyinen julkaisu (helmikuu 2009) on 0.2. Projektin status on aktiivinen.</p>
+<h2>TSS:n asennus</h2>
+<p>TSS voidaan asentaa vain Linuxiin. Katsomme nyt TSS:n asennusta Ubuntussa.</p>
+<p>Käy ensin TSS-lataussivulla:</p>
+<p><a href="http://gollum.artefacte.org/tss/#download" target="_self">http://gollum.artefacte.org/tss/#download</a></p>
+<p>Näet osan, jossa on kaksi linkkiä. Yksi linkki on "<span><span><a name="download"></a><span style="font-family: Verdana, sans-serif;"><span style="font-size: small;">Debian / Ubuntu package". Tahdomme asentaa sen version. Napsauta tätä linkkiä käyttäen FireFoxia, ja näemme tällaisen ikkunan ilmestyvän:</span></span></span></span></p>
+<p> </p>
+<p><span><span><a name="download"></a></span></span> <img title="downloadtss" src="_booki/ogg-theora/static/TheoraCookbook-TSS-downloadtss_en-fi.png" alt="downloadtss" width="454" height="322"></p>
+<p>Optio on oletusarvoisesti juuri se, jota tahdomme käyttää. Jos avaamme asennusohjelman <strong>GDebi-paketinasennusohjelmalla</strong>, silloin asennusohjelma lataa ja asentaa automaattisesti. Tehdään niin. Klikkaa ja se asentuu.</p>
+<h3>Asennus 64-bittiseen</h3>
+<p>Kun asennat TSS-ohjelmaa, voit nähdä tällaisen virheen:</p>
+<p><img title="error_arch" src="_booki/ogg-theora/static/TheoraCookbook-TSS-error_arch_en-fi.png" alt="error_arch" width="560" height="429"></p>
+<p>Tämä merkitsee, että yrität asentaa koneen tietokoneelle, jonka "arkkitehtuuria" ohjelma ei salli. Voit kiertää tämän, mutta sinun täytyy tehdä se komentorivillä. Ensinnäkin, GDebin käytön sijasta joudut lataamaan lähdetiedostot (.tar.gz -tiedosto). Sitten joudut kirjoittamaan tämän komentorivillä samasta hakemistosta, jossa asennusohjelma on:</p>
+<p> </p>
+<pre>  sudo apt-get install dvgrab ffmpeg ffmpeg2theora libtheora-bin oggfwd libvte-dev</pre>
+<p>Edellinen komento voi kestää hetken, sillä on paljon ladattavaa ja asennettavaa. Kun prosessi on valmis, kirjoita nämä komennot:</p>
+<pre>tar zxvf </pre>
+<span style="font-size: small;">tss-0.2.tar.gz</span>
+<p> </p>
+<pre>cd tss-0.2
+</pre>
+<pre>./autogen.sh</pre>
+<p>Huomaa: asennettavan tiedoston nimi on luultavasti erilainen kuin yllä.</p>
+<p>Sen jälkeen aja seuraavat komennot:</p>
+<pre> make</pre>
+<pre>sudo make install</pre>
+<p>Kirjoita "TSS" komentorivillä. Jos se ei toimi, kokeile tätä:</p>
+<pre>sudo cp src/tss /usr/bin/
+</pre>
+<p>Kokeile sitten aloittaa TSS uudestaan komentoriviltä:</p>
+<img title="tss" src="_booki/ogg-theora/static/TheoraCookbook-TSS-tss_en-fi.png" alt="tss" width="600" height="517"><h2>TSS käytössä</h2>
+<p>On kaksi erilaista pääpaneelia, joiden täytyy sisältää oikeat asetukset, jotta striimiä voi lähettää: <strong>lähde</strong> ja <strong>kohde</strong> -välilehdet:</p>
+<p><img src="_booki/ogg-theora/static/TheoraCookbook-TSS-tss1_source_en-fi.png" alt="tss1_source.png" width="600" height="455"> </p>
+<p><strong>Source</strong> -välilehdestä voit valita videon sisääntulon tyypin. Kun käytät minimaalista järjestelmää, on olemassa vaihtoehto käyttää verkkokameraa video for linuxin (v4l) kautta. Voit valita myös digitaalisen videon sisääntulon - tämä on hyödyllinen, jos tahdot lähettää suoraa videota kädessä pideltävästä kamerasta.</p>
+<p>TSS tarjoaa myös mahdollisuuden streamata olemassaoleva (arkistoitua) videotiedosto tietokoneeltasi Icecast-palvelimelle.</p>
+<p>Toinen välilehti on <strong>target1</strong>, tässä määrittelemme streamien asetukset päästreamiamme varten. Alla on esimerkki:</p>
+<p> <img src="_booki/ogg-theora/static/TheoraCookbook-TSS-tss2_target1_en-fi.png" alt="tss2_target1.png" width="601" height="451"> </p>
+<p>Kaikki kentät kohdassa <strong>ffmpeg2theroa encoding settings</strong> pitää täyttää.</p>
+<p>On tärkeää pitää mielessä, että kaikella tähän laittamamme tieto vaikuttaa suoraan streamien lopulliseen ulostulon bittinopeuteen. et voi vain laittaa ulostulon bittinopeutta, pikemminkin se riippuu ruudun koon, äänen laadun ja muiden tekemiesi valintojen asetuksista. </p>
+<p>Muista myös, että mitä korkeampi tämä bittinopeus on - sitä enemmän kaistanleveyttä tarvitaan sen lähettämiseen Icecast-palvelimelle, ja sitä korkeammat ovat streamiisi kytkeytyvän yleisön kaistanleveysvaatimukset. Joten, jos osa katsojistamme on Kolumbiassa, jossa keskimääräinen verkkoyhteys on vieläkin noin 128kbps (<strong>kb/s</strong> tai <strong>kbit/s</strong> on tiedonsiirron nopeusyksikkö, joka vastaa noin 1000 bittiä sekunnissa). Tämä merkitsee, että vaikka meillä on laajakaistayhteys, joka riittää streamin lähettämiseen korkealla resoluutiolla ja korkeatasoisella pakkauksella, meidän täytyy varoa yli 128kbps bittinopeuden käyttöä, koska muuten ihmiset Kolumbiassa eivät näe sitä.</p>
+<p>Seuraavat kategoriat liittyvät TSS-enkoodauksen vaihtoehtoihin sekä <strong>target1</strong> että <strong>target2</strong> -kohteille:</p>
+<p><strong>Frame size (ruudun koko):</strong> Tässä määrittelemme videostriimin ulottuvuudet pikseleinä. 320 kertaa 240 on standardi. Alhaiselle kaistanleveydelle voidaan käyttää ruudun kokoa 320 kertaa 180.</p>
+<p><strong>Frame rate (ruutunopeus):</strong> Tämä asetus määrittelee, kuinka monta ruutua voimme lähettää sekunnissa. Erilaiset tapahtumat vaativat erilaisia ruututaajuuksia. Konferenssin tapauksessa kohteet eivät liiku tai vaihda paikkaa kovin paljon, joten 12 fps (fps = frames per second, ruutua sekunnissa) -asetus voi olla sopia. Edellisessä esimerkissä päätimme uhrata ruututaajuuden suuremman ruudun koon hyväksi. Valitsimme 25:3, mikä merkitsee noin 8fps ruututaajuutta.</p>
+<p><strong>Video Quality (videon laatu): </strong>Tähän asetukseen voi laittaa arvoja väliltä 0-10. Oletusarvoinen videon enkoodauslaatu ffmpeg2theoralle on 5, suuremmat arvot merkitsevät parempaa laatua. </p>
+<p><strong>Audio Quality (äänen laatu): </strong>Tähän asetukseen voi laittaa arvoja väliltä -2 - 10. Enkoodauslaatu äänelle on oletusarvoisesti 1. Suuremmat arvot merkitsevät parempaa laatua.</p>
+<p><strong>Audio Channels (äänikanavat):</strong> Asettaa ulostulon äänikanavien määrän. Valinnat ovat 0 (ei ääntä), 1 (mono) ja 2 (stereo).</p>
+<p><strong>Audio samplerate (äänen näytetaajuus): </strong>Esitetään Hertzeinä. Tämä laatikko asettaa äänen ulostulon näytetaajuuden.</p>
+<p>Ulosmenevän streamin teknisiä asetuksia käsittelevien laatikoiden alle voit kirjoittaa tiedot, jotka tahdot yleisön tietävän:</p>
+<p><img title="ffmpeg_meta" src="_booki/ogg-theora/static/TheoraCookbook-TSS-ffmpeg_meta_en-fi.png" alt="ffmpeg_meta" width="307" height="207"></p>
+<p>Tämä informaatio <strong>ffmpeg2theora metadata</strong> -laatikoissa on potentiaalisesti tarjolla yleisöllesi. Riippuu heidän tavastaan katsella streamia (selaimella tai soittimella), näkevätkö he tämän metadatan. Voit kirjoittaa tähän mitä tahansa tietoa, sillä ei ole väliä - jätä huomiotta kategoriat (sijainti, päivämäärä jne.), joita et tahdo käyttää.</p>
+<p>Seuraavaksi on laatikot <strong>icecast server settings</strong> ja<strong> icecast metadata</strong>.</p>
+<p><img title="tss_icecast" src="_booki/ogg-theora/static/TheoraCookbook-TSS-tss_icecast_en-fi.png" alt="tss_icecast" width="324" height="243"> </p>
+<p>Kohdassa <strong>icecast server settings</strong> meidän täytyy määritellä streamauspalvelimen osoite (<span>server</span>), tämän serverin käyttämä portti (<strong>port)</strong>, joka on yleensä 8000, käyttämämme kanava (<strong>mountpoint</strong>), ja salasana (<strong>password</strong>). Jos sinulta puuttuu pääsy Icecast-pelvelimelle, on olemassa muutamia ilmaisia projekteja, jotka pyrkivät auttamaan ihmisiä vapaiden ohjelmistojen käytössä. Katso estudiolivre.org tai GISS.tv.</p>
+<p><strong>Icecast metadata</strong> -asetuksiin voit laittaa yleisölle hyödyllistä tietoa streamistasi. Tämä tieto näytetään palvelimen verkkosivulla (jokaisella Icecast-palvelimella on oma verkkosivunsa). Vaikka niillä on omat otsikkonsa, voit laittaa tähän mitä tahansa tietoa, sillä ei ole väliä.</p>
+<p>Viimeisessä välilehdessä on otsikon esikatselu (<strong>preview</strong>).</p>
+<p><img src="_booki/ogg-theora/static/TheoraCookbook-TSS-tss3_preview_en-fi.png" alt="tss3_preview.png" width="598" height="447"> </p>
+<p>Jos rastitat kohdan <strong>enable preview window</strong> (esikatselu-ikkuna päällä), näet esikatselun suorasta lähetyksestä enkoodatessasi sitä. Tämä ei ole sama video kuin se, joka lähtee Icecast-palvelimelta, joten kannattaa aina katsoa sekä esikatselua että palvelimelta tulevaa streamia (monitoroi sisääntulevaa streamia toisella tietokoneella).</p>
+<p>Jos tahdot lähettää yhden streamin, joudut katsomaan vain asetuksia välilehdissä Source ja Target1. Jos tahdot lähettää kaksi streamia, joudut katsomaan asetuksia myös välilehdessä Target2. </p>
+<p>Kun olet määritellyt kaikki tarvittavat tiedot jokaiselle ulosmenevälle streamille ja yhdistänyt oikean videolähteen (tai olet valinnut toimivan videotiedoston streamattavaksi), paina vain "Execute" ja streamauksen pitäisi alkaa!</p>
+</div></div><ul Class="menu-goes-here"><li Class="booki-section">JOHDANTO</li><li><a href="/ogg-theora/index">OGG THEORA</a></li>
+<li><a href="/ogg-theora/ch002_tasta-kayttooppaasta">TÄSTÄ KÄYTTÖOPPAASTA</a></li>
+<li><a href="/ogg-theora/ch003_mita-video-on">MITÄ VIDEO ON?</a></li>
+<li><a href="/ogg-theora/ch004_mita-theora-on">MITÄ THEORA ON?</a></li>
+<li Class="booki-section">PERUSKÄSITTEET</li><li><a href="/ogg-theora/ch006_mika-on-koodekki">MIKÄ ON KOODEKKI?</a></li>
+<li><a href="/ogg-theora/ch007_sailot">SÄILÖT</a></li>
+<li Class="booki-section">TOISTO</li><li><a href="/ogg-theora/ch009_theoran-toistaminen">THEORAN TOISTAMINEN</a></li>
+<li><a href="/ogg-theora/ch010_toisto-vlclla">TOISTO VLC:LLÄ</a></li>
+<li><a href="/ogg-theora/ch011_miro">MIRO</a></li>
+<li Class="booki-section">THEORA VERKOSSA</li><li><a href="/ogg-theora/ch013_theora-verkossa">THEORA VERKOSSA</a></li>
+<li><a href="/ogg-theora/ch014_html5">HTML5</a></li>
+<li><a href="/ogg-theora/ch015_theora-sivuillasi">THEORA SIVUILLASI</a></li>
+<li><a href="/ogg-theora/ch016_hotelleja-theoralle">HOTELLEJA THEORALLE</a></li>
+<li Class="booki-section">ENKOODAUS</li><li><a href="/ogg-theora/ch018_johdanto-enkoodaukseen">JOHDANTO ENKOODAUKSEEN</a></li>
+<li><a href="/ogg-theora/ch019_firefogg">FIREFOGG</a></li>
+<li><a href="/ogg-theora/ch020_enkoodaus-vlclla">ENKOODAUS VLC:LLÄ</a></li>
+<li><a href="/ogg-theora/ch021_enkoodaus-ffmpeg2theoralla">ENKOODAUS FFMPEG2THEORALLA </a></li>
+<li><a href="/ogg-theora/ch022_thoggen">THOGGEN</a></li>
+<li Class="booki-section">TEKSTITYKSET</li><li><a href="/ogg-theora/ch024_tekstityksien-perusteet">TEKSTITYKSIEN PERUSTEET</a></li>
+<li><a href="/ogg-theora/ch025_jakelu">JAKELU</a></li>
+<li><a href="/ogg-theora/ch026_tekstityksien-liittaminen">TEKSTITYKSIEN LIITTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch027_tekstityksien-toistaminen">TEKSTITYKSIEN TOISTAMINEN</a></li>
+<li><a href="/ogg-theora/ch028_julkaiseminen">JULKAISEMINEN</a></li>
+<li Class="booki-section">SUORATOISTO</li><li><a href="/ogg-theora/ch030_suoratoiston-perusteet">SUORATOISTON PERUSTEET</a></li>
+<li><a href="/ogg-theora/ch031_icecast">ICECAST</a></li>
+<li><a href="/ogg-theora/ch032_tss">TSS</a></li>
+<li><a href="/ogg-theora/ch033_ffmpeg2theora-streamaus">FFMPEG2THEORA-STREAMAUS</a></li>
+<li><a href="/ogg-theora/ch034_suoratoisto-vlc-ohjelmalla">VLC-STREAMAUS</a></li>
+<li><a href="/ogg-theora/ch035_virtaustoiston-tallentaminen">VIRTAUSTOISTON TALLENTAMINEN</a></li>
+<li Class="booki-section">EDITOINTI</li><li><a href="/ogg-theora/ch037_johdanto-editointiin">JOHDANTO EDITOITIIN</a></li>
+<li><a href="/ogg-theora/ch038_pitivi">PITIVI</a></li>
+<li Class="booki-section">ESIKATSELU</li><li><a href="/ogg-theora/ch040_kuinka-esikatselua-kaytetaan">ESIKATSELUN KÄYTTÖ</a></li>
+<li><a href="/ogg-theora/ch041_tee-esikatselukuvia">TEE ESIKATSELUKUVIA</a></li>
+<li><a href="/ogg-theora/ch042_tee-diaesitys">TEE DIAESITYS</a></li>
+<li><a href="/ogg-theora/ch043_tee-esikatseluvideo">TEE ESIKATSELUVIDEO</a></li>
+<li Class="booki-section">EDITOINTI KOMENTORIVILTÄ</li><li><a href="/ogg-theora/ch045_komentorivi">THEORA JA KOMENTORIVI</a></li>
+<li><a href="/ogg-theora/ch046_theoran-teoria">THEORAN TEORIA</a></li>
+<li><a href="/ogg-theora/ch047_tiedoston-jakaminen">TIEDOSTON JAKAMINEN</a></li>
+<li><a href="/ogg-theora/ch048_tiedoston-leikkaaminen">TIEDOSTON LEIKKAAMINEN</a></li>
+<li><a href="/ogg-theora/ch049_tiedostojen-liittaminen">TIEDOSTOJEN LIITTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch050_tiedostojen-yhdistaminen">TIEDOSTOJEN YHDISTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch051_koon-muuttaminen">KOON MUUTTAMINEN</a></li>
+<li><a href="/ogg-theora/ch052_oggin-analysoiminen">OGGIN ANALYSOIMINEN</a></li>
+<li Class="booki-section">TEKIJÄT</li><li><a href="/ogg-theora/ch054_tekijat">TEKIJÄT</a></li>
+</ul>

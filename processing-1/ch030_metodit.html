@@ -1,0 +1,214 @@
+<div id="main-content"><h1>Metodit</h1>
+<p><span id="result_box"><span>Yksi menetelmä on blokki, joka sisältää ohjeet, joita tahdot käyttää uudestaan. Metodeita on hyvä käyttää, sillä voimme kirjoittaa toiminnon vain kerran ja käyttää sitä uudestaan lukemattomia kertoja. Käyttäessämme metodia koodissamme voimme kutsua sitä uudestaan eri kohdissa ohjelmaa. </span><span> <br><br></span><span>Tiedät jo monia metodeja, mutta vain käyttäjänä. Esimerkiksi <code>rect()</code>, <code>ellipse()</code>, <code>line()</code> ja <code>stroke(<span>)</span></code> ovat kaikki metodeja. Luomalla omat metodimme voimme lisätä Processingiin ominaisuuksia, joita ohjelman kehittäjät eivät ole vielä tehneet. </span><span> <br><br></span><span>Tässä on puhtaan teoreettinen esimerkki lopputuloksesta. </span></span></p>
+<pre>tausta(255);
+kaunisMaisema();
+puu(sypressi, 0,300);
+kuu(400,100);
+ruoho(0,300,width,100);
+lammas(50,133);
+lammas(213,98);
+lammas(155,88);
+</pre>
+<p><span id="result_box"><span>Päämääränä on pakata ohjelmien monimutkaisuus avainsanoihin, joita voit kutsua niin usein kuin tahdot. Samalla voit käyttää Processingin omia metodeja. Tuloksena on yksinkertaisempi ja luettavampi koodi. Myös toistolta vältytään. Enemmän järjestystä ja vähemmän leikkaamista ja liimaamista. </span></span></p>
+<p> <img src="_booki/processing-1/static/illu_mouton_petit-fi_1.png" alt=""></p>
+<h2>Avainsanat</h2>
+<p><span id="result_box" class="long_text"><span>Kun luomme omat metodimme, meidän täytyy antaa jokaiselle niistä nimi. Kun metodi on nimetty, sitä voidaan käyttää ohjelmassa. Kutsu sitä vain sen nimellä.</span><span> <br><br></span><span>Processing yhdistää joukon menetelmiä, joilla voimme korjata omat versiomme. Tämä pätee metodeille <code>draw()</code>, <code>setup()</code>, <code>mousePressed()</code>... Katso muista luvuista. Voimme myös luoda kustomoituja metodeja antamalla niille valitsemamme nimen. Tässä tapauksesa voit vain varoa käyttämästä nimeä, joka on jo otettu. </span></span></p>
+<h2><span id="result_box" class="long_text"><span>Leikkaus</span></span></h2>
+<p><span>Toistaiseksi olemme ohjelmoineet lineaarisesti Processingissa, olemme kirjoittaneet koodia ohjelman alusta alaspäin. Kun tahdomme luoda ohjelmamme metodit itse, joudumme leikkaamaan ohjelmamme kappaleiksi. Tämä antaa meidän osoittaa osat, jotka suoritetaan heti ohjelman alussa, ja ne osat, jotka kutsutaan myöhemmin.</span></p>
+<p><span id="result_box" class="long_text"><span>Huono puoli on se, että emme voi kirjoittaa komentoja suoraan Processingiin laittamatta niitä metodin tai luokan sisään. Metodien kanssa toimiminen on kaikki tai ei mitään. </span><span> <br></span></span></p>
+<h2><span id="result_box" class="long_text"><span>void <code>setup ()</code></span></span></h2>
+<p><span id="result_box" class="long_text"><span>Processing tarjoaa paikan kirjoittaa koodia, joka suoritetaan ohjelmamme alussa. Tämä metodi on <code>setup()</code>: </span></span></p>
+<p> </p>
+<pre>void setup() {
+
+}
+</pre>
+<p><span id="result_box" class="long_text"><span>Kaikki ohjelman alussa suoritettava koodi pitää sijoittaa metodin setup() aaltosulkujen sisälle. Nyt ei kannata miettiä sanan void merkitystä, mutta sen täytyy olla ohjelman alussa. Tämän jälkeen sana setup, jota seuraa sulut, ja sitten aaltosulut. </span><span> <br><br></span><span>Suurimman osan aikaa käytämme menetelmää setup() määrittelemään kuvamme koon. Tämä koko voidaan asettaa vain kerran - mikä yhteensattuma, sillä käynnistyskin tapahtuu vain kerran ohjelmassa. </span></span></p>
+<p> </p>
+<pre>void setup() {
+  size(500,500);
+}
+</pre>
+<h2>Luo kustomoituja metodeja</h2>
+<h2> </h2>
+<p><span id="result_box" class="long_text"><span>Alla olevissa esimerkeissä luomme metodin luoLammas(), joka sisältää ohjeet lampaan piirtämiseen. <br></span><span> <br></span></span></p>
+<p><img title="quatre_moutons" src="_booki/processing-1/static/quatre_moutons-fi.png" alt="quatre_moutons" width="600" height="220"></p>
+<p><span id="result_box" class="long_text"><span>Todellisuudessa lammas on kätketty laatikkoon, joten näemme vain laatikon! Se piirtää myös reikiä, jotta lammas voisi hengittää. Kutsumme tätä metodia monta kertaa piirtääksemme enemmän lampaita. </span><span> <br><br></span><span>Tässä on koodi piirtämiselle:</span></span></p>
+<pre>void setup() {
+
+  size(600, 220);
+  background(153,204,255);
+  smooth();
+
+  // Kutsutaan metodiamme lampaan piirtämiseksi
+  luoLammas();
+  translate(120, 60);
+  luoLammas();
+  translate(120, 60);
+  luoLammas();
+  translate(140, -60);
+  luoLammas();
+}
+
+
+// Metodi lampaan piirtämiseksi.
+
+void luoLamma() {
+
+  strokeWeight(3);
+  strokeJoin(ROUND);
+  stroke(0);
+  fill(255);
+
+  rect(20, 40, 80, 40);
+  beginShape();
+  vertex(20, 40);
+  vertex(40, 20);
+  vertex(120, 20);
+  vertex(120, 40);
+  endShape(CLOSE);
+
+  beginShape();
+  vertex(100, 40);
+  vertex(120, 20);
+  vertex(120, 60);
+  vertex(100, 80);
+  endShape(CLOSE);
+
+  fill(0);
+  ellipse(40, 60, 5, 5);
+  ellipse(60, 60, 5, 5);
+  ellipse(80, 60, 5, 5);
+}
+</pre>
+<p><span id="result_box" class="long_text"><span>Ohjelman alku määritellään metodissa setup(). Koska käytämme metodia piirtääksemme lampaamme, loput ohjelmasta pitää sijoittaa johonkin tässä metodissa. Processingissa: </span></span></p>
+<pre> void setup() {
+}</pre>
+<p><span id="result_box" class="long_text"><span>Tämän jälkeen määrittelemme kuvamme koon ja sen taustavärin. <br></span></span></p>
+<pre>  size(600, 220);
+  background(153,204,255);
+</pre>
+<p><span id="result_box" class="long_text"><span>Olet ehkä esittänyt kysymyksen komennon smooth() roolista ohjelmassamme. Tämä komento on valinnainen, mutta se antaa meille miellyttävimmät viivat tietokoneen ruudulla. </span></span></p>
+<pre>smooth();
+</pre>
+<p><span id="result_box" class="long_text"><span>Lopulta piirrämme lampaan käyttäen menetelmää, jonka olemme määritelleet myöhemmin. <br></span></span></p>
+<pre>  luoLammas();
+</pre>
+<p><span id="result_box" class="long_text"><span>Kun Processing kohtaa sanan luoLammas() se tietää sanojen olevan metodina jossain ohjelmassamme. Jos tämä metodi on olemassa, se kulkee tämän metodin läpi ja tekee kaiken sen sisällä olevan. </span></span></p>
+<p><span id="result_box" class="long_text"><span>Jos tätä metodia ei löydy - ja sitä ei ole Processingissa itsessään - ohjelmasi lopettaa virheviestiin.</span></span></p>
+<p><span id="result_box"><span>Huomaa: voit kirjoittaa avainsanan luoLammas () niin monta kertaa kuin tahdot. Tässä ohjelmassa </span><span>luoLammas() on kirjoitettu 4 kertaa:</span></span></p>
+<pre>  luoLammas();
+  translate(120, 60);
+  luoLammas();
+  translate(120, 60);
+  luoLammas();
+  translate(140, -60);
+  luoLammas();
+</pre>
+<p><span id="result_box" class="long_text"><span>Huomaa, että asetimme jokaisen metodin luoLammas () väliin komennon translate (x, y). Tämä komento antaa meidän piirtää saman lampaan neljä kertaa eri paikkaan. Luku Muutokset selittää komennon translate() toiminnan. Komentoa translate () käytetään siirtämään piirrosten alkupiste. </span></span></p>
+<pre>void luoLammas() {
+  
+  /* ... */
+
+}
+</pre>
+<p><span id="result_box" class="long_text"><span>Lopulta pääsemme metodiin luoLammas() itseensä. Tässä piirrämme tarvitut viivat ja muodot. Emme keskustele tästä, sillä käytetyt komennot selitetään muotoja käsittelevässä luvussa.  </span></span> <br><span id="result_box" class="long_text"><span> <br></span><span>Huomaa void-avainsana ennen metodimme nimeä. Tämä merkitsee, että se ei palauta mitään. Emme siis saa dataa ulos metodistamme. </span></span></p>
+<p> </p>
+<h2>Metodin palautusarvo</h2>
+<h2> </h2>
+<p><span id="result_box" class="long_text"><span> Metodilla voi olla palautusarvo. Toistaiseksi emme ole määritelleet palautusarvoa. Metodilla setup() tai draw() ei ole palautusarvoa. Sana void kertoo näissä tapauksissa, että mitään ei pitäisi palauttaa metodille, joka kutsui ne. </span><span> <br><br></span><span>Jos metodilta tahdotaan ulos joku tieto, se tulee palautusarvon muodossa. Jos tahdomme tietää paljonko kello on, käytämme metodia second(), minutes() tai hour() saadaksemme niiden arvon muodossa integer (int). Jos nämä metodit eivät anna meille mitään (void) palautusarvona, ne eivät mahdollistaisi hyödyllisiä toimintoja. </span></span></p>
+<p><span id="result_box" class="long_text"><span>Metodien täytyy palauttaa arvo kutsulle, joka on esitetty ennen avainsanaa, joka määrittelee palautetun arvon tyypin. Metodi jonka tyyppi on int palauttaa arvotyypin int, metodi jonka tyyppi on float palauttaa tyypin float arvon, ja niin edelleen. <br></span><span> <br> Tässä on esimerkki metodista, joka antaa sekuntien määrän kellon 00:00:00 jälkeen. <br></span></span></p>
+<pre>int sekuntejaEilisesta() {
+  return hour() * 3600 + minute() * 60 + second();
+}
+
+void draw() {
+  println( sekuntejaEilisesta() );
+}
+</pre>
+<p><span id="result_box" class="long_text"><span>Jos et tiedä metodia draw(), käytä silti tätä miniohjelmaa ja katso konsolia Processing-ikkunan alaosassa. Voit nähdä, että metodi draw() kutsuu jatkuvasti komentoa sekuntejaEilisesta () ja käyttää tämän metodin tuloksia näyttääkseen sekunteja. </span></span></p>
+<h2>Metodin parametrit</h2>
+<p><span id="result_box" class="long_text"><span>Metodi voi ottaa vastaan parametrejä. Yleensä niitä kutsutaan argumenteiksi. Jokaisella parametrillä täytyy olla tyyppi ja nimi, aivan kuin muuttujilla. </span><span> <br><br></span><span>Metodin kutsumiseksi voit kirjoittaa sen nimen, jonka perään tulee sulut. Sulkujen sisällä ovat metodin parametrit. </span></span></p>
+<pre>kerroin(2, 2);
+</pre>
+<p><span id="result_box" class="long_text"><span>Metodin sisällä Processing pääsee käyttämään niiden arvoja, kuten se tekee muuttujien kanssa. <br><br></span><span>Esimerkiksi tässä metodi kutsutaan argumenteilla 2 ja 2, arvot ovat a = 2 ja b = 2. Metodin palautusarvo on 4. </span></span></p>
+<pre>int kerroin⁞(int a, int b) {
+  return a * b;
+}
+</pre>
+<p><span id="result_box" class="long_text"><span>Huomaa, että argumenttien sijainti määrittää, mitkä arvot asetetaan mihinkin pisteeseen.</span></span></p>
+<p><img title="multiplier" src="_booki/processing-1/static/multiplier-fi.png" alt="multiplier" width="598" height="393"></p>
+<p><span id="result_box"><span>Esimerkissä loimme metodin, joka palauttaa kahden argumentin kertolaskun tuloksen. Tämä kerrotaan metodia ennen olevassa kommentissa. Tällainen kommentointi on hyvä tapa. </span></span></p>
+<pre>/*
+ * Palauta kahden argumentin kertolaskun tulos. 
+ */
+int kerroin(int a, int b) {
+  return a * b;
+}
+
+void setup() {
+  int tulos = kerroin(2, 2);
+  print(tulos);
+}
+</pre>
+<p><img title="multip_result.tiff" src="_booki/processing-1/static/multip_result-tiff-fi.png" alt="multip_result.tiff" width="250" height="18"></p>
+<h2><span id="result_box"><span>Muuttujien laajuus <br></span></span></h2>
+<p><span id="result_box"><span> <br></span><span>Katsotaanpa yleistä virhettä, joka voi tapahtua, kun käytät ohjelmassa muuttujia ja metodeja. <br><br></span><span>Muuttujat - olkoot primitiivisiä tyyppejä tai objekteja - eivät välttämättä ole saatavilla koko ohjelmassasi. Se riippuu niiden julistuspaikasta. Metodin sisällä julistettu muuttuja on käytettävissä seuraavassa: </span></span></p>
+<pre>void setup() {
+  int x = 10;
+}
+
+void draw() {
+  /* Tästä ohjelmasta tulee virheviesti, koska 
+   * muuttuja x on olemassa vain metodin setup() sisällä 
+   */
+  x = x + 1;
+}
+</pre>
+<p><img title="var_error.tiff" src="_booki/processing-1/static/var_error-tiff-fi.png" alt="var_error.tiff" width="498" height="29"></p>
+<p><span id="result_box" class="long_text"><span>Jotta muuttujat ovat saatavilla koko ohjelmassasi, sinun pitää julistaa se ohjelman alussa: </span></span></p>
+<pre>int x;
+
+void setup() {
+  x = 10;
+}
+
+void draw() {
+  x = x + 1;
+}</pre></div><ul Class="menu-goes-here"><li Class="booki-section">Esittely</li><li><a href="/processing-1/index">Johdanto</a></li>
+<li><a href="/processing-1/ch002_esimerkkeja">Esimerkkejä</a></li>
+<li><a href="/processing-1/ch003_asennus">Asennus</a></li>
+<li Class="booki-section">Perusteet</li><li><a href="/processing-1/ch005_perusteet">Perusteet</a></li>
+<li Class="booki-section">Suunnittelu</li><li><a href="/processing-1/ch007_suunnittelutila">Suunnittelutila</a></li>
+<li><a href="/processing-1/ch008_muodot">Muodot</a></li>
+<li><a href="/processing-1/ch009_varit">Värit</a></li>
+<li><a href="/processing-1/ch010_kuvat">Kuvat</a></li>
+<li><a href="/processing-1/ch011_tekstit">Tekstit</a></li>
+<li Class="booki-section">Interaktiivisuus</li><li><a href="/processing-1/ch013_video">Video</a></li>
+<li><a href="/processing-1/ch014_videon-tuominen">Videon tuominen</a></li>
+<li><a href="/processing-1/ch015_mikrofoni">Mikrofoni</a></li>
+<li><a href="/processing-1/ch016_hiiri">Hiiri</a></li>
+<li><a href="/processing-1/ch017_nappaimisto">Näppäimistö</a></li>
+<li><a href="/processing-1/ch018_tulostaminen">Tulostaminen</a></li>
+<li Class="booki-section">Vienti</li><li><a href="/processing-1/ch020_verkkoon-vieminen">Verkkoon vieminen</a></li>
+<li Class="booki-section">Animaatio</li><li><a href="/processing-1/ch022_aanet">Äänet</a></li>
+<li><a href="/processing-1/ch023_draw-metodi">Draw-metodi</a></li>
+<li><a href="/processing-1/ch024_objektien-animointi">Objektien animointi</a></li>
+<li><a href="/processing-1/ch025_monien-objektien-animointi">Monien objektien animointi</a></li>
+<li><a href="/processing-1/ch026_aikajana">Aikajana</a></li>
+<li Class="booki-section">Ohjelmointi</li><li><a href="/processing-1/ch028_kommentit">Kommentit</a></li>
+<li><a href="/processing-1/ch029_objektit">Objektit</a></li>
+<li><a href="/processing-1/ch030_metodit">Metodit</a></li>
+<li><a href="/processing-1/ch031_listat">Listat</a></li>
+<li><a href="/processing-1/ch032_toistaminen">Toistaminen</a></li>
+<li><a href="/processing-1/ch033_ehdot">Ehdot</a></li>
+<li><a href="/processing-1/ch034_muuttujat">Muuttujat</a></li>
+<li><a href="/processing-1/ch035_muutokset">Muutokset</a></li>
+<li><a href="/processing-1/ch036_rajat">Rajat</a></li>
+<li Class="booki-section">Liitteet</li><li><a href="/processing-1/ch038_yleisia-virheita">Yleisiä virheitä</a></li>
+<li><a href="/processing-1/ch039_ulkoiset-kirjastot">Ulkoiset kirjastot</a></li>
+<li><a href="/processing-1/ch040_dokumentaatio">Dokumentaatio</a></li>
+<li><a href="/processing-1/ch041_arduino">Arduino</a></li>
+<li><a href="/processing-1/ch042_tasta-oppaasta">Tästä oppaasta</a></li>
+<li><a href="/processing-1/ch043_tekijat">Tekijät</a></li>
+</ul>

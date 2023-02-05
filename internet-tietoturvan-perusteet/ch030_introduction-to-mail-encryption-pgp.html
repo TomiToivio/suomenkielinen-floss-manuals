@@ -1,0 +1,48 @@
+<div id="main-content"><h1>Johdanto sähköpostien salaamiseen (PGP)</h1>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/pictogram_pgp_1.jpg" alt="" align="right">Tässä luvussa esittelemme sinulle joitain peruskäsitteitä sähköpostin salaamisen taustalla. On tärkeää lukea tämä, että saat tuntuman siihen, kuinka sähköpostin salaaminen itse asiassa toimii, ja mitkä sen hankaluudet ja rajoitteet ovat. <strong>PGP</strong> (Pretty Good Privacy) on protokolla, jota käytämme sähköpostin salaamiseen. Tämä protokolla antaa sinun allekirjoittaa ja salata sähköpostiviestejä digitaalisesti. Se toimii päästä päähän -periaatteella: viestisi salataan omalla tietokoneellasi ja ne voidaan purkaa vastaanottajan koneella. Välittäjä ei voi purkaa salatun viestisi sisältöä. Tämä ei sisällä otsikkoa ja "lähettäjä" ja "vastaanottaja" -kenttiä, joita ei valitettavasti salata tässä protokollassa.</p>
+<p>Näiden peruskäsitteiden esittelyn jälkeen seuraavat luvut antavat sinulle käytännönläheiset ohjeet tarpeellisten työkalujen asentamiseen käyttöjärjestelmääsi, jotta saat salauksen toimimaan. Keskitymme Enigmailin käyttämiseen. Se on Thunderbirdin lisäosa, joka auttaa sinua käyttämään PGP-salausta sähköposteissasi. Enigmailin/PGP:n asennusprosessi on erilainen Mac OSX:ssä, Windowsissa ja Ubuntussa, joten katso asiaanliittyviä lukuja tässä osassa ohjeita varten. </p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/GPG.jpg" alt="" width="505" height="240"></p>
+<h2>Avainparin käyttäminen sähköpostiesi salaamiseen</h2>
+<p>Olennainen käsite sähköpostin salaamisessa on <em>avainparien</em> käyttö. Avainpari on vain kaksi erillistä tiedostoa, jotka ovat kovalevylläsi tai USB-tikullasi. Kun tahdot salata tietyn sähköpostitilin sähköpostit, saatavilla täytyy olla nämä tiedostot jossain muodossa. Jos ne ovat kotona tietokoneellasi, et voi avata salausta toimistollasi. Tiedostojen laittaminen USB-tikulle ratkaisee tämän ongelman. </p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/Pictogram_Key-element%20in%20a%20method.png" alt="" align="left">Avainpariin kuuluu kaksi eri avainta: julkinen avain ja salainen avain. </p>
+<p>Julkinen avain: voit antaa tämän avaimen muille, jotta he voivat lähettää sinulle salattuja viestejä. Tämän tiedoston ei tarvitse olla piilossa.</p>
+<p>Salainen avain: tämä on periaatteessa salainen tiedostosi, jolla voit avata muiden sinulle lähettämät salatut sähköpostiviestit. Sitä ei pitäisi <em>koskaan</em> antaa jollekin muulle. </p>
+<h2>Salattujen sähköpostien lähettäminen muille: tarvitset heidän julkisen avaimensa</h2>
+<p>Minulla on viisi työkaveria työpaikallani ja tahdon lähettää heille salattuja sähköposteja. Tarvitsen julkisen avaimen heistä jokaisen sähköpostiin. He voivat lähettää minulle nämä avaimet tavallisessa postissa, antaa ne minulle henkilökohtaisesti tai laittaa ne USB-tikulle, avaimet voivat myös olla verkkosivulla. Sillä ei ole merkitystä, kunhan voin luottaa siihen, että nuo avaimet tosiaan kuuluvat henkilölle, jonka kanssa tahdon olla kirjeenvaihdossa. Ohjelmani laittaa avaimet "avainnippuuni", joten sähköpostiohjelmani tietää, miten ne voidaan lähettää salatuissa sähköposteissa.</p>
+<h2>Salattujen viestien vastaanottaminen toisilta: he tarvitsevat <em>minun</em> julkisen avaimeni</h2>
+<p>Viiden (tai kolmenkymmenen) kollegani täytyy voida lähettää <em>minulle</em> salattuja sähköposteja. Minun täytyy jaella julkinen avaimeni jokaiselle heistä. </p>
+<h2>Johtopäätelmä: salaus vaatii julkisen avaimen jakelua!</h2>
+<p>Kaikki ihmiset ystävien tai työtovereiden verkostossa joutuvat jakamaan julkiset avaimensta toisilleen, vaikka henkilökohtaiset avaimet on pidettävä tarkkaan vartioituna salaisuutena. Tässä luvussa kuvatut ohjelmat auttavat sinua toteuttamaan tämän avainten hallinnan. </p></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/internet-tietoturvan-perusteet/index">Johdanto</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch002_why-use-a-manual-on-internet-security">Miksi käyttää internet-tietoturvaopasta?</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch003_understanding-basic-internet-security">Internet-tietoturvan perusteiden ymmärtäminen</a></li>
+<li Class="booki-section">Yleinen turvallisuus</li><li><a href="/internet-tietoturvan-perusteet/ch005_secure-your-computer-general">Turvaa tietokoneesi (yleistä)</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch006_internet-cafes">Internet-kahvilat</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch007_software-on-usb-or-cd">Ohjelmat USB-tikulla tai CD:llä</a></li>
+<li Class="booki-section">Salasanojen turvaaminen</li><li><a href="/internet-tietoturvan-perusteet/ch009_keeping-passwords-safe">Salasanojen turvaaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch010_installing-a-password-manager">Salasanojen hallintaohjelman asentaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch011_encrypting-passwords-with-a-password-manager">Salasanojen salaaminen salasanojen hallintaohjelman avulla</a></li>
+<li Class="booki-section">Henkilökohtaisten tietojen turvaaminen</li><li><a href="/internet-tietoturvan-perusteet/ch013_introduction-to-securing-personal-data">Johdanto henkilökohtaisten tietojen turvaamiseen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch014_installing-truecrypt">TrueCryptin asentaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch015_using-truecrypt">TrueCryptin käyttö</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch016_setting-up-a-hidden-volume">Kätketyn osion luominen</a></li>
+<li Class="booki-section">Turvallinen selaaminen</li><li><a href="/internet-tietoturvan-perusteet/ch018_introduction-to-safe-browsing">Johdanto turvalliseen selaamiseen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch019_accessing-firefox-on-ubuntu">Firefoxin asennus Ubuntuun</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch020_installing-firefox-on-windows">Firefoxin asentaminen Windowsiin</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch021_protecting-your-internet-passwords">Internet-salasanojen suojaaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch022_extending-firefox">Firefoxin laajentaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch023_proxy-setting-and-foxyproxy">Välityspalvelimet ja FoxyProxy</a></li>
+<li Class="booki-section">Sähköpostin tietoturvan perusteet</li><li><a href="/internet-tietoturvan-perusteet/ch025_introduction-to-e-mail-safety">Johdanto sähköpostin tietoturvaan</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch026_start-using-thunderbird-mail">Thunderbird-sähköpostin käyttö</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch027_setting-up-secure-connections">Salattujen yhteyksien luominen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch028_some-additional-security-settings">Lisää turvallisuusasetuksia</a></li>
+<li Class="booki-section">Sähköpostien salaaminen</li><li><a href="/internet-tietoturvan-perusteet/ch030_introduction-to-mail-encryption-pgp">Johdanto sähköpostien salaamiseen (PGP)</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch031_installing-pgp-on-windows">PGP:n asentaminen Windowsiin</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch032_installing-pgp-on-ubuntu">PGP:n asentaminen Ubuntuun</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch033_creating-your-pgp-keys">PGP-avainten luominen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch034_daily-pgp-usage">Päivittäinen PGP:n käyttö</a></li>
+<li Class="booki-section">TOR-opas</li><li><a href="/internet-tietoturvan-perusteet/ch036_using-tor">TOR-opas</a></li>
+<li Class="booki-section">Taustatietoa</li><li><a href="/internet-tietoturvan-perusteet/ch038_how-the-net-works">Kuinka verkko toimii</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch039_glossary">Sanasto</a></li>
+<li Class="booki-section">Tekijät</li><li><a href="/internet-tietoturvan-perusteet/ch041_tekijat">Tekijät</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch042_lisenssi">Lisenssi</a></li>
+</ul>

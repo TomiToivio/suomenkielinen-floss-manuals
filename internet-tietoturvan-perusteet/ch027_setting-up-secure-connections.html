@@ -1,0 +1,69 @@
+<div id="main-content"><h1>Thunderbirdin turvallisten yhteyksien asetukset</h1>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/Pictogram_Thunderbird.jpg" alt="" align="right">On oikea ja turvallinen tapa tehdä asetukset palveluntarjoajan sähköpostipalvelimien yhteyksiä varten, mutta ne voi tehdä myös väärin ja turvattomaksi. Sähköpostin turvallisuuden keskeisin tekijä on valittava yhteystyyppi sähköpostin palveluntarjoajan palvelinta varten.</p>
+<p>Mikäli mahdollista, kannattaa ottaa yhteys käyttäen <strong>SSL</strong> (Secure Socket Layer) ja <strong>TLS</strong> (Transport Layer Security) -protokollia. (<strong>STARTTLS</strong>, joka on myös valittavissa asetuksia tehtäessä, on SSL/TLS-versio.) Nämä protokollat estävät oman järjestelmäsi ja järjestelmäsi ja sähköpostin välillä olevia koneita nappaamasta salasanaasi. SSL/TLS estää myös salakuuntelijoita lukemasta viestien sisältöä.</p>
+<p>Nämä protokollat kuitenkin turvaavat yhteyden vain tietokoneen ja sähköpostipalvelimen välillä. Ne eivät turvaa viestikanavaa viestin vastaanottajalle asti. Kun sähköpostiviestit lähettävät viestin eteenpäin, viesti voidaan napata ja lukea monessa pisteessä sähköpostipalvelimen ja vastaanottajan välillä. </p>
+<p>Tässä vaiheessa peliin tulee <strong>PGP</strong> (Pretty Good Privacy). Sitä kuvataan myöhemmin tässä oppaassa.</p>
+<p>Ensimmäinen askel sähköpostin turvaamisessa on turvallinen yhteys järjestelmäsi ja sähköpostipalvelinten välillä. Tämä luku kuvaa sähköpostipalvelimen oikeiden asetusten tekemistä.</p>
+<h2>Vaatimukset</h2>
+<p>Kun teet sähköpostitilin asetukset, Thunderbird yrittää määritellä (sähköpostin käyttäjätilistä ja tarjoamistasi käyttäjätilin yksityiskohdista) yhteyden oikeat asetukset sähköpostin tarjoajalle. Vaikka Thunderbird tuntee monien sähköpostipalveluiden oikeat yhteysasetukset, ei se tunne niitä kaikkia. Jos Thunderbird ei tunne oikeita asetuksia, sinun täytyy itse syöttää seuraavat tiedot sähköpostitiliäsi varten: </p>
+<ul><li><strong>Käyttäjänimi</strong></li>
+<li><strong>Salasana</strong></li>
+<li><strong>Saapuvan postin palvelin</strong>: nimi (kuten <span style="text-decoration: underline;"><a href="http://pop.example.com">"</a></span><a href="http://pop.example.com">imap.example.com")</a><span style="text-decoration: underline;">,</span> protokolla (POP tai IMAP), portti (oletuksena 110) ja turvallisuusprotokolla</li>
+<li><strong>Lähtevän postin palvelin</strong>: nimi (kuten <span style="text-decoration: underline;"><a href="http://pop.example.com/">"</a></span><a href="http://pop.example.com/">smtp.example.com")</a><span style="text-decoration: underline;">,</span> portti (oletuksena 25) ja turvallisuusprotokolla</li>
+</ul><p>Tämä tieto pitäisi saada sähköpostin tarjoajalta. Vaihtoehtoisesti nämä tiedot voivat yleensä löytyä sähköpostin tarjoajan verkkosivulta. Esimerkissämme käytämme Gmail-palvelimen asetuksia. Voit käyttää Thunderbirdiä Gmail-sähköpostisi kanssa. Tehdäksesi niin voit muuttaa sähköpostitilisi asetuksia. Jos et käytä Gmail-käyttäjätiliä, hyppää tämän yli. <span style="background-color: #ffffff;"><br></span></p>
+<h2>Gmail-sähköpostin käyttö Thunderbirdissä</h2>
+<p>Kirjaudu sisään Gmail-sähköpostiisi selaimessasi. Valitse <strong>Settings</strong> oikeassa ylänurkassa olevasta valikosta, mene sen jälkeen välilehteen <strong>Forwarding and POP/IMAP</strong>. Napsauta <strong>Enable IMAP</strong> ja sen jälkeen <strong>Save Changes</strong>.</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/gmail_windows7_imap_1.png" alt="" width="600" height="250"></p>
+<h2>Thunderbirdin SSL/TLS-asetukset</h2>
+<p>Kun käynnistät Thunderbirdin ensimmäistä kertaa, tehdään sähköpostitilin asetukset askel askeleelta. (Tämän sähköpostin asetusten käyttöliittymän voi avata milloin tahansa kohdasta <strong>File | New | Mail Account</strong>). Ensimmäisessä ruudussa kysytään nimeä, sähköpostiosoitetta ja salasanaa. Syöttämäsi arvon ei tarvitse olla oikea nimesi. Se näytetään viestiesi lähettäjänä. Kirjoita tiedot ja napsauta <strong>Continue</strong>.</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/01_ubuntu11.04_thunderbird_installation1.png" alt="" width="600" height="435"></p>
+<p>Seuraavassa ruudussa Thunderbird yrittää määritellä palvelinten nimet perustuen sähköpostiosoitteeseen. Tämä voi kestää jonkin aikaa, se toimii vain, jos Thunderbird tietää sähköpostin tarjoajan palvelinten asetukset. Joka tapauksessa tarjotaan ikkuna, jossa voit muokata asetuksia. Alla olevassa esimerkissä Thunderbird on määritellyt asetukset automaattisesti. Näet protokollan palvelimen nimen oikealla puolella. <em>Tämän pitäisi olla joko <strong>SSL/TLS</strong> tai <strong>STARTTLS</strong>. Muuten yhteytesi on turvaton ja joudut tekemään asetukset käsin. </em></p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/07_ubuntu11.04_thunderbird_installation2.png" alt="" width="600" height="435"></p>
+<p>Kun olet valmis, napsauta <strong>Create account</strong>. Jos Thunderbird ei voinut määritellä palvelimen asetuksia, napsauta <strong>Manual setup</strong> määritelläksesi itse palvelinten nimet.</p>
+<h2>Asetuksien tekeminen käsin</h2>
+<p>Käytä Account Settings -käyttöliittymää tehdäksesi asetukset käsin Thunderbirdissä. Account Settings -ikkuna aukeaa automaattisesti, jos valitset <strong>Manual setup </strong>asetusvelhossa. Tässä tapauksessa meitä kiinnostaa vain saapuvien ja lähtevien viestien palvelinten nimet. Lisäksi tärkeää on yhteyteen käytetty protokolla. Kuten voit nähdä alla olevissa esimerkeissä, kirjoitamme Gmail-pavlelinten nimet ja pakotamme ne käyttämään <strong>SSL</strong>-protokollaa, joka on turvallinen menetelmä ottaa yhteys palvelimiin.</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/05_ubuntu11.04_thunderbird_installation3_2.png" alt="" width="600" height="531"></p>
+<p>Kohdasta "Server Settings", löydämme vain saapuvien sähköpostien palvelimen (<strong>IMAP</strong>) ja sen asetukset tälle tietylle käyttäjätilille.</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/03_ubuntu11.04_thunderbird_installation3_1.png" alt="" width="600" height="550"></p>
+<p>Kirjoita kohdan <strong>Server Name</strong> jälkeen IMAP-palvelimen nimi, joka on tässä tapauksessa mail.gmail.com</p>
+<p><em>Kuten olet huomannut, olemme valinneet "<strong>SSL/TLS"</strong> kohdassa connection security setting. Tämä pakottaa käyttämään salausta. </em>Älä pelästy tunnistusmenetelmää <strong>Normal password</strong>. Salasana salataan automaattisesti palvelimeen otettujen salattujen yhteyksien vuoksi.</p>
+<p>Lopuksi voit tehdä lähtevien sähköpostien asetukset. Napsauta <strong>Outgoing Server (SMTP)</strong> vasemmalla olevassa paneelissa. </p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/06_ubuntu11.04_thunderbird_installation4.png" alt="" width="600" height="435"></p>
+<p>Olemme nyt valinneet asetukset <strong>SSL/TLS</strong> kohdasta <strong>Connection security</strong>. Portti on oletusarvoisesti 465 ja tämän ei yleisesti ottaen pitäisi joutua muuttamaan.</p>
+<h2>Asetusten viimeistely, erilaiset salausmenetelmät </h2>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/Pictogram_Information.png" alt="" align="left">Testaa nyt Thunderbirdin asetuksia yrittämällä lähettää ja vastaanottaa sähköpostiviestejä. Jotkin sähköpostien palveluntarjoajat eivät välttämättä tue SSL/TLS-protokollaa, joka on suositeltu valinta. Tällöin ilmestyy virheviesti, jonka mukaan palvelin ei tue tunnistusprotokollaa. Tämän jälkeen voit siirtyä STARTTLS-protokollan käyttöön. Edellisissä kahdessa ruudussa voit valita kohdasta "Connection security" valinnan "STARTTLS". Jos tämä menetelmä epäonnistuu myös, ota yhteyttä sähköpostin palveluntarjoajaan ja kysy heiltä, voivatko he tarjota toisen turvallisen yhteystavan. Jos turvallista yhteystapaa ei ole tarjolla, kannattaa valittaa ja harkita vakavasti palveluntarjoajan vaihtamista. </p>
+<h2>Paluu asetusruutuihin</h2>
+<p>Missä tahansa vaiheessa voit tehdä uudelleen sähköpostitiliesi asetukset menemällä Thunderbirdin valikkopankkiin ja napsauttamalla <strong>Edit | Account Settings</strong> (Linux) tai <strong>Tools | Account Settings</strong> (Windows ja Mac OS X).</p></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/internet-tietoturvan-perusteet/index">Johdanto</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch002_why-use-a-manual-on-internet-security">Miksi käyttää internet-tietoturvaopasta?</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch003_understanding-basic-internet-security">Internet-tietoturvan perusteiden ymmärtäminen</a></li>
+<li Class="booki-section">Yleinen turvallisuus</li><li><a href="/internet-tietoturvan-perusteet/ch005_secure-your-computer-general">Turvaa tietokoneesi (yleistä)</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch006_internet-cafes">Internet-kahvilat</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch007_software-on-usb-or-cd">Ohjelmat USB-tikulla tai CD:llä</a></li>
+<li Class="booki-section">Salasanojen turvaaminen</li><li><a href="/internet-tietoturvan-perusteet/ch009_keeping-passwords-safe">Salasanojen turvaaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch010_installing-a-password-manager">Salasanojen hallintaohjelman asentaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch011_encrypting-passwords-with-a-password-manager">Salasanojen salaaminen salasanojen hallintaohjelman avulla</a></li>
+<li Class="booki-section">Henkilökohtaisten tietojen turvaaminen</li><li><a href="/internet-tietoturvan-perusteet/ch013_introduction-to-securing-personal-data">Johdanto henkilökohtaisten tietojen turvaamiseen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch014_installing-truecrypt">TrueCryptin asentaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch015_using-truecrypt">TrueCryptin käyttö</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch016_setting-up-a-hidden-volume">Kätketyn osion luominen</a></li>
+<li Class="booki-section">Turvallinen selaaminen</li><li><a href="/internet-tietoturvan-perusteet/ch018_introduction-to-safe-browsing">Johdanto turvalliseen selaamiseen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch019_accessing-firefox-on-ubuntu">Firefoxin asennus Ubuntuun</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch020_installing-firefox-on-windows">Firefoxin asentaminen Windowsiin</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch021_protecting-your-internet-passwords">Internet-salasanojen suojaaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch022_extending-firefox">Firefoxin laajentaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch023_proxy-setting-and-foxyproxy">Välityspalvelimet ja FoxyProxy</a></li>
+<li Class="booki-section">Sähköpostin tietoturvan perusteet</li><li><a href="/internet-tietoturvan-perusteet/ch025_introduction-to-e-mail-safety">Johdanto sähköpostin tietoturvaan</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch026_start-using-thunderbird-mail">Thunderbird-sähköpostin käyttö</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch027_setting-up-secure-connections">Salattujen yhteyksien luominen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch028_some-additional-security-settings">Lisää turvallisuusasetuksia</a></li>
+<li Class="booki-section">Sähköpostien salaaminen</li><li><a href="/internet-tietoturvan-perusteet/ch030_introduction-to-mail-encryption-pgp">Johdanto sähköpostien salaamiseen (PGP)</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch031_installing-pgp-on-windows">PGP:n asentaminen Windowsiin</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch032_installing-pgp-on-ubuntu">PGP:n asentaminen Ubuntuun</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch033_creating-your-pgp-keys">PGP-avainten luominen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch034_daily-pgp-usage">Päivittäinen PGP:n käyttö</a></li>
+<li Class="booki-section">TOR-opas</li><li><a href="/internet-tietoturvan-perusteet/ch036_using-tor">TOR-opas</a></li>
+<li Class="booki-section">Taustatietoa</li><li><a href="/internet-tietoturvan-perusteet/ch038_how-the-net-works">Kuinka verkko toimii</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch039_glossary">Sanasto</a></li>
+<li Class="booki-section">Tekijät</li><li><a href="/internet-tietoturvan-perusteet/ch041_tekijat">Tekijät</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch042_lisenssi">Lisenssi</a></li>
+</ul>

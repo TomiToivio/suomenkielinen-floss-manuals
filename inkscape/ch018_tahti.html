@@ -1,0 +1,95 @@
+<div id="main-content"><h1>Tähti</h1>
+<p>Tähdet ja polygonit ovat erikoismuotoja, joita on vaikea piirtää käsin säilyttäen säännöllisen muodon. <strong>Tähtityökalu</strong> mahdollistaa tähtien ja säännöllisten polygonien piirtämisen helposti dokumenttiin. Tämä työkalu on hyvin käytännöllinen, vaikka sitä käytetään harvemmin kuin <strong>suorakulmiotyökalua</strong> ja <strong>ellipsityökalua</strong>.</p>
+<div id="content">
+<p><strong>Inkscapen</strong> tähdet ovat <strong>Live Shapeja</strong>, joten niitä voi muokata loputtomasti luomisen jälkeen, niissä on <strong>kahvat</strong> tai työkalun<strong> hallintaparametrit</strong>.  Muokkaamalla joitain seuraavista parametreistä tätä työkalua voidaan käyttää piirtämään kolmioita ja muita säännöllisiä polygoneja, joissa on mikä tahansa määrä tahkoja. Työkaluun liitetyt muodonrikkomismenetelmät mahdollistavat monia ällistyttäviä muotoja, mutta <strong>SVG-primitiivin</strong> helpon muokattavuuden mahtavat ominaisuudet ovat silti tallella. </p>
+<h2 class="title">Kuinka käytetään</h2>
+<p>Siirtyäksesi tähtityökaluun voit joko:</p>
+<ul><li>naksauttaa työkalulaatikon kuvaketta <span class="guiicon"> <img title="mode___toile_en" src="_booki/inkscape/static/Inkscape-StarTool-mode___toile_en-fi.png" alt="Tähti" width="26" height="26"></span></li>
+<li>
+<p><span class="emphasis">tai painaa </span><span class="keyboard_shortcuts"><strong><span><span class="keycap">*</span></span></strong></span><strong><span><span class="keycap"> </span></span></strong></p>
+</li>
+</ul><h3>Vaihtoehdot</h3>
+<p>Työkalun vaihtoehtoihin pääsee käsiksi<strong> työkalun hallintapalkissa</strong>:</p>
+<p><img title="star_options" src="_booki/inkscape/static/Inkscape-StarTool-inkscape_033-fi.png" alt="tähti" width="558" height="29"></p>
+<h3>Säännöllisen polygonin tai tähden piirtäminen</h3>
+<blockquote>
+<p>Vasemmalla olevat kuvakkeet sallivat <strong>säännöllisen polygonin</strong> <img title="mode_polygone" src="_booki/inkscape/static/Inkscape-StarTool-mode_polygone_en-fi.png" alt="Polygoni" width="26" height="26"> tai <strong>tähden </strong><img title="mode___toile" src="_booki/inkscape/static/Inkscape-StarTool-mode___toile_en-fi.png" alt="Tähti" width="26" height="26"> piirtämisen.</p>
+<p>Seuraava polygoni/tähti luodaan <strong>valitussa tilassa</strong>. Kohteen tila ja muoto muuttuvat, jos se on valittuna, kun yhtä näistä kuvakkeista napsautetaan.</p>
+<p><img title="mode_polygone" src="_booki/inkscape/static/Inkscape-StarTool-mode_polygone_en-fi.png" alt="Polygoni" width="26" height="26"> Säännöllinen polygoni -tilassa muodolla ei ole sakaroita. Vain yksi kahva on saatavilla, se mahdollistaa polygonin suunnan ja koon muuttamisen.</p>
+<p><img src="_booki/inkscape/static/Inkscape-StarTool-polygone_regulier_en-fi.png" alt="Polygoni" width="98" height="85"></p>
+<p><img title="mode___toile" src="_booki/inkscape/static/Inkscape-StarTool-mode___toile_en-fi.png" alt="Tähti" width="26" height="26"> Tähtitilassa sakarat lähtevät polygonin kulmista. On kaksi kahvaa - punainen kahva toimii kuin polygonin kahva, se mahdollistaa kohteen koon ja suunnan muuttamisen; valkoinen kahva sakaran sisemmässä kulmassa mahdollistaa sakaroiden muotojen ja koon samanaikaisen muuttamisen.</p>
+<p><img src="_booki/inkscape/static/Inkscape-StarTool-poignee_etoile_en-fi.png" alt="Tähti" width="171" height="187"></p>
+</blockquote>
+<h3>Kulmat</h3>
+<blockquote>
+<p>Voit määritellä kulmien ja sakaroiden määrän säätämällä kulmat-parametriä. Se voidaan määritellä ennen polygonin piirtämistä tai sitä voidaan muokata dynaamisesti, kun olemassaoleva polygoni on valittu. Kulmien määrä on rajoitettu välille 3-1024.</p>
+</blockquote>
+<h3>Sakaran suhdeluku</h3>
+<blockquote>
+<p>Saatavilla vain tähtitilassa. Sakaran suhdeluku antaa määritellä sakaran pituuden suhdeluvun tähden keskipisteen ja sen sakaroiden kärkien välillä. Tämä parametri voi olla välillä 0,0 - 1,0.</p>
+</blockquote>
+<h3><span class="term">Pyöristetty</span></h3>
+<blockquote>
+<p>Tämä asetus mahdollistaa muodon kulmien pyöristämisen sekä työkalun polygonitilassa että tähtitilassa. Arvot ovat väliltä -10,0 - 10,0. Paina <strong>Shift </strong>ja vedä jompaa kumpaa kahvaa muuttaaksesi muodon pyöristystä kankaalla. </p>
+<div class="tips">
+<p>Huomaa, että jokaisen kahvan vetäminen antaa erilaisia tuloksia, koska pyöristyksen aste on suhteessa kulman etäisyyteen muodon keskeltä - niinpä vetäminen keskikahvasta luo suuremman määrän pyöristystä kuin yhtä pitkä veto ulkokahvasta.</p>
+<p>Seuraava kuva näyttää joitain esimerkkejä pyöristyksestä, säännölliset polygonit ovat ensimmäisellä rivillä ja tähdet toisella. On loputtomasti enemmän mahdollisuuksia kuin tässä näytetään.</p>
+</div>
+<img title="courbure_etoile" src="_booki/inkscape/static/Inkscape-StarTool-courbure_etoile_en-fi.png" alt="Sottapytty" width="273" height="171"><p> </p>
+</blockquote>
+<h3><strong><span class="term">Sekoitettu</span></strong></h3>
+<blockquote>
+<p><strong>Sekoitettu</strong>-vaihtoehto tähtitylkalussa siirtää sakaroiden kärjet satunnaisiin koordinaatteihin tähden keskustan ympärillä. Arvo voi olla väliltä -10.0 - 10.0. Lähellä arvoa 0.0 satunnaisuuskerroin on vähäinen, se lisääntyy kun parametri lähestyy arvoa -10.0 tai 10.0.</p>
+<p>Voit myös muuttaa satunnaistamistehosteen voimakkuutta ruudulla painamalla Alt ja vetämällä kahvasta. </p>
+</blockquote>
+<h3>Oletusarvot</h3>
+<blockquote><img title="balayette" src="_booki/inkscape/static/Inkscape-StarTool-balayette_en-fi.png" alt="Hammasharja" width="26" height="26"> Palauttaa muodon parametrit oletusarvoihin.</blockquote>
+<h3 class="title">Lisätietoa</h3>
+<blockquote>Polygonille piirretään aina geometrinen keskusta kursorin aloituspisteestä - tätä ei voi muuttaa.</blockquote>
+<blockquote>
+<p><span class="term"> <span> <strong class="keycap">Ctrl</strong> - rajoittaa tähden muodon seuraamaan joitain kulmia. Kursorin siirto mahdollistaa kulman muuton säännöllisillä askelilla. </span></span>Askeleen arvo voidaan määritellä asetusikkunasa: <strong><em><span class="dialog"><span class="guimenuitem"><span class="accel">Tiedosto</span></span></span></em><span class="guimenuitem"><em> </em>&gt; </span></strong><span class="menu"><strong><span class="guimenuitem">In<span class="accel">k</span>scape</span>n asetukset...</strong></span><strong> &gt; Askeleet</strong>.</p>
+</blockquote>
+</div></div><ul Class="menu-goes-here"><li Class="booki-section">INKSCAPEN KÄYTTÖOHJE</li><li><a href="/inkscape/index">INKSCAPE-OHJE</a></li>
+<li><a href="/inkscape/ch002_svg">SVG-VEKTORIGRAFIIKKA</a></li>
+<li Class="booki-section">ASENNUS</li><li><a href="/inkscape/ch004_asennus-windowsiin">ASENNUS WINDOWSIIN</a></li>
+<li Class="booki-section">PERUSTEET</li><li><a href="/inkscape/ch006_kayttoliittyma">KÄYTTÖLIITTYMÄ</a></li>
+<li><a href="/inkscape/ch007_tiedostojen-kaytto">TIEDOSTOJEN KÄYTTÖ</a></li>
+<li Class="booki-section">PIKAOPAS</li><li><a href="/inkscape/ch009_kuvakkeiden-luominen">KUVAKKEIDEN LUOMINEN</a></li>
+<li Class="booki-section">TYÖKALULAATIKKO</li><li><a href="/inkscape/ch011_valinta">VALINTA</a></li>
+<li><a href="/inkscape/ch012_solmu">SOLMU</a></li>
+<li><a href="/inkscape/ch013_muokkaus">MUOKKAUS</a></li>
+<li><a href="/inkscape/ch014_zoomaus">ZOOMAUS</a></li>
+<li><a href="/inkscape/ch015_suorakulmio">SUORAKULMIO</a></li>
+<li><a href="/inkscape/ch016_kolmiulotteinen-laatikko">KOLMIULOTTEINEN LAATIKKO</a></li>
+<li><a href="/inkscape/ch017_ellipsi">ELLIPSI</a></li>
+<li><a href="/inkscape/ch018_tahti">TÄHTI</a></li>
+<li><a href="/inkscape/ch019_spiraali">SPIRAALI</a></li>
+<li><a href="/inkscape/ch020_lyijykyna">LYIJYKYNÄ</a></li>
+<li><a href="/inkscape/ch021_kuulakarkikyna">BÉZIER</a></li>
+<li><a href="/inkscape/ch022_kalligrafia">KALLIGRAFIA</a></li>
+<li><a href="/inkscape/ch023_pyyhekumi">PYYHEKUMI</a></li>
+<li><a href="/inkscape/ch024_sankotaytto">SANKOTÄYTTÖ</a></li>
+<li><a href="/inkscape/ch025_teksti">TEKSTI</a></li>
+<li><a href="/inkscape/ch026_liitin">LIITIN</a></li>
+<li><a href="/inkscape/ch027_liukuvari">LIUKUVÄRI</a></li>
+<li><a href="/inkscape/ch028_pipetti">PIPETTI</a></li>
+<li Class="booki-section">POLUT</li><li><a href="/inkscape/ch030_muuta-polkua">MUUTA POLKUA</a></li>
+<li Class="booki-section">TEKSTI</li><li><a href="/inkscape/ch032_tekstin-tyyli">TEKSTIN TYYLI</a></li>
+<li><a href="/inkscape/ch033_tekstin-efektit">TEKSTIN EFEKTIT</a></li>
+<li><a href="/inkscape/ch034_teksti-ja-polut">TEKSTI JA POLUT</a></li>
+<li Class="booki-section">USEAMMAN OBJEKTIN OPERAATIOT</li><li><a href="/inkscape/ch036_kopioi-kloonaa-ja-monista">KOPIOI, KLOONAA JA MONISTA</a></li>
+<li><a href="/inkscape/ch037_leikkaus-ja-peitteet">LEIKKAUS JA PEITTEET</a></li>
+<li Class="booki-section">KOHTEIDEN SIJOITTELU</li><li><a href="/inkscape/ch039_sijoittelu">SIJOITTELU</a></li>
+<li><a href="/inkscape/ch040_jaa-ja-tasaa">JAA JA TASAA</a></li>
+<li Class="booki-section">KOHTEIDEN JÄRJESTELY</li><li><a href="/inkscape/ch042_tasot">TASOT</a></li>
+<li><a href="/inkscape/ch043_ryhmittely">RYHMITTELY</a></li>
+<li Class="booki-section">KOHTEIDEN TYYLI</li><li><a href="/inkscape/ch045_tyyli">TYYLI</a></li>
+<li><a href="/inkscape/ch046_taytto-ja-viiva">TÄYTTÖ JA VIIVA</a></li>
+<li Class="booki-section">POLKUTEHOSTE</li><li><a href="/inkscape/ch048_polkutehosteet">POLKUTEHOSTEET</a></li>
+<li><a href="/inkscape/ch049_hammasrattaat">HAMMASRATTAAT</a></li>
+<li><a href="/inkscape/ch050_muoto-polkua-pitkin">MUOTO POLKUA PITKIN</a></li>
+<li Class="booki-section">SVG-SUODATTIMET</li><li><a href="/inkscape/ch052_suodattimet">SUODATTIMET</a></li>
+<li Class="booki-section">ASETUKSET</li><li><a href="/inkscape/ch054_varinhallinta">VÄRINHALLINTA</a></li>
+<li Class="booki-section">LIITTEET</li><li><a href="/inkscape/ch056_oppaasta">KÄYTTÖOHJEESTA</a></li>
+<li><a href="/inkscape/ch057_lisenssi">LISENSSI</a></li>
+</ul>

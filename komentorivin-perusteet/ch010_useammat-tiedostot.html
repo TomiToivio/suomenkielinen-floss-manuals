@@ -1,0 +1,247 @@
+<div id="main-content"><h1>Useammat tiedostot</h1>
+<p><span class="Apple-style-span" style="font-family: Verdana;">Totuttuasi komentoriviin joudut etsimään tapoja tehdä enemmän lyhyemmässä ajassa. Yksi helpoimmista tavoista saada tämä aikaan on muokata monia tiedostoja samaan aikaan, joten sen sijaan että poistat tiedostot yksitellen: </span></p>
+<pre><strong>$ rm vanha</strong>
+$ <strong>rm turha</strong>
+$ <strong>rm virhe</strong>
+$ <strong>rm tarpeeton</strong>
+</pre>
+<p>Poistat vain kaikki näistä tiedostoista yhdellä komennolla. Monet komennot, kuten "rm", antavat valita kaikki poistettavat tiedostot kerralla: </p>
+<pre>$ <strong>rm vanha turha virhe tarpeeton</strong></pre>
+<p>Edelleenkin, täytyy olla parempi tapa!  </p>
+<h2>Ryhmittely</h2>
+<p> </p>
+<p>Tiedostojen ryhmittely on komentorivin tapa käsitellä monia tiedostoja käyttäen mahdollisimman vähän kirjoitusmerkkejä. Pääte käsittelee joitain merkkejä koodeina, joita voit käyttää määrittelemään asioita ryhmiin, joihin tahdot komentojen vaikuttavan. Näitä merkkejä kutsutaan yleensä "jokerimerkeiksi", koska ne ovat kuin pelikortti, jonka pelaajat ovat määritelleet merkitsemään mitä tahansa.</p>
+<h2>Jokerimerkki "*"</h2>
+<p>Ajattele hakemistoa, jossa on tiedostoja: </p>
+<pre>$<strong> ls</strong> <strong></strong>
+vanha turha virhe tarpeeton</pre>
+<p>jonka tahdot poistaa. Pitkäveteisen homman voi muuttaa yksinkertaiseksi käyttämällä "*" eli asteriski -jokerimerkkiä.  </p>
+<pre>$<strong> rm *</strong>
+</pre>
+<p>Kun sitä käytetään yksinään, asteriski-jokerimerkki viittaa kaikkiin tiedostoihin hakemistossa. Voimme sanoa, että pääte laajentaa jokerimerkkiä. Pääte tietää mitä hakemistossa on, se korvaa tiedostonimet asteriskilla ja toteuttaa käytännössä seuraavan komennon:  </p>
+<pre>$<strong> rm </strong><strong>vanha turha virhe tarpeeton</strong>
+</pre>
+<p>Voit lisätä merkkiin "*" muita merkkejä tehdäksesi siitä valikoivan.</p>
+<pre>$<strong> rm t*</strong>
+$<strong> ls</strong>
+vanha virhe
+</pre>
+<p>Mitä tässä tapahtui? Pääte katsoi ensin merkkiä "t" ja laajensi sitten asteriskin käsittämään kaikki tiedostot, jotka alkoivat merkillä "t". Jos olisit yrittänyt sen sijaan "v*", olisi pääte poistanut kaikki tiedostot, jotka alkavat merkillä "v". Korvataanpa alkuperäiset tiedostot ja katsotaan mitä tapahtuu: </p>
+<pre><strong>$ rm v* $ ls</strong>
+turha tarpeeton
+</pre>
+<p><span>Asteriski -jokerimerkki voidaan sijoittaa mihin tahansa sanan sisällä. Siirrytäänpä "ls"-komentoon, koska on helpompi nähdä, mitä jokerimerkit tekevät:</span></p>
+<p> </p>
+<pre><strong>$ ls tu*rha</strong>
+<strong></strong>turha
+</pre>
+<p>Siirtymällä komennosta "rm" komentoon "ls" näemme tärkeän jokerimerkin ominaisuuden: voit käyttää niitä minkä tahansa komennon kanssa, koska pääte käsittelee ne ennen kuin edes kutsuu komennon. Itse asiassa et voi antaa komentoa ottamatta huomioon jokerimerkkien käytöstä, koska ne ovat päätteen ominaisuus. (Onneksi tiedostonimissä ei koskaan ole asteriskia.)</p>
+<p>Useampia asteriskeja voidaan myös käyttää yhdessä. Tällä tavalla voit esimerkiksi löytää tiedostonimiä, joissa sarjan keskiosa on sama, mutta ne alkavat ja päättyvät eri tavalla. Kokeillaanpa alkuperäisten neljän tiedoston kanssa:</p>
+<pre><strong>$</strong><strong> ls *i*</strong>
+virhe</pre>
+<p>Asteriskia käytetään usein poistamaan tiedostot, jotka ovat kaikki yhtä tyyppiä. Esimerkiksi, jos olet työskennellyt kuvien kanssa ja tahdot poistaa ".jpg" -loppuisia tiedostoja kun olet lopettanut, voit poistaa ne nykyisessä hakemistossasi seuraavalla tavalla:</p>
+<p> </p>
+<pre><strong>$</strong><strong> rm *.jpg</strong></pre>
+<p>Oletetaan, että sinulla on joitain ".jpg" -loppuisia tiedostoja ja joitain ".jpeg" -loppuisia tiedostoja. Asteriski tekee silti siivoamisesta helppoa:  </p>
+<pre><strong>$</strong><strong> ls *.jp*g</strong></pre>
+<p>Tai oletetaan, että JPEG-tiedostot ovat jakautuneena useampaan alihakemistoon. Sinulla on hakemistot nimeltä "kuvat1", "kuvat2", "kuvat3" ja niin edelleen, jokaisessa on JPEG-tiedostoja, jotka tahdot poistaa. Jokerimerkki auttaa sinua listaamaan noiden alihakemistojen sisällön:</p>
+<pre>$ <strong>ls kuvat*</strong>
+kuvat1:
+keskusasema.jpg uusi_kirkko.jpg
+
+kuvat2:
+ica.jpeg teatteri.jpeg
+
+kuvat3:
+bayeux_katedraali.jpeg rouen_katedraali.jpeg matka.odt
+</pre>
+<p>Ja voit valita hakemiston poistettavien tiedostonimien kanssa:  </p>
+<pre>$ <strong>rm kuvat*/*.jp*g</strong>
+$ <strong>ls kuvat*</strong>
+
+kuvat1:
+
+kuvat2:
+
+kuvat3:
+matka.odt</pre>
+<p>Ainoastaan tiedosto "matka.odt" jää jäljelle (koska siinä ei ole merkkijonoa ".jp*g") kaikkien tekemiesi matkojen listana. </p>
+<p>On kuitekin yksi rajoitus asteriski-jokerimerkin käyttöön. Oletusasetuksena se ei ota huomioon kätkettyjä tiedostoja (niitä tiedostonimiä, jotka alkavat pisteellä, sinun täytyy käyttää komentoa "ls -a" nähdäksesi nämä).</p>
+<pre><strong>$ ls -a</strong>
+.
+..
+.piilossa
+turha
+vanha
+virhe
+tarpeeton
+<strong>$ rm *</strong>
+<strong>$ ls -a </strong>
+.
+..
+.piilossa</pre>
+<p>Jos tahdot tuhota nämä kätketyt tiedostot jokerimerkillä, on tarpeen laittaa piste jokerimerkin eteen. Huomaa, että normaaleja tiedostoja (eli niitä, jotka eivät ole kätkettyjä, eli eivät ala pisteellä) ei poisteta, kun teet näin:  </p>
+<pre><strong>$ls -a</strong>
+.
+..
+.piilossa 
+<strong>$rm .*</strong>
+<strong>$ls -a </strong>
+.
+..
+</pre>
+<p>Lopuksi, on tärkeää huomata, että asteriski voi myös sopia tyhjään. Seuraavassa listassa homma listataan niiden tiedostojen lisäksi, joilla on jotain asteriskiin sopivaa:</p>
+<pre>$ <strong>ls homma* </strong>
+homma  hommaA  hommaB  hommaXY
+</pre>
+<h2><strong>"?"-jokerimerkki </strong></h2>
+<p>"?" tai kysymysmerkki -jokerimerkki on hyvin samantapainen kuin asteriski-jokerimerkki. Varsinainen ero on, että kysymysmerkki-jokerimerkki korvaa vain yhden kirjoitusmerkin.</p>
+<pre>$ <strong>ls homma*</strong>
+homma  hommaA  hommaB  hommaXY
+$ <strong>ls homma?</strong>
+hommaA  hommaB
+$ <strong>ls homma??</strong>
+hommaXY</pre>
+<p>Kuten olemme jo nähneet, asteriski sopii kaikkiin tiedostoihin, jotka alkavat kirjaimilla "homma". Yksittäinen kysymysmerkki sopii tiedostoihin, joissa on yksi merkki "homma"-kirjainten jälkeen. Kaksi kysymysmerkkiä vaatii täsmälleen kahta kirjoitusmerkkiä tässä paikassa.</p>
+<h2><strong>"[ ]" -jokerimerkki</strong></h2>
+<p>Hakasulku-jokerimerkit voivat olla vielä tarkempia, sillä ne osoittavat tietyn merkkivälin. Seuraava "ls" -komento sisältää "-1" -valitsimen, mikä merkitsee "listaa yksi merkki joka rivillä." Näin on helpompaa nähdä, kuinka tiedostot tässä esimerkissä eroavat toisistaan.</p>
+<pre><strong> $ ls -1</strong>
+tiedosto_1
+tiedosto_2
+tiedosto_3
+tiedosto_a
+tiedosto_b
+tiedosto_c
+
+</pre>
+<p>Käyttämällä hakasulkuja voit poistaa tiettyjä tiedostoja kirjoittamatta jokaista nimeä kokonaan. </p>
+<pre><strong>$ rm tiedosto_[1,3,a,c]</strong>
+<strong>$ ls -1</strong>
+tiedosto_2
+tiedosto_b
+</pre>
+<p>Voit myös laittaa hakasulkuihin joukon yksittäisiä merkkejä ilman pilkkuja. Lopputulos olisi silti sama:  </p>
+<pre><strong> $ rm tiedosto_[13ac]</strong>
+</pre>
+<p>Hakasulkujen sisällä merkkien järjestyksellä ei ole merkitystä.</p>
+<p>Yhdistämällä hakasulut tavuviivan kanssa voit tehdä komennon tietyllä välillä olevalle joukolle tiedostoja. Aloitetaanpa hakemistosta, jossa on monta numeroihin päättyvää tiedostoa: </p>
+<pre><strong> $ ls -1</strong>
+tiedosto_1
+tiedosto_2
+tiedosto_3
+...
+tiedosto_78
+</pre>
+<p>Aluksi voi olla houkuttelevaa käyttää asteriski-jokerimerkkiä tässä. Mitä jos meidän täytyy kuitenkin poistaa vain tiedostot 11-34? Voisimme käyttää pilkulla eroteltua muotoa hakasulku-jokerimerkistä, mutta joutuisimme silti kirjoittamaan 23 numeroa, sekä pilkut. Onneksi on paljon helpompikin tapa. </p>
+<pre><strong> $rm tiedosto_[11-34]</strong></pre>
+<p>Nyt ainoat jäljelle jääneet tiedostot ovat 1-10 ja 35-78. Käyttämällä väliviivaa hakasuluissa olevien numerojoukkojen välissä, saat päätteen laajentamaan kuviota luomalla nimen, jossa on jokainen numero väliviivan vasemmalla olevasta alkuarvosta aina oikealla olevaan loppuarvoon asti.</p>
+<p>Numerovälien sijasta voidaan käyttää myös kirjainvälejä. </p>
+<pre><strong> $ls -1</strong>
+tiedosto_a
+tiedosto_b
+tiedosto_c
+tiedosto_d<strong> $ rm tiedosto_[a-c] $ ls -1</strong>
+tiedosto_d
+</pre>
+<p>Sekä pilkut että kirjain- ja numerovälit voidaan yhdistää samoihin hakasulkuihin.</p>
+<pre><strong> $ls</strong>
+file_a
+file_b
+file_c
+file_1
+file_2<strong> $rm file_[a-c,1,2] $ls</strong>
+</pre>
+<h2>Ryhmittely kun mikään tiedosto ei sovi </h2>
+<p>Oletetaan, että käytät jokerimerkkiä ja pääte ei löydä sopivaa tiedostonimeä.</p>
+<pre><strong>$ ls -1</strong>
+tiedosto_a
+tiedosto_b
+tiedosto_c
+tiedosto_d<strong> $rm tiedosto?</strong>
+rm: cannot remove `tiedosto?': No such file or directory
+</pre>
+<p>Kun ei ole kuvioon sopivaa tiedostoa, pääte lähettää jokerimerkin ohjelmalle laajentamattomana. Tämän vuoksi saat virheviestin "rm"-ohjelmalta, et päätteeltä.</p>
+<h2>Jokerimerkin ottaminen pois päältä </h2>
+<p>Okei, tiedämme että päätteelle pitää lähettää jokerimerkki optiona ohjelmalle, kun se ei löydä tiedostoa, mutta mitä teemme, kun tahdomme lähettää ohjelmalle merkin, joka on myös jokerimerkki? Tässä on yleinen esimerkki: etsimme tiedostosta jokaista asteriskin ilmentymää.  </p>
+<pre><strong>$ ls </strong>
+2tiedosto
+*tiedosto
+*?****[a-b]
+</pre>
+<p>Nyt tahdomme tiedoston "*tiedosto", mutta saamme:</p>
+<pre> *file   2file                                                                   </pre>
+<p>Miksi? Koska asteriski on jokerimerkki, pääte laajensi sen ennen kuin lähetti sen "ls"-komennolle. Joten laajennuksen jälkeen komento näyttää tälle: </p>
+<pre>$ <strong>ls *tiedosto 2tiedosto</strong></pre>
+<p>Jos tahdomme "ls"-komennon löytävän asteriskin, täytyy tehdä jotain muuta.</p>
+<p>"\" eli kenoviiva kertoo päätteelle, että seuraavaa merkkiä täytyy käsitellä normaalina merkkinä eikä jokerimerkkinä. </p>
+<pre><strong>$ls \*tiedosto</strong>
+*tiedosto
+</pre>
+<p>Koska asteriski on seuraava merkki kenoviivan jälkeen, pääte lähettää asteriskin ls-komennolle muuttamattomana. Toisin sanoen: kenoviiva päästää asteriskin pakoon. Kenoviivamerkki toimii hyvin, kun meillä on vain yksi jokerimerkki, jonka tahdomme lähettää ohjelmalle, mutta jos tahdomme laittaa kokonaisen merkkijonon, kuten "*?****[a-b]", jossa on paljon merkkejä, jotka tulkittaisiin normaalisti jokerimerkeiksi? Jos käytämme kenoviivoja niiden päästämiseksi pakoon, joudumme merkitsemään jokaisen merkin erikseen. Lyhyestä merkkijonosta tulisi: "\*\?\*\*\*\*\[a-b\]".  Sen sijaan, että kirjoittaisimme kaksinkertaisen määrän merkkejä, käytämme paria heittomerkkiä.  </p>
+<pre><strong>$ls '*?****[a-b]'</strong>
+
+*?****[a-b]
+</pre>
+<p>Pääte jättää muuttamatta jokaisen merkkijono, joka on suljettu heittomerkkeihin, jopa sen ollessa täynnä jokerimerkkejä.</p>
+<h2>Jokerimerkin kääntäminen toisin päin</h2>
+<p>Joskus tahdot kaikki tiedostot hakemistossa, paitsi ne, jotka sopivat kuvioon. Esimerkiksi sinulla on hakemisto, jossa on muutamia satoja tiedostoja ja noin viisikymmentä ei noudata mitään nimeämiskäytäntöä, mutta sataviisikymmentä on nimetty jonkin käytännön mukaan. Voisit kääntää jokerimerkkien merkityksen toisin päin, jolloin saisit juuri sen, mitä tahdot. Tässä kohdistinmerkki "^" ja hakasulut "[]" ovat käytännöllisiä.</p>
+<pre><strong>$ rm [^tiedosto_]*</strong>
+</pre>
+<p>Kohdistinmerkki kääntää kuvion ympäri. Se käskee päätteen käsitellä kaikkia tiedostonimiä, jotka eivät sovi kuvioon. Tässä tempussa on kuitenkin yksi ongelma. Ainoastaan asteriski-jokerimerkki voidaan esittää hakasulkujen ulkopuolella.</p>
+<pre><strong>$ ls -1</strong>
+tiedosto_1
+tiedosto_2
+...
+tiedosto_100
+satunnainen_tiedosto
+toinen_satunnainen_tiedosto
+tiedosto_xyz
+<strong>$ rm [^tiedosto_]* $ ls -1</strong>
+tiedosto_1
+tiedosto_2
+...
+tiedosto_100
+tiedosto_xyz
+
+</pre>
+<p>Tässä tapauksessa tiedosto "tiedosto_xyz" sopii ryhmitykseen "tiedosto_", sitä ei laajenneta, joten "rm" ei tee sille mitään.</p></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/komentorivin-perusteet/index">Ota komento</a></li>
+<li Class="booki-section">Perusteet</li><li><a href="/komentorivin-perusteet/ch003_aloittaminen">Käytön aloittaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch004_syntaksi">Syntaksi</a></li>
+<li><a href="/komentorivin-perusteet/ch005_ympariinsa-siirtyminen">Ympäriinsä siirtyminen</a></li>
+<li><a href="/komentorivin-perusteet/ch006_tiedostorakenne">Tiedostorakenne</a></li>
+<li Class="booki-section">Komennot</li><li><a href="/komentorivin-perusteet/ch008_peruskomennot">Peruskomennot</a></li>
+<li><a href="/komentorivin-perusteet/ch009_jarjestelmanvalvojat">Järjestelmänvalvoja</a></li>
+<li><a href="/komentorivin-perusteet/ch010_useammat-tiedostot">Useammat tiedostot</a></li>
+<li><a href="/komentorivin-perusteet/ch011_kirjoita-vahemman">Kirjoita vähemmän</a></li>
+<li Class="booki-section">Keskivaikeita komentoja</li><li><a href="/komentorivin-perusteet/ch013_putkitus">Putkitus</a></li>
+<li><a href="/komentorivin-perusteet/ch014_komentohistoria">Komentohistoria</a></li>
+<li><a href="/komentorivin-perusteet/ch015_standarditiedostot">Standarditiedostot</a></li>
+<li Class="booki-section">Kehittyneempiä komentoja</li><li><a href="/komentorivin-perusteet/ch017_kayttooikeudet">Käyttöoikeudet</a></li>
+<li><a href="/komentorivin-perusteet/ch018_interaktiivinen-muokkaus">Interaktiivinen muokkaus</a></li>
+<li><a href="/komentorivin-perusteet/ch019_poistumisen-tarkastaminen">Poistumisen tarkastaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch020_alikomennot">Alikomennot</a></li>
+<li><a href="/komentorivin-perusteet/ch021_hakemistot">Hakemistot</a></li>
+<li><a href="/komentorivin-perusteet/ch022_kustomisointi">Kustomisointi</a></li>
+<li><a href="/komentorivin-perusteet/ch023_parametrien-korvaaminen">Parametrien korvaaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch024_gnuscreen">GNUScreen</a></li>
+<li><a href="/komentorivin-perusteet/ch025_ssh">SSH</a></li>
+<li><a href="/komentorivin-perusteet/ch026_ohjelmien-asentaminen">Ohjelmien asentaminen</a></li>
+<li Class="booki-section">Tekstieditorit</li><li><a href="/komentorivin-perusteet/ch028_tekstieditorit">Tekstieditorit</a></li>
+<li><a href="/komentorivin-perusteet/ch029_nano">Nano</a></li>
+<li><a href="/komentorivin-perusteet/ch030_vi-ja-vim">Vi ja Vim</a></li>
+<li><a href="/komentorivin-perusteet/ch031_emacs">Emacs</a></li>
+<li><a href="/komentorivin-perusteet/ch032_kedit">Kedit</a></li>
+<li><a href="/komentorivin-perusteet/ch033_gedit">Gedit</a></li>
+<li Class="booki-section">Skriptaus</li><li><a href="/komentorivin-perusteet/ch035_skriptaus">Skriptaus</a></li>
+<li><a href="/komentorivin-perusteet/ch036_skriptien-huoltaminen">Skriptien huoltaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch037_muut-kielet">Muut kielet</a></li>
+<li><a href="/komentorivin-perusteet/ch038_sed">Sed</a></li>
+<li><a href="/komentorivin-perusteet/ch039_awk">AWK</a></li>
+<li><a href="/komentorivin-perusteet/ch040_saannolliset-lausekkeet">Säännölliset lausekkeet</a></li>
+<li><a href="/komentorivin-perusteet/ch041_perl">Perl</a></li>
+<li><a href="/komentorivin-perusteet/ch042_ruby">Ruby</a></li>
+<li><a href="/komentorivin-perusteet/ch043_python">Python</a></li>
+<li Class="booki-section">Komennot nopeasti</li><li><a href="/komentorivin-perusteet/ch045_komentojen-pikaopas">Komentojen pikaopas</a></li>
+<li Class="booki-section">Liitteet</li><li><a href="/komentorivin-perusteet/ch047_tasta-kayttooppaasta">Tästä käyttöoppaasta</a></li>
+<li><a href="/komentorivin-perusteet/ch048_tekijat">Tekijät</a></li>
+</ul>

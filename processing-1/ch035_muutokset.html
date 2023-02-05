@@ -1,0 +1,250 @@
+<div id="main-content"><h1>Muutokset</h1>
+<p><span id="result_box" class="long_text"><span>Toistaiseksi olemme suunnitelleet muotoja sovelluksemme ikkunassa, aina suhteessa ikkunan vasempaan yläkulmaan. <br><br></span><span>Muutoksilla on mahdollista siirtää tätä alkupistettä, mutta myös määritellä uudelleen akseleiden suunta ja jopa muuttaa näiden viivojen skaalaa.</span></span></p>
+<p><span id="result_box" class="long_text"><span> <br></span><span>Oletusarvoisesti Processing asettaa alkupisteen seuraavasti: </span></span></p>
+<p><img title="TG_01" src="_booki/processing-1/static/TG_01-fi.png" alt="TG_01" width="599" height="255"></p>
+<pre>size(200, 200);
+noStroke();
+fill(0);
+rect(0, 0, 100, 100);
+</pre>
+<h2>Siirto</h2>
+<p><span id="result_box" class="long_text"><span>Alkupisteen muuttamiseksi on komento <code>translate ()</code>. Voimme siirtää x-akselia (horisontaalisesti) ja y-akselia (vertikaalisesti). Kerromme <code>translate ()</code> -komennolle, kuinka paljon tahdomme siirtää näitä akseleita. Seuraavassa esimerkissä siirrämme alkupistettä 50 pikseliä suunnassa x ja 50 pikseliä suunnassa y. Tulisi huomata, että <code>translate ()</code> ei vaikuta myöhemmin piirrettyihin geometrisiin muotoihin. </span></span></p>
+<p><img title="TG_02" src="_booki/processing-1/static/TG_02-fi.png" alt="TG_02" width="599" height="240"></p>
+<pre>size(200, 200);
+noStroke();
+fill(0);
+translate(50, 50);
+rect(0, 0, 100, 100);
+</pre>
+<p><span id="result_box" class="long_text"><span>Komennon <code>translate()</code> linkittäminen antaa sinun siirtää muotoja, kuten alla näkyy. <br></span></span></p>
+<p><img src="_booki/processing-1/static/3_carres_diag-tiff-fi_1.png" alt=""> </p>
+<pre>size(200,200);
+
+// Musta
+fill(0);
+translate(20,20);
+rect(0,0,40,40);
+
+// Harmaa
+fill(128);
+translate(60,60);
+rect(0,0,40,40);
+
+// Valkoinen
+fill(255);
+translate(60,60);
+rect(0,0,40,40);
+</pre>
+<h2>Käännös</h2>
+<p><span id="result_box" class="long_text"><span>Voimme siirtää koordinaattipiirroksen alkupistettä. Nyt pyöritämme akseleita. Komennolla <code>rotate()</code> x ja y vaihtavat suuntaa. <code>rotate()</code> ottaa parametriksi numeron, joka esittää pyörimisliikkeen astetta, eli kuinka akselimme pyörivät suhteessa ikkunaamme. Positiiviset numerot osoittavat pyörimistä myötäpäivään. </span></span></p>
+<p><img title="radian_degrev2" src="_booki/processing-1/static/radian_degrev2-fi.png" alt="radian_degrev2" width="599" height="533"></p>
+<p><span id="result_box" class="long_text"><span>Olemassa on kaksi mittausjärjestelmää kulman mittaamiseen: radiaani ja asteet. Oletusarvoisesti Processing toimii radiaanilla, mutta yleensä on helpompi ajatella asteina. Esimerkiksi 18</span><span>0 astetta on u-käännös. <br><br></span><span>Processing muuttaa yhden yksikön toiseksi funktioilla <code>radians()</code> ja <code>degrees()</code>. </span></span></p>
+<pre>float d = degrees(PI/4); // muuttaa radiaanin asteiksi
+float r = radians(180.0); // muuttaa asteet radiaaniksi
+</pre>
+<p><span id="result_box" class="long_text"><span>Yksinkertainen esimerkki funktion <code>rotate()</code> toiminnasta. Pyöritämme neliötä alkupisteen ympäri. </span></span></p>
+<p><img src="_booki/processing-1/static/TG_03-fi_1.png" alt=""></p>
+<p> </p>
+<pre>size(200, 200);
+noStroke();
+fill(0);
+rotate(PI/4);
+rect(0, 0, 100, 100);
+</pre>
+<p>Kuten <code>translate()</code>, <code>rotate()</code>asetetaan ennen geometristen muotojen piirtämistä. On mahdollista yhdistää näitä muutoksia, jotka ovat kasautuvia.</p>
+<p> </p>
+<p><img title="quad_rotate.tiff" src="_booki/processing-1/static/quad_rotate-tiff-fi.png" alt="quad_rotate.tiff" width="198" height="198"></p>
+<pre>size(200,200);
+smooth();
+translate(width/2, height/2);
+for (int i=0;i&lt;360;i+=30){
+  rotate(radians(30));
+  quad(0, 0, 30, 15, 70, 60, 20, 60);</pre>
+<p>}</p>
+<h2>Skaalaaminen</h2>
+<p>Kohteiden kokoa voidaan muuttaa komennolla <code>scale()</code>. Tämä komento antaa sinun suurentaa tai kutistaa geometristen muotojen kokoa. Se ottaa yksi tai kaksi parametriä. Esimerkiksi <code>scale(0.5)</code> puolittaa geometristen muotojen koon, kun taas <code>scale(2.0)</code> kaksinkertaistaa sen. Komennolla <code>scale(1)</code> ei ole mitään vaikutusta.</p>
+<p><span id="result_box" class="long_text"><span>Kahdella parametrillä kirjoittaminen yhdistää koon muuttamisen akseleilla x ja y. Esimerkiksi <code>scale(0.5, 2.0)</code> puolittaa koon suunnassa x ja kaksinkertaistaa sen suunnassa y.</span></span></p>
+<p><img src="_booki/processing-1/static/TG_04-fi_1.png" alt=""></p>
+<pre>size(200,200);
+scale(1.5);
+rect(0,0,100,100);</pre>
+<p><img title="TG_05" src="_booki/processing-1/static/TG_05-fi.png" alt="TG_05" width="599" height="248"></p>
+<pre>size(200,200);
+scale(1.0,1.5);
+rect(0,0,100,100);</pre>
+<p><span id="result_box" class="long_text"><span>Kuten komennot <code>rotate()</code> ja <code>translate()</code>, komennon <code>scale()</code> toistaminen kasautuu. Seuraava ohjelma esittää tämän ominaisuuden. Tässä neliöt ovat sisäkkäin kuin venäläiset nuket ja niiden koko kasvaa toistettaessa komentoa <code>scale()</code>. </span></span></p>
+<p><img src="_booki/processing-1/static/3_carre-tiff-fi_1.png" alt=""></p>
+<pre>size(200,200);
+noStroke();
+
+// Musta
+fill(0);
+scale(1);
+rect(0,0,200,200);
+
+// Harmaa
+fill(128);
+scale(0.5);
+rect(0,0,200,200);
+
+// Valkoinen
+fill(255);
+scale(0.5);
+rect(0,0,200,200);</pre>
+<h2>Muutosten järjestys</h2>
+<p><span id="result_box" class="long_text"><span>On mahdollista yhdistää muutama erilainen muutostyyppi. Kuten näimme edellisessä esimerkissä, muutokset kasautuvat asteittain, kun peräkkäiset <code>translate()</code>, <code>rotate()</code> ja <code>scale()</code> -komennot kasautuvat. Jokainen muutos ottaa huomioon edelliset muutokset.</span><span> <br><br></span><span>Kun käytetään useampia erilaisia muutostyyppejä, niiden kirjoitusjärjestys on tärkeä. Ajaessasi autolla "käänny vasempaan ja aja suoraan" on eri komento kuin "aja suoraan ja käänny vasemmalle". Et välttämättä päädy samaan paikkaan. Sama pätee Processingin muutoksiin. </span><span> <br><br></span><span>Esittelemme tämän komennon kääntämällä komennot <code>translate()</code> ja <code>rotate()</code> toisin päin. </span></span></p>
+<p><img title="TG_tr_01" src="_booki/processing-1/static/TG_tr_01-fi.png" alt="TG_tr_01" width="600" height="245"></p>
+<pre>size(200,200);
+smooth();
+fill(0);
+
+translate(100,0);
+rotate(PI/5);
+rect(0,0,100,100);</pre>
+<p><img title="TG_tr_02" src="_booki/processing-1/static/TG_tr_02-fi.png" alt="TG_tr_02" width="600" height="213"></p>
+<pre>size(200,200);
+smooth();
+fill(0);
+
+rotate(PI/5);
+translate(100,0);
+rect(0,0,100,100);</pre>
+<h2><span id="result_box" class="long_text"><span>Eristä muutokset</span></span></h2>
+<p><span id="result_box" class="long_text"><span>Olemme nähneet muutoksien kasautuvan asteittain käytettäessä komentoja <code>translate()</code>, <code>rotate()</code> ja <code>scale()</code>. Näemme nyt, kuinka muutokset voidaan tallentaa tiettynä aikana, ja kuinka palauttaa ne myöhemmin, komennon <code>draw()</code> aikana. </span><span> <br><br></span><span>Käytämme sitä kahteen funktioon, joita käytetään aina pareittain. Nämä komennot ovat <code>pushMatrix()</code> ja <code>popMatrix()</code>. Näemme lopuksi, miksi nämä komennot on nimetty niin oudosti. </span><span> <br><br></span><span>Kahdessa seuraavassa esimerkissä näemme seuraavat muutokset: <br><br>    </span><span>* A: Aluksi ikkunan vasen ylänurkka. <br>    </span><span>* B: Alkupiste ruudun keskellä. <br>    </span><span>* C: Alkupiste ruudun keskellä, kieritetään PI/4. </span></span></p>
+<p><img title="push_quad.tiff" src="_booki/processing-1/static/push_quad-tiff-fi.png" alt="push_quad.tiff" width="197" height="197"></p>
+<pre>size(200,200);
+smooth();
+rectMode(CENTER);
+
+// Tee kirjanmerkki ruudun keskipisteeseen
+translate(width/2,height/2);
+
+// Tallennus <strong>A</strong>
+pushMatrix();
+
+// Muutos <strong>B</strong>
+rotate(PI/4);
+
+// Piirrä musta neliö
+fill(0);
+rect(0,0,120,120);
+
+// Palautus <strong>A</strong>
+// Tässä pisteessä kirjanmerkki palaa ruudun keskipisteeseen
+popMatrix();
+
+// Piirrä valkoinen ruutu, joka ei ota pyöritystä huomioon
+fill(255);
+rect(0,0,50,50);
+
+</pre>
+<p><span id="result_box" class="long_text"><span>Voimme käyttää funktioita <code>pushMatrix()</code> ja <code>popMatrix()</code> tallentamaan nykyisen muutoksen tilan. </span><span> <br><br></span><span>Edellisen esimerkin pohjalta laitamme <code>pushMatrix() / popMatrix()</code> -parin, joka tallentaa ensisijaisen muutoksen <code>(width / 2, height / 2)</code>. </span></span></p>
+<p><img title="push_pop.tiff" src="_booki/processing-1/static/push_pop-tiff-fi.png" alt="push_pop.tiff" width="198" height="198"></p>
+<p><img src="http://fr.flossmanuals.net/floss_fr/publish/Processing/rsrc/Processing/Imprimer/" alt="" width="0" height="0"></p>
+<pre>size(200,200);
+smooth();
+rectMode(CENTER);
+noStroke();
+
+// Varmuuskopio <strong>A</strong>
+pushMatrix();
+
+// Muutos <strong>B</strong>
+translate(width/2,height/2);
+
+// Tallennus <strong>B</strong>
+pushMatrix();
+
+// Muutos <strong>C</strong>
+rotate(PI/4);
+
+// Piirretään musta neliö
+fill(0);
+rect(0,0,120,120);
+
+// Palautus <strong>B</strong>
+popMatrix();
+
+// Piirrä valkoinen neliö, joka ei ota huomioon
+// pyöritystä rotate(PI/4)
+fill(255);
+rect(0,0,50,50);
+
+// Palautus <strong>A</strong>
+popMatrix();
+
+// Piiretään harmaa laatikko
+fill(128);
+rect(0,0,100,100);
+</pre>
+<h2>Kolmiulotteinen muutos</h2>
+<p><span id="result_box" class="long_text"><span>Kaikki muutokset, joista olemme keskustelleet, ovat mahdollisia myös kolmiulotteisessa piirtämisessä. Processing siirtyy kolmiulotteiseksi, kun kutsumme komentoa <code>size()</code>: </span></span></p>
+<pre>size(300,300,<strong>P3D</strong>);
+</pre>
+<p><span id="result_box" class="long_text"><span>Tässä tilassa Processing määrittelee z-akselin osoittavan ruudun pohjaa kohden. <br></span></span></p>
+<p><img title="coordonnees3D_02" src="_booki/processing-1/static/coordonnees3D_02-fi.png" alt="coordonnees3D_02" width="300" height="358"></p>
+<p><span id="result_box" class="long_text"><span>Matkan ja skaalan muutokset kirjoitetaan lisäämällä kolmas parametri. Esimerkiksi siirtyminen ruudun keskipisteeseen x ja y -akselia pitkin mahdollistaa piirtämisen kuin muodot olisivat kaukana meistä, voisimme kirjoittaa jotain tällaista: </span></span></p>
+<pre>translate(width/2, height/2, -100);</pre>
+<p><span id="result_box" class="long_text"><span>Pyörityksiä varten tarvitsemme kolme uutta komentoa: <code>rotateX, rotateY</code> ja <code>rotateZ</code>. Nämä kierittävät akseleita x, y ja z. <br><br></span><span>Processing sisältää funktiot yksinkertaisten kolmiulotteisten muotojen piirtämistä varten. Näihin sisältyvät kuutiot ja pallot. Luomme kuution, joka kiertää akselien x ja y ympäri, ja joka asetetaan hiiren sijaintiin.</span></span></p>
+<p><img title="cube3D.tiff" src="_booki/processing-1/static/cube3D-tiff-fi.png" alt="cube3D.tiff" width="197" height="197"></p>
+<pre>float rx = 0;
+float ry = 0;
+float z = 100;
+
+void setup() {
+  size(200,200,P3D);
+}
+
+void draw() {
+  background(128);
+  rx = map(mouseX, 0,width,-PI,PI);
+  ry = map(mouseY, 0,height,-PI,PI);
+
+  translate(width/2,height/2,z);
+  rotateX(rx);
+  rotateY(ry);
+  box(30);
+}</pre>
+<p><span id="result_box" class="long_text"><span>Esittelemme uuden funktion <code>map ()</code>, joka muuntaa arvojen joukon uudeksi arvojen joukoksi. Yksinkertainen esimerkki selittää tätä konseptia: </span></span></p>
+<pre>float v = 100;
+float m = map(v,0,200, 0,1); // m on 0.5
+</pre>
+<p><span id="result_box" class="long_text"><span>Tässä esimerkissä map() muuntaa arvon 100 välillä [0, 200] vastaavaksi arvoksi välillä [0, 1]. Palautettu arvo on 0.5 m. </span><span> <br><br></span><span>Ohjelmissamme tämä funktio mahdollistaa <code>mouseX</code> -arvon muuttamisen välillä 0 ja leveys vastaavaksi arvoksi välillä -PI ja PI. </span></span></p>
+<p><span id="result_box" class="long_text"><span>Funktiot <code>pushMatrix()</code> ja <code>popMatrix()</code> toimivat myös kolmiulotteisessa grafiikassa, jossa voidaan tallentaa ja palauttaa muutokset. Tämä on paras tapa piirtää kolmiulotteinen maailma, jossa on joukko liikkuvia esineitä. Näin vältetään monimutkaiset matemaattiset konseptit. </span></span></p>
+<p><span id="result_box" class="long_text"><span>Kaikki Processingin muutokset tallennetaan 16 numeron sarjaan, jota kutsutaan matriisiksi (englanniksi matrix). Näitä numeroita muutosfunktiot muuttavat suoraan. Voit tulostaa tämän taulukon komennolla <code>printMatrix()</code>.</span><span> <br></span></span></p></div><ul Class="menu-goes-here"><li Class="booki-section">Esittely</li><li><a href="/processing-1/index">Johdanto</a></li>
+<li><a href="/processing-1/ch002_esimerkkeja">Esimerkkejä</a></li>
+<li><a href="/processing-1/ch003_asennus">Asennus</a></li>
+<li Class="booki-section">Perusteet</li><li><a href="/processing-1/ch005_perusteet">Perusteet</a></li>
+<li Class="booki-section">Suunnittelu</li><li><a href="/processing-1/ch007_suunnittelutila">Suunnittelutila</a></li>
+<li><a href="/processing-1/ch008_muodot">Muodot</a></li>
+<li><a href="/processing-1/ch009_varit">Värit</a></li>
+<li><a href="/processing-1/ch010_kuvat">Kuvat</a></li>
+<li><a href="/processing-1/ch011_tekstit">Tekstit</a></li>
+<li Class="booki-section">Interaktiivisuus</li><li><a href="/processing-1/ch013_video">Video</a></li>
+<li><a href="/processing-1/ch014_videon-tuominen">Videon tuominen</a></li>
+<li><a href="/processing-1/ch015_mikrofoni">Mikrofoni</a></li>
+<li><a href="/processing-1/ch016_hiiri">Hiiri</a></li>
+<li><a href="/processing-1/ch017_nappaimisto">Näppäimistö</a></li>
+<li><a href="/processing-1/ch018_tulostaminen">Tulostaminen</a></li>
+<li Class="booki-section">Vienti</li><li><a href="/processing-1/ch020_verkkoon-vieminen">Verkkoon vieminen</a></li>
+<li Class="booki-section">Animaatio</li><li><a href="/processing-1/ch022_aanet">Äänet</a></li>
+<li><a href="/processing-1/ch023_draw-metodi">Draw-metodi</a></li>
+<li><a href="/processing-1/ch024_objektien-animointi">Objektien animointi</a></li>
+<li><a href="/processing-1/ch025_monien-objektien-animointi">Monien objektien animointi</a></li>
+<li><a href="/processing-1/ch026_aikajana">Aikajana</a></li>
+<li Class="booki-section">Ohjelmointi</li><li><a href="/processing-1/ch028_kommentit">Kommentit</a></li>
+<li><a href="/processing-1/ch029_objektit">Objektit</a></li>
+<li><a href="/processing-1/ch030_metodit">Metodit</a></li>
+<li><a href="/processing-1/ch031_listat">Listat</a></li>
+<li><a href="/processing-1/ch032_toistaminen">Toistaminen</a></li>
+<li><a href="/processing-1/ch033_ehdot">Ehdot</a></li>
+<li><a href="/processing-1/ch034_muuttujat">Muuttujat</a></li>
+<li><a href="/processing-1/ch035_muutokset">Muutokset</a></li>
+<li><a href="/processing-1/ch036_rajat">Rajat</a></li>
+<li Class="booki-section">Liitteet</li><li><a href="/processing-1/ch038_yleisia-virheita">Yleisiä virheitä</a></li>
+<li><a href="/processing-1/ch039_ulkoiset-kirjastot">Ulkoiset kirjastot</a></li>
+<li><a href="/processing-1/ch040_dokumentaatio">Dokumentaatio</a></li>
+<li><a href="/processing-1/ch041_arduino">Arduino</a></li>
+<li><a href="/processing-1/ch042_tasta-oppaasta">Tästä oppaasta</a></li>
+<li><a href="/processing-1/ch043_tekijat">Tekijät</a></li>
+</ul>

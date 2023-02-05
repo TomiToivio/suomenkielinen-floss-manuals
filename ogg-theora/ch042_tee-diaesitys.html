@@ -1,0 +1,196 @@
+<div id="main-content"><h1>Dianäytöksen luominen</h1>
+<div id="content">
+<p>Ogg Video Tools tarjoaa komentorivin työkalun, jota kutsutaan <strong>oggSlideshow</strong>ksi. Sillä voi luoda diaesityksiä kuvasarjasta JPG- tai PNG-muodossa ja käyttää erilaisia efektejä kuvien vaihtoa ja esitystä varten. </p>
+<p>Rakenne: <strong>oggSlideshow [ Vaihtoehdot] kuva1 kuva2 kuva3</strong> </p>
+<p>Jokainen kuva luetaan tiedostojärjestelmästä ja sen kokoa muutetaan sopimaan videon ruutukokoon, jolle voidaan antaa -s -vaihtoehto. Jos kuvasuhde ei sovi videoruutuun, mustat reunat lisätään. </p>
+<p>Seuraavia tehosteita tuetaan kuvien siirtymissä:</p>
+<p><strong>plain:</strong> Kuvat seuraavat toisiaan.</p>
+<p><strong>crossfade:</strong> Ensimmäinen kuva häipyy asteittain, seuraava ilmestyy aste asteelta. Ristihäivytyksen kesto on 1 sekunti.</p>
+<strong>blurring:</strong><dl>Kuva epätarkennetaan ennen kuin se katoaa. Seuraava kuva näkyy epätarkkana, mutta tarkkenee vähitellen.</dl><br><p>Eräs erikoistehoste on Ken Burns -efekti, joka on nimetty kuuluisan dokumentaristin mukaan. Tämä efekti lähentää kuvan läpi esityksen aikana. Tämän tehosteen siirtymä on asetettu ristihäivytykseksi.</p>
+<p>On myös vaihtoehtoja bittinopeuden asettamiseksi, yhden kuvan esitysajan asettamiseksi, sekä ulostulotiedoston nimen määrittelemiseksi. Nämä on esitetty alla:</p>
+<h2>Komentorivin vaihtoehdot:</h2>
+<em><strong>-s</strong></em>
+<blockquote>
+<p class="bodytext">Asettaa videoruudun koon. Oletuskoko on480x320.</p>
+<p class="bodytext"><em>Esimerkki: -s 320x240</em></p>
+</blockquote>
+<p class="bodytext"><em><strong>-f</strong></em></p>
+<blockquote>
+<p class="bodytext">Asettaa videon ruutunopeuden, joka annetaan ruutuina sekunnissa. Oletusarvoinen ruutunopeus on 24 ruutua sekunnissa.</p>
+<p class="bodytext"><em>Esimerkki: -f 16</em></p>
+</blockquote>
+<p class="bodytext"><em><strong>-o</strong></em></p>
+<blockquote>
+<p class="bodytext">Asettaa ulostulotiedoston nimen. Oletusarvoinen nimi on slideshow.ogv.</p>
+<p class="bodytext"><em>Esimerkki: -o myShow.ogv</em></p>
+</blockquote>
+<p class="bodytext"><em><strong>-l</strong></em></p>
+<blockquote>
+<p class="bodytext">Asettaa kuvan esitysajan. Jos sinulla on 10 kuvaa ja asetat 10 sekunnin ajan, videon kokonaispituus on 1:40 (eli 100 sekuntia).</p>
+<p class="bodytext"><em>Esimerkki: -l 10</em></p>
+</blockquote>
+<p class="bodytext"><em><strong>-d</strong></em></p>
+<blockquote>
+<p class="bodytext">Asettaa videon datanopeuden, joka mitataan bitteinä sekunnissa. Tämä on tarkoitettu ylemmäksi sietokynnykseksi. Lopullinen Theora-tiedosto voi olla odotettua pienempi.</p>
+</blockquote>
+<blockquote>
+<p class="bodytext"><em>Esimerkki: -d 1024000</em></p>
+</blockquote>
+<p class="bodytext"><em><strong>-t</strong></em></p>
+<blockquote>
+<p class="bodytext">Asettaa kuvan siirtymän tehostetyypin, kuten yllä on kuvattu. Tuetut tyypit ovat:</p>
+<dl><dd>
+<ul><li>kb</li>
+</ul><dl><dt></dt><dd>Ken Burns -tehoste (oletus)</dd><dt></dt></dl><ul><li>cf</li>
+</ul><dl><dt></dt><dd>kuvan ristihäivytys siirtymään</dd><dt></dt></dl><ul><li>p</li>
+</ul><dl><dt></dt><dd>tavallinen kuvaesitys</dd><dt></dt></dl><ul><li>b</li>
+</ul><dl><dt></dt><dd>epätarkka siirtymä</dd></dl></dd></dl><p class="bodytext"><em>Esimerkki: -t p</em></p>
+</blockquote>
+<p class="bodytext"><em><strong>-e</strong></em></p>
+<blockquote>
+<p class="bodytext">Mahdollistaa ruudun koon muuttamisen. Jos kuva ei sovi videoruudun kuvasuhteeseen, se voidaan "uudelleenkehystää" lisäämällä mustat reunat. Tämä vaihtoehto on käyttökelpoinen vain Ken Burns -efektin kanssa (vaihtoehto -t kb). Muiden siirtymätehosteiden kanssa kuvat uudelleenkehystetään automaattisesti myös ilman -e vaihtoehtoa. </p>
+<p class="bodytext"><em>Esimerkki: -t kb -e</em></p>
+</blockquote>
+<h2>Äänen lisääminen diaesitykseen</h2>
+<p>oggSlideshow voi tehdä vain mykkiä videotiedostoja. Äänen lisääminen jälkikäteen vaatii käyttämään vain muutamia muita työkaluja.</p>
+<p>Olettakaamme, että loit diaesityksen käyttäen kaikkia kuvia hakemistostasti <em>joitainKuvia</em>, kuten tässä komentorivin esimerkissä näytetään:</p>
+<pre>$ oggSlideshow -s 320x240 -f 24 -o diaesitys.ogv -d 512000 joitainKuvia/*.jpg</pre>
+<p>Ennen kuin lisäät äänen, joudut ensin luomaan ääniraidan, jolla on sama pituus kuin diaesityksellä. Diaesityksen pituus tulostetaan diaesityksen luomisprosessin lopussa. Vaihtoehtoisesti sen voi nähdä käyttämällä seuraavaa komentoa:</p>
+<pre>$ oggLength diaesitys.ogv
+</pre>
+<p>Tämä palauttaa videon pituuden millisekunteina. Tätä tietoa käyttäen voimme leikata Ogg/Vorbis äänistreamin saman pituiseksi. Tässä esimerkissä pituus on 5,6 sekuntia:</p>
+<pre>$ oggCut -l 5600 aaniRaitani.ogg muutettuAaniRaitani.ogg</pre>
+<dl>Molempien streamien liittämiseksi yhteen mediatiedostoon (</dl><em>newSlideshow.ogm</em><dl>), käytämme komentoa oggJoin:</dl><pre>$ oggJoin uusiDiaesitys.ogv muokattuAaniRaitani.ogg diaesitys.ogv
+</pre>
+<p>Nyt olet valmis!</p>
+<h2>Aloituskuvan lisääminen</h2>
+<p>Diaesityksen ensimmäisen kuvan täytyy usein olla otsikkokuva, joka kertoo joitain tietoja diaesityksestä. Luo lyhyt ja yksinkertainen diaesitys, jota voit käyttää otsikkona, käyttäen vain yhtä kuvaa:</p>
+<pre>$ oggSlideshow -s 320x240 -f 24 -tp -o aloitusKuva.ogv -l 10 -d 512000 \ aloitusKuva.jpg</pre>
+<p>Tässä diaesityksen tyyppinä on <em>plain</em> (<em>-tp</em>), jolloin kuva näkyy sellaisena kuin se on. Kesto on 10 sekuntia (oletusarvo on 8 sekuntia).</p>
+<p>Liitämme kuvan diaesityksemme <em>diaesitys.ogv</em> alkuun käyttäen komentoa oggCat:</p>
+<pre>$ oggCat kokoDiaEsitys.ogv aloitusKuva.ogv diaesitys.ogv</pre>
+<p>Tietenkin voimme myös lisätä ääniraidan, kuten aiemmin on kuvailtu: </p>
+<p> </p>
+<pre>oggJoin uusiDiaEsitys.ogv muokattuAaniRaitani.ogg kokoDiaEsitys.ogv
+</pre>
+<h2>Skripti kaikkea varten</h2>
+<p>Seuraava pääteskripti yhdistää kaiken tässä luvussa esitellyn, se luo diaesityksen, jossa on alkutekstit ja äänet.</p>
+<pre>#!/bin/sh
+#
+# käyttö: ./diaesitys ~/kuvahakemistoni/ äänitiedosto.oga ulostulotiedosto.ogm
+#
+# Muutettavat muuttujat
+#
+# videon ruutukoko
+SIZE="640x360"
+#
+# diaesitys-streamin datanopeus bitteinä sekunnissa
+DATARATE="1024000"
+#
+# yhden kuvan esitysaika sekunteina
+PR_TIME="10"
+#
+# ruutunopeus kuvina
+FRAMERATE="24"
+#
+# uudelleenkehystä kuva
+# Tämä lisää mustat kehykset kuvaan, jotta kuvasuhde pysyy ennallaan.
+# Ken Burns -efektillä tämä ei ole välttämätönsä, mutta liukumat voivat olla
+# tasaisempia.
+#REFRAME="-e"
+REFRAME=""
+#
+# uudelleensämpläys
+# Tämä vaihtoehto määrittelee, kuinka gdlib lataa kuvan.
+# Koska gdlibin koonmuuttamismekanismi on todella hyvä, sitä käytetään
+# tuomaan se arvoon, joka on lähellä videon ruutukokoa (yleensä vähän isompi).
+# Et yleensä näe suurta eroa, mikäli muutat tätä arvoa. Pidä se ennallaan.
+# (oletusarvo on 1.2).
+RESAMPLE="1.2"
+#
+# diaesityksen tyyppi
+# kb - Ken Burns -efekti (liukuu ja lähentää)
+# p  - tavallinen (kuva vain näkyy, ei ristiinhäivytystä kuvien välillä)
+# cf - ristiinhäivytys (kuvien näyttö, ristiinhäivytys kuvien välillä)
+TYPE="kb"
+#
+#
+# Tilapäinen tiedostonimi
+TMP_VIDEOFILE="slideshow_tmp.ogv"
+TMP_AUDIOFILE="audio_tmp.oga"
+
+# diaesityksen luominen
+oggSlideshow -s $SIZE -d $DATARATE -l $PR_TIME -f $FRAMERATE \
+ $REFRAME -r $RESAMPLE -t $TYPE -o $TMP_VIDEOFILE $1/*.jpg
+
+# mikä tämän pituus on
+LENGTHVIDEO=`oggLength $TMP_VIDEOFILE`
+
+#
+# leikkaa äänitiedostoa
+LENGTHAUDIO=`oggLength $2`
+
+#
+# onko äänitiedosto liian lyhyt?
+if [ $LENGTHVIDEO -gt $LENGTHAUDIO ]
+then
+  echo "varoitus diaesitys ($LENGTHVIDEO) on pidempi kuin äänitiedostosi ($LENGTHAUDIO)"
+  exit -1
+fi
+
+# äänitiedoston leikkaus
+oggCut -l$LENGTHVIDEO -i$2 -o$TMP_AUDIOFILE
+
+#
+# Liitä ääni- ja videotiedosto
+oggJoin $3 $TMP_VIDEOFILE $TMP_AUDIOFILE
+
+#
+# Poista vanhat tiedostot
+rm -f $TMP_VIDEOFILE $TMP_AUDIOFILE
+</pre>
+</div></div><ul Class="menu-goes-here"><li Class="booki-section">JOHDANTO</li><li><a href="/ogg-theora/index">OGG THEORA</a></li>
+<li><a href="/ogg-theora/ch002_tasta-kayttooppaasta">TÄSTÄ KÄYTTÖOPPAASTA</a></li>
+<li><a href="/ogg-theora/ch003_mita-video-on">MITÄ VIDEO ON?</a></li>
+<li><a href="/ogg-theora/ch004_mita-theora-on">MITÄ THEORA ON?</a></li>
+<li Class="booki-section">PERUSKÄSITTEET</li><li><a href="/ogg-theora/ch006_mika-on-koodekki">MIKÄ ON KOODEKKI?</a></li>
+<li><a href="/ogg-theora/ch007_sailot">SÄILÖT</a></li>
+<li Class="booki-section">TOISTO</li><li><a href="/ogg-theora/ch009_theoran-toistaminen">THEORAN TOISTAMINEN</a></li>
+<li><a href="/ogg-theora/ch010_toisto-vlclla">TOISTO VLC:LLÄ</a></li>
+<li><a href="/ogg-theora/ch011_miro">MIRO</a></li>
+<li Class="booki-section">THEORA VERKOSSA</li><li><a href="/ogg-theora/ch013_theora-verkossa">THEORA VERKOSSA</a></li>
+<li><a href="/ogg-theora/ch014_html5">HTML5</a></li>
+<li><a href="/ogg-theora/ch015_theora-sivuillasi">THEORA SIVUILLASI</a></li>
+<li><a href="/ogg-theora/ch016_hotelleja-theoralle">HOTELLEJA THEORALLE</a></li>
+<li Class="booki-section">ENKOODAUS</li><li><a href="/ogg-theora/ch018_johdanto-enkoodaukseen">JOHDANTO ENKOODAUKSEEN</a></li>
+<li><a href="/ogg-theora/ch019_firefogg">FIREFOGG</a></li>
+<li><a href="/ogg-theora/ch020_enkoodaus-vlclla">ENKOODAUS VLC:LLÄ</a></li>
+<li><a href="/ogg-theora/ch021_enkoodaus-ffmpeg2theoralla">ENKOODAUS FFMPEG2THEORALLA </a></li>
+<li><a href="/ogg-theora/ch022_thoggen">THOGGEN</a></li>
+<li Class="booki-section">TEKSTITYKSET</li><li><a href="/ogg-theora/ch024_tekstityksien-perusteet">TEKSTITYKSIEN PERUSTEET</a></li>
+<li><a href="/ogg-theora/ch025_jakelu">JAKELU</a></li>
+<li><a href="/ogg-theora/ch026_tekstityksien-liittaminen">TEKSTITYKSIEN LIITTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch027_tekstityksien-toistaminen">TEKSTITYKSIEN TOISTAMINEN</a></li>
+<li><a href="/ogg-theora/ch028_julkaiseminen">JULKAISEMINEN</a></li>
+<li Class="booki-section">SUORATOISTO</li><li><a href="/ogg-theora/ch030_suoratoiston-perusteet">SUORATOISTON PERUSTEET</a></li>
+<li><a href="/ogg-theora/ch031_icecast">ICECAST</a></li>
+<li><a href="/ogg-theora/ch032_tss">TSS</a></li>
+<li><a href="/ogg-theora/ch033_ffmpeg2theora-streamaus">FFMPEG2THEORA-STREAMAUS</a></li>
+<li><a href="/ogg-theora/ch034_suoratoisto-vlc-ohjelmalla">VLC-STREAMAUS</a></li>
+<li><a href="/ogg-theora/ch035_virtaustoiston-tallentaminen">VIRTAUSTOISTON TALLENTAMINEN</a></li>
+<li Class="booki-section">EDITOINTI</li><li><a href="/ogg-theora/ch037_johdanto-editointiin">JOHDANTO EDITOITIIN</a></li>
+<li><a href="/ogg-theora/ch038_pitivi">PITIVI</a></li>
+<li Class="booki-section">ESIKATSELU</li><li><a href="/ogg-theora/ch040_kuinka-esikatselua-kaytetaan">ESIKATSELUN KÄYTTÖ</a></li>
+<li><a href="/ogg-theora/ch041_tee-esikatselukuvia">TEE ESIKATSELUKUVIA</a></li>
+<li><a href="/ogg-theora/ch042_tee-diaesitys">TEE DIAESITYS</a></li>
+<li><a href="/ogg-theora/ch043_tee-esikatseluvideo">TEE ESIKATSELUVIDEO</a></li>
+<li Class="booki-section">EDITOINTI KOMENTORIVILTÄ</li><li><a href="/ogg-theora/ch045_komentorivi">THEORA JA KOMENTORIVI</a></li>
+<li><a href="/ogg-theora/ch046_theoran-teoria">THEORAN TEORIA</a></li>
+<li><a href="/ogg-theora/ch047_tiedoston-jakaminen">TIEDOSTON JAKAMINEN</a></li>
+<li><a href="/ogg-theora/ch048_tiedoston-leikkaaminen">TIEDOSTON LEIKKAAMINEN</a></li>
+<li><a href="/ogg-theora/ch049_tiedostojen-liittaminen">TIEDOSTOJEN LIITTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch050_tiedostojen-yhdistaminen">TIEDOSTOJEN YHDISTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch051_koon-muuttaminen">KOON MUUTTAMINEN</a></li>
+<li><a href="/ogg-theora/ch052_oggin-analysoiminen">OGGIN ANALYSOIMINEN</a></li>
+<li Class="booki-section">TEKIJÄT</li><li><a href="/ogg-theora/ch054_tekijat">TEKIJÄT</a></li>
+</ul>

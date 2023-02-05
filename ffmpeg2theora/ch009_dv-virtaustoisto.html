@@ -1,0 +1,39 @@
+<div id="main-content"><h1>Streamaus ffmpeg2theoralla</h1>
+<div id="content">
+<p>Tämä menetelmä keskittyy videon streamaukseen DV- tai Firewire-kamerasta käyttäen GNU/Linux-käyttöjärjestelmää (kuten Ubuntu). Videostreami on Ogg Theora-muodossa, mikä merkitsee, että katsojasi voivat katsella streamia käyttäen Ogg Theoraa toistavaa soitinta, FireFox 3.5 -selainta tai Java-sovelmaa, kuten Cortado. Tehdäksesi tämän sinun tulee tuntea komentorivin käyttö ja omata sudo-käyttäjän oikeudet. Jos et tiedä näistä, voit harkita komentoriviä käsittelevän kirjan lukemista. </p>
+<h2>Valmistautuminen</h2>
+<p>Huomaa: Firewire-kamera ei ole sama asia kuin DV-kamera. Meidän tarkoituksiimme ne toimivat kuitenkin samalla tavalla. Firewire on Applen nimi liittymästandardille, jota kutsutaan nimellä IEEE 1394, muilla valmistajilla on muita nimiä, kuten i.Link (Sony) tai Lynx (Texas Instruments) - tällä ei kuitenkaan ole väliä, nämä kaikki ovat IEEE 1394 -kameroita. </p>
+Tarvitset seuraavat:
+<ul><li>DV-kamera</li>
+<li>GNU/Linux-kone, jossa on Firewire-sisääntulot</li>
+<li>Firewire-kaapelin</li>
+<li>Internet-yhteyden</li>
+<li>Pääsyn "Theora-yhteensopivaan" Icecast2-palvelimeen (tarvitset palvelimen IP-osoitteen, käytettävän portin ja salasanan). </li>
+</ul><h2>Asetukset</h2>
+<p>Asennetaanpas ohjelmat, joita tarvitset. Meidän täytyy asentaa seuraavat ohjelmat: </p>
+<ul><li>dvgrab</li>
+<li>ffmpeg2theora</li>
+<li>oggfwd</li>
+</ul><p>Ubuntussa voit tehdä tämän komennolla: </p>
+<pre>sudo apt-get install dvgrab ffmpeg2theora oggfwd
+</pre>
+<p>Edellisen komennon joudut kirjoittamaan yhdelle riville. Sinulta kysytään salasanaa, minkä jälkeen asennusprosessi alkaa. Nyt sinulla on kaikki, mitä tarvitset.</p>
+<p>Seuraavaksi voit kytkeä DV (tai Firewire) -kameran tietokoneeseen. Joudut kytkemään Firewire-kameran Firewire-liittimeen kamerassa, ja toinen pää menee tietenkin koneesi Firewire-liittimeen. </p>
+<p>Käännä nyt kamera päälle. </p>
+<p>Seuraavaksi joudut kirjoittamaan seuraavan komennon komentoriville. Tähän kirjoitat tiedot Theora-yhteensopivasta Icecast2-palvelimesta. Komento on: </p>
+<pre>sudo dvgrab --format raw - | ffmpeg2theora -a 0 -v 5 -f dv -x 320 -y 240 -o /dev/stdout - | oggfwd  icecastpalvelin 8000 salasana /theora.ogv
+</pre>
+<p>Muista, että komennon pitää olla yhdellä rivillä (edellinen esimerkki ei ole). Korvaa myös alla olevat yksityiskohdat tiedoilla, joita sinulla on Icecast-palvelimestasi: </p>
+<ul><li><em>icecastpalvelin</em></li>
+<li><em>8000</em></li>
+<li><span>salasana</span><em></em></li>
+</ul><p><strong>icecastpalvelin</strong> -kohdaan voit kirjoittaa streamauspalvelimen verkkonimen tai IP-osoitteen. <strong>8000</strong> on oletusarvoinen porttinumero ja pysyy yleensä samana. <strong>salasana</strong> pitää korvata palvelimesi salasanalla. Viimeiseksi voit korvata kohdan <strong>/theora.ogv</strong> mounttauspisteelläsi, tämä riippuu Icecast-palvelimesi asetuksista, mutta voi olla miten tahansa pitkä, kunhan se alkaa etukenossa olevalla kauttaviivalla (<strong>/</strong>) ja loppuu loppupäätteeseen <strong>.ogg</strong> tai <strong>.ogv</strong>.</p>
+<p>Nyt pitäisi päästä streamaamaan! Kokeillaksesi yhteyttä kokeile ohjelmaa <strong>VLC</strong> tai <strong>Firefox 3.5.</strong></p>
+</div></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/ffmpeg2theora/index">Johdanto</a></li>
+<li Class="booki-section">Asennus</li><li><a href="/ffmpeg2theora/ch003_asennus-windowsiin">Asennus Windowsiin</a></li>
+<li Class="booki-section">Perusteet</li><li><a href="/ffmpeg2theora/ch005_enkoodauksen-perusteet">Enkoodauksen perusteet</a></li>
+<li><a href="/ffmpeg2theora/ch006_peruskaytto-windowsissa">Peruskäyttö Windowsissa</a></li>
+<li Class="booki-section">Kehittyneempi käyttö</li><li><a href="/ffmpeg2theora/ch008_komennot">Komennot</a></li>
+<li><a href="/ffmpeg2theora/ch009_dv-virtaustoisto">DV-virtaustoisto</a></li>
+<li Class="booki-section">Tekijät</li><li><a href="/ffmpeg2theora/ch011_tekijat">Tekijät</a></li>
+</ul>

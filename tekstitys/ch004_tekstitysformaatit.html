@@ -1,0 +1,399 @@
+<div id="main-content"><h1>Tekstitysformaatit</h1>
+<p>Tekstitystiedostoja voidaan jakaa monissa eri tiedostoformaateissa. Näillä formaateilla on suuria eroja, mutta ainakin jokaisen tekstitysformaatin täytyy ajastaa tekstityksen näkyminen ruudulla. Osa tekstitysformaateista tekee tämän videon alusta mitattavalla aikakoodilla, osa esimerkiksi näkyvillä olevan yksittäisen videokuvan perusteella. </p>
+<p>Jotkin tekstipohjaiset tekstiformaatit mahdollistavat myös metatiedon ja tekstin tyylin määrittelyn, esimerkiksi värien tai tekstityksen sijainnin määrittämisen.</p>
+<p>Voit tunnistaa tekstitysformaatin sen tiedostopäätteen avulla. Näitä tiedostopäätteitä ovat esimerkiksi <strong>.sub</strong>, <strong>.srt</strong>, <strong>.idx</strong>, <strong>.ssa</strong> ja <strong>.ass</strong>. Taulukossa on eräitä yleisiä tekstitysformaatteja. </p>
+<table border="0"><tbody><tr><td><strong>Tekstitysmuoto</strong></td>
+<td><strong>Tiedostopääte</strong></td>
+<td><strong>Lisätietoa</strong></td>
+</tr><tr><td>MicroDBD</td>
+<td>.sub</td>
+<td>Tekstiin perustuva tekstitysformaatti, jossa on kuvataajuuteen perustuva ajastus. Ei sisällä tekstin tyylin määrittelyä.</td>
+</tr><tr><td>SubRip</td>
+<td>.srt</td>
+<td>Tekstiin perustuva tekstitysformaatti, jossa on aikakoodiin perustuva ajastus. Ei sisällä tekstin tyylin määrittelyä.</td>
+</tr><tr><td>VobSub</td>
+<td>.sub ja .idx</td>
+<td>Kuvataajuuteen perustuva tekstitysformaatti, jota käytetään yleensä DVD-tiedostoissa.</td>
+</tr><tr><td>SubStation Alpha / Advanced SubStation Alpha</td>
+<td>.ssa ja .ass</td>
+<td>Tekstiin perustuva tekstitysmuoto, jonka aikakoodit perustuvat videon pituuteen. Sisältää tekstin tyylin määrittelyn ja metatiedot.</td>
+</tr><tr><td>SubViewer</td>
+<td>.sub</td>
+<td>Tekstiin perustuva tekstitysformaatti, jossa on videon pituuteen perustuva ajastus, tekstin tyylin määrittely ja metatiedot.</td>
+</tr></tbody></table><p>Tekstitystiedoston lisäksi on myös mahdollista polttaa tekstitys suoraan videokuvaan, jolloin erillistä tekstitystiedostoa ei ole olemassa. Ogg Theora -tiedostoissa oggKate-tekstitys on saman säiliön sisällä kuin video ja ääni.  </p>
+<h2>Esimerkkejä</h2>
+<p>Katsotaanpa monien tekstitystiedostojen todellista sisältöä. Ne näyttävät vain tekstin "Tämä on ensimmäinen tekstitykseni!" videon ensimmäisten 10 sekunnin aikana. Nämä kaikki tehtiin avoimen lähdekoodin tekstitysohjelma Jublerin avulla.</p>
+<p>Ensimmäinen huomattava asia on, että jokainen tiedosto on yksinkertaisesti tekstitiedosto, sitä voi muokata millä tahansa editorilla, kuten Emacsilla GNU/Linuxissa, Text Editissä Macilla, tai Notepadilla Windowsissa.</p>
+<p>Seuraava esimerkki on <strong>MicroDVD</strong> eli <strong>.sub</strong> -tekstitystiedosto (olettaen 25 ruutua sekunnissa):</p>
+<pre><em>{0}{250}Tämä on ensimmäinen tekstitykseni!</em></pre>
+<p><strong>SubRip</strong> eli <strong>.srt</strong> -tekstitystiedostona:</p>
+<pre><em> 1 00:00:00,000 --&gt; 00:00:10,000 Tämä on ensimmäinen tekstitykseni!</em></pre>
+<p><strong>SubStation Alpha</strong> eli <strong>.ssa</strong> -tekstitystiedostona:</p>
+<pre><em>[Script Info] ; Edited with Jubler subtitle editor Title: Original Script: andycat Update Details: ScriptType: v4.00 Collisions: Normal PlayResX: 320 PlayResY: 288 PlayDepth: 0 Timer: 100,0000 [V4 Styles] Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, TertiaryColour, BackColour, Bold, Italic, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, AlphaLevel, Encoding Style: Default,Arial Unicode MS,31,&amp;HFFFFFF,&amp;H00FFFF,&amp;H000000,&amp;H404040,0,0,1,0,2,2,20,20,20,255,0 [Events] Format: Marked, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text Dialogue: 0,0:00:00.00,0:00:10.00,*Default,,0000,0000,0000,,Tämä on ensimmäinen tekstitykseni! </em> </pre>
+<p><strong>Advanced SubStation</strong> eli <strong>.ass</strong> -tekstitystiedostona:</p>
+<pre><em>[Script Info] ; Edited with Jubler subtitle editor Title: Original Script: andycat Update Details: ScriptType: v4.00+ Collisions: Normal PlayResX: 320 PlayResY: 288 PlayDepth: 0 Timer: 100,0000 [V4+ Styles] Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding Style: Default,Arial Unicode MS,31,&amp;H00FFFFFF,&amp;H0000FFFF,&amp;H4B000000,&amp;H4B404040,0,0,0,0,100,100,0,0,1,0,2,2,20,20, 20,0 [Events] Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text Dialogue: 0,0:00:00.00,0:00:10.00,*Default,,0000,0000,0000,,Tämä on ensimmäinen tekstitykseni!</em>
+ </pre>
+<p><strong>SubViewer</strong> eli <strong>.sub</strong> -tekstitystiedostona:</p>
+<pre><em>[INFORMATION] [TITLE] [AUTHOR]andycat [SOURCE] [FILEPATH] [DELAY]0 [COMMENT]Edited with Jubler subtitle editor [END INFORMATION] [SUBTITLE] [COLF]&amp;HFFFFFF,[STYLE]bd,[SIZE]18,[FONT]Arial 00:00:00.00,00:00:10.00 Tämä on ensimmäinen tekstitykseni! </em> </pre>
+<p>On olemassa lukemattomia tiedostomuotoja (katso <a title="VLC-videosoittimen" href="http://diveintomark.org/archives/2009/01/07/give-part-4-captioning">http://diveintomark.org/archives/2009/01/07/give-part-4-captioning</a> - tärkeimmät tässä käsittelemättä jääneet tiedostomuodot ovat MPEG4 Timed Text, SMIL ja SAMI).</p>
+<h2>VLC-videosoittimen tukemat tekstitysformaatit</h2>
+<p>Taulukko avoimen lähdekoodin <a title="VLC-videosoittimen" href="http://www.videolan.org/vlc/">VLC-videosoittimen</a> tukemista tekstitysformaateista. Tästä on jätetty pois kuvaan perustuvat tekstitysformaatit, joissa tekstitys on poltettu suoraan videoon.  </p>
+<table class="wikitable sortable jquery-tablesorter"><caption><strong>VLC:n tukemat tekstitysformaatit</strong></caption>
+<thead><tr><th class="headerSort" title="Sort ascending">
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">Tekstitysformaatti</span></p>
+</th><th class="headerSort" title="Sort ascending">
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;">Tiedostopääte</span></span></p>
+</th><th class="headerSort" title="Sort ascending">
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">Tiedostotyyppi</span></p>
+</th><th class="headerSort" title="Sort ascending">
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">Tekstin tyyli</span></p>
+</th><th class="headerSort" title="Sort ascending">
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">Metatieto</span></p>
+</th><th class="headerSort" title="Sort ascending">
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;">Ajastus</span></span></p>
+</th></tr></thead><tbody><tr><th>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">AQTitle</span></p>
+</th>
+<td>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">.aqt</span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">Teksti</span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;">Ei</span></span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;">Ei</span></span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">Kuvataajuus</span></p>
+</td>
+</tr><tr><th>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">DKS</span></p>
+</th>
+<td>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">.dks</span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Teksti</span></span></span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Ei</span></span></span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Ei</span></span></span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;">Aikaleima</span></span></p>
+</td>
+</tr><tr><th>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">JACOSub</span></p>
+</th>
+<td>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">.jss</span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Teksti</span></span></span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">Kyllä</span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Ei</span></span></span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Aikaleima</span></span></span></p>
+</td>
+</tr><tr><th>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">OggKate</span></p>
+</th>
+<td>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">.ogg-tiedoston sisällä</span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Teksti</span></span></span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Kyllä</span></span></span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Ei</span></span></span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">Aikaleima</span></p>
+</td>
+</tr><tr><th>
+<p><span style="font-size: 10px;">MicroDVD</span></p>
+</th>
+<td>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">.sub</span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Teksti</span></span></span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Ei</span></span></span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Ei</span></span></span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Kuvataajuus</span></span></span></p>
+</td>
+</tr><tr><th>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">MPEG-4 Timed Text</span></p>
+</th>
+<td>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">.ttxt</span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">XML</span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Kyllä</span></span></span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Ei</span></span></span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">Aikaleima</span></p>
+</td>
+</tr><tr><th>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">MPL2</span></p>
+</th>
+<td>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">.mpl ja .txt</span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Teksti</span></span></span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Ei</span></span></span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Ei</span></span></span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">Aikaleima</span></p>
+</td>
+</tr><tr><th>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">MPSub</span></p>
+</th>
+<td>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">.sub</span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Teksti</span></span></span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Ei</span></span></span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">Kyllä</span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">Aikaleima</span></p>
+</td>
+</tr><tr><th>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">Phoenix Subtitle</span></p>
+</th>
+<td>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">.pjs</span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Teksti</span></span></span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Ei</span></span></span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Ei</span></span></span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">Kuvataajuus</span></p>
+</td>
+</tr><tr><th>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">PowerDivX</span></p>
+</th>
+<td>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">.psb</span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Teksti</span></span></span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Ei</span></span></span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Ei</span></span></span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Aikaleima</span></span></span></p>
+</td>
+</tr><tr><th>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">RealText / SMIL</span></p>
+</th>
+<td>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">.rt</span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">HTML</span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;"><span>Kyllä</span> (SMIL)</span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Ei</span></span></span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Aikaleima</span></span></span></p>
+</td>
+</tr><tr><th>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;">SAMI</span></span></p>
+</th>
+<td>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">.smi</span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">HTML</span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;"><span>Kyllä</span> (CSS)</span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Kyllä</span></span></span></p>
+</td>
+<td>
+<p> </p>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Kuvataajuus</span></span></span></p>
+</td>
+</tr><tr><th>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;">SubRIP</span></span></p>
+</th>
+<td>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">.srt</span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Teksti</span></span></span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Ei</span></span></span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Ei</span></span></span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Aikaleima</span></span></span></p>
+</td>
+</tr><tr><th>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;">SSA/ASS</span></span></p>
+</th>
+<td>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">.ssa</span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Teksti</span></span></span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Kyllä</span></span></span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Kyllä</span></span></span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Aikaleima</span></span></span></p>
+</td>
+</tr><tr><th>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;">SubViewer</span></span></p>
+</th>
+<td>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">.sub</span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Teksti</span></span></span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Ei</span></span></span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Kyllä</span></span></span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Aikaleima</span></span></span></p>
+</td>
+</tr><tr><th>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">Universal Subtitle</span></p>
+</th>
+<td>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">.usf</span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">XML</span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;"><span>Kyllä</span> (XML DTD)</span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Ei</span></span></span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Aikaleima</span></span></span></p>
+</td>
+</tr><tr><th>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;">VOBSub</span></span></p>
+</th>
+<td>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">.sub ja .idx</span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">Teksti</span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Ei</span></span></span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Ei</span></span></span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Aikaleima</span></span></span></p>
+</td>
+</tr><tr><th>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;">VPlayer</span></span></p>
+</th>
+<td>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">.txt</span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Teksti</span></span></span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Ei</span></span></span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times;"><span style="font-size: 12px;"><span>Ei</span></span></span></p>
+</td>
+<td>
+<p><span style="font-family: 'times new roman', times; font-size: 12px;">Kuvataajuus tai aikaleima</span></p>
+</td>
+</tr></tbody></table></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/tekstitys/index">Tekstitys</a></li>
+<li Class="booki-section">Yleiskatsaus</li><li><a href="/tekstitys/ch003_elokuvien-tekstitys">Elokuvien tekstitys</a></li>
+<li><a href="/tekstitys/ch004_tekstitysformaatit">Tekstitysformaatit</a></li>
+<li><a href="/tekstitys/ch005_tekstityksen-hakeminen">Tekstityksen hakeminen</a></li>
+<li><a href="/tekstitys/ch006_videon-tekstittaminen">Videon tekstittäminen</a></li>
+<li><a href="/tekstitys/ch007_tekstitystiedostojen-levittaminen">Tekstitystiedostojen levittäminen</a></li>
+<li Class="booki-section">Tekstitysohjelma Jubler</li><li><a href="/tekstitys/ch009_tekstitysohjelma-jubler">Tekstitysohjelma Jubler</a></li>
+<li><a href="/tekstitys/ch010_jublerin-asetukset">Jublerin asetukset</a></li>
+<li><a href="/tekstitys/ch011_jublerin-aaniraita">Jublerin ääniraita</a></li>
+<li><a href="/tekstitys/ch012_tekstityksen-luominen">Tekstityksen luominen</a></li>
+<li><a href="/tekstitys/ch013_tiedostojen-kaytto">Tiedostojen käyttö</a></li>
+<li Class="booki-section">Tekstityksen näyttäminen</li><li><a href="/tekstitys/ch015_tekstityksen-nayttaminen">Tekstityksen näyttäminen</a></li>
+<li Class="booki-section">Avidemux</li><li><a href="/tekstitys/ch017_avidemuxin-kaytto">Avidemuxin käyttö</a></li>
+<li><a href="/tekstitys/ch018_tekstityksien-polttaminen">Tekstityksen polttaminen</a></li>
+<li Class="booki-section">Tekstitystyökalut</li><li><a href="/tekstitys/ch020_gnome-subtitles">GNOME Subtitles</a></li>
+<li><a href="/tekstitys/ch021_gaupol">Gaupol</a></li>
+<li><a href="/tekstitys/ch022_subtitle-editor">Subtitle Editor</a></li>
+<li Class="booki-section">Jakelu</li><li><a href="/tekstitys/ch024_verkkovideon-kaantaminen">Käännetyn tekstityksen levittäminen verkossa</a></li>
+<li><a href="/tekstitys/ch025_videon-cms-jakelu">Videon CMS-jakelu</a></li>
+<li Class="booki-section">Tekijät</li><li><a href="/tekstitys/ch027_tekijat">Tekijät</a></li>
+</ul>

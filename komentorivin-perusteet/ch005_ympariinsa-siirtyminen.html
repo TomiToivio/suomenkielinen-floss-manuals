@@ -1,0 +1,116 @@
+<div id="main-content"><h1>Ympäriinsä siirtyminen</h1>
+<p>Kuka tahansa, joka on käyttänyt graafista käyttöliittymää, on siirtynyt kansioiden välillä. Tyypillinen kuva kansioista näkyy kuvassa 1, jossa joku on avannut kotihakemiston, kotihakemiston alla olevan hakemiston, jota kutsutaan käyttäjän käyttäjätunnuksella ja sen alla olevan "Asiakirjat"-kansion. </p>
+<p><img title="kansiot" src="_booki/komentorivin-perusteet/static/KomentorivinPerusteet-MovingAround-resized_600x375_kansiot-fi.gif" alt="kansiot" width="600" height="375"></p>
+<p><em>Kuva 1: Kansiot</em></p>
+<p>Kun käytät komentoriviä, kansioita kutsutaan hakemistoiksi. Tämä on vain vanhempi käsite, jota käytetään tietojenkäsittelyssä yleisesti viittaamaan asioiden kokoelmiin. Mitä tahansa teetkin työpöydällä olevassa kansiossa näkyy hakemistossa, kun olet komentorivillä, ja toisin päin. Työpöytä ja komentorivi ovat vain kaksi tapaa katsoa samaa hakemistoa/kansiota, joka on "/home/käyttäjänimesi/Työpöytä/" (englanniksi "/home/username/Desktop/", jossa "username" on käyttäjänimesi, eli jos olet "joe", se on "/home/joe/Desktop/<em>"</em>).</p>
+<p>Tiedostot sisältävät tietosi - olipa kyse tekstistä, kuvista, musiikista, taulukkolaskentatiedosta, tai jostain muusta - kun hakemistot ovat tiedostojen säilytyspaikkoja. Hakemistot voivat myös sisältää toisia hakemistoja. Tunnet olosi paljon mukavammaksi komentorivillä, kun voit siirtyä hakemistojen välillä, katsoa niitä, luoda ja poistaa niitä, ja niin edelleen.</p>
+<p>Hakemistot on järjestetty tiedostojärjestelmiksi. Kovalevylläsi on yhdenlainen tiedostojärjestelmä, CD-ROMilla tai DVD:llä toisenlainen, USB-muistilaitteella omanlaisensa, ja niin edelleen. Tämän vuoksi CD-ROM, DVD tai USB näkyy erillisenä asiana tietokoneellasi, kun laitat sen sisään. Onneksi näistä eroista ei tarvitse murehtia, koska sekä työpöytä että terminaali kätkevät erot. Jossain vaiheessa tässä kirjassa puhumme kuitenkin tiedosta, jota tiedostojärjestelmässä on tiedostoistasi.  </p>
+<p>Ensimmäistä hakemistoa kutsutaan juureksi (englanniksi "root") ja sen nimi on vain "/" (vinoviiva). Voit ajatella kaikkia hakemistoja ja tiedostoja järjestelmässä puuna, joka kasvaa ylösalaisin tästä juuresta:</p>
+<p><img title="desktop_home_vim_en" src="_booki/komentorivin-perusteet/static/KomentorivinPerusteet-MovingAround-desktop_home_vim_en-fi.png" alt="desktop_home_vim_en" width="600" height="557"></p>
+<p><em>Kuva 2: Juurihakemisto</em></p>
+<h2>Absoluuttiset ja suhteelliset polut</h2>
+<p>Jokaisella tiedostolla ja hakemistolla järjestelmässä on "osoite", jota kutsutaan sen absoluuttiseksi poluksi tai joskus pelkäksi poluksi. Se kuvailee reittiä, jota pitkin juuresta pääsee tiettyyn tiedostoon tai hakemistoon.</p>
+<p>Oletetaan esimerkiksi, että pidät vim-editorista, jonka esittelemme myöhemmässä luvussa, ja sinulle kerrotaan, että voit avata sen komennolla "/usr/bin/vim<em>"</em>. Tämä alleviivaa asiaa, jonka mainitsimme aiemmassa luvussa: komennot ovat vain ajettavia tiedostoja. Joten vim-editori on tiedosto, jonka polku on <em>"</em>/usr/bin/vim<em>"</em>, ja komennon "/usr/bin/vim" ajaminen suorittaa editorin. Kuten näet näistä esimerkeistä, vinoviiva "/" on myös käytössä eri hakemistojen erotusmerkkinä.</p>
+<p>Voitko löytää tiedoston "/usr/bin/vim<em>"</em> kuvassa 2? Polku voidaan ymmärtää seuraavasti:</p>
+<ol><li>Aloita juurihakemistosta ("/").</li>
+<li>Siirry alas juurihakemistosta ("/") hakemistoon, jota kutsutaan nimellä "usr<em>"</em>.</li>
+<li>Siirry hakemistosta <em>"</em>usr<em>"</em> alas hakemistoon, jota kutsutaan nimellä "bin".</li>
+<li><em>"</em>vim" on siinä hakemistossa.</li>
+</ol><p>Olet vasta tottumassa komentorivin käyttöön ja voi tuntua oudolle kirjoittaa komentoja, kun luet tätä kirjaa. Jos tämä luku hämmentää sinua, yritä piirtää kuvan 2 hakemistopuu paperille. Piirrä nuolia paperille, kun ajat komentoja tässä luvussa, jotta pystyt suunnistamaan hakemistoissa.</p>
+<p><strong>Huomaa:</strong> et voi nähdä onko joku kohde tiedosto vai hakemisto pelkästään katsomalla sen polkua.</p>
+<p>Kun työskentelet komentorivillä, työskentelet aina hakemiston "sisällä". Voit löytää tämän hakemiston polun komennolla "pwd" ("print working directory", tulosta työhakemisto):  </p>
+<pre>$ <strong>pwd</strong>
+
+/home/ben</pre>
+<p>Voit nähdä, että "pwd" tulostaa absoluuttisen polun. Jos tahdot vaihtaa työhakemistoasi, voit käyttää komentoa "cd" ("change directory", vaihda hakemistoa), jota seuraa kohdehakemistoon osoittava argumentti:</p>
+<pre>$ <strong>cd /</strong></pre>
+<p>Vaihdoit juuri työhakemistosi tiedostojärjestelmän juureen! Jos tahdot palata edelliseen hakemistoon, kirjoita komento:</p>
+<pre>$ <strong>cd /home/ben</strong></pre>
+<p>Vaihtoehtoisesti voit "kulkea" takaisin hakemistoon "/home/ben" käyttäen suhteellisia polkuja. Niitä kutsutaan suhteellisiksi, koska ne on määritelty "suhteessa" nykyiseen työhakemistoosi. Jos menet takaisin juurihakemistoon, voit kirjoittaa seuraavat komennot:  </p>
+<pre>$ <strong>cd /</strong>
+$ <strong>cd home</strong>
+$ <strong>cd ben</strong>
+$ <strong>pwd</strong>
+/home/ben</pre>
+<p>Ensimmäinen komento muuttaa nykyisen työhakemistosi juureksi. Seuraava komento siirtää sinut hakemistoon "home", jolloin nykyinen työhakemistosi on "/home". Toinen komento muuttaa hakemistoksi "ben", joka on suhteessa hakemistoon "/home", jolloin päädyt hakemistoon "/home/ben".</p>
+<h3>On hyvä olla taas kotona</h3>
+<p>Jokainen järjestelmän käyttäjä omistaa hänelle annetun hakemiston, jota kutsutaan kotihakemistoksi. Ei ole väliä mikä nykyinen työhakemistosi on, voit palata nopeasti kotihakemistoosi näin:</p>
+<pre>$ <strong>cd</strong>
+</pre>
+<p>Tämä merkitsee, että kirjoita komento "cd" ilman argumentteja.</p>
+<p>Kaikki tiedostosi ja asetuksesi on tallennettu kotihakemistoosi (tai sen alihakemistoihin). Jokainen järjestelmäsi käyttäjä, jolla on käyttäjätunnus, saa oman kotihakemiston. Kotihakemistot nimetään käyttäjien käyttäjätunnusten mukaan, ja ne löytyvät yleensä hakemistosta "/home", vaikka joissain järjestelmissä ne sijaitsevat hakemistossa "/usr/home". Kun avaat päätteesi, se sijoittaa sinut kotihakemistoosi.</p>
+<p>On olemassa erityinen oikotie, joka viittaa kotihakemistoosi, nimittäin symboli "~" (jota kutsutaan yleensä tildeksi, ja joka löytyy useimpien näppäimistöjen oikealta puolelta, rivinvaihtonäppäimen vierestä). Esimerkiksi "~/Työpöytä" viittaa hakemistoon, jota kutsutaan bunekkö "Työpöytä", ja joka on yleensä olemassa kotihakemistosi sisällä.  </p>
+<h3>"." ja ".." -hakemistot</h3>
+<p>Merkit "." ja ".." ovat erikoisia ja ne ovat olemassa joka hakemistossa. Yksittäinen piste on lyhenne "tästä hakemistosta." Voit käyttää sitä suhteellisena polkuna ja voit kokeilla ja nähdä mitä tapahtuu, kun teet näin: </p>
+<pre>$ <strong>pwd</strong>
+/usr/bin
+$ <strong>cd .</strong>
+$ <strong>pwd</strong>
+/usr/bin
+</pre>
+<p>Jos "vim" on hakemistossa "/usr/bin", voit ajaa sen kirjoittamalla suhteellisen polun:</p>
+<pre>$ <strong>./vim</strong>
+</pre>
+<p>Toinen erikoishakemisto, "..", on lyhenne "tämän hakemiston ylähakemistosta."  Edellisestä esimerkistä jatkaen voit tehdä näin:</p>
+<pre>$ <strong>cd ..</strong>
+$ <strong>pwd</strong>
+/usr
+</pre>
+<p>Koska ne ovat tiedostojärjestelmän todellisia osia, voit käyttää niitä monimutkaisempien polkujen osana, kuten: </p>
+<pre>$ <strong>cd /usr/bin</strong>
+$ <strong>pwd</strong>
+/usr/bin
+$ <strong>cd ../lib</strong>
+$ <strong>pwd</strong>
+/usr/lib
+$ <strong>cd ../..</strong>
+$ <strong>pwd</strong>
+/
+$ <strong>cd home</strong>
+$ <strong>pwd</strong>
+/home
+$ <strong>cd ../usr/bin</strong>
+$ <strong>pwd</strong>
+/usr/bin
+</pre>
+<p>Yritä liikkua ympäriinsä tietokoneesi sisällä käyttäen komentoriviä ja totut siihen pian! </p></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/komentorivin-perusteet/index">Ota komento</a></li>
+<li Class="booki-section">Perusteet</li><li><a href="/komentorivin-perusteet/ch003_aloittaminen">Käytön aloittaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch004_syntaksi">Syntaksi</a></li>
+<li><a href="/komentorivin-perusteet/ch005_ympariinsa-siirtyminen">Ympäriinsä siirtyminen</a></li>
+<li><a href="/komentorivin-perusteet/ch006_tiedostorakenne">Tiedostorakenne</a></li>
+<li Class="booki-section">Komennot</li><li><a href="/komentorivin-perusteet/ch008_peruskomennot">Peruskomennot</a></li>
+<li><a href="/komentorivin-perusteet/ch009_jarjestelmanvalvojat">Järjestelmänvalvoja</a></li>
+<li><a href="/komentorivin-perusteet/ch010_useammat-tiedostot">Useammat tiedostot</a></li>
+<li><a href="/komentorivin-perusteet/ch011_kirjoita-vahemman">Kirjoita vähemmän</a></li>
+<li Class="booki-section">Keskivaikeita komentoja</li><li><a href="/komentorivin-perusteet/ch013_putkitus">Putkitus</a></li>
+<li><a href="/komentorivin-perusteet/ch014_komentohistoria">Komentohistoria</a></li>
+<li><a href="/komentorivin-perusteet/ch015_standarditiedostot">Standarditiedostot</a></li>
+<li Class="booki-section">Kehittyneempiä komentoja</li><li><a href="/komentorivin-perusteet/ch017_kayttooikeudet">Käyttöoikeudet</a></li>
+<li><a href="/komentorivin-perusteet/ch018_interaktiivinen-muokkaus">Interaktiivinen muokkaus</a></li>
+<li><a href="/komentorivin-perusteet/ch019_poistumisen-tarkastaminen">Poistumisen tarkastaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch020_alikomennot">Alikomennot</a></li>
+<li><a href="/komentorivin-perusteet/ch021_hakemistot">Hakemistot</a></li>
+<li><a href="/komentorivin-perusteet/ch022_kustomisointi">Kustomisointi</a></li>
+<li><a href="/komentorivin-perusteet/ch023_parametrien-korvaaminen">Parametrien korvaaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch024_gnuscreen">GNUScreen</a></li>
+<li><a href="/komentorivin-perusteet/ch025_ssh">SSH</a></li>
+<li><a href="/komentorivin-perusteet/ch026_ohjelmien-asentaminen">Ohjelmien asentaminen</a></li>
+<li Class="booki-section">Tekstieditorit</li><li><a href="/komentorivin-perusteet/ch028_tekstieditorit">Tekstieditorit</a></li>
+<li><a href="/komentorivin-perusteet/ch029_nano">Nano</a></li>
+<li><a href="/komentorivin-perusteet/ch030_vi-ja-vim">Vi ja Vim</a></li>
+<li><a href="/komentorivin-perusteet/ch031_emacs">Emacs</a></li>
+<li><a href="/komentorivin-perusteet/ch032_kedit">Kedit</a></li>
+<li><a href="/komentorivin-perusteet/ch033_gedit">Gedit</a></li>
+<li Class="booki-section">Skriptaus</li><li><a href="/komentorivin-perusteet/ch035_skriptaus">Skriptaus</a></li>
+<li><a href="/komentorivin-perusteet/ch036_skriptien-huoltaminen">Skriptien huoltaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch037_muut-kielet">Muut kielet</a></li>
+<li><a href="/komentorivin-perusteet/ch038_sed">Sed</a></li>
+<li><a href="/komentorivin-perusteet/ch039_awk">AWK</a></li>
+<li><a href="/komentorivin-perusteet/ch040_saannolliset-lausekkeet">Säännölliset lausekkeet</a></li>
+<li><a href="/komentorivin-perusteet/ch041_perl">Perl</a></li>
+<li><a href="/komentorivin-perusteet/ch042_ruby">Ruby</a></li>
+<li><a href="/komentorivin-perusteet/ch043_python">Python</a></li>
+<li Class="booki-section">Komennot nopeasti</li><li><a href="/komentorivin-perusteet/ch045_komentojen-pikaopas">Komentojen pikaopas</a></li>
+<li Class="booki-section">Liitteet</li><li><a href="/komentorivin-perusteet/ch047_tasta-kayttooppaasta">Tästä käyttöoppaasta</a></li>
+<li><a href="/komentorivin-perusteet/ch048_tekijat">Tekijät</a></li>
+</ul>

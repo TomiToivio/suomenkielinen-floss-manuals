@@ -1,0 +1,64 @@
+<div id="main-content"><h1>Välityspalvelimet ja FoxyProxy</h1>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/Pictogram_Network%20Drive_1.png" alt="" align="right">Välityspalvelimen avulla voi mennä verkkosivulle tai johonkin muuhun sijaintiin verkossa jopa silloin, kun suora pääsy on suljettu valtion tai internet-palveluntarjoajan taholta. On monia erityyppisiä välityspalvelimia, kuten: </p>
+<ul><li>Verkon välityspalvelimet, jotka vaativat vain tietämään välityspalvelimen osoitteen. Verkon välityspalvelimen URL-osoite voi näyttää tältä: http://www.example.com/cgi-bin/nph-proxy.cgi</li>
+<li>HTTP-välityspalvelimet, jotka vaativat muuttamaan selaimesi asetuksia. HTTP-välityspalvelimet toimivat vain verkon sisällön tapauksessa. Voit löytää tietoa HTTP-välityspalvelimesta muodossa "proxy.example.com:3128" tai "192.168.0.1:8080".</li>
+<li>SOCKS-välityspalvelimet, jotka vaativat myös muuttamaan selaimen asetuksia. SOCKS-välityspalvelimet toimivat monien eri internet-sovellusten kanssa. Näihin sisältyy sähköposti ja pikaviestimet. SOCKS-välityspalvelinten tieto näyttää aivan HTTP-välityspalvelinten tiedolta.</li>
+</ul><p>Voit käyttää verkon välityspalvelinta suoraan ilman mitään asetuksien muutoksia kirjoittamalla URL-osoitteen. HTTP ja SOCKS -v välityspalvelimet täytyy kuitenkin määritellä verkkoselaimessa.</p>
+<h2>Oletusarvoiset Firefoxin välityspalveusasetukset</h2>
+<p>Firefox 4 antaa vaihtaa välityspalvelinten asetusta Options tai Preferences -ikkunassa. Löydät tämän valikon napsauttamalla ikkunan vasenta yläkulmaa ja valitsemalla <strong>Options &gt; Options</strong>. Katso kuvaa alla.</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/foxyproxy_windows7_options.PNG" alt=""></p>
+<p>Mene kohtaan Advanced ja avaa Network -välilehti.</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/Proxy_02.png" alt=""></p>
+<p>Valitse Settings, napsauta "Manual proxy configuration" ja kirjoita tahtomasi välityspalvelimen tiedot. Muista, että HTTP-välityspalvelimet ja SOCKS-välityspalvelimet toimivat eri tavalla ja ne pitää kirjoittaa vastaaviin kenttiin. Jos välityspalvelimen tiedoissa on kaksoispiste (:), se on välityspalvelimen osoitteen ja porttinumeron erotin. Ruudun pitäisi näyttää tältä:</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/Proxy_04.png" alt=""></p>
+<p>Kun napsautat OK, asetukset tallennetaan ja verkkoselain yhdistää automaattisesti kaikki tulevat yhteydet tuon palvelimen kautta. Jos tulee virheviesti, kuten "The proxy server is refusing connections" tai "Unable to find the proxy server", välityspalvelimen asetusten kanssa on ongelma. Siinä tapauksessa tulee toistaa yllä mainitut askeleet ja valita viimeisessä ruudussa "No proxy" välityspalvelimen ottamiseksi pois päältä.</p>
+<h2>FoxyProxy</h2>
+<p>FoxyProxy on ilmainen lisäosa Firefox-verkkoselaimeen, jonka avulla on mahdollista hallita useaa eri välityspalvelinta ja vaihtaa niitä. Lisätietoa FoxyProxysta löytyy osoitteesta <a href="http://getfoxyproxy.org/">http://getfoxyproxy.org/</a>.</p>
+<h3>Asennus</h3>
+<p>Avaa lisäosien ikkuna Firefox 4:ssä. Kun ponnahdusikkuna aukeaa, kirjoita tahtomasi lisäosan nimi (tässä tapauksessa "FoxyProxy") hakukenttään oikeassa ylänurkassa ja paina Enter. Hakutuloksissa on kaksi eri FoxyProxyn versiota: Standard ja Basic. Täydellinen vertailu näistä kahdesta ilmaisesta versiosta on sivulla <a href="http://getfoxyproxy.org/downloads.html#editions">http://getfoxyproxy.org/downloads.html#editions</a>, mutta ilmainen versio on riittävä tavalliseen sensuurin kiertämiseen. Valittuasi tahtomasi version, napsauta Install.</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/FP_02.png" alt=""></p>
+<p>Asennuksen jälkeen Firefoxin pitäisi käynnistyä ja avata FoxyProxyn ohjesivu. Voit laittaa päälle FoxyProxyn pikakäynnistysnapin Firefoxissa. Mene Firefox-valikkoon vasemmassa ylänurkassa ja valitse <strong>Options &gt; Add-on bar</strong>. Jos valinta on päällä, sinun tulisi nähdä merkki vasemmalle tekstistä "Add-on bar". Katso esimerkkiä alla. </p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/foxyproxy_windows7_showaddons.PNG" alt=""></p>
+<h3>Asetukset</h3>
+<p>Jotta FoxyProxy toimii oikein, täytyy sille tehdä oikeat välityspalveluksen asetukset. Avaa asetusikkuna painamalla kuvaketta <img src="_booki/internet-tietoturvan-perusteet/static/foxyproxy_windows7_icon.PNG" alt=""> Firefox-ikkunan oikeassa alakulmassa. Asetusikkuna näyttää tälle:</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/FP_04.png" alt=""></p>
+<p>Paina "Add New Proxy". Seuraavassa ikkunassa voit kirjoittaa välityspalvelimen asetukset samalla tavalla kuin oletusarvoisen Firefoxin välityspalvelimen asetukset on kirjoitettu: </p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/FP_05.png" alt=""></p>
+<p>Valitse "Manual Proxy Configuration", kirjoita verkkotunnus tai IP-osoite ja välityspalvelimen käyttämä porttinumero oikeisiin kenttiin. Valitse "SOCKS proxy?" jos käytössä on SOCKS-välityspalvelin, jonka jälkeen voit painaa OK. Voit lisätä välityspalvelimia toistamalla mainitut toimenpiteet. </p>
+<h3>Käyttö</h3>
+<p>Voit vaihtaa välityspalvelinta (tai ottaa välityspalvelimet pois päältä) painamalla oikealla hiiren napilla kettukuvaketta Firefox-ikkunan oikeassa alanurkassa:</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/FP_06.png" alt=""></p>
+<p>Valitaksesi välityspalvelimen voit painaa vasemmalla hiiren napilla välityspalvelinta, jota tahdot käyttää. </p></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/internet-tietoturvan-perusteet/index">Johdanto</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch002_why-use-a-manual-on-internet-security">Miksi käyttää internet-tietoturvaopasta?</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch003_understanding-basic-internet-security">Internet-tietoturvan perusteiden ymmärtäminen</a></li>
+<li Class="booki-section">Yleinen turvallisuus</li><li><a href="/internet-tietoturvan-perusteet/ch005_secure-your-computer-general">Turvaa tietokoneesi (yleistä)</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch006_internet-cafes">Internet-kahvilat</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch007_software-on-usb-or-cd">Ohjelmat USB-tikulla tai CD:llä</a></li>
+<li Class="booki-section">Salasanojen turvaaminen</li><li><a href="/internet-tietoturvan-perusteet/ch009_keeping-passwords-safe">Salasanojen turvaaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch010_installing-a-password-manager">Salasanojen hallintaohjelman asentaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch011_encrypting-passwords-with-a-password-manager">Salasanojen salaaminen salasanojen hallintaohjelman avulla</a></li>
+<li Class="booki-section">Henkilökohtaisten tietojen turvaaminen</li><li><a href="/internet-tietoturvan-perusteet/ch013_introduction-to-securing-personal-data">Johdanto henkilökohtaisten tietojen turvaamiseen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch014_installing-truecrypt">TrueCryptin asentaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch015_using-truecrypt">TrueCryptin käyttö</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch016_setting-up-a-hidden-volume">Kätketyn osion luominen</a></li>
+<li Class="booki-section">Turvallinen selaaminen</li><li><a href="/internet-tietoturvan-perusteet/ch018_introduction-to-safe-browsing">Johdanto turvalliseen selaamiseen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch019_accessing-firefox-on-ubuntu">Firefoxin asennus Ubuntuun</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch020_installing-firefox-on-windows">Firefoxin asentaminen Windowsiin</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch021_protecting-your-internet-passwords">Internet-salasanojen suojaaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch022_extending-firefox">Firefoxin laajentaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch023_proxy-setting-and-foxyproxy">Välityspalvelimet ja FoxyProxy</a></li>
+<li Class="booki-section">Sähköpostin tietoturvan perusteet</li><li><a href="/internet-tietoturvan-perusteet/ch025_introduction-to-e-mail-safety">Johdanto sähköpostin tietoturvaan</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch026_start-using-thunderbird-mail">Thunderbird-sähköpostin käyttö</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch027_setting-up-secure-connections">Salattujen yhteyksien luominen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch028_some-additional-security-settings">Lisää turvallisuusasetuksia</a></li>
+<li Class="booki-section">Sähköpostien salaaminen</li><li><a href="/internet-tietoturvan-perusteet/ch030_introduction-to-mail-encryption-pgp">Johdanto sähköpostien salaamiseen (PGP)</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch031_installing-pgp-on-windows">PGP:n asentaminen Windowsiin</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch032_installing-pgp-on-ubuntu">PGP:n asentaminen Ubuntuun</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch033_creating-your-pgp-keys">PGP-avainten luominen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch034_daily-pgp-usage">Päivittäinen PGP:n käyttö</a></li>
+<li Class="booki-section">TOR-opas</li><li><a href="/internet-tietoturvan-perusteet/ch036_using-tor">TOR-opas</a></li>
+<li Class="booki-section">Taustatietoa</li><li><a href="/internet-tietoturvan-perusteet/ch038_how-the-net-works">Kuinka verkko toimii</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch039_glossary">Sanasto</a></li>
+<li Class="booki-section">Tekijät</li><li><a href="/internet-tietoturvan-perusteet/ch041_tekijat">Tekijät</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch042_lisenssi">Lisenssi</a></li>
+</ul>

@@ -1,0 +1,75 @@
+<div id="main-content"><h1>SSH</h1>
+<p>Komentorivi on niin käyttökelpoinen työkalu ettei kestä kauan ennen kuin sinun täytyy päästä komentoriville koneella, joka ei ole edessäsi. Muinaisina aikoina turvallisuus ei ollut tärkeää ja ihmiset käyttivät komentoa <code>telnet</code>päästäkseen etäkoneen komentoriville. Komennon <code>telnet</code> käyttö ei ole enää hyvä idea, sillä tietoa siirretään raa'assa, salaamattomassa muodossa. Normaali turvallinen tapa päästä komentoriville etäkoneella on käyttää komentoa <code>ssh</code> (secure shell).  Komennon yksinkertaisin muoto on</p>
+<pre>$<strong> ssh toinenkone</strong><strong>.domaini.fi</strong>
+</pre>
+<p>Tämä komento olettaa, että käyttäjänimesi etäkoneella on sama kuin käyttäjänimesi koneella, jolla kirjoitat komennon. Etäkone kysyy sinulta salasanaasi. Jos käyttäjänimesi etäkoneella on erilainen kuin käyttäjänimesi paikallisella koneella, käytä valitsinta <code>-l</code> (pieni "L") osoittamaan käyttäjänimesi etäkoneella.</p>
+<pre>$<strong> </strong><strong>ssh -l </strong><strong>käyttäjätunnus </strong><strong>toinenkone.domaini.fi</strong>
+</pre>
+<p>Vaihtoehtoisesti voit käyttää sähköpostityylistä merkintätapaa osoittamaan etäkoneen käyttäjänimen.</p>
+<pre>$<strong> </strong><strong>ssh </strong><strong>käyttäjätunnus@toinenkone.domaini.fi</strong>
+</pre>
+<p>Tähän mennessä kaikki nämä komennot näyttävät komentorivin etäkoneella, josta voit sitten suorittaa mitä tahansa komentoja, joita tämä kone sinulle tarjoaa. Joskus tahdot ehkä suorittaa yhden komennon etäkoneella ja palata sitten oman koneesi komentoriville. Tämä saadaan aikaan laittamalla etäkoneella suoritettava komento heittomerkkien sisään.</p>
+<pre>$<strong> </strong><strong>ssh käyttäjätunnus</strong><strong>@toinenkone.domaini.fi 'mkdir /home/nimeni/hakemisto'</strong>
+</pre>
+<p>Joskus sinun täytyy suorittaa aikaavieviä komentoja etäkoneella, mutta et ole varma, onko sinulla tarpeeksi aikaa nykyisen ssh-istunnon puitteissa. Jos suljet etäyhteyden ennen kuin komento on suoritettu loppuun, tuon komennon suorittaminen jää kesken. Estääksesi työsi menettämisen voit aloittaa ssh-yhteydellä etäkoneella olevaan screen-istuntoon ja sen jälkeen irroittaa sen ja kytkeä sen minne tahdot. Irroittaaksesi etäkoneen screen-istunnon voit yksinkertaisesti sulkea ssh-yhteyden: irrotettu screen-istunto jatkaa pyörimistä etäkoneella. </p>
+<p><code>ssh</code> tarjoaa monia muita vaihtoehtoja, jotka kuvaillaan manuaalisivulla. Voit myös asettaa suosikkijärjestelmäsi sallimaan kirjauduttuasi komentojen suorittamisen ilman salasanasi kysymystä joka kerralla. Järjestely on monimutkainen mutta voi säästää sinulta paljon näppäilyä: kokeile etsiä webistä käsitteitä "ssh-keygen", "ssh-add" ja "authorized_keys".</p>
+<h2>scp: tiedostojen kopiointi</h2>
+<p>SSH-protokolla ulottuu kauas peruskomennon <code>ssh</code> tuolle puolen. Erityisen hyödyllinen SSH-protokollaan perustuva komento on <code>scp</code>, turvallinen kopiointikomento. Seuraava esimerkki kopioi tiedoston nykyisestä hakemistosta pakallisella koneellasi hakemistoon <em>/home/minä/juttuja</em> etäkoneella.</p>
+<pre>$<strong> </strong><strong>scp </strong><strong>myprog.py </strong><strong>käyttäjätunnus@toinenkone.domaini.fi:/home/minä/juttuja</strong>
+</pre>
+<p>Varo, sillä komento ylikirjoittaa minkä tahansa tiedoston, joka on jo olemassa nimellä <em>/home/minä/juttuja/ohjelmani.py</em>. (Tai saat virheviestin, jos on tämän niminen tiedosto, eikä sinulla ole käyttöoikeutta ylikirjoittaa sitä.) Jos <em>/home/me</em> on kotihakemistosi, kohdehakemisto voidaan lyhentää.</p>
+<pre>$<strong> </strong><strong>scp ohjelmani</strong><strong>.py käyttäjätunnus</strong><strong>@toinenkone.domaini.fi</strong><strong>:juttuja</strong>
+</pre>
+<p>Voit kopioida toiseen suuntaan yhtä helposti: etäkoneelta paikalliselle koneelle.</p>
+<pre>$<strong> </strong><strong>scp käyttäjätunnus</strong><strong>@toinenkone.domaini.fi</strong><strong>:Asiakirjat/haastattelu.txt eilinen-haastattelu.txt</strong></pre>
+<p>Tiedostonimi etäkoneella on <em>haastattelu.txt</em> kotihakemistosi alihakemistossa <em>Asiakirjat</em>. Tiedosto kopioidaan tiedostoon <span>eilinen-haastattelu</span><em>.txt</em> paikallisessa järjestelmässäsi.</p>
+<p>Komentoa<code> scp</code> voidaan käyttää kopioimaan tiedosto etäkoneelta toiselle etäkoneelle.</p>
+<pre>$<strong> </strong><strong>scp </strong><strong>käyttäjä1@kone1:tiedosto1 käyttäjä2@kone2:toinenhakemisto</strong></pre>
+<p>Kopioidaksesi rekursiivisesti kaikki tiedostot ja alihakemistot hakemistossa käytä valitsinta <code>-r</code>.</p>
+<pre>$<strong> </strong><strong>scp -r </strong><strong>käyttäjä1@kone1:hakemisto1 käyttäjä2@kone2:hakemisto2</strong></pre>
+<p>Katso opassivua <code>scp</code> nähdäksesi lisää valitsimia.</p>
+<h2>rsync: automaattiset joukkosiirrot ja varmuuskopiot</h2>
+<p><code>rsync</code> on erittäin hyödyllinen komento, joka pitää etähakemiston synkronoituna paikallisen hakemiston kanssa. Me mainitsemme sen tässä, koska se on hyödyllinen tapa käyttää verkkoa komentoriviltä, aivan kuin <code>ssh</code>, ja koska SSH-protokollaa suositellaan <code>rsync</code> -komennon pohjana olevan tiedonsiirron protokollaksi.</p>
+<p>Seuraavassa on yksinkertainen ja käyttökelpoinen esimerkki. Se kopioi tiedostoja paikallisesta  <em>/home/nimeni/Asiakirjat</em> hakemistoon nimeltä<em> backup/</em> omassa kotihakemistossasi järjestelmässä <em>quantum.example.edu</em>. <code>rsync</code> itse asiassa minimoi tarpeellisen kopioinnin määrän kehittyneiden tarkastusten avulla.</p>
+<pre>$<strong> </strong><strong>rsync -e ssh -a /home/nimeni/Asiakirjat minä@quantum.example.edu:backup/</strong></pre>
+<p>Valitsin <code>-e</code> <code>ssh</code> käyttää SSH-protokollaa siirron pohjana, kuten on suositeltu. Valitsin <code>-a</code> (merkitsee "arkistoi") kopioi kaiken määritellystä hakemistosta. Jos tahdot tuhota tiedostot paikallisesta järjestelmästä kun ne koipioidaan, käytä valitsinta a <code>--delete</code>. Katso komennon <code>rsync</code> opaskirjasivua saadaksesi lisätietoa komennosta <code>rsync</code>.</p></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/komentorivin-perusteet/index">Ota komento</a></li>
+<li Class="booki-section">Perusteet</li><li><a href="/komentorivin-perusteet/ch003_aloittaminen">Käytön aloittaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch004_syntaksi">Syntaksi</a></li>
+<li><a href="/komentorivin-perusteet/ch005_ympariinsa-siirtyminen">Ympäriinsä siirtyminen</a></li>
+<li><a href="/komentorivin-perusteet/ch006_tiedostorakenne">Tiedostorakenne</a></li>
+<li Class="booki-section">Komennot</li><li><a href="/komentorivin-perusteet/ch008_peruskomennot">Peruskomennot</a></li>
+<li><a href="/komentorivin-perusteet/ch009_jarjestelmanvalvojat">Järjestelmänvalvoja</a></li>
+<li><a href="/komentorivin-perusteet/ch010_useammat-tiedostot">Useammat tiedostot</a></li>
+<li><a href="/komentorivin-perusteet/ch011_kirjoita-vahemman">Kirjoita vähemmän</a></li>
+<li Class="booki-section">Keskivaikeita komentoja</li><li><a href="/komentorivin-perusteet/ch013_putkitus">Putkitus</a></li>
+<li><a href="/komentorivin-perusteet/ch014_komentohistoria">Komentohistoria</a></li>
+<li><a href="/komentorivin-perusteet/ch015_standarditiedostot">Standarditiedostot</a></li>
+<li Class="booki-section">Kehittyneempiä komentoja</li><li><a href="/komentorivin-perusteet/ch017_kayttooikeudet">Käyttöoikeudet</a></li>
+<li><a href="/komentorivin-perusteet/ch018_interaktiivinen-muokkaus">Interaktiivinen muokkaus</a></li>
+<li><a href="/komentorivin-perusteet/ch019_poistumisen-tarkastaminen">Poistumisen tarkastaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch020_alikomennot">Alikomennot</a></li>
+<li><a href="/komentorivin-perusteet/ch021_hakemistot">Hakemistot</a></li>
+<li><a href="/komentorivin-perusteet/ch022_kustomisointi">Kustomisointi</a></li>
+<li><a href="/komentorivin-perusteet/ch023_parametrien-korvaaminen">Parametrien korvaaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch024_gnuscreen">GNUScreen</a></li>
+<li><a href="/komentorivin-perusteet/ch025_ssh">SSH</a></li>
+<li><a href="/komentorivin-perusteet/ch026_ohjelmien-asentaminen">Ohjelmien asentaminen</a></li>
+<li Class="booki-section">Tekstieditorit</li><li><a href="/komentorivin-perusteet/ch028_tekstieditorit">Tekstieditorit</a></li>
+<li><a href="/komentorivin-perusteet/ch029_nano">Nano</a></li>
+<li><a href="/komentorivin-perusteet/ch030_vi-ja-vim">Vi ja Vim</a></li>
+<li><a href="/komentorivin-perusteet/ch031_emacs">Emacs</a></li>
+<li><a href="/komentorivin-perusteet/ch032_kedit">Kedit</a></li>
+<li><a href="/komentorivin-perusteet/ch033_gedit">Gedit</a></li>
+<li Class="booki-section">Skriptaus</li><li><a href="/komentorivin-perusteet/ch035_skriptaus">Skriptaus</a></li>
+<li><a href="/komentorivin-perusteet/ch036_skriptien-huoltaminen">Skriptien huoltaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch037_muut-kielet">Muut kielet</a></li>
+<li><a href="/komentorivin-perusteet/ch038_sed">Sed</a></li>
+<li><a href="/komentorivin-perusteet/ch039_awk">AWK</a></li>
+<li><a href="/komentorivin-perusteet/ch040_saannolliset-lausekkeet">Säännölliset lausekkeet</a></li>
+<li><a href="/komentorivin-perusteet/ch041_perl">Perl</a></li>
+<li><a href="/komentorivin-perusteet/ch042_ruby">Ruby</a></li>
+<li><a href="/komentorivin-perusteet/ch043_python">Python</a></li>
+<li Class="booki-section">Komennot nopeasti</li><li><a href="/komentorivin-perusteet/ch045_komentojen-pikaopas">Komentojen pikaopas</a></li>
+<li Class="booki-section">Liitteet</li><li><a href="/komentorivin-perusteet/ch047_tasta-kayttooppaasta">Tästä käyttöoppaasta</a></li>
+<li><a href="/komentorivin-perusteet/ch048_tekijat">Tekijät</a></li>
+</ul>

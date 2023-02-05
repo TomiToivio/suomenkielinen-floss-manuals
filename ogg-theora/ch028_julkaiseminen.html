@@ -1,0 +1,70 @@
+<div id="main-content"><h1>Julkaiseminen</h1>
+<div id="content">
+<p>Riippuen tavasta, jolla loit tekstitykset - liitit ne videoon tai teit erillisen .srt-tiedoston - sinulla on erilaisia tapoja julkaista ne verkossa videosi kanssa.</p>
+<h2>Ulkoisten tekstitystiedostojen pitäminen videon kanssa verkkopalvelimella </h2>
+<p>Oletamme, että sinulla on yksi tai useampia tekstitystiedostoja (SRT-formaatissa) ja video.</p>
+<p><strong>HTML5 <em>-videotägi</em> ja </strong><strong>Javascript <br></strong></p>
+<p>Voit tarjota Theora -videon esikatselun .srt-tiedoston kanssa ohjelman jquery.srt avulla. </p>
+<p>Ensin, huomaa että alla liitämme JQueryn, suositun GPL Javascript -kirjaston (<a href="http://jquery.com/" target="_top">http://jquery.com/</a>), ja esimerkin JavaScript-sovelluksesta, joka näyttää SRT-tekstitykset sivulla. Se on saatavilla: <a href="http://v2v.cc/~j/jquery.srt/jquery.srt.js">http://v2v.cc/~j/jquery.srt/jquery.srt.js</a></p>
+<p>Yksinkertainen HTML-dokumentti näytetään alla, siihen kuuluu modifikaatio JavaScript-tiedostojen liittämiseen ja linkki tekstitystiedostoosi. Vain yksi tekstitystiedosto voidaan linkittää kerrallaan, paitsi jos kehität JavaScript-koodia pidemmälle. </p>
+<p>Se on pieni skripti, joka lataa .srt-tiedoston ja näyttää sen divin sisällä sivullasi, videon alla tai päällä.</p>
+<pre><code>&lt;script type="text/javascript" src="jquery.js"&gt;&lt;/script&gt; &lt;script type="text/javascript" src="jquery.srt.js"&gt;&lt;/script&gt; &lt;video src="http://example.com/video.ogv" id="video" controls&gt; &lt;/video&gt; &lt;div class="srt" data-video="video" data-srt="http://example.com/video.srt" /&gt;</code></pre>
+<p>Voit katsoa tätä Mozillan demoa, jos tahdot esimerkin tekstityksistä monilla kielillä:  <a href="http://people.mozilla.com/~prouget/demos/srt/index2.xhtml">http://people.mozilla.com/~prouget/demos/srt/index2.xhtml</a></p>
+<p>Toinen esimerkki käyttää monia tekstitystiedostoja ja tarjoaa käyttöliittymän niiden valitsemiseen:  <a href="http://www.annodex.net/~silvia/itext/">http://www.annodex.net/~silvia/itext/</a>.</p>
+<h2>Tekstitetyn videon tarjoaminen verkkopalvelimella</h2>
+<p>Jos sinulla on Ogg-tiedostoja, joihin on liitetty tekstitykset, ja tahdot näyttää ne selaimessasi, et voi käyttää videotägiä juuri nyt. Kuitenkaan kaikki selaimet eivät tue videotägiä. Cortado, Java-liitännäinen, joka voi näyttää Theora-videoita, tukee myös liitettyjä tekstityksiä, ja se toimii kaikissa selaimissa, joihin on liitetty Java. Voit hankkia Cortadon uusimman version osoitteesta:  <a href="http://theora.org/cortado/%20">http://theora.org/cortado/ </a></p>
+<pre>&lt;<span class="start-tag">applet</span><span class="attribute-name"> code</span>=<span class="attribute-value">"com.fluendo.player.Cortado.class" </span><span class="attribute-name">archive</span>=<span class="attribute-value">"cortado.jar"</span>
+<span class="attribute-name"> width</span>=<span class="attribute-value">"512" </span><span class="attribute-name">height</span>=<span class="attribute-value">"288"</span>&gt;
+    &lt;<span class="start-tag">param</span><span class="attribute-name"> name</span>=<span class="attribute-value">"url" </span><span class="attribute-name">value</span>=<span class="attribute-value">"video.ogv"</span><span class="error"><span class="attribute-name">/</span></span>&gt;
+    &lt;param name="kateLanguage" value="en"&gt;
+&lt;/<span class="end-tag">applet</span>&gt;
+</pre>
+<p>Käyttääksesi tekstityksiä Cortadossa annat sille urlin videoon, jossa on tekstitykset, ja samalla tavalla annat parametrin tekstitystiedostolle käytettäväksi. Helpoin tapa on valita kieli, jonka tahdot, kateLanguage-parametrin avulla:</p>
+<pre>  &lt;param name="kateLanguage" value="en"&gt;
+</pre>
+On mahdolilsta myös muuttaa tai poistaa tekstitys JavaScriptin avulla. Jos tahdot vaihtaa ranskankielisiin tekstityksiin, sinun tulee asettaa kateLanguage -optio skriptistäsi kutsumalla: <br><pre id="line1">  document.applets[0].setParam("kateLanguage", "fr");</pre>
+</div></div><ul Class="menu-goes-here"><li Class="booki-section">JOHDANTO</li><li><a href="/ogg-theora/index">OGG THEORA</a></li>
+<li><a href="/ogg-theora/ch002_tasta-kayttooppaasta">TÄSTÄ KÄYTTÖOPPAASTA</a></li>
+<li><a href="/ogg-theora/ch003_mita-video-on">MITÄ VIDEO ON?</a></li>
+<li><a href="/ogg-theora/ch004_mita-theora-on">MITÄ THEORA ON?</a></li>
+<li Class="booki-section">PERUSKÄSITTEET</li><li><a href="/ogg-theora/ch006_mika-on-koodekki">MIKÄ ON KOODEKKI?</a></li>
+<li><a href="/ogg-theora/ch007_sailot">SÄILÖT</a></li>
+<li Class="booki-section">TOISTO</li><li><a href="/ogg-theora/ch009_theoran-toistaminen">THEORAN TOISTAMINEN</a></li>
+<li><a href="/ogg-theora/ch010_toisto-vlclla">TOISTO VLC:LLÄ</a></li>
+<li><a href="/ogg-theora/ch011_miro">MIRO</a></li>
+<li Class="booki-section">THEORA VERKOSSA</li><li><a href="/ogg-theora/ch013_theora-verkossa">THEORA VERKOSSA</a></li>
+<li><a href="/ogg-theora/ch014_html5">HTML5</a></li>
+<li><a href="/ogg-theora/ch015_theora-sivuillasi">THEORA SIVUILLASI</a></li>
+<li><a href="/ogg-theora/ch016_hotelleja-theoralle">HOTELLEJA THEORALLE</a></li>
+<li Class="booki-section">ENKOODAUS</li><li><a href="/ogg-theora/ch018_johdanto-enkoodaukseen">JOHDANTO ENKOODAUKSEEN</a></li>
+<li><a href="/ogg-theora/ch019_firefogg">FIREFOGG</a></li>
+<li><a href="/ogg-theora/ch020_enkoodaus-vlclla">ENKOODAUS VLC:LLÄ</a></li>
+<li><a href="/ogg-theora/ch021_enkoodaus-ffmpeg2theoralla">ENKOODAUS FFMPEG2THEORALLA </a></li>
+<li><a href="/ogg-theora/ch022_thoggen">THOGGEN</a></li>
+<li Class="booki-section">TEKSTITYKSET</li><li><a href="/ogg-theora/ch024_tekstityksien-perusteet">TEKSTITYKSIEN PERUSTEET</a></li>
+<li><a href="/ogg-theora/ch025_jakelu">JAKELU</a></li>
+<li><a href="/ogg-theora/ch026_tekstityksien-liittaminen">TEKSTITYKSIEN LIITTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch027_tekstityksien-toistaminen">TEKSTITYKSIEN TOISTAMINEN</a></li>
+<li><a href="/ogg-theora/ch028_julkaiseminen">JULKAISEMINEN</a></li>
+<li Class="booki-section">SUORATOISTO</li><li><a href="/ogg-theora/ch030_suoratoiston-perusteet">SUORATOISTON PERUSTEET</a></li>
+<li><a href="/ogg-theora/ch031_icecast">ICECAST</a></li>
+<li><a href="/ogg-theora/ch032_tss">TSS</a></li>
+<li><a href="/ogg-theora/ch033_ffmpeg2theora-streamaus">FFMPEG2THEORA-STREAMAUS</a></li>
+<li><a href="/ogg-theora/ch034_suoratoisto-vlc-ohjelmalla">VLC-STREAMAUS</a></li>
+<li><a href="/ogg-theora/ch035_virtaustoiston-tallentaminen">VIRTAUSTOISTON TALLENTAMINEN</a></li>
+<li Class="booki-section">EDITOINTI</li><li><a href="/ogg-theora/ch037_johdanto-editointiin">JOHDANTO EDITOITIIN</a></li>
+<li><a href="/ogg-theora/ch038_pitivi">PITIVI</a></li>
+<li Class="booki-section">ESIKATSELU</li><li><a href="/ogg-theora/ch040_kuinka-esikatselua-kaytetaan">ESIKATSELUN KÄYTTÖ</a></li>
+<li><a href="/ogg-theora/ch041_tee-esikatselukuvia">TEE ESIKATSELUKUVIA</a></li>
+<li><a href="/ogg-theora/ch042_tee-diaesitys">TEE DIAESITYS</a></li>
+<li><a href="/ogg-theora/ch043_tee-esikatseluvideo">TEE ESIKATSELUVIDEO</a></li>
+<li Class="booki-section">EDITOINTI KOMENTORIVILTÄ</li><li><a href="/ogg-theora/ch045_komentorivi">THEORA JA KOMENTORIVI</a></li>
+<li><a href="/ogg-theora/ch046_theoran-teoria">THEORAN TEORIA</a></li>
+<li><a href="/ogg-theora/ch047_tiedoston-jakaminen">TIEDOSTON JAKAMINEN</a></li>
+<li><a href="/ogg-theora/ch048_tiedoston-leikkaaminen">TIEDOSTON LEIKKAAMINEN</a></li>
+<li><a href="/ogg-theora/ch049_tiedostojen-liittaminen">TIEDOSTOJEN LIITTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch050_tiedostojen-yhdistaminen">TIEDOSTOJEN YHDISTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch051_koon-muuttaminen">KOON MUUTTAMINEN</a></li>
+<li><a href="/ogg-theora/ch052_oggin-analysoiminen">OGGIN ANALYSOIMINEN</a></li>
+<li Class="booki-section">TEKIJÄT</li><li><a href="/ogg-theora/ch054_tekijat">TEKIJÄT</a></li>
+</ul>

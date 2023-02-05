@@ -1,0 +1,101 @@
+<div id="main-content"><h1>ffmpeg2theora</h1>
+<p>ffmpeg2theora on hyvin kehittynyt Theoran koodaussovellus. Kehittyneempi toiminnallisuus tulee sillä hinnalla, että on pakko käyttää komentoriviä, koska graafista käyttöliittymää ei ole tarjolla Mac OS X ja Windows -käyttöjärjestelmiin voit ladata fmpeg2theoran osoitteesta <a title="ffmpeg2theora download" href="http://v2v.cc/~j/ffmpeg2theora/download.html">http://v2v.cc/~j/ffmpeg2theora/download.html</a>. Jos käytät GNU/Linuxin uutta versiota, on hyvin todennäköistä, että distrosi tulee ffmpeg2theora-pakettien kanssa, tai että ne voidaan asentaa distron ohjelmistopakettien hallintaohjelmalla.</p>
+<h2>Peruskäyttö</h2>
+<p>Komentorivillä voit kirjoittaa:</p>
+<pre>ffmpeg2theora my_source_video.mp4 -o my_theora_video.ogv
+</pre>
+<p> Tämä koodaa lähdetiedoston "my_source_video.mp4" ja luo uuden Theora-videotiedoston "my_theora_video.ogv".</p>
+<h2>Parametrien lisääminen</h2>
+<p>Jos et ole tyytyväinen koodauksen tuloksiin, on aika alkaa säätämään koodaamisen parametrejä. Aloitamme säätämällä koodatun videon laatua. Laatu annetaan numerolla: 0 on alhaisin laatu ja pienin tiedosto, 10 on korkein laatu ja suurin tiedosto. Yritä koodata tämä korkealaatuisena videona, jonka laatu on 9, ja korkealaatuisena äänen laatuna 6: </p>
+<p> </p>
+<pre>ffmpeg2theora my_source_video.mp4 -o my_theora_video.ogv \
+    --videoquality 9 --audioquality 6</pre>
+<p>Seuraavat esimerkit näyttävät koodauksen perusparametrit. Kopioi ja liimaa se ja muokkaa sitä sopimaan tarpeisiisi:</p>
+<pre>ffmpeg2theora my_source_video.mp4 -o my_theora_video.ogv \
+    --videoquality 9 --audioquality 6 \
+    --croptop 0 --cropbottom 0 --cropleft 0 --cropright 0 \
+    --width 720 --height 576 \
+    --title "Video Title" --artist "Artist Name" --date "1997-12-31"
+</pre>
+<p>Jos et tahdo skaalata videoruudun kokoa, pudota optiot <em>--width </em>ja <em>--height</em>. Ei ole tapaa määritellä skaalaa, joten katso sisään tulevan videon kokoa ja laske kohteen ruutukoko tarpeen mukaan. Useimmissa tapauksissa on paras vain määritellä yksi optioista --width tai --height, puuttuva optio säädetään sitten automaattisesti oikeaan arvoon.</p>
+<h2>Kehittyneemmät optiot</h2>
+<p>Ffmpeg2theora tukee monia muita parametrejä kehittyneempään käyttöön, niitä kaikkia ei voida kuvailla tässä yksityiskohtaisesti. Saadaksesi yleiskuvan kaikista tarjolla olevista optioista, kirjoita: </p>
+<pre>ffmpeg2theora --help
+</pre>
+<p>Riippuen käyttämästäsi käyttöjärjestelmästä, voit kyetä avaamaan ffmpeg2theora -manuaalin kirjoittamalla</p>
+<pre>man ffmpeg2theora
+</pre>
+<p> Seuraavat optiot ovat usein käyttökelpoisia:</p>
+<h5>--sync</h5>
+<p>Kopioi mikä tahansa lähdevideon audio-video synkronisaatio kohteena olevaan Theora-videoon. Riippuen käytetystä lähdevideosta tämä voi korjata audio-videon viivästyksen ongelmat, jotka johtuvat koodausprosessista.</p>
+<h5>--keyint  </h5>
+<p>Aseta avainruutujen väli, esimerkiksi ruutujen määrä avainruutujen välissä. Suuren -kokoiset arvot johtavat pienempään videon kokoon, kuitenkin etsiminen ja leikkaaminen ei toimi hyvin Theora-tiedostoissa, joissa on suuri avainruutujen väli. </p>
+<h5> --framerate</h5>
+<p>Asettaa kuvataajuuden luodulle videotiedostolle. Jos yrität luoda Theora-tiedostoja, joiden tiedostokoko on hyvin pieni, yritä tarkentaa puolet videon kuvantaajuudesta. </p>
+<h5> --starttime   --endtime</h5>
+<p>Nämä kaksi vaihtoehtoa antavat sinun kopioida vain osan lähdevideosta kun koodaat. Määritä ja määräksi sekunteja videon alusta.</p>
+<h2>2-Pass koodaus</h2>
+<p>Tuleva versio 0.25 ffmpeg2theorasta tulee tukemaan 2-pass koodaustilaa, jota kuvaillaan tässä osassa. Kun versio 0.25 julkaistaan, lataa se osoitteesta <a title="ffmpeg2theora download" href="http://v2v.cc/~j/ffmpeg2theora/download.html">http://v2v.cc/~j/ffmpeg2theora/download.html</a>. Nämä esimerkit eivät toimi vanhemmilla versioilla.</p>
+<h3>Miksi 2-Pass -koodaus</h3>
+<p>2-Pass -koodaus on kohuttu. Monet ihmiset ajattelevat, että joudut koodaamaan kaksi kertaa saadaksesi jatkuvan subjektiivisen laadun kokemuksen koko videon ajan. Näin sitä käytetään monissa epävapaissa videokoodekeissa, kuten DivX:ssä. Kuitenkin, kuten olemme nähneet, ffmpeg2theora kykenee hyvin koodaamaan jatkuvaa kohdelaatua varten yhdellä kerralla käyttäen optiota -<em>-videoquality</em>.</p>
+<p>Ainoa todellinen etu 2-Pass tilan käytössä sen sijaan että käyttäisi optiota <em>--videoquality</em>, on kyky luoda annetun kokoinen Theora-videotiedosto. Ajattele, että tahdot koodata videon, jonka täytyy mahtua yhdelle CD-levylle, jossa on 700 MB tilaa tarjolla. Jos tahdot jatkuvana pysyvän videon laadun, mutta etukäteen et voi arvata mikä <em>--videoquality</em> osuu täsmälleen kokoon 700 MB. 2-Pass -tilan käyttö sopii tähän täsmälleen.</p>
+<h5>2-Pass tilan käyttö</h5>
+<p>Jos tahdot koodata videon "my_source_video.mp4" Theora-videoksi, niin että tiedostokoko on täsmälleen 700MB. ffmpeg2theora ei salli koodatun tiedoston suoraa määrittelyä. Sen sijaan tarkennat keskimääräisen videon bittinopeuden videota varten. Myös audio vaatii dataa, joka täytyy ottaa huomioon.</p>
+<p>Päättääksemme videon keskimääräisen bittinopeuden joudumme ensin etsimään lähdevideon "my_source_video.mp4" koon. Ffmpeg2theora voi auttaa meitä tässä. Kirjoita:</p>
+<pre>ffmpeg2theora --info "my_source_video.mp4"</pre>
+<p>Mikä printtaa muun tiedon mukana:</p>
+<pre>{
+  "duration": 2365.165100,
+  "bitrate": 6437.331055,
+ [..]</pre>
+<p>}</p>
+<p>Emme voi käyttää koko 2368 kBit/s pelkälle videollemme. Meillä on mhyös ääniraita, joka tarvitsee 128kBit/s. Kun vähennämme tästä 1% otttaakseemme huomioon äänen ja videon kapsuloinnissa jääneen tilan, meille jää 2218 kBit/s videolle ja 128 kBit/s äänelle.</p>
+<p>Seuraava komento tekee 2-pass -enkoodauksen, luoden Theoran videotiedoston "my_theora_video.ogv":</p>
+<pre>ffmpeg2theora my_source_video.mp4 -o my_theora_video.ogv \
+    --two-pass --videobitrate 2218 --audiobitrate 128
+</pre>
+<p>Huomaa, että toisin kuin muissa 2-pas -enkoodaajissa, ffmpeg2theora -komento täytyy antaa vain kerran. Jos sinun täytyy hallita prosessia tarkemmin ja tehdä kroppausta, skaalausta jne., voit vapaasti kopioida muita vaihtoehtoja edellisissä osissa annetuista esimerkeistä.</p></div><ul Class="menu-goes-here"><li Class="booki-section">JOHDANTO</li><li><a href="/ogg-theora/index">OGG THEORA</a></li>
+<li><a href="/ogg-theora/ch002_tasta-kayttooppaasta">TÄSTÄ KÄYTTÖOPPAASTA</a></li>
+<li><a href="/ogg-theora/ch003_mita-video-on">MITÄ VIDEO ON?</a></li>
+<li><a href="/ogg-theora/ch004_mita-theora-on">MITÄ THEORA ON?</a></li>
+<li Class="booki-section">PERUSKÄSITTEET</li><li><a href="/ogg-theora/ch006_mika-on-koodekki">MIKÄ ON KOODEKKI?</a></li>
+<li><a href="/ogg-theora/ch007_sailot">SÄILÖT</a></li>
+<li Class="booki-section">TOISTO</li><li><a href="/ogg-theora/ch009_theoran-toistaminen">THEORAN TOISTAMINEN</a></li>
+<li><a href="/ogg-theora/ch010_toisto-vlclla">TOISTO VLC:LLÄ</a></li>
+<li><a href="/ogg-theora/ch011_miro">MIRO</a></li>
+<li Class="booki-section">THEORA VERKOSSA</li><li><a href="/ogg-theora/ch013_theora-verkossa">THEORA VERKOSSA</a></li>
+<li><a href="/ogg-theora/ch014_html5">HTML5</a></li>
+<li><a href="/ogg-theora/ch015_theora-sivuillasi">THEORA SIVUILLASI</a></li>
+<li><a href="/ogg-theora/ch016_hotelleja-theoralle">HOTELLEJA THEORALLE</a></li>
+<li Class="booki-section">ENKOODAUS</li><li><a href="/ogg-theora/ch018_johdanto-enkoodaukseen">JOHDANTO ENKOODAUKSEEN</a></li>
+<li><a href="/ogg-theora/ch019_firefogg">FIREFOGG</a></li>
+<li><a href="/ogg-theora/ch020_enkoodaus-vlclla">ENKOODAUS VLC:LLÄ</a></li>
+<li><a href="/ogg-theora/ch021_enkoodaus-ffmpeg2theoralla">ENKOODAUS FFMPEG2THEORALLA </a></li>
+<li><a href="/ogg-theora/ch022_thoggen">THOGGEN</a></li>
+<li Class="booki-section">TEKSTITYKSET</li><li><a href="/ogg-theora/ch024_tekstityksien-perusteet">TEKSTITYKSIEN PERUSTEET</a></li>
+<li><a href="/ogg-theora/ch025_jakelu">JAKELU</a></li>
+<li><a href="/ogg-theora/ch026_tekstityksien-liittaminen">TEKSTITYKSIEN LIITTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch027_tekstityksien-toistaminen">TEKSTITYKSIEN TOISTAMINEN</a></li>
+<li><a href="/ogg-theora/ch028_julkaiseminen">JULKAISEMINEN</a></li>
+<li Class="booki-section">SUORATOISTO</li><li><a href="/ogg-theora/ch030_suoratoiston-perusteet">SUORATOISTON PERUSTEET</a></li>
+<li><a href="/ogg-theora/ch031_icecast">ICECAST</a></li>
+<li><a href="/ogg-theora/ch032_tss">TSS</a></li>
+<li><a href="/ogg-theora/ch033_ffmpeg2theora-streamaus">FFMPEG2THEORA-STREAMAUS</a></li>
+<li><a href="/ogg-theora/ch034_suoratoisto-vlc-ohjelmalla">VLC-STREAMAUS</a></li>
+<li><a href="/ogg-theora/ch035_virtaustoiston-tallentaminen">VIRTAUSTOISTON TALLENTAMINEN</a></li>
+<li Class="booki-section">EDITOINTI</li><li><a href="/ogg-theora/ch037_johdanto-editointiin">JOHDANTO EDITOITIIN</a></li>
+<li><a href="/ogg-theora/ch038_pitivi">PITIVI</a></li>
+<li Class="booki-section">ESIKATSELU</li><li><a href="/ogg-theora/ch040_kuinka-esikatselua-kaytetaan">ESIKATSELUN KÄYTTÖ</a></li>
+<li><a href="/ogg-theora/ch041_tee-esikatselukuvia">TEE ESIKATSELUKUVIA</a></li>
+<li><a href="/ogg-theora/ch042_tee-diaesitys">TEE DIAESITYS</a></li>
+<li><a href="/ogg-theora/ch043_tee-esikatseluvideo">TEE ESIKATSELUVIDEO</a></li>
+<li Class="booki-section">EDITOINTI KOMENTORIVILTÄ</li><li><a href="/ogg-theora/ch045_komentorivi">THEORA JA KOMENTORIVI</a></li>
+<li><a href="/ogg-theora/ch046_theoran-teoria">THEORAN TEORIA</a></li>
+<li><a href="/ogg-theora/ch047_tiedoston-jakaminen">TIEDOSTON JAKAMINEN</a></li>
+<li><a href="/ogg-theora/ch048_tiedoston-leikkaaminen">TIEDOSTON LEIKKAAMINEN</a></li>
+<li><a href="/ogg-theora/ch049_tiedostojen-liittaminen">TIEDOSTOJEN LIITTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch050_tiedostojen-yhdistaminen">TIEDOSTOJEN YHDISTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch051_koon-muuttaminen">KOON MUUTTAMINEN</a></li>
+<li><a href="/ogg-theora/ch052_oggin-analysoiminen">OGGIN ANALYSOIMINEN</a></li>
+<li Class="booki-section">TEKIJÄT</li><li><a href="/ogg-theora/ch054_tekijat">TEKIJÄT</a></li>
+</ul>

@@ -1,0 +1,93 @@
+<div id="main-content"><h1>Processingin perusteet</h1>
+<p><span id="result_box" class="long_text"><span>Processing tarjoaa sekä kehitysympäristön että kattavan ja helppokäyttöisen funktiokirjaston, jotka on lisätty Java-ohjelmointikieleen. Ohjelmointiympäristöä käytetään ohjelmien kirjoittamiseen, kääntämiseen, julkaisemiseen ja korjaamiseen. Se on yksinkertainen ja sisältää ohjelmoinnin vaatimat ominaisuudet, mutta on silti helppokäyttöinen. <br></span><span> <br> Processing perustuu Javaan. Java on ohjelmoitaessa käytettävä syntaksi. Processing huolehtii yleensä monimutkaisista operaatioista, kuten ikkunoiden, äänen, videon ja kolmiulotteisuuden hallinnasta. Se tarjoaa laajan joukon ennalta määritettyjä metodeja, jotka yksinkertaistavat grafiikkaohjelmien tekemistä, ja tekevät siitä helppokäyttöisen ihmisille, jotka tahtovat luoda grafiikkaa ilman monimutkaisia ohjelmointikäsitteitä ja matematiikkaa. <br></span><span> <br> Tämä luku esittelee Processingin käyttöliittymän perusteet ja minimimäärän Javan syntaksia, jotta pääset alkuun. <br></span><span> <br> Nykyisin Processingin käyttöliittymä on olemassa vain englanninkielisenä. Sen käyttö on kuitenkin helppoa ja tulevissa versioissa se voi olla tarjolla lokalisoituna. </span></span></p>
+<h2><span id="result_box" class="long_text"><span>Käyttöliittymä</span></span></h2>
+<p><span id="result_box" class="long_text"><span>Processingin käyttöliittymä koostuu kahdesta erillisestä ikkunasta: pääikkunasta, jossa luot projektisi, ja esikatseluikkunassa, jossa ohjelman tulokset näkyvät. </span><span> <br><br></span><span>Käyttöliittymässä on seuraavat osat: <br><br>   </span><span>1. </span><span>Toimintopalkki <br>   </span><span>2. Välilehtipalkki</span><span> <br>   </span><span>3. Editointialue</span><span> <br>   </span><span>4. Ulostuloalue</span><span> <br>   </span><span>5. Katseluikkuna</span><span> <br>   </span><span>6. Valikkopalkki</span><span> (ei näy ruutukaappauksessa)</span></span></p>
+<p><img title="Interface" src="_booki/processing-1/static/Processing-LesbasesdeProcessing-Interface-fi.png" alt="Interface" width="600" height="557"></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h3>Toimintopalkki</h3>
+<p><img src="_booki/processing-1/static/InterfacePlay.png" alt=""> Suorita ohjelma.</p>
+<p><img title="InterfaceStop" src="_booki/processing-1/static/InterfaceStop-fi.png" alt="InterfaceStop" width="29" height="29"> Lopeta ohjelman suoritus.</p>
+<p><img title="InterfaceNew" src="_booki/processing-1/static/InterfaceNew-fi.png" alt="InterfaceNew" width="29" height="29"> Luo uusi ohjelma.</p>
+<p><img src="_booki/processing-1/static/InterfaceOpen-fi_1.png" alt=""> Avaa ohjelman.</p>
+<p><img title="InterfaceSave" src="_booki/processing-1/static/InterfaceSave-fi.png" alt="InterfaceSave" width="29" height="29"> Tallentaa ohjelman.</p>
+<p><img title="InterfaceExport" src="_booki/processing-1/static/InterfaceExport-fi.png" alt="InterfaceExport" width="29" height="29"> Vie ohjelman verkkoon.</p>
+<h2><span id="result_box" class="long_text"><span>Työhakemisto</span></span></h2>
+<p>Tämä on hakemisto, johon ohjelmat tallennetaan. Oletusarvoisesti tämä hakemisto on nimeltään Processing ja sjaitsee hakemistossa <strong>Documents </strong>(Mac) tai <strong>My Documents</strong> (Windows). GNU/Linuxissa tämä on omassa kotihakemistossasi. <span id="result_box" class="long_text"><span> <br><br></span><span>Muuttaaksesi hakemistoa, mene valikkoon <strong>Files </strong>&gt; <strong>Preferences</strong>. Ilmestyvässä ikkunassa voit napsauttaa <strong>Browse </strong>valitaksesi haluamasi hakemiston. </span></span></p>
+<p><img title="Pref2" src="_booki/processing-1/static/Pref2-fi.png" alt="Pref2" width="600" height="360"></p>
+<p><span id="result_box" class="long_text"><span>Saadaksesi selville työhakemistosi, valitse valikosta <strong>Sketch</strong> &gt; <strong>Show Sketch Folder</strong>. </span><span>Tämä vaihtoehto on myös saatavilla näppäimistökomennolla <strong>Ctrl-k</strong> Windowsissa ja Linuxissa tai <strong>cmd-k</strong> Macissa:</span></span></p>
+<p><img src="_booki/processing-1/static/menu_show_sketch_folder-fi_1.png" alt=""></p>
+<h2><span id="result_box" class="long_text"><span>Ohjelmointikielen perusteet </span></span></h2>
+<p>Processing käyttää Javaa luodakseen luonnoksesi. Tätä kieltä koneesi lukee luodakseen luonnoksesi, ja sillä on joukko syntaksisääntöjä, joita on noudatettava, tai ohjelma ei toimi. On tunnettava myös joitain peruskäsitteitä.</p>
+<p>Processing ottaa huomioon kirjainten koon, joten isot ja pienet kirjaimet ovat eri asia: vapaa ja Vapaa ovat eri sanoja!</p>
+<h2>Puolipiste</h2>
+<p>Jokaisen komennon jälkeen (piirrä ympyrä, tee laskelma, jne.) täytyy kirjoittaa puolipiste ";", joka kertoo ohjelmalle komennon päättyvän. Seuraavassa esimerkissä käytämme merkkejä "//" lisätäksemme kommentin, jota ei oteta huomioon ohjelmaa suoritettaessa. </p>
+<pre>//Luo ellipsi
+ellipse(10,10, 10, 10)<strong>;</strong>
+<strong></strong>//Julista muuttuja
+int numero = 10 + 23<strong>;</strong>
+</pre>
+<h2><span id="result_box" class="long_text"><span>Metodikutsut </span></span></h2>
+<p>Prosessing tarjoaa joukon ennaltamääriteltyjä metodeita: piirrä suorakulmio, määrittele väri, laske neliöjuuri jne. Jokaisella näistä metodeista on erityinen nimi. Kutsuaksesi niitä voit kirjoittaa metodin nimen ottaen huomioon isot ja pienet kirjaimet. Nimen jälkeen tulee usein sulut, joihin asetetaan tiettyjä arvoja, kuten väri, sijainti, koko jne. Seuraavassa esimerkissä on harmaa ympyrä. </p>
+<p><img src="_booki/processing-1/static/firstApp-fi_1.png" alt=""></p>
+<pre>fill(128);
+ellipse(50, 50, 60, 60);
+</pre>
+<h2><span id="result_box" class="long_text"><span>Ulostulon näyttö </span></span></h2>
+<p><span id="result_box" class="long_text"><span>Ulostuloalue näyttää tekstiä testausta ja korjausta varten. Nähdäksesi jotain voit käyttää metodia </span></span> <code>println();</code></p>
+<p> </p>
+<pre>println("Hei maailma!");
+</pre>
+<p><img src="_booki/processing-1/static/ScreenHunter_01-20Sep-2029-2019-48_1-fi_1.gif" alt=""></p>
+<pre>println(1000);
+</pre>
+<p><img title="1000" src="_booki/processing-1/static/1000-fi.png" alt="1000" width="250" height="18"></p>
+<h3>Laskut</h3>
+<p>Processing voi tehdä matemaattisia laskuja. Tätä ympäristöä käyttäessäsi joudut laskemaan arvoja. Yhteenlasku, vähennyslasku, jakolasku ja kertolasku voidaan yhdistää. Voit käyttää sulkuja määrittelemään toimenpiteiden järjestyksen. Muista pisteet! Processing käyttää desimaaleihin pistettä eikä pilkkua. Tässä on esimerkkejä: </p>
+<pre>println(10 + 5);
+println(10 + 5 * 3); // 5*3 (tulos 15) ja lisätään 10
+println((10 + 5) * 3); // 10+5 (tulos 15) ja 15 kertaa 3
+println(10.4 + 9.2);
+</pre>
+<p>Tämä tuottaa seuraavan tuloksen:</p>
+<p><img title="add" src="_booki/processing-1/static/add-fi.png" alt="add" width="250" height="71"></p>
+<p> </p>
+<p>Joitain aritmeettisia operaatioita voidaan lyhentää. Esimerkiksi i++ antaa saman tuloksen kuin i = i + 1.</p>
+<p>Nyt tiedät perusteet Processingista, voit jo kirjoittaa koodia, jonka avulla voit toteuttaa projekteja. </p></div><ul Class="menu-goes-here"><li Class="booki-section">Esittely</li><li><a href="/processing-1/index">Johdanto</a></li>
+<li><a href="/processing-1/ch002_esimerkkeja">Esimerkkejä</a></li>
+<li><a href="/processing-1/ch003_asennus">Asennus</a></li>
+<li Class="booki-section">Perusteet</li><li><a href="/processing-1/ch005_perusteet">Perusteet</a></li>
+<li Class="booki-section">Suunnittelu</li><li><a href="/processing-1/ch007_suunnittelutila">Suunnittelutila</a></li>
+<li><a href="/processing-1/ch008_muodot">Muodot</a></li>
+<li><a href="/processing-1/ch009_varit">Värit</a></li>
+<li><a href="/processing-1/ch010_kuvat">Kuvat</a></li>
+<li><a href="/processing-1/ch011_tekstit">Tekstit</a></li>
+<li Class="booki-section">Interaktiivisuus</li><li><a href="/processing-1/ch013_video">Video</a></li>
+<li><a href="/processing-1/ch014_videon-tuominen">Videon tuominen</a></li>
+<li><a href="/processing-1/ch015_mikrofoni">Mikrofoni</a></li>
+<li><a href="/processing-1/ch016_hiiri">Hiiri</a></li>
+<li><a href="/processing-1/ch017_nappaimisto">Näppäimistö</a></li>
+<li><a href="/processing-1/ch018_tulostaminen">Tulostaminen</a></li>
+<li Class="booki-section">Vienti</li><li><a href="/processing-1/ch020_verkkoon-vieminen">Verkkoon vieminen</a></li>
+<li Class="booki-section">Animaatio</li><li><a href="/processing-1/ch022_aanet">Äänet</a></li>
+<li><a href="/processing-1/ch023_draw-metodi">Draw-metodi</a></li>
+<li><a href="/processing-1/ch024_objektien-animointi">Objektien animointi</a></li>
+<li><a href="/processing-1/ch025_monien-objektien-animointi">Monien objektien animointi</a></li>
+<li><a href="/processing-1/ch026_aikajana">Aikajana</a></li>
+<li Class="booki-section">Ohjelmointi</li><li><a href="/processing-1/ch028_kommentit">Kommentit</a></li>
+<li><a href="/processing-1/ch029_objektit">Objektit</a></li>
+<li><a href="/processing-1/ch030_metodit">Metodit</a></li>
+<li><a href="/processing-1/ch031_listat">Listat</a></li>
+<li><a href="/processing-1/ch032_toistaminen">Toistaminen</a></li>
+<li><a href="/processing-1/ch033_ehdot">Ehdot</a></li>
+<li><a href="/processing-1/ch034_muuttujat">Muuttujat</a></li>
+<li><a href="/processing-1/ch035_muutokset">Muutokset</a></li>
+<li><a href="/processing-1/ch036_rajat">Rajat</a></li>
+<li Class="booki-section">Liitteet</li><li><a href="/processing-1/ch038_yleisia-virheita">Yleisiä virheitä</a></li>
+<li><a href="/processing-1/ch039_ulkoiset-kirjastot">Ulkoiset kirjastot</a></li>
+<li><a href="/processing-1/ch040_dokumentaatio">Dokumentaatio</a></li>
+<li><a href="/processing-1/ch041_arduino">Arduino</a></li>
+<li><a href="/processing-1/ch042_tasta-oppaasta">Tästä oppaasta</a></li>
+<li><a href="/processing-1/ch043_tekijat">Tekijät</a></li>
+</ul>

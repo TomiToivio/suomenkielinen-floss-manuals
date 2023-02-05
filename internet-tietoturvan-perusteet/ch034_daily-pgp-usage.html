@@ -1,0 +1,173 @@
+<div id="main-content"><h1>Päivittäinen PGP:n käyttö</h1>
+<p>Edellisissä luvuissa olemme selittäneet, miten voidaan tehdä asetukset turvalliselle sähköpostin käytölle Thunderbirdillä, PGP:llä ja Enigmaililla. Oletamme, että olet asentanut ohjelmat ja olet seurannut onnistuneesti asennusohjelman ohjeita luodaksesi salausavainparin, kuten edellisessä luvussa on kuvattu. Tässä luvussa kuvaillaan, kuinka voit käyttää suojattua Thunderbirdiä päivittäisessä elämässä suojataksesi sähköpostiviestintäsi. Keskitymme varsinkin:</p>
+<ol><li>Liitetiedostojen salaaminen</li>
+<li>Tunnussanan kirjoittaminen</li>
+<li>Salatun sähköpostin vastaanottaminen</li>
+<li>Julkisten avainten lähettäminen ja vastaanottaminen</li>
+<li>Julkisten avainten vastaanottaminen ja liittäminen avainnippuun</li>
+<li>Julkisten avainten palvelinten käyttäminen</li>
+<li>Sähköpostien salaaminen tiettyä vastaanottajaa varten</li>
+<li>Salattujen viestien lähettäminen vastaanottajaa varten</li>
+<li>Automaattinen salaus tiettyjä vastaanottajia varten</li>
+<li>Vastaanotettujen viestien vahvistaminen</li>
+<li>PGP-avainten ilmoittaminen vanhentuneiksi</li>
+<li>Mitä teet hukattuasi salaisen avaimesi, tai unohdettuasi tunnussanasi</li>
+<li>Mitä teet kun salainen avaimesi on varastettu</li>
+<li>Avainten varmuuskopiointi</li>
+</ol><p>Ensin selitämme kaksi ikkunaa, jotka ilmestyvät aina, kun aloitat Thunderbirdin käytön sähköpostin salaamiseen.</p>
+<h2>Liitetiedostojen salaaminen</h2>
+<p>Ikkuna ponnahtaa esille aina, kun lähetät ensimmäistä kertaa salatun viestin, jossa on liitetiedostoja. Thunderbird kysyy teknisen kysymyksen, jossa kysytään tapaa, jolla salataan sähköpostin liitetiedostot. Toinen (oletusarvoinen) vaihtoehto on paras valinta, koska se yhdistää turvallisuuden korkeimpaan yhteensopivuuteen. Voit myös valita "käytä valittua menetelmää kaikkiin tuleviin liitetiedostoihin"-valintaa. Napsauta sen jälkeen "OK" ja sähköpostiesi pitäisi lähteä ilman viivästystä.</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_encryptattachments.PNG" alt=""></p>
+<h2>Tunnussanan kirjoittaminen</h2>
+<p>Turvallisuussyistä salaisen avaimen tunnussana kirjoitetaan vain tilapäisesti muistiin. Toisinaan alla oleva ikkunan ponnahtaa esille. Thunderbird kysyy sinulta salaisen avaimesi tunnussanaa. Tämän tulisi olla eri salasana kuin normaali sähköpostisi salasana. Tämä on salasana, jonka kirjoitit luodessasi avainparia edellisessä luvussa. Kirjoita salasana tekstilaatikkoon ja napsauta "OK".</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_sendprompt.PNG" alt=""></p>
+<h2>Salattujen viestien vastaanottaminen</h2>
+<p>Sähköpostien salaamisen suorittaa automaattisesti Enigmail, ainoa toiminto jota tarvitaan on kirjoittaa salaisen avaimen tunnussana. Kuitenkin mikä tahansa salattu viestintä jonkun kanssa vaatii vaihtamaan ensin julkiset avaimet.</p>
+<h2>Julkisten avainten lähettäminen ja vastaanottaminen</h2>
+<p>On monta eri tapaa jaella julkinen avain ystäville tai kollegoille. Yksinkertaisin tapa on liittää avain sähköpostiin. Jotta vastaanottaja voi olla varma viestin tulleen sinulta, sinun tulisi kertoa heille henkilökohtaisesti avaimesta ja myös vaatia heitä vastaamaan viestiisi. Tämän pitäisi ainakin estää helpot väärennökset. Sinun täytyy päättää itse mikä varmistustaso on tarpeellinen. Tämä pätee myös, kun vastaanotat kolmansilta osapuolilta sähköposteja, joissa on julkisia avaimia. Ota vastaanottajaan yhteyttä jollain muulla viestintämenetelmällä kuin sähköpostilla. Voit käyttää puhelinta, tekstiviestejä, VoIP-puhelua tai jotain muuta menetelmää, kunhan olet varma, että puhut oikealle henkilölle. Puhelut ja kasvokkain tapaamiset toimivat parhaiten, kunhan ne ovat käteviä ja voidaan järjestää turvallisesti.</p>
+<p>Julkisen avaimesi lähettäminen on helppoa.</p>
+<p>1. Thunderbirdissä voit painaa <img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_write.png" alt=""> kuvaketta.</p>
+<p>2. Kirjoita sähköposti ystävällesi tai kollegallesi ja kerro heille, että olet lähettämässä julkisen PGP-avaimesi. Jos ystäväsi ei tiedä mitä tämä tarkoittaa, joudut ehkä selittämään sen heille ja antamaan linkin tähän dokumentaatioon.</p>
+<p>3. Ennen kuin lähetät tämän viestin, paina <strong>OpenPGP &gt; Attach My Public Key</strong> -valintaa viestien kirjoittamisen valikkopalkissa. Tämän vaihtoehdon viereen ilmestyy merkki <img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_marker.PNG" alt="">. Katso esimerkkiä alla.</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_attachkey.PNG" alt="" width="600" height="508"></p>
+<p>4. Lähetä sähköpostisi painamalla nappia <img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_send.png" alt="">.</p>
+<h2>Julkisten avainten vastaanottaminen ja lisääminen avainnippuun</h2>
+<p>Sanotaanpa, että saamme julkisen avaimen sähköpostilla kaveriltamme. Tämä avain näkyy Thunderbirdissä liitetiedostona. Vieritä viestiä alas ja näet välilehdet, joissa on yksi tai useampia tiedostonimiä. Tämän julkisen avaimen loppupääte on .asc, joka on eri loppupääte kuin PGP-allekirjoituksen loppupääte, joka on .asc.sig.</p>
+<p>Katso esimerkkisähköpostia seuraavassa kuvassa, joka on vastaanotettu ja allekirjoitettu PGP-viesti, johon on liitetty julkinen avain. Näemme keltaisen palkin, jossa on varoitusviesti: "OpenPGP: vahvistamaton allekirjoitus, napsauta "Details"-nappia saadaksesi lisätietoa". Thunderbird varoittaa, että lähettäjää ei vielä tunneta, mikä on oikein. Tämä muuttuu, kun olemme hyväksyneet julkisen avaimen.</p>
+<p>Mitä nämä oudot merkit tekevät sähköpostiviestissä? Koska Thunderbird ei vielä tunnista allekirjoitusta, se tulostaa koko allekirjoituksen raakamuodossa, aivan samassa muodossa kuin se on sen vastaanottanut. Tältä digitaalisesti allekirjoitetut PGP-viestit näyttävät niistä vastaanottajista, jotka eivät ole saaneet julkista avaintasi.</p>
+<p>Tärkein asia tässä esimerkissä on löytää liitteenä oleva julkinen PGP-avain. Mainitsimme, että se on tiedosto, joka päättyy loppupäätteeseen .asc. Tässä esimerkissä se on ensimmäinen liitetiedosto vasemmalla, punaisen ympyrän sisältä. Sen kaksoisnapsauttaminen saa Thunderbirdin tunnistamaan avaimen.</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_receivepgpkey4_fix.PNG" alt="" width="600" height="427"></p>
+<p>Kun olemme napsauttaneet liitetiedostoa, seuraava ponnahdusikkuna ilmestyy.</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_receivepgpkey2.PNG" alt=""></p>
+<p>Thunderbird on tunnistanut julkisen PGP-avaintiedoston. Napsauta "Import" lisätäksesi tämän avaimen avainnippuusi. Seuraavan ponnahdusikkunan pitäisi ilmestyä. Thunderbird ilmoittaa, että operaatio on onnistunut. Napsauta "OK" ja olet melkein valmis.</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_receivepgpkey3.PNG" alt=""></p>
+<p>Palaamme takaisin Thunderbirdin ruutuun ja päivitämme tämän viestin näkymän napsauttamalla jotain muuta viestiä ja palaamalla takaisin esimerkkiviestiin. Nyt viestin pääosa näyttää erilaiselta (katso alla). Tällä kertaa Thunderbird tunnistaa allekirjoituksen, koska olemme lisänneet lähettäjän julkisen avaimen.</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_receivepgpkey5.PNG" alt="" width="600" height="427"></p>
+<p>Vielä yksi asia täytyy tehdä. Vaikka Thunderbird tunnistaa nyt allekirjoituksen, meidän täytyy ilmoittaa luottavamme siihen, että allekirjoitus kuuluu oikealle henkilölle. Tämän vuoksi joudumme katsomaan alhaalla olevaa vihreää palkkia. Vaikka allekirjoitus toimii, se on silti UNTRUSTED.</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_receivepgpkey6.PNG" alt=""></p>
+<p>Päätämme nyt luottaa tähän julkiseen avaimeen ja sen allekirjoittamiin viesteihin. Teemme tämän heti napsauttamalla "Details". Pieni valikko ilmestyy (katso alla). Tässä valikossa voimme napsauttaa vaihtoehtoa "Sign Sender's Key ...".</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_receivepgpkey9.PNG" alt="" width="600" height="206"></p>
+<p>Kun olemme valitseet kohdan "Sign Sender's Key ..." ilmestyy toinen valintaikkuna. Siinä kysytään kuinka tarkkaan tämän avaimen aitous on tarkistettu. Tässä oppaassa ei käsitellä luottamustasojen ja luottamusverkkojen käsitteitä. Emme käytä tätä tietoa, joten voit valita "I will not answer". Valitse myös "Local signature (cannot be exported)". Napsauta nappia "OK" lopettaaksesi avaimen allekirjoittamisen. Tämä lopettaa julkisen avaimen hyväksymisen. Voit nyt lähettää salattuja viestejä tälle henkilölle.</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_receivepgpkey11.PNG" alt=""></p>
+<h2>Julkisen avaimen palvelinten käyttäminen</h2>
+<p>Toinen menetelmä julkisten avainten jakeluun on niiden laittaminen julkisten avainten palvelimelle. Tämän avulla kuka tahansa, jolla on sähköpostiosoitteesi, voi hakea julkisen avaimesi.</p>
+<p>Seuraavien askelten avulla voit laittaa oman avaimesi avainpalvelimelle.</p>
+<p>1. Mene avainten hallintaohjelmaan käyttämällä Thunderbirdin valikkoa ja napsauttamalla <strong>OpenPGP &gt; Key Management</strong></p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_selectkeyman.PNG" alt="" width="600" height="183"></p>
+<p>2. Avainhallintaikkuna tulee näkyviin ja näyttää tälle:</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_keymanagement.PNG" alt="" width="600" height="352"></p>
+<p>3. Sinun täytyy valita "Display All Keys by Default", jotta näet listan avaimistasi. Katso listassa omaa osoitettasi ja napsauta oikealla hiiren napilla osoitteen kohdalta. Valintaikkuna ilmestyy. Siinä on joitain vaihtoehtoja. Valitse kohta "Upload Public Keys to Keyserver".</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_export1.PNG" alt="" width="600" height="352"></p>
+<p>4. Näet pienen alla olevan kaltaisen ikkunan. Oletusarvoinen avainten jakeluun tarkoitettu palvelin sopii hyvin. Paina "OK" ja jakele avaimesi maailmalle.</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_keyupload.PNG" alt=""></p>
+<p>Katsoaksesi onko jollain sähköpostiosoitteella julkinen avain palvelimella, voit tehdä seuraavat asiat.</p>
+<p>1. Mene avainten hallintaohjelmaan Thunderbirdin valikon avulla ja napsauta <strong>OpenPGP &gt; Key Management</strong></p>
+<p>2. Valitse avainhallinnan valikkopalkissa <strong>Keyserver &gt; Search for Keys</strong></p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_keysearch.PNG" alt="" width="600" height="352"></p>
+<p>3. Tässä esimerkissä etsimme avaimen, joka kuuluu PGP-ohjelman luoneelle Philip Zimmermanille. Kun olemme kirjoittaneet hakukenttään sähköpostiosoitteen, napsautamme "OK". </p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_keysearch2.PNG" alt=""></p>
+<p>4. Seuraava ikkuna näyttää hakumme tulokset. Olemme löytäneet julkisen avaimen. Se on automaattisesti valittuna. Napsauta vain "OK" tuodaksesi avaimen.</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_keysearch3.PNG" alt="" width="600" height="389"></p>
+<p>5. Avaimen tuominen kestää jonkin aikaa. Sen tullessa valmiiksi näet ponnahdusikkunan, kuten alla. </p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_keysearch4.PNG" alt="" width="600" height="223"></p>
+<p>6. Lopullinen askel on allekirjoittaa tämä avain paikallisesti, näin osoitamme luottavamme siihen. Kun palaat avainhallintaan, varmista, että olet valinnut valinnan "Display All Keys by Default". Tämän jälkeen sinun pitäisi nähdä tuotu avain listassa. Napsauta oikealla hiiren napilla osoitetta ja valitse avain listasta.</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_keysearch5.PNG" alt="" width="600" height="352"></p>
+<p>7. Valitse kohta "I will not answer" ja "Local signature (cannot be exported)", jonka jälkeen voit napsauttaa "OK". Olet nyt valmis ja voit lähettää Philip Zimmermanille salattuja viestejä. </p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_keysearch7.PNG" alt="" width="600" height="310"></p>
+<h2>Sähköpostien allekirjoittaminen vastaanottajaa varten </h2>
+<p>Sähköpostien allekirjoittaminen digitaalisesti todistaa kaikille vastaanottajille, että olet viestin todellinen lähettäjä. Ne vastaanottajat, joilla on julkinen avaimesi, voivat varmistaa, että viestisi on aito. </p>
+<p>1. Tarjoa ystävillesi julkista avaintasi käyttäen aiemmin tässä luvussa kuvailtua menetelmää. </p>
+<p>2. Paina Thunderbirdissä kuvaketta <img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_write.png" alt="">.</p>
+<p>3. Ennen kuin itse asiassa lähetät sähköpostin, valitse sähköpostieditorin valikkopalkista <strong>OpenPGP &gt; Sign Message</strong>, jos se ei ole jo valmiiksi päällä. Kun olet laittanut tämän valinnan päälle napsauttamalla sitä, valintamerkki <img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_marker.PNG" alt=""> ilmestyy. Napsauttaminen uudelleen ottaa taas salauksen pois päältä. Katso esimerkkiä alla. </p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_signexample.PNG" alt="" width="600" height="508"></p>
+<p>5. Napsauta nappia <img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_send.png" alt=""> ja alekirjoitettu viestisi lähetetään.</p>
+<h2>Salattujen viestien lähettäminen vastaanottajalle</h2>
+<p>1. Sinun olisi pitänyt vastaanottaa julkinen avain kollegalta tai ystävältä, jolle tahdot lähettää sähköposteja, sekä hyväksyä heidän julkinen avaimensa, käyttäen aiemmin tässä luvussa kuvailtua menetelmää. </p>
+<p>2. Napsauta Thunderbirdissä <img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_write.png" alt=""> kuvaketta.</p>
+<p>3. Kirjoita sähköposti ystävälle tai kollegalle, jolta olet saanut aiemmin julkisen avaimen. <strong>Muista että viestin otsikkoriviä <span style="text-decoration: underline;">ei</span> salata</strong>, vain viestin sisältö ja kaikki liitetiedostot. </p>
+<p>4. Ennen kuin lähetät viestin, voit laittaa päälle valinnan <strong>OpenPGP &gt; Encrypt Message</strong> viestin kirjoitusikkunan valikkopalkista, jos se ei ole jo päällä. Kun olet laittanut tämän valinnan päälle, sen viereen ilmestyy merkki <img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_marker.PNG" alt="">. Uudelleen napsauttamisen pitäisi ottaa salaus taas pois päältä. Katso kuvaa alla.</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_enablecrypto.PNG" alt="" width="600" height="508"> 5.</p>
+<p>Napsauta nappia <img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_send.png" alt=""> ja salattu viestisi lähetetään.</p>
+<h2>Automaattinen salaus tietyille vastaanottajille </h2>
+<p>Tahdot ehkä usein varmistaa, että kaikki viestit tietylle vastaanottajalle salataan ja allekirjoitetaan. Tämä on hyvä käytäntö, sillä on helppoa unohtaa salauksen laittaminen päälle. Voit tehdä tämän muokkaamalla vastaanottajakohtaisia asetuksia. Tehdäksemme tämän voimme avata OpenPGP:n vastaanottajakohtaisten asetusten editorin. </p>
+<p>Valitse <strong>OpenPGP &gt; Preferences</strong> Thunderbirdgin valikkopalkista.</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_selectpref.PNG" alt=""></p>
+<p>Alla olevan kaltainen asetusikkuna ilmestyy. Meidän täytyy napsauttaa kohtaa "Display Expert Settings". </p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_preferences.PNG" alt=""></p>
+<p>Uusi valikkopalkki ilmestyy ikkunaan. Mene välilehteen "Key Selection" ja napsauta nappia, jossa lukee "Edit Rules..." </p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_gotorules.PNG" alt=""></p>
+<p>Näemme nyt vastaanottajakohtaisten asetusten editorin (katso alla). Tällä editorilla voidaan määritellä miten tietyille vastaanottajille menevät vitstit lähetetään. Voimme nyt lisätä säännön, jonka mukaan tahdomme salata ja allekirjoittaa kaikki sähköpostit osoitteeseen maildemo@greenhost.nl</p>
+<p>Napsauta ensin "Add"-nappia.</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_addrules.PNG" alt="" width="600" height="274"></p>
+<p>Nyt ikkuna, jossa voi tehdä uuden säännön, ilmestyy näkyviin.</p>
+<p>Ensimmäiseksi meidän pitäisi kirjoittaa vastaanottajan sähköpostiosoite. Alla olevaan esimerkkiin olemme kirjoittaneet maildemo@greenhost.nl</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_ruleaddress.PNG" alt=""></p>
+<p>Nyt pitäisi asettaa oletusarvoiset salausasetukset käyttäen alla olevia pudotusikkunoita. Ensin valitaan "Always" allekirjoitusta varten. Valitaan "Always" myös salausta varten. </p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_ruledefaults.PNG" alt=""></p>
+<p>Lopulta voimme valita vastaanottajan julkisen avaimen, jolla viestit salataan. Älä unohda tätä tärkeää askelta, muuten sähköpostia ei salata. Napsauta nappia "Select Key(s)...". Avainvalintaikkuna ilmestyy. Ilmeisin avain valitaan oletusarvoisesti. Esimerkki-ikkunassa on tarjolla vain yksi julkinen avain. Voimme valita vaimia napsauttamalla pientä laatikkoa osoitteen vieressä. Tämän jälkeen napsautamme "OK" ja sulkea tähän käytetyt ikkunat. Asetukset on tehty. </p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_rulekey_fix.PNG" alt="" width="600" height="408"></p>
+<h2>Saapuvien sähköpostien vahvistaminen</h2>
+<p>Saapuvien sähköpostien salauksen avaaminen on täysin automaattista ja läpinäkyvää. Mutta on selvästi tärkeää tarkastella onko viestiä itse asiassa allekirjoitettu tai salattu. Tämän voi tarkastaa katsomalla erikoispalkkia viestin sisällön yläpuolella. </p>
+<p>Toimivan allekirjoituksen voi tunnistaa viestin yläpuolella olevasta vihreästä palkista, kuten alla olevassa esimerkissä. </p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_validsignature.PNG" alt=""></p>
+<p>Viimeinen esimerkkiviesti oli allekirjoitettu, mutta sitä ei oltu salattu. Jos viesti olisi ollut salattu, näkyisi tällainen palkki: </p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_validencryption.PNG" alt=""></p>
+<p>Kun salattu viesti on jätetty allekirjoittamatta, se voi olla jonkun tekemä väärennös. Tilapalkki on harmaa, kuten alla olevassa kuvassa, ja se kertoo, että vaikka viesti lähetettiin turvallisesti salattuna, vietin lähettäjä voi olla joku muu kuin henkilö, jonka tiedot ovat "From"-otsakkeessa. Allekirjoitus on välttämätön, jotta viestin todellinen lähettäjä voidaan vahvistaa. Luonnollisesti on täysin mahdollista, että julkinen avaimesi on julkaistu verkossa ja annat ihmisten lähettää sinulle anonyymejä sähköposteja. Kuitenkin on myös mahdollista, että joku yrittää esiintyä ystävänäsi. </p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_onlycrypt.PNG" alt=""></p>
+<p>Jos saat joltain tutulta allerkirjoitetun viestin ja sinulla on tämän henkilön julkinen avain, tilapalkista tulee keltainen ja sen näyttää varoitusviestin, mikä voi merkitä, että joku yrittää lähettää väärennettyjä viestejä! </p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_sigunknown.PNG" alt=""></p>
+<p>Joskus salaiset avaimet varastetaan tai ne hukkuvat. Avaimen omistajan pitäisi kertoa kavereilleen ja lähettää heille peruutussertifikaatti (tämä selitetään tarkemmin alla). Peruuttaminen merkitsee, että vanhaan avaimeen ei enää luoteta. Varas voi myöhemmin kokeilla silti lähettää väärin allekirjoitetun sähköpostin. Tilapalkki näyttää nyt tältä:</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_stupidrevoke.PNG" alt=""></p>
+<p>Kumma kyllä, mutta Thunderbird näyttää tässä tilanteessa silti vihreän tilapalkin! On tärkeää katsoa tilapalkin sisältöä, jotta on mahdollista ymmärtää viestin salauksen tila. PGP mahdollistaa vahvan turvallisuuden ja yksityisyyden, mutta vain jos olet varma sen käytöstä ja käsitteistä. Pidä silmällä tilapalkin varoitusviestejä. </p>
+<h2>PGP-avainparin peruuttaminen</h2>
+<p>Joku on varastanut salaisen avaimesi. Kovalevysi kaatui ja menetit kaikki tietosi. Jos avaimesi on kadonnut, ei viestejä enää voi purkaa. Jos avain on varastettu, joku muu voi avata viestisi. Silloin täytyy tehdä uusi avainpari. Avainten luominen OpenPGP:llä Thunderbirdiin on selostettu tässä oppaassa. Ensin täytyy kuitenkin kertoa kaikille, että vanha avain on hyödytön tai jopa vaarallinen. </p>
+<h2>Miten salaisen avaimen kadottua tai tunnussanan unohduttua on tehtävä?</h2>
+<p>Avainparia luotaessa OpenPGP-velho tarjoaa mahdollisuuden luoda peruutussertifikaatti. Tämä on erikoistiedosto, joka lähetetään muille siinä tapauksessa, että avain täytyy peruuttaa. Jos tästä tiedostosta on kopio, palautustiedoston lähettäminen voidaan yksinkertaisesti hoitaaa lähettämällä tiedosto liitteenä ystäville. Salattuja tiedostoja ei enää voi lähettää (koska salainen avain on hukassa). Mutta tällä ei ole merkitystä. Lähetä se normaalina sähköpostina. Peruutustiedoston voi tehdä vain avaimen haltija ja se on todiste siitä, että avaimen oikea haltija tahtoo peruuttaa sen. Tämän vuoksi se pitäisi yleensä pitää jemmassa. </p>
+<p>Jos sinulla ei ole peruutussertifikaattia, ei ole muuta vaihtoehtoa kuin ottaa henkilökohtaisesti yhteyttä kavereihin, ja vakuuttaa heille, että avaimesi on hukassa ja heidän ei enää pitäisi luottaa siihen. </p>
+<h2>Mitä tehdä, kun salainen avain on varastettu </h2>
+<p>Jos salainen avain on joutunut vääriin käsiin, tai pahemmassa tapauksessa salainen avain ja tunnussana, on tärkeää kertoa muille, että salattujen viestien lähettäminen täytyy lopettaa. Salaisella avaimellasin muut voivat purkaa sähköpostiesi salauksen, jos heillä on myös tunnussana. Tämä on totta myös menneisyydessä lähetettyjen viestien tapauksessa. Salasanan muraminen ei ole triviaalia, mutta se voi olla mahdollista, jos murtoa yrittävät hyvin resurssoidut tahot, kuten valtio tai iso organisaatio, tai jos tunnussana on heikko. Tässä tapauksessa kannattaa varautua pahimpaan ja olettaa, että salasana on murrettu. Lähetä peruutussertifikaatti kaikille ystävillesi tai ota heihin yhteyttä henkilökohtaisesti ja kerro heille tilanteesta. </p>
+<p>Jopa vanhan avainparin kumoamisen jälkeen voidaan varastettua avainta käyttää vanhojen viestien avaamiseen. Tämän vuoksi voi olla hyvä salata vanhat viestit uudestaan uudella avaimella. Tätä jälkimmäistä operaatiota ei käsitellä tässä oppaassa. Luku henkilökohtaisten tietojen suojaamisesta voi olla avuksi. Jos olet epävarma, voit hakea lisätietoa asiantuntijoilta tai verkosta.</p>
+<h2>Peruutussertifikaatin vastaanottaminen</h2>
+<p>Jos joku ystäväsi lähettää sinulle peruutusserfitikaatin, hän pyytää sinua olemaan enää luottamatta julkiseen avaimeensa. Nämä pyynnöt pitäisi aina hyväksyä ja "tuoda" sertifikaatti avaimen peruuttamiseksi. Tämä peruutusseertifikaatin vastaanottoprosessi on täsmälleen sama kuin julkisen avaimen vastaanottoprosessi, kuten on jo kuvailtu tässä luvussa. Thunderbird kysyy sinulta jos tahdot tuoda OpenPGP-avaintiedoston. Kun olet tehnyt niin, vahvistusikkuna ilmestyy kuten alla.</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_revokemail.PNG" alt=""></p>
+<h2>Valmistautuminen pahimpaan: avainten varmuuskopiot</h2>
+<p>Avaimesi varastoidaan yleensä kovalevylle tavallisina tiedostoina. Ne voivat kadota, jos tietokoneesi vahingoittuu. Tämän vuoksi on yleensä hyvä pitää varmuuskopioita avaimista turvallisessa paikassa, kuten kassakaapissa. Salaisen avaimen varmuuskopioinnilla on muitakin turvallisuusetuja. Jos pelkäät että läppäri tai pöytäkone on vaarassa joutua takavarikoiduksi, voit turvallisesti tuhota avainparisi. Sähköpostisi on heti lukukelvotonta. Myöhemmin voit hakea avaimesi kassakaapista ja tuoda ne uudelleen Thunderbirdiin.</p>
+<p>Tehdäksesi varmuuskopion avainparistasi, voit ensin mennä avainten hallintaohjelmaan käyttäen Thunderbirdin valikkoa ja napsauttamalla <strong>OpenPGP &gt; Key Management</strong>.</p>
+<p>Sinun täytyy valita "Display All Keys by Default" saadaksesi listan kaikista avaimistasi. Etsi sähköpostisi tästä listasta ja napsauta oikealla hiiren napilla. Valintaikkuna ilmestyy joillain vaihtoehdoilla. Valitse vaihtoehto "Export Keys to File".</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_export1.PNG" alt="" width="600" height="352"></p>
+<p>Nyt voimme tallentaa avainparin tiedostoon. Thunderbird kysyy tahdommeko laittaa mukaan myös salaisen avaimen. Jos tahdomme laittaa myös salaisen avaimen, voimme valita "Export Secret Keys".</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/enigmail_windows7_export2.PNG" alt=""></p>
+<p>Lopulta Thunderbird kysyy avaintiedoston sijaintia. Voit tallentaa avaintiedoston minne tahdot: verkkolevylle tai USB-tikulle. Muista vain piilottaa se muilta ihmisiltä. </p></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/internet-tietoturvan-perusteet/index">Johdanto</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch002_why-use-a-manual-on-internet-security">Miksi käyttää internet-tietoturvaopasta?</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch003_understanding-basic-internet-security">Internet-tietoturvan perusteiden ymmärtäminen</a></li>
+<li Class="booki-section">Yleinen turvallisuus</li><li><a href="/internet-tietoturvan-perusteet/ch005_secure-your-computer-general">Turvaa tietokoneesi (yleistä)</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch006_internet-cafes">Internet-kahvilat</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch007_software-on-usb-or-cd">Ohjelmat USB-tikulla tai CD:llä</a></li>
+<li Class="booki-section">Salasanojen turvaaminen</li><li><a href="/internet-tietoturvan-perusteet/ch009_keeping-passwords-safe">Salasanojen turvaaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch010_installing-a-password-manager">Salasanojen hallintaohjelman asentaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch011_encrypting-passwords-with-a-password-manager">Salasanojen salaaminen salasanojen hallintaohjelman avulla</a></li>
+<li Class="booki-section">Henkilökohtaisten tietojen turvaaminen</li><li><a href="/internet-tietoturvan-perusteet/ch013_introduction-to-securing-personal-data">Johdanto henkilökohtaisten tietojen turvaamiseen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch014_installing-truecrypt">TrueCryptin asentaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch015_using-truecrypt">TrueCryptin käyttö</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch016_setting-up-a-hidden-volume">Kätketyn osion luominen</a></li>
+<li Class="booki-section">Turvallinen selaaminen</li><li><a href="/internet-tietoturvan-perusteet/ch018_introduction-to-safe-browsing">Johdanto turvalliseen selaamiseen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch019_accessing-firefox-on-ubuntu">Firefoxin asennus Ubuntuun</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch020_installing-firefox-on-windows">Firefoxin asentaminen Windowsiin</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch021_protecting-your-internet-passwords">Internet-salasanojen suojaaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch022_extending-firefox">Firefoxin laajentaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch023_proxy-setting-and-foxyproxy">Välityspalvelimet ja FoxyProxy</a></li>
+<li Class="booki-section">Sähköpostin tietoturvan perusteet</li><li><a href="/internet-tietoturvan-perusteet/ch025_introduction-to-e-mail-safety">Johdanto sähköpostin tietoturvaan</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch026_start-using-thunderbird-mail">Thunderbird-sähköpostin käyttö</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch027_setting-up-secure-connections">Salattujen yhteyksien luominen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch028_some-additional-security-settings">Lisää turvallisuusasetuksia</a></li>
+<li Class="booki-section">Sähköpostien salaaminen</li><li><a href="/internet-tietoturvan-perusteet/ch030_introduction-to-mail-encryption-pgp">Johdanto sähköpostien salaamiseen (PGP)</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch031_installing-pgp-on-windows">PGP:n asentaminen Windowsiin</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch032_installing-pgp-on-ubuntu">PGP:n asentaminen Ubuntuun</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch033_creating-your-pgp-keys">PGP-avainten luominen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch034_daily-pgp-usage">Päivittäinen PGP:n käyttö</a></li>
+<li Class="booki-section">TOR-opas</li><li><a href="/internet-tietoturvan-perusteet/ch036_using-tor">TOR-opas</a></li>
+<li Class="booki-section">Taustatietoa</li><li><a href="/internet-tietoturvan-perusteet/ch038_how-the-net-works">Kuinka verkko toimii</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch039_glossary">Sanasto</a></li>
+<li Class="booki-section">Tekijät</li><li><a href="/internet-tietoturvan-perusteet/ch041_tekijat">Tekijät</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch042_lisenssi">Lisenssi</a></li>
+</ul>

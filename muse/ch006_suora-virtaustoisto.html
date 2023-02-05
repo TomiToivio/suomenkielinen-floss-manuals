@@ -1,0 +1,60 @@
+<div id="main-content"><h1>Suoran lähetyksen virtaustoisto MuSE:lla</h1>
+<p><img title="riga_en" src="_booki/muse/static/MuSE-LiveStreaming-riga_en-fi.jpg" alt="riga_en" width="400" height="267"></p>
+<p><span style="font-size: small;"><sub>Yksi monista RIXCin (<a href="http://www.rixc.lv/" target="_top">http://www.rixc.lv</a>) MuSE:lla striimaamista konferensseista.</sub></span></p>
+<p> </p>
+<p>Tässä osassa oletan, että sinulla on jo streamauspalvelin valmiina ja joku on kertonut sinulle yksityiskohdat. Tarkalleen sinun täytyy tietää:</p>
+<p> </p>
+<ul><li>Striimauspalvelimen <strong>osoite</strong> (IP-osoite tai URL)</li>
+<li>Käytettävän palvelimen <strong>sisäänkirjautumistyyppi</strong> (shoutcast/Icecast/Icecast2 jne.)</li>
+<li>Palvelimen <strong>salasana</strong></li>
+<li>Käytettävä <strong>mountpoint</strong> (lisää tästä myöhemmin)</li>
+<li><strong>Po</strong><strong>rtti</strong> johon streamaat (yleensä 8000)</li>
+</ul><p>Pyydä streamauspalvelinta ylläpitävää henkilöä kertomaan nämä tiedot. Jos toisaalta aiot käyttää omaa palvelintasi, tiedät itse nämä yksityiskohdat.</p>
+<h2><a name="Opening%20the%20configuration%20window"></a>Konfiguraatio-ikkunan avaaminen</h2>
+<p>Paina <strong>konfiguraationappia </strong>(ensimmäinen nappi)</p>
+<p><img title="muse_co_bu_1_en" src="_booki/muse/static/MuSE-ToolBar-muse_co_bu_1_en-fi.jpg" alt="muse_co_bu_1_en" width="42" height="33"> </p>
+<p><strong>Linuxissa </strong>näet tämän:</p>
+<p><img title="muse_config_1" src="_booki/muse/static/muse_config_1-fi.gif" alt="muse_config_1" width="417" height="445"></p>
+<h2>Konfigurointi</h2>
+<p>Tässä meidän täytyy kirjoittaa kaikki uuteen streamiin liittyvä tärkeä tieto. Aloitetaan streamaamalla MP3-tiedostomuotoa, jolloin edessä oleva paneeli on paneeli, jota käytetään MP3-streamin luomiseen. Jos tahdot luoda Ogg-streamin, klikkaa paneelia "Ogg/Vorbis Streaming" taustalla, ja hyppää eteenpäin osaan, jossa tämä käsitellään... Juuri nyt teemme vain MP3-streamin.</p>
+<p>Jätä tämän lomakkeen yläosa rauhaan... Yläosassa asennetaan ulos lähtevän streamin bittinopeus ja laatu, laitetaan vain ensin streami valmiiksi ja sen jälkeen muokkaamme hieman tätä osaa. Eräitä tietokenttiä täytyy täyttää, nämä kaikki liittyvät streamauspalvelimeen, jolle streamaat. Oletamme, että käytät Icecast2-palvelinta. Jos käytät erilaista streamauspalvelinta, kaikki on aivan samoin, paitsi että sinun täytyy tuntea palvelimen sisäänkirjautumistyyppi... Kerron lisää tästä, kun täytämme sen kentän. <br><br>Seuraavassa osassa kerrotaan MuSE:n konfiguraatiopaneelista kenttä kerrallaan.</p>
+<h3><a name="Host"></a> Host</h3>
+<p>Kirjoita tähän käyttämäsi streamauspalvelimen <strong>URL</strong> tai <strong>IP-osoite</strong>. Jos käytät omalla koneellasi olevaa palvelinta (samalla koneella jokka koodaat), kirjoita tähän "localhost". Muuten joudut kirjoittamaan kaiken, mukaan lukien "http://"-osan. Esimerkiksi, jos palvelimeni on osoitteessa "http://icecast.streamingsuitcase.com", joudun kirjoittamaan tähän kenttään:</p>
+<p><a href="http://icecast.streamingsuitcase.com/" target="_top">http://icecast.streamingsuitcase.com</a></p>
+<p>Palvelimen tiedot antaa sinulle henkilö, joka ylläpitää palvelinta.</p>
+<p> </p>
+<h3><a name="Port"></a> Port</h3>
+<p>Tämä on yleensä oletusportti <strong>8000</strong>. Palvelintasi ylläpitävä henkilö antaa sinulle tämän porttinumeron, ja se sinun tulee kirjoittaa tähän kenttään. Jos porttinumeroa ei ole annettu, kokeile numeroa 8000. Jos se ei toimi, soita ylläpitäjälle ja kysy portin numeroa.</p>
+<p> </p>
+<h3><a name="Mount"></a> Mount</h3>
+<p>Mountpoint on se palvelimen osa, johon streamisi yhdistyy. Tämä merkitsee, että jos käytät streamauspalvelinta, ja on esimerkiksi 20 ihmistä, jotka lähettävät erillisiä streameja serverille, jokainen voidaan tunnistaa mountpointin avulla. Sitä käytetään myös soittolistatiedostossa, jonka luot myöhemmin, jotta voit linkittää streamiin verkkosivultasi. Ei ole väliä minkä niminen mountpoint on, tosin joskus palvelimen ylläpitäjä antaa sinulle tietyn nimen käytettäväksi. Älä käytä ilmeisiä nimiä (kuten "testi") varmistaaksesi, ettet ole ristiriidassa toisen streamin kanssa. Varmista myös, että mountpointissasi on edeltävä "/", kuten näytetään yllä olevassa ruutukaappauksessa.</p>
+<p> </p>
+<h3><a name="Name"></a> Name</h3>
+<p>Nimi, joka näkyy kuuntelijoidesi mediasoittimissa, kun he kytkeytyvät streamiisi. Käytä jotain kuvaavampaa kuin vain "minun streamini".</p>
+<p> </p>
+<h3><a name="URL"></a> URL</h3>
+<p>Tämä ei ole streamauspalvelimen URL, se on vain URL, joka näkyy joskus kuuntelijan soittimessa. Tähän voit kirjoittaa verkkosivusi URLin.</p>
+<p> </p>
+<h3><a name="Description"></a> Description</h3>
+<p>Hieman kuin nimi-kenttä, mutta voit kirjoittaa tähän enemmän tietoa.</p>
+<p> </p>
+<h3><a name="LoginType"></a> LoginType</h3>
+<p>Tämä on autentikaatiotyyppi, jota palvelimesi käyttää. Tässä on taulukko, joka auttaa sinua valitsemaan oikean: </p>
+<table class="zeroBorder" border="0" frame="border" rules="all" cellspacing="2" cellpadding="2"><tbody><tr><th class="twikiFirstCol" bgcolor="gray">PALVELIMEN TYYPPI</th><th bgcolor="gray">KIRJAUTUMISTYYPI</th></tr><tr><td class="twikiFirstCol" bgcolor="white">Darwin</td>
+<td bgcolor="white">icecast 1</td>
+</tr><tr><td class="twikiFirstCol" bgcolor="#e2e2e2">Icecast 2</td>
+<td bgcolor="#e2e2e2">icecast 2</td>
+</tr><tr><td class="twikiFirstCol" bgcolor="white">Icecast 1</td>
+<td bgcolor="white">icecast 1</td>
+</tr><tr><td class="twikiFirstCol" bgcolor="#e2e2e2">Shoutcast</td>
+<td bgcolor="#e2e2e2">shoutcast</td>
+</tr></tbody></table><p> </p>
+<h3><a name="Pass"></a> Pass</h3>
+<p>Kirjoita palvelimen salasana tähän. Streamauspalvelimen järjestelmänvalvojan pitäisi antaa tämä sinulle.</p>
+<p>Aloita nyt streami soittamalla ääntä miksauspöydältäsi (tai mistä tahansa, mitä olet liittänyt äänikorttiisi), varmista, että ohjelmistomikserisi on päällä, paina "connect" tässä lomakkeessa, ja streami alkaa!</p></div><ul Class="menu-goes-here"><li Class="booki-section">JOHDANTO</li><li><a href="/muse/index">JOHDANTO</a></li>
+<li><a href="/muse/ch002_mita-streamaus-on">MITÄ STREAMAUS ON?</a></li>
+<li Class="booki-section">KÄYTTÖLIITTYMÄ</li><li><a href="/muse/ch004_tyokalupalkki">TYÖKALUPALKKI</a></li>
+<li Class="booki-section">KÄYTTÖ</li><li><a href="/muse/ch006_suora-virtaustoisto">SUORA VIRTAUSTOISTO</a></li>
+<li><a href="/muse/ch007_soittolistan-virtaustoisto">SOITTOLISTAN VIRTAUSTOISTO</a></li>
+<li Class="booki-section">LIITTEET</li><li><a href="/muse/ch009_tekijat">TEKIJÄT</a></li>
+</ul>

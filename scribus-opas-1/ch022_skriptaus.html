@@ -1,0 +1,91 @@
+<html dir="None"><body><div id="main-content"><h1>Skriptaus ja tehtävien automatisaatio</h1>
+<p>Tämä luku käsittelee Scribusin erikoiskäyttöä. Uutena Scribusin käyttäjänä et tarvitse sitä heti, mutta se on hyvä lukea, jotta tutustut Scribusin mahdollisuuksiin.</p>
+<p><strong>Skripti</strong> on pieni ohjelma, joka tekee yhden tehtävän. Skripti on oikeastaan sarja komentoja, joka on tekstitiedostossa. Skriptin ajaminen suorittaa automaattisesti tehtäviä. Näin ei tarvitse opetella ulkoa sarjaa komentoja, jotta voi tehdä jonkin tietyn usein toistuvan tehtävän. Samalla välttyy tylsien tehtävien suorittamiselta käsin. Lisäksi skripteillä voi laajentaa ohjelman käyttötapoja ilman ohjelman lähdekoodin muuttamista. Lisäksi merkittävä etu on se, että skriptejä on helpompi ohjelmoida kuin ohjelmaa itseään.</p>
+<p>Skriptien avulla uusia ominaisuuksia voidaan lisätä Scribusiin. Tämä antaa yhteisön jakaa ominaisuuksia ennen kuin ne lisätään Scribusiin. Voit lisätä skriptisi Scribusin wikiin. Valitse vain tahtomasi skripti, kopioi se ja liitä se tekstieditoriin, jonka jälkeen voit tallentaa sen koneellesi. Tämän jälkeen voit käynnistää skriptin valikosta <em>Skripti &gt; Aja skripti...</em></p>
+<p>Skribusin skriptit on tehty ohjelmointikielellä <strong>Python</strong>, joka on tunnettu yksinkertaisuudestaan. Se ei voi vahingoittaa konettasi tai ohjelmiasi. Viimeisessä kappaleessa on linkkejä Pythonia käsitteleville sivuille. </p>
+<h2>Aja skripti</h2>
+<p>Kun asensit Scribusin, yhdeksän skriptiä asennettiin automaattisesti, ja ne voit ajaa valikosta [<em>Skriptit &gt; Scribus</em>-skriptit]:</p>
+<ul><li>Autoquote: tämä skripti muuttaa heitto- ja lainausmerkkien typografian versiota.</li>
+<li>CalendarWizard: luo kalenterin.</li>
+<li>Color2csv: tallentaa listan nykyisessä tiedostossa käytetyistä väreistä.</li>
+<li>ColorChart: skripti tuottaa nykyisessä dokumentissa olevien värien nyanssinäkymän.</li>
+<li>Csv2color: tuo komennolla color2csv luodun värilistan.</li>
+<li>DirectImageImport: tekee kuvakehyksen ja tuo siihen kuvan.</li>
+<li>FontSample: tekee listan järjestelmään asennetuista fonteista ja esimerkkitekstit.</li>
+<li>Importcsv2table: tuo arvot taulukkoon.</li>
+<li>InfoBox: tekee pienen kehyksen tekstille.</li>
+</ul><p>On mahdollista muokata skriptiä. Kopioi se ensin sen oletusarvoisesta sijainnista:</p>
+<p>Linux<em>: /usr/share/scribus/scripts/</em></p>
+<p>Mac OS X: <em>/käyttäjät/käyttäjänimi/scribus/trunk/scribus/scribus/plugins/scriptplugin/scripts/ </em></p>
+<p>Windows 7: <em>C:\Program Files\Scribus1.4\share\scripts </em></p>
+<p>Voit laittaa kopion hakemistoon Skriptit omassa hakemistossasi. Tämän jälkeen voit muokata skriptiä tekstieditorilla, kuten seuraavaksi kerrotaan. Muokatun skriptin voit ajaa komennolla [ <em>Skriptit &gt; Aja skripti...</em> ].</p>
+<h2>Lisää skriptejä</h2>
+<p>Paras lähde skripteille on Scribusin wiki. Mene sivulle <a href="http://wiki.scribus.net/">wiki.scribus.net</a> (<a href="http://wiki.scribus.net/" target="_top">http://wiki.scribus.net</a>) ja napsauta kohtaa <a href="http://wiki.scribus.net/canvas/Category:Scripts">"Scripts"</a> (<a href="http://wiki.scribus.net/canvas/Category:Scripts" target="_top">http://wiki.scribus.net/canvas/Category:Scripts</a>) vasemmalla olevassa valikossa, niin näet tusinoittain tietokoneellesi kopioitavia skriptejä.</p>
+<p>Esimerkiksi kopioidaksesi skriptin "Adding 'DRAFT' to a document" joka lisää nykyiselle sivulle sanan "DRAFT" ("luonnos" englanniksi):</p>
+<ul><li>Avaa tekstieditori. Jos sinulla ei ole tekstieditoria asennettuna - tai jos et tiedä mikä tekstieditori on - katso Geditin asennusohjeita (<a href="http://www.gedit.org/">www.gedit.org</a>) (<a href="http://www.gedit.org/" target="_top">http://www.gedit.org</a>).</li>
+<li>Napsauta wikissä linkkiä <a href="http://wiki.scribus.net/canvas/Adding_'DRAFT'_to_a_document">Adding 'DRAFT' to a document</a> (<a href="http://wiki.scribus.net/canvas/Adding_'DRAFT'_to_a_document" target="_top">http://wiki.scribus.net/canvas/Adding_'DRAFT'_to_a_document</a>) ja mene sivulla alaspäin, kunnes näet skriptin Python-koodin, jonka voit kopioida.</li>
+<li>Avaa Gedit ja liitä Python-koodi tyhjään tiedostoon.</li>
+<li>Tallenna tiedosto työpöydällesi nimellä "draft.py".</li>
+</ul><p>Ajaaksesi skriptin Scribusissa:</p>
+<ul><li>Varmista että dokumenttisi on auki.</li>
+<li>Valitse valikosta <span>Skripti</span><em> &gt; Suorita skripti... </em>ja etsi skripti "draft.py" työpöydältäsi.</li>
+<li>Kun napsautat <em>OK</em>, sana <em>DRAFT</em> ilmestyy nykyiselle sivullesi.</li>
+</ul><h2>Skriptien luominen</h2>
+<p>Jos et löydä tarvitsemaasi skriptiä wikistä, voit aina luoda skriptin itse tai pyytää tuttua ohjelmoijaa tekemään sen.</p>
+<p>Usein tämä on vielä helpompaa, sillä voit muokata wikistä löytyneen skriptin tekemään haluamasi asiat.</p>
+<p>Ajatellaanpa vaikka, että tahdot suomentaa sanan DRAFT sanaksi LUONNOS. Tarkastele skriptiä, jonka liitit tekstieditoriin.</p>
+<ul><li>Rivillä 25 on sanat « draft  = "DRAFT" ».</li>
+<li>Lisää merkki "#" rivin alkuun: Python ei nyt lue riviä.</li>
+<li>Kirjoita riville 28 teksti "draft = "LUONNOS".</li>
+<li>Tallenna tiedosto ja aja se taas Scribusissa.</li>
+</ul><h2>Lisätietoa</h2>
+<p>Tässä on käsitelty skriptausta vain lyhyesti. Jos tahdot tutustua skripteihin ja niiden mahdollisuuksiin tarkemmin, tässä on joukko linkkejä erilaisille Pythonia käsitteleville sivuille.</p>
+<h3>Johdanto Pythonin syntaksiin</h3>
+<p>Python on yleinen ja helppo kieli, josta voi löytää tietoa monista paikoista. Tässä on muutamia suomenkielisiä oppaita Pythonin käyttöön:</p>
+<p>Ohjelmointiputkan Python-opas: <a href="http://www.ohjelmointiputka.net/oppaat/opas.php?tunnus=python_01">http://www.ohjelmointiputka.net/oppaat/opas.php?tunnus=python_01</a></p>
+<p>Lappeenranta Technical Universityn Python-opas: <a href="http://www.it.lut.fi/kurssit/08-09/CT20A0200/materiaali/Python_opas_2008.pdf">http://www.it.lut.fi/kurssit/08-09/CT20A0200/materiaali/Python_opas_2008.pdf </a></p>
+<p>Wikikirjaston Python-opas: <a href="http://fi.wikibooks.org/wiki/Python">http://fi.wikibooks.org/wiki/Python</a> <br><br></p>
+<h3>Scribusissa käytettävät Python-komennot</h3>
+<p>Englanninkielinen lista Scribusissa käytettävistä Python-komennoista löytyy valikosta [<span>Ohje </span><em>&gt; Ohje</em>] olevan käyttöohjeen kohdasta "For Developers &gt; Scripter API".</p>
+<h3>Ihmisetkin voivat auttaa!</h3>
+<p>Onko sinulla tärkeitä kysymyksiä Scribus-skriptaamisesta? On varsin mahdollista löytää ihmisiä, jotka voivat vastata kysymyksiisi (tai parhaassa tapauksessa jopa kirjoittaa skriptisi!)</p>
+<p>Scribusin kehittäjien ja käyttäjien listalla voit kysyä englanniksi kysymyksiä aiheesta. Voit liittyä listalle osoitteessa <a href="http://lists.scribus.info/mailman/listinfo/scribus">http://lists.scribus.info/mailman/listinfo/scribus</a> ja kirjoittaa tähän osoitteeseen: <a href="mailto:scribus@lists.scribus.net">scribus@lists.scribus.net</a>.</p>
+<p>Jos tahdot puhua Scribus-ihmisille suoraan, voit liittyä IRC-kanavalle #scribus Freenodessa. Mikäli sinulla ei ole IRC-asiakasohjelmaa käytössäsi, voit liittyä yhteisön kanavalle tällä verkkosivulla: <a title="Scribus IRC" href="http://wiki.scribus.net/canvas/Special:WebChat">http://wiki.scribus.net/canvas/Special:WebChat</a></p>
+<p>Huomaa, että IRC-kanavakin on suurimmaksi osaksi englanninkielinen.</p>
+<h2>Lähdekoodin tarjoamat mahdollisuudet</h2>
+<p><span id="result_box" lang="en"> <span class="hps">Jotta katsauksemme Scribusin erikoismahdollisuuksiin olisi täydellinen, tarkastelemme nyt Scribusin tiedostoformaatin koodia ja sen mahdollisuuksia. Ensinnäkin pidä mielessäsi, että olemme avoimen lähdekoodin maailmassa ja kaikki formaatit ovat avoimia. Scribusin tapauksessa tämä merkitsee, että käyttäjä pääsee tutkimaan tiedostojen koodia, vaikka Scribusia ei olisi asennettu tietokoneelle. Tarvitaan vain yksinkertainen tekstieditori Scribusin lähdekoodin tutkimiseen. Tarvitaan vain hieman harjoittelua ja jatkuvaa tutkimista, jotta tämän tiedoston rakenne aukeaa. Tarvitaan vain yksi askel tämän mahdollisuuden hyödyntämiseen! </span></span></p>
+<h3>Muokattava formaatti</h3>
+<p>.sla on kaikkien Scribus-tiedostojen loppupääte. Tämä tiedosto on helppo löytää koneeltasi. Avaa tekstieditori ja avaa joku .sla-tiedosto. Nyt voit tutkia sitä. Ensin tämä voi tuntua vaikealta, mutta huomaat pian kaikki tällaisen tiedoston edut. Yksinkertaisilla komennoilla, kuten Etsi &amp; Korvaa voit tehdä muutoksia tähän tiedostoon avaamatta Scribusin käyttöliittymää. Tämä ei tietenkään merkitse sitä, että voit tehdä kaikki Scribusin toiminnot ilman käyttöliitymän avaamista. Mutta jos tahdot tehdä hieman monimutkaisempia muutoksia, tekstieditorin käyttö on hyvin tehokasta.   <span id="result_box" lang="en"> <br><br>Alla on esimerkki, jossa näkyy osa koodista. Se on hyvin järjestelmällinen ja selkeä. Kuka tahansa voi lukea tätä koodia ja ymmärtää sitä pienellä vaivalla. Tässä on lista dokumentissa käytetyistä väreistä. Havaitaan, että on kaksi spottiväriä, jotka ovat <span class="hps atn">"</span><span>Pantone</span> <span class="hps">541C</span><span class="atn">" ja "</span><span>Pantone</span> <span class="hps">541C</span> <span class="hps">LEAP</span><span>."</span> <span class="hps">Tämän vuoksi tuloksena on kaksi laattaa eikä vain yksi, mitä et tahdo. Lisäksi väri "PALE" on sama, mutta sen värisävy on vain 50%. Tätä ongelmaa on vaikea korjata Scribusin käyttöliittymässä, mutta se on helppo korjata .sla-lähdetiedostossa.</span></span></p>
+<p><img src="_booki/scribus-opas-1/static/Scribus_fr-Scripts-sla_tondirect-fr-old.png" alt=""></p>
+<div id="gt-res-content" class="almost_half_cell">
+<div dir="ltr"><span id="result_box" lang="en"><span class="hps">Tässä toisessa näkymässä on kaksi riviä koodia, jotka vaikuttavat väriin </span><span class="hps atn">"</span><span>Pantone</span> <span class="hps">541C</span><span>". Näemme mitä muutoksen jälkeen tapahtui. Lisäsimme attribuutin "SHADE" väriin, mikä ratkaisi ongelman. Väristä PALE tuli </span><span class="hps atn">"</span><span>Pantone</span> <span class="hps">541C</span><span>" ja sen värisävy on </span> <span class="hps">50</span><span>%.</span></span></div>
+</div>
+<p><img src="_booki/scribus-opas-1/static/Scribus_fr-Scripts-sla_tondirect2-fr-old.png" alt=""></p>
+<p><span id="result_box" lang="en"><span class="hps">Lisäksi .sla-tiedosto voi olla erittäin hyödyllinen, mikäli Scribus palauttaa virheviestin, jossa sanotaan, että se ei voi lukea tiettyä tiedostoa, koska se on vahingoittunut. Tämä tilanne ei ole toivoton. Yleensä kehittäjät voivat korjata tiedoston tekstieditorilla. Vaikka Scribus ei voi avata kyseistä tiedostoa, se on edelleenkin tekstitiedosto, joten sitä voi muokata.</span></span></p></div><ul Class="menu-goes-here"><li Class="booki-section">SCRIBUS</li><li><a href="/scribus-opas-1/index">MIKÄ SCRIBUS ON?</a></li>
+<li><a href="/scribus-opas-1/ch002_ennakkovaatimukset">ENNAKKOVAATIMUKSET</a></li>
+<li><a href="/scribus-opas-1/ch003_tasta-oppaasta">TÄSTÄ OPPAASTA</a></li>
+<li><a href="/scribus-opas-1/ch004_esimerkkeja-scribusin-kaytosta">ESIMERKKEJÄ SCRIBUSIN KÄYTÖSTÄ</a></li>
+<li Class="booki-section">ASENTAMINEN</li><li><a href="/scribus-opas-1/ch006_scribusin-asentaminen">SCRIBUSIN ASENTAMINEN</a></li>
+<li Class="booki-section">PERUSTEET</li><li><a href="/scribus-opas-1/ch008_kayton-aloittaminen">KÄYTÖN ALOITTAMINEN</a></li>
+<li Class="booki-section">KÄYTTÖ</li><li><a href="/scribus-opas-1/ch010_scribusin-kaytto">SCRIBUSIN KÄYTTÖ</a></li>
+<li><a href="/scribus-opas-1/ch011_suunnittelu">SUUNNITTELU</a></li>
+<li><a href="/scribus-opas-1/ch012_teksti-ja-grafiikka">TEKSTI JA GRAFIIKKA</a></li>
+<li><a href="/scribus-opas-1/ch013_lahteiden-valmistelu">LÄHTEIDEN VALMISTELU</a></li>
+<li><a href="/scribus-opas-1/ch014_formaatti">FORMAATTI</a></li>
+<li><a href="/scribus-opas-1/ch015_varien-valinta">VÄRIEN VALINTA</a></li>
+<li><a href="/scribus-opas-1/ch016_fonttien-valinta">FONTTIEN VALINTA</a></li>
+<li Class="booki-section">KÄYTÄNTÖJÄ</li><li><a href="/scribus-opas-1/ch018_tiedostojen-jarjestely">TIEDOSTOJEN JÄRJESTELY</a></li>
+<li><a href="/scribus-opas-1/ch019_mallit">MALLIT</a></li>
+<li><a href="/scribus-opas-1/ch020_kompositio">KOMPOSITIO</a></li>
+<li><a href="/scribus-opas-1/ch021_tyylitiedostot">TYYLITIEDOSTOT</a></li>
+<li><a href="/scribus-opas-1/ch022_skriptaus">SKRIPTAUS</a></li>
+<li Class="booki-section">TUOTANTO</li><li><a href="/scribus-opas-1/ch024_kuvien-ja-tekstin-tuominen">KUVIEN JA TEKSTIN TUOMINEN</a></li>
+<li><a href="/scribus-opas-1/ch025_kehykset">KEHYKSET</a></li>
+<li><a href="/scribus-opas-1/ch026_varienhallinta">VÄRIENHALLINTA</a></li>
+<li><a href="/scribus-opas-1/ch027_typografia">TYPOGRAFIA</a></li>
+<li><a href="/scribus-opas-1/ch028_laadunvalvonta">LAADUNVALVONTA</a></li>
+<li><a href="/scribus-opas-1/ch029_asiakirjojen-kokoaminen">ASIAKIRJOJEN KOKOAMINEN</a></li>
+<li><a href="/scribus-opas-1/ch030_lopullinen-tuotos">LOPULLINEN TUOTOS</a></li>
+<li Class="booki-section">LIITTEET</li><li><a href="/scribus-opas-1/ch032_toistuvia-ongelmia">TOISTUVIA ONGELMIA</a></li>
+<li><a href="/scribus-opas-1/ch033_tekijat">TEKIJÄT</a></li>
+</ul>

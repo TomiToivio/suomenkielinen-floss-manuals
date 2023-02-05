@@ -1,0 +1,95 @@
+<html dir="None"><body><div id="main-content"><h1>Lopullinen tuotos</h1>
+<p><br>Loppuvaiheessa tulostettavan asiakirjan tuotantoa viimeisen version pitää sisältää suunnittelun elementit (fontit, kuvat) ja profiilit pitää muuntaa tulostusta varten. </p>
+<p> </p>
+<h2>Formaatin valinta</h2>
+<p><br>PDF on vakiinnuttanut asemansa esitysmuotona, jossa on kaikki graafisen ketjun sisältämät elementit monine ominaisuuksineen, jotka esitetään ISO-vakiomuodossa. Lisäksi se on kevyt verrattuna sisältämäänsä tietomäärään, sen vektoriherkkyyteen tai sen universaalisuuteen. <br><br></p>
+<ul><li>Muut tiedostomuodot ovat käytettävissä valikossa [Tiedosto] &gt; [Vie]:</li>
+<li>PostScript, nyt vetelemässä viimeisiään, vaikka se toimii Scribusissa;</li>
+<li>EPS, johdettu PostScriptistä, on edelleen käytössä, mutta ei optimoidu yhtä perusteellisesti kuin PostScript tai PDF;</li>
+<li>Kuvaformaatit löytyvät kohdasta [Tiedosto] &gt; [Vie]. Tiff-kuvan saa tehtyä alivalikosta [Vie kuvana]. Sen etuna on läpinäkyvyys, mutta se on silti huomattavasti painavampi;</li>
+<li>SVG, joka on vektorikuva ja joustava, mutta sopii huonosti työkulkuun loppuvaiheessa ja tuotannon tulostamisessa.</li>
+</ul><p> </p>
+<p><br>[Tiedosto] &gt; [Vie] &gt; [Tallenna PDF:nä] aukeaa ikkuna, jossa on useita välilehtiä ja ulkoasuasetuksia. Nämä ovat monimutkaisia aloittelijalle, mutta oletusasetukset ovat jo valmiina ja yleensä riittävät yleisimpiin tarpeisiin. </p>
+<p> </p>
+<h2>Yleiset asetukset</h2>
+<p><br>Ensimmäinen välilehti näyttää joukon parametreja. On tärkeää ymmärtää nämä asetukset, koska ne ovat keskeisessä osassa painajan kanssa keskusteltaessa. Tämä vaihtoehto on tehokkaampi, kun puhut samaa kieltä kuin painajasi. Kuten olemme juuri sanoneet, oletusasetukset ovat jo yleisimpiin käyttötarkoituksiin sopivia, mutta saattaa hyvinkin olla, että meidän pitäisi muuttaa niitä. Seuraavien asioiden ymmärtäminen auttaa sinua täydentämään projektin tyyliä. </p>
+<p> </p>
+<h2>PDF-versio</h2>
+<p><br>PDF on kehittynyt huomattavasti sen julkaisemisesta lähtien, jolloin jokaisen uuden version myötä tulee paljon uutta. Scribus tarjoaa valinnan [Yhteensopivuus], koska PDF-version pitäisi vastata painajan vaatimuksiin. <br><br>Jokainen PDF-versio vastaa versiota ohjelmasta Acrobat. Acrobat on Adoben ohjelmisto PDF-asiakirjojen tarkastamiseen. Käytä PDF-versiota 1.3 tulostamista varten, jos projekti ei sisällä läpinäkyvyyttä.</p>
+<p>Jos käytit läpinäkyvyyttä, vientimuodoksi sopii PDF 1.4. Merkittävin muutos PDF 1.4 ja PDF 1.5 välillä on, että se tukee useiden kerroksien tiedostoja. Valinta 1.5 sallii aktivoida [Sisällytä kerrokset].</p>
+<p>PDF/X-3 on tiedostonsiirtoformaatti perustuen PDF-versioihin 1.3 ja 1.4. Se on optimoitu osa esipainon työnkulkua. <br><br>Sääntö on varsinkin, että tulee valita painajan suosittelema PDF-versio. On tärkeää olla yhteydessä painajaan. </p>
+<p> </p>
+<h2>Kompressio ja resoluutio</h2>
+<p><br>Valitse asiakirjan lopullinen versio. Tässä tarvitset tietoa kompressiosta ja kuvan tarkkuudesta.</p>
+<p>Suositeltava resoluutio tiedoston tulostamista varten on 300 dpi. Siksi kohdassa [Resoluutio EPS-kuvat] oletusarvona on 300 dpi. Voi myös olla vaarallista uudelleensamplata kuva. Siksi on tärkeää tarkistaa etukäteen, tuodaanko kuvat resoluutiolla 300 dpi. EPS-tiedostot voivat sisältää vektorin elementit riippuen asetuksista, joilla ne luotiin. Tätä vaihtoehtoa sovelletaan resoluution mukaan sopimaan kuvien tulostukseen. <br><br>Tämä vaihtoehto valitaan kohdassa [Pakkaa teksti ja vektorigrafiikka], joka rajoittaa näiden elementtien kokoa loppuasiakirjassa. <br><br>Kohdasta [Yleiset] voit ottaa välilehden nimeltään [Pakkausmenetelmä], joka sallii valita, nimensä mukaisesti, käytetäänkö pakkausta ja siitä voidaan valita pakkausalgoritmi. Jos et käytä pakkausta, voit luoda liian suuren tiedoston. Tavoitteena on säilyttää grafiikan laatu.</p>
+<p>Mitä pakkausmenetelmän valintaan tulee, valinta JPEG ei sovi erittäin korkealaatuisiin asiakirjoihin, jotka vaativat tiukempaa pakkausta, jolloin JPEG voi menettää kuvanlaatua. Suositeltava ratkaisu on käyttää ZIP-pakkausta, joka rajoittaa menetystä tai jättää päälle aktiivinen vaihtoehto [Automaattinen]. <br><br>Pakkausmenetelmään on valinta [Pakkauksen laatu], parametri, jota ei voi mitata, mutta joka on saatavilla tasoilla [Maksimi] [Matala]. Jälleen pakkaus voi vaikuttaa lopulliseen laatuun, joten on suositeltavaa jättää [Maksimi] päälle. <br><br>Lopuksi on mahdollista räätälöidä [Kuvien maksimiresoluutio], joka on oletuksena asetettu 300 dpi. Tämä asetus on oletusarvoisesti pois käytöstä, ja hyvästä syystä: alhaisempi arvo voi vaikuttaa tulostuksen laatuun. Se voi kuitenkin olla hyödyllinen, jos joitain erittäin korkean resoluution kuvia esiintyy asiakirjassa. Ne voivat todellakin merkittävästi lisätä tiedoston kokoa. </p>
+<p> </p>
+<h2>Fontit</h2>
+<p><br>Lopulliseen asiakirja ei ole tarkoitus muuttaa tekstiä. On aika sisällyttää asiakirjaan fontteja. Scribus tarjoaa kaksi vaihtoehtoa: <br><br></p>
+<ul><li>Upota fontit. Se on suositeltavaa, koska se säilyttää alkuperäisen merkistön ja välttää fonttiongelmat painajan kanssa. </li>
+<li>Vektorisoi fontit. Fonttien sisällyttäminen on mahdollista vain, jos tekijä on nimenomaisesti antanut luvan. Tällöin fontin voi vektoroida saadakseen aikaan sen sisällyttämisen asiakirjaan. Merkistö ei ole mukana, mutta säilyy silti näkyvissä. </li>
+</ul><p> </p>
+<p> </p>
+<h2>Väri</h2>
+<p><br>[Väri] on asetuksia, joita käytetään värinhallintaan. Kolmentyyppisiä tuotoksia on käytettävissä, mutta värivaihtoehtoja sovelletaan vain asiakirjoihin, jotka painetaan CMYK-väreissä ja jos ei käytetä käskyä [Tulosta]. </p>
+<p> </p>
+<h2>Muuntaminen spottiväreistä</h2>
+<p><br>[Muunna spottivärit prosessiväreiksi] estää muiden värien lisäämisen. Ylimääräiset värit aiheuttavat lisäkustannuksia. Jos dokumentti on duotone-väreissä ja siihen tuotettiin spottivärejä, tätä vaihtoehtoa ei suositella, koska se tuhoaisi kaksivärisyyden ja korvaisi sen tavanomaisen neljän värin CMYK-väreillä. Kuitenkin, jos asiakirja on tuotettu CMYK-väreillä ja viides väri lisättiin, mutta voidaan sekoittaa CMYK-väreistä, tämä vaihtoehto on hyvä valinta. Joka tapauksessa on parempi käyttää tätä asetusta vain, jos olet varma mitä olet tekemässä. </p>
+<p> </p>
+<h2>Asiakaskohtaiset</h2>
+<p><br>[Käytä mukautettua väriä] osoittaa parametrit, joita käytetään kulman, taajuuden ja muodon pisteisiin. Oletusarvot ovat oikein, ja ellei kyseessä ole pyyntö painajalta tai silkkipainosta, ei ole suositeltavaa muuttaa näitä arvoja. </p>
+<p> </p>
+<h2>Sovella profiileja</h2>
+<p><br>Loput välilehdistä keskittyvät integroimaan profiileja. Tässä vaihtoehtojen olisi vastattava käytettyjen asetusten värinhallintaa, muuten uhkana on odotetusta eroava lopputulos. On tärkeää huomata, että toisin kuin värinhallinta-asetukset, tässä on mahdollista valita, käytetäänkö profiilia upotettuihin kuviin ja tarvittaessa kuormaprofiilin valintaan. </p>
+<p> </p>
+<h2>Esipainon asetukset</h2>
+<p><br>Viimeisellä välilehdellä voit asettaa elementit seuranta ja ajoitus, joita tarvitaan tulostamiseen. <br><br></p>
+<ul><li>Leikkausmerkkejä käytetään määrittämään tosiasiallinen asiakirjan ala, joka tulee lähettää. Kaikki, mikä ylittää leikkausmerkkien rajan ei näy paperin leikkauksen jälkeen.</li>
+<li>Kohdistusmerkit ovat samankaltaisia leikkausmerkkejä, mutta määritellään toiminta-alueeksi asiakirjan asettelun aikaan. Ne yhdistävät kaikki vanhemmat johtimet, jotka käytetään antamaan vaikutelma, että jotkut havainnollistavat tai koriste-elementit, kuten kuvat, asetetaan asiakirjaan aivan lopuksi. Voit muuttaa asiakirjan leikkausmerkit kohdasta [Muuta leikkausmerkit].</li>
+<li>Leikkausvaran merkkejä käytetään, se kalibroi asiakirjoja eri koneilla painajan käyttöön.</li>
+<li>Säätösauvojen pitää tietää milloin värejä on määrä käyttää.</li>
+<li>Tiedot sivulle sisältää asiakirjan nimen, luontipäivämäärän ja sivunumeron.</li>
+<li>Valinta [PDF/X-3 ulostulo] on käytettävissä vain, jos valitset yhteensopivuuden samannimisestä [Yleiset]-välilehdestä ja valitset kohdan globaalista profiilista. Tämä on hyödyllistä, jos värinhallinnan kanssa haluamasi profiilit tarvitsevat CMYK-profiilia.</li>
+</ul><p> </p>
+<h2>Dokumentin vaihtoehdot</h2>
+<p><br>Scribus tarjoaa myös käyttäjälle mahdollisuuden räätälöidä ominaisuuksia, mutta osoittautuvat hyödylliseksi sen digitaaliseen lähetykseen. On olemassa vaihtoehtoja suojata tiedosto, mutta niitä ei voi käyttää, jos PDF/X-3 yhteensopivuus on valittu [Yleiset]-välilehdestä. <br><br>[Katselu] määrittää näyttöasetukset, kuten [Asiakirjojen ulkoasu], joka määrittää miten asiakirja näkyy ollessaan kooltaan sopiva sivunvaihtoon. Valinta [Aspect] voi parantaa mukavuutta näytön käsittelyssä. Kehittyneemmät [Erikoistoimet] tarjoavat mahdollisuuden suorittaa komentosarjan PDF-käsittelyyn, kuten liittää upotettu video tai esitäyttää kenttiä lomakkeelle. </p>
+<p> </p>
+<h2>Tulosta virtuaalinen tiedosto</h2>
+<p><br>[Tulosta virtuaalinen tiedosto] sisältää myös muuta asetuksia, jotka eivät ole PDF-tiedostossa. Tämä on todellinen vaihtoehto tulostukseen, ainoana erona, että sen sijaan että todella tulostettaisiin asiakirja, syntyy PostScript (. Ps), joka sisältää tiedot tulostettavaksi asiakirjaan. <br><br>Valitse [Vaihtoehdot] ja valitse tietyn tyyppinen painatus: [Normaali tulostus] tai muodossa [Värierottelu]. Jälkimmäinen on tapa käyttää erillistä väriä omissa CMYK-kanavissa. Sen avulla voit katsella ja tuottaa tiedostoja, jotka on tuotettu kunkin kerroksen musteella. Tasoja on kolme PostScriptissä, suurimman tason ollessa taso kolme. <br><br>Kohdasta [Lisätoiminnot] säädetään parametrit [Sivutus] ja [Väri]. Ensimmäinen sopeutettu tulostettu tiedosto tulostetaan virtana. Ne olisi muutettu painajan neuvosta tai pyynnöstä.</p>
+<p>Seuraavaksi tarjotut parametrit käsitellään kohdassa PDF:n luominen [Muunna spottivärit prosessiväreiksi] ja [Sovella profiilit]. [Tulosta tiedosto] vastaa suoraa PDF-vientiä. Vaihtoehto [Under Color Removal (UCR)] vähentää liian rikasta mustetta. Asetus korvaa kaikki harmaan sävyt sävelletyllä syaani, magenta ja keltainen, mikä rajoittaa liian kovan värjäyksen riskiä. <br><br>Kohdassa [Merkki] on samat vaihtoehdot kuin suorassa PDF-viennissä, paitsi että se voi myös hallita muutoksen vertailuarvojen rajoja asiakirjassa. <br><br>Lopuksi [Rajamerkit] muokkaa rajamerkkejä, jos käyttäjä ei halua soveltaa rajamerkkejä asiakirjaan. <br><br>Komento [Tulosta] luo PostScript-tiedoston, joka voidaan sitten muuntaa PDF-tiedostoksi käyttäen kaupallista ohjelmistoa, joka muuntaa PostScript-tiedostoja PDF-tiedostoiksi: Moonshiner, GSView tai Distiller sopivat eri käyttöjärjestelmille. </p>
+<p> </p>
+<h2>Esikatselu</h2>
+<p><br>Ei voida ajatella lopullisen version tekemistä ilman esikatselua. Esikatselusta voi selkeästi tunnistaa mahdolliset ongelmat, jotka liittyvät väriin. Ikkunassa [Tiedosto] &gt; [Esikatselu] voit hallita tätä syvällistä esikatselua, mukaan lukien työn joidenkin toimintojen tekeminen näkyväksi. Sitä käsitellään aikaisemmin tässä luvussa. </p>
+<p> </p>
+<h2>Näyttö</h2>
+<p><br>[Näyttöasetukset] on käytetty muokkaamaan asiakirjan esikatselua. [Aktivoi pehmennys] parantaa vektorielementtien, fonttien, muotojen ja grafiikan näkyvyyttä. Voi olla hyödyllistä visualisoida tarkasti päällepainatus tai aihiot. <br><br>Sitä täydentävät [Näkymäkalvot] ja [Katso CMYK-muodossa], jossa on saatavilla syaani, magenta, keltainen ja musta, ja joka näyttää puolestaan kerrokset, jotka muodostavat lopullisen asiakirjan, sekä näiden kerrosten vuorovaikutuksen. <br><br>Näitä näytön ominaisuuksia ovat kyky esikatsella päällekkäisyydet, musteet ja erityisesti vektorimuotoja tai tekstiä taustavärin edessä. </p>
+<p> </p>
+<h2>Yleiskatsaus</h2>
+<p><br>Esikatselun näkymä määräytyy edellä käsitellyistä vaihtoehdoista. Nähtävillä on virtuaalisen tiedoston ulkoasu. Näin voi ennakoida niiden toimintaa asiakirjassa. </p></div><ul Class="menu-goes-here"><li Class="booki-section">SCRIBUS</li><li><a href="/scribus-opas-1/index">MIKÄ SCRIBUS ON?</a></li>
+<li><a href="/scribus-opas-1/ch002_ennakkovaatimukset">ENNAKKOVAATIMUKSET</a></li>
+<li><a href="/scribus-opas-1/ch003_tasta-oppaasta">TÄSTÄ OPPAASTA</a></li>
+<li><a href="/scribus-opas-1/ch004_esimerkkeja-scribusin-kaytosta">ESIMERKKEJÄ SCRIBUSIN KÄYTÖSTÄ</a></li>
+<li Class="booki-section">ASENTAMINEN</li><li><a href="/scribus-opas-1/ch006_scribusin-asentaminen">SCRIBUSIN ASENTAMINEN</a></li>
+<li Class="booki-section">PERUSTEET</li><li><a href="/scribus-opas-1/ch008_kayton-aloittaminen">KÄYTÖN ALOITTAMINEN</a></li>
+<li Class="booki-section">KÄYTTÖ</li><li><a href="/scribus-opas-1/ch010_scribusin-kaytto">SCRIBUSIN KÄYTTÖ</a></li>
+<li><a href="/scribus-opas-1/ch011_suunnittelu">SUUNNITTELU</a></li>
+<li><a href="/scribus-opas-1/ch012_teksti-ja-grafiikka">TEKSTI JA GRAFIIKKA</a></li>
+<li><a href="/scribus-opas-1/ch013_lahteiden-valmistelu">LÄHTEIDEN VALMISTELU</a></li>
+<li><a href="/scribus-opas-1/ch014_formaatti">FORMAATTI</a></li>
+<li><a href="/scribus-opas-1/ch015_varien-valinta">VÄRIEN VALINTA</a></li>
+<li><a href="/scribus-opas-1/ch016_fonttien-valinta">FONTTIEN VALINTA</a></li>
+<li Class="booki-section">KÄYTÄNTÖJÄ</li><li><a href="/scribus-opas-1/ch018_tiedostojen-jarjestely">TIEDOSTOJEN JÄRJESTELY</a></li>
+<li><a href="/scribus-opas-1/ch019_mallit">MALLIT</a></li>
+<li><a href="/scribus-opas-1/ch020_kompositio">KOMPOSITIO</a></li>
+<li><a href="/scribus-opas-1/ch021_tyylitiedostot">TYYLITIEDOSTOT</a></li>
+<li><a href="/scribus-opas-1/ch022_skriptaus">SKRIPTAUS</a></li>
+<li Class="booki-section">TUOTANTO</li><li><a href="/scribus-opas-1/ch024_kuvien-ja-tekstin-tuominen">KUVIEN JA TEKSTIN TUOMINEN</a></li>
+<li><a href="/scribus-opas-1/ch025_kehykset">KEHYKSET</a></li>
+<li><a href="/scribus-opas-1/ch026_varienhallinta">VÄRIENHALLINTA</a></li>
+<li><a href="/scribus-opas-1/ch027_typografia">TYPOGRAFIA</a></li>
+<li><a href="/scribus-opas-1/ch028_laadunvalvonta">LAADUNVALVONTA</a></li>
+<li><a href="/scribus-opas-1/ch029_asiakirjojen-kokoaminen">ASIAKIRJOJEN KOKOAMINEN</a></li>
+<li><a href="/scribus-opas-1/ch030_lopullinen-tuotos">LOPULLINEN TUOTOS</a></li>
+<li Class="booki-section">LIITTEET</li><li><a href="/scribus-opas-1/ch032_toistuvia-ongelmia">TOISTUVIA ONGELMIA</a></li>
+<li><a href="/scribus-opas-1/ch033_tekijat">TEKIJÄT</a></li>
+</ul>

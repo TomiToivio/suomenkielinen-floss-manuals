@@ -1,0 +1,184 @@
+<div id="main-content"><h1>Mikrofonin sisääntulo</h1>
+<p>Äänilähteet ovat helppo tapa lisätä interaktiivisuutta näppäimistön ja hiiren lisäksi. Ne tarjoavat käyttäjälle alkuperäisen lähteen, jota voi käyttää interaktiivisuuteen, ja joka tarjoaa erilaisen suhteen tietokoneeseen ja ohjelmaan. Käyttäjä voi olla fyysisemmin mukana ja käyttää ohjelmaasi epätavallisella tavalla. Mikrofonista tuleva ääni voidaan soittaa ja äänenvoimakkuutta ja muita muuttujia voidaan analysoida. </p>
+<p><span id="result_box" class="long_text"><span> <br></span><span>Processing voi käyttää kirjastoa Minim sound.</span></span></p>
+<h2><span id="result_box" class="long_text"><span>Minim </span></span></h2>
+<p><span id="result_box" class="long_text"><span>Jossain vaiheessa Processingin jakeluversioon liitettiin Minim-äänikirjasto, joka soittaa ääntä ja kaappaa mikrofonista tulevat äänet. Tämä kirjasto on jo asennettu Processingiisi. Tarkasta sen olemassaolo hakemistosta</span><span> <strong>Sketch menu</strong>&gt; <strong>Import Library</strong> &gt; <strong>...</strong> </span><span>&gt; <strong>Minim audio</strong>.</span></span></p>
+<p> </p>
+<p><img title="menu_import_minim" src="_booki/processing-1/static/resized_500x194_menu_import_minim-fi.png" alt="menu_import_minim" width="500" height="194"></p>
+<p><span id="result_box" class="long_text"><span>Riippuen alustasta ja ohjelmaversiosta Processing lisää tätä toimintoa varten ohjelman alkuun enemmän tai vähemmän koodirivejä. Tässä tapauksessa tarvitsemme ainakin seuraavan komennon: </span></span></p>
+<p><img title="processing_importer" src="_booki/processing-1/static/processing_importer-fi.png" alt="processing_importer" width="473" height="148"></p>
+<pre>import ddf.minim.*;
+</pre>
+<p><span id="result_box" class="long_text"><span>Tämä on komento, jolla voit tuoda kaikki Minim-kirjaston ominaisuudet ohjelmaasi. Tämän tuontilauseen ddf.minim.* avulla voimme soittaa ohjelmassamme ääntä. </span></span></p>
+<h2><span id="result_box" class="long_text"><span>Minimin asetukset</span></span></h2>
+<p><span>Kun laukaisemme ohjelman Run-napilla, äänikirjasto Minim käynnistyy. Tämä esimerkki voi vaatia pääsyä äänikortille käyttöjärjestelmässä, jotta ääniaaltoja voidaan luoda. Tämä merkitsee, että ohjelman lopussa Minim pitää ottaa pois päältä.</span></p>
+<p><span id="result_box" class="long_text"><span> <br></span><span>Ei haittaa, vaikka et vielä ymmärrä kaikkea sanomaamme. Tämä ei ole liian vakavaa. Tiedä vain, että seuraava koodi tarvitaan jokaisen Minimiä käyttävän ohjelman alkuun: </span></span></p>
+<pre>import ddf.minim.*;
+
+Minim minim;
+
+void setup() {
+  minim = new Minim(this);
+}
+</pre>
+<p><span id="result_box" class="long_text"><span>Huomaa myös, että tämä koodi tarvitaan jokaisen Minimiä käyttävän ohjelman loppuun: </span></span></p>
+<pre>void stop() {
+  minim.stop();
+  super.stop();
+}
+</pre>
+<h2>Lisää äänilähde</h2>
+<p><span id="result_box" class="long_text"><span>Lisätäksesi mikrofonin sisääntulon meidän täytyy luoda ääniobjekti, joka pääsee mikrofonin tuottamaan ääneen. </span></span></p>
+<pre>import ddf.minim.*;
+
+Minim minim;
+AudioInput in;
+
+void setup() {
+  minim = new Minim(this);
+  in = minim.getLineIn(Minim.STEREO, 512);
+}</pre>
+<p><span id="result_box" class="long_text"><span>Sen täytyy myös lopettaa äänen kaappaus ja Minim-kirjasto ohjelman lopussa. Me käytämme metodia stop ().</span></span></p>
+<pre>void stop() {
+  in.close();
+  minim.stop();
+  super.stop();
+}</pre>
+<h2>Katso ääntä</h2>
+<p>Aiomme muuttaa ohjelmamme taustaväriä. Kun ääni on voimakkaampi, taustaväri (background) muuttuu valkoisemmaksi. Käytämme äänen sisääntuloa (in). Sillä on kolme aliobjektia: left, right ja mix. Stereomikrofonin tapauksessa ne merkitsevät vasenta kanavaa, oikeaa kanavaa ja niiden välimuotoa. Näillä kanavilla voimme käyttää metodia level(), joka palauttaa äänen.</p>
+<pre> void draw() {
+  background(in.mix.level()*2550);
+}
+</pre>
+<p><span id="result_box" class="long_text"><span>Kuvakaappaus ohjelmasta keskimääräisellä äänenvoimakkuudella: </span></span></p>
+<p><img title="sourcesnor" src="_booki/processing-1/static/sourcesnor-fi.png" alt="sourcesnor" width="100" height="100"></p>
+<h2><span id="result_box" class="long_text"><span>Pieni peli</span></span></h2>
+<p>Meidän pitää nyt <span id="result_box" class="long_text"><span>näyttää, kuinka voimme luoda hyvin yksinkertaisen pelin, jossa ohjaukseen käytetään mikrofonia. Peli koostuu pallosta, joka on ruudun oikealla puolella. Se menee hitaasti mutta varmasti vasemmalle. Pelaajan ääni painaa palloa takaisin oikealle. Tavoitteena on päästä ääriviivan yli. </span><span> <br><br></span><span>Aluksi muutamme ruudun kokoa, laitamme smoothin päälle, ja määrittelemme ääriviivat valkoisiksi. </span></span></p>
+<pre>void setup() {
+  size(600, 100);
+  smooth();
+  stroke(255);
+
+  minim = new Minim(this);
+  in    = minim.getLineIn(Minim.STEREO, 512);
+}
+</pre>
+<p><span id="result_box" class="long_text"><span>Voimme luoda muuttujan, joka tallentaa pallon sijainnin. Se julistetaan ohjelman alussa, jolloin se on saatavilla kaikkialla. Laitamme sille arvon 0. </span></span></p>
+<pre>float ballX = 0;
+
+void setup() {
+...
+</pre>
+<p><span id="result_box" class="long_text"><span>Metodissa draw() määrittelemme mustan taustan ja piirrämme pallon, joka reagoi ääneen. Jokaisessa draw() -metodin kutsussa lisäämme mikrofonin äänitason pallon x-koordinaattiin. Se alkaa liikkua vähitellen, kun teemme ääntä. </span></span></p>
+<pre>void draw() {
+  background(0);
+
+  ballX = ballX + in.mix.level()*20;
+
+  ellipse(25 + ballX, height - 25, 50, 50);
+}
+</pre>
+<p><img title="soundGame" src="_booki/processing-1/static/soundGame-fi.png" alt="soundGame" width="600" height="100"></p>
+<p><span id="result_box" class="long_text"><span>Estääksesi palloa lähtemästä ruudulta lisäämme kaksi ehtoa, jotka korjaavat tilanteen, jos muuttuja ballX on pienempi kuin 0 tai suurempi kuin ruudun leveys. </span></span></p>
+<pre> void draw() {
+  background(0);
+
+  ballX = ballX + in.mix.level()*20;
+
+  if (ballX &lt; 0) {
+    ballX = 0;
+  }
+
+  if (ballX &gt; width-25) {
+    ballX = width-25;
+  }
+
+  ellipse(25+ballX, height-25, 50, 50);
+}
+</pre>
+<p> </p>
+<p><span id="result_box" class="long_text"><span>Lisäämme ehdon, jonka mukaan pallon väri muuttuu, jos se menee rajan yli. </span></span></p>
+<pre>void draw() {
+  background(0);
+
+  ballX = ballX + in.mix.level()*20;
+
+  if (ballX &lt; 0) {
+    ballX = 0;
+  }
+
+  if (ballX &gt; width-25) {
+    ballX = width-25;
+  }
+
+  if (ballX &gt; 500) {
+    fill(255, 0, 0);
+  } else {
+    fill(255);
+  }
+
+  line(500, 0, 500, 100);
+  ellipse(25+ballX, height-25, 50, 50);
+}</pre>
+<pre> </pre>
+<p><span id="result_box" class="long_text"><span>Jotta pelistä tehtäisiin monimutkaisempi, teemme ehdon, jolla pallo menee takaisin pysyvästi. Jokaisella komennon draw() kutsulla pienennämme hievan sen sijaintia x-akselilla. </span></span></p>
+<pre>void draw() {
+  background(0);
+
+  ballX = ballX - 0.5;<strong> </strong>  ballX = ballX + in.mix.level()*20;
+
+  if (ballX &lt; 0) {
+    ballX = 0;
+  }
+
+  if (ballX &gt; width - 25) {
+    ballX = width - 25;
+  }
+
+  if (ballX &gt; 500) {
+    fill(255, 0, 0);
+  } else {
+    fill(255);
+  }
+
+  line(500, 0, 500, 100);
+  ellipse(25 + ballX, height - 25, 50, 50);
+}
+</pre>
+<p><span id="result_box" class="long_text"><span>Nyt voit kuvitella muita tapoja käyttää ääntä projekteissasi. Voit analysoida äänen taajuutta, tehdä synteesin, luoda ääniefektejä mittausta varten, ja monta muuta asiaa. </span></span></p></div><ul Class="menu-goes-here"><li Class="booki-section">Esittely</li><li><a href="/processing-1/index">Johdanto</a></li>
+<li><a href="/processing-1/ch002_esimerkkeja">Esimerkkejä</a></li>
+<li><a href="/processing-1/ch003_asennus">Asennus</a></li>
+<li Class="booki-section">Perusteet</li><li><a href="/processing-1/ch005_perusteet">Perusteet</a></li>
+<li Class="booki-section">Suunnittelu</li><li><a href="/processing-1/ch007_suunnittelutila">Suunnittelutila</a></li>
+<li><a href="/processing-1/ch008_muodot">Muodot</a></li>
+<li><a href="/processing-1/ch009_varit">Värit</a></li>
+<li><a href="/processing-1/ch010_kuvat">Kuvat</a></li>
+<li><a href="/processing-1/ch011_tekstit">Tekstit</a></li>
+<li Class="booki-section">Interaktiivisuus</li><li><a href="/processing-1/ch013_video">Video</a></li>
+<li><a href="/processing-1/ch014_videon-tuominen">Videon tuominen</a></li>
+<li><a href="/processing-1/ch015_mikrofoni">Mikrofoni</a></li>
+<li><a href="/processing-1/ch016_hiiri">Hiiri</a></li>
+<li><a href="/processing-1/ch017_nappaimisto">Näppäimistö</a></li>
+<li><a href="/processing-1/ch018_tulostaminen">Tulostaminen</a></li>
+<li Class="booki-section">Vienti</li><li><a href="/processing-1/ch020_verkkoon-vieminen">Verkkoon vieminen</a></li>
+<li Class="booki-section">Animaatio</li><li><a href="/processing-1/ch022_aanet">Äänet</a></li>
+<li><a href="/processing-1/ch023_draw-metodi">Draw-metodi</a></li>
+<li><a href="/processing-1/ch024_objektien-animointi">Objektien animointi</a></li>
+<li><a href="/processing-1/ch025_monien-objektien-animointi">Monien objektien animointi</a></li>
+<li><a href="/processing-1/ch026_aikajana">Aikajana</a></li>
+<li Class="booki-section">Ohjelmointi</li><li><a href="/processing-1/ch028_kommentit">Kommentit</a></li>
+<li><a href="/processing-1/ch029_objektit">Objektit</a></li>
+<li><a href="/processing-1/ch030_metodit">Metodit</a></li>
+<li><a href="/processing-1/ch031_listat">Listat</a></li>
+<li><a href="/processing-1/ch032_toistaminen">Toistaminen</a></li>
+<li><a href="/processing-1/ch033_ehdot">Ehdot</a></li>
+<li><a href="/processing-1/ch034_muuttujat">Muuttujat</a></li>
+<li><a href="/processing-1/ch035_muutokset">Muutokset</a></li>
+<li><a href="/processing-1/ch036_rajat">Rajat</a></li>
+<li Class="booki-section">Liitteet</li><li><a href="/processing-1/ch038_yleisia-virheita">Yleisiä virheitä</a></li>
+<li><a href="/processing-1/ch039_ulkoiset-kirjastot">Ulkoiset kirjastot</a></li>
+<li><a href="/processing-1/ch040_dokumentaatio">Dokumentaatio</a></li>
+<li><a href="/processing-1/ch041_arduino">Arduino</a></li>
+<li><a href="/processing-1/ch042_tasta-oppaasta">Tästä oppaasta</a></li>
+<li><a href="/processing-1/ch043_tekijat">Tekijät</a></li>
+</ul>

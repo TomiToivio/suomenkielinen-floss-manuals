@@ -1,0 +1,124 @@
+<div id="main-content"><h1>Aikajana</h1>
+<p><span id="result_box" class="long_text"><span>Animaatiota luotaessa tarvitaan liikettä. Liike merkitsee muutosta ajan kuluessa. Sijainti, väri tai joku muu asia voi muuttua. Tieto muutoksesta voidaan tallentaa muuttujiin.</span><span> <br><br></span><span>Animaatioita luotaessa sinun tulee tietää, missä järjestyksessä asiat tapahtuvat aikajanalla. Voimme käyttää joko oikeaa aikaa tai laskea esimerkiksi yhdestä kymmeneen.</span></span></p>
+<h2><span id="result_box" class="long_text"><span>Paljonko kello on?</span></span></h2>
+<p><span id="result_box" class="long_text"><span>Voimme luoda kellon kutsumalla Processingissa metodeita hour(), minutes() ja second(). Käytämme ulostuloa muuttaaksemme kolmen ohuen neliön sijaintia horisontaalisella akselilla. </span></span></p>
+<p> </p>
+<p><img title="clock" src="_booki/processing-1/static/clock-fi.png" alt="clock" width="129" height="129"></p>
+<p><span id="result_box" class="long_text"><span>Tässä on koodi hyvin yksinkertaisen kellon luomiseen: <br></span></span></p>
+<pre>void setup() {
+  size(60, 60);
+  noStroke();
+}
+
+void draw() {
+  background(0);
+
+  // Tunnit ovat 0-23
+  // Muunnamme skaalalta 0-60
+
+  rect((hour() / 24.0) * 60, 0, 1, 20);
+  rect(minute(), 20, 1, 20);
+  rect(second(), 40, 1, 20);
+}
+</pre>
+<p><span id="result_box" class="long_text"><span>Tässä esimerkissä kuvat piirretään toistensa päälle. Metodin background() kutsuminen piirtää kuvat toistensa päälle. Komento background() täyttää piirroksen määritellyllä värillä, jotta kuva poistetaan. </span></span></p>
+<h2>Mittaa ajan kuluminen</h2>
+<p>Saat ohjelman suorittamisen aloitushetkestä kuluneen ajan komennolla millis(). Se palauttaa ajan millisekunteina. Voimme luoda animaatioita käyttäen tätä arvoa. Sekunnissa on tuhat millisekuntia. Tämä antaa meille melko korkean tarkkuuden muotoja animoitaessa. </p>
+<p><span id="result_box" class="long_text"><span><br></span><span>Jotta animaatiot toimivat, voit käyttää modulo-operaattoria (%), josta saat jakojäännöksen. Esimerkiksi komento </span><span>System.out.println(109% 10); näyttää tuloksen 9, sillä 109 jaettuna kymmenellä antaa 10 ja 9 jakojäännökseksi jää 9. Vastaavasti kahden numeron x ja y ottaminen, ja jakaminen numeroilla x ja y, antaa jakojäännöksen, joka on vähemmän kuin y. Modulo antaa meidän laskea ja olla koskaan ylittämättä tiettyä numeroa. </span><span> <br><br></span><span>Seuraavassa esimerkissä piirrämme ympyrän, joka kulkee hyvin nopeasti vinossa suunnassa. Tämä ympyrä jättää jälkeensä vanan, joka katoaa hyvin hitaasti. </span></span></p>
+<p><img title="balle_motion_blur_1" src="_booki/processing-1/static/balle_motion_blur_1-fi.png" alt="balle_motion_blur_1" width="322" height="242"></p>
+<p><span id="result_box" class="long_text short_text"><span>Tässä on koodi, jota käytetään sen piirtämiseen. <br></span></span></p>
+<pre>void setup() {
+  size(320, 240);
+  noStroke();
+  frameRate(60);
+  smooth();
+}
+
+void draw() {
+  fill(0, 0, 0, 10);
+  rect(0, 0, width, height);
+  fill(255);
+  ellipse(millis() % width, millis() % height, 20, 20);
+}
+</pre>
+<p><span id="result_box" class="long_text"><span>Sen sijaan että kutsuttaisiin komentoa background(), piirrämme neliön osittain läpinäkyvänä. Tämä tekee liikkeen sumennuksen. Kutsumme komentoa smooth(), koska rakastamme tasaisia kurveja. </span><span> <br></span></span></p>
+<p><span id="result_box" class="long_text"><span>On paras tehdä toiminnot ajan perusteella eikä laskea piirrettyjä kuvia. Tämä johtuu siitä, että renderöintinopeus riippuu koneesta ja sillä pyörivistä muista ohjelmista. Animaatioista tulee nykiviä, jos käytämme mittarina laskuria eikä aikaa. Katsomme kuitenkin animaatioiden tekemistä laskurilla, koska se on hyvin helppoa. </span></span></p>
+<p><span id="result_box" class="long_text"><span> <br></span></span></p>
+<h2><span id="result_box" class="long_text"><span>Animoi laskurilla</span></span></h2>
+<p>Näemme nyt, kuinka animaatio tehdään laskurilla. Piirrämme yhden viivan, joka liikkuu jatkuvasti.</p>
+<h2> </h2>
+<p><img title="ligne_qui_tourne" src="_booki/processing-1/static/ligne_qui_tourne-fi.png" alt="ligne_qui_tourne" width="322" height="242"></p>
+<p><span id="result_box" class="long_text"><span>Koodi on melko yksinkertaista. Avain on kuvien laskenta. Muutamme viivan pyörimistä laskemalla kuvan renderöintikertoja. </span></span></p>
+<pre>int laskin;
+
+void setup() {
+  size(320, 240);
+  frameRate(60);
+  fill(0, 0, 0, 10);
+  stroke(255);
+  smooth();
+  laskin = 0;
+}
+
+void draw() {
+  frame = frame + 1;
+
+  rect(0, 0, width, height);
+
+  translate(width / 2, height / 2);
+  rotate(radians(frame));
+  line(-height, -height, height, height);
+}
+</pre>
+<p>Julistetaan laskuri.</p>
+<pre>int laskin;</pre>
+<p><span id="result_box" class="long_text short_text"><span>Laskuri initialisoidaan komennossa setup ().</span></span></p>
+<pre>void setup() {
+  size(320, 240);
+  frameRate(60);
+  fill(0, 0, 0, 10);
+  stroke(255);
+  smooth(); <strong></strong>
+<strong>  laskin = 0; </strong>}</pre>
+<p><span id="result_box" class="long_text"><span>Jokaisessa draw () -metodikutsussa yksi lisätään muuttujaan frame.</span></span></p>
+<pre>frame = frame + 1;</pre>
+<p><span id="result_box" class="long_text"><span>Tämän jälkeen voit siirtää piirroskohdan piirrosavaruuden keskustaan ja pyörimisliike riippuu ruudusta. <br></span></span></p>
+<pre>  translate(width / 2, height / 2);
+  rotate(radians(frame))
+</pre></div><ul Class="menu-goes-here"><li Class="booki-section">Esittely</li><li><a href="/processing-1/index">Johdanto</a></li>
+<li><a href="/processing-1/ch002_esimerkkeja">Esimerkkejä</a></li>
+<li><a href="/processing-1/ch003_asennus">Asennus</a></li>
+<li Class="booki-section">Perusteet</li><li><a href="/processing-1/ch005_perusteet">Perusteet</a></li>
+<li Class="booki-section">Suunnittelu</li><li><a href="/processing-1/ch007_suunnittelutila">Suunnittelutila</a></li>
+<li><a href="/processing-1/ch008_muodot">Muodot</a></li>
+<li><a href="/processing-1/ch009_varit">Värit</a></li>
+<li><a href="/processing-1/ch010_kuvat">Kuvat</a></li>
+<li><a href="/processing-1/ch011_tekstit">Tekstit</a></li>
+<li Class="booki-section">Interaktiivisuus</li><li><a href="/processing-1/ch013_video">Video</a></li>
+<li><a href="/processing-1/ch014_videon-tuominen">Videon tuominen</a></li>
+<li><a href="/processing-1/ch015_mikrofoni">Mikrofoni</a></li>
+<li><a href="/processing-1/ch016_hiiri">Hiiri</a></li>
+<li><a href="/processing-1/ch017_nappaimisto">Näppäimistö</a></li>
+<li><a href="/processing-1/ch018_tulostaminen">Tulostaminen</a></li>
+<li Class="booki-section">Vienti</li><li><a href="/processing-1/ch020_verkkoon-vieminen">Verkkoon vieminen</a></li>
+<li Class="booki-section">Animaatio</li><li><a href="/processing-1/ch022_aanet">Äänet</a></li>
+<li><a href="/processing-1/ch023_draw-metodi">Draw-metodi</a></li>
+<li><a href="/processing-1/ch024_objektien-animointi">Objektien animointi</a></li>
+<li><a href="/processing-1/ch025_monien-objektien-animointi">Monien objektien animointi</a></li>
+<li><a href="/processing-1/ch026_aikajana">Aikajana</a></li>
+<li Class="booki-section">Ohjelmointi</li><li><a href="/processing-1/ch028_kommentit">Kommentit</a></li>
+<li><a href="/processing-1/ch029_objektit">Objektit</a></li>
+<li><a href="/processing-1/ch030_metodit">Metodit</a></li>
+<li><a href="/processing-1/ch031_listat">Listat</a></li>
+<li><a href="/processing-1/ch032_toistaminen">Toistaminen</a></li>
+<li><a href="/processing-1/ch033_ehdot">Ehdot</a></li>
+<li><a href="/processing-1/ch034_muuttujat">Muuttujat</a></li>
+<li><a href="/processing-1/ch035_muutokset">Muutokset</a></li>
+<li><a href="/processing-1/ch036_rajat">Rajat</a></li>
+<li Class="booki-section">Liitteet</li><li><a href="/processing-1/ch038_yleisia-virheita">Yleisiä virheitä</a></li>
+<li><a href="/processing-1/ch039_ulkoiset-kirjastot">Ulkoiset kirjastot</a></li>
+<li><a href="/processing-1/ch040_dokumentaatio">Dokumentaatio</a></li>
+<li><a href="/processing-1/ch041_arduino">Arduino</a></li>
+<li><a href="/processing-1/ch042_tasta-oppaasta">Tästä oppaasta</a></li>
+<li><a href="/processing-1/ch043_tekijat">Tekijät</a></li>
+</ul>

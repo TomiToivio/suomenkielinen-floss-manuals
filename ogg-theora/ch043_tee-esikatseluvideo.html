@@ -1,0 +1,59 @@
+<div id="main-content"><h1>Esikatselun luominen</h1>
+<div id="content">
+<p>Kun video laitetaan verkkoon on usein hyvä laittaa lyhyt esikatselu videosta pääverkkosivulle. Se voidaan linkittää alkuperäiseen videoon. Käytä komentorivin työkalua <strong>oggResize</strong> paketista Ogg Video Tools (<a href="http://sourceforge.net/projects/oggvideotools" target="_top">http://sourceforge.net/projects/oggvideotools</a>) luodaksesi sellaisen esikatselun.</p>
+<p>Tyypillinen oggResize -komento näyttää seuraavalta:</p>
+<pre>$ oggResize -s256x144 -d64000 -f1 -p24 bigBuckBunny.ogv bigbuckbunnyPreview.ogv
+</pre>
+<p>Tässä luomme Theora -videotiedoston <em>bigbuckbunnyPreview.ogv</em> alkuperäisestä <em>bigBuckBunny.ogv</em> -tiedostosta ja skaalaamme sen pieneen 256x144 pikselin kuvakokoon.</p>
+<p>Optio -p saa oggResize-komennon sisältämään vain joka 24:nnen kuvan alkuperäisestä, lyhentää keston 1/24:n alkuperäisen pituudesta, luoden yleensä nopeasti eteenpäin kelaavan version videosta. Koska ei ole paljonkaan järkeä kelata audiota nopeasti eteenpäin, äänet on poistettu.</p>
+<p>Tässä olemme myös lisänneet option -f1, mikä säätää luodun videon kuvataajuutta yhteen kuvaruutuun sekunnissa. Tämä estää videon nopean kelaamisen eteenpäin, sitä on helpompi katsoa, ja se näyttää samalta kuin animoitu GIF-kuva.</p>
+<h2>Lisää soittonappula</h2>
+<p>FEnsin tarvitsemme PNG-kuvan nappulasta, jossa on läpinäkyvä maski, jonka avulla se voidaan laittaa videosisällön päälle. Läpinäkyvää maskia sanotaan alfakanavaksi, nykyisin useimmat kuvankäsittelyohjelmat antavat luoda yhden. Kokeile esimerkiksi vapaata kuvaeditoria GIMP.</p>
+<p>Optiot <em>-A</em> ja <em>-a</em> antavat sinun laittaa kuvan ulostulovideon päälle ennen kuin video skaalataan uudestaan vastaavasti kokoon, jonka -s antaa.</p>
+<pre>$ oggResize -s256x144 -d64000 -f1 -p24 -A Play-256x144.png bigBuckBunny.ogv \ bigbuckbunnyPreview.ogv</pre>
+<p>Siinäpä se! Nyt sinulla on hieno esikatselu videosta <em>bigBuckBunny.ogv</em>. Sen päällä oleva soittonappi kutsuu ihmisiä klikkailemaan itseään. </p>
+</div></div><ul Class="menu-goes-here"><li Class="booki-section">JOHDANTO</li><li><a href="/ogg-theora/index">OGG THEORA</a></li>
+<li><a href="/ogg-theora/ch002_tasta-kayttooppaasta">TÄSTÄ KÄYTTÖOPPAASTA</a></li>
+<li><a href="/ogg-theora/ch003_mita-video-on">MITÄ VIDEO ON?</a></li>
+<li><a href="/ogg-theora/ch004_mita-theora-on">MITÄ THEORA ON?</a></li>
+<li Class="booki-section">PERUSKÄSITTEET</li><li><a href="/ogg-theora/ch006_mika-on-koodekki">MIKÄ ON KOODEKKI?</a></li>
+<li><a href="/ogg-theora/ch007_sailot">SÄILÖT</a></li>
+<li Class="booki-section">TOISTO</li><li><a href="/ogg-theora/ch009_theoran-toistaminen">THEORAN TOISTAMINEN</a></li>
+<li><a href="/ogg-theora/ch010_toisto-vlclla">TOISTO VLC:LLÄ</a></li>
+<li><a href="/ogg-theora/ch011_miro">MIRO</a></li>
+<li Class="booki-section">THEORA VERKOSSA</li><li><a href="/ogg-theora/ch013_theora-verkossa">THEORA VERKOSSA</a></li>
+<li><a href="/ogg-theora/ch014_html5">HTML5</a></li>
+<li><a href="/ogg-theora/ch015_theora-sivuillasi">THEORA SIVUILLASI</a></li>
+<li><a href="/ogg-theora/ch016_hotelleja-theoralle">HOTELLEJA THEORALLE</a></li>
+<li Class="booki-section">ENKOODAUS</li><li><a href="/ogg-theora/ch018_johdanto-enkoodaukseen">JOHDANTO ENKOODAUKSEEN</a></li>
+<li><a href="/ogg-theora/ch019_firefogg">FIREFOGG</a></li>
+<li><a href="/ogg-theora/ch020_enkoodaus-vlclla">ENKOODAUS VLC:LLÄ</a></li>
+<li><a href="/ogg-theora/ch021_enkoodaus-ffmpeg2theoralla">ENKOODAUS FFMPEG2THEORALLA </a></li>
+<li><a href="/ogg-theora/ch022_thoggen">THOGGEN</a></li>
+<li Class="booki-section">TEKSTITYKSET</li><li><a href="/ogg-theora/ch024_tekstityksien-perusteet">TEKSTITYKSIEN PERUSTEET</a></li>
+<li><a href="/ogg-theora/ch025_jakelu">JAKELU</a></li>
+<li><a href="/ogg-theora/ch026_tekstityksien-liittaminen">TEKSTITYKSIEN LIITTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch027_tekstityksien-toistaminen">TEKSTITYKSIEN TOISTAMINEN</a></li>
+<li><a href="/ogg-theora/ch028_julkaiseminen">JULKAISEMINEN</a></li>
+<li Class="booki-section">SUORATOISTO</li><li><a href="/ogg-theora/ch030_suoratoiston-perusteet">SUORATOISTON PERUSTEET</a></li>
+<li><a href="/ogg-theora/ch031_icecast">ICECAST</a></li>
+<li><a href="/ogg-theora/ch032_tss">TSS</a></li>
+<li><a href="/ogg-theora/ch033_ffmpeg2theora-streamaus">FFMPEG2THEORA-STREAMAUS</a></li>
+<li><a href="/ogg-theora/ch034_suoratoisto-vlc-ohjelmalla">VLC-STREAMAUS</a></li>
+<li><a href="/ogg-theora/ch035_virtaustoiston-tallentaminen">VIRTAUSTOISTON TALLENTAMINEN</a></li>
+<li Class="booki-section">EDITOINTI</li><li><a href="/ogg-theora/ch037_johdanto-editointiin">JOHDANTO EDITOITIIN</a></li>
+<li><a href="/ogg-theora/ch038_pitivi">PITIVI</a></li>
+<li Class="booki-section">ESIKATSELU</li><li><a href="/ogg-theora/ch040_kuinka-esikatselua-kaytetaan">ESIKATSELUN KÄYTTÖ</a></li>
+<li><a href="/ogg-theora/ch041_tee-esikatselukuvia">TEE ESIKATSELUKUVIA</a></li>
+<li><a href="/ogg-theora/ch042_tee-diaesitys">TEE DIAESITYS</a></li>
+<li><a href="/ogg-theora/ch043_tee-esikatseluvideo">TEE ESIKATSELUVIDEO</a></li>
+<li Class="booki-section">EDITOINTI KOMENTORIVILTÄ</li><li><a href="/ogg-theora/ch045_komentorivi">THEORA JA KOMENTORIVI</a></li>
+<li><a href="/ogg-theora/ch046_theoran-teoria">THEORAN TEORIA</a></li>
+<li><a href="/ogg-theora/ch047_tiedoston-jakaminen">TIEDOSTON JAKAMINEN</a></li>
+<li><a href="/ogg-theora/ch048_tiedoston-leikkaaminen">TIEDOSTON LEIKKAAMINEN</a></li>
+<li><a href="/ogg-theora/ch049_tiedostojen-liittaminen">TIEDOSTOJEN LIITTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch050_tiedostojen-yhdistaminen">TIEDOSTOJEN YHDISTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch051_koon-muuttaminen">KOON MUUTTAMINEN</a></li>
+<li><a href="/ogg-theora/ch052_oggin-analysoiminen">OGGIN ANALYSOIMINEN</a></li>
+<li Class="booki-section">TEKIJÄT</li><li><a href="/ogg-theora/ch054_tekijat">TEKIJÄT</a></li>
+</ul>

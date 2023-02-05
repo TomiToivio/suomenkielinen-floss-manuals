@@ -1,0 +1,136 @@
+<div id="main-content"><h1>Täyttö ja reunaviiva</h1>
+<p>Täyttö ja viivan väritys löytyvät tyyli-ikkunasta. Asetuksilla otetaan käyttöön värejä ja kuviointeja kohteille ja niiden reunaviivoille. Toiminnot ovat molemmille lähes samat. Täyttö vaikuttaa kohteen sisäosiin, jota rajoittaa reunaviiva. Reunaviiva ympäröi kohteen seuraten sen ääriviivoja.</p>
+<p>Kiinnostavaa on, kun kohteen reunaviivalla on osittainen läpinäkyvyys, kohteen täyttö näkyy läpi reunaviivan sisäpuolisesta puolikkaasta, muttei ulkopuolisesta, sillä polku loppuu viivan keskipisteeseen ja rajaa kohteen täytön. Ominaisuus tuo kiinnostavan mahdollisuuden, mutta saattaa aiheuttaa myös taiteilijan turhautumisen. Tämä toteutus on määritelty SVG-standardissa.</p>
+<p><img src="_booki/inkscape/static/Inkscape-FillAndStroke-FillFI-fi.png" alt="FillFI.png" name="grafiikka1" width="336" height="412" border="0"> </p>
+<p>Täyttö ja viivan väritys voidaan asettaa seuraavilla tavoilla.</p>
+<ul type="disc"><li>
+<p><strong>ei väriä</strong></p>
+</li>
+<li>
+<p><strong>tasainen väri</strong></p>
+</li>
+<li>
+<p><strong>suora liukuväri </strong></p>
+</li>
+<li>
+<p><strong>säteittäinen liukuväri </strong></p>
+</li>
+<li>
+<p><strong>kuviointi</strong></p>
+</li>
+<li>
+<p><strong>asettamatta</strong> (käytetään enimmäkseen klooneilla, joiden tyyli rakentuu kloonin vahemman tyylistä)</p>
+</li>
+</ul><p>Näihin asetuksiin liittyy muutama ominaisuus, jotka tekevät muuten yksinkertaisesta täytöstä hankalamman ymmärtää. Nämä ovat:</p>
+<ul><li>
+<p><strong>parillinen-pariton</strong></p>
+</li>
+<li>
+<p><strong>nollasta poikkeava</strong></p>
+</li>
+<li>
+<p><strong>sumennus</strong></p>
+</li>
+<li>
+<p><strong>peittävyys</strong></p>
+</li>
+</ul><h2 class="western">Käyttö</h2>
+<p>Valitse yksi tai useampi kohde tai ryhmä, jota haluat muokata. Avaa täyttö ja reunaviiva -ikkuna valitsemalla valikon kohta Kohde &gt; Täyttö ja reuna tai näppäinkomennolla <span>Shift </span><strong>+ Ctrl + F</strong>.</p>
+<p>Seuraava luettelo kuvailee jokaisen ominaisuuden. Ominaisuudet esitellään täytön avulla, koska täyttö erottuu reunaviivaa paremmin.</p>
+<h3 class="western">Ei väriä</h3>
+<blockquote><img src="_booki/inkscape/static/Inkscape-FillAndStroke-no_paint_en-fi.png" alt="no_paint" name="grafiikka2" width="277" height="292" align="bottom" border="0"></blockquote>
+<blockquote>Kohteella ei ole näkyvää täyttöä eikä reunaviivaa. Tästä johtuu, että kohteen takana olevat toiset kohteet näkyvät sen läpi. Ei väriä on eri asia kuin ominaisuus asettamatta, koska ei väriä on täyttötyyppi eikä tarkoita, ettei kohteelle ole asetettu täyttöä.</blockquote>
+<blockquote>Kohteet, joiden täyttö on "ei väriä", käyttäytyvät kuten mitkä tahansa muut kohteet niitä muokattaessa. Esimerkiksi boolen-operaatiot reagoivat polkuun täsmälleen samalla tavalla oli täyttönä "ei väriä" tai mikä tahansa muu täyttö.</blockquote>
+<blockquote>Huomioitavaa on, että kohteita, joiden täytön ja reunaviivan peittävyys on 0 %, ei voi valita normaalisti napsauttamalla. Muut valintatavat kuitenkin toimivat näilläkin kohteilla.</blockquote>
+<h3 class="western">Tasainen väri</h3>
+<blockquote><img src="_booki/inkscape/static/Inkscape-FillAndStroke-plain_en-fi.png" alt="plain" name="grafiikka3" width="222" height="226" align="bottom" border="0"></blockquote>
+<blockquote>Kohde on täytetty tai sen reunaviiva on väritetty tasaisella värillä. Täytön ja reunan valintaikkunassa on molemmissa välilehdet värivalinnalle. Värivälilehdillä voi tehdä värin valinnan tarkasti käyttäen numeerisia arvoja tai epätarkemmin valitsemalla värin väripyörästä tai liukusäätimien avulla. Jokainen värivalintamahdollisuus sisältää myös RGBA-määrittelykentän oikeassa alakulmassa, jossa väri voidaan määrittää hexadesimaaliarvona.</blockquote>
+<ul><li>
+<blockquote><strong>RGB - </strong><span>neljä liukusäädintä, joilla voi määritellä </span>punaisen<span>, </span>vihreän<span>, </span>sinisen<span> ja </span>läpinäkyvyyden<span> prosentteina</span></blockquote>
+</li>
+<li>
+<blockquote><strong>HSL </strong><strong><span>- </span></strong><span>neljä liukusäädintä, joilla voi määritellä </span>sävyn<span>, </span>kylläisyyden<span>, </span>kirkkauden<span> ja </span>läpinäkyvyyden<span> prosentteina</span></blockquote>
+</li>
+<li>
+<blockquote><strong><strong>CMYK</strong></strong><strong><span> - </span></strong><span>viisi liukusäädintä, joilla voi määritellä </span>syaanin<span>, </span>magentan<span>, </span>keltaisen<span>, </span>mustan<span> ja </span>läpinäkyvyyden<span> prosentteina</span></blockquote>
+</li>
+<li>
+<blockquote><strong>Väripyörä </strong><span>on käyttäjäystävällinen, mutta epätarkka työkalu värinvalintaan. Siinä on sävypyörä ja kylläisyyden ja kirkkauden sisältävä kolmio. Näiden alapuolla on liukusäädin läpinäkyvyyden säätämiseen.</span></blockquote>
+</li>
+<li>
+<blockquote><strong>Värinhallinta</strong> (ei kaikissa versioissa) antaa valita väriprofiilin ja sisältää profiilin valinnan alla liukusäätimen läpinäkyvyyden säätämiseen.</blockquote>
+</li>
+</ul><h3 class="western">Suora liukuväri </h3>
+<blockquote> <img src="_booki/inkscape/static/Inkscape-FillAndStroke-linear_gradient_en-fi.png" alt="linear_gradient" name="grafiikka4" width="208" height="227" align="bottom" border="0"></blockquote>
+<blockquote>Suora väriliuku noudattaa kohteen tai reunaviivan täytössä kahta asetusta. Liukuväri-kentästä valitaan käytettävä liukuvärimääritys. Toisto-asetus <strong>ei mitään</strong> täyttää kohteen sen alkupisteestä loppupisteeseen käyttäen liukuvärin yhden kerran. <strong>Suora</strong> toisto toistaa liukuvärin aiheuttaen jokaisen liukuvärin päätepisteeseen selvän rajan, jos liukuvärin aloittava ja lopettava väri ovat eri värejä. Käännetty toisto toistaa liukuväriä niin, että jokaisella toistolla liukuväri käännetään. Tällöin toiston rajoille syntyy tasainen väri eikä reunaa ole havaittavissa.</blockquote>
+<blockquote>Liukuvärin suunta ja vaikutusalue määritellään raahaamalla liukuvärikahvoja kohteen päällä.</blockquote>
+<blockquote>Liukuvärejä voidaan ikkunassa olevilla painikkeilla kopioida ja muokata.</blockquote>
+<h3 class="western">Säteittäinen liukuväri </h3>
+<blockquote> <img src="_booki/inkscape/static/Inkscape-FillAndStroke-radial_gradient_en-fi.png" alt="radial_gradient" name="grafiikka5" width="231" height="258" align="bottom" border="0"></blockquote>
+<blockquote>Säteittäisen liukuvärin käyttöliittymä on vastaava kuin suoralla liukuvärillä. Ainoa ero on, että liukuväri etenee ympyrämuodossa keskipisteestään. Soikion muotoista liukuväriä voi säätää käyttämällä kolmea kahvaa.</blockquote>
+<h3 class="western">Kuviointi</h3>
+<blockquote><img src="_booki/inkscape/static/Inkscape-FillAndStroke-pattern_fill_en-fi.png" alt="pattern_fill" name="grafiikka6" width="216" height="217" align="bottom" border="0"></blockquote>
+<p> </p>
+<blockquote>Kohde täytetään valitulla SVG- tai bittikarttakuvioinnilla. <br><br>Kuvioinnin voi luoda valitsemalla kohteen, josta kuvioinnin haluaa. Tämän jälkeen kuviointi luodaan valikon kohdasta Kohde &gt; Kuviointi &gt; Kohde kuvioinniksi tai näppäinkomennolla Alt + I. Valittu kohde poistetaan piirtoalueelta ja lisätään kuviointiluetteloon.</blockquote>
+<blockquote>Toiminnon voi tehdä myös vastakkaiseen suuntaan valitsemalla valikon kohta Kohde &gt; Kuviointi &gt; Kuviointi kohteeksi tai näppäinkomennolla Shift + Alt + I.</blockquote>
+<blockquote>Jos kohdetta muokataan, myös kuviointi seuraa näitä muokkauksia. Jos haluat kuvioinnin pysyvän muuttumattomana, asetuksien muokkauksia koskevassa kohdassa voidaan kuviointien muunnokset estää poistamalla valinta kohdasta Muunna kuviointeja.</blockquote>
+<h3 class="western">Määrittämätön </h3>
+<blockquote><img src="_booki/inkscape/static/Inkscape-FillAndStroke-unset_fillFI-fi.png" alt="unset_fillFI.png" name="grafiikka7" width="555" height="253" border="0"> </blockquote>
+<blockquote><strong>Määrittämätöntä </strong>täyttöä käytetään kloonatuille kohteille, jotta kloonit voidaan värittää. Ominaisuus täytyy asettaa täytölle ja reunaviivalle erikseen. Kohteen täyttönä näytetään mustaa ja reunaviiva on näkymätön.</blockquote>
+<h3 class="western">Parillinen-pariton</h3>
+<blockquote><img src="_booki/inkscape/static/Inkscape-FillAndStroke-even_odd_en-fi.png" alt="even_odd" name="grafiikka8" width="203" height="215" align="bottom" border="0"></blockquote>
+<blockquote>Ominaisuus on käytössä ainoastaan täytölle. Täyttö on näkymätön kohdissa, joissa kohde kulkee itsensä päällä.</blockquote>
+<h3 class="western">Nollasta poikkeava </h3>
+<blockquote><img src="_booki/inkscape/static/Inkscape-FillAndStroke-non_zero_en-fi.png" alt="non_zero" name="grafiikka9" width="202" height="216" align="bottom" border="0"> </blockquote>
+<blockquote>Ominaisuus on käytössä ainoastaan täytölle. Täyttö näytetään myös silloin, kun kohde kulkee itsensä päältä. Tämä on kohteiden oletuskäyttäytyminen.</blockquote>
+<h3 class="western">Sumennus</h3>
+<blockquote><img src="_booki/inkscape/static/Inkscape-FillAndStroke-blur_en-fi.png" alt="blur" name="grafiikka10" width="229" height="236" align="bottom" border="0"></blockquote>
+<blockquote><strong>Sumennus </strong>on SVG-suodinominaisuus. Koska se sopii hyvin yhteen täytön kanssa ja on usein käytetty ominaisuus, löytyy se Täyttö ja reuna -ikkunasta. On hyvä huomioida, että sumennus vaikuttaa koko kohteeseen ei ainoastaan täyttöön tai reunaan.</blockquote>
+<blockquote>Sumennusta käytetään liukusäätimellä tai kirjoittamalla haluttu sumennuksen määrä tekstikenttään säätimen vieressä.</blockquote>
+<h3 class="western">Peittävyys</h3>
+<blockquote><img src="_booki/inkscape/static/Inkscape-FillAndStroke-opacity_en-fi.png" alt="opacity" name="grafiikka11" width="277" height="297" align="bottom" border="0"> </blockquote>
+<blockquote><strong>Peittävyys </strong>määrittää, miten kohteen alla olevat toiset kohteet näkyvät sen läpi.</blockquote>
+<blockquote>Peittävyys vaikuttaa koko kohteeseen, ei ainoastaan täyttöön tai reunaan. Kohteen ja reunaviivan värityksellä on erillinen alpha-arvo, jolla voidaan säätää erikseen täytön ja reunaviivan läpinäkyvyyttä.</blockquote></div><ul Class="menu-goes-here"><li Class="booki-section">INKSCAPEN KÄYTTÖOHJE</li><li><a href="/inkscape/index">INKSCAPE-OHJE</a></li>
+<li><a href="/inkscape/ch002_svg">SVG-VEKTORIGRAFIIKKA</a></li>
+<li Class="booki-section">ASENNUS</li><li><a href="/inkscape/ch004_asennus-windowsiin">ASENNUS WINDOWSIIN</a></li>
+<li Class="booki-section">PERUSTEET</li><li><a href="/inkscape/ch006_kayttoliittyma">KÄYTTÖLIITTYMÄ</a></li>
+<li><a href="/inkscape/ch007_tiedostojen-kaytto">TIEDOSTOJEN KÄYTTÖ</a></li>
+<li Class="booki-section">PIKAOPAS</li><li><a href="/inkscape/ch009_kuvakkeiden-luominen">KUVAKKEIDEN LUOMINEN</a></li>
+<li Class="booki-section">TYÖKALULAATIKKO</li><li><a href="/inkscape/ch011_valinta">VALINTA</a></li>
+<li><a href="/inkscape/ch012_solmu">SOLMU</a></li>
+<li><a href="/inkscape/ch013_muokkaus">MUOKKAUS</a></li>
+<li><a href="/inkscape/ch014_zoomaus">ZOOMAUS</a></li>
+<li><a href="/inkscape/ch015_suorakulmio">SUORAKULMIO</a></li>
+<li><a href="/inkscape/ch016_kolmiulotteinen-laatikko">KOLMIULOTTEINEN LAATIKKO</a></li>
+<li><a href="/inkscape/ch017_ellipsi">ELLIPSI</a></li>
+<li><a href="/inkscape/ch018_tahti">TÄHTI</a></li>
+<li><a href="/inkscape/ch019_spiraali">SPIRAALI</a></li>
+<li><a href="/inkscape/ch020_lyijykyna">LYIJYKYNÄ</a></li>
+<li><a href="/inkscape/ch021_kuulakarkikyna">BÉZIER</a></li>
+<li><a href="/inkscape/ch022_kalligrafia">KALLIGRAFIA</a></li>
+<li><a href="/inkscape/ch023_pyyhekumi">PYYHEKUMI</a></li>
+<li><a href="/inkscape/ch024_sankotaytto">SANKOTÄYTTÖ</a></li>
+<li><a href="/inkscape/ch025_teksti">TEKSTI</a></li>
+<li><a href="/inkscape/ch026_liitin">LIITIN</a></li>
+<li><a href="/inkscape/ch027_liukuvari">LIUKUVÄRI</a></li>
+<li><a href="/inkscape/ch028_pipetti">PIPETTI</a></li>
+<li Class="booki-section">POLUT</li><li><a href="/inkscape/ch030_muuta-polkua">MUUTA POLKUA</a></li>
+<li Class="booki-section">TEKSTI</li><li><a href="/inkscape/ch032_tekstin-tyyli">TEKSTIN TYYLI</a></li>
+<li><a href="/inkscape/ch033_tekstin-efektit">TEKSTIN EFEKTIT</a></li>
+<li><a href="/inkscape/ch034_teksti-ja-polut">TEKSTI JA POLUT</a></li>
+<li Class="booki-section">USEAMMAN OBJEKTIN OPERAATIOT</li><li><a href="/inkscape/ch036_kopioi-kloonaa-ja-monista">KOPIOI, KLOONAA JA MONISTA</a></li>
+<li><a href="/inkscape/ch037_leikkaus-ja-peitteet">LEIKKAUS JA PEITTEET</a></li>
+<li Class="booki-section">KOHTEIDEN SIJOITTELU</li><li><a href="/inkscape/ch039_sijoittelu">SIJOITTELU</a></li>
+<li><a href="/inkscape/ch040_jaa-ja-tasaa">JAA JA TASAA</a></li>
+<li Class="booki-section">KOHTEIDEN JÄRJESTELY</li><li><a href="/inkscape/ch042_tasot">TASOT</a></li>
+<li><a href="/inkscape/ch043_ryhmittely">RYHMITTELY</a></li>
+<li Class="booki-section">KOHTEIDEN TYYLI</li><li><a href="/inkscape/ch045_tyyli">TYYLI</a></li>
+<li><a href="/inkscape/ch046_taytto-ja-viiva">TÄYTTÖ JA VIIVA</a></li>
+<li Class="booki-section">POLKUTEHOSTE</li><li><a href="/inkscape/ch048_polkutehosteet">POLKUTEHOSTEET</a></li>
+<li><a href="/inkscape/ch049_hammasrattaat">HAMMASRATTAAT</a></li>
+<li><a href="/inkscape/ch050_muoto-polkua-pitkin">MUOTO POLKUA PITKIN</a></li>
+<li Class="booki-section">SVG-SUODATTIMET</li><li><a href="/inkscape/ch052_suodattimet">SUODATTIMET</a></li>
+<li Class="booki-section">ASETUKSET</li><li><a href="/inkscape/ch054_varinhallinta">VÄRINHALLINTA</a></li>
+<li Class="booki-section">LIITTEET</li><li><a href="/inkscape/ch056_oppaasta">KÄYTTÖOHJEESTA</a></li>
+<li><a href="/inkscape/ch057_lisenssi">LISENSSI</a></li>
+</ul>

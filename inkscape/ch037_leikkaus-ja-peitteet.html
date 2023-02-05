@@ -1,0 +1,70 @@
+<div id="main-content"><h1>Polkujen leikkaus ja peitteet</h1>
+<div id="content">
+<h2>Johdanto </h2>
+<p>Leikatut polut, peitteet ja kuviot ovat todella hyödyllisiä lisäyksiä taiteilijan tai suunnittelijan työkalupakkiin. Yhteinen tekijä on, että kaikki kolme käyttävät rajojen käsitettä. Leikkauspolut ja peitteet rajaavat sisältämiensä kohteiden sisällön, kun taas kuviot ovat vain näkyvillä niiden kohteiden rajojen sisällä, joihin niitä sovelletaan (kaikissa kolmessa tapauksessa typistäen näkyvyyttä). </p>
+<p>Nämä menetelmät eivät tuhoa osia kohteistasi, ne vain käskevät SVG-renderöijälle olla näyttämättä niitä. Tämä muokkaus ei tuhoa kohteita, joten voimme myös vapauttaa ne niiden rajatuista alueista. </p>
+<p>Leikattujen polkujen tai peitteiden kanssa työskentelystä on myös tiettyjä etuja, kun ne yhdistetään joko yksittäisiin tai ryhmitettyihin kohteisiin. </p>
+<p>Kuviotäytteiden käyttöä käsitellään erillisessä luvussa. </p>
+<h2>Leikkaus</h2>
+<p>Inkscapen leikkaustoiminto mahdollistaa kohteen tai kohteiden ryhmän leikkauksen (typistämisen) siten, että ainoastaan osa elementeistä on näkyvillä. Leikkausta voi soveltaa mihin tahansa kohteeseen (sisältäen ryhmät, tasot, bittikartat jne.) </p>
+<p>Helpoin tapa ymmärtää leikkausta on nähdä sen toiminta. Ota seuraava kohteiden lajitelma: </p>
+<p><img title="clipmask_01" src="_booki/inkscape/static/Inkscape-ClipAndMask-clipmask_01_en-fi.png" alt="clipmask_01_en.png" width="279" height="258"></p>
+<p>Sijoita nyt uusi kohde kaikkien muiden päälle. Tätä käytät leikkauskohteena. Huomaa, että Z-järjestyksessä leikkauskohde on tärkeä. Oletusarvoisena toimintana Inkscape ottaa päällimmäisen kohteen leikkauskohteeksi. Huomaa myös, että kohteen tyyli (täyttö, viiva, läpinäkymättömyys jne.) ei ole tärkeää, kaikki tämä käytetään kohteen muotoa leikattaessa. </p>
+<p><span class="external free"><img title="clipmask_02" src="_booki/inkscape/static/Inkscape-ClipAndMask-clipmask_02_en-fi.png" alt="clipmask_02" width="279" height="258"></span></p>
+<p>Seuraavassa vaiheessa valitaan kaikki kohteet, jotka tahdotaan leikata, ja leikkauskohde. Sen jälkeen valitse valikoista Kohde &gt; Syväys &gt; Aseta. Tuloksena on:  </p>
+<p><span class="external free"><img title="clipmask_03" src="_booki/inkscape/static/Inkscape-ClipAndMask-clipmask_03_en-fi.png" alt="clipmask_03" width="279" height="258"></span></p>
+<p>Koska tämä on tuhoamatonta muokkausta, voimme myös vapauttaa kohteita leikkauksesta. Tee tämä valitsemalla kohde, jonka tahdot vapauttaa, ja valitsemalla valikoista Kohde &gt; Syväys &gt; Vapauta. Seuraavassa esimerkissä sininen tähtikohde on valittu ja leikkaus on vapautettu: </p>
+<p><img title="clipmask_04" src="_booki/inkscape/static/Inkscape-ClipAndMask-clipmask_04_en-fi.png" alt="clipmask_04" width="279" height="258"></p>
+<p>Purppuranvärinen syväyskohde on nyt palannut, ja sininen tähtikohde ei ole enää leikattu. Huomaa, että kaksi muuta kohdetta on edelleenkin syvättynä, sillä syväystä käytettiin kolmeen eri kohteeseen. Nämä syväykset vaikuttavat edelleenkin ja ne voidaan tarvittaessa vapauttaa. Syväyspolkuja voidaan soveltaa mihin tahansa kohteeseen. Jos tahdot käsitellä kaikkia kolmea kohdetta kokonaisuutena, voit ryhmittää ne, ja soveltaa sen jälkeen syväystä ryhmään. </p>
+<p>Syvennys voidaan tehdä mille tahansa kohteelle, jopa kohteille, joihin on sovellettu suodattimia. Alla on esimerkki syväyksen käytöstä kuplatehosteen tekemiseksi ympyrälle:</p>
+<p><img title="clipmask_05" src="_booki/inkscape/static/Inkscape-ClipAndMask-clipmask_05_en-fi.png" alt="clipmask_05" width="500" height="173"></p>
+<p>Leike voidaan myös tehdä bittikartoilla, jotka on upotettu tai linkitetty SVG-tiedostoon: </p>
+<p><img title="clipmask_06" src="_booki/inkscape/static/Inkscape-ClipAndMask-clipmask_06_en-fi.png" alt="clipmask_06" width="600" height="253"></p>
+<h2>Maskit</h2>
+<p>Kuten leikkauspolut, maskit mahdollistavat kohteen tai kohteiden ryhmän näkyvän syväyksen. Erona on se, että maskin mustat tai läpinäkyvät alueet muuttuvat täysin läpinäkyviksi maskeeratussa kohteessa; maskin läpinäkymättömät valkoiset alueet muuttuvat täysin läpinäkymättömiksi; kaikki välivärit muuttuvat läpinäkymättömyyden väliasteille maskeeratussa kohteessa. Tämän vuoksi voit soveltaa esimerkiksi satunnaisia läpinäkymättömyysliukuvärejä kohteisiin. </p>
+<p>Seuraavassa esimerkissä näet sekä maskit että kohteet, joihin niitä sovelletaan. Kuten näet, maskit tarjoavat sinulle mahdollisuuden soveltaa kohteisiin tekstuureja, antaa niille syvyyttä, ja muita asioita joita syväyspolut eivät voi tarjota:</p>
+<p><img title="mask" src="_booki/inkscape/static/Inkscape-ClipAndMask-mask_en-fi.png" alt="mask" width="323" height="462"></p>
+</div></div><ul Class="menu-goes-here"><li Class="booki-section">INKSCAPEN KÄYTTÖOHJE</li><li><a href="/inkscape/index">INKSCAPE-OHJE</a></li>
+<li><a href="/inkscape/ch002_svg">SVG-VEKTORIGRAFIIKKA</a></li>
+<li Class="booki-section">ASENNUS</li><li><a href="/inkscape/ch004_asennus-windowsiin">ASENNUS WINDOWSIIN</a></li>
+<li Class="booki-section">PERUSTEET</li><li><a href="/inkscape/ch006_kayttoliittyma">KÄYTTÖLIITTYMÄ</a></li>
+<li><a href="/inkscape/ch007_tiedostojen-kaytto">TIEDOSTOJEN KÄYTTÖ</a></li>
+<li Class="booki-section">PIKAOPAS</li><li><a href="/inkscape/ch009_kuvakkeiden-luominen">KUVAKKEIDEN LUOMINEN</a></li>
+<li Class="booki-section">TYÖKALULAATIKKO</li><li><a href="/inkscape/ch011_valinta">VALINTA</a></li>
+<li><a href="/inkscape/ch012_solmu">SOLMU</a></li>
+<li><a href="/inkscape/ch013_muokkaus">MUOKKAUS</a></li>
+<li><a href="/inkscape/ch014_zoomaus">ZOOMAUS</a></li>
+<li><a href="/inkscape/ch015_suorakulmio">SUORAKULMIO</a></li>
+<li><a href="/inkscape/ch016_kolmiulotteinen-laatikko">KOLMIULOTTEINEN LAATIKKO</a></li>
+<li><a href="/inkscape/ch017_ellipsi">ELLIPSI</a></li>
+<li><a href="/inkscape/ch018_tahti">TÄHTI</a></li>
+<li><a href="/inkscape/ch019_spiraali">SPIRAALI</a></li>
+<li><a href="/inkscape/ch020_lyijykyna">LYIJYKYNÄ</a></li>
+<li><a href="/inkscape/ch021_kuulakarkikyna">BÉZIER</a></li>
+<li><a href="/inkscape/ch022_kalligrafia">KALLIGRAFIA</a></li>
+<li><a href="/inkscape/ch023_pyyhekumi">PYYHEKUMI</a></li>
+<li><a href="/inkscape/ch024_sankotaytto">SANKOTÄYTTÖ</a></li>
+<li><a href="/inkscape/ch025_teksti">TEKSTI</a></li>
+<li><a href="/inkscape/ch026_liitin">LIITIN</a></li>
+<li><a href="/inkscape/ch027_liukuvari">LIUKUVÄRI</a></li>
+<li><a href="/inkscape/ch028_pipetti">PIPETTI</a></li>
+<li Class="booki-section">POLUT</li><li><a href="/inkscape/ch030_muuta-polkua">MUUTA POLKUA</a></li>
+<li Class="booki-section">TEKSTI</li><li><a href="/inkscape/ch032_tekstin-tyyli">TEKSTIN TYYLI</a></li>
+<li><a href="/inkscape/ch033_tekstin-efektit">TEKSTIN EFEKTIT</a></li>
+<li><a href="/inkscape/ch034_teksti-ja-polut">TEKSTI JA POLUT</a></li>
+<li Class="booki-section">USEAMMAN OBJEKTIN OPERAATIOT</li><li><a href="/inkscape/ch036_kopioi-kloonaa-ja-monista">KOPIOI, KLOONAA JA MONISTA</a></li>
+<li><a href="/inkscape/ch037_leikkaus-ja-peitteet">LEIKKAUS JA PEITTEET</a></li>
+<li Class="booki-section">KOHTEIDEN SIJOITTELU</li><li><a href="/inkscape/ch039_sijoittelu">SIJOITTELU</a></li>
+<li><a href="/inkscape/ch040_jaa-ja-tasaa">JAA JA TASAA</a></li>
+<li Class="booki-section">KOHTEIDEN JÄRJESTELY</li><li><a href="/inkscape/ch042_tasot">TASOT</a></li>
+<li><a href="/inkscape/ch043_ryhmittely">RYHMITTELY</a></li>
+<li Class="booki-section">KOHTEIDEN TYYLI</li><li><a href="/inkscape/ch045_tyyli">TYYLI</a></li>
+<li><a href="/inkscape/ch046_taytto-ja-viiva">TÄYTTÖ JA VIIVA</a></li>
+<li Class="booki-section">POLKUTEHOSTE</li><li><a href="/inkscape/ch048_polkutehosteet">POLKUTEHOSTEET</a></li>
+<li><a href="/inkscape/ch049_hammasrattaat">HAMMASRATTAAT</a></li>
+<li><a href="/inkscape/ch050_muoto-polkua-pitkin">MUOTO POLKUA PITKIN</a></li>
+<li Class="booki-section">SVG-SUODATTIMET</li><li><a href="/inkscape/ch052_suodattimet">SUODATTIMET</a></li>
+<li Class="booki-section">ASETUKSET</li><li><a href="/inkscape/ch054_varinhallinta">VÄRINHALLINTA</a></li>
+<li Class="booki-section">LIITTEET</li><li><a href="/inkscape/ch056_oppaasta">KÄYTTÖOHJEESTA</a></li>
+<li><a href="/inkscape/ch057_lisenssi">LISENSSI</a></li>
+</ul>

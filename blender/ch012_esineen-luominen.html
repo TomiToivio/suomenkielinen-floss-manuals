@@ -1,0 +1,70 @@
+<div id="main-content"><div class="c2">
+<h1>ESINEEN LUOMINEN </h1>
+</div>
+<p>Teemme yksinkertaisen tuolin aloittaen yhdestä tasosta. Käytämme tekniikoita, jotka on selitetty yllä verkon editointia käsittelevässä luvussa. Tuoli on valittu esimerkiksi, koska se on tuttu esine, johon sisältyy kolme ulottuvuutta tavalla, jonka voimme helposti visualisoida (toisin kuin avaruusalukset, demonisoturit tai nykyaikaisen arkkitehtuurin).</p>
+<p>Varmista ensin, ettei sinulla ole mitään kolmessa näkymässä. Voit valita tämän valitsemalla kaiken <strong>A-näppäimellä</strong> ja painamalla <strong>DEL-näppäintä</strong>. Laita vasen kuvaikkuna näkymään ylhäältä päin ja ortograafiseen näkymään, oikealla oleva kuvaikkuna näkymään sivusta ja perspektiivinäkymään ja alhaalla oikealla oleva kuvaikkuna sivulta ja ortograafiseen näkymään. Ylhäältä ja ortograafiseksi määritelty näkymä on kuin suunnittelunäkymä, joka on loistava pohjapiirrustuksia ja suunnittelua varten.   </p>
+<p>Tärkeää: kun työskentelet ylhäältä tai sivusta näkyvän näkymän parissa, ja se on asetettu ortograafiseksi, kaksi ulottuvuutta näkyy, ei kolme. Tämä vähentää huomattavasti hämmennystä ja virheiden mahdollisuutta, kun sijoitat objekteja tai verkon elementtejä hiirellä. Jos olet epävarma, tarkasta se näkymävalikosta (<strong>View</strong>) jokaisen kuvaikkunan perustassa.</p>
+<p>Kun kursorisi on kuvaikkunan päällä, keskitä kolmiulotteinen kursori <strong>SHIFT+C-näppäimellä</strong>. Valitse <strong> Add</strong>-&gt;<strong>Mesh</strong>-&gt;<strong>Plane</strong>.</p>
+<p><img src="_booki/blender/static/ScreenHunter_82%20Apr.%2016%2022.20.gif" alt=""> </p>
+<p>Taso ilmestyy sinne, missä kolmiulotteinen kursori on.</p>
+<p><img src="_booki/blender/static/ScreenHunter_83%20Apr.%2016%2022.22.gif" alt=""></p>
+<p>Tästä tasosta tulee yksi neljästä jalasta. Siirry editointitilaan, valitse tahkon valinta ja valitse tahko, jos sitä ei ole jo valittu.</p>
+<p>Nyt tahdomme siirtää tätä tasoa oikealle ja alas muutaman yksikön (x=5, y = -5). On kolme tapaa tehdä tämä: <br><br><strong>Siirrä sitä tällä hiirellä:</strong></p>
+<blockquote>
+<p>Paina <strong>G-näppäintä</strong> ja pidä <strong>CTRL-näppäintä</strong> pohjassa, kun siirrät hiirtä viisi ruudukkoyksikköä oikealle ja 5 alas sen jälkeen. </p>
+</blockquote>
+<p><strong>Siirrä sitä näppäimistölläsi:  </strong></p>
+<blockquote>
+<p>Tehdäksesi tämän numeerisesti (joutumatta laskemaan ruudukon yksiköitä visuaalisesti), paina<strong> G-näppäintä</strong> ja sitten <strong>X-näppäintä</strong> ja kirjoita <strong>5</strong> numeronäppäimistöltä sekä paina <strong>rivinvaihtoa</strong>. Nyt Y-akseli: <strong>G-näppäin</strong>, <strong>Y-näppäin</strong>, <strong>5 </strong>numeronäppäimistöltä ja paina <strong>rivinvaihtoa</strong>. <br><br>Tärkeää: kun siirrä objekteja tai verkkoja käyttäen näppäimistöä, siirrät niitä suhteellisesti, et absoluuttisesti! Esimerkiksi yllä olevassa esimerkissä siirsimme tasoa alas 5 yksikköä ja sivusuunnassa 5 yksikköä. Jos tahdot sijoittaa ne absoluuttisesti, käytä numerokäyttöliittymää (katso alla). </p>
+</blockquote>
+<p><strong>Siirrä sitä käyttäen numerokäyttöliittymää:</strong></p>
+<blockquote>
+<p>Paina <strong>N-näppäintä</strong> ja kirjoita suhteelliset X- ja Y-arvot käsin. Numeroliittymän etuna on, että voimme siirtää objekteja absoluuttisiin sijainteihin.</p>
+<p><img src="_booki/blender/static/ScreenHunter_85%20Apr.%2016%2022.25.gif" alt=""></p>
+</blockquote>
+<p><strong>Siirrä sitä käyttäen kolmiulotteista muutosmanipulaattoria ja hiirtä:</strong></p>
+<blockquote>
+<p>Napsauta kolmiulotteista muutosmanipulaattoria käyttämäsi kuvaikkunan pohjalla ja napsauta kolmioikonia päästäksesi muuntamaan tasoa (eli siirtämään sen uuteen paikkaan). Napsauta nyt akselia, jota pitkin tahdot siirtää tasoa ja vedä hiirellä. </p>
+<p> </p>
+</blockquote>
+<p>Sinun pitäisi nyt nähdä jotain tällaista ylhäältäpäin kuvatussa kuvaikkunassasi: </p>
+<p class="c4"><img src="_booki/blender/static/ScreenHunter_86%20Apr.%2016%2022.27.gif" alt=""> </p>
+<p>Kopioi nyt tämä taso <strong>SHIFT+D-näppäimellä</strong> ja siirrä sitä negatiivista X-akselia pitkin 10 yksikköä (x = -10). Tämän tason uusi sijainti on siten (x = -5, y = -5).</p>
+<p>Tuolissamme on kaksi jalkaa ja tarvitsemme neljä, joten kopioimme nämä kaksi tasoa ja siirrämme niitä 10 kokonaista ristikkoyksikköä. Tältä pöytä näyttää tähän mennessä: <br></p>
+<div class="c3"><img src="_booki/blender/static/ScreenHunter_87%20Apr.%2016%2022.30.gif" alt=""></div>
+<p>On aika työntää ulos kaikki neljä jalkaa. Teemme tämän sivunäkökulmasta, sillä emme voi työntää jalkoja ulos "ylöspäin" huipulta olevassa näkymässä. Ylös on Z-akselia pitkin ja tämä akseli ei ole käytettävissä näkymässä ylhäältäpäin. </p>
+<p>Valitse kaikki jalat sivunäkökulmassasi ja paina<strong> E-näppäintä</strong>, valitse alue ja kirjoita 15 numeronäppäimistölläsi, paina rivinvaihtoa. Tämä työntää näitä tasoja 15 ristikkoyksikköä ulospäin. Tältä se näyttää: </p>
+<p class="c4"><img src="_booki/blender/static/ScreenHunter_88%20Apr.%2016%2022.41.gif" alt=""></p>
+<p class="c4">On aika luoda tahkoja, joten siirretään vasemmanpuoleinen kuvaikkuna perpektiivinäkymään, jotta näemme paremmin mitä olemme tekemässä. Varmista, että tämä näköikkuna on kiinteä (<strong>Solid</strong>) -piirtotilassa. </p>
+<p><br>Siirry reunan valinta -tilaan (<strong>Edge Select Mode</strong>), valitse sisimmät reunat kahden jalan yläosassa ja paina <strong>F-näppäintä</strong> luodaksesi sinne tahkon. Se näyttää tältä: </p>
+<div class="c3">
+<p><img src="_booki/blender/static/ScreenHunter_89%20Apr.%2016%2022.45.gif" alt=""></p>
+<p>Aloittaen jalkojen yläosasta, luo tahkoja alueen loppuosan yli, kunnes se näyttää tältä: </p>
+</div>
+<p class="c4"><img src="_booki/blender/static/ScreenHunter_90%20Apr.%2016%2022.46.gif" alt=""></p>
+<p>Nyt meillä on tuolin istuimen perusta, joten vedetään sitä ulos ylöspäin. Siirry tahkon valinta -tilaan (<strong>Face Select Mode</strong>) ja valitse kaikki tahkot tuolin perustassa. Vedä niitä kaikkia ulos ylöspäin kaksi ruutuyksikköä. </p>
+<p class="c4"><img src="_booki/blender/static/ScreenHunter_91%20Apr.%2016%2022.47.gif" alt=""></p>
+<p>Valitse kaksi takatahkoa jalkojen yläpäässä, ja työnnä niitä myös ulos 5 ruutuyksikköä: </p>
+<p class="c4"><img src="_booki/blender/static/ScreenHunter_92%20Apr.%2016%2022.49.gif" alt=""></p>
+<p class="c4">Työnnä niitä ulos uudestaan 2 ruutuyksikköä, ja sitten 5 ruutuyksikköä, ja lopulta vielä 2 yksikköä. Sinulla pitäisi olla jotain tämän näköistä: </p>
+<p class="c4"><img src="_booki/blender/static/ScreenHunter_93%20Apr.%2016%2022.50.gif" alt=""></p>
+<p>Tehdäänpä nyt tuolin selkänoja työntämällä ulos kaksi poikittaispalkkia. Valitse kaksi sisintä neliötahkoa yhdestä jalasta ja työnnä niitä ulos 8 ruutuyksikköä negatiivista X-akselia pitkin, jotta ne koskettavat sopivasti toisen jalan vastaavaa tahkoa. Muista, että <strong>CTRL-näppäimen</strong> pitäminen alhaalla hiirtä siirtäessä rajoittaa sen ruudukkoon. Vaihtoehtoisesti voit käyttää numeronäppäimistöä (<strong>E-näppäin</strong>, sitten <strong>X-näppäin</strong>, sitten <strong>8 numeronäppäimistöllä</strong>, sitten rivinvaihto). <br></p>
+<div class="c3">
+<p><img src="_booki/blender/static/ScreenHunter_94%20Apr.%2016%2022.53.gif" alt=""></p>
+<p>Ennen kuin voimme lopettaa meidän täytyy siivota hieman. Viimeinen ulostyöntäminen on luonut pari ylimääräistä tahkoa verkkoomme: vedämme tahkot yhdestä jalasta toisen jalan päälle.</p>
+<p>Valitse verkko <strong>A-näppäimellä</strong> ja paina nappia poista tuplat (<strong>Remove Doubles</strong>) <strong>Mesh Tools</strong>-ikkunassa. Katso kohtaa siivoaminen aikaisemmin tässä oppaassa nähdäksesi poista tuplat -toiminnon kuvauksen.</p>
+<p>Kun tämä on tehty, mene objektitilaan ja katso luomustasi. Tällainen minun tuolistani tuli: </p>
+</div>
+<p class="c4"><img src="_booki/blender/static/ScreenHunter_95%20Apr.%2016%2022.56.gif" alt=""></p>
+<p class="c4">Seuraavassa askeleessa voit harkita tekstuurien käyttämistä Blenderissä ja luoda tekstuurin tuolillesi. Mene tekstuurilukuun oppiaksesi tämän...</p>
+<p> </p></div><ul Class="menu-goes-here"><li Class="booki-section">JOHDANTO</li><li><a href="/blender/index">JOHDANTO</a></li>
+<li Class="booki-section">ASENNUS</li><li><a href="/blender/ch003_asennus-windowsiin">ASENNUS WINDOWSIIN</a></li>
+<li Class="booki-section">KÄYTÄNNÖT</li><li><a href="/blender/ch005_kaytannot">KÄYTÄNNÖT</a></li>
+<li Class="booki-section">KÄYTTÖLIITTYMÄ</li><li><a href="/blender/ch007_kayttoliittyma">KÄYTTÖLIITTYMÄ</a></li>
+<li Class="booki-section">ASETUKSET</li><li><a href="/blender/ch009_asetukset">ASETUKSET</a></li>
+<li Class="booki-section">EDITOINTI</li><li><a href="/blender/ch011_editointi">EDITOINTI</a></li>
+<li><a href="/blender/ch012_esineen-luominen">ESINEEN LUOMINEN</a></li>
+<li Class="booki-section">TEKSTUURIT</li><li><a href="/blender/ch014_teksturointi">TEKSTUROINTI</a></li>
+<li Class="booki-section">RENDERÖINTI</li><li><a href="/blender/ch016_renderointi">RENDERÖINTI</a></li>
+<li Class="booki-section">LIITTEET</li><li><a href="/blender/ch018_tekijat">TEKIJÄT</a></li>
+</ul>

@@ -1,0 +1,191 @@
+<div id="main-content"><h1>Säännölliset lausekkeet</h1>
+<p>Kun yrität etsiä tekstiä tiedostoista tai muuttaa tekstiä, tarvitset usein epämääräisiä tai monimielisiä hakulausekkeita. Tyypillisiä hakuja ovat:</p>
+<ul><li>Epämääräisen asioiden joukon löytäminen, kuten "yksi tai useampi nolla".</li>
+<li>Tekstistä on erilaisia vaihtoehtoja, kuten "väri" ja "värit" tai "rotta" ja "rotan".</li>
+<li>Tietyn hahmon muodostaman tekstin osan erottaminen. Esimerkiksi sinulla voi olla lista sähköpostiosoitteita, kuten <a href="mailto:joku@fsf.org">joku@fsf.org</a> tai <a href="mailto:joku@flossmanuals.net">joku@flossmanuals.net</a>, ja tahdot erottaa sen osan, joka on @ -merkin jälkeen (fsf.org ja flossmanuals.net).</li>
+</ul><p>Etsiäksesi tällaisia merkkijonoja ja tehdäksesi niihin muutoksia, erityinen kieli, jota kutsutaan säännöllisiksi lausekkeiksi (englanniksi "regular expressions"), on todella hyödyllinen. Tämä osa tarjoaa nopean esittelyn säännöllisistä lausekkeista. Tämä kieli voi olla hieman uhkaava aluksi -  mutta se ei ole monimutkainen, ainoastaan merkkien käytön kanssa tulee olla hyvin tarkkana. Sinun täytyy käyttää sitä jonkin aikaa, jotta aivosi tottuvat erilaisten säännöllisten lausekkeiden lukemiseen. </p>
+<p>Helpoin tapa oppia ja harjoitella säännöllisiä lausekkeita on käyttää yksinkertaisia suodattimia, jotka tarjotaan komentotulkissa, kuten grep, Sed ja AWK. Komento grep on nähty jo muutamia kertoja tässä kirjassa. Tässä osassa käytämme "laajennettua" versiota, joka on nimeltään egrep, koska se tarjoaa enemmän ominaisuuksia, joita ihmiset käyttävät usein säännöllisissä lausekkeissa. Sed ja AWK esiteltiin aiemmissa luvuissa; käytämme tässä luvussa paljon Sediä.</p>
+<p>Tämän osan loppuun mennessä ymmärrät komennot grep, egrep ja Sed melko hyvin. Voit sen jälkeen siirtyä eteenpäin ja käyttää säännöllisiä lausekkeita muissa tilanteissa, joissa ne ovat vieläkin tehokkaampia. Lähes jokaisessa nykyaikaisessa ohjelmointikielessä, joihin sisältyvät muut tässä oppaassa mainitut skriptauskielet Perl, Python ja Ruby, tarjotaan säännöllisiä lausekkeita. Jopa tietokannat tarjoavat säännöllisiä lausekkeita jossain muodossa.</p>
+<p>Säännöllisten lausekkeiden yksityiskohdat vaihtelevat työkalusta toiseen, ja jopa työkalun yhdestä versiosta toiseen. Näytämme hyvin yleiset ominaisuudet, mutta ne eivät toimi hyvin kaikissa työkaluissa.</p>
+<h2>Pelkkä teksti</h2>
+<p>Säännöllisen lausekkeen ei tarvitse olla hieno. Tähän asti esittelemämme grep-komennot etsivät pelkkää tekstiä:</p>
+<pre>$ cat color_file
+Primary colors blue and red make the color magenta
+Primary colors blue and green make the colour cyan
+Primary colors red and green make the colour yellow
+Black and white make grey
+$ grep 'colour' color_file
+Primary colors blue and green make the colour cyan
+Primary colors red and green make the colour yellow
+</pre>
+<p>Koska sanassa "colour" ei ole ohjausmerkkejä, jotka komentotulkki voisi tulkita, emme tarvitse heittomerkkejä, mutta käytämme niitä saadaksemme tavan iskostettua. Tässä luvussa käsitellyt egrep -komennot käyttävät paljon ohjausmerkkejä.</p>
+<h2>Määrittelemättömät joukot</h2>
+<p>Yksi säännöllisten lausekkeiden yksinkertainen käyttötapa on etsiä "mikä tahansa määrä" jotain, tai sumea joukko, kuten "3-5" väliviivaa. Tässä ovat tätä tukevat ohjausmerkit. Yksinkertaisuuden vuoksi näytämme ne ensin erikseen, jonka jälkeen käytämme niitä joissain työkaluissa.</p>
+<table border="1" cellspacing="1" cellpadding="1"><tbody><tr><td>Sovita nolla tai useampi kappale merkkijonoa X</td>
+<td> X*</td>
+</tr><tr><td>Sovita yksi tai useampi kappale merkkijonoa X</td>
+<td> X+</td>
+</tr><tr><td>Sovita nollasta yhteen kappaletta merkkijonoa X</td>
+<td> X?</td>
+</tr><tr><td>Sovita 3-5 kappaletta merkkijonoa X</td>
+<td> X{3,5}</td>
+</tr></tbody></table><p>Nämä muistuttavat paljon komentotulkin ohjausmerkkejä, mutta niissä on pieniä eroja. Keskity niiden merkitykseen säännöllisissä lausekkeissa, ja ota huomioon, että se tosiaan on komentotulkin ohjausmerkeistä eroava kieli.</p>
+<p>Nyt voimme nähdä, kuinka voimme löytää sekä merkkijonot "color" että "colour" yhdessä haussa. Tarvitsemme joko 0 tai 1 kappaletta merkkiä "u", joten määritämme:</p>
+<pre>$ egrep 'colou?r' color_file
+Primary colors blue and red make the color magenta
+Primary colors blue and green make the colour cyan
+Primary colors red and green make the colour yellow</pre>
+<p>Asteriski (*) on yksi yleisimmistä ja hyödyllisimmistä merkeistä säännöllisissä lausekkeissa, mutta se on myös yksi hämmentävimmistä ja väärinkäytetyimmistä. Oleta, että tahdot poistaa kaikki nollat riviltä. Voisit yrittää poistaa "minkä tahansa joukon nollia" asteriskilla: </p>
+<pre>$ <strong>echo "There are 40006 items" | sed "s/0*/X/"</strong></pre>
+<p>Ulostuo on kuitenkin:</p>
+<pre>XThere are 40006 items</pre>
+<p>Tämä tapahtui, koska Sed korvaa vaatimasi hahmon ensimmäisen tapauksen. Pyydit "nolla tai enemmän" ja tällainen tapaus on heti rivin alussa!</p>
+<p>Käytä tässä tapauksessa plus-merkkiä (0+), mutta monet Sedin versiot eivät tue sitä. Voit kiertää tämän rajoituksen näin:  </p>
+<pre>$ <strong>echo "There are 40006 items" | sed "s/00*/X/"</strong>
+There are 4X6 items
+</pre>
+<p>Jos laitat yhden merkin aaltosulkuihin, esimerkiksi {3}, se merkitsee "korvaa tämä numero tarkalleen". Jos lisäät mukaan pilkun ilman toista merkkiä {3,}, se merkitsee "sovita mikä tahansa numero, joka on kolme tai enemmän." </p>
+<h2>Määrittämättömät sovitukset, luokat ja kantamat</h2>
+<p>Sovittaaksesi mitä tahansa merkkiä, voit käyttää pistettä (.). Niinpä seuraava sopii kauttaviivaan, jota seuraa mikä tahansa merkki ja toinen kauttaviiva:</p>
+<pre>$ egrep '/./' file</pre>
+<p>Pistettä seuraa yleensä yksi sumeista määritteistä edellisestä kappaleesta. Niinpä seuraavat sopivat mihin tahansa merkkeihin kauttaviivojen välissä (merkkejä täytyy kuitenkin olla ainakin yksi):</p>
+<pre>$ egrep '/.+/' file</pre>
+<p>Seuraava on sama, mutta se löytää myös rivejä, joissa on kaksi kauttaviivaa peräkkäin (//):</p>
+<pre>$ <strong>egrep '/.*/' file</strong></pre>
+<p>Piste on yleinen merkki tekstissä, joten tahdot usein pisteen merkitsevän pistettä - jotta sillä ei ole erikoista ohjausmerkin merkitystään. Kun tahdot etsiä merkkiä, jota työkalusi pitävät ohjausmerkkinä, laita sen eteen kenoviiva (\):</p>
+<pre>$ <strong>egrep '\.' file</strong></pre>
+<p>Tämä komento löytää vain pisteen. Koska kenoviivan vuoksi piste pakenee ohjausmerkin tilasta, puhumme merkkien paosta kenoviivan avulla.</p>
+<p>Jos etsit merkkijonoja, joissa on välimerkkejä etkä tahdo mitään välimerkkejä kohdeltavan ohjamerkkeinä, voi olla väsyttävää ja vaikeaa päästää jokainen merkki pakoon. Harkitse komennon fgrep käyttöä näille merkkijonoille komentojen grep tai egrep sijasta. Komento fgrep ei käsittele mitään ohjausmerkkinä. Sinun täytyy edelleenkin käyttää heittomerkkejä, jotta komentotulkki ei käsittele mitään ohjausmerkkinä.</p>
+<p>Hakasulut antavat sinun määritellä merkkiyhdistelmiä. Etsiäksesi sekä sanoja "gray" että "grey", voit määritellä: </p>
+<pre>$ <strong>egrep "gr[ae]y" color_file</strong>
+Black and white make grey
+</pre>
+<p>Sovittaaksesi englannin vokaaleina usein käytettyjä merkkejä, voit kirjoittaa:</p>
+<pre>[aeiouy]</pre>
+<p>Merkkien järjestys ei koskaan merkitse hakasulkujen sisällä. Voimme löytää vokaalittomia rivejä antamalla säännöllisen lausekkeen komennolle egrep. Aloitammme sekavalla tiedostolla, jonka nimi on <em>letter_file</em>:</p>
+<pre>This is readable text.
+Ths s grbg txt.
+This is more readable text.
+aaaai</pre>
+<p>Huomaa, että toisella rivillä ei ole vokaaleja, mutta viimeisellä rivillä on pelkästään vokaaleja. Ensin etsimme vokaalia: </p>
+<pre>$ <strong>grep '[eauoi]' letter_file</strong>
+This is readable text.
+This is more readable text.
+aaaai </pre>
+<p>Rivi ilman vokaaleja ei sovitu. </p>
+<p>Kokeillaanpa nyt merkkejä, jotka eivät ole vokaaleja. Tämä ei merkitse pelkästään konsonantteja, mutta myös pisteitä ja välilyöntejä. Voimme kääntää merkit ylösalaisin laittamalla tarkemerkin (^) merkkien eteen. Merkkiluokassa (ja ei missään muualla) tarke merkitsee "kaikki paitsi seuraavat". Teemme sen tässä viidellä vokaalilla (sallimme merkin "y" tulla sovitetuksi, koska se voi olla myös konsonantti):</p>
+<pre>$ <strong>grep '[^eauoi]' letter_file</strong>
+This is readable text.
+Ths s grbg txt.
+This is more readable text.</pre>
+<p>Tällä kertaa ainoastaan viimeinen rivi jätettiin pois, koska siinä oli vokaaleita eikä mitään muuta.</p>
+<p>Merkkien luokassa voi olla myös merkkien kantamia, minkä osoitat laittamalla väliviivan kahden merkin väliin. Merkinnän [0123] sijasta voit kirjoittaa [0-3]. Ihmiset käyttävät usein seuraavia yhdistelmiä: </p>
+<table border="1" cellspacing="1" cellpadding="1"><tbody><tr><td>Mikä tahansa numero</td>
+<td> [0-9]</td>
+</tr><tr><td>Mikä tahansa pieni kirjain</td>
+<td> [a-z]</td>
+</tr><tr><td>Mikä tahansa suuri kirjain</td>
+<td> [A-Z]</td>
+</tr><tr><td>Mikä tahansa kirjain</td>
+<td> [a-zA-Z]</td>
+</tr></tbody></table><p>Kuten taulukon viimeinen esimerkki osoittaa, voit yhdistää merkkien kantamia hakasulkujen sisällä. Voit jopa yhdistää merkkien kantamia muiden merkkien kanssa, kuten seuraavassa kirjaimien ja välimerkkien yhdistelmässä:</p>
+<pre>[a-zA-Z.,!?]
+</pre>
+<p>Emme joutuneet päästämään pistettä pakoon tässä esimerkissä, koska sitä ei käsitellä ohjausmerkkinä hakasulkujen sisällä. </p>
+<p>Huomaa että merkkiluokka, olipa se miten iso tahansa, sopii aina yhteen merkkiin. Jos tahdot sen sopivan moniin merkkeihin, käytä yhtä edellisen osan määrityksistä:</p>
+<pre>$ <strong>egrep '\([a-zA-Z.,!?]+\)' file</strong></pre>
+<p>Tämä sopii sulkuihin, joiden sisällä on mikä tahansa joukko merkkejä. Meidän täytyi päästää sulut pakoon, sillä ne ovat ohjausmerkkejä - hyvin erityisiä ohjausmerkkejä. Katsomme niitä seuraavaksi. </p>
+<h2>Ryhmät</h2>
+<p>Sulut antavat sinun käsitellä monia merkkejä samaan aikaan. Muista että merkkiluokat hakasulkujen sisällä sopivat aina yhteen merkkiin, vaikka yksi merkki voi olla monta erilaista asiaa. Sen sijaan ryhmät voivat sopia merkkisarjaan. Jos esimerkiksi tahdot sovittaa tuhannen, miljoonan, miljardin tai biljoonan lukumääriä, voit sovittaa:</p>
+<p>1,000</p>
+<p>1,000,000</p>
+<p>1,000,000,000</p>
+<p>jne.</p>
+<p>Voit tehdä tämän laittamalla ryhmään merkkijonon ",000" ryhmään, sulkien sen sulkuihin. Nyt mikä tahansa siihen käyttämäsi - kuten + -merkki - sovittuu koko ryhmään:</p>
+<pre>$ <strong>egrep '1(,000)+' file</strong>
+</pre>
+<p>Sulut tekevät vielä enemmän. Ne tallentavat sen mitä löytävät, mitä kutsutaan kaappaukseksi. Sen jälkeen voit viitata siihen myöhemmin. </p>
+<p>Tämä on vaikeasti hahmotettava ominaisuus. Esitelläänpä sitä katsomalla tiedostoa, joka toistaa joitain merkkijaksoja: </p>
+<pre>This bell is a tam-tam.
+This sentence doesn't appear in the egrep-generated output.
+I want it quick-quick.</pre>
+<p>Ensimmäinen rivi sisältää sanan "tam", väliviivan ja sitten taas sanan "tam". Kolmas rivi sisältää sanan "quick", väliviivan, ja sen jälkeen taas sanan "quick". Näillä riveillä ei itse asiassa ole yhteisiä merkkijonoja, paitsi väliviiva (joka näkyy myös toisella rivillä, joten sen etsiminen ei erota ensimmäistä ja kolmasta riviä toisesta). Ensimmäisen ja kolmannen rivin yhteinen tekijä on hahmo: sana, jota seuraa väliviiva ja se itse. Niinpä voimme ottaa nuo kaksi riviä kaappaamalla sanan ja toistamalla sen (tiedoston nimi <em>doubles</em>):</p>
+<pre>$ <strong>egrep ' ([a-z]+)-\1' doubles</strong>
+This bell is a tam-tam.
+I want it quick-quick.</pre>
+<p> </p>
+<p>Hämmentävää? Tämä säännöllinen lauseke purettuna osiin:</p>
+<table border="1" cellspacing="1" cellpadding="1"><tbody><tr><td> (</td>
+<td>Aloita ryhmä</td>
+</tr><tr><td> [a-z]+</td>
+<td>Mikä tahansa kirjainjoukko (yksi tai enemmän)</td>
+</tr><tr><td> )</td>
+<td>Sulje ryhmä</td>
+</tr><tr><td> -</td>
+<td>Väliviiva (yksinkertainen sovitus)</td>
+</tr><tr><td> \1</td>
+<td>Toista aiemmin kaapattu ryhmä</td>
+</tr></tbody></table><p>Merkki \1 on erikoissyntaksi, jonka tunnistavat työkalut, jotka antavat sulkeiden kaapata tekstiä. Ensimmäisellä tiedostojen rivillä se sopii merkkijonoon "tam", koska siihen merkit [a-z]+ sopivat. Kolmannella rivillä se sopii merkkijonoon "quick", koska siihen merkit [a-z]+ sopivat. Se sanoo "mitä tahansa löytyykin, tahdon sen uudelleen."</p>
+<p>Erottaaksesi sähköpostiosoitteen toisen osan, esimerkiksi merkkijonon "fsf.org" osoitteesta "<a href="mailto:someone@fsf.org">someone@fsf.org</a>", käytä säännöllistä lauseketta, kuten: </p>
+<pre>([a-z._]+)@([a-z._]+)
+</pre>
+<p>Tässä tapauksessa \1 sopii osaan ennen merkkiä @, kun taas \2 sopii osaan merkin @ jälkeen. Yritä siis erottaa \2 saadaksesi merkkijonon "fsf.org".</p>
+<h2>Erottelu</h2>
+<p>Näimme että merkkiluokat sopivat vain yhteen merkkiin samaan aikaan. Jos sinulla on kaksi tai useampia merkkijaksoja jotka voivat olla samassa paikassa, voit määritellä ne erottelun avulla. Tämä tehdään erottamalla ne pystyviivalla (|). Niinpä seuraava löytää sekä tapauksen "FSF" että tapauksen "Free Software Foundation":</p>
+<pre>FSF|Free Software Foundation</pre>
+<p>Voit laittaa erotteluun niin monta vaihtoehtoa kuin tahdot:</p>
+<pre>gnu.org|FSF|Free Software Foundation</pre>
+<p>Koska vaihtoehdot on yleensä laitettu suuremman säännöllisen lausekkeen sisään, joudut yleensä laittamaan ne sulkuihin osoittaaksesi niiden alun ja lopun:</p>
+<pre>The (FSF|Free Software Foundation)</pre>
+<h2>Ankkurointi</h2>
+<p>Jos tahdot sovittaa jotain sen ilmaantuessa rivin alussa, mutta ei missään muualla, laita säännölliseen lausekkeeseen tarke (^). Näin voit käyttää seuraavaa ottamaan kiinni rivit, jotka alkavat pienellä merkillä:</p>
+<pre>^[a-z]</pre>
+<p>Tällä tarkkeen käytöllä ei ole mitään tekemistä sen tarkkeen kanssa, jonka näimme aikaisemmin hakasulkujen sisällä. Tarke merkitsee "rivin alussa" kun se on säännöllisen lausekkeen ensimmäinen ilmaus, mutta vain siinä sijainnissa. </p>
+<p>Vastaavasti voit sovittaa jotain rivin lopussa lisäämällä dollarimerkin ($) säännöllisen lausekkeen loppuun:</p>
+<pre>[0-9]$</pre>
+<p>Lauseessa "I added 3 and 5 to make 8" edellinen säännöllinen lauseke tulee sopimaan numeroon 8, koska se on rivin lopussa.</p>
+<p>Kun etsit rivejä, jotka sopivat säännölliseen lausekkeeseen tarkasti (ei erillistä testiä alussa eikä lopussa), käytä molempia ankkureita. Jos tahdot varmistaa, että rivissä on vain numeroita, kirjoita:</p>
+<pre>^[0-9]+$</pre>
+<p>Merkit [0-9]+ tarkoittavat "yksi tai enemmän numeroita" ja merkit ^ ja $ varmistavat, että säännöllinen lauseke ottaa koko rivin.</p>
+<p>Tahdoimme näyttää sinulle mitä säännöllisillä lausekkeilla voi saada aikaan. On paljon enemmän mahdollisuuksia, joista jotkin ovat käytännöllisiä vain ohjelmointikielissä. Kuten aiemmin varoitimme, eri työkalut tukevat eri ominaisuuksia, joten joudut lukemaan dokumentaation egrepille, Sedille tai mille tahansa muulle käyttämällesi työkalulle tai kielelle saadaksesi selville mikä toimii.</p>
+<p>Kun testaat säännöllisiä lausekkeita, voit kokeilla monia verkossa olevia tai painettuja kirjoja (joista jotkin ovat ilmaisia ja jotkin maksullisia) jotka auttavat ratkaisemaan ongelmia, kuten väärin käytettyjä hakasulkuja tai sulkuja. Sellaisten työkalujen avulla voit oppia monimutkaisemmat ominaisuudet ja kirjoittaa helpommin monimutkaisia säännöllisiä lausekkeita.</p></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/komentorivin-perusteet/index">Ota komento</a></li>
+<li Class="booki-section">Perusteet</li><li><a href="/komentorivin-perusteet/ch003_aloittaminen">Käytön aloittaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch004_syntaksi">Syntaksi</a></li>
+<li><a href="/komentorivin-perusteet/ch005_ympariinsa-siirtyminen">Ympäriinsä siirtyminen</a></li>
+<li><a href="/komentorivin-perusteet/ch006_tiedostorakenne">Tiedostorakenne</a></li>
+<li Class="booki-section">Komennot</li><li><a href="/komentorivin-perusteet/ch008_peruskomennot">Peruskomennot</a></li>
+<li><a href="/komentorivin-perusteet/ch009_jarjestelmanvalvojat">Järjestelmänvalvoja</a></li>
+<li><a href="/komentorivin-perusteet/ch010_useammat-tiedostot">Useammat tiedostot</a></li>
+<li><a href="/komentorivin-perusteet/ch011_kirjoita-vahemman">Kirjoita vähemmän</a></li>
+<li Class="booki-section">Keskivaikeita komentoja</li><li><a href="/komentorivin-perusteet/ch013_putkitus">Putkitus</a></li>
+<li><a href="/komentorivin-perusteet/ch014_komentohistoria">Komentohistoria</a></li>
+<li><a href="/komentorivin-perusteet/ch015_standarditiedostot">Standarditiedostot</a></li>
+<li Class="booki-section">Kehittyneempiä komentoja</li><li><a href="/komentorivin-perusteet/ch017_kayttooikeudet">Käyttöoikeudet</a></li>
+<li><a href="/komentorivin-perusteet/ch018_interaktiivinen-muokkaus">Interaktiivinen muokkaus</a></li>
+<li><a href="/komentorivin-perusteet/ch019_poistumisen-tarkastaminen">Poistumisen tarkastaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch020_alikomennot">Alikomennot</a></li>
+<li><a href="/komentorivin-perusteet/ch021_hakemistot">Hakemistot</a></li>
+<li><a href="/komentorivin-perusteet/ch022_kustomisointi">Kustomisointi</a></li>
+<li><a href="/komentorivin-perusteet/ch023_parametrien-korvaaminen">Parametrien korvaaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch024_gnuscreen">GNUScreen</a></li>
+<li><a href="/komentorivin-perusteet/ch025_ssh">SSH</a></li>
+<li><a href="/komentorivin-perusteet/ch026_ohjelmien-asentaminen">Ohjelmien asentaminen</a></li>
+<li Class="booki-section">Tekstieditorit</li><li><a href="/komentorivin-perusteet/ch028_tekstieditorit">Tekstieditorit</a></li>
+<li><a href="/komentorivin-perusteet/ch029_nano">Nano</a></li>
+<li><a href="/komentorivin-perusteet/ch030_vi-ja-vim">Vi ja Vim</a></li>
+<li><a href="/komentorivin-perusteet/ch031_emacs">Emacs</a></li>
+<li><a href="/komentorivin-perusteet/ch032_kedit">Kedit</a></li>
+<li><a href="/komentorivin-perusteet/ch033_gedit">Gedit</a></li>
+<li Class="booki-section">Skriptaus</li><li><a href="/komentorivin-perusteet/ch035_skriptaus">Skriptaus</a></li>
+<li><a href="/komentorivin-perusteet/ch036_skriptien-huoltaminen">Skriptien huoltaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch037_muut-kielet">Muut kielet</a></li>
+<li><a href="/komentorivin-perusteet/ch038_sed">Sed</a></li>
+<li><a href="/komentorivin-perusteet/ch039_awk">AWK</a></li>
+<li><a href="/komentorivin-perusteet/ch040_saannolliset-lausekkeet">Säännölliset lausekkeet</a></li>
+<li><a href="/komentorivin-perusteet/ch041_perl">Perl</a></li>
+<li><a href="/komentorivin-perusteet/ch042_ruby">Ruby</a></li>
+<li><a href="/komentorivin-perusteet/ch043_python">Python</a></li>
+<li Class="booki-section">Komennot nopeasti</li><li><a href="/komentorivin-perusteet/ch045_komentojen-pikaopas">Komentojen pikaopas</a></li>
+<li Class="booki-section">Liitteet</li><li><a href="/komentorivin-perusteet/ch047_tasta-kayttooppaasta">Tästä käyttöoppaasta</a></li>
+<li><a href="/komentorivin-perusteet/ch048_tekijat">Tekijät</a></li>
+</ul>

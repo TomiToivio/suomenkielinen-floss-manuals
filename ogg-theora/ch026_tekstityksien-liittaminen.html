@@ -1,0 +1,77 @@
+<div id="main-content"><h1>Tekstityksien lisääminen</h1>
+<p>Jos tahdot videotiedostosi sisältävän tekstitystiedoston, jotta et joudu jakelemaan .srt-tiedostoa erikseen, joudut liittämään tekstitystiedoston videoon. Videon koodaustyökalu <strong>ffmpeg2theora</strong> sisältää muutaman komentorivioption, joilla voit liittää tekstitykset videoosi.</p>
+<p>ffmpeg2theora on tarjolla useimpiin käyttöjärjestelmiin, kuten Mac OS X ja GNU/Linux.</p>
+<p>Tekstityksiin liittyy kolme tärkeää komentoa:</p>
+<ul><li>--subtitles osoittaa SRT-muotoiseen tekstitystiedostoon,</li>
+<li>--subtitles-language määrittää tekstitysten kielen,</li>
+<li>--subtitles-encoding määrittelee tekstitystiedoston kirjoitusmerkit.</li>
+</ul><p>Katsotaanpa ffmpe2theora -komennon optioiden käyttöä srt-tiedostojen liittämiseksi Theora-tiedostoon.</p>
+<p><strong>subtitles-language </strong>- Tämä optio asettaa määritellyn kielen. Jokaisella kielellä on standardikoodi, joka auttaa ihmisiä kuvailemaan kielen, mikä tahansa heidän kielensä onkin. Esimerkiksi englanniksi saksan kieli on german, mutta suomeksi se on saksa. Hämmennyksen välttämiseksi kansainvälinen ISO 639-1 -standardi määrittelee jokaisen kielen kahden kirjaimen koodilla. Saksan koodi on "de". <br><br><strong>subtitles-encoding</strong> - Tämä optio määrittelee tekstin koodauksen standardin, tämä on välttämätöntä erilaisten kirjoitusjärjestelmien vuoksi. Tietokoneet käyttivät pitkään 7-bittisiä merkistöjä, joissa oli vain 127 kirjoitusmerkkiä, edustamaan kirjaimia ja muita symboleja. Esimerkiksi US-ASCII -merkistössä on 94 tulostuvaa merkkiä ja 33 kontrollikoodia. Lukemattomia 8-bittisiä merkistöjä, joissa on 256 kirjoitusmerkkiä, on ilmestynyt tämän jälkeen edustamaan eri aakkosia ja syllabisia kirjoitusjärjestelmiä. Monet 16-bittiset kirjoitusjärjestelmät mahdollistavat kiinalaisiin merkkeihin perustuvat kirjoitusjärjestelmät. Kuitenkaan 7 tai 8 bittiä ei ole tarpeeksi kaikkia yhden kirjoitusjärjestelmän merkkejä varten, eikä varsinkaan kaikille nykyisin käytössä oleville kirjoitusjärjestelmille. Ihmiset loivat Unicode -merkistön tukemaan kaikkia kieliä samaan aikaan. Unicoden UTF-8 koodaus on suunniteltu käytettäväksi verkossa, eli järjestelmien välisessä ulkoisessa viestinnässä.</p>
+<p>Kuitenkin suuri osa ihmisistä käyttää edelleenkin vanhoja merkistökoodauksia. Näiden ongelmana on se, että ne voivat mennä päällekkäin, ne käyttävät samoja koodeja täysin erilaisille merkeille. Yleensä väärän koodauksen renderöinnin vuoksi tuloksena on sotkua. Oletusarvoisesti tekstien oletetaan olevan Unicoden UTF-8 koodauksella. Jos ne eivät ole, se täytyy kertoa ffmpeg2theoralle. Jos kirjoitat englantia, kirjoitat luultavasti ASCII-merkistöllä, ISO-8859-1-merkistöä (Latin-1), tai mahdollisesti Windowsin koodisivua 122. US-ASCII on suunniteltu UTF-8:n alaryhmäksi, joten se toimii, mutta ongelmat alkavat, jos ASCII-laajennukai käytetään Unicode-ympäristössä.</p>
+<h2>Tekstitysten liittämisen esimerkkikomentoja</h2>
+<p><br>Tässä on muutamia esimerkkkejä, joissa otetaan mp4-videotiedosto (input.mp4) ja ulos tulee ogg-videotiedosto (output.ogg), johon on liitetty tekstitykset: <br><br>Jos sinulla on tekstitystiedosto englanniksi (englannin kielikoodi on "en"):</p>
+<p> </p>
+<pre>ffmpeg2theora input.mp4 --subtitles english-subtitles.srt --subtitles-language en -o output.ogv
+</pre>
+<p>Jos sinulla on espanjankielinen tekstitystiedosto, joka on koodattu latin1-merkistön mukaan:</p>
+<pre>ffmpeg2theora input.mp4  --subtitles spanish.srt --subtitles-language es --subtitles-encoding latin1 -o output.ogv
+</pre>
+<p>On olemassa muita tekstitysvaihtoehtoja ohjelmalle ffmpeg2theora, mutta nämä ovat tärkeimmät.</p>
+<h2>Tekstityksien lisääminen videoon</h2>
+<p>Jos sinulla on Theora-video ilman sisällytettyjä tekstityksiä, on helppoa myös lisätä niitä, ilman tarvetta koodata video uudetaan. Koska jokainen tekstitysten kieli on tallennettu Ogg-tiedostoon erikseen, niitä voidaan manipuloida erikseen.</p>
+<p>Ogg-tiedostoon sisäisesti liitetyt tekstitykset koodataan Kate-striimeiksi. Sellaiset striimit luodaan ffmpeg2theora-ohjelmalla, mutta ne voidaan myös luoda "raakana" SRT-tiedostosta. Työkalu kateenc tekee tämän. Ubuntussa kateenc on osa kate-tools -pakkausta. Asenna se tällä komennolla:</p>
+<pre>sudo apt-get install libkate-tools
+</pre>
+<p>Seuraava komento luo englanninkieliset tekstitykset sisältävän striimin SRT-tiedostosta. Muista, englannin koodi on "en":</p>
+<pre>kateenc -t srt -o english-subtitles.ogg english.srt -c SUB -l en
+</pre>
+<p>Nyt sinulla on yksi tekstitysstriimi, jonka voit lisätä Theora-videoosi:</p>
+<pre>oggz-merge -o video-with-subtitles.ogv original-video.ogv english-subtitles.og</pre>
+<p>Ubuntussa oggz-merge on osa oggz-työkalupakettia, jonka asentamiseksi voit tehdä tämän:</p>
+<p> </p>
+<pre>sudo apt-get install oggz-tools</pre>
+<p>Itse asiassa oggz-työkalut sallivat kaikkien videon eri raitojen voimakkaan manipulaation, joten voit lisätä enemmän kieliä audioraidalle ja niin edelleen.</p></div><ul Class="menu-goes-here"><li Class="booki-section">JOHDANTO</li><li><a href="/ogg-theora/index">OGG THEORA</a></li>
+<li><a href="/ogg-theora/ch002_tasta-kayttooppaasta">TÄSTÄ KÄYTTÖOPPAASTA</a></li>
+<li><a href="/ogg-theora/ch003_mita-video-on">MITÄ VIDEO ON?</a></li>
+<li><a href="/ogg-theora/ch004_mita-theora-on">MITÄ THEORA ON?</a></li>
+<li Class="booki-section">PERUSKÄSITTEET</li><li><a href="/ogg-theora/ch006_mika-on-koodekki">MIKÄ ON KOODEKKI?</a></li>
+<li><a href="/ogg-theora/ch007_sailot">SÄILÖT</a></li>
+<li Class="booki-section">TOISTO</li><li><a href="/ogg-theora/ch009_theoran-toistaminen">THEORAN TOISTAMINEN</a></li>
+<li><a href="/ogg-theora/ch010_toisto-vlclla">TOISTO VLC:LLÄ</a></li>
+<li><a href="/ogg-theora/ch011_miro">MIRO</a></li>
+<li Class="booki-section">THEORA VERKOSSA</li><li><a href="/ogg-theora/ch013_theora-verkossa">THEORA VERKOSSA</a></li>
+<li><a href="/ogg-theora/ch014_html5">HTML5</a></li>
+<li><a href="/ogg-theora/ch015_theora-sivuillasi">THEORA SIVUILLASI</a></li>
+<li><a href="/ogg-theora/ch016_hotelleja-theoralle">HOTELLEJA THEORALLE</a></li>
+<li Class="booki-section">ENKOODAUS</li><li><a href="/ogg-theora/ch018_johdanto-enkoodaukseen">JOHDANTO ENKOODAUKSEEN</a></li>
+<li><a href="/ogg-theora/ch019_firefogg">FIREFOGG</a></li>
+<li><a href="/ogg-theora/ch020_enkoodaus-vlclla">ENKOODAUS VLC:LLÄ</a></li>
+<li><a href="/ogg-theora/ch021_enkoodaus-ffmpeg2theoralla">ENKOODAUS FFMPEG2THEORALLA </a></li>
+<li><a href="/ogg-theora/ch022_thoggen">THOGGEN</a></li>
+<li Class="booki-section">TEKSTITYKSET</li><li><a href="/ogg-theora/ch024_tekstityksien-perusteet">TEKSTITYKSIEN PERUSTEET</a></li>
+<li><a href="/ogg-theora/ch025_jakelu">JAKELU</a></li>
+<li><a href="/ogg-theora/ch026_tekstityksien-liittaminen">TEKSTITYKSIEN LIITTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch027_tekstityksien-toistaminen">TEKSTITYKSIEN TOISTAMINEN</a></li>
+<li><a href="/ogg-theora/ch028_julkaiseminen">JULKAISEMINEN</a></li>
+<li Class="booki-section">SUORATOISTO</li><li><a href="/ogg-theora/ch030_suoratoiston-perusteet">SUORATOISTON PERUSTEET</a></li>
+<li><a href="/ogg-theora/ch031_icecast">ICECAST</a></li>
+<li><a href="/ogg-theora/ch032_tss">TSS</a></li>
+<li><a href="/ogg-theora/ch033_ffmpeg2theora-streamaus">FFMPEG2THEORA-STREAMAUS</a></li>
+<li><a href="/ogg-theora/ch034_suoratoisto-vlc-ohjelmalla">VLC-STREAMAUS</a></li>
+<li><a href="/ogg-theora/ch035_virtaustoiston-tallentaminen">VIRTAUSTOISTON TALLENTAMINEN</a></li>
+<li Class="booki-section">EDITOINTI</li><li><a href="/ogg-theora/ch037_johdanto-editointiin">JOHDANTO EDITOITIIN</a></li>
+<li><a href="/ogg-theora/ch038_pitivi">PITIVI</a></li>
+<li Class="booki-section">ESIKATSELU</li><li><a href="/ogg-theora/ch040_kuinka-esikatselua-kaytetaan">ESIKATSELUN KÄYTTÖ</a></li>
+<li><a href="/ogg-theora/ch041_tee-esikatselukuvia">TEE ESIKATSELUKUVIA</a></li>
+<li><a href="/ogg-theora/ch042_tee-diaesitys">TEE DIAESITYS</a></li>
+<li><a href="/ogg-theora/ch043_tee-esikatseluvideo">TEE ESIKATSELUVIDEO</a></li>
+<li Class="booki-section">EDITOINTI KOMENTORIVILTÄ</li><li><a href="/ogg-theora/ch045_komentorivi">THEORA JA KOMENTORIVI</a></li>
+<li><a href="/ogg-theora/ch046_theoran-teoria">THEORAN TEORIA</a></li>
+<li><a href="/ogg-theora/ch047_tiedoston-jakaminen">TIEDOSTON JAKAMINEN</a></li>
+<li><a href="/ogg-theora/ch048_tiedoston-leikkaaminen">TIEDOSTON LEIKKAAMINEN</a></li>
+<li><a href="/ogg-theora/ch049_tiedostojen-liittaminen">TIEDOSTOJEN LIITTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch050_tiedostojen-yhdistaminen">TIEDOSTOJEN YHDISTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch051_koon-muuttaminen">KOON MUUTTAMINEN</a></li>
+<li><a href="/ogg-theora/ch052_oggin-analysoiminen">OGGIN ANALYSOIMINEN</a></li>
+<li Class="booki-section">TEKIJÄT</li><li><a href="/ogg-theora/ch054_tekijat">TEKIJÄT</a></li>
+</ul>

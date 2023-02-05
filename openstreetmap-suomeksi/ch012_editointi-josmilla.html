@@ -1,0 +1,91 @@
+<div id="main-content"><h1>Muokkaaminen JOSMilla</h1>
+<p>JOSM on Javalla ohjelmoitu OpenStreetMap-editori. Sitä käytetään OpenStreetMap-tiedon editointiin pöytäkoneella. Tämän vuoksi sinun ei tarvitse olla verkossa muokataksesi dataa. JOSM vaatii Java Runtime Environment -ohjelman asentamisen. Jos sitä ei ole koneellasi, voit hakea sen osoitteesta <a href="http://www.java.com/en/download/">http://www.java.com/en/download/</a>.</p>
+<p>Tämä luku esittelee JOSMin lataamisen ja asentamisen, askel askeleelta. Esittelemme myös joitain JOSMin asetuksia, jotka helpottavat sen käyttöä! Sen jälkeen avaamme esimerkkikartan ja opimme joitain tämän ohjelmiston perustoimintoja.</p>
+<h2>JOSMin lataaminen</h2>
+<p>Mene JOSM-sivulle: <a href="http://josm.openstreetmap.de/">josm.openstreetmap.de</a>. Löydät tämän sivun myös hakukoneesta sanalla “JOSM”.</p>
+<p>Sivusto näyttää suunnilleen tälle:</p>
+<p><a href="http://www.learnosm.org/beginners-guide/chapter-3-getting-started-with-josm/1-2/" rel="attachment wp-att-82"><img src="http://fi.flossmanuals.net/kirjoita/openstreetmap/_draft/_v/1.0/static/1-520x292.png" alt="" width="520" height="292"></a></p>
+<p><em>JOSM-sivusto</em></p>
+<p>Jos koneellasi on asennettuna Windows, napsauta linkkiä “Windows JOSM Installer” ladataksesi JOSMin. Jos sinulla on toinen käyttöjärjestelmä, napsauta käyttöjärjestelmäsi linkkiä. Latauksen pitäisi alkaa.</p>
+<p>Huomaa, että yleisesti ottaen JOSM toimii samalla tavalla kaikissa käyttöjärjestelmissä joitain asennuksen toimenpiteitä lukuunottamatta. Tarvittaessa esittelemme olennaiset askeleet järjestelmääsi varten.</p>
+<h2>JOSMin asennus</h2>
+<p>Etsi JOSMin asennustiedosto tietokoneeltasi. Kaksoisnapsauta sitä aloittaaksesi asennuksen.</p>
+<p><em>Huomaa: Sinulla täytyy olla vähintään Javan versio 1.6 asennettuna, jotta JOSM toimii. </em></p>
+<p>Windowsissa asennusohjelma pyytää ensin valitsemaan kielen. Tämän jälkeen näet tervetuloa-viestin ja voit napsauttaa "Next". Napsauta "I Agree" hyväksyäksesi lisenssin. Tämän jälkeen voit valita tahtomasi komponentit (oletusarvot ovat yleensä sopivia). Valitse lopuksi asennuspaikka ja napsauta "Install". Kun asennus on valmis, napsauta "Next" ja sitten "Finish" käynnistääksesi JOSMin ensimmäistä kertaa. Myöhemmin voit napsauttaa JOSM-ikonia tietokoneen näytön vasemmassa alakulmassa käynnistääksesi JOSMin.</p>
+<p>Mac OS X -käyttöjärjestelmässä voit kaksoisnapsauttaa pakattua tiedostoa avataksesi sen ja sen jälkeen kaksoisnapsauttaa sovellustiedostoa laukaistaksesi JOSM:in.</p>
+<p>Voit nähdä ikkunan, joka kysyy tahdotko päivittää ohjelman. Sinun ei tarvitse päivittää sitä, koska se on uusi. Paina nappia “Cancel.” Jos et tahdo nähdä tätä viestiä enää koskaan, rasti alhaalla oleva laatikko, ennen kuin painat nappia “Cancel.”</p>
+<p>Käynnistyksen jälkeen JOSM näyttää tältä:</p>
+<p><a href="http://www.learnosm.org/beginners-guide/chapter-3-getting-started-with-josm/2-2/" rel="attachment wp-att-83"><img class="size-large wp-image-83" title="JOSM when it opens" src="http://www.learnosm.org/wp-content/uploads/2011/08/2-520x292.png" alt="JOSM when it opens" width="520" height="292"></a></p>
+<p><span>JOSMin aloitusruutu</span><em></em></p>
+<h2>Yksinkertainen piirtäminen JOSM:illa</h2>
+<p>Avataanpa nyt OSM-esimerkkitiedosto, jotta voimme opetella perustavat piirtää karttoja JOSM:illa. Huomaa, että tämä ei ole oikea kartta, eli se ei ole oikeasti olemassaolevan paikan kartta, joten emme tallenna sitä OpenStreetMapiin.</p>
+<p>Mene osoitteeseen <a href="http://www.learnosm.org/files/sample.osm">http://www.learnosm.org/files/sample.osm</a> ja napsauta “Save File As…” Valitse sijainti tietokoneeltasi, johon tallennat tiedoston.</p>
+<p>Avaa nyt esimerkkitiedosto JOSMiin: käynnistä JOSM ja napsauta Avaa -kuvaketta vasemmassa ylänurkassa:</p>
+<p><a href="http://www.learnosm.org/beginners-guide/chapter-3-getting-started-with-josm/attachment/10/" rel="attachment wp-att-96"><img src="http://fi.flossmanuals.net/kirjoita/openstreetmap/_draft/_v/1.0/static/10.png" alt="" width="37" height="37"></a></p>
+<p>Paikallista äsken tallennettu tiedosto sample.osm. Valitse se, ja napsauta "Avaa".</p>
+<p>Sinun pitäisi nyt nähdä esimerkkikartta, suunnilleen kuten alla:</p>
+<p><a href="http://www.learnosm.org/beginners-guide/chapter-3-getting-started-with-josm/attachment/11/" rel="attachment wp-att-97"><img class="size-large wp-image-97" title="Sample OpenStreetMap File" src="http://www.learnosm.org/wp-content/uploads/2011/08/11-520x292.png" alt="Sample OpenStreetMap File" width="520" height="292"></a></p>
+<p class="wp-caption-text"><em>OpenStreetMap-esimerkkitiedosto<br></em></p>
+<h3>Perustoiminnot</h3>
+<p>Siirtääksesi karttaa vasemmalle tai oikealle, ylös tai alas, pidä oikeaa hiiren nappia alhaalla, ja siirrä hiirtäsi.</p>
+<p>On muutamia tapoja zoomata sisään ja ulos kartalta. Jos sinulla on hiiri, voit käyttää sen skrollausnappia zoomataksesi sisään tai ulos. Jos käytät läppäriä ja sinulla ei ole hiirtä, voit zoomata sisään ja ulos käyttäen skaalapalkkia karttaikkunan vasemmassa ylänurkassa. Vedä palkkia vasemmalle ja oikealle pitämällä vasenta hiiren nappia alhaalla ja siirtämällä palkkia vasemmalle tai oikealle hiirelläsi.</p>
+<p><a href="http://www.learnosm.org/beginners-guide/chapter-3-getting-started-with-josm/attachment/12/" rel="attachment wp-att-98"><img class="aligncenter size-full wp-image-98" title="JOSM Scale Bar" src="http://www.learnosm.org/wp-content/uploads/2011/08/12.png" alt="JOSM Scale Bar" width="136" height="55"></a></p>
+<p>Katso esimerkkikarttaa. Sillä on muutamia erilaisia kohteita. On joki, metsä, muutamia rakennuksia ja teitä, sekä pari kauppaa. Valitaksesi kohteen voit napsauttaa sitä vasemmalla hiiren napilla.</p>
+<h3>Pisteet, viivat ja muodot</h3>
+<p>Jos napsautat eri kohteita esimerkkikartalla, huomaat, että kartalla on kolme eri kohdetyyppiä. Näitä ovat pisteet, viivat ja muodot.</p>
+<p>Pisteet ovat yksittäinen sijainti, jota edustaa symboli. Tällä esimerkkikartalla on kaksi pistettä, vaatekauppa ja tori. Vaatekauppaa edustaa paidan symboli, toria edustaa ostoskärry.</p>
+<p><img src="http://fi.flossmanuals.net/kirjoita/openstreetmap/_draft/_v/1.0/static/ScreenHunter_39%20Oct.%2018%2017.36.jpg" alt="" width="77" height="45"></p>
+<p>Kartalla on myös monia viivoja, ne edustavat teitä. Jos katsot tarkkaan, voit nähdä että viivojen sisällä on myös pisteitä. Näihin pisteisiin ei liity mitään tietoa, mutta ne auttavat määrittelemään viivan sijaintia.</p>
+<p><img src="http://fi.flossmanuals.net/kirjoita/openstreetmap/_draft/_v/1.0/static/ScreenHunter_41%20Oct.%2018%2017.38.jpg" alt="" width="248" height="181"> </p>
+<p>Lopuksi kartalla on monia muotoja, jotka edustavat eri sijainteja - metsää, jokea ja rakennuksia. Muoto edustaa yleensä aluetta, kuten kenttää tai rakennusta. Muoto on aivan kuin viiva, erona on se, että muodon muodostava viiva alkaa samasta pisteestä johon se päättyy.</p>
+<p><img src="http://fi.flossmanuals.net/kirjoita/openstreetmap/_draft/_v/1.0/static/ScreenHunter_42%20Oct.%2018%2017.40.jpg" alt="" width="266" height="240"> </p>
+<p>Huomaat ehkä, että kun valitset kohteen, ikkunan oikealle puolelle ilmestyy ikkuna, jonka otsikko on "Properties". Tällä listalla olevia kohteita kutsutaan tägeiksi. Tägit ovat tietoa, joka on sidottu pisteeseen, viivaan tai muotoon, joka kuvailee sen olemusta. Nyt sinun täytyy vain tietää, että tämä tieto kuvailee, onko kohteemme metsä, rakennus, joki vai jotain muuta.</p>
+<p>Ajattele kartan piirtämistä käsin, ja kuinka silloin piirrät pisteitä, viivoja ja muotoja. Mitä muita paikkoja voidaan kuvata pisteillä? Viivoilla? Muodoilla?</p>
+<h3>Kohteiden muuttaminen</h3>
+<p>Valitse metsä kartan vasemmalla puolella. Varmista, että olet napsauttanut viivaa metsän ympärillä, etkä yhtä pistettä viivalla. Pidä nyt pohjassa vasenta hiiren nappia ja vedä hiirelläsi. Sinun pitäisi voida siirtää metsä uuteen paikkaan kartalla.</p>
+<p>Napsauta pistettä, joka on viivalla metsän ympärillä. Pidä vasenta hiiren nappia pohjassa ja vedä hiirelläsi. Sinun pitäisi kyetä siirtämään pistettä. Näin muutat kohteen muotoa, tai siirrät pistettä.</p>
+<h3>Piirtäminen</h3>
+<p>JOSM-käyttöliittymän vasemmalla puolella on sarja nappeja. Monet näistä napeista avaavat uusia ikkunoita oikealle puolelle. Ikkunat tarjoavat lisätietoa kartasta. Kuitenkin useimmin käytetyt nappulat ovat tämän palkin yläosassa. Nämä napit muuttavat sitä, mitä voit tehdä hiirelläsi.</p>
+<p>Ylimmät neljä nappia palkissa ovat tärkeimmät. Ne antavat sinun:</p>
+<ul><li>Valita</li>
+<li>Piirtää</li>
+<li>Zoomata sisään</li>
+<li>Poistaa</li>
+</ul><p>Tähän asti olet käyttänyt valintatyökalua, joka näyttää tältä:</p>
+<p><a href="http://www.learnosm.org/beginners-guide/chapter-3-getting-started-with-josm/attachment/13/" rel="attachment wp-att-99"><img class="aligncenter size-full wp-image-99" title="Select Tool" src="http://www.learnosm.org/wp-content/uploads/2011/08/13.png" alt="Select Tool" width="36" height="36"></a></p>
+<p>Ennen kuin piirrät, sinun täytyy varmistaa, että mitään ei ole valittu. Napsauta mustaa avaruutta kartalla varmistaaksesi, että mitään ei ole valittu.</p>
+<p>Napsauta toista nappia, joka on piirtotyökalu.</p>
+<div><a href="http://www.learnosm.org/beginners-guide/chapter-3-getting-started-with-josm/attachment/14/" rel="attachment wp-att-100"><img class="aligncenter size-full wp-image-100" title="Draw Tool" src="http://www.learnosm.org/wp-content/uploads/2011/08/14.png" alt="Draw Tool" width="36" height="36"></a>
+<p>Etsi tyhjä alue kartalla ja kaksoisnapsauta hiirelläsi. Tämä piirtää yksittäisen pisteen.</p>
+<p>Piirtääksesi viivan voit napsauttaa kerran hiirelläsi. Siirrä hiirtäsi ja napsauta uudestaan. Jatka, kunnes olet tyytyväinen viivaasi. Lopettaaksesi viivan, voit kaksoisnapsauttaa hiirelläsi.</p>
+<p>Piirrä muoto samalla tavalla kuin piirtäisit viivan, mutta lopeta muoto kaksoisnapsauttamalla alkupistettä.</p>
+<h3>Lisää ennakkoasetuksia</h3>
+<p>Nyt tiedämme kuinka voimme piirtää pisteitä, viivoja ja muotoja, mutta emme vieläkään ole määritelleet mitä ne edustavat. Tahdomme sanoa, että pisteemme ovat kauppoja, kouluja tai jotain muuta, ja että koulumme ovat kenttiä, rakennuksia tai jotain muuta.</p>
+<p>Napsauta valintatyökalua vasemmalla olevassa työkalupalkissa.</p>
+<p><a href="http://www.learnosm.org/beginners-guide/chapter-3-getting-started-with-josm/attachment/13/" rel="attachment wp-att-99"><img class="aligncenter size-full wp-image-99" title="Select Tool" src="http://www.learnosm.org/wp-content/uploads/2011/08/13.png" alt="Select Tool" width="36" height="36"></a></p>
+<p>Valitse yksi piirtotyökalulla piirtämistäsi kohteista. Valikon yläosassa voit napsauttaa "Presets". Siirrä hiirtäsi alivalikon läpi valitaksesi sen sijaintityypin, jonka tahdot määritellä.</p>
+<p>Kun napsautat esiasetusta, ilmestyy lomake, joka kysyy sinulta lisätietoa. Sinun ei tarvitse käyttää kaikkia kenttiä, mutta tahdot ehkä lisätä joitain tärkeitä kenttiä, kuten kohteen nimen.</p>
+<p>Kun olet lopettanut tiedon lisäämisen, voit napsauttaa "Apply Preset". Jos kaikki meni hyvin, pisteesi, viivasti tai muotosi pitäisi vaihtaa väriä tai näyttää symboli. Tämä johtuu siitä, että olet määritellyt mikä se on.</p>
+<h3>Piirrä oma karttasi</h3>
+<p>Vedä kartta pois esimerkkikartasta. Pidä alhaalla oikeaa hiiren nappia ja vedä hiirelläsi, kunnes löydät sopivan tyhjän alueen, jolle voit piirtää.</p>
+<p>Käytä piirtotyökalua luodaksesi pisteitä, viivoja ja muotoja. Kuvaile mitä kohteesi ovat valitsemalla Presets-valikosta.</p>
+<p>Kun olet valmis, sinulla pitäisi olla oma karttasi, joka on samankaltainen kuin sivulla sample.osm avaamamme kartta.</p>
+</div></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/openstreetmap-suomeksi/index">Yhteisöllisen kartanteon löytäminen</a></li>
+<li><a href="/openstreetmap-suomeksi/ch002_tervetuloa-openstreetmapin-kayttajaksi">Tervetuloa OpenStreetMapin käyttäjäksi</a></li>
+<li><a href="/openstreetmap-suomeksi/ch003_tasta-kirjasta">Tästä kirjasta</a></li>
+<li Class="booki-section">Aloittaminen</li><li><a href="/openstreetmap-suomeksi/ch005_ensimmainen-muokkauksesi">Ensimmäinen muokkauksesi</a></li>
+<li><a href="/openstreetmap-suomeksi/ch006_tiedon-keraaminen">Tiedon kerääminen GPS-vastaanottimella</a></li>
+<li><a href="/openstreetmap-suomeksi/ch007_tiedon-keraaminen-paperilla-ja-kynalla">Tiedon kerääminen paperilla ja kynällä</a></li>
+<li><a href="/openstreetmap-suomeksi/ch008_karttojen-jakaminen">Karttojen jakaminen</a></li>
+<li Class="booki-section">OpenStreetMapin editoiminen</li><li><a href="/openstreetmap-suomeksi/ch010_johdanto-openstreetmapin-editointiin">Johdanto OpenStreetMapin editointiin</a></li>
+<li><a href="/openstreetmap-suomeksi/ch011_editointi-potlatch-2-editorilla">Editointi Potlatch 2 -editorilla</a></li>
+<li><a href="/openstreetmap-suomeksi/ch012_editointi-josmilla">Johdanto editointiin JOSMilla</a></li>
+<li><a href="/openstreetmap-suomeksi/ch013_osm-kartan-editointi-josmilla">OSM-kartan editointi JOSMilla</a></li>
+<li><a href="/openstreetmap-suomeksi/ch014_viela-lisaa-josmia">Vielä lisää JOSMia</a></li>
+<li><a href="/openstreetmap-suomeksi/ch015_editointi-mobiilieditoreilla">Editointi mobiilieditoreilla</a></li>
+<li Class="booki-section">Tee kartasta omasi</li><li><a href="/openstreetmap-suomeksi/ch017_ota-openstreetmap-mukaasi">Ota OpenStreetMap mukaasi</a></li>
+<li><a href="/openstreetmap-suomeksi/ch018_openstreetmapin-tietomalli">OpenStreetMapin tietomalli</a></li>
+<li Class="booki-section">Lisätietoa</li><li><a href="/openstreetmap-suomeksi/ch020_tutkimusmatka-openstreetmap-yhteisoon">Tutkimusmatka OpenStreetMap-yhteisöön</a></li>
+<li><a href="/openstreetmap-suomeksi/ch021_hyodylliset-verkkosivut-ja-lahteet">Hyödylliset verkkosivut ja lähteet</a></li>
+<li><a href="/openstreetmap-suomeksi/ch022_tekijat">Tekijät</a></li>
+</ul>

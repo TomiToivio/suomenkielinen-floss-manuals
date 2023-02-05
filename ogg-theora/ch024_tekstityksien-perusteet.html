@@ -1,0 +1,74 @@
+<div id="main-content"><h1>Tekstityksien perusteet</h1>
+<p><span class="Apple-style-span" style="font-family: trebuchet, verdana, sans-serif; font-size: 12px; font-weight: normal; letter-spacing: normal; line-height: 17px;">Useimmissa videoissa on ihmisiä, jotka puhuvat tietyllä kielellä; jotta näistä videoista saataisiin käytettäviä ja ymmärrettäviä globaalille yleisölle, video täytyy tekstittää tai dubata. Tekstitykset on paljon helpompi tehdä: äänen dubbaus vaatii aikaa ja kokemusta ohjelmista, mutta tekstitykset voit tehdä pelkällä videosoittimella ja tekstieditorilla. </span></p>
+<p><img title="subtitle_example_image_en" src="_booki/ogg-theora/static/TheoraCookbook-Subtitles-subtitle_example_image_en-fi.jpg" alt="subtitle_example_image_en" width="500" height="365"></p>
+<h2>Tekstityksien etsiminen</h2>
+<p>Ennen tekstitysprojektin aloittamista kannattaa etsiä netistä olemassa olevia tekstitystiedostoja, varsinkin jos video on tunnettu tai kaupallinen työ. Esimerkiksi, jos liität kohtauksen amerikkalaisesta dokumenttielokuvasta videoon, on olemassa resursseja, joista voit etsitä tekstityksiä tälle materiaalille. Kuitenkin on vaikea löytää valmiita tekstityksiä muille kuin tunnetuille videoille tai elokuville, ja avoimen lisenssin tekstityksiä on vielä vaikeampi löytää.</p>
+<p>On muutamia seikkoja, joihin törmää helposti etsiessään tekstityksiä. Elokuvista on melkein aina monta erilaista versiota. Voidaan kuvitella, että mikä tahansa ylimääräinen kohtaus, pidennetyt alkutekstit, tai formaatin muutos voi muuttaa tekstityksien ajastusta, mikä yleensä tekee tekstityksistä hyödyttömiä. On siis tärkeää etsiä tietyn elokuvaversion ääneen sopivia tekstityksiä. On olemassa vapaita ohjelmistotyökaluja, kuten Sub Downloader (<a href="http://www.subdownloader.net/" target="_blank">http://www.subdownloader.net/</a>), joka helpottaa ongelmaa sovittamalla tekstitykset tiettyihin elokuvaversioihin. Toinen ongelma on tekstitystiedoston formaatti. On olemassa erilaisia formaatteja erilaisille videotyypeille ja erilaisille fyysisen median tyypeille (HD, DVD, Blu Ray jne.), mikä vaikuttaa tekstityksien valintaan tietylle filmille.  <br><br>Tässä on resursseja tekstityksien löytämiseen:</p>
+<ul><li>OpenSubtitles.org: <a href="http://www.opensubtitles.org/en%20">http://www.opensubtitles.org/en</a></li>
+<li>TinyTM: <a href="http://tinytm.sourceforge.net/%20" target="_blank">http://tinytm.sourceforge.net/ </a></li>
+<li>DivX Subtitles: <a href="http://www.divxsubtitles.net/" target="_blank">http://www.divxsubtitles.net/</a> </li>
+<li>AllSubs.org <a href="http://www.allsubs.org%20/" target="_blank">http://www.allsubs.org </a></li>
+</ul><h2>Tekstitystiedostojen formaatit</h2>
+<p>Tekstitystiedoston formaatti tarkentaa tiedoston formaatin (teksti tai kuva), joka sisältää tekstitykset ja ajastustiedot. Jotkin tekstiin pohjautuvat formaatit mahdollistavat tyylitietojen tarkentamisen, kuten värien tai tekstityksen sijainnin.</p>
+<p>Tässä on joitain tekstitystiedostojen formaatteja:</p>
+<ol><li>Micro DVD (.sub) - tekstiin perustuva formaatti, jossa on videoruutuun perustuva ajoitus, ja ei tekstin tyyliä.</li>
+<li>Sub Rip (.srt) - tekstiin perustuva formaatti, jossa on videon kestoon perustuva ajoitus, eikä tekstin tyyliä.</li>
+<li>VOB Sub (.sub, .idx) - kuvaan perustuva formaatti, käytetään yleensä DVD:ssä.</li>
+<li>Sub Station Alpha / Advanced Sub Station (.ssa, .ass) - tekstiin perustuva formaatti, jossa on videon pituuden mukainen ajoitus, ja tekstin tyyli- ja metadatatietoattribuutit.</li>
+<li>Sub Viewer (.sub) - tekstiin perustuva formaatti, jossa on videon pituuteen perustuva ajoitus, tekstin tyyli- ja metadatatietoattribuutit.</li>
+</ol><p>Me keskitymme vain tekstitysformaattiin Sub Rip (.srt), jota tukevat useimmat videosoittimet ja tekstityseditorit. SRT -tiedostoja voi myös editoida tekstieditoreilla, tai kehittyneemmillä ohjelmilla, kuten Jubler, GnomeSubtitle, Gaupol tai SubtitleEditor.</p>
+<h2>SRT-tiedostojen editointi</h2>
+<p>SRT-tekstitystiedosto on vain tekstitiedosto, joka on formatoitu yksinkertaisella tavalla, jotta soitin voi lukea sen ja esittää tekstitykset silloin, kun ne pitäisi toistaa videossa. SRT on hyvin yksinkertainen, laajalti käytetty tekstitysformaatti. Jos löydät olemassaolevan SRT-tiedoston videolle, joka sinun täytyy tekstittää, on helppoa luoda tekstitykset muille kielille, kun tiedät kuinka SRT-tiedosto toimii.</p>
+<p>SRT-tiedosto on lista rivejä, jotka näyttävät tältä:</p>
+<pre>  1
+  00:03:05,260 --&gt; 00:03:07,920
+  Hei maailma.
+</pre>
+<p>Ensimmäinen rivi on tekstityksen numero, joka alkaa numerosta 1 ja jatkuu niin pitkälle kuin tarvitaan. Seuraava rivi on aika, jolloin tekstitys ilmestyy ja katoaa videossa, ja se on merkitty muotoon tunnit:minuutit:sekuntit,millisekuntit. Kolmas rivi ja sen jälkeen tulevat rivit ensimmäiseen tyhjään riviin asti ovat varsinainen tekstitys. Yksi tyhjä rivi tarvitaan merkitsemään tekstin loppumista. Voit lisätä kuinka monta kolmoisriviä tahansa, niin monta kuin tarvitset videoosi.</p>
+<p>Edellisessä esimerkissä se tarkoittaa vain, että ensimmäinen tekstitys ilmestyy ajankohtana 3 minuuttia ja 5,26 sekuntia, katoaa kohdassa 3 minuuttia ja 7,92 sekuntia, ja tekstinä on "Hei maailma". Siinäpä se.</p>
+<h2>Uuden tekstityksen luominen</h2>
+<p>Luodaksesi uuden tekstitystiedoston tahdot ehkä kehittyneemmän työkalun, jolla on helppo liittää tekstitykset tiettyihin kohtiin videossa. Jubler, GnomeSubtitle, Gaupol ja SubtitleEditor ovat kaikki vapaita ohjelmistotyökaluja ja tsekkaamisen arvoisia.  </p></div><ul Class="menu-goes-here"><li Class="booki-section">JOHDANTO</li><li><a href="/ogg-theora/index">OGG THEORA</a></li>
+<li><a href="/ogg-theora/ch002_tasta-kayttooppaasta">TÄSTÄ KÄYTTÖOPPAASTA</a></li>
+<li><a href="/ogg-theora/ch003_mita-video-on">MITÄ VIDEO ON?</a></li>
+<li><a href="/ogg-theora/ch004_mita-theora-on">MITÄ THEORA ON?</a></li>
+<li Class="booki-section">PERUSKÄSITTEET</li><li><a href="/ogg-theora/ch006_mika-on-koodekki">MIKÄ ON KOODEKKI?</a></li>
+<li><a href="/ogg-theora/ch007_sailot">SÄILÖT</a></li>
+<li Class="booki-section">TOISTO</li><li><a href="/ogg-theora/ch009_theoran-toistaminen">THEORAN TOISTAMINEN</a></li>
+<li><a href="/ogg-theora/ch010_toisto-vlclla">TOISTO VLC:LLÄ</a></li>
+<li><a href="/ogg-theora/ch011_miro">MIRO</a></li>
+<li Class="booki-section">THEORA VERKOSSA</li><li><a href="/ogg-theora/ch013_theora-verkossa">THEORA VERKOSSA</a></li>
+<li><a href="/ogg-theora/ch014_html5">HTML5</a></li>
+<li><a href="/ogg-theora/ch015_theora-sivuillasi">THEORA SIVUILLASI</a></li>
+<li><a href="/ogg-theora/ch016_hotelleja-theoralle">HOTELLEJA THEORALLE</a></li>
+<li Class="booki-section">ENKOODAUS</li><li><a href="/ogg-theora/ch018_johdanto-enkoodaukseen">JOHDANTO ENKOODAUKSEEN</a></li>
+<li><a href="/ogg-theora/ch019_firefogg">FIREFOGG</a></li>
+<li><a href="/ogg-theora/ch020_enkoodaus-vlclla">ENKOODAUS VLC:LLÄ</a></li>
+<li><a href="/ogg-theora/ch021_enkoodaus-ffmpeg2theoralla">ENKOODAUS FFMPEG2THEORALLA </a></li>
+<li><a href="/ogg-theora/ch022_thoggen">THOGGEN</a></li>
+<li Class="booki-section">TEKSTITYKSET</li><li><a href="/ogg-theora/ch024_tekstityksien-perusteet">TEKSTITYKSIEN PERUSTEET</a></li>
+<li><a href="/ogg-theora/ch025_jakelu">JAKELU</a></li>
+<li><a href="/ogg-theora/ch026_tekstityksien-liittaminen">TEKSTITYKSIEN LIITTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch027_tekstityksien-toistaminen">TEKSTITYKSIEN TOISTAMINEN</a></li>
+<li><a href="/ogg-theora/ch028_julkaiseminen">JULKAISEMINEN</a></li>
+<li Class="booki-section">SUORATOISTO</li><li><a href="/ogg-theora/ch030_suoratoiston-perusteet">SUORATOISTON PERUSTEET</a></li>
+<li><a href="/ogg-theora/ch031_icecast">ICECAST</a></li>
+<li><a href="/ogg-theora/ch032_tss">TSS</a></li>
+<li><a href="/ogg-theora/ch033_ffmpeg2theora-streamaus">FFMPEG2THEORA-STREAMAUS</a></li>
+<li><a href="/ogg-theora/ch034_suoratoisto-vlc-ohjelmalla">VLC-STREAMAUS</a></li>
+<li><a href="/ogg-theora/ch035_virtaustoiston-tallentaminen">VIRTAUSTOISTON TALLENTAMINEN</a></li>
+<li Class="booki-section">EDITOINTI</li><li><a href="/ogg-theora/ch037_johdanto-editointiin">JOHDANTO EDITOITIIN</a></li>
+<li><a href="/ogg-theora/ch038_pitivi">PITIVI</a></li>
+<li Class="booki-section">ESIKATSELU</li><li><a href="/ogg-theora/ch040_kuinka-esikatselua-kaytetaan">ESIKATSELUN KÄYTTÖ</a></li>
+<li><a href="/ogg-theora/ch041_tee-esikatselukuvia">TEE ESIKATSELUKUVIA</a></li>
+<li><a href="/ogg-theora/ch042_tee-diaesitys">TEE DIAESITYS</a></li>
+<li><a href="/ogg-theora/ch043_tee-esikatseluvideo">TEE ESIKATSELUVIDEO</a></li>
+<li Class="booki-section">EDITOINTI KOMENTORIVILTÄ</li><li><a href="/ogg-theora/ch045_komentorivi">THEORA JA KOMENTORIVI</a></li>
+<li><a href="/ogg-theora/ch046_theoran-teoria">THEORAN TEORIA</a></li>
+<li><a href="/ogg-theora/ch047_tiedoston-jakaminen">TIEDOSTON JAKAMINEN</a></li>
+<li><a href="/ogg-theora/ch048_tiedoston-leikkaaminen">TIEDOSTON LEIKKAAMINEN</a></li>
+<li><a href="/ogg-theora/ch049_tiedostojen-liittaminen">TIEDOSTOJEN LIITTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch050_tiedostojen-yhdistaminen">TIEDOSTOJEN YHDISTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch051_koon-muuttaminen">KOON MUUTTAMINEN</a></li>
+<li><a href="/ogg-theora/ch052_oggin-analysoiminen">OGGIN ANALYSOIMINEN</a></li>
+<li Class="booki-section">TEKIJÄT</li><li><a href="/ogg-theora/ch054_tekijat">TEKIJÄT</a></li>
+</ul>

@@ -1,0 +1,158 @@
+<div id="main-content"><h1>Ogg-tiedostojen analysoiminen</h1>
+<div id="content">
+<p>On olemassa joukko työkaluja, joilla voi analysoida Ogg-tiedostoja. Nämä ovat paketeissa <strong>Vorbis tools</strong>, <strong>oggz tools</strong> ja <strong>Ogg Video Tools</strong>. Aivan kuin editoinnin työkalut, nämä työkalut voivat sisältää päällekkäisiä toimintoja, tässä keskitymme kuitenkin tarjolla olevien työkalujen normaaliin käyttöön ja käyttöalueisiin.</p>
+<p>Tässä keskustellaan seuraavista työkaluista:</p>
+Paketista <strong>Vorbis tools</strong>: <br><ul><li>ogginfo</li>
+</ul>
+Paketista <strong>oggz tools</strong>: <br><ul><li>oggz-info</li>
+<li>oggz-comment</li>
+<li>oggz-validate</li>
+<li>oggz-sort</li>
+<li>oggz-dump</li>
+<li>oggz-sort</li>
+</ul>
+Paketista <strong>Ogg Video Tools</strong>: <br><ul><li>oggDump</li>
+<li>oggLength</li>
+</ul><h2>Tietoa Ogg-tiedostosta</h2>
+<p>Jos tahdot saada tietoa tiedoston sisällä saatavilla olevista striimeistä ja näiden striimien luonteesta, käytä <strong>ogginfo</strong> tai <strong>oggz-info</strong>.</p>
+<p>$ oggz-info big_buck_bunny_480p_stereo-small.ogv Content-Duration: 00:09:56.384 Theora: serialno 0000020573 9546 packets in 6797 pages, 1.4 packets/page, 1.037% Ogg overhead Video-Framerate: 16.000 fps Video-Width: 320 Video-Height: 240 Vorbis: serialno 0000003594 18641 packets in 576 pages, 32.4 packets/page, 1.412% Ogg overhead Audio-Samplerate: 16000 Hz Audio-Channels: 2</p>
+<p>Printattu ulostulo on tässä lista Ogg-tiedostossa saatavilla olevista striimeistä ja striimien parametreistä (esimerkiksi Theorassa videon kuvan koko ja kuvataajuus ja kanavanumero, Vorbisissa näytetaajuus ja kanavanumero).</p>
+<p><strong>ogginfo</strong> jopa printtaa vielä yksityiskohtaisempaa tietoa, kuten versiotiedot ja kaiken tiedon, jota on saatavilla videon ja audion otsikkotpaketeista, kuten kuvan ja äänen otsikkopaketeista, esimerkiksi kuvan kokosuhde tai väriavaruudet. </p>
+<p><strong>oggz-info</strong> voi kertoa sinulle enemmän Ogg-tiedostosta. Varsinkin <strong>-a</strong> -optio kertoo sinulle vielä yksityiskohtaisempaaa tietoa tiedostostasi. Kuitenkin tämä tieto on pääasiassa tilastollista.</p>
+<p>Lukeaksesi tai editoidaksesi kommenttikenttiä, jotka tulevat jokaisen striimin mukana Ogg-tiedostossa. Tätä varten oggz-työkalut tarjovat <strong>oggz-comment</strong> komentorivityökalun.</p>
+<p>Esimerkkiä kommenttien printtaamisesta.</p>
+<pre>$ oggz-comment -l big_buck_bunny_480p_stereo-small.ogg
+Theora: serialno 0000020573
+	Vendor: Xiph.Org libTheora I 20081020 3 2 1
+	ENCODER: oggvideotools-0.8-win32
+Vorbis: serialno 0000003594
+	Vendor: Xiph.Org libVorbis I 20090514
+	ENCODER: oggvideotools-0.8
+</pre>
+<p>Lisätäksesi kommentin, lisää "Tag=Value" -pari komentorivin loppuun.</p>
+<pre>$ oggz-comment big_buck_bunny_480p_stereo-small.ogg -o bigbuck_comment.ogv \ "LICENCE=Creative Commons CC-BY-SA"
+
+$ oggz-comment -l bigbuck_comment.ogv
+Theora: serialno 0000020573
+	Vendor: Xiph.Org libTheora I 20081020 3 2 1
+	ENCODER: oggvideotools-0.8-win32
+	LICENCE: Creative Commons CC-BY-SA
+Vorbis: serialno 0000003594
+	Vendor: Xiph.Org libVorbis I 20090514
+	ENCODER: oggVideoTools 0.8
+	LICENCE: Creative Commons CC-BY-SA
+</pre>
+<p>Voit lisätä kommentin vain yhteen tarjolla olevaan striimiin tai poistaa kommentteja. Ole hyvä ja katso apusivuja näistä kehittyneemmistä vaihtoehdoista.</p>
+<h2>Ogg-tiedoston yksityiskohtainen analyysi</h2>
+<p>Kehittäjien on usein hyödyllistä katsoa streamia itseään ja analysoida, onko Ogg-tiedosto yhteensopiva Ogg-standardin kanssa.</p>
+<p>Tiedoston validoimiseksi voit käyttää komentorivityökalua <strong>oggz-validate</strong>:</p>
+<pre>$ oggz-validate input.ogv
+input.ogv: Error:
+serialno 1101839243: Terminal header page has non-zero granulepos
+serialno 1101839243: Terminal header page contains non-header segment
+</pre>
+<p>Varsin yleinen ongelma on, että <strong>oggz-validate</strong> voi raportoida huonosti järjesteltyjä Ogg-tiedostoja. Nämä toimivat yleensä, mutta voivat aiheuttaa ongelmia, kuten ajoittaista pysähtelyä, tai lisätä muistin käyttöä. Työkalu <strong>oggz-sort </strong>voi auttaa korjaamaan nämä järjestysongelmat:</p>
+<pre>$ oggz-sort -o output.ogv input.ogv
+</pre>
+<p>Paljon tarkempi kuva saadaan työkaluilla <strong>oggz-dump</strong> ja <strong>oggDump</strong>. Molemmat näistä työkaluista kirjoittavat yksityiskohtaista ulostulotietoa konsoliin.</p>
+<p><strong>oggz-dump</strong> voi tuoda pakettien ulostulon kaikista tai joistain erityisistä striimeistä annetun Ogg-tiedoston sisällä.</p>
+<pre>$ oggz-dump myfile.ogv
+[ ... ]
+    0b40: 6f13 abc9 f3ac 9dc2 cec5 9c62 0e70 1fab  o..........b.p..
+    0b50: f891 01a8 0633 430e 308a 6f8c 86c3 131a  .....3C.0.o.....
+    0b60: 3ab6 840d edab e79f fe24 a4              :.. .....$.
+
+00:00:32.104: serialno 0938763527, calc. gpos 513664, packetno 1022: 269 bytes
+    0000: 3eb7 e92b 50b4 0028 a93c 8bc4 0039 0948  &gt;..+P..(.&lt;...9 H
+    0010: 1d58 0000 0080 5f03 db01 ee92 2482 48dd  .X...._.....$.H.
+    0020: d73f 2562 feeb de81 94fe 75fb b7ff decf  .?%b......u.....
+    0030: 18c0 b830 619f b6c5 cf0d 00f3 b5f5 bbbd  ...0a.... ......
+[ ... ]</pre>
+<p>Komennon <strong>oggDump</strong> avulla voit päättää, jos tahdot nähdä sivut tai pakettitiedot Ogg-tiedostosta asettamalla <strong>-p</strong> (paketti) tai <strong>-g</strong> (sivu) option. Edelleenkin voit spesifioida striimin detaljitason käyttämällä -l (detail) asetusta. Detaljit voidaan asettaa arvosta 1 (ei yksityiskohtia) arvoon 5 (eniten yksityiskohtia):</p>
+<pre>$ oggDump -l3 -g myVideo.ogv
+[ ... ]
+Ogg Page: header length = 42 and body length = 3600
+Header Information:
+        Ogg Version      : 0
+        Serial No        : 0x37f46507
+        Packet Type      : fresh packet
+        Page Type        : normal page
+        Last Page        : normal page
+        Granule Position : 0(0x0)
+        Page Number      : 1
+        Checksum         : 0x5ced317c
+        Table Segments   : 15
+
+Segments:
+ 67 ff ff ff ff ff ff ff ff ff ff ff ff ff b6
+
+Header Hex dump:
+ 4f 67 67 53 00 00 00 00 00 00 00 00 00 00 07 65
+ f4 37 01 00 00 00 7c 31
+
+[ ... ]
+
+</pre>
+<h2>Vinkkejä ja temppuja</h2>
+<p>Tämä osuus listaa joitain hyödyllisiä tapoja, joilla voi käyttää useita yllä kuvattuja työkaluja.</p>
+<h3>Striimin ajallinen kesto</h3>
+<p>Videon ajallisen pituuden saamiseksi selville voit käyttää komentoa <strong>oggz-info</strong> tai <strong>ogginfo</strong>, mutta tässä tapauksessa joudut hankkimaan informaation skriptillä ulostulon kautta. <strong>oggLength</strong> antaa sinulle toisen tavan saada pituus ulos suoraan, jotta voit käyttää sitä helpommin.</p>
+<p><strong>Luo Ogg Vorbis -tiedosto, joka on täynnä hiljaisuutta, ja sopii täsmälleen videoon</strong><em> </em></p>
+<pre>$ oggSilence -l`oggLength videoFile.ogv` -o audioSilence.oga</pre>
+<h3>Äänileikkeen luominen videon osasta</h3>
+<p>Nämä kaksi komentoa tallentavat lyhyen viiden sekunnin äänileikkeen kohdasta, joka alkaa videon kestettyä 40 sekuntia.</p>
+<pre>$ oggz-rip -c vorbis video.ogv -o temp.ogg
+$ oggz-chop -s 40 -e 45 -o soundbyte.ogg temp.og</pre>
+<h3>Lisätään tekstitykset striimin sisään</h3>
+<p>Oletko tehnyt saksankielisen tekstityksen englanninkieliseen videoon, jonka löysit netistä?</p>
+<pre>$ kateenc -t srt -l de -c SUB -o subtitles.ogg subtitles.srt
+$ oggz-merge -o video-with-german-subtitles.ogv original-video.ogv subtitles.ogg</pre>
+<h3>Kaikkien striimin pakettien saaminen hyvin pakattuna</h3>
+<p> </p>
+<pre>$ oggz-dump video.ogv | grep packetno | less</pre>
+<p>00:00:00.437: serialno 0000020573, calc. gpos 0|7, packetno 10: 414 bytes 00:00:00.500: serialno 0000020573, calc. gpos 0|8, packetno 11: 692 bytes 00:00:00.562: serialno 0000020573, calc. gpos 0|9, packetno 12: 600 bytes 00:00:00.625: serialno 0000020573, granulepos 0|10, packetno 13: 859 bytes 00:00:00.687: serialno 0000020573, calc. gpos 0|11, packetno 14: 700 bytes 00:00:00.750: serialno 0000020573, calc. gpos 0|12, packetno 15: 1.154 kB 00:00:00.812: serialno 0000020573, calc. gpos 0|13, packetno 16: 878 bytes 00:00:00.875: serialno 0000020573, granulepos 0|14, packetno 17: 1.342 kB 00:00:00.000: serialno 0000003594, calc. gpos 0, packetno 3: 118 bytes 00:00:00.032: serialno 0000003594, calc. gpos 512, packetno 4: 115 bytes 00:00:00.064: serialno 0000003594, calc. gpos 1024, packetno 5: 127 bytes</p>
+</div></div><ul Class="menu-goes-here"><li Class="booki-section">JOHDANTO</li><li><a href="/ogg-theora/index">OGG THEORA</a></li>
+<li><a href="/ogg-theora/ch002_tasta-kayttooppaasta">TÄSTÄ KÄYTTÖOPPAASTA</a></li>
+<li><a href="/ogg-theora/ch003_mita-video-on">MITÄ VIDEO ON?</a></li>
+<li><a href="/ogg-theora/ch004_mita-theora-on">MITÄ THEORA ON?</a></li>
+<li Class="booki-section">PERUSKÄSITTEET</li><li><a href="/ogg-theora/ch006_mika-on-koodekki">MIKÄ ON KOODEKKI?</a></li>
+<li><a href="/ogg-theora/ch007_sailot">SÄILÖT</a></li>
+<li Class="booki-section">TOISTO</li><li><a href="/ogg-theora/ch009_theoran-toistaminen">THEORAN TOISTAMINEN</a></li>
+<li><a href="/ogg-theora/ch010_toisto-vlclla">TOISTO VLC:LLÄ</a></li>
+<li><a href="/ogg-theora/ch011_miro">MIRO</a></li>
+<li Class="booki-section">THEORA VERKOSSA</li><li><a href="/ogg-theora/ch013_theora-verkossa">THEORA VERKOSSA</a></li>
+<li><a href="/ogg-theora/ch014_html5">HTML5</a></li>
+<li><a href="/ogg-theora/ch015_theora-sivuillasi">THEORA SIVUILLASI</a></li>
+<li><a href="/ogg-theora/ch016_hotelleja-theoralle">HOTELLEJA THEORALLE</a></li>
+<li Class="booki-section">ENKOODAUS</li><li><a href="/ogg-theora/ch018_johdanto-enkoodaukseen">JOHDANTO ENKOODAUKSEEN</a></li>
+<li><a href="/ogg-theora/ch019_firefogg">FIREFOGG</a></li>
+<li><a href="/ogg-theora/ch020_enkoodaus-vlclla">ENKOODAUS VLC:LLÄ</a></li>
+<li><a href="/ogg-theora/ch021_enkoodaus-ffmpeg2theoralla">ENKOODAUS FFMPEG2THEORALLA </a></li>
+<li><a href="/ogg-theora/ch022_thoggen">THOGGEN</a></li>
+<li Class="booki-section">TEKSTITYKSET</li><li><a href="/ogg-theora/ch024_tekstityksien-perusteet">TEKSTITYKSIEN PERUSTEET</a></li>
+<li><a href="/ogg-theora/ch025_jakelu">JAKELU</a></li>
+<li><a href="/ogg-theora/ch026_tekstityksien-liittaminen">TEKSTITYKSIEN LIITTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch027_tekstityksien-toistaminen">TEKSTITYKSIEN TOISTAMINEN</a></li>
+<li><a href="/ogg-theora/ch028_julkaiseminen">JULKAISEMINEN</a></li>
+<li Class="booki-section">SUORATOISTO</li><li><a href="/ogg-theora/ch030_suoratoiston-perusteet">SUORATOISTON PERUSTEET</a></li>
+<li><a href="/ogg-theora/ch031_icecast">ICECAST</a></li>
+<li><a href="/ogg-theora/ch032_tss">TSS</a></li>
+<li><a href="/ogg-theora/ch033_ffmpeg2theora-streamaus">FFMPEG2THEORA-STREAMAUS</a></li>
+<li><a href="/ogg-theora/ch034_suoratoisto-vlc-ohjelmalla">VLC-STREAMAUS</a></li>
+<li><a href="/ogg-theora/ch035_virtaustoiston-tallentaminen">VIRTAUSTOISTON TALLENTAMINEN</a></li>
+<li Class="booki-section">EDITOINTI</li><li><a href="/ogg-theora/ch037_johdanto-editointiin">JOHDANTO EDITOITIIN</a></li>
+<li><a href="/ogg-theora/ch038_pitivi">PITIVI</a></li>
+<li Class="booki-section">ESIKATSELU</li><li><a href="/ogg-theora/ch040_kuinka-esikatselua-kaytetaan">ESIKATSELUN KÄYTTÖ</a></li>
+<li><a href="/ogg-theora/ch041_tee-esikatselukuvia">TEE ESIKATSELUKUVIA</a></li>
+<li><a href="/ogg-theora/ch042_tee-diaesitys">TEE DIAESITYS</a></li>
+<li><a href="/ogg-theora/ch043_tee-esikatseluvideo">TEE ESIKATSELUVIDEO</a></li>
+<li Class="booki-section">EDITOINTI KOMENTORIVILTÄ</li><li><a href="/ogg-theora/ch045_komentorivi">THEORA JA KOMENTORIVI</a></li>
+<li><a href="/ogg-theora/ch046_theoran-teoria">THEORAN TEORIA</a></li>
+<li><a href="/ogg-theora/ch047_tiedoston-jakaminen">TIEDOSTON JAKAMINEN</a></li>
+<li><a href="/ogg-theora/ch048_tiedoston-leikkaaminen">TIEDOSTON LEIKKAAMINEN</a></li>
+<li><a href="/ogg-theora/ch049_tiedostojen-liittaminen">TIEDOSTOJEN LIITTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch050_tiedostojen-yhdistaminen">TIEDOSTOJEN YHDISTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch051_koon-muuttaminen">KOON MUUTTAMINEN</a></li>
+<li><a href="/ogg-theora/ch052_oggin-analysoiminen">OGGIN ANALYSOIMINEN</a></li>
+<li Class="booki-section">TEKIJÄT</li><li><a href="/ogg-theora/ch054_tekijat">TEKIJÄT</a></li>
+</ul>

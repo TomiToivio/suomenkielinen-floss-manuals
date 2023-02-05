@@ -1,0 +1,115 @@
+<div id="main-content"><h1>Draw-metodi</h1>
+<p><span id="result_box"><span>Toistaiseksi olemme luoneet lineaarisia ohjelmia: ohjelma alkaa, se piirtää piirroksemme ja loppuu komentojen loputtua. <br><br></span><span>Processing ei kuitenkaan ole pelkkä piirrosympäristö, se on myös interaktiivinen ympäristö. Interaktiivisuus vaatii aikaa, sillä ympäristö muuttuu ajan kuluessa ja eri seikkojen vaikuttaessa siihen. Tähän tarvitaan loputonta silmukkaa, jota ohjelma kutsuu jatkuvasti päivittääkseen grafiikkaa. Processingissa tämä loputon silmukka on komento draw(). Siihen liittyy usein metodi setup(), joka valmistelee kuvan, esimerkiksi asettamalla sen koon heti alussa. </span><span> <br><br></span><span>Näiden kahden metodin puute tekee Processingista epäaktiivisen. Jos koodissa ei ole metodia draw(), ohjelma loppuu koodin loppuessa. </span></span></p>
+<h2>draw()</h2>
+<p><span id="result_box" class="long_text"><span>Aloita uusi tyhjä Processing-ohjelma, kirjoita seuraavat rivit skripti-ikkunaan, ja paina <strong>play</strong> -nappia:</span></span></p>
+<pre> void draw() {
+    background( random(255) );
+}
+</pre>
+<p><span id="result_box" class="long_text"><span>OK, olet mahdollistanut animaation Processingissa. Sinun pitäisi nähdä ikkuna, joka välähtää 30 kertaa sekunnissa satunnaisessa harmaan sävyssä jossain mustan ja valkoisen välillä. Tämä on metodi random (255), joka antaa satunnaisia arvoja väliltä 0-255. Tämä arvo haetaan sen jälkeen taustalle komennolla backgroun (). Koska kaikki tapahtuu toistuvasti, päivittyy kuva kuin elokuvassa. </span></span></p>
+<p><img title="sketch_Rand" src="_booki/processing-1/static/sketch_Rand-fi.png" alt="sketch_Rand" width="600" height="219"> </p>
+<p><span id="result_box" class="long_text"><span>Oletusarvoisesti komennot, jotka ovat kahden draw-komennon aaltosulun välissä, suoritetaan 30 kertaa sekunnissa. Processing avaa tämän metodin 30 kertaa sekunnissa ja katsoo mitä sisällä on. Voimme laittaa tämän metodin sisään niin monta komentoa kuin tahdomme. Nämä komennot Processing toistaa loputtomasti. </span><span> <br><br></span><span>Varo kirjoitusvirheitä tai Processing lopettaa toiston - mikä on animaatiosi loppu. Jos olet kuitenkin kirjoittanut komennon draw() ilman virheitä, se kutsuu silmukkaa 30 kertaa sekunnissa, kunnes käyttäjä lopettaa ohjelman, sähköt katkeavat, tai maailma loppuu. Niinpä voimme luoda animaatioita tällä koodin luomisen menetelmällä. </span></span></p>
+<h2><span id="result_box" class="long_text"><span>Suoritustaajuus</span></span></h2>
+<p>On mahdollista määritellä eri taajuus käyttämällä metodia frameRate().<span id="result_box" class="long_text"><span> <br></span></span></p>
+<p><span id="result_box" class="long_text"><span>Jos muutat edellistä esimerkkiä seuraavasti, huomaat nopeuden hidastuneen kolmasosaan aiemmasta. </span></span></p>
+<pre>void draw() {
+   frameRate(10);
+   background( random(255) );
+}
+</pre>
+<p> </p>
+<h2><span id="result_box" class="long_text"><span>Kuinka monta kertaa draw () kutsuttiin </span></span></h2>
+<h2> </h2>
+<p><span id="result_box" class="long_text"><span> Processing voi myös laskea kuinka monta kertaa metodi draw () on kutsuttu ohjelman käynnistämisestä alkaen muuttujalla frameCount. <br></span></span></p>
+<p><img title="sketch_frameCount_1" src="_booki/processing-1/static/sketch_frameCount_1-fi.png" alt="sketch_frameCount_1" width="493" height="410"> </p>
+<h2><span id="result_box" class="long_text"><span>setup () </span></span></h2>
+<p><span id="result_box" class="long_text"><span>Usein joudumme myös kirjoittamaan ohjeet vain ohjelman alkuun. Voimme esimerkiksi määritellä kuvan koon vain kerran, ja tätä määritelmää ei sijoiteta komennon draw() alkuun, koska draw() suoritetaan jatkuvasti. Processing anta meille oletusarvoisen kuvan, jonka koko on 100x100 pikseliä, ja voimme muuttaa sen asetuksia. </span><span> <br><br></span><span>Näistä syistä on luotu täydentävä komento: metodi setup(). </span></span></p>
+<pre>void setup() {
+ 
+}
+</pre>
+<p><span id="result_box" class="long_text"><span>Tämän metodin lovien yskittäisten merkkien hienoudet eivät ole tärkeitä tässä vaiheessa. Sinun pitää vain tietää, että alkuun pitää kirjoittaa void setup(), jota seuraa aaltosulku, käyttämäsi komennot, ja lopulta toinen aaltosulku. </span></span></p>
+<pre>void setup() {
+  size(500, 500);
+}
+
+void draw() {
+  background(random(255));
+}
+</pre>
+<p><span id="result_box" class="long_text"><span>Tämän jälkeen Processing katsoo metodin sisälle joka kerralla, kun ohjelma suoritetaan. Kun nämä komennot on suoritettu, Processing kutsuu metodia draw(), joka toistetaan uudestaan ja uudestaan. </span></span></p>
+<p><img title="illustration_draw" src="_booki/processing-1/static/illustration_draw-fi.png" alt="illustration_draw" width="534" height="657"></p>
+<h2>Background()</h2>
+<p><span id="result_box" class="long_text"><span>Tässä on ohjelma, joka täyttää ruudun ellipseillä. </span></span></p>
+<p><img src="_booki/processing-1/static/sketch_background-fi_1.png" alt=""></p>
+<pre>void setup() {
+  size(200, 200);
+  fill(0);
+}
+
+void draw() {
+   ellipse(random(200), random(200), 20, 20);
+}
+</pre>
+<p><span id="result_box" class="long_text"><span>Kuten ruutukaappauksesta näkyy, tämä elokuva täyttää kuvamme kokonaan mustalla. </span><span> <br><br></span><span>Lisää vain ohjelmaan puhdas taustakuva, käyttäen metodia background(). Se ottaa yhdestä kolmeen väriarvoa, kuten metodit fill() tai stroke(). </span><span> <br><br></span><span>Tässä on ohjelman muunnos, jossa näemme nyt yhden animoidun muodon: </span></span></p>
+<pre>void setup() {
+  size(200, 200);
+  fill(0);
+}
+
+void draw() {
+  <strong>background(255); </strong>  ellipse( 100, 100, random(100), random(100));
+}</pre>
+<p><span id="result_box" class="long_text"><span>Todellisuudessa tyhjennämme ruudun 30 kertaa sekunnissa, jonka jälkeen se piirtää ellipsin taustalle. <br></span></span></p>
+<h2><span id="result_box" class="long_text"><span>Lisää sulatus</span></span></h2>
+<p><span id="result_box" class="long_text"><span>Tätä temppua käytetään usein Processingissa. Kuvan tausta pyyhitään, mutta jäljelle jätetään osittain läpinäkyvä neliö, johon piirretään komennolla. </span></span></p>
+<p><img title="Screen_shot_2010_09_10_at_11.57.39_AM_1" src="_booki/processing-1/static/Screen_shot_2010_09_10_at_11-57-39_AM_1-fi.png" alt="Screen_shot_2010_09_10_at_11.57.39_AM_1" width="285" height="302"> </p>
+<pre>void setup() {
+  size(200,200);
+  background(0);
+  noStroke();
+}
+
+void draw() {
+  fill(0, 0, 0, 20);
+  rect(0, 0, 200, 200);
+  fill(255);
+  ellipse(100 + random(-20,20), 100 + random(-20,20), random(50), random(50));
+}
+</pre></div><ul Class="menu-goes-here"><li Class="booki-section">Esittely</li><li><a href="/processing-1/index">Johdanto</a></li>
+<li><a href="/processing-1/ch002_esimerkkeja">Esimerkkejä</a></li>
+<li><a href="/processing-1/ch003_asennus">Asennus</a></li>
+<li Class="booki-section">Perusteet</li><li><a href="/processing-1/ch005_perusteet">Perusteet</a></li>
+<li Class="booki-section">Suunnittelu</li><li><a href="/processing-1/ch007_suunnittelutila">Suunnittelutila</a></li>
+<li><a href="/processing-1/ch008_muodot">Muodot</a></li>
+<li><a href="/processing-1/ch009_varit">Värit</a></li>
+<li><a href="/processing-1/ch010_kuvat">Kuvat</a></li>
+<li><a href="/processing-1/ch011_tekstit">Tekstit</a></li>
+<li Class="booki-section">Interaktiivisuus</li><li><a href="/processing-1/ch013_video">Video</a></li>
+<li><a href="/processing-1/ch014_videon-tuominen">Videon tuominen</a></li>
+<li><a href="/processing-1/ch015_mikrofoni">Mikrofoni</a></li>
+<li><a href="/processing-1/ch016_hiiri">Hiiri</a></li>
+<li><a href="/processing-1/ch017_nappaimisto">Näppäimistö</a></li>
+<li><a href="/processing-1/ch018_tulostaminen">Tulostaminen</a></li>
+<li Class="booki-section">Vienti</li><li><a href="/processing-1/ch020_verkkoon-vieminen">Verkkoon vieminen</a></li>
+<li Class="booki-section">Animaatio</li><li><a href="/processing-1/ch022_aanet">Äänet</a></li>
+<li><a href="/processing-1/ch023_draw-metodi">Draw-metodi</a></li>
+<li><a href="/processing-1/ch024_objektien-animointi">Objektien animointi</a></li>
+<li><a href="/processing-1/ch025_monien-objektien-animointi">Monien objektien animointi</a></li>
+<li><a href="/processing-1/ch026_aikajana">Aikajana</a></li>
+<li Class="booki-section">Ohjelmointi</li><li><a href="/processing-1/ch028_kommentit">Kommentit</a></li>
+<li><a href="/processing-1/ch029_objektit">Objektit</a></li>
+<li><a href="/processing-1/ch030_metodit">Metodit</a></li>
+<li><a href="/processing-1/ch031_listat">Listat</a></li>
+<li><a href="/processing-1/ch032_toistaminen">Toistaminen</a></li>
+<li><a href="/processing-1/ch033_ehdot">Ehdot</a></li>
+<li><a href="/processing-1/ch034_muuttujat">Muuttujat</a></li>
+<li><a href="/processing-1/ch035_muutokset">Muutokset</a></li>
+<li><a href="/processing-1/ch036_rajat">Rajat</a></li>
+<li Class="booki-section">Liitteet</li><li><a href="/processing-1/ch038_yleisia-virheita">Yleisiä virheitä</a></li>
+<li><a href="/processing-1/ch039_ulkoiset-kirjastot">Ulkoiset kirjastot</a></li>
+<li><a href="/processing-1/ch040_dokumentaatio">Dokumentaatio</a></li>
+<li><a href="/processing-1/ch041_arduino">Arduino</a></li>
+<li><a href="/processing-1/ch042_tasta-oppaasta">Tästä oppaasta</a></li>
+<li><a href="/processing-1/ch043_tekijat">Tekijät</a></li>
+</ul>

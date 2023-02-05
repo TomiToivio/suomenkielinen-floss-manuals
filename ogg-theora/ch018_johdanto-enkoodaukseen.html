@@ -1,0 +1,75 @@
+<div id="main-content"><h1>Enkoodauksen perusteet</h1>
+<p>Koodaus merkitsee prosessia, jossa Theora-tiedosto luodaan pakkaamattomasta videon raakamateriaalista. Tässä tapauksessa lähdemateriaali on jossain pakatussa muodossa, väliin tulee koodauksen askel, jota tarvitaan ennen Theora-videon luomista. Tämä koodaus-dekoodaus tunnetaan usein nimellä transkoodaus, tosin tässä kirjassa käytämme synonyyminä termiä koodaus.</p>
+<p>Koodauksen toteuttavia ohjelmia kutsutaan koodaajiksi. Monia Theora-koodaajia on olemassa, esimerkiksi ffmpeg2theora ja VLC, nimetäksemme muutamia. </p>
+<p>Ennen koodausta käyttäjän täytyy päättää ainakin kaksi parametriä:</p>
+<ul><li>luodun Theora-tiedoston kuvan laatu</li>
+<li>äänen laatu </li>
+</ul><p>Käytetystä koodaajasta riippuen enemmän vaihtoehtoja voi olla tarjolla koodausprosessin kontrolloimiseksi:</p>
+<ul><li>kuvaruutujen reunojen leikkaus määritellyn määrän mukaisesti koodauksen aikana</li>
+<li>videon resoluution uudelleenskaalaus</li>
+<li>videon kuvataajuuden muuttaminen</li>
+<li>videon ja äänen synkronisaation käsittely</li>
+<li>avainruutujen välin asettaminen</li>
+</ul><h2>Videon laatu, bittinopeus ja tiedoston koko</h2>
+<p>Useimmat Theora-koodaajat antavat käyttäjän määritellä suoraan koodatun videon subjektiivisen laadun, yleensä skaalalla 0-10. Mitä korkeampi laatu, sitä suurempia ovat tuloksena syntyvät Theora-tiedostot. Useimmat koodaajat voidaan vaihtoehtoisesti konfiguroida koodaamaan annettua keskimääräistä bittinopeutta varten. Vaikka tämä vaihtoehto on käyttökelpoinen Theora-videotiedostojen luomiseen striimausta varten, se tuottaa alle optimaalista laatua ja sitä pitäisi välttää.</p>
+<p>Uusimmat versiot joistain Theora-koodaajista sisältävät 2-pass koodauksen. 2-pass koodaus antaa koodaajan asettaa määritellyn kohdebittinopeuden, jossa on optimaalinen videolaatu, ja sen pitäisi siten olla samassa tasossa laatuvalvotun koodauksen kanssa, mutta ottaa kaksinkertaisen koodausajan. 2-passs -koodauksella luodut videot eivät ehkä sovi striimaukseen.</p>
+<h2>Videon resoluutio ja kuvataajuus</h2>
+<p>On monta syytä, joiden vuoksi luomasi Theora-videon resoluution tulis olla lähdevideota pienempi:</p>
+<ul><li>Jos koodaaja tuottaa liian suuria tiedostoja, jopa matalalaatuisilla asetuksilla nollan ympärillä</li>
+<li>Jos vaadittu tiedoston maksimikoko vaatii hyvin matalia laatuasetuksia (0-3), mikä johtaa liian huonoon näkyvään laatuun</li>
+<li>Jos koodatun videon toiston tulisi toimia jopa matalatehoisilla tietokoneilla</li>
+<li>Jos lähdevideomateriaalisi resoluutio on suurempi kuin perustarkkuuden videoilla; Theoran videokoodekkia ei ole suunniteltu korkean tarkkuuden videoon eikä tee sitä kovin hyvin.</li>
+</ul><p>Jos lähdevideomateriaalisi resoluutio on epätavallisen matala, voit säästää bitit, videon resoluution nostaminen koodauksen aikana voi vaikuttaa positiivisesti videon yleiseen laatuun. </p>
+<p>Kuvataajuuden säätäminen koodauksen aikana on yleensä huono idea, se johtaa nykimiseen ja madaltaa havaittavaa laatua paljon. Jos kuitenkin tahdot hyvin matalan kohdetiedoston laadun, yritä vähentää kuvataajuutta täsmälleen puoleen lähdetiedoston kuvataajuudesta. Tällöin tiedostokoko voi pienentyä tarpeeksi pudottamatta videolaatua liian alhaiseksi.</p>
+<h2>Videoruutujen klippaus</h2>
+<p>Joskus videon lähdemateriaali ei käytä kokonaisia videoruutuja, kuten mustien rajojen jättämistä videon ympärille. On hyvä idea poistaa mustat tai muuten käyttämättömät osat videosta, koska tämä yleensä parantaa koodatun Theora -tiedoston laatua ja tiedostokokoa. Jos mahdollista, yritä pitää videon leveys ja korkeus 16:sta kertoimina. Theora-formaatti kykenee varastoimaan satunnaisten ruutukokojen videota muttei ole siinä kovinkaan hyvä.</p>
+<h2>Videon ja äänen synkronisaatio</h2>
+<p>Täydellisessä maailmassa koodaaja kopioisi lähdevideomateriaalin videon ja äänen synkronisaation luotuun Theora-tiedostoon. Käytännössä tämä ei vain ole aina mahdollista. Theora-videotiedostojen täytyy pysyä kiinni jatkuvassa ruudussa koko tiedoston läpi. Ääniraitojen äänentoiston nopeus ei myöskään ole jatkuva Theorassa. Jotkin lähdevideoiden kuvataajuus voi kuitenkin vaihdella. Joskus ruutuja puuttuu lähdevideosta nauhoitusvirheiden vuoksi tai johtuen videoleikkausohjelmien käytöstä.</p>
+<p>Näissä tapauksissa koodausprosessin täytyy aktiivisesti säätää äänen ja videon synkronisaatiota. Tämä tehdään joko kahdentamalla tai pudottamalla ruutuja videosta, tai muuttamalla audioraitojen nopeutta.</p>
+<h2>Avainruutujen väli</h2>
+<p>Monet Theora-koodaajat sallivat avairuutujen väliksi kutsutun parametrin muuttamisen. Suurempi avainruutujen väli kutistaa kohdetiedoston kokoa uhraamatta laatua. Avainruudut ovat ne ruudut videossa, joihin soitin voi hakeutua suoraan toiston aikana. Jos videossa on 24 ruutua sekunnissa, avainruutujen väli 240 merkitsee, että etsiminen on mahdollista vain 10 sekunnin jyvityksellä. Leikkauksen ja liittämisen jälkeen koodattu video on rajoittunut avainruutujen jyvitykseen.</p>
+<p>Peukalosääntönä ei saa koskaan asettaa avainruutujen väliä yli kymmenen kertaa kohdevideon kuvataajuutta suuremmaksi.</p></div><ul Class="menu-goes-here"><li Class="booki-section">JOHDANTO</li><li><a href="/ogg-theora/index">OGG THEORA</a></li>
+<li><a href="/ogg-theora/ch002_tasta-kayttooppaasta">TÄSTÄ KÄYTTÖOPPAASTA</a></li>
+<li><a href="/ogg-theora/ch003_mita-video-on">MITÄ VIDEO ON?</a></li>
+<li><a href="/ogg-theora/ch004_mita-theora-on">MITÄ THEORA ON?</a></li>
+<li Class="booki-section">PERUSKÄSITTEET</li><li><a href="/ogg-theora/ch006_mika-on-koodekki">MIKÄ ON KOODEKKI?</a></li>
+<li><a href="/ogg-theora/ch007_sailot">SÄILÖT</a></li>
+<li Class="booki-section">TOISTO</li><li><a href="/ogg-theora/ch009_theoran-toistaminen">THEORAN TOISTAMINEN</a></li>
+<li><a href="/ogg-theora/ch010_toisto-vlclla">TOISTO VLC:LLÄ</a></li>
+<li><a href="/ogg-theora/ch011_miro">MIRO</a></li>
+<li Class="booki-section">THEORA VERKOSSA</li><li><a href="/ogg-theora/ch013_theora-verkossa">THEORA VERKOSSA</a></li>
+<li><a href="/ogg-theora/ch014_html5">HTML5</a></li>
+<li><a href="/ogg-theora/ch015_theora-sivuillasi">THEORA SIVUILLASI</a></li>
+<li><a href="/ogg-theora/ch016_hotelleja-theoralle">HOTELLEJA THEORALLE</a></li>
+<li Class="booki-section">ENKOODAUS</li><li><a href="/ogg-theora/ch018_johdanto-enkoodaukseen">JOHDANTO ENKOODAUKSEEN</a></li>
+<li><a href="/ogg-theora/ch019_firefogg">FIREFOGG</a></li>
+<li><a href="/ogg-theora/ch020_enkoodaus-vlclla">ENKOODAUS VLC:LLÄ</a></li>
+<li><a href="/ogg-theora/ch021_enkoodaus-ffmpeg2theoralla">ENKOODAUS FFMPEG2THEORALLA </a></li>
+<li><a href="/ogg-theora/ch022_thoggen">THOGGEN</a></li>
+<li Class="booki-section">TEKSTITYKSET</li><li><a href="/ogg-theora/ch024_tekstityksien-perusteet">TEKSTITYKSIEN PERUSTEET</a></li>
+<li><a href="/ogg-theora/ch025_jakelu">JAKELU</a></li>
+<li><a href="/ogg-theora/ch026_tekstityksien-liittaminen">TEKSTITYKSIEN LIITTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch027_tekstityksien-toistaminen">TEKSTITYKSIEN TOISTAMINEN</a></li>
+<li><a href="/ogg-theora/ch028_julkaiseminen">JULKAISEMINEN</a></li>
+<li Class="booki-section">SUORATOISTO</li><li><a href="/ogg-theora/ch030_suoratoiston-perusteet">SUORATOISTON PERUSTEET</a></li>
+<li><a href="/ogg-theora/ch031_icecast">ICECAST</a></li>
+<li><a href="/ogg-theora/ch032_tss">TSS</a></li>
+<li><a href="/ogg-theora/ch033_ffmpeg2theora-streamaus">FFMPEG2THEORA-STREAMAUS</a></li>
+<li><a href="/ogg-theora/ch034_suoratoisto-vlc-ohjelmalla">VLC-STREAMAUS</a></li>
+<li><a href="/ogg-theora/ch035_virtaustoiston-tallentaminen">VIRTAUSTOISTON TALLENTAMINEN</a></li>
+<li Class="booki-section">EDITOINTI</li><li><a href="/ogg-theora/ch037_johdanto-editointiin">JOHDANTO EDITOITIIN</a></li>
+<li><a href="/ogg-theora/ch038_pitivi">PITIVI</a></li>
+<li Class="booki-section">ESIKATSELU</li><li><a href="/ogg-theora/ch040_kuinka-esikatselua-kaytetaan">ESIKATSELUN KÄYTTÖ</a></li>
+<li><a href="/ogg-theora/ch041_tee-esikatselukuvia">TEE ESIKATSELUKUVIA</a></li>
+<li><a href="/ogg-theora/ch042_tee-diaesitys">TEE DIAESITYS</a></li>
+<li><a href="/ogg-theora/ch043_tee-esikatseluvideo">TEE ESIKATSELUVIDEO</a></li>
+<li Class="booki-section">EDITOINTI KOMENTORIVILTÄ</li><li><a href="/ogg-theora/ch045_komentorivi">THEORA JA KOMENTORIVI</a></li>
+<li><a href="/ogg-theora/ch046_theoran-teoria">THEORAN TEORIA</a></li>
+<li><a href="/ogg-theora/ch047_tiedoston-jakaminen">TIEDOSTON JAKAMINEN</a></li>
+<li><a href="/ogg-theora/ch048_tiedoston-leikkaaminen">TIEDOSTON LEIKKAAMINEN</a></li>
+<li><a href="/ogg-theora/ch049_tiedostojen-liittaminen">TIEDOSTOJEN LIITTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch050_tiedostojen-yhdistaminen">TIEDOSTOJEN YHDISTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch051_koon-muuttaminen">KOON MUUTTAMINEN</a></li>
+<li><a href="/ogg-theora/ch052_oggin-analysoiminen">OGGIN ANALYSOIMINEN</a></li>
+<li Class="booki-section">TEKIJÄT</li><li><a href="/ogg-theora/ch054_tekijat">TEKIJÄT</a></li>
+</ul>

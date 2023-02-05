@@ -1,0 +1,67 @@
+<div id="main-content"><h1>Tekstieditorit</h1>
+<p>Yksinkertaisten komentojen, kuten <code>ls</code> ja <code>grep</code>, lisäksi voit käyttää komentoriviä aloittaaksesi laajoja, monimutkaisia ohjelmia. Ennen kuin graafiset käyttöliittymät olivat yleisiä, ohjelmat suunniteltiin käyttämään pelkkää tekstiä ja valtaamaan koko ruutu. Nykyisin nämä ohjelmat toimivat samassa ikkunassa, jossa käytät komentoriviä.</p>
+<p>Tässä kirjassa keskitymme tekstieditoreihin, koska tarvitset niitä tallentaaksesi komentosi myöhempään käyttöön ja kirjoittaaksesi skriptejä. Ne ovat käyttökelpoisia myös moniin muihin tarkoituksiin: tahdot ehkä editoida HTML-tiedostoja verkkopalvelimella käyttäen tekstieditoria.</p>
+<h2>Tekstinkäsittelyohjelma vai tekstieditori</h2>
+<p>Miltei jokainen tietokoneen käyttäjä on tutustunut tekstinkäsittelyohjelmaan. Avointen ohjelmien maailma tarjoaa monia tehokkaita tekstinkäsittelyohjelmia, joihin kuuluu OpenOffice.org ja KWrite. Tässä kirjassa esittelemämme tekstieditorit muokkaavat tekstiä, aivan kuin tekstinkäsittelyohjelmat, mutta niissä on olennainen ero.</p>
+<ul><li>Tekstinkäsittelyohjelmat tallentavat paljon enemmän kuin tekstin merkkien virran, jonka näet ruudulla. Ne tarjovat "rikasta tekstiä", jossa on tarjolla kursiivi ja lihavointi, numerointi ja luettelomerkit, värit - mitä tahansa haluatkin. Tämä on selvästi hyödyllistä monissa tapauksissa. Pelkkään tekstiin perustuva ansioluettelo ei innosta monia työnantajia.</li>
+<li>Toisaalta tekstinkäsittelyohjelmat näyttävät rajansa näinä päivinä: jotkin tekstinkäsittelyohjelmat käyttävät yksityisomistuksessa olevia formaatteja, jotka vaikeuttavat dokumenttien käyttöä muissa ohjelmissa. Itse asiassa et usein voi avata dokumenttia saman tekstinkäsittelyohjelman toisessa versiossa, tai dokumentti näkyy huonosti.</li>
+<li>Monista ihmisistä verkon ryhmätyökalut (kuten wikiohjelma, jolla tämä käyttöopas on kirjoitettu) ja sisällönhallintajärjestelmät (kuten monet blogiohjelmistot) ovat helppokäyttöisempiä nykyaikaiseen dokumentintuotantoon kuin tekstinkäsittelyohjelma. Tekstinkäsittelyohjelmat kehittyvät kuitenkin tukemaan yhteistyötä paremmin: luultavasti nämä kaikki työkalut yhdistyvät ajan myötä ja muuttuvat joksikin paremmaksi, kuin mikään aiempi vaihtoehto.</li>
+</ul><p> </p>
+<p>Tekstinkäsittelyohjelmat, wikit, sisällönhallintajärjestelmät ja tekstieditorit ovat kaikki tarpeellisia eri tarkoituksiin. Tämän kirjan toimenpiteet vaativat tekstieditoria. Jos tahdot käyttää tekstinkäsittelyohjelmaa näiden tiedostojen käsittelyyn voit tehdä niin, mutta varmista, että valitset tavallisen tekstimuodon, kun tallennat tiedoston.</p>
+<h3> </h3>
+<h2>Miksi tarvitset tekstieditorin?</h2>
+<p> </p>
+<p>GNU/Linux on hyvin tiedostokeskeinen käyttöjärjestelmä: kaikki on tiedostoa (tai näyttää tiedostolta). Kaikki peruskonfiguraatio tehdään tarkkaan laadituilla tekstitiedostoilla, jotka ovat oikeassa paikassa oikealla sisällöllä. Voit löytää monia graafisia työkaluja GNU/Linux-koneesi konfigurointiin, mutta useimmat niistä vain muokkaavat teksitiedostoja puolestasi.</p>
+<p>Noissa tekstitiedostoissa on tarkka syntaksi, jota joudut seuraamaan. Yksinkertainen väärässä paikassa oleva merkki voisi asettaa järjestelmäsi vaaraan, joten tekstinkäsittelyohjelman käyttö tähän tarkoitukseen ei ole ainoastaan huono idea, vaan voisi myös sotkea tiedostosi ylimääräisellä muotoilutiedolla. Konfiguraatiotiedostot eivät tarvitse kursiivia tai lihavointia, ne tarvitsevat vain oikeat tiedot.</p>
+<p>Lähdekoodin kanssa on kyse samasta asiasta. Kääntäjät (ohjelmat jotka muuttavat koodia muiksi ohjelmiksi) ovat hyvin tarkkoja syntaksin kanssa. Jotkin niistä välittävät jopa tietyn komennon sijainnista rivillä. Tekstinkäsittelyohjelmat sotkevat tekstin sijainnin riveillä aivan liian pahasti, että kääntäjä voisi pitää niistä. Tarvitset selkeän kuvan siitä, mitä lähdekoodissa tai konfiguraatiotiedostossa on tietääksesi, mitä kirjoitat, sillä järjestelmäsi saa täsmälleen saman tekstin sisäänsä.</p>
+<p>Jotkin editorit menevät vieläkin pidemmälle: niistä tulee kehitysympäristöjä (englanniksi Integrated Development Environments, IDE), jotka eivät ainoastaan ymmärrä mitä kirjoitat (olipa kyse Apachen konfiguraatiotiedostosta tai Java-koodista), mutta voivat ennustaa mitä olet kirjoittamassa, ehdottaa muutoksia ja näyttää virheesi. Ne voivat värittää tietyt avainsanat, sijoittaa asiat automaattisesti oikeisiin paikkoihin ja niin edelleen.</p>
+<p>Mutta tärkeintä on, että kaikki nuo värit ja korostukset tehdään vain näytöllä. Nämä hienot muutokset eivät siirry tekstitiedostoihin, jotka on tarkoitettu olemaan pelkkää tekstiä. Tämä on erityisen hyödyllinen ominaisuus, jota tekstinkäsittelyohjelmat eivät voi tehdä, ja se on kaikkein olennaisinta tekstieditorin toiminnassa. </p>
+<h2>Miksi useimmat tekstieditorit ovat komentoriviohjelmia?</h2>
+<p>Alussa oli komentorivi. Kaksikymmentä vuotta sitten ei ollut moniakaan graafisia käyttöliittymiä ja Unix oli jo täysikasvuinen käyttöjärjestelmä, joka toimi lukemattomilla hyvin tärkeillä tietokoneilla. Kaikki konfiguraatiot oli jo tallennettu tekstitiedostoihin yksinkertaisuusperiaatteen vuoksi. Unix käytti yksinkertaisuusperiaatetta paljon ja tekstitiedostojen käytöstä tehtiin yksinkertaisempaa antamalla ohjelmien toimia yhteistyössä tekstitiedostojen kanssa. Putket (merkin | käyttö) ovat yksi tehokas tapa käyttää ohjelmia yhteistyössä, kuten olet nähnyt tässä kirjassa.</p>
+<p>Nykyisin tietokoneilla on tuhansia kertoja enemmän tehoja kuin noilla vanhoilla koneilla, mutta konfiguraatioiden pitäminen tekstitiedostoissa antaa yhä suuren edun, kun ainoa yhteys palvelimeen on 56-Kbit modeemin kautta ja se on toisessa maassa. Graafisen käyttöliittymän avaaminen ei välttämättä olisi mahdollista, ja jos se olisi ainoa tapa ratkaista ongelma, olisit pulassa.</p>
+<p>Konfiguraatioita muokkaavien graafisten ohjelmien tekeminen oli suuri kehitysaskel, koska keskimääräinen käyttäjä voi nyt muuttaa asioita lukematta tuhansia sivuja dokumentaatiota ja ei hajota järjestelmää helposti kirjoittamalla yhden väärän kirjaimen kohtaan, jossa virhettä ei voi korjata, mutta tekstitiedoston ja komentoriviltä toimivan tekstieditorin tarjoaminen on olennaista jokaiselle käyttöjärjestelmälle.</p>
+<p>Vaikka useimmat tekstieditorit tulevat komentorivin maailmasta, useimmilla on nykyisin myös graafinen käyttöliittymä. Valikot ja nappulat auttavat paljon Gvimiä tai Emacsia käyttäessä. GEdit ja Kate (joka on täysin graafinen) ovat lyhyitä ja yksinkertaisia, mutta tarjoavat yhä saman perustoiminnallisuuden ja samat tärkeät ominaisuudet tekstieditointia varten.</p>
+<h2>Oletustekstieditorin asettaminen</h2>
+<p>Koska pääte ja komentorivi ovat niin sidottuja tekstieditoreihin, monet komennot voivat avata sinulle tekstieditorin. Näimme esimerkiksi <code>sudoedit</code>-komennon osassa "Hyödyllisiä kustomointeja". Voit asettaa oletuseditorin asettamalla joko ympäristömuuttujan EDITOR tai VISUAL. Esimerkiksi: </p>
+<pre>$<strong> export EDITOR=emacs</strong></pre>
+<p>Laita tämä asetustiedostoon kuten <em>./bashrc</em>, ja komennot käyttävät valitsemaasi editoria, kun ne näyttävät editoitavan tiedoston.</p></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/komentorivin-perusteet/index">Ota komento</a></li>
+<li Class="booki-section">Perusteet</li><li><a href="/komentorivin-perusteet/ch003_aloittaminen">Käytön aloittaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch004_syntaksi">Syntaksi</a></li>
+<li><a href="/komentorivin-perusteet/ch005_ympariinsa-siirtyminen">Ympäriinsä siirtyminen</a></li>
+<li><a href="/komentorivin-perusteet/ch006_tiedostorakenne">Tiedostorakenne</a></li>
+<li Class="booki-section">Komennot</li><li><a href="/komentorivin-perusteet/ch008_peruskomennot">Peruskomennot</a></li>
+<li><a href="/komentorivin-perusteet/ch009_jarjestelmanvalvojat">Järjestelmänvalvoja</a></li>
+<li><a href="/komentorivin-perusteet/ch010_useammat-tiedostot">Useammat tiedostot</a></li>
+<li><a href="/komentorivin-perusteet/ch011_kirjoita-vahemman">Kirjoita vähemmän</a></li>
+<li Class="booki-section">Keskivaikeita komentoja</li><li><a href="/komentorivin-perusteet/ch013_putkitus">Putkitus</a></li>
+<li><a href="/komentorivin-perusteet/ch014_komentohistoria">Komentohistoria</a></li>
+<li><a href="/komentorivin-perusteet/ch015_standarditiedostot">Standarditiedostot</a></li>
+<li Class="booki-section">Kehittyneempiä komentoja</li><li><a href="/komentorivin-perusteet/ch017_kayttooikeudet">Käyttöoikeudet</a></li>
+<li><a href="/komentorivin-perusteet/ch018_interaktiivinen-muokkaus">Interaktiivinen muokkaus</a></li>
+<li><a href="/komentorivin-perusteet/ch019_poistumisen-tarkastaminen">Poistumisen tarkastaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch020_alikomennot">Alikomennot</a></li>
+<li><a href="/komentorivin-perusteet/ch021_hakemistot">Hakemistot</a></li>
+<li><a href="/komentorivin-perusteet/ch022_kustomisointi">Kustomisointi</a></li>
+<li><a href="/komentorivin-perusteet/ch023_parametrien-korvaaminen">Parametrien korvaaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch024_gnuscreen">GNUScreen</a></li>
+<li><a href="/komentorivin-perusteet/ch025_ssh">SSH</a></li>
+<li><a href="/komentorivin-perusteet/ch026_ohjelmien-asentaminen">Ohjelmien asentaminen</a></li>
+<li Class="booki-section">Tekstieditorit</li><li><a href="/komentorivin-perusteet/ch028_tekstieditorit">Tekstieditorit</a></li>
+<li><a href="/komentorivin-perusteet/ch029_nano">Nano</a></li>
+<li><a href="/komentorivin-perusteet/ch030_vi-ja-vim">Vi ja Vim</a></li>
+<li><a href="/komentorivin-perusteet/ch031_emacs">Emacs</a></li>
+<li><a href="/komentorivin-perusteet/ch032_kedit">Kedit</a></li>
+<li><a href="/komentorivin-perusteet/ch033_gedit">Gedit</a></li>
+<li Class="booki-section">Skriptaus</li><li><a href="/komentorivin-perusteet/ch035_skriptaus">Skriptaus</a></li>
+<li><a href="/komentorivin-perusteet/ch036_skriptien-huoltaminen">Skriptien huoltaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch037_muut-kielet">Muut kielet</a></li>
+<li><a href="/komentorivin-perusteet/ch038_sed">Sed</a></li>
+<li><a href="/komentorivin-perusteet/ch039_awk">AWK</a></li>
+<li><a href="/komentorivin-perusteet/ch040_saannolliset-lausekkeet">Säännölliset lausekkeet</a></li>
+<li><a href="/komentorivin-perusteet/ch041_perl">Perl</a></li>
+<li><a href="/komentorivin-perusteet/ch042_ruby">Ruby</a></li>
+<li><a href="/komentorivin-perusteet/ch043_python">Python</a></li>
+<li Class="booki-section">Komennot nopeasti</li><li><a href="/komentorivin-perusteet/ch045_komentojen-pikaopas">Komentojen pikaopas</a></li>
+<li Class="booki-section">Liitteet</li><li><a href="/komentorivin-perusteet/ch047_tasta-kayttooppaasta">Tästä käyttöoppaasta</a></li>
+<li><a href="/komentorivin-perusteet/ch048_tekijat">Tekijät</a></li>
+</ul>

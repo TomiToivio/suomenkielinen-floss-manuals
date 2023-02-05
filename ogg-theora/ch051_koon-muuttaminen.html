@@ -1,0 +1,95 @@
+<div id="main-content"><h1>OggResize</h1>
+<div id="content">
+<p>Komentorivin työkalu <strong>oggResize</strong> voi muuttaa ogg-tiedoston (ogg, oga tai ogv) leveyttä ja korkeutta eri tavoilla. Kuitenkin se käsittelee vain Ogg Theora ja Vorbis -striimejä. oggResizen etu muihin työkaluihin verrattuna on, että se muokkaa vain striimit, joita täytyy muuttaa. Striimit, jotka eivät tarvitse muunnosta, jäävät vaille vaikutuksia.</p>
+<p>oggResize voi muuttaa <strong>videoruudun kokoa</strong>, videon tai audion <strong>datataajuutta</strong> tai videon <strong>kuvataajuutta</strong> tai äänen <strong>näytetaajuutta</strong>.</p>
+<p>Se voi myös lisätä <strong>kommentteja</strong> mihin tahansa striimiin ja voi sisältää <strong>PNG-kuvia,</strong>joissa on alfa-kanava, joten ne renderöidään videoon milloin tahansa ennen tai jälkeen koon muuttamisen. </p>
+<p> </p>
+Komento:<strong> </strong> <br><pre><strong>oggResize [optiot] inputfile.ogv outputfile.ogv</strong></pre>
+<p> </p>
+<p>Mahdolliset optiot ovat:</p>
+<p><em>-s</em> ⁞ asettaa videoruudun koon. Koko annetaan muodossa <em>&lt;levets&gt;x&lt;korkeus&gt;</em>. Oletuskoko on 480x320. <br>Oletuksena videoruudun suhteet pidetään samoina, joten jos uuden videoruudun koko ei sovi suhteisiin, oggResize lisää mustat rajay ylös, alas, oikealle ja vasemmalle, jotta se sopii uusiin kokosuhteisiin.</p>
+<p>jos tahdot venyttäää videoruudut uuteen kokoon, käytä -t -optiota.</p>
+<p><em>Esimerkki: -s 320x240</em></p>
+<p><em>-d</em> asettaa bittinopeuden bitteinä sekunneissa videokoodaajaa (theora) varten. Tämän on tarkoitus olla ylempi sietokynnys. Tiedosto voi siis olla oletettua pienempi. Jos sitä ei ole asetettu, alkuperäisen striimin bittinopeutta käytetään. </p>
+<p><em>Esimerkki: -d 1024000</em></p>
+<p><em>-D</em> asettaa bittinopeuden bitteinä sekunnissa audiokoodaajaa (vorbis) varten. Jos sitä ei ole asetettu, alkuperäisen striimin bittinopeutta käytetään. </p>
+<p><em>Esimerkki: -D 64000</em></p>
+<p><em>-f</em>  asettaa videon ruutunopeuden numeraattorilla ja denominaattorilla, ja on ruutuja sekunnissa. Jos vain yhtä numeroa käytetään, denominaattori on 1. Jos tätä ei aseteta, alkuperäisen videon ruutunopeutta käytetään.</p>
+<p><em>Esimerkki: -f 25:2</em></p>
+<p><em>-F</em> asettaa audiodatan näytetaajuuden Hertzeinä. Jos näytetaajuus ei sovi alkuperäiseen tiedostoon, uudelleensämpläystä käytetään.</p>
+<p><em>Esimerkki: -F 32000</em></p>
+<p>-t jos tämä optio on asetettu, kuvaa venytetään ulostulokokoon. Tässä tapauksessa ulos tulevan videon kuvasuhde ei välttämättä vastaa alkuperäisen videon ruudun kuvasuhdetta. Tämä optio auttaa poistamaan mustat reunat, jotka ilmestyvät, jos alkuperäisen videon ja uuden videon kuvasuhteet eivät sovi yhteen.</p>
+<p><em>Esimerkki: -t</em></p>
+<p>-c lisää kommentteja videon (theora) striimiin. Kommentit ovat muodossa 'tyyppi=arvo'. Useampi kuin yksi kommentti voidaan liittää yhteen puolipisteellä. Suositellaan, että heittomerkkejä (') käytetään, sillä komentorivi voi käyttää puolipistettä jakomerkkinä.</p>
+<p><em>Esimerkki: -c 'AUTHOR=yorn;DATE=03.07.09'</em></p>
+<p>-C lisää kommentteja audion (vorbis) striimiin. Kommentit ovat muodossa 'tyyppi=arvo'. Useampi kuin yksi kommentti voidaan yhdistää puolipisteellä. On suositeltavaa, että heittomerkkejä (') käytetään, sillä komentorivi voi pitää puolipistettä välimerkkinä.</p>
+<p><em>Esimerkki: -C 'AUTHOR=yorn;DATE=03.07.09'</em></p>
+<p>-q asettaa laadun. Arvot voivat olla väliltä 1 (paras laatu, hieman epätarkkuutta) ja 6 (huonoin laatu). Oletusarvo on 2.</p>
+<p><em>Esimerkki: -q1</em></p>
+<p>-p luo esikatselufilmin. Tälle optiolle annettu numero valitsee väliajan valittujen ruutujen välillä, esimerkiksi -p24 merkitsee, että joka 24:s ruutu on valittu, näytetty. Uudelleen luotu video toistuu siis 24 kertaa nopeammin. Tämä optio voidaan yhdistää -f -optioon, joka kontrolloi ruutunopeutta. Molemmilla optiolla voidaan luoda miellyttäviä videoesikatseluita. Jos -p on käytössä, audiostriimi jätetään huomiotta.  </p>
+<p><em>Esimerkki: -p 24</em></p>
+<p>-a lisää kuvan videoruutuun ennen sen koon muuttamista. Kuvan ei tarvitse sopia videoruutuun. Se sijoitetaan aina videoruudun vasempaan yläkulmaan.</p>
+<p><em>Esimerkki: &lt;picture1.png&gt;[,&lt;startTime&gt;[,&lt;endTime&gt;[,s]]] </em></p>
+<p>Oletusarvoinen aloitusaika on 0. Oletusarvoinen lopetusaika on -1. Oletusarvoisesti s ei aseteta. Tässä tapauksessa kuva ei häivy pimeyteen. Jos s on asetettu, kuva häipyy pimeyteen. </p>
+<p>On mahdollista asettaa enemmän kuin yksi kuva videoruutuun. Käytä kaksoispistettä (:) yhdistääksesi ilmaukset. Jos aikajanat ovat päällekkäin, kuvat asetetaan toistensa päälle, jolloin viimeinen kuva on etualan taso.</p>
+<p><em><em>Esimerkki: -a etwas.png,2,7,s:etwasneues.png,5,10</em></em></p>
+<p>-A lisää kuvan videoruutuun sen koon muuttamisen jälkeen.</p>
+<p>Syntaksi on sama kuin ilmaisussa -a -option kanssa.</p>
+<h2>Esimerkkejä</h2>
+<p>Videoruudun koon ja bittinopeuden muutos:</p>
+<pre><em> oggResize -s320x240 -d512000 orig.ogv new.ogv </em></pre>
+<p>Tämä komento muuttaa videotiedoston orig.ogv uudeksi videotiedostoksi new.ogv. Uuden videon ruutukoko on asetettu 320x240 pikseliin ja bittinopeus on asetettu 512 kByte/s. Jos alkuperäisen tiedoston parametrit sopivat uusiin parametreihin, videostriimi on vain kopioitu, ilman datan muuttamista. Jos videon ruutukoko on muuttunut, se on muutettu uuteen kokoon sopivien algoritmien avulla. </p>
+<p>Jos tiedostossa orig.ogv oli audiostriimi, se on kopioitu uuteen tiedostoon.</p>
+<p>Audion bittinopeuden, näytenopeuden ja kanavien määrän muuttaminen:</p>
+<pre><em>oggResize -D64000 -F16000 -N1 orig.ogv new.ogv </em></pre>
+<p>Tämä komento muuttaa vain äänistriimin tiedostosta orig.ogv näytenopeuteen, joka on 16kHz, bittinopeuteen, joka on 64 kBytes/s, ja yksikanavaiseksi. Kuten videon kanssa, äänistriimi koodataan uudelleen, jos annetut parametrit eivät sovi niihin, jotka ovat vorbis-äänistriimissä. Videostriimi kopioidaan sellaisena kuin se on. </p>
+<p>Tämä on hyvin nopea tapa koodata ainoastaan audiostriimi uudelleen, ilman muita proseduureja, kuten ogg-tiedoston striimien jakamista ja uudelleen liittämistä.</p>
+<p>Videoruudun koon muuttaminen, äänen bittinopeuden muuttaminen, kahden kuvan lisääminen videon päälle tietyksi ajanjaksoksi:</p>
+<pre><em>oggResize -s300x200 -D32000 -d1024000 -A etwas.png,2,7,s:etwasneues.png,5,10 \ orig.ogv new.ogv</em></pre>
+<p>Tämä komentorivi muuttaa ääni- ja videostriimin, kuten kuvattu yllä aiemmin mainituissa esimerkeissä.</p>
+<p>Lisäksi se lisää kuvan PNG-muodossa ja alfa-kanavan <strong>etwas.png</strong> videoon kohdasta 2 sekuntia kohtaan 7 sekuntia, pehmeällä sisään- ja uloshäivytyksellä, ja kuva <strong>etwasneues.png</strong> on sijoitettu videoruudun päälle sekunnista 5 sekuntiin 10 ilman mitään feidausta.</p>
+</div></div><ul Class="menu-goes-here"><li Class="booki-section">JOHDANTO</li><li><a href="/ogg-theora/index">OGG THEORA</a></li>
+<li><a href="/ogg-theora/ch002_tasta-kayttooppaasta">TÄSTÄ KÄYTTÖOPPAASTA</a></li>
+<li><a href="/ogg-theora/ch003_mita-video-on">MITÄ VIDEO ON?</a></li>
+<li><a href="/ogg-theora/ch004_mita-theora-on">MITÄ THEORA ON?</a></li>
+<li Class="booki-section">PERUSKÄSITTEET</li><li><a href="/ogg-theora/ch006_mika-on-koodekki">MIKÄ ON KOODEKKI?</a></li>
+<li><a href="/ogg-theora/ch007_sailot">SÄILÖT</a></li>
+<li Class="booki-section">TOISTO</li><li><a href="/ogg-theora/ch009_theoran-toistaminen">THEORAN TOISTAMINEN</a></li>
+<li><a href="/ogg-theora/ch010_toisto-vlclla">TOISTO VLC:LLÄ</a></li>
+<li><a href="/ogg-theora/ch011_miro">MIRO</a></li>
+<li Class="booki-section">THEORA VERKOSSA</li><li><a href="/ogg-theora/ch013_theora-verkossa">THEORA VERKOSSA</a></li>
+<li><a href="/ogg-theora/ch014_html5">HTML5</a></li>
+<li><a href="/ogg-theora/ch015_theora-sivuillasi">THEORA SIVUILLASI</a></li>
+<li><a href="/ogg-theora/ch016_hotelleja-theoralle">HOTELLEJA THEORALLE</a></li>
+<li Class="booki-section">ENKOODAUS</li><li><a href="/ogg-theora/ch018_johdanto-enkoodaukseen">JOHDANTO ENKOODAUKSEEN</a></li>
+<li><a href="/ogg-theora/ch019_firefogg">FIREFOGG</a></li>
+<li><a href="/ogg-theora/ch020_enkoodaus-vlclla">ENKOODAUS VLC:LLÄ</a></li>
+<li><a href="/ogg-theora/ch021_enkoodaus-ffmpeg2theoralla">ENKOODAUS FFMPEG2THEORALLA </a></li>
+<li><a href="/ogg-theora/ch022_thoggen">THOGGEN</a></li>
+<li Class="booki-section">TEKSTITYKSET</li><li><a href="/ogg-theora/ch024_tekstityksien-perusteet">TEKSTITYKSIEN PERUSTEET</a></li>
+<li><a href="/ogg-theora/ch025_jakelu">JAKELU</a></li>
+<li><a href="/ogg-theora/ch026_tekstityksien-liittaminen">TEKSTITYKSIEN LIITTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch027_tekstityksien-toistaminen">TEKSTITYKSIEN TOISTAMINEN</a></li>
+<li><a href="/ogg-theora/ch028_julkaiseminen">JULKAISEMINEN</a></li>
+<li Class="booki-section">SUORATOISTO</li><li><a href="/ogg-theora/ch030_suoratoiston-perusteet">SUORATOISTON PERUSTEET</a></li>
+<li><a href="/ogg-theora/ch031_icecast">ICECAST</a></li>
+<li><a href="/ogg-theora/ch032_tss">TSS</a></li>
+<li><a href="/ogg-theora/ch033_ffmpeg2theora-streamaus">FFMPEG2THEORA-STREAMAUS</a></li>
+<li><a href="/ogg-theora/ch034_suoratoisto-vlc-ohjelmalla">VLC-STREAMAUS</a></li>
+<li><a href="/ogg-theora/ch035_virtaustoiston-tallentaminen">VIRTAUSTOISTON TALLENTAMINEN</a></li>
+<li Class="booki-section">EDITOINTI</li><li><a href="/ogg-theora/ch037_johdanto-editointiin">JOHDANTO EDITOITIIN</a></li>
+<li><a href="/ogg-theora/ch038_pitivi">PITIVI</a></li>
+<li Class="booki-section">ESIKATSELU</li><li><a href="/ogg-theora/ch040_kuinka-esikatselua-kaytetaan">ESIKATSELUN KÄYTTÖ</a></li>
+<li><a href="/ogg-theora/ch041_tee-esikatselukuvia">TEE ESIKATSELUKUVIA</a></li>
+<li><a href="/ogg-theora/ch042_tee-diaesitys">TEE DIAESITYS</a></li>
+<li><a href="/ogg-theora/ch043_tee-esikatseluvideo">TEE ESIKATSELUVIDEO</a></li>
+<li Class="booki-section">EDITOINTI KOMENTORIVILTÄ</li><li><a href="/ogg-theora/ch045_komentorivi">THEORA JA KOMENTORIVI</a></li>
+<li><a href="/ogg-theora/ch046_theoran-teoria">THEORAN TEORIA</a></li>
+<li><a href="/ogg-theora/ch047_tiedoston-jakaminen">TIEDOSTON JAKAMINEN</a></li>
+<li><a href="/ogg-theora/ch048_tiedoston-leikkaaminen">TIEDOSTON LEIKKAAMINEN</a></li>
+<li><a href="/ogg-theora/ch049_tiedostojen-liittaminen">TIEDOSTOJEN LIITTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch050_tiedostojen-yhdistaminen">TIEDOSTOJEN YHDISTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch051_koon-muuttaminen">KOON MUUTTAMINEN</a></li>
+<li><a href="/ogg-theora/ch052_oggin-analysoiminen">OGGIN ANALYSOIMINEN</a></li>
+<li Class="booki-section">TEKIJÄT</li><li><a href="/ogg-theora/ch054_tekijat">TEKIJÄT</a></li>
+</ul>

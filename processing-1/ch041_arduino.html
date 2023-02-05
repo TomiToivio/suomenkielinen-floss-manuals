@@ -1,0 +1,148 @@
+<div id="main-content"><h1>Arduino</h1>
+<p><span id="result_box" class="long_text" lang="en"><span>Arduino on avoin alusta elektroniikkaprototyyppien rakentamiseen. Se on mikrokontrolleri, jossa on sisään- ja ulostuloja, joihin voidaan kytkeä sensoreja ja aktuaattoreita (eli fyysiseen maailmaan vaikuttavia osia). Se sisältää myös ohjelmointiympäristön, joka perustuu Processingiin. Ohjelmointiympäristön avulla voit ohjelmoida elektronista mikrokontrolleria. Arduino on Processingin jatkokehittelyprojekti, se näyttää loogiselta seuraavalta askeleelta, kun tahdotaan kehittää fyysisessä maailmassa toimivaa interaktiivisuutta. Kun olet Processing-taituri, on Arduino sinulle jo tuttu. </span></span></p>
+<h2>Arduino-mikrokontrolleri </h2>
+<p><img title="arduino_board" src="_booki/processing-1/static/arduino_board-fi.png" alt="arduino_board" width="600" height="450"></p>
+<p><span id="result_box" class="long_text" lang="en"><span>Arduino on elektroninen piiri, joka voidaan kytkeä USB:n avulla tietokoneeseen, jolloin mikrokontrolleriin voidaan ladata sitä ohjaava koodi. Mikrokontrolleri on pieni prosessori, jossa on analogisia sisään- ja ulostuloja. Elektroninen laite on vapaa (muttei ilmainen), aivan kuin Arduino-ohjelmistokin. Voimme tutkia sen piirroksia ja suunnitella sen pohjalta kehittyneempiä versioita. </span></span></p>
+<h2>Arduino-ohjelmisto</h2>
+<p><img title="arduino_fenetre_arduino" src="_booki/processing-1/static/arduino_fenetre_arduino-fi.png" alt="arduino_fenetre_arduino" width="498" height="437"></p>
+<p><span id="result_box" class="long_text" lang="en"><span>Mikrokontrolleriin lähettämämme koodi kostuu sarjasta komentoja, jotka käynnistetään, kun Arduinoon kytketään virta. Kun osaat ohjelmoida Arduinoa, voit kytkeä sen Processing-ohjelmaasi. </span></span></p>
+<h2><span id="result_box" class="long_text" lang="en"><span>Virtuaalisen ja fyysisen vuoropuhelu </span></span></h2>
+<p>Sensoreita käytetään mittaamaan fyysistä maailmaa, aktuaattorit voivat tehdä toimenpiteitä fyysiselle maailmalle. Voimme käyttää sensoreita vaikuttamaan Processing-ohjelmaan. Vastaavasti Processing-ohjelma voi käyttää aktuaattoreita vaikuttamaan fyysiseen maailmaan. Ohjelma voisi esimerkiksi lukea meteorologisista sensoreista, liikesensoreista tai yksinkertaisista ohjausnapeista tulevan tiedon. Tämän pohjalta ohjalma voisi hallita fyysiseen maailmaan vaikuttavia valoja, moottoreita ja muita laitteita. Tämä voi rikastaa ihmisten interaktiivista kokemusta.</p>
+<h2>Viestintä</h2>
+<p>Tietokoneet kommunikoivat toistensa kanssa käyttäen sähköisiä impulsseja. Impulssit lähetetään yksi kerrallaan, bittien sarjana. Bitti voi olla tosi tai epätosi. Se on numero yksi tai numero nolla. Bitit ryhmitellään yleensä kahdeksan bitin paketeiksi. Me kutsumme näitä paketeiksi tai tavuiksi. ASCII-merkistöä käyttävä kirjain on esitetty kahdeksalla bitillä. Voimme helposti viestiä Arduinon kanssa käyttäen kirjaimia.</p>
+<p> </p>
+<h2><span id="result_box" class="long_text" lang="en"><span>Esimerkki viestinnästä kirjaimien avulla </span></span></h2>
+<p>Tässä on yksinkertainen esimerkki kirjaimen lähettämisestä ja vastaanotosta Arduinolla. Välilyönnin painaminen kääntää päälle LED-valon Arduinon digitaalisessa ulostulossa 13. Arvot, jotka luetaan analogisesta sisääntulosta 0 muuttavat ohjelman näyttämän suorakulmion kokoa.</p>
+<h2> </h2>
+<p><img title="arduino_fenetre_processing_1" src="_booki/processing-1/static/arduino_fenetre_processing_1-fi.png" alt="arduino_fenetre_processing_1" width="200" height="148"></p>
+<h2><span id="result_box" class="long_text" lang="en"><span>Processing-koodi</span></span></h2>
+<p>Lähettäminen ja vastaanottaminen Processingilla on helppoa, kun käytämme kirjastoa processing.serial. Oikea sarjaporttinumero täytyy määritellä ja samoin oikea lähetysnopeus. Tässä lähetysnopeutemme on 9600 bittiä sekunnissa. <span id="result_box" class="long_text" lang="en"><span> <br><br></span></span></p>
+<pre>/**
+ * Yksinkertainen koodi Arduinon ja Processingin kommunikaatioon
+ */
+import processing.serial.*;
+
+// <strong>Muuta tarvittaessa portin numero</strong>
+int portin_numero = <strong>0</strong>;<strong> </strong>
+Serial porttini; // Sarjaporttia hallinnoiva objekti
+char viimeinen_ulos = ' ';  // Viimeinen lähetetty bitti
+char viimeinen_sisaan = ' ';  // Viimeinen vastaanotettu bitti
+void setup() {
+  size(200, 150);
+  println("Porttilista: \n" + Serial.list());
+  String portin_nimi = Serial.list()[portin_numero];
+  porttini = new Serial(this, portin_nimi, 9600);
+}
+
+void draw() {
+  if (porttini.available() != 0) {
+    // numero muutetaan kirjaimeksi
+    viimeinen_sisaan = char(porttini.read());
+  }
+  background(231);
+  fill(0);
+  text("Viimeinen vastaanotettu tavu: " + viimeinen_sisaan, 10, 50);
+  text("Viimeinen lähetetty tavu: " + viimeinen_ulos, 10, 70);
+  int leveys = int(viimeinen_sisaan - 'a');
+  int kerroin = 5;
+  stroke(0);
+  noFill();
+  rect(10, 90, 26 * kerroin, 10);
+  noStroke();
+  fill(0);
+  rect(10, 90, leveys * kerroin, 10);
+}
+
+void keyPressed() {
+  if (key == ' ') {
+    porttini.write('1');
+    viimeinen_ulos = '1';
+  }
+}
+
+void keyReleased() {
+  if (key == ' ') {
+    porttini.write('0');
+    viimeinen_ulos = '0';
+  }
+}
+</pre>
+<p><span id="result_box" class="long_text" lang="en"><span>Tieto lähetetään yhtenä kirjaimena. Arduinon analogisen sisääntulon 0 lukema muutetaan kirjaimeksi a-z. Menetät hieman tarkkuutta, mutta tämä näyttää hyvin, kuinka kirjaimet koodataan numeroilla.</span></span></p>
+<h2><span id="result_box" class="long_text" lang="en"><span>Koodi Arduinolle </span></span></h2>
+<p>Arduinon puolella esitämme analogisen sisääntulon 0 mittaaman arvon kirjaimella a-z. Arduino sytyttää ulostuloon 13 liitetyn LEDin. Se tulee Arduinon mukana, joten ei ole tarvetta juottaa sitä tai kasata piiriä prototyyppilaudalle. Tämä esimerkki toimii Arduinossa ilman mitään piiriä. Voit kytkeä sisääntuloon 0 analogisen potentiometrin, jos tahdot näyttää jotain muuta kuin hälyä.</p>
+<p><span id="result_box" class="long_text" lang="en"><span>Ladataksesi seuraavan koodin Arduinoon joudut asentamaan Arduino-ohjelman ja opettelemaan sen toiminnan. <br><br></span></span></p>
+<pre>/**
+ * <strong>Tämä koodi täytyy ladata Arduinoon</strong>
+<strong></strong> *
+ * Viestii tietokoneen kanssa lähettääkseen arvon
+ * analogisesta sisääntulosta 0 ja käyttääkseen
+ * ulostuloa numero 13, joka on pieni lamppu. 
+ */
+const int sisaan_analoginen = 0;
+const int ulos_numero = 13;
+int numero = 0;
+
+void setup() {
+  // Viestinopeus = 9600 baudsiaSerial.begin(9600);
+  pinMode(ulos_numero, OUTPUT);
+}
+
+void loop() {
+   char bitti_sisaan;
+   if (Serial.available() &gt; 0) {
+    // Katsotaan saammeko signaalin
+    bitti_sisaan = Serial.read();
+    if (bitti_sisaan == '1') {
+      digitalWrite(ulos_numero, HIGH);
+    } else {
+      digitalWrite(ulos_numero, LOW);
+    }
+   }
+  // Lue analoginen sisääntulo 0:
+  numero = analogRead(sisaan_analoginen);
+  char laheta = 'a' + map(numero, 0, 1023, 0, 25);
+  Serial.print(laheta);
+  // Pieni hengähdystauko
+  delay(10);
+}
+</pre>
+<p><span id="result_box" class="long_text" lang="en"><span>Kun Arduino on kytketty USB-porttiin ja koodi on lähetetty Arduinoon, käynnistä Processing-ohjelma. Kun painat välilyöntiä, ikkunassa näkyy jotain ja Arduino-laudan ulostulon 13 LEDi syttyy palamaan. </span></span></p>
+<p><img title="arduino_led" src="_booki/processing-1/static/arduino_led-fi.jpg" alt="arduino_led" width="600" height="300"></p>
+<p><span id="result_box" class="long_text" lang="en"><span>Tämä koodi muistuttaa Processingin koodia, eikö totta? Tämä Arduinon koodi toimii mikrokontrollerissa, mutta on näin lyhyt! Itse asiassa se ei edes ole Javaa vaan C++ -ohjelmointikieltä. Koska Arduino on kehitetty samalla filosofialla kuin Processing, kehittäjät voivat tehdä kokeiluja elektroniikalla ja mikrokontrollereilla räjäyttämättä päätään. </span></span></p>
+<p>Tällä esimerkillä loimme hyvin yksinkertaisen tiedonsiirtoprotokollan. Kaikki tekemämme on helppo ymmärtää. Tämä ei kuitenkaan ole kovinkaan joustava tai toimiva ratkaisu. Jos tarvitset tehokkaamman protokollan, voit löytää joukon kirjastoja ja esimerkkejä Arduinon sivuilta. Viestiprotokolla Messenger (<a href="http://www.arduino.cc/playground/Code/Messenger">http://www.arduino.cc/playground/Code/Messenger</a>) on aika yksinkertainen ja sopii luultavasti tarpeisiisi.</p></div><ul Class="menu-goes-here"><li Class="booki-section">Esittely</li><li><a href="/processing-1/index">Johdanto</a></li>
+<li><a href="/processing-1/ch002_esimerkkeja">Esimerkkejä</a></li>
+<li><a href="/processing-1/ch003_asennus">Asennus</a></li>
+<li Class="booki-section">Perusteet</li><li><a href="/processing-1/ch005_perusteet">Perusteet</a></li>
+<li Class="booki-section">Suunnittelu</li><li><a href="/processing-1/ch007_suunnittelutila">Suunnittelutila</a></li>
+<li><a href="/processing-1/ch008_muodot">Muodot</a></li>
+<li><a href="/processing-1/ch009_varit">Värit</a></li>
+<li><a href="/processing-1/ch010_kuvat">Kuvat</a></li>
+<li><a href="/processing-1/ch011_tekstit">Tekstit</a></li>
+<li Class="booki-section">Interaktiivisuus</li><li><a href="/processing-1/ch013_video">Video</a></li>
+<li><a href="/processing-1/ch014_videon-tuominen">Videon tuominen</a></li>
+<li><a href="/processing-1/ch015_mikrofoni">Mikrofoni</a></li>
+<li><a href="/processing-1/ch016_hiiri">Hiiri</a></li>
+<li><a href="/processing-1/ch017_nappaimisto">Näppäimistö</a></li>
+<li><a href="/processing-1/ch018_tulostaminen">Tulostaminen</a></li>
+<li Class="booki-section">Vienti</li><li><a href="/processing-1/ch020_verkkoon-vieminen">Verkkoon vieminen</a></li>
+<li Class="booki-section">Animaatio</li><li><a href="/processing-1/ch022_aanet">Äänet</a></li>
+<li><a href="/processing-1/ch023_draw-metodi">Draw-metodi</a></li>
+<li><a href="/processing-1/ch024_objektien-animointi">Objektien animointi</a></li>
+<li><a href="/processing-1/ch025_monien-objektien-animointi">Monien objektien animointi</a></li>
+<li><a href="/processing-1/ch026_aikajana">Aikajana</a></li>
+<li Class="booki-section">Ohjelmointi</li><li><a href="/processing-1/ch028_kommentit">Kommentit</a></li>
+<li><a href="/processing-1/ch029_objektit">Objektit</a></li>
+<li><a href="/processing-1/ch030_metodit">Metodit</a></li>
+<li><a href="/processing-1/ch031_listat">Listat</a></li>
+<li><a href="/processing-1/ch032_toistaminen">Toistaminen</a></li>
+<li><a href="/processing-1/ch033_ehdot">Ehdot</a></li>
+<li><a href="/processing-1/ch034_muuttujat">Muuttujat</a></li>
+<li><a href="/processing-1/ch035_muutokset">Muutokset</a></li>
+<li><a href="/processing-1/ch036_rajat">Rajat</a></li>
+<li Class="booki-section">Liitteet</li><li><a href="/processing-1/ch038_yleisia-virheita">Yleisiä virheitä</a></li>
+<li><a href="/processing-1/ch039_ulkoiset-kirjastot">Ulkoiset kirjastot</a></li>
+<li><a href="/processing-1/ch040_dokumentaatio">Dokumentaatio</a></li>
+<li><a href="/processing-1/ch041_arduino">Arduino</a></li>
+<li><a href="/processing-1/ch042_tasta-oppaasta">Tästä oppaasta</a></li>
+<li><a href="/processing-1/ch043_tekijat">Tekijät</a></li>
+</ul>

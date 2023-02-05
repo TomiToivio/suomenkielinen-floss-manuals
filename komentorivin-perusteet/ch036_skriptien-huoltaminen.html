@@ -1,0 +1,281 @@
+<div id="main-content"><h1>Skriptien ylläpitäminen</h1>
+<p>Siirryt vähitellen ohjelmoinnin puolelle shelliskriptauksen kautta. Nyt on paras aika oppia hyvän ohjelmoijan tapoja. Koska tämä kirja on vain johdanto komentoriviin, käsittelemme muutamia tärkeitä vinkkejä, jotka pyörivät <em>ylläpidettävyyden </em>ympärillä. </p>
+<p>Kun ohjelmoijat puhuvat ylläpidettävyydestä, he puhuvat helppoudesta, jolla ohjelmaa voidaan muutella, olipa sitten kyse virheiden korjauksesta, uusien toimintojen lisäämisestä, tai toimivuuden parantamisesta. Heikosti huollettavat ohjelmat on helppo huomata: niistä puuttuu rakenne, joten toiminnallisuus on levinnyt ympäriinsä. Kun painat tästä, se sekoaakin tuolta, mikä on todellinen painajainen. Yleisesti ottaen niitä on todella vaikea lukea. Ajattele vaikkapa tätä: </p>
+<pre>#!/bin/sh
+identify `find ~/Kuvat/Loma/2008 -name \*.jpg` | cut -d ' ' -f 3 | sort | uniq -c</pre>
+<p>Käytä suosikkieditoriasi tallentaaksesi tämän tiedoston nimellä <em>foo</em>, sitten:</p>
+<pre>$ <strong>chmod +x foo</strong>
+$ <strong>./foo</strong>
+     11 2304x3072
+     12 3072x2304
+</pre>
+<p>Tämä pieni hirviö etsii tietyn hakemiston tiedostot, jotka loppuvat päätteeseen ".jpg", ajaa komennon <code>identify</code> niille kaikille, ja raportoi sellaista tietoa, joka on jonkun mielestä ollut jossain vaiheessa erittäin hyödyllistä. Jos ohjelmoija olisi vain lisännyt jotain vihjeitä ohjelman suorittamista toimenpiteistä...</p>
+<h2>Älä käytä pitkiä rivejä</h2>
+<p>Ensinnäkin huomaat, että esimerkissämme heikosti ylläpidettävä ohjelma on yksi pitkä rivi. Näin ei tarvitse olla. Entäpä, jos ohjelma näyttäisikin tältä:</p>
+<pre>#!/bin/sh
+identify `find ~/Kuvat/Loma/2008 -name \*.jpg` |
+cut -d ' ' -f 3 |
+sort |
+uniq -c
+</pre>
+<p>On hieman helpompaa havaita missä kukin komento alkaa ja loppuu. Se on edelleenkin sama kokoelma putkitettuja ohjelmia, mutta ne on esitetty eri tavalla. Voit katkaista pitkät rivit putkien kohdalta, mutta niiden toiminnallisuus on silti sama.</p>
+<p>Voit myös jakaa yhden komennon useampaan riviin käyttämällä \ -merkkiä rivin lopussa liittämään sen seuraavaan riviin: </p>
+<pre>#!/bin/sh
+echo Tämä \
+     on \
+     oikeasti \
+     yksi \
+     pitkä \
+     komento.
+</pre>
+<h2>Nimeä skriptisi kuvaavilla nimillä</h2>
+<p>Toinen asia, jonka voit havaita, on skriptin nimi "foo". Tämä on lyhyt ja kätevä, mutta se ei tarjoa mitään vinkkiä ohjelman käyttötarkoitukseen. Entäpä tämä:</p>
+<pre>$ <strong>mv foo listaa_kuvien_koot</strong></pre>
+<p>Nyt nimi auttaa käyttäjää ymmärtämään mitä skripti tekee. Paljon parempi, vai mitä?</p>
+<h2>Käytä muuttujia</h2>
+<p>Eräs ongelma ohjelmassa on sen tarkemerkkien (`) käyttö. Se toki toimii, mutta siinä on myös ongelmia. Ehkäpä suurin ongelma on se, jota ei ole helppo huomata: muista, että tarkemerkit laittavat sisältämänsä komennon ulostulon siihen kohtaan ohjelmassa, jossa ne ovat. Joissain ohjelmissa on rajoitettu komentorivin pituus. Tässä tapauksessa määritellyssä hakemistossa voi olla paljon kuvia, jolloin komentorivistä voi tulla epätavallisen pitkä. Tämä aiheuttaa omituisen virheviestin, kun ajat ohjelman. On monia tapoja korjata tämä ongelma, mutta tässä voimme kokeilla seuraavaa:</p>
+<pre>#!/bin/sh
+find ~/Kuvat/Loma/2008 -name \*.jpg |
+while read image ; do identify $image ; done |
+cut -d ' ' -f 3 |
+sort |
+uniq -c
+</pre>
+<p>Nyt <code>find</code> toimii samoin kuin ennen, mutta sen ulostulo, tiedostonimien lista, putkitetaan while-silmukkaan. Tämän silmukan ehto on <code>read image</code>.  <code>read</code> on funktio, joka lukee rivin kerrallaan, jakaa sen sisääntulon kenttiin ja laittaa jokaisen kentän muuttujaan, joka on tässä tapauksessa <em>image</em>.  Nyt <code>identify</code> toimii kuva kerrallaan.</p>
+<p>Huomaa, kuinka muuttujan lisääminen tekee ohjelmasta helpommin luettavan: se sanoo kirjaimellisesti, että tahdot identifioida kuvan. Huomaa lisäksi, kuinka vaikutus tuleviin ohjelmoijiin ei olisi ollut sama, jos muuttujan nimi olisi ollut vaikkapa <em>ovi</em> tai <em>cdrom</em>.  Nimet ovat tärkeitä!</p>
+<p>Mutta tässä ohjelmassa on vieläkin jotain häiritsevää: hakemiston nimi hohtaa kuin kipeä peukalo. Mitä jos muutataisimme ohjelman tällaiseksi:</p>
+<pre>#!/bin/sh
+ALOITUS_HAKEMISTO=~/Kuvat/Loma/2008
+
+find $ALOITUS_HAKEMISTO-name \*.jpg |
+while read image ; do identify $image ; done |
+cut -d ' ' -f 3 |
+sort |
+uniq -c</pre>
+<p>Tämä on hieman parempi: nyt voit muokata skriptiäsi ja muuttaa hakemistoa joka kerta, kun tahdot käsitellä jonkun toisen.</p>
+<h2>Käytä parametreja</h2>
+<p>Loppu ei tuntunut aivan oikealta. Kuitenkaan et muuta komentoa <code>ls</code> aina, kun tahdot listata eri hakemiston sisällön, ethän? Tehdäänpä ohjelmastamme yhtä joustava:</p>
+<pre>#!/bin/sh
+ALOITUS_HAKEMISTO=$1
+
+find $ALOITUS_HAKEMISTO -name \*.jpg |
+while read image ; do identify $image ; done |
+cut -d ' ' -f 3 |
+sort |
+uniq -c</pre>
+<p>Muuttuja <em>$1</em> on ensimmäinen parametri, jonka annat skriptillesi ($0 on ajamasi skriptin nimi).  Nyt voit kutsua skriptiäsi näin:</p>
+<pre>$ <strong>./listaa_kuvien_koot ~/Kuvat/Loma/2008</strong></pre>
+<p>Tai voit listata vuoden 2007 kuvat, jos tahdot: </p>
+<pre>$ <strong>./listaa_kuvien_koot ~/Kuvat/Loma/2007</strong>
+</pre>
+<h2>Tiedä mistä aloittaa</h2>
+<p>Ajattele, mitä tapahtuu, jos ajat skriptin näin:</p>
+<pre>$ <strong>./listaa_kuvien_koot</strong></pre>
+<p>Ehkäpä tahdot tämän, mutta ehkäpä et. Tapahtuu niin, että <em>$1</em> on tyhjä, joten <em>$ALOITUS_HAKEMISTO</em> on myös tyhjä ja ensimmäinen etsittävä parametri on myös tyhjä. Tämä merkitsee, että <em>find </em>etsii nykyisen työhakemistosi. Tahdot ehkä tehdä tästä käytöksestä näkyvää:</p>
+<pre>#!/bin/sh
+if test -n "$1" ; then
+    ALOITUS_HAKEMISTO=$1
+else
+    LOPETUS_HAKEMISTO=.
+fi
+
+find $ALOITUS_HAKEMISTO -name \*.jpg |
+while read image ; do identify $image ; done |
+cut -d ' ' -f 3 |
+sort |
+uniq -c</pre>
+<p>Ohjelma toimii täsmälleen samoin kuin ennenkin, erona on vain se, että kun katsot ohjelmaa seuraavan kerran kuukauden päästä, et joudu arvailemaan, miksi se antaa tuloksia, vaikka et anna sille hakemistoa parametrinä.</p>
+<h2>Katso ensin</h2>
+<p>Entäpä jos annat skriptille parametrin, mutta parametri ei ole hakemisto, tai sitä ei edes ole olemassa? Kokeile.</p>
+<p>Ei kovinkaan kaunista?</p>
+<p>Mitäs jos teemme näin:</p>
+<p> </p>
+<pre>#!/bin/sh
+if test -n "$1" ; then
+    ALOITUS_HAKEMISTO=$1
+else
+    ALOITUS_HAKEMISTO=.
+fi
+
+if ! test -d $ALOITUS_HAKEMISTO ; then
+    exit
+fi
+
+find $ALOITUS_HAKEMISTO -name \*.jpg |
+while read image ; do identify $image ; done |
+cut -d ' ' -f 3 |
+sort |
+uniq -c</pre>
+<p>Toimii paremmin. Nyt skripti ei edes yritä toimia, jos sen saama parametri ei ole hakemisto. Se ei ole kovin kohteliasta, <em>se poistuu hiljaisesti</em> ilman aavistustakaan siitä, mikä meni mynkään. </p>
+<h2>Valita tarvittaessa</h2>
+<p>Se korjataan helposti:</p>
+<pre>#!/bin/sh
+if test -n "$1" ; then
+    ALOITUS_HAKEMISTO=$1
+else
+    ALOITUS_HAKEMISTO=.
+fi
+
+if ! test -d $ALOITUS_HAKEMISTO; then
+    echo \"$ALOITUS_HAKEMISTO\" ei ole hakemisto tai sitä ei ole olemassa. Loppu."
+    exit
+fi
+
+find $ALOITUS_HAKEMISTO -name \*.jpg |
+while read image ; do identify $image ; done |
+cut -d ' ' -f 3 |
+sort |
+uniq -c</pre>
+<h2>Ole varovainen poistuessasi</h2>
+<p>Ohjelma tuottaa nyt virheviestin, jos et anna sille parametrinä olemassaolevaa hakemistoa, ja poistuu ilman jatkotoimenpiteitä. Olisi mukavaa, jos antaisit muiden ohjelmien, jotka ehkä jatkossa kutsuvat ohjelmaasi, tietää että tuloksena oli virheviesti. Ohjelman olisi siis hyvä poistua virhekoodilla. Tähän malliin:</p>
+<p> </p>
+<pre>#!/bin/sh
+if test -n "$1" ; then
+    ALOITUS_HAKEMISTO=$1
+else
+    ALOITUS_HAKEMISTO=.
+fi
+
+if ! test -d $ALOITUS_HAKEMISTO; then
+    echo \"$ALOITUS_HAKEMISTO\" ei ole hakemisto tai sitä ei ole olemassa. Loppu.
+    exit 1
+fi
+
+find $ALOITUS_HAKEMISTO -name \*.jpg |
+while read image ; do identify $image ; done |
+cut -d ' ' -f 3 |
+sort |
+uniq -c</pre>
+<p>Nyt, jos kohdataan virheviesti, skriptisi poistumiskoodi on 1. Jos ohjelma poistuu normaalisti, poistumiskoodi on 0.</p>
+<h2>Käytä kommentteja</h2>
+<p>Mikä tahansa merkkiä <strong>#</strong> samalla rivillä seuraava jätetään huomiotta, joten voit kommentoida skriptisi toimintaa. Esimerkiksi: </p>
+<pre>#!/bin/sh
+# Tämä skripti raportoi kaikkien JPEG-tiedostojen koot nykyisessä hakemistossa
+# tai parametrinä annetussa hakemistossa, sekä jokaisen koon kuvien lukumäärän.
+
+if test -n "$1" ; then
+    ALOITUS_HAKEMISTO =$1
+else
+    ALOITUS_HAKEMISTO=.
+fi
+
+if ! test -d $ALOITUS_HAKEMISTO ; then
+    echo \"$ALOITUS_HAKEMISTO\" ei ole hakemisto tai sitä ei ole olemassa. Loppu.
+    exit 1
+fi
+
+find $ALOITUS_HAKEMISTO -name \*.jpg |
+while read image ; do identify $image ; done |
+cut -d ' ' -f 3 |
+sort |
+uniq -c
+</pre>
+<p> </p>
+<p>Kommentit ovat hyviä, mutta älä kirjoita niitä liikaa. Yritä kirjoittaa ohjelma niin, että koodi itsessään on selkeää. Syy tähän on yksinkertainen: ensi vuonna, kun joku muu muuttaa skriptiäsi, tuo toinen henkilö voisi hyvinkin muuttaa komentoja ja unohtaa kommentit, mikä tekee jälkimmäisesti harhaanjohtavaa. Ajattele tätä: </p>
+<pre># laske kolmeen
+for n in `seq 1 4` ; do echo $n ; done
+</pre>
+<p>Kumpi se on? Kolme vai neljä? Ilmeisesti ohjelma laskee neljään, mutta kommentin mukaan se laskee kolmeen. Voisit ottaa sen kannan, että ohjelma on oikeassa ja kommentti on väärässä. Mutta entäpä, jos ohjelman kirjoittanut henkilö tahtoi laskea kolmeen ja tämä on syy siihen, miksi kommentti on olemassa? Yritetäänpä näin:</p>
+<pre># On kolme pikku porsasta
+for n in `seq 1 3` ; do echo $n ; done</pre>
+<p>Kommentti dokumentoi syyn, jonka vuoksi ohjelma laskee kolmeen: se ei kuvaa ohjelman toimintaa, se kuvaa, mitä ohjelman tulisi tehdä. Kokeillaanpa erilaista lähestymistapaa: </p>
+<pre>PORSAITA =3
+for pig in `seq 1 $PORSAITA` ; do echo $porsas ; done
+</pre>
+<p>Sama tulos, hieman erilainen ohjelma. Jos uudelleenmuotoilet ohjelmasi, voit tehdä niin ilman kommentteja (sivuhuomautuksena hieno sana tämän kaltaisille muutoksille, joita olemme tehneet, on uudelleenfaktorointi, mutta se on tämän kirjan laajuuden ulkopuolella). </p>
+<h2>Varo taikanumeroita</h2>
+<p>Nykyisessä ohjelmassamme on taikanumero, numero joka saa ohjelman toimimaan, mutta kukaan ei tiedä miksi sen täytyy olla juuri tuo numero. Se on taikuutta! </p>
+<pre>...
+cut -d ' ' -f 3 |
+...
+</pre>
+<p>Sinulla on kaksi vaihtoehtoa: kirjoita kommentti ja dokumentoi miksi sen täytyy olla "3" eikä "2" tai "4", tai lisää muuttuja, joka selittää sen nimellään. Kokeillaanpa jälkimmäistä:</p>
+<pre>#!/bin/sh
+# Tämä skripti raportoi kaikkien nykyisen hakemiston tai parametrinä annetun
+# hakemiston alla olevien JPEG-tieodstojen koon ja jokaisen koon kuvien määrän.
+
+if test -n "$1" ; then
+    ALOITUS_HAKEMISTO=$1
+else
+    ALOITUS_HAKEMISTO=.
+fi
+
+if ! test -d $ALOITUS_HAKEMISTO ; then
+    echo \"$ALOITUS_HAKEMISTO\" ei ole hakemisto tai sitä ei ole olemassa. Loppu.
+    exit 1
+fi
+
+KUVAN_KOKO=3
+
+find $ALOITUS_HAKEMISTO -name \*.jpg |
+while read image ; do identify $image ; done |
+cut -d ' ' -f $KUVAN_KOKO |
+sort |
+uniq -c</pre>
+<p>Se parantaa noita asioita hieman; ainakin nyt tiedämme mistä 3 tulee. Jos ImageMagick muuttaa joskus ulostulonsa formaattia, voimme päivittää skriptiä vastaavasti.</p>
+<h2>Toimiko se?</h2>
+<p>Lopuksi muttei viimeiseksi, tarkasta ajamiesi komentojen poistumisstatus. Nykyisessä esimerkissämme ei ole paljon mahdollisuuksia epäonnistumiseen. Kokeillaanpa vielä viimeistä esimerkkiä:</p>
+<pre>#!/bin/sh
+# Kopioi kaikki HTML- ja kuvatiedostot lähdehakemistosta annettuun kohdehakemistoon.
+
+SRC=$1
+DST=$2
+
+if test -z "$SRC" -o -z "$DST" ; then
+    cat&lt;</pre>
+<p>Huomaa, että tässä esimerkissä käytetään monia asioita, jotka olet oppinut tässä kirjassa. Se ei yritä olla täydellinen; voit harjoitella parantelemalla sitä!</p>
+<p>Sinun tulisi huomata, että ohjelma kiinnittää huomiota virhetiloihin, joita eri ohjelmat voivat tuottaa. Esimerkiksi se ei vain kutsu komentoa <code>mkdir</code> nähdäkseen toimiko ohjelma, vaan se tekee näin:</p>
+<pre>if ! mkdir -p "$DST" ; then
+    echo Ei voi luoda päämäärätiedostoa \"$DST\".  Stop.
+    exit 1
+fi
+</pre>
+<p>Se kutsuu komentoa <code>mkdir</code> ehtona komennolle <code>if</code>.  Jos <code>mkdir</code> kohtaa virheen, se poistuu statuksella, joka on jotain muuta kuin 0, ja <code>if</code> -ehto tulkitsee sen epätodeksi tilaksi. "!" on negaatio-operaattori, ja muuttaa sen epätoden todeksi (tai päinvastoin). Niinpä rivi sanoo periaatteesa "aja komento <em>mkdir</em>, muuta virhe arvoksi tosi operaattorilla '!', toimi mikäli virhe on olemassa." Lyhyesti sanottuna, mikäli mkdir kohtaa virheen, ohjelmavirta menee <em>if</em>-lauseen vartaloon. Tämä voisi tapahtua esimerkiksi mikäli käyttäjällä, joka ajaa skriptin, ei ole oikeuksia luoda pyydettyä hakemistoa.</p>
+<p>Huomaa myös merkkien "&amp;&amp;" käyttö varmistamaan virhetilat:</p>
+<pre>mkdir -p "$DST/$dir" &amp;&amp; cp -a "$filename" "$DST/$filename"</pre>
+<p><code>Jos </code><code>mkdir</code> epäonnistuu, komentoa <code>cp</code> ei kutsuta. Edelleenkin, mikäli joko <em>mkdir </em>tai <em>cp </em>epäonnistuu, poistumisstatus on jotain muuta kuin 0. Tuo ehto tarkastetaan seuraavalla rivillä:  </p>
+<pre>if test $? -ne 0 ; then</pre>
+<p>Koska tämä voisi osoittaa jonkin epäonnistuvan hirvittävällä tavalla (esimerkiksi levy on täynnä), meidän on paras luovuttaa ja lopettaa ohjelma.</p>
+<h2>Yhteenveto</h2>
+<p>Skriptien kirjoittaminen on taidetta. Sinusta tulee parempi taiteilija tarkastelemalla edeltäjiesi työtä ja tekemällä paljon itse. Toisin sanottuna: lue paljon skriptejä ja kirjoita itse paljon skriptejä. </p>
+<p>Hauskaa hakkerointia!</p></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/komentorivin-perusteet/index">Ota komento</a></li>
+<li Class="booki-section">Perusteet</li><li><a href="/komentorivin-perusteet/ch003_aloittaminen">Käytön aloittaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch004_syntaksi">Syntaksi</a></li>
+<li><a href="/komentorivin-perusteet/ch005_ympariinsa-siirtyminen">Ympäriinsä siirtyminen</a></li>
+<li><a href="/komentorivin-perusteet/ch006_tiedostorakenne">Tiedostorakenne</a></li>
+<li Class="booki-section">Komennot</li><li><a href="/komentorivin-perusteet/ch008_peruskomennot">Peruskomennot</a></li>
+<li><a href="/komentorivin-perusteet/ch009_jarjestelmanvalvojat">Järjestelmänvalvoja</a></li>
+<li><a href="/komentorivin-perusteet/ch010_useammat-tiedostot">Useammat tiedostot</a></li>
+<li><a href="/komentorivin-perusteet/ch011_kirjoita-vahemman">Kirjoita vähemmän</a></li>
+<li Class="booki-section">Keskivaikeita komentoja</li><li><a href="/komentorivin-perusteet/ch013_putkitus">Putkitus</a></li>
+<li><a href="/komentorivin-perusteet/ch014_komentohistoria">Komentohistoria</a></li>
+<li><a href="/komentorivin-perusteet/ch015_standarditiedostot">Standarditiedostot</a></li>
+<li Class="booki-section">Kehittyneempiä komentoja</li><li><a href="/komentorivin-perusteet/ch017_kayttooikeudet">Käyttöoikeudet</a></li>
+<li><a href="/komentorivin-perusteet/ch018_interaktiivinen-muokkaus">Interaktiivinen muokkaus</a></li>
+<li><a href="/komentorivin-perusteet/ch019_poistumisen-tarkastaminen">Poistumisen tarkastaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch020_alikomennot">Alikomennot</a></li>
+<li><a href="/komentorivin-perusteet/ch021_hakemistot">Hakemistot</a></li>
+<li><a href="/komentorivin-perusteet/ch022_kustomisointi">Kustomisointi</a></li>
+<li><a href="/komentorivin-perusteet/ch023_parametrien-korvaaminen">Parametrien korvaaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch024_gnuscreen">GNUScreen</a></li>
+<li><a href="/komentorivin-perusteet/ch025_ssh">SSH</a></li>
+<li><a href="/komentorivin-perusteet/ch026_ohjelmien-asentaminen">Ohjelmien asentaminen</a></li>
+<li Class="booki-section">Tekstieditorit</li><li><a href="/komentorivin-perusteet/ch028_tekstieditorit">Tekstieditorit</a></li>
+<li><a href="/komentorivin-perusteet/ch029_nano">Nano</a></li>
+<li><a href="/komentorivin-perusteet/ch030_vi-ja-vim">Vi ja Vim</a></li>
+<li><a href="/komentorivin-perusteet/ch031_emacs">Emacs</a></li>
+<li><a href="/komentorivin-perusteet/ch032_kedit">Kedit</a></li>
+<li><a href="/komentorivin-perusteet/ch033_gedit">Gedit</a></li>
+<li Class="booki-section">Skriptaus</li><li><a href="/komentorivin-perusteet/ch035_skriptaus">Skriptaus</a></li>
+<li><a href="/komentorivin-perusteet/ch036_skriptien-huoltaminen">Skriptien huoltaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch037_muut-kielet">Muut kielet</a></li>
+<li><a href="/komentorivin-perusteet/ch038_sed">Sed</a></li>
+<li><a href="/komentorivin-perusteet/ch039_awk">AWK</a></li>
+<li><a href="/komentorivin-perusteet/ch040_saannolliset-lausekkeet">Säännölliset lausekkeet</a></li>
+<li><a href="/komentorivin-perusteet/ch041_perl">Perl</a></li>
+<li><a href="/komentorivin-perusteet/ch042_ruby">Ruby</a></li>
+<li><a href="/komentorivin-perusteet/ch043_python">Python</a></li>
+<li Class="booki-section">Komennot nopeasti</li><li><a href="/komentorivin-perusteet/ch045_komentojen-pikaopas">Komentojen pikaopas</a></li>
+<li Class="booki-section">Liitteet</li><li><a href="/komentorivin-perusteet/ch047_tasta-kayttooppaasta">Tästä käyttöoppaasta</a></li>
+<li><a href="/komentorivin-perusteet/ch048_tekijat">Tekijät</a></li>
+</ul>

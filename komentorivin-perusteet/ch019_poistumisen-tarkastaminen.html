@@ -1,0 +1,111 @@
+<div id="main-content"><h1>Lopputila</h1>
+<p>Kun kirjoitat komentoja, voit yleensä sanoa, toimivatko ne vai eivät. Komennot, jotka eivät voi toteuttaa pyyntöäsi, tulostavat yleensä virheviestin. Tämä riittää, jos kirjoitat jokaisen komennon käsin ja katsot ulostuloa, mutta joskus (jos vaikkapa kirjoitat skriptiä) tahdot komentojesi reagoivan eri tavalla, kun komento epäonnistuu.</p>
+<p>Tämän mahdollistamiseksi komento palauttaa <em>lopputilan</em>. Lopputilaa ei normaalisti näytetä, sen sijaan se sijoitetaan muuttujaan (nimettyyn muistipaikkaan), jonka nimi on "$?". Lopputila on numero väliltä 0 ja 255; nolla merkitsee onnistumista, mikä tahansa muu arvo merkitsee epäonnistumista.</p>
+<p>Yksi tapa nähdä lopputila on käyttää komentoa <code>"echo"</code> sen näyttämiseen:</p>
+<pre>$<strong> echo "tämä toimii hyvin"</strong>
+tämä toimii hyvin
+$<strong> echo $?</strong>
+0
+$<strong> hhhhhh</strong>
+bash: hhhhhh: command not found
+$<strong> echo $?</strong>
+127
+</pre>
+<p>Katsotaanpa virheidenhallinnan eri tapoja.</p>
+<h2>if/then</h2>
+<p>Virheen hallinta on tapa tehdä jotain ehdollisesti: jos (<em>if)</em> jotain tapahtuu, silloin (<em>then</em>) tahdot tehdä toimenpiteitä. Komentotulkki tarjoaa yhdistelmäkomennon - muita komentoja ajavan komennon - jota kutsutaan nimellä <code>"if"</code>. Perusmuoto on:</p>
+<pre><strong>if</strong>
+<strong><em> &lt;komento&gt;</em></strong>
+<strong>then</strong>
+<strong><em> &lt;komennot-jos-onnistuu&gt;</em></strong>
+<strong>fi</strong></pre>
+<p>Aloitamme perusesimerkillä, jonka jälkeen parantelemme sitä tehdäksemme siitä käyttökelpoisemman. Kun olemme kirjoittaneet "<code>if"</code> ja painaneet näppäintä <strong>Enter</strong>, komentotulkki tietää, että olemme yhdistelmäkomennon keskellä, joten se näyttää erilaisen komentokehotteen (<strong>&gt;</strong>) muistuttamaan meitä siitä.</p>
+<pre class="SCREEN">$ <strong>if</strong>
+&gt; <strong>man ls</strong>
+&gt; <strong>then</strong>
+&gt; <strong>echo "Nyt tiedät enemmän komennosta ls"</strong>
+&gt; <strong>fi</strong>
+<em>Komennon ls manuaalisivu vierii ohi...</em>
+Nyt tiedät enemmän komennosta ls
+</pre>
+<p>Tämän komennon ajaminen tuo esille komennon <code>"ls"</code> opassivun. Näppäimistöllä "q" poistuttaessa <code>"man"</code>-komento poistuu onnistuneesti ja komento "<code>echo"</code> suoritetaan.</p>
+<h3><strong>Komennon epäonnistumisen käsittely </strong></h3>
+<p> </p>
+<p>Komentoon voidaan lisätä <code>"else"</code> (muuten) tarkentamaan, mitä komennon epäonnistuessa pitää tehdä:</p>
+<pre><strong>if</strong>
+<em> <strong>&lt;komento&gt;</strong></em>
+<strong>then</strong>
+<em> <strong>&lt;komento-jos-onnistuu&gt;</strong></em>
+<strong>else</strong>
+<em> <strong>&lt;komento-joka-epäonnistuu&gt;</strong></em>
+<strong>fi</strong></pre>
+<p>Ajetaanpa komento <code>"apropos"</code>, jos komento "<code>man"</code> epäonnistuu.</p>
+<pre class="SCREEN">$<strong> if</strong>
+&gt;<strong> man draw</strong>
+&gt;<strong> then</strong>
+&gt;<strong> echo "Nyt tiedät enemmän komennosta draw"</strong>
+&gt;<strong> else</strong>
+&gt;<strong> apropos draw</strong>
+&gt;<strong> fi</strong>
+<em>... lista komennon apropos draw tuloksista ... </em>
+</pre>
+<p>Tällä kertaa <code>"man"</code>-komento epäonnistui, koska komentoa <code>"draw"</code> ei ole olemassa, ja se aktivoi komennon "else".</p>
+<h2>&amp;&amp; ja ||</h2>
+<p>Rakenne "if-then" on erittäin käyttökelpoinen, mutta melko monisanainen riippuvien komentojen yhdistämiseen. Operaattorit "<em>&amp;&amp;</em>" <em>(ja)</em> ja "<em>||</em>" <em>(tai)</em> tarjoavat vähemmän tilaa vievän vaihtoehdon.</p>
+<pre><strong>komento1 &amp;&amp; komento2 [&amp;&amp; komento3]...</strong></pre>
+<p>Operaattori "&amp;&amp;" yhdistää kaksi komentoa yhteen. Toinen komento toimii vain, mikäli ensimmäisen poistumistila on nolla, eli komennon onnistuttua. Useampaa kappaletta operaattoria "&amp;&amp;" voidaan käyttää samalla rivillä.</p>
+<pre>$<strong> mkdir mylogs &amp;&amp; cd mylogs &amp;&amp; touch mail.log &amp;&amp; chmod 0660 mail.log</strong></pre>
+<p>Tässä on esimerkki useammista komennoista, joista jokainen olettaa edellisen komennon toimineen onnistuneesti. Jos olisimme käyttäneet tämän tekemiseen rakennetta "if"-then, olisimme ehkä päätyneet näpertelemään suurella joukolla "if" ja "then" -komentoja.</p>
+<p>Huomaa, että operaattori "&amp;&amp;" menee <em>oikosulkuun</em>, eli yhden komennon epäonnistuessa sen jälkeen tulevia komentoja ei ajeta. Käytämme tätä ominaisuutta hyväksemme estääksemme epätoivotut vaikutukset  (kuten tiedoston "<em>mail.log"</em> luominen väärään hakemistoon edellisessä esimerkissä).</p>
+<p>Jos <em>"&amp;&amp;"</em> vastaa komentoa <code>"then"</code>, operaattori "<em>||" </em>vastaa komentoa <code>"else"</code>. Se tarjoaa mekanismin sen määrittelyyn, mikä komento suoritetaan, mikäli ensimmäinen komento epäonnistuu.</p>
+<pre><strong>komento1 || komento2 || komento3 || ...</strong></pre>
+<p>Jokainen komento ketjussa toimii vain, mikäli edellinen komento ei onnistunut (sen poistumistila oli jotain muuta kuin nolla).</p>
+<pre>$<strong> cd Työpöytä || mkdir Työpöytä || echo "Työpöytähakemistoa ei löytynyt ja sitä ei voitu luoda"</strong></pre>
+<p>Tässä esimerkissä yritämme mennä hakemistoon "<em>Työpöytä</em>", jonka epäonnistuttua luomme sen, ja jos luominen epäonnistuu, tiedotamme asiasta käyttäjälle virheviestillä.</p>
+<p>Tällä tiedolla voimme luoda tehokkaan ja tiiviin <code>"helpme"</code> -funktion. Edellisissä esimerkeissämme olemme näyttäneet kaksi eristyksissä käytettyä operaattoria, mutta ne voidaan myös sekoittaa keskenään.</p>
+<pre>$<strong> function helpme() { man $1 &amp;&amp; echo "nyt tiedät enemmän aiheesta $1" || apropos $1 }</strong>
+</pre>
+<p>Kuten varmaan huomasit, "echo "nyt tiedät enemmän..."" ei ole kauhean hyödyllinen komento. (Se ei välttämättä ole edes kovin paikkansapitävä, sillä ehkä komento "<code>man</code>" esitteli niin paljon erilaisia valitsimia, että käyttäjä meni vain sekaisin). Nyt yksinkertaistamme funktion muotoon: </p>
+<pre>$<strong> function helpme() { man $1 || apropos $1 }</strong>
+</pre>
+<p>Toivottavasti poistut tästä luvusta nollan poistumistilalla!</p></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/komentorivin-perusteet/index">Ota komento</a></li>
+<li Class="booki-section">Perusteet</li><li><a href="/komentorivin-perusteet/ch003_aloittaminen">Käytön aloittaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch004_syntaksi">Syntaksi</a></li>
+<li><a href="/komentorivin-perusteet/ch005_ympariinsa-siirtyminen">Ympäriinsä siirtyminen</a></li>
+<li><a href="/komentorivin-perusteet/ch006_tiedostorakenne">Tiedostorakenne</a></li>
+<li Class="booki-section">Komennot</li><li><a href="/komentorivin-perusteet/ch008_peruskomennot">Peruskomennot</a></li>
+<li><a href="/komentorivin-perusteet/ch009_jarjestelmanvalvojat">Järjestelmänvalvoja</a></li>
+<li><a href="/komentorivin-perusteet/ch010_useammat-tiedostot">Useammat tiedostot</a></li>
+<li><a href="/komentorivin-perusteet/ch011_kirjoita-vahemman">Kirjoita vähemmän</a></li>
+<li Class="booki-section">Keskivaikeita komentoja</li><li><a href="/komentorivin-perusteet/ch013_putkitus">Putkitus</a></li>
+<li><a href="/komentorivin-perusteet/ch014_komentohistoria">Komentohistoria</a></li>
+<li><a href="/komentorivin-perusteet/ch015_standarditiedostot">Standarditiedostot</a></li>
+<li Class="booki-section">Kehittyneempiä komentoja</li><li><a href="/komentorivin-perusteet/ch017_kayttooikeudet">Käyttöoikeudet</a></li>
+<li><a href="/komentorivin-perusteet/ch018_interaktiivinen-muokkaus">Interaktiivinen muokkaus</a></li>
+<li><a href="/komentorivin-perusteet/ch019_poistumisen-tarkastaminen">Poistumisen tarkastaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch020_alikomennot">Alikomennot</a></li>
+<li><a href="/komentorivin-perusteet/ch021_hakemistot">Hakemistot</a></li>
+<li><a href="/komentorivin-perusteet/ch022_kustomisointi">Kustomisointi</a></li>
+<li><a href="/komentorivin-perusteet/ch023_parametrien-korvaaminen">Parametrien korvaaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch024_gnuscreen">GNUScreen</a></li>
+<li><a href="/komentorivin-perusteet/ch025_ssh">SSH</a></li>
+<li><a href="/komentorivin-perusteet/ch026_ohjelmien-asentaminen">Ohjelmien asentaminen</a></li>
+<li Class="booki-section">Tekstieditorit</li><li><a href="/komentorivin-perusteet/ch028_tekstieditorit">Tekstieditorit</a></li>
+<li><a href="/komentorivin-perusteet/ch029_nano">Nano</a></li>
+<li><a href="/komentorivin-perusteet/ch030_vi-ja-vim">Vi ja Vim</a></li>
+<li><a href="/komentorivin-perusteet/ch031_emacs">Emacs</a></li>
+<li><a href="/komentorivin-perusteet/ch032_kedit">Kedit</a></li>
+<li><a href="/komentorivin-perusteet/ch033_gedit">Gedit</a></li>
+<li Class="booki-section">Skriptaus</li><li><a href="/komentorivin-perusteet/ch035_skriptaus">Skriptaus</a></li>
+<li><a href="/komentorivin-perusteet/ch036_skriptien-huoltaminen">Skriptien huoltaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch037_muut-kielet">Muut kielet</a></li>
+<li><a href="/komentorivin-perusteet/ch038_sed">Sed</a></li>
+<li><a href="/komentorivin-perusteet/ch039_awk">AWK</a></li>
+<li><a href="/komentorivin-perusteet/ch040_saannolliset-lausekkeet">Säännölliset lausekkeet</a></li>
+<li><a href="/komentorivin-perusteet/ch041_perl">Perl</a></li>
+<li><a href="/komentorivin-perusteet/ch042_ruby">Ruby</a></li>
+<li><a href="/komentorivin-perusteet/ch043_python">Python</a></li>
+<li Class="booki-section">Komennot nopeasti</li><li><a href="/komentorivin-perusteet/ch045_komentojen-pikaopas">Komentojen pikaopas</a></li>
+<li Class="booki-section">Liitteet</li><li><a href="/komentorivin-perusteet/ch047_tasta-kayttooppaasta">Tästä käyttöoppaasta</a></li>
+<li><a href="/komentorivin-perusteet/ch048_tekijat">Tekijät</a></li>
+</ul>

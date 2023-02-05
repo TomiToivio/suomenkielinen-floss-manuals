@@ -1,0 +1,124 @@
+<div id="main-content"><h1>Toistaminen</h1>
+<p><span id="result_box" class="long_text"><span>Toistaminen voi ajaa joukon komentoja loputtomasti. Näin ei ole tarpeen kirjoittaa koodinpätkiä uudestaan.</span></span></p>
+<p><span id="result_box" class="long_text"><span> <strong>Varoitus! </strong>Toistot eivät luo animaatioita oikeaan aikaan. Ne tehdään niin nopeasti kuin mahdollista. Kun tietokone lukee koodia ja löytää silmukan, se ajaa hakasulkujen sisällä olevan koodin niin monta kertaa kuin silmukka käsketään toistamaan. </span><span> <br><br></span><span>Seuraavassa esimerkissä näemme kuusi horisontaalista mustaa viivaa. Ensimmäinen koodi sisältää kymmenen kertaa komennon <code>line()</code>, toinen koodi tehdään silmukkana. Molempien koodien tulos on sama. </span></span></p>
+<pre>line(0, 0, 100, 0);
+line(0, 10, 100, 10);
+line(0, 20, 100, 20);
+line(0, 30, 100, 30);
+line(0, 40, 100, 40);
+line(0, 50, 100, 50);
+line(0, 60, 100, 60);
+line(0, 70, 100, 70);
+line(0, 80, 100, 80);
+line(0, 90, 100, 90);</pre>
+<p>...tai yksinkertaisemmin: </p>
+<pre>for (int i = 0; i &lt; 100; i = i + 10) {
+  line(0, i, 100, i);
+}
+</pre>
+<h2><span id="result_box" class="long_text"><span>For-silmukka <br></span></span></h2>
+<p><span id="result_box" class="long_text"><span>Tällainen silmukka toistaa joukon komentoja monta kertaa. Siihen kuuluu muuttuja, jonka arvoon lisätään yksi jokaisen silmukan toiston jälkeen. Silmukan sisäisen muuttujan nimenä käytetään usein kirjainta i. For-silmukan muuttuja tarvitsee alkunumeron, maksiminumeron ja lisäyksen. Esimerkiksi: for (int i = AlkuNumero i &lt; MaksimiNumero i = i + LISÄYS) {}. </span><span> <br><br></span><span>Alla oleva esimerkki näyttää valkoisia neliöitä vierekkäin. Jokainen on 10 pikseliä leveä. Niiden väli on 5 pikseliä. Laitamme ensimmäisen neliön kohtaan 0.0. Seuraava esitetään koordinaateissa 15.0, sitä seuraava koordinaatissa 30.0 ja niin edelleen. Silmukkamme lisää muuttujaan 15 pikseliä joka askeleella. Koska tahdomme täyttää koko piirrostilan, maksimiarvo on kuvan leveys (width). </span></span></p>
+<p><img title="Screen_shot_2010_09_08_at_14.23.52" src="_booki/processing-1/static/Screen_shot_2010_09_08_at_14-23-52-fi.png" alt="Screen_shot_2010_09_08_at_14.23.52" width="100" height="100"></p>
+<pre>for (int i = 0; i &lt; width; i = i + 15) {
+  rect(i, 0, 10, 10);
+}
+</pre>
+<h2><span id="result_box" class="long_text"><span>Mittarit</span></span></h2>
+<p><span id="result_box" class="long_text"><span>Tähän asti olemme käyttäneet silmukoita niin, että silmukan sisäinen muuttuja on suoraan käytettävissä. Edellisessä esimerkissä se antaa meille heti jokaisen x-akselin arvon, johon neliö piirretään. </span><span> <br><br></span><span>Silmukoita voidaan myös käyttää laskureina. Niille annettiin minimi- ja maksimimuuttuja, johon lisätään vain 1 jokaisella silmukan suorituskerralla: tämä laskee käskyjen suorituskerrat, joten käytetään käsitettä laskuri. </span><span> <br><br></span><span>Tämä menetelmä vaatii enemmän matematiikkaa silmukan sisällä olevan muuttujan käyttöön. </span></span></p>
+<p><img title="Boucle3" src="_booki/processing-1/static/Boucle3-fi.png" alt="Boucle3" width="100" height="100"> </p>
+<pre>for (int i = 0; i &lt; 5; i = i + 1) {
+  rect(i, 0, 10, 10);
+}
+</pre>
+<p><span id="result_box" class="long_text"><span>Edellisessä esimerkissä näemme neliöiden olevan päällekkäin. Koska muuttujalla i on arvot 0-5 ja koska me käytämme muuttujaa i sijoittamaan ne avaruuteen, ne sijoitetaan kohtiin 0.0, 1.0, 2.0, 3.0 ja 4.0. Vain viimeinen näistä on kokonaan näkyvillä. Saadaksemme saman tuloksen kuin edellisessä esimerkissä voimme kertoa muuttujan. Tässä tapauksessa kerrotaan muuttuja arvolla 15, jolloin neliöiden väliin jää 5 pikseliä. Ne ovat tasaisesti 15 pikselin välein. Voimme sittne käyttää laskurin arvoa muihin operaatioihin. </span></span></p>
+<p><img src="_booki/processing-1/static/Boucle5-fi.png" alt=""></p>
+<pre>for (int i = 0; i &lt; 5; i = i + 1) {
+  rect(i * 15, 0, 10, 10);
+}
+</pre>
+<h2>Sisäkkäiset silmukat</h2>
+<p>Silmukat voidaan laittaa toistensa sisään. Tämä tekniikka antaa meidän siirtyä nopeasti kahteen visualisaatioon ja näkemään kolme ulottuvuutta. Kun silmukat ovat toistensa sisällä, meidän täytyy pitää huolta nimestä, joka annetaan jokaisen silmukan muuttujalle. Jos jokaisen muuttujan nimi on i, ohjelma yhdistää silmukat. Jokaisen silmukan jokaisella muuttujalla pitää olla kunnon nimi. Esimerkiksi: i, j, k, jne. Tai jos ne liittyvät ulottuvuuksiin: x, y ja z.</p>
+<h3>Silmukan alku</h3>
+<p><img title="Boucle5" src="_booki/processing-1/static/Boucle5-fi.png" alt="Boucle5" width="100" height="100"> </p>
+<pre>translate(7, 7);
+
+for (int x = 0; x &lt; 6; x = x + 1) {
+  rect(x * 15, 0, 10, 10);
+}
+</pre>
+<h3>Kaksi silmukkaa</h3>
+<p><img title="Boucle6" src="_booki/processing-1/static/Boucle6-fi.png" alt="Boucle6" width="101" height="101"> </p>
+<pre>translate(7, 7);
+ 
+// Ensimmäinen silmukka
+for (int y = 0; y &lt; 6; y = y + 1) {
+
+  // Toinen silmukka
+  for (int x = 0; x &lt; 6; x = x + 1) {
+    rect(x * 15, y * 15, 10, 10);
+  }
+}
+</pre>
+<h3>Kolme silmukkaa</h3>
+<p><span id="result_box" class="long_text"><span>Tässä esimerkissä tutustumme kolmiulotteiseen avaruuteen. Laittaaksemme syvyysulottuvuuden neliöihimme, voimme käyttää metodia <code>translate ()</code>. </span></span></p>
+<p><img src="_booki/processing-1/static/Boucle7-fi_1.png" alt=""> </p>
+<pre>size(100, 100, P3D);
+
+translate(7, 7);
+
+//Ensimmäinen silmukka
+for (int z = 0; z &lt; 6; z = z + 1) {
+  translate(0, 0, z * -15); //Kohde akselilla z
+
+  //Toinen silmukka
+  for (int y = 0; y &lt; 6; y = y + 1) {
+
+    //Kolmas silmukka
+    for (int x = 0; x &lt; 6; x = x + 1) {
+      rect(x * 15, y * 15, 10, 10);
+    }
+  }
+}
+</pre>
+<h3>Muunnelmat</h3>
+<p><span id="result_box" class="long_text"><span>Tässä on joukko muunnelmia, joissa käytetään metodeja <code>fill ()</code>, <code>scale ()</code> ja <code>rotate ()</code>. Tässä voit nähdä muutokset silmukoiden sisällä. </span></span></p>
+<p><img title="samples" src="_booki/processing-1/static/samples-fi.png" alt="samples" width="309" height="204"></p>
+<p> </p>
+<div class="arrow"><a href="http://fr.flossmanuals.net/Processing/Lesrepetitions"> <br></a></div>
+<div class="arrow"><a href="http://fr.flossmanuals.net/Processing/Lesrepetitions"> <br></a></div></div><ul Class="menu-goes-here"><li Class="booki-section">Esittely</li><li><a href="/processing-1/index">Johdanto</a></li>
+<li><a href="/processing-1/ch002_esimerkkeja">Esimerkkejä</a></li>
+<li><a href="/processing-1/ch003_asennus">Asennus</a></li>
+<li Class="booki-section">Perusteet</li><li><a href="/processing-1/ch005_perusteet">Perusteet</a></li>
+<li Class="booki-section">Suunnittelu</li><li><a href="/processing-1/ch007_suunnittelutila">Suunnittelutila</a></li>
+<li><a href="/processing-1/ch008_muodot">Muodot</a></li>
+<li><a href="/processing-1/ch009_varit">Värit</a></li>
+<li><a href="/processing-1/ch010_kuvat">Kuvat</a></li>
+<li><a href="/processing-1/ch011_tekstit">Tekstit</a></li>
+<li Class="booki-section">Interaktiivisuus</li><li><a href="/processing-1/ch013_video">Video</a></li>
+<li><a href="/processing-1/ch014_videon-tuominen">Videon tuominen</a></li>
+<li><a href="/processing-1/ch015_mikrofoni">Mikrofoni</a></li>
+<li><a href="/processing-1/ch016_hiiri">Hiiri</a></li>
+<li><a href="/processing-1/ch017_nappaimisto">Näppäimistö</a></li>
+<li><a href="/processing-1/ch018_tulostaminen">Tulostaminen</a></li>
+<li Class="booki-section">Vienti</li><li><a href="/processing-1/ch020_verkkoon-vieminen">Verkkoon vieminen</a></li>
+<li Class="booki-section">Animaatio</li><li><a href="/processing-1/ch022_aanet">Äänet</a></li>
+<li><a href="/processing-1/ch023_draw-metodi">Draw-metodi</a></li>
+<li><a href="/processing-1/ch024_objektien-animointi">Objektien animointi</a></li>
+<li><a href="/processing-1/ch025_monien-objektien-animointi">Monien objektien animointi</a></li>
+<li><a href="/processing-1/ch026_aikajana">Aikajana</a></li>
+<li Class="booki-section">Ohjelmointi</li><li><a href="/processing-1/ch028_kommentit">Kommentit</a></li>
+<li><a href="/processing-1/ch029_objektit">Objektit</a></li>
+<li><a href="/processing-1/ch030_metodit">Metodit</a></li>
+<li><a href="/processing-1/ch031_listat">Listat</a></li>
+<li><a href="/processing-1/ch032_toistaminen">Toistaminen</a></li>
+<li><a href="/processing-1/ch033_ehdot">Ehdot</a></li>
+<li><a href="/processing-1/ch034_muuttujat">Muuttujat</a></li>
+<li><a href="/processing-1/ch035_muutokset">Muutokset</a></li>
+<li><a href="/processing-1/ch036_rajat">Rajat</a></li>
+<li Class="booki-section">Liitteet</li><li><a href="/processing-1/ch038_yleisia-virheita">Yleisiä virheitä</a></li>
+<li><a href="/processing-1/ch039_ulkoiset-kirjastot">Ulkoiset kirjastot</a></li>
+<li><a href="/processing-1/ch040_dokumentaatio">Dokumentaatio</a></li>
+<li><a href="/processing-1/ch041_arduino">Arduino</a></li>
+<li><a href="/processing-1/ch042_tasta-oppaasta">Tästä oppaasta</a></li>
+<li><a href="/processing-1/ch043_tekijat">Tekijät</a></li>
+</ul>

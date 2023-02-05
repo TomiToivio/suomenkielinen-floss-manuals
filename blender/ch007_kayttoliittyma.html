@@ -1,0 +1,120 @@
+<div id="main-content"><h1>BLENDERIN KÄYTTÖLIITTYMÄ </h1>
+<p>Avattuasi Blenderin sen käyttöliittymä jakautuu oletusarvoisesti useampaan eri osaan. Näitä osia kutsutaan editointitiloiksi.</p>
+<p><img src="_booki/blender/static/ScreenHunter_54%20Apr.%2018%2013.16.gif" alt=""></p>
+<p>Ikkunan keskellä on kolmiulotteinen näkökulma kohtaukseesi (<strong>3D View</strong>).</p>
+<p><img src="_booki/blender/static/ScreenHunter_55%20Apr.%2018%2013.18.gif" alt=""></p>
+<p>Tämän alapuolella on valikkopalkki, jossa on kolmiulotteisen näkymän nappulat.</p>
+<p><img src="_booki/blender/static/ScreenHunter_58%20Apr.%2018%2013.27.gif" alt=""></p>
+<p>Vasemmalla on objektitilan työkalujen valikko.</p>
+<p><img src="_booki/blender/static/ScreenHunter_60%20Apr.%2018%2013.29.gif" alt=""></p>
+<p>Ikkunan yläosassa on infotilan (<strong>Info</strong>) valikko, jossa voit esimerkiksi avata ja tallentaa tiedostoja.</p>
+<p><img src="_booki/blender/static/ScreenHunter_61%20Apr.%2018%2013.31.gif" alt="" width="600" height="34"></p>
+<p>Ruudun alaosassa on aikajana (<strong>Timeline</strong>), jota tarvitset lähinnä tehdessäsi animoituja kohtauksia. Liikkumattomiin kuviin sitä ei tarvita.</p>
+<p><img src="_booki/blender/static/ScreenHunter_62%20Apr.%2018%2013.32.gif" alt=""></p>
+<p> </p>
+<p>Ikkunan oikeassa yläosassa on kohtauksen yleiskuva (<strong>Outliner</strong>), jossa voit valita eri osia kohtauksestasi, kuten renderöintitasot (<strong>RenderLayers</strong>), maailman (<strong>World</strong>), lampun (<strong>Lamp</strong>), kuution (<strong>Cube</strong>) ja kameran (<strong>Camera</strong>). </p>
+<p><img src="_booki/blender/static/ScreenHunter_63%20Apr.%2018%2013.36.gif" alt=""></p>
+<p>Tämän alla on ominaisuudet (<strong>Properties</strong>), jossa voit muuttaa valittuna olevan kohteen ominaisuuksia.</p>
+<p><img src="_booki/blender/static/ScreenHunter_64%20Apr.%2018%2013.39.gif" alt=""></p>
+<p>Jokaisessa ikkunassa voit siirtyä editointitilasta toiseen valikon avulla.</p>
+<p><img src="_booki/blender/static/ScreenHunter_51%20Apr.%2018%2013.10.gif" alt=""></p>
+<p>Kun valitset tästä valikosta ikkunatyypin, nykyinen osaikkuna vaihtaa tyyppiä. Esimerkiksi videosekvenssieditorin (<strong>Video Sequence Editor</strong>) napsauttaminen muuttaa ikkunan kolmiulotteisesta kuvaikkunasta ikkunaksi, jossa videoraitoja voi järjestellä aikajärjestykseen.</p>
+<h2>Käyttöliittymän tärkeitä osia</h2>
+<p>Nyt käymme läpi joitain tärkeitä osia käyttöliittymästä, jotka on hyvä tuntea jo tässä vaiheessa. </p>
+<h3>Näkymien akselit</h3>
+<p><img src="_booki/blender/static/ScreenHunter_65%20Apr.%2018%2013.42.gif" alt=""></p>
+<p>Yllä näkyvät kuvaikkunan akselit ovat näkymästä, joka on perspektiivitilassa. Huomaa, että nuoliakseleita on kolme eikä vain kaksi. Näemme kolme esineen ulottuvuutta, kun käytämme tätä näkymää. Sen sijaan katsoessamme näkymää edestä (<strong>Front</strong>), ylhäältä (<strong>Top</strong>) tai oikealta (<strong>Right</strong>) näemme vain kaksi ulottuvuutta.</p>
+<p>Toisenlainen näkymä Blenderissä on ortograafinen näkymä, joka ei ole yhtä luonnollinen silmillemme (esineet eivät muutu tässä näkymässä pienemmiksi ollessaan kauempana), mutta se on matemaattisesti oikeampi. Akselit jokaisen kuvaikkunan alaosassa tunnetaan globaaliakseleina, toisin sanoen ne sopivat koko näkymään ja kaikkeen siinä olevaan. Niitä ei voida muuttaa, samaan tapaan kuin itä ja länsi eivät muuta suuntaa tosimaailmassa.</p>
+<h3>Objektin nimi </h3>
+<p><img src="_booki/blender/static/ScreenHunter_66%20Apr.%2018%2013.45.gif" alt=""></p>
+<p>Kolmiulotteisen näkymän vasemmassa alakulmassa näkyy valittuna olevan objektin nimi.  Objektin nimen nopea löytäminen ja jopa uudelleennimeäminen tulee tärkeäksi, kun kohtaustesi monimutkaisuus kasvaa.</p>
+<h3>Näkymän varjostuksen tyyppi</h3>
+<h3><img src="_booki/blender/static/ScreenHunter_67%20Apr.%2018%2013.48.gif" alt=""></h3>
+<p>Näkymän varjostus (<strong>Viewport Shading</strong>) -nappulaa napsauttamalla ilmestyy pudotusvalikko, joka antaa meidän muuttaa tapaa, jolla objekti piirretään kuvaikkunassa. Yleensä käytetyt piirtotyypit ovat kiinteä (<strong>Solid</strong>) ja rautalankamalli (<strong>Wireframe</strong>). Voit siirtyä nopeasti näiden kahden piirtotavan välillä Z-näppäimellä.</p>
+<p>Huomaa, että tämä ei vaikuta lainkaan muodon renderöintiin elokuvaa tai kuvaa tehdessä. Nämä ovat vain piirtotiloja, jotka auttavat sinua näkemään muotosi paremmin. Rautalankamalli on hyödyllinen, koska se auttaa sinua näkemään verkkosi läpi, jolloin voit valita siitä osia, jotka eivät ole tarjolla läpinäkymättömässä kiinteässä tilassa.</p>
+<p>Teksturoidussa (<strong>Textured</strong>) piirtotyypissä näet objektin tekstuurin. Teksturointia käsitellään myöhemmin tässä oppaassa. </p>
+<h3>Manipulaattoritilat</h3>
+<h3><img src="_booki/blender/static/ScreenHunter_68%20Apr.%2018%2013.51.gif" alt=""></h3>
+<p>Valitsemalla manipulaattorin tilan (<strong>Manipulator Mode</strong>), kuten rotaation (valikossa kaari) ja sen jälkeen valitsemalla akselin, voidaan valittua objektia kierrättää sen akselin ympärillä kuin pyörää akselissa.</p>
+<p>Vastaavasti, valitsemalla käännösmanipulaattorin (valikossa nuoli), voimme napsauttaa akselia ja vetää nykyistä valintaa sitä pitkin, aivan kuin se olisi raide. Kolmiulotteisessa terminologiassa "käännös" merkitsee "liikkumista tilan läpi". Tämä on usein hämmentävää, mutta käännöksellä tässä mielessä ei ole mitään tekemistä kielen kanssa.</p>
+<p>Jäljelle jäänyt usein käytetty manipulaattori on skaala-manipulaattori (valikossa neliöön päättyvä viiva). Tämä on hyödyllinen, jos tahdot nopeasti (mutta epätarkasti) skaalata muotoa yhtä tai kahta akselia pitkin, eli tehdä epäyhdenmukaisen skaalauksen.</p>
+<h3>Objekti</h3>
+<h3><img src="_booki/blender/static/ScreenHunter_70%20Apr.%2018%2014.01.gif" alt=""></h3>
+<p>Tässä on kuutio, muokkaustilassa, nähtynä perspektiivinäkymässä, kolmiulotteisen käännöksen manipulaattori päällä ja yksi verteksi valittuna.</p>
+<p>Tärkeää on huomata akselit suoraan verteksin päällä. Nämä akselit, vaikkakin "peilaavat" näköikkunan akseleiden suuntia tässä tapauksessa, ovat itse asiassa paikallisia akseleita, eivät globaaleja akseleita.</p>
+<p>Tässä tapauksessa ne näyttävät meille valitsemamme verteksin sijainnin; yhden pisteen kolmiulotteisessa avaruudessa. Yksinkertaisesti sanottuna, jokaisella objektilla - jopa objektien osalla - on oma sijaintinsa ja nämä sijainnit ovat aina suhteessa maailman pysyviin suuntiin.</p>
+<p>Tämä on tärkeää ymmärtää, sillä ero paikallisten ja globaalien akselien välillä pätee kaikkeen geometriaan ja kaikkiin kolmiulotteisiin ohjelmistopaketteihin.</p>
+<h2>Käyttöliittymän kaksi ydintilaa </h2>
+<p>Yksi parhaista tavoista lähestyä Blenderiä ensimmäistä kertaa on sen tilojen käsittely. Kun vaihdat tilaa, käyttöliittymä muuttuu tilan mukana, ei vain se mitä näet (hakemistot ja taideteoksesi ulkonäkö), vaan myös käytössäsi olevat näppäinyhdistelmät. </p>
+<p>Jokaisen kolmiulotteisen kuvaikkunan alaosassa on valikko, josta voimme vaihtaa editointiin liittyviä tiloja. Se näyttää tältä:  </p>
+<p class="c3"><img src="_booki/blender/static/ScreenHunter_71%20Apr.%2018%2014.03.gif" alt=""></p>
+<p>Näistä tiloista kahta käytät paljon: objektitilaa (<strong>Object Mode</strong>) ja editointitilaa (<strong>Edit Mode</strong>). Kumpikin näistä tiloista tekee hieman erilaisia asioita. </p>
+<h2>Editointitila</h2>
+<p>Editointitilaa käytetään objektin muodon muovaamiseen, sisältäen muotoon liittyvät ominaisuudet. Esimerkkejä tästä olisivat objektin leikkaaminen kahtia, sen vääntäminen kumin tavoin, tai yksityiskohtien lisääminen kokonaismuodon osaan. Kun tahdot muotoilla objektin uudelleen, manipuloiden sen muotoa, käytä editointitilaa.</p>
+<p>Tältä editointitila näyttää. Voit nähdä, kuinka kolmiulotteinen muoto kuvaikkunassa (jota tässä kutsutaan verkoksi), näyttää läpinäkyvältä ja siinä on pisteitä joka nurkassa. Näitä pisteitä sanotaan solmuiksi, niitä yhdistäviä viivoja sanotaan reunoiksi, ja litteitä kolmen tai useamman solmun muodostamia pintoja kutsutaan tahkoiksi, jotka tunnetaan yleisesti myös polygoneina. Nyt valittu elementti tässä kuvassa on yksittäinen solmu, mutta se voisi yhtä hyvin olla reuna, tahko tai monta näistä samaan aikaan. </p>
+<div class="c2">
+<p> </p>
+<h3><img src="_booki/blender/static/ScreenHunter_70%20Apr.%2018%2014.01.gif" alt=""></h3>
+<p> </p>
+<h2>Objektitila</h2>
+<p>Objektitilassa käsitellään vain objektiin itseensä liittyviä ominaisuuksia, kuten sen nimeä, sen sijaintia, sen kokoa ja sen suhdetta muihin objekteihin (kuten objekteihin, jotka ovat sen vanhempia tai lapsia). Jos tahdot koskaan siirtää objektia, lisätä uuden objektin, nimetä objektin uudelleen tai muuttaa muita sen "objektiuteen" liittyviä ominaisuuksia, käytä objektitilaa. Tältä kuvaikkuna näyttää tässä tilassa.</p>
+<p><img src="_booki/blender/static/ScreenHunter_72%20Apr.%2018%2014.05.gif" alt=""></p>
+<p>Miksi värilliset akselit ovat kiinnitettyjä pisteeseen verkon keskellä? Tämä johtuu siitä, että koko objekti on valittu, joten ne ovat objektin keskipisteessä.  </p>
+</div>
+<div class="c2">
+<p>Nopein tapa liikkua näiden kohteiden välillä on <strong>TAB</strong>-näppäin. Sen painaminen siirtää yksinkertaisesti tilasta toiseen. Laita kursorisi kuvaikkunan päälle (näin kerromme Blenderille mitä kuvaikkunaa tulisi käyttää) ja yritä painaa <strong>TAB </strong>pari kertaa. Huomaa, kuinka monet muutkin asiat muuttuvat käyttöliittymässä. Koko pohjalla oleva näppäinpaneeli muuttuu myös.</p>
+<p>Ei kuitenkaan editoida vielä mitään, vaan totutellaan hiiren käyttöön Blenderissä... </p>
+</div>
+<h2 class="c5">Hiiren käyttö </h2>
+<p>Kuten johdannossa mainittiin, Blenderissä käytetään kolmea hiiren nappia siten, että hiiren pyörä muutetaan napiksi.</p>
+<p>Opetellaanpa ensin käyttämään kieritystä, joka on erittäin keskeinen liikuttaessa kolmiulotteisessa maisemassa. </p>
+<blockquote>
+<h3>Kieritys</h3>
+</blockquote>
+<div class="c7">
+<blockquote>
+<p>Aseta kursori kuvaikkunan päälle ja paina <strong>KHN</strong>, kunnes tunnet sen naksahtavan ja vedä hiirtä ympäriinsä. Näet objektin kääntyvän kuvaikkunassa. Itse asiassa objekti ei pyöri, vaan näkökulma, aivan kuin kamera kiertäisi objektin ympärillä. Voi tuntua epätavalliselta käyttää hiiren pyörää nappina, mutta se on tehokasta, kun totut siihen. </p>
+<h3>Panorointi</h3>
+<p>Panorointi merkitsee, että otat esineen kuvaan ja vierität tuota kuvaa, oikealta vasemmalle tai vasemmalta oikealle. Sinun suuntasi objektiin nähden ei kuitenkaan muutu tämän prosessin aikana. Tämä on todella kätevää tapa liikkua ympäri kohtaustasi. </p>
+<p>Panoroidaksesi paina <strong>SHIFT+KHN</strong> ja vedä hiirtäsi ympäriinsä. Näet objektin liikkuvan siihen suuntaan, johon vedät hiirtä. </p>
+<h3>Zoomaus</h3>
+<p>Zoomaus toimii samoin kuin kameraa käyttäessäsi. Kuvan suunta on pysyvä, mutta voit siirtää näkökulmaa lähemmäs tai kauemmas esineestä. Voit zoomata käyttäen vain pyörää aivan kuin normaalisti, mutta jos tahdot todella pehmeän zoomin, yritä <strong>CTRL+KHN</strong> ja vedä hiirtäsi ylös ja alas. Hidas zoomaus antaa sinulle paljon paremman kontrollin zoomausetäisyyden suhteen ja siihen kannattaa totutella.</p>
+</blockquote>
+</div>
+<div class="c7">
+<h2>Valinta ja siirtäminen</h2>
+<p> </p>
+</div>
+<div class="c7">Yritetäänpä siirtää kuutiotamme hieman, jotta totumme hiiren ja näppäimistön käyttämiseen yhdessä. </div>
+<p class="c4">Kohtauksessasi on tällä hetkellä kamera, valo ja kuutio. Kamera on pyramidin muotoinen esine ja valo on viiva, jonka huipulla on ympyrä. </p>
+<p>Zoomaa ulos, kunnes näet kuutiosi kokonaan vasemmalla olevassa kolmiulotteisessa kuvaikkunassa. Varmista objektin ympärillä olevan tarpeeksi tilaa. Varmista olevasi objektitilassa. Kuution ympärillä pitäisi olla oranssi ympärysviiva, kuten yllä olevassa kuvassa. Kun objekti on vaaleanpunainen, se on valittu.</p>
+<p>Paina <strong>A-näppäintä</strong> kerran ja toisen kerran. Huomaa, kuinka objektin reuna muuttuu oranssiksi ja toisella painalluksella oranssi reuna katoaa. <strong>A-näppäin</strong> on oikotie kaiken valitsemiseen ja ei minkään valitsemiseen. </p>
+<p>Varmista, että mitään ei ole valittu ja klikkaa kerran <strong>OHN </strong>kuution päällä. Tämän jälkeen, kun hiiresi kursori on yhä kuvaikkunan päällä, paina kerran <strong>G-näppäintä</strong> ja siirrä hiirtäsi ympäriinsä. Objekti seuraa hiirtä. "G"<strong> G-näppäimessä</strong> merkitsee "<strong>Grab</strong>" (nappaa). Kun painat tätä näppäintä, käsket Blenderin lukita nyt valittu objekti hiiren kursoriin. Paina nyt <strong>ESC </strong>tai paina uudestaan <strong>OHN</strong>, objekti palaa takaisin alkuperäiseen sijaintiinsa. </p>
+<p>Tehdäänpä tämä uudestaan, mutta tällä kertaa siirretään objektia ja annetaan sille uusi sijainti. Tehdäksesi näin, toista yllä mainitut askeleet objektin nappaamiseksi, mutta sen sijaan että napsauttaisit <strong>OHN </strong>lopuksi, napsauta <strong>VHN</strong>. Tämä kertoo Blenderille: "laita objekti tähän ja jätä se tähän."  </p>
+<p>Voit käyttää myös <strong>kursorinäppäimiä </strong>nappaustilassa hiiren sijasta. Laittaaksesi objektin sinne, minne tahdot sen, paina <strong>rivinvaihtonäppäintä</strong>. Jotkut teistä ovat tutustuneet aiemmin napsahduksen käsitteeseen, mikä merkitsee objektin siirtämistä ruudukolla oleviin yksiköihin, yksi kerrallaan. Tätä käyttävät usein ihmiset, jotka tarvitsevat hyvin tarkkoja tuloksia. Siirtääksesi objektia ja saadaksesi sen napsahtamaan verkon yksiköihin, pitele <strong>CTRL </strong>alhaalla siirtäessäsi objektia. Tämä toimii myös loistavasti <strong>kursorinäppäinten </strong>avulla. </p>
+<p>Pidä hiiresi kohdistinta nyt ylhäältä-perspektiivistä (<strong>View </strong>&gt; <strong>Top</strong>) kuvatun kuvaikkunan päällä. Paina <strong>VHN</strong> kerran tässä kohtauksessa olevan kuution vieressä. Huomaa pieni punainen ympyrä, joka seuraa hiiren klikkausta. Klikkaile ympäriinsä, se seuraa. Se näyttää tältä. Voit koska tahansa keskittää kolmiulotteisen kursorin painamalla<strong> SHFT+C</strong>-näppäintä. Kolmiulotteinen kursori määrittelee, mihin uudet objektit lisätään. Sen keskittäminen sijoittaa sen paikkaan x=0, y=0, z=0. </p>
+<div class="c2"><img src="_booki/blender/static/ScreenHunter_73%20Apr.%2018%2014.15.gif" alt=""></div>
+<p class="c4">Tämä on tärkeä työkalu, joka tunnetaan kolmiulotteisena kohdistimena. Missä tämä kohdistin onkin ruudulla, sinne uudet objektit ilmestyvät. </p>
+<h2 class="c5">Uusien objektien lisääminen</h2>
+<p class="c4">Blender tarjoaa joukon perusobjekteja (joita kutsutaan usein primitiiveiksi). Voimme muokata niitä mallinnuksen kuluessa. Vaikka on varmasti mahdollista tehdä malli tyhjästä (luoda kolme solmua ja tehdä niistä polygoni) on usein hyödyllisempää aloittaa objektilla, jossa on ominaisuuksia, joita tarvitsemme rakentaaksemme nopeasti mallimme. Jos olet tekemässä tuolia, aloitat luultavasti kuutiolla tai tasolla, jotka ovat primitiivejä. Jos olet mallintamassa päärynää tai kissan päätä, sinun on paras aloittaa palloprimitiivillä.</p>
+<p class="c4">Siirrä kolmiulotteinen kohdistin paikkaan, joka on vasemmalla nykyisestä kuutiosta ylhäältä katsottuna. </p>
+<p class="c4">Tarkasta taas, että olet objektitilassa ja hiiren kursori on kuvaikkunassa, jonka näkökulma on ylhäältä. Liikuta hiirtä valikon vaihtoehtojen <strong>Add -&gt; Mesh -&gt; Cube</strong> (Lisää -&gt; Verkko -&gt; Kuutio) yli. Paina nyt <strong>VHN</strong>.</p>
+<p class="c4"><img src="_booki/blender/static/ScreenHunter_75%20Apr.%2018%2014.19.gif" alt=""></p>
+<p>Sinulla pitäisi olla nyt kaksi kuutiota kohtauksessasi.</p>
+<p><img src="_booki/blender/static/ScreenHunter_77%20Apr.%2018%2014.22.gif" alt=""></p>
+<p>Huomaa kuitenkin, että kuutio, jonka juuri lisäsit, on editointitilassa. Se ei vastaa kuten toinen kuutio ja emme voi siirtää sitä turvallisesti sen nykyisessä tilassa, voimme vain muokata verkkoa itseään. Siirtääksemme sitä turvallisesti, mene objektitilaan käyttämällä joko itse tilanappulaa kuvaikkunan alaosassa, tai painamalla <strong>TAB</strong>-näppäintä. </p>
+<p>Huomaa: et voi muokata useamman kuin yhden objektin verkkoa samaan aikaan. Objektin verkkodataa voi muokata vain yksi objekti kerrallaan.</p>
+<h2 class="c5">Yksittäisten objektien valinta</h2>
+<p class="c4">Jokainen objekti sisältää oman datansa. Objektin data sisältää sen nimen, sen verkon, sen editointihistorian, sen sijainnin, sen tekstuurit ja enemmänkin. On tärkeää muistaa, että objektin verkko on vain osa sen objektin dataa. Kun siirrät verkkoa ympäriinsä, et liikuta objektia ympäriinsä. Vastaavasti, voit tuhota kaiken verkkodatan objektista, mutta objekti on edelleenkin olemassa. Sillä ei vain ole verkkoa. </p>
+<p>Kun olet objektitilassa, napsauta <strong>VHN </strong>valitaksesi toisen kahdesta objektista. Paina nyt <strong>G-näppäintä</strong>, kuten teit aiemminkin, ja siirrä sitä ympäriinsä. Kuten näet, objektit täytyy valita, ennen kuin niitä voi manipuloida. Huomaa myös: kun siirrät objekteja ympäriinsä ylhäältä tai edestä näkökulmissa, ne siirtyvät samaan aikaan perspektiivinäkökulmassa.</p>
+<p>Leiki tällä vähän aikaa, seuraavaksi tarkastelemme editointia eri tekniikoita käyttäen. </p></div><ul Class="menu-goes-here"><li Class="booki-section">JOHDANTO</li><li><a href="/blender/index">JOHDANTO</a></li>
+<li Class="booki-section">ASENNUS</li><li><a href="/blender/ch003_asennus-windowsiin">ASENNUS WINDOWSIIN</a></li>
+<li Class="booki-section">KÄYTÄNNÖT</li><li><a href="/blender/ch005_kaytannot">KÄYTÄNNÖT</a></li>
+<li Class="booki-section">KÄYTTÖLIITTYMÄ</li><li><a href="/blender/ch007_kayttoliittyma">KÄYTTÖLIITTYMÄ</a></li>
+<li Class="booki-section">ASETUKSET</li><li><a href="/blender/ch009_asetukset">ASETUKSET</a></li>
+<li Class="booki-section">EDITOINTI</li><li><a href="/blender/ch011_editointi">EDITOINTI</a></li>
+<li><a href="/blender/ch012_esineen-luominen">ESINEEN LUOMINEN</a></li>
+<li Class="booki-section">TEKSTUURIT</li><li><a href="/blender/ch014_teksturointi">TEKSTUROINTI</a></li>
+<li Class="booki-section">RENDERÖINTI</li><li><a href="/blender/ch016_renderointi">RENDERÖINTI</a></li>
+<li Class="booki-section">LIITTEET</li><li><a href="/blender/ch018_tekijat">TEKIJÄT</a></li>
+</ul>

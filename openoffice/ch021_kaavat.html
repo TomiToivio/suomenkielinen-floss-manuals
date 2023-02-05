@@ -1,0 +1,80 @@
+<div id="main-content"><h1>Kaavat</h1>
+<p>Calc-ohjelmassa pystyy laskemaan kaikkia peruslaskutoimituksia erilaisilla soluun syötettävillä laskukaavoilla.</p>
+<h2>Laskukaavat</h2>
+<p> </p>
+<p>Ohjelmassa on laskukaavat yksittäisille soluille yhteen-, vähennys-, kerto - ja jakalaskulle. Soluun syötettävät kaavat ovat seuraavanlaisia: </p>
+<ul><li>yhteenlasku: =HaluttuSolu+HaluttuSolu+HaluttuSolu</li>
+<li>vähennyslasku: =HaluttuSolu-HaluttuSolu-HaluttuSolu</li>
+<li>kertolasku: =HaluttuSolu*HaluttuSolu*HaluttuSolu</li>
+<li>jakolasku: =HaluttuSolu/HaluttuSolu/HaluttuSolu</li>
+</ul><hr><h2>Kaavan syöttäminen</h2>
+<p> </p>
+<p>Syötä haluamasi laskukaava soluun seuraavasti: </p>
+<ol><ol><li>Napsauta haluamasi solu (esimerkissä B6) aktiiviseksi hiiren vasemmalla painikkeella.</li>
+<li>Kirjoita haluamasi kaava syöttöriville (esimerkkissä kertolaskukaava =B2*B3*B4*B5).</li>
+<li>Paina <strong>Enter</strong>-näppäintä. Kaava laskee halutun laskusuorituksen (esimerkissä kertolasku) ja ilmoittaa tuloksen valitussa solussa B6. </li>
+</ol></ol><p><del> </del><img src="_booki/openoffice/static/OpenOffice-CalcKaavat-kertolaskuesimerkki-fi.jpg" alt="kertolaskuesimerkki.jpg" width="400" height="241"></p>
+<p> </p>
+<p> </p>
+<h3>Sarakkeiden laskukaavat</h3>
+<p> </p>
+<p>Peräkkäisiä, samalla sarakkeella olevia soluja voi yhteen- ja kertolaskuissa laskea syöttämällä syöttöriville seuraavanlaisia kaavoja: </p>
+<ul><li>yhteenlasku: =SUM(HaluttuSolu:HaluttuSolu)</li>
+<li>kertolasku:= PRODUCT(HaluttuSolu:HaluttuSolu)</li>
+</ul><p> </p>
+<p>Ensimmäinen halutti solu ilmoittaa kaavalle, mistä sarakkeen solusta laskeminen aloitetaan ja toinen haluttu solu sen, mikä sarakkeen soluista on viimeinen laskusuoritukseen mukaan otettava solu. Alla olevassa esimerkissä syöttärivin komenta =SUM(B2:B5) on laskenut summan solusta B2 soluun B5 eli B2+B3+B4+B5. </p>
+<p><img src="_booki/openoffice/static/OpenOffice-CalcKaavat-sarakeyhteenlaskuesimerkki-fi.jpg" alt="sarakeyhteenlaskuesimerkki.jpg" width="400" height="241"></p>
+<p> </p>
+<h3>Automaattinen yhteenlasku </h3>
+<p>Käytä automaattista yhteenlaskutoimintaa seuraavasti:</p>
+<ol><li>Paina hiiren vasen painike pohjaan ensimmäisen halutun solun kohdalla.</li>
+<li>Valitse loput solut vetämällä sininen valinta-alue niiden päälle.</li>
+<li>Vapauta hiiren painike alueen valinnan jälkeen.</li>
+<li>Paina syöttörivin alussa olevaa summa-kuvaketta (merkitty kuvassa punaisella). Ohjelma laskee summan automaattisesti valittu aluetta seuraavaan soluun.  </li>
+</ol><p><img src="_booki/openoffice/static/OpenOffice-CalcKaavat-summakuvake-fi.jpg" alt="summakuvake.jpg" width="400" height="241"></p>
+<p> </p>
+<hr><h2>Kaavan korjaaminen</h2>
+<p>Korjaa väärin syötetty kaava seuraavasti: </p>
+<ol><ol><li>Aktivoi virheellisen kaavasolun syöttörivi napsauttamalla solua hiiren vasemmalla painikkeella.</li>
+<li>Napsauta syöttöriviä hiiren vasemmalla painikkeella. Ohjelma näyttää kaavassa lasketut solut eri väreillä (ks. alla oleva esimerkki). </li>
+</ol></ol><p> </p>
+<p><img src="_booki/openoffice/static/OpenOffice-CalcKaavat-kaavankorjausv__rillisetsolut-fi.jpg" alt="kaavankorjausv__rillisetsolut.jpg" width="400" height="240"></p>
+<p> </p>
+<p>Virheellisen kaavan voi tästä eteenpäin korjata kahdella eri tavalla:</p>
+<p> </p>
+<p>Tapa 1 </p>
+<ol><li>Syötä syöttöriville uudet tiedot tai korjaa väärin syötetyt tiedot.</li>
+<li>Korjauksen jälkeen paina <strong>Enter</strong>-näppäintä. Ohjelma laskee uuden kaavan tuloksen.</li>
+</ol><p><img src="_booki/openoffice/static/OpenOffice-CalcKaavat-korjausAkohta-fi.jpg" alt="korjausAkohta.jpg" width="400" height="241"></p>
+<p> </p>
+<p> </p>
+<p>Tapa 2 </p>
+<ol><ol><li>Vie hiiri väärän solun päälle. Hiiren kursori muuttuu kädeksi.</li>
+<li>Paina hiiren vasemman puoleinen painike pohjaan solun päällä.</li>
+<li>Vedä solun värikäs reunus halutun solun päälle.</li>
+<li>Kun värikäs reunus on siirtynyt halutun solun päälle, vapauta hiiren vasemmanpuoleinen painike. Alla olevassa esimerkissä on vaihdetta B3-solun valinta C4-soluun. </li>
+</ol></ol><p> </p>
+<ol><li>Siirtojen jälkeen paina syöttörivillä <strong>Enter</strong>-näppäintä. Ohjelma laskee uuden kaavan tuloksen. </li>
+</ol><p><br><img src="_booki/openoffice/static/OpenOffice-CalcKaavat-korjauskohtaBsiirto_copy-fi.jpg" alt="korjauskohtaBsiirto_copy.jpg" width="400" height="240"></p>
+<p> </p></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/openoffice/index">Johdanto</a></li>
+<li Class="booki-section">Asennus</li><li><a href="/openoffice/ch003_asennus-windowsiin">Asennus Windowsiin</a></li>
+<li><a href="/openoffice/ch004_asennus-ubuntuun">Asennus Ubuntuun</a></li>
+<li Class="booki-section">Yleistä</li><li><a href="/openoffice/ch006_avaa-tiedosto">Avaa tiedosto</a></li>
+<li Class="booki-section">Writer</li><li><a href="/openoffice/ch008_writer">Writer</a></li>
+<li><a href="/openoffice/ch009_fontti">Fontti</a></li>
+<li><a href="/openoffice/ch010_kappale">Kappale</a></li>
+<li><a href="/openoffice/ch011_taulukko">Taulukko</a></li>
+<li Class="booki-section">Impress</li><li><a href="/openoffice/ch013_impress">Impress</a></li>
+<li><a href="/openoffice/ch014_uusi-esitys">Uusi esitys</a></li>
+<li><a href="/openoffice/ch015_esityksen-asettelu">Esityksen asettelu</a></li>
+<li><a href="/openoffice/ch016_grafiikka">Grafiikka</a></li>
+<li><a href="/openoffice/ch017_videon-ja-aanen-lisaaminen">Videon ja äänen lisääminen</a></li>
+<li Class="booki-section">Calc</li><li><a href="/openoffice/ch019_calc">Calc</a></li>
+<li><a href="/openoffice/ch020_taulukot">Taulukot</a></li>
+<li><a href="/openoffice/ch021_kaavat">Kaavat</a></li>
+<li Class="booki-section">Draw</li><li><a href="/openoffice/ch023_draw">Draw</a></li>
+<li><a href="/openoffice/ch024_tekstit">Tekstit</a></li>
+<li><a href="/openoffice/ch025_piirros-tyokalurivi">Piirros-työkalurivi</a></li>
+<li><a href="/openoffice/ch026_galleria">Galleria</a></li>
+<li Class="booki-section">Tekijät</li><li><a href="/openoffice/ch028_tekijat">Tekijät</a></li>
+</ul>

@@ -1,0 +1,33 @@
+<div id="main-content"><h1>Enkoodauksen perusasetukset </h1>
+<div id="content">
+<p>Peruskomento ogg-tiedoston enkoodaamiseksi komentorivillä on alla: </p>
+<pre>ffmpeg2theora -o video_ulostulo.ogg video_lähde.avi
+</pre>
+<p>Vaihtoehto <em>-o </em>antaa sinun määritellä ulostulotiedoston nimen.  </p>
+<p>Voit käyttää parametrejä <em>-v</em> ja <em>-a </em>hallitaksesi videon ja äänen laatua. Oletusarvot (5 ja 2) ovat tarpeeksi hyviä keskinkertaisiin vaatimuksiin. Parametri <em>-v 7 </em>antaa erittäin hyvän videon laadun, mutta ulos tuleva tiedosto on suunnilleen kaksi kertaa suurempi. Äänen laatua ajatellessasi kannattaa huomioida lähteen laatu. Jos äänen sisääntulo ei ole korkealaatuinen (ääni suoraan kytkettynä konferenssihuoneen äänijärjestelmään), ei ole tarvetta korkean bittinopeuden äänikompressioon (asetus <em>-a </em>suurempi kuin 4). </p>
+<pre>ffmpeg2theora -v 7 -a 3 -o video_ulostulo.ogg video_lähde.avi
+</pre>
+<h2>Limityksen poistaminen?</h2>
+<p>Jos ulos tulevan videon laatu on huono, se voi johtua siitä, että videosi tarvitsee limityksen poistamista. Limitetty video on helppo tunnistaa. Etsi vain liikettä sisältävä kohta (kameran tai merkkien liikettä), pysäytä video, ja limitettyjä viivoja ilmestyy. Näet tässä kuvassa selkeästi limitettyjä viivoja:</p>
+<p><img title="interlaced_en" src="_booki/ffmpeg2theora/static/FFmpeg2Theora-BasicEncoding-interlaced_en-fi.jpg" alt="interlaced_en" width="530" height="474"><br>  </p>
+<p>Joten, jos lähdevideosi on limitetty, käytä <em>--deinterlace</em> -parametriä ffmpeg2theorassa: </p>
+<pre>ffmpeg2theora --deinterlace -o video.ogg video.dv
+</pre>
+<h2>Ogg Theora -video metatägeillä</h2>
+<p>On myös mahdollista ja hyödyllistä lisätä metatietoja. Metatiedot ovat tekstitietoa videostasi, metatieto voi sisältää ogg-videotiedoston otsikon, tekijän, sijainnin ja lisenssin. </p>
+<p>Nämä tiedot voidaan lisätä ffmpeg2theora -parametreillä:</p>
+<pre>ffmpeg2theora -a 3 -v 6 --artist "Mel G" --title "Squat the Lot"
+--date "October 1995" --location "Brighton,UK"
+--organization "Undercurrents.org"
+--copyright "Copyright 1995, Mel G"
+--license "Creative Commons Attribution-ShareAlike 2.5"
+-o squat_lot_uk_undercurrents_1995.ogg video_source.avi
+</pre>
+</div></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/ffmpeg2theora/index">Johdanto</a></li>
+<li Class="booki-section">Asennus</li><li><a href="/ffmpeg2theora/ch003_asennus-windowsiin">Asennus Windowsiin</a></li>
+<li Class="booki-section">Perusteet</li><li><a href="/ffmpeg2theora/ch005_enkoodauksen-perusteet">Enkoodauksen perusteet</a></li>
+<li><a href="/ffmpeg2theora/ch006_peruskaytto-windowsissa">Peruskäyttö Windowsissa</a></li>
+<li Class="booki-section">Kehittyneempi käyttö</li><li><a href="/ffmpeg2theora/ch008_komennot">Komennot</a></li>
+<li><a href="/ffmpeg2theora/ch009_dv-virtaustoisto">DV-virtaustoisto</a></li>
+<li Class="booki-section">Tekijät</li><li><a href="/ffmpeg2theora/ch011_tekijat">Tekijät</a></li>
+</ul>

@@ -1,0 +1,110 @@
+<div id="main-content"><h1>Linphonen asetukset</h1>
+<div id="content">
+<p>Linphonella on ehkä yksinkertaisempi asetuskäyttöliittymä kuin missään ohjelmistopuhelimessa. Ikkuna, josta asetukset asetetaan, avataan napsauttamalla "Go" ylävalikossa ja valitsemalla "Preferences": </p>
+<p><img title="gopref_en" src="_booki/linphone/static/Linphone-Preferences-gopref_en-fi.jpg" alt="gopref_en" width="282" height="290"></p>
+<p>Edellinen toimintatapa avaa ikkunan, joka näyttää suunnilleen tältä: </p>
+<p><img src="_booki/linphone/static/Linphone-Preferences-prefs_en-fi.jpg" alt="prefs.jpg" width="600" height="397"></p>
+<p>Käyttöliittymässä on neljä välilehteä: "Network" (verkko), "Sound device" (äänikortti), "SIP" ja "Codecs" (koodekit).</p>
+<h2>Verkkoasetukset</h2>
+<p>"Network" -välilehti antaa sinun määritellä kuinka Linphone lähettää dataa internetissä. </p>
+<h3>Maailmanlaajuinen </h3>
+<blockquote>
+<p><img title="prefglobal_en" src="_booki/linphone/static/Linphone-Preferences-prefglobal_en-fi.jpg" alt="prefglobal_en" width="241" height="65"></p>
+<p>Kaikille IP-osoitetta kaipaaville laitteille ei ole tarpeeksi IP-osoitteita. Yleensä IP-osoitteen tahtovat tietokoneet, mutta myös käsitietokoneet, kännykät jne. IP-osoite on joukko numeroita, joka identifioi tietokoneesi netissä. Se näyttää suunnilleen tältä: "192.168.0.123". Koska näiden numeroryhmien yhdistelmiä ei ole tarpeeksi jokaiselle laitteelle, joka tahtoo kytkeytyä internettiin, uutta osoitejärjestelmää kehitellään ja sitä kutsutaan nimellä "IPv6". IPv6-osoite voisi näyttää tältä: "E2D6:0000:0000:0000:01B4:7BD8:D0A3:1220"</p>
+<p>Tällä valinnalla saat Linphonen käyttämään IPv6-osoitetta. Jos et tiedä tästä mitään, käytät luultavasti IPv4-osoitetta, eikä sinun tarvitse valita tätä kohtaa. </p>
+</blockquote>
+<h3>Verkossa liittymisen vaihtoehdot (kokeellinen)</h3>
+<p> </p>
+<blockquote>
+<p>Luultavasti sinun ei tarvitse murehtia näistä asetuksista. Jos voit kytkeytyä muihin Linphoneihin tai ohjelmistopuhelimiin voit jättää oletusarvot paikalleen ("No firewall" on oletuksena valittu): </p>
+<p><img src="_booki/linphone/static/Linphone-Preferences-firewallno_en-fi.jpg" alt="firewallno.jpg" width="96" height="31"> </p>
+<p>Jos olet yksityisessä verkossa, mikä on melko todennäköistä, jos kytkeydyt toimistolta, nettikahvilasta, tai jos sinulla on hubi tai reititin kotonasi, sinulla voi olla joitain hankaluuksia Linphonen kytkeytymisessä muihin Linphoneihin, jotka eivät ole samassa verkossa. Tämä johtuu siitä, että palomuurit voivat pysäyttää SIP-liikenteen (menetelmä, jolla Linphone siirtää dataa internetissä), tai NAT-reittimeksi kutsuttu laite on tietokoneesi ja internetin välillä. NAT on "Network Address Translation" ("verkko-osoitteiden kääntäminen"). NAT-reititin istuu julkisen internetin ja paikallisen yksityisen verkon välillä. NAT-reititin lähettää pyyntöjä paikallisverkon tietokoneilta internetiin ja päinvastoin. </p>
+<h4>STUN</h4>
+<p>Ensimmäinen vaihtoehto on käyttää STUN-palvelinta välittimenä. STUN tulee sanoista "Simple Traversal of UDP through NATs" ("UDP kulkee yksinkertaisesti NATsien läpi"). Tämä merkitsee, että Linphone kommunikoi STUN-palvelimen kanssa ja kertoo Linphonelle NAT-reittimesi julkisen IP-osoitteen. Se raportoi myös Linphonelle minkä portin NAT-laite avasi sisääntulevalle liikenteelle. Linphone käyttää tätä tietoa kytkeytyäkseen VoIP-palvelimeen tai muihin ohjelmistopuhelimiin. Jos tiedät STUN-palvelimen osoitteen (ja netissä on joitain ilmaisia, joita voit käyttää), voit kirjoittaa STUN-palvelimen osoitteen ensimmäiseen kenttään: </p>
+<p><img src="_booki/linphone/static/Linphone-Preferences-stun_1_en-fi.jpg" alt="stun_1.jpg" width="535" height="31"></p>
+<p>STUN-palvelimen osoite näyttää URLilta. Esimerkkinä voisi olla: <a href="http://stun.myserver.com">"stun.myserver.com".</a>  Siinä tapauksessa voit kirjoittaa tämän tiedon kenttään ja napsauttaa vasemmalla olevaa ympyrää, joka valitsee tämän vaihtoehdon. </p>
+<p>  <img title="stunset_en" src="_booki/linphone/static/Linphone-Preferences-stunset_en-fi.jpg" alt="stunset_en" width="489" height="28"></p>
+<p>Huomaa: yllä olevat asetukset ovat vain kuva varten, tällaista STUN-palvelinta ei ole olemassa. </p>
+<h4>Palomuurin osoite</h4>
+<p>Jos tiedät NAT-reitittimesi osoitteen, voit kirjoittaa sen seuraavaan kenttään:</p>
+<p><img src="_booki/linphone/static/Linphone-Preferences-firewall_en-fi.jpg" alt="firewall.jpg" width="507" height="30"></p>
+<p>Tässä tapauksessa NAT-reitittimen osoite voi olla "203.11.2.37" (tämä on kuvitteellinen osoite), ja siksi kirjoittaisin tämän tiedon ja napsauttaisin vasemmalla olevaa ympyrää varmistaakseni, että tämä valinta on valittu:</p>
+<p><img src="_booki/linphone/static/Linphone-Preferences-firewallset_en-fi.jpg" alt="firewallset.jpg" width="464" height="33"></p>
+<p>Huomaa: yllä olevat asetukset ovat vain kuva varten, tällaista STUN-palvelinta ei ole olemassa.</p>
+</blockquote>
+<h3>RTP-ominaisuudet </h3>
+<blockquote>
+<p>RTP tulee sanoista "Real Time Protocol" (reaaliaikainen protokolla). Tämä sääntökokoelma ("protokolla") on tapa, jolla Linphone siirtää äänidataa internetissä. </p>
+<h4>RTP-portti </h4>
+<p>Koska tietokoneen täytyy käsitellä monia erilaisia datan siirron tyyppejä internetissä ja monia erilaisia sääntöjoukkoja (protokollia) erilaisille datatyypeille, tietokone määrää "portin" jokaiselle datatyypille. Porttien numerot ovat väliltä 0 ja 65535. Verkkoselainten liikenne käyttää esimerkiksi porttia 80. Linphone käyttää oletusarvoisesti porttia 7078 RTP-liikenteelle. RTP-osoitteen muuttaminen ei aiheuta ongelmaa: se on dynaaminen, sen tekemisessä ei ole riskiä. Sen täytyy kuitenkin aina olla parillinen numero (7078 mutta ei 7079). </p>
+<h4>Jitter ("vapina") </h4>
+<p>Jotta ääni siirtyy tasaisesti, Linphonen täytyy pitää jonkin verran dataa "puskurissa". Se tallentaa tämän datan, jotta se voi soittaa sen tasaisesti, jolloin kuulet tasaisen äänen. Jos sinulla on ongelmia äänen "hajoamisen" tai "änkytyksen" kanssa, voit lisätä "vapinan kompensaatioon" asetettua aikaa. Tehdäksesi näin siirrä merkkiä oikealle (näet oikealla olevan numeron suurenevan). </p>
+</blockquote>
+<h3>SIP INFO vastaan RTP rfc2833 </h3>
+<blockquote>
+<p><span style="text-decoration: underline;">DTMF</span> on lyhenne sanoista "dual-tone multi-frequency" ("kahden äänenkorkeuden monitaajuus"). Tällä tavalla puhelin kommunikoi puhelinvaihteen tai kytkinkeskuksen kanssa. DTMF on tuttu useimmille ihmisille "valintaääninä", jossa eri sävelet vastaavat eri numeroita puhelimen numeronäppäimissä. Nämä sävelet lähetetään itse asiassa puhelinlinjaa pitkin, kun painat niitä, ja ne kommunikoivat puhelinvaihteiden kanssa, joten puhelusi pääsee oikeaan paikkaan. Se on eräänlainen äänisignaaliprosessi puhelimelle. Järjestelmä tunnetaan kaksitaajuusjärjestelmänä, koska jokaista näppäintä edustaa kaksi säveltä.</p>
+<p>Sattumalta "näppäinääni" on tavaramerkki ja on vain yksi DTMF:n versio.</p>
+<p>Vaihtoehto "Use SIP INFO message instead of RTP for DTMF transmitting" valitsee, mitä menetelmää Linphone käyttää DTMF-tiedon lähettämiseen. Jos valitset vaihtoehdon "SIP INFO" rastittamalla ruudun, DTMF-tieto esitetään itse asiassa numeroina eikä sävel säveleltä. Jos valitset vaihtoehdon RTP (oletusarvo), ääniä lähetetään ja siirretään käyttäen RTP-protokollaa. Yleensä SIP INFO ei ole käytössä ohjelmistopuhelimissa. Joten jätä tämä valinta oletusarvoonsa. </p>
+<p><img src="_booki/linphone/static/Linphone-Preferences-dtmf_en-fi.jpg" alt="dtmf.jpg" width="480" height="51"></p>
+</blockquote>
+<h2>Sound Device (äänikortti) </h2>
+<p>Tämä osa valitsee sisään- ja ulostulolaitteet, joita käytät äänelle. Yleensä Linphone arvaa asennuksen aikana nämä asetukset oikein, joten joudut muuttamaan niitä ainoastaan, mikäli koet hankaluuksia äänen kanssa, tai jos sinulla on enemmän kuin yksi äänikortti tai ehkäpä ulkoinen äänikortti, jota tahdot Linphonen käyttävän ääntä varten. </p>
+<h3>Playback sound device (äänen toistolaite) </h3>
+<blockquote>
+<p>Tämä on laite, jota Linphone käyttää toistaakseen ääntä. Voit valita sen pudotusvalikosta oikealla. </p>
+<p><img src="_booki/linphone/static/Linphone-Preferences-playback_en-fi.jpg" alt="playback.jpg" width="569" height="35"></p>
+</blockquote>
+<h3>Capture sound device (äänenkaappauslaite) </h3>
+<blockquote>
+<p>Tämä on laite, jota Linphonen tulisi käyttää äänen kaappaukseen. Voit valita sen vaihtoehdoista, jotka ovat oikealla olevassa pudostusvalikossa. Huomaa: nämä vaihtoehdot eivät vaikuta siihen, onko sinulla käytässä mikrofoni ("mic") vai linja ("line") -sisääntulo, tämä valitaan alempana olevasta valinnasta. </p>
+<p><img src="_booki/linphone/static/Linphone-Preferences-capture_en-fi.jpg" alt="capture.jpg" width="538" height="31"></p>
+</blockquote>
+<h3>Recording source (nauhoituslähde)</h3>
+<blockquote>
+<p>Useimmissa äänikorteissa voit valita millaista äänen sisääntuloa käytät. Nämä kaksi vaihtoehtoa ovat yleensä joko "micro"  (mikrofoni) tai "line" (sisääntulolinja).</p>
+<p><img src="_booki/linphone/static/Linphone-recording-en.jpg" alt="recording.jpg" width="422" height="29"> </p>
+<p>Voit valita nämä vaihtoehdot pudotuslaatikosta. </p>
+<p><img src="_booki/linphone/static/Linphone-Preferences-rec_option_en-fi.jpg" alt="rec_option.jpg" width="373" height="102"></p>
+</blockquote>
+<h3>Ring sound device (soittoäänilaite)</h3>
+<blockquote>
+<p>Tämä on laite, jolla Linphone soittaa "puhelimen soittoäänen". Voit valita sen vaihtoehdoista oikealla olevassa pudostusvalikossa.</p>
+<p><img src="_booki/linphone/static/Linphone-Preferences-ringdev_en-fi.jpg" alt="ringdev.jpg" width="512" height="32"> </p>
+</blockquote>
+<h3>Ring sound (soittoääni)</h3>
+<blockquote>
+<p>Voit valita millaista ääntä käytetään "soittoäänenä". Valitaksesi äänitiedoston paina "<span style="text-decoration: underline;">B</span>rowse" ja etsi tietokoneeltasi "wav" -äänitiedostoa. Kun olet valinnut, voit kuunnella äänen painamalla "Listen" -nappia.</p>
+<p><img src="_booki/linphone/static/Linphone-Preferences-ringwav_en-fi.jpg" alt="ringwav.jpg" width="464" height="33"> </p>
+<p> </p>
+</blockquote>
+<h3>Enable echo-canceller (kaiunpoisto päällä) </h3>
+<blockquote>
+<p>Usein voit kuulla kaiun omasta äänestäsi soittaessasi toiseen ohjelmistopuhelimeen. Tämä voi tehdä puheluun keskittymisestä vaikeaa, sillä kaiku on aika häiritsevä. Paras tapa välttää tämä on se, että sekä soittaja että vastaaja käyttävät molemmat kuulokkeita. Jos tämä ei onnistu, voit kokeilla käyttää kaiunpoistoa. Jos rastit ruudun, otat kaiunpoiston käyttöön. Tämä merkitsee, että toisessa päässä oleva henkilö ei kuule kaikua. Jos et tahdo itse kuulla kaikua, joutuu toisessa päässä oleva henkilö valitsemaan myös tämän vaihtoehdon. </p>
+<p><img src="_booki/linphone/static/Linphone-Preferences-echo_en-fi.jpg" alt="echo.jpg" width="463" height="24"> </p>
+</blockquote>
+<h2>SIP </h2>
+<p>SIP-vaihtoehtoja voidaan myös kuvailla "käyttäjätunnusvalinnoiksesi". Tässä on myös joitain valintoja, jotka ovat luonteeltaan teknisempiä. </p>
+<p>SIP on itsessään abstrakti olento, se on lyhenne sanoista "Session Initiation Protocol" (istunnon aloitusprotokolla).  SIP on viestiprotokolla ("protokolla" on joukko sääntöjä), se ei kanna ääntä, se saa ohjelmistopuhelimet sopimaan, kuinka ääni- ja videostreamit asetetaan sopimaan yhteen, ja millä signaalilla puhelu lopetetaan.</p>
+<p>Kun tahdot soittaa VoIP-puhelimella, tarvitset SIP-käyttäjätunnuksen. Tämä on kuin puhelinnumero tai sähköpostiosoite. Tarvitset tämän tunnuksen, jotta ihmiset voivat soittaa sinulle ja sinä voit soittaa ihmisille. </p>
+<p> </p>
+<h3>SIP port (Sip-portti)</h3>
+<blockquote>
+<p>Tämä on portti, jota Linphone käyttää SIP-puheluihin. Portti on abstrakti olento, jota ohjelmoijat käyttävät erilaisiin informaatiotyyppeihin. Portit identifioidaan numerolla ("porttinumerolla"). Oletuksena SIP käyttää porttia 5060. Älä muuta tätä porttia, ellet tiedä syytä, miksi sitä pitäisi muuttaa. </p>
+<p><img src="_booki/linphone/static/Linphone-siport-en.jpg" alt="siport.jpg" width="549" height="60"></p>
+</blockquote>
+<h3>Identity (identiteetti) </h3>
+<blockquote>
+<p>Tähän voit kirjoittaa tiedot SIP-tilistäsi. Sinun täytyy tietää verkkonimi ("hostname", tämä voi näyttää verkkonimeltä tai IP-osoitteelta) ja käyttäjänimesi.</p>
+<p><img title="sipacc_en" src="_booki/linphone/static/Linphone-Preferences-sipacc_en-fi.jpg" alt="sipacc_en" width="492" height="34"></p>
+<p>Jos et käytä "etäpalvelua" tunnustasi varten, voit kirjoittaa ensimmäiseen kenttään minkä tahansa nimen, ja toiseen kenttään voit kirjoittaa oman tietokoneesi verkkonimen. Jos et tiedä verkkonimeäsi, Linphone voi yrittää arvata sen. Jos valitset tämän vaihtoehdon, Linphone käyttää yksinkertaisesti koneesi IP-osoitetta tässä kentässä. Jos tahdot Linphonen tekevän näin, sinun täytyy valita valintalaatikko kohdassa "Automatically guess a valid hostname":</p>
+<p><img src="_booki/linphone/static/Linphone-Preferences-hostnameguess_en-fi.jpg" alt="hostnameguess.jpg" width="278" height="28"></p>
+</blockquote>
+<blockquote>
+<p> </p>
+</blockquote>
+</div></div><ul Class="menu-goes-here"><li Class="booki-section">JOHDANTO</li><li><a href="/linphone/index">JOHDANTO</a></li>
+<li><a href="/linphone/ch002_mika-on-voip">MIKÄ ON VOIP?</a></li>
+<li Class="booki-section">ALOITTAMINEN</li><li><a href="/linphone/ch004_kayttoliittyma">KÄYTTÖLIITTYMÄ</a></li>
+<li><a href="/linphone/ch005_asetukset">ASETUKSET</a></li>
+<li Class="booki-section">TEKIJÄT</li><li><a href="/linphone/ch007_tekijat">TEKIJÄT</a></li>
+</ul>

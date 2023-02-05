@@ -1,0 +1,76 @@
+<div id="main-content"><h1>Vähän teoriaa</h1>
+<div id="content">
+<p>Theora-videon editointi käyttäen komentorivin työkaluja, kuten Oggz Tools tai Ogg Video Tools, ei vaadi tietoa Theoran toiminnan tarkoista yksityiskohdista. Kuitenkin nämä komentorivin työkalut prosessoivat Theoran tiedostoja hyvin matalalla tasolla. Joitain sivuvaikutuksia ilmenee, näitä sivuvaikutuksia ei voida selitää ilman Theora-formaatin yksityiskohtien käsittelyä.</p>
+<p>Jos uskot, että voit elää pienten editoinnin aiheuttamien epätarkkuuksien kanssa, voit hyvin jättää tämän luvun väliin.</p>
+<h2>Theora-videon anatomia</h2>
+<p>Videotiedosto sisältää normaalisti videostriimin ja audiostriimin. Molempien striimien varastointi yhteen tiedostoon vaatii säilytysformaattia (container format). Säilytysformaatti Theora-videota varten on Ogg, joka pitää sisällään Theora-videostriimin ja yhden tai useampia Vorbis-audiostriimejä. Audio ja videostriimit tallennetaan välikkäin. Tämä merkitsee, että jokainen striimi on segmentoitu muutamaan datablokkiin, jotka ovat lähes samaa kokoa. Näitä blokkeja kutsutaan sivuiksi (page). </p>
+<p>Jokaisessa sivussa on aikaleima, joka antaa informaatiota sivun sijoituksesta striimin sisällä.</p>
+<p>Video- ja audiostriimit ovat toistensa lomassa siten, että molempien striimien sivut on liitetty yhteen nousevassa järjestyksessä aikaleimojensa mukaan.</p>
+<h2>Demultipleksaus</h2>
+<p>Teknisesti on helppoa jakaa videotiedosto video- ja audiostriimeihin. Tämä johtuu siitä seikasta, että kaksi striimiä voidaan erottaa keräämällä video- ja audiosivut erillisiin tiedostoihin. Videotiedoston striimeihin jakavaa prosessia kutsutaan demultipleksaukseksi.</p>
+<p>Kaikki tarpeellinen toiston vaatima tieto on kerätty striimien sisään, ilman että Ogg-säiliö lisää mitään tietoa. Jokainen tiedostoista itsessään on standardeihin sopiva Ogg-säilötty striimi ja sitä voi lukea mikä tahansa Theora/Vorbis-yhteensopiva video- tai audiosoitin.</p>
+<h2>Sivun aikaleimat</h2>
+<p> </p>
+<p>Kuten aiemmin on mainittu, striimit tallennetaan jaettuna useiksi sivuiksi. Sivulla on otsikko, joka pitää metadataa, joka kuvaa tämän osan video/audiostriimista. Otsikkoon sisältyy ajastusinformaatio, ainutlaatuinen striimintunnistusnumero, sivun numero ja jotain muuta tietoa. </p>
+<p>Ogg-standardien mukaan ajastustieto jokaiselle sivulle annetaan jyväsijainnilla, 64-bittisellä arvolla, joka on otsikossa. Kuinka jyväsijainti liittyy yhteen todellisen aikasijainnin kanssa on striimin määrittelemää, se voi olla esimerkiksi määrä millisekunteja videon alusta. Tästä syystä Ogg-tiedostoja käsittelevän ohjelman pitää sisältää jyväsijainnin tulkitsija, jotta se voi käsitellä tiedostoa oikein. Tämän tulkitsijan pitää olla tietoinen koodeksita ja striimispesifistä informaatiosta, jotta se voi tuottaa ajastustietoa, jota voidaan vertailla eri striimien välillä. </p>
+<p>Ogg-standardi tarkentaa että kaikki sivut Ogg-tiedostossa täytyy tallentaa nousevassa aikajärjestyksessä, vaikka se ei määrittele jyväsijaintien tulkintaa. Joten mikä tahansa työkalu, joka leikkaa tai yhdistää striimejä tarvitsee toimivia jyväsijaintitulkkeja jokaista sisällettyä striimiä varten, jotta sivut voidaan lomittaa oikein.</p>
+<h2>Koodekkidatan koteloiminen</h2>
+<p>Sivut ovat miltei samaa kokoa oletusasetuksena (noin 4096 tavua). Kuitenkin audio- ja videopaketit, jotka tietty koodekki luo, eivät yleensä sovi täsmälleen sivulle. Audiopaketit ovat yleensä paljon pienempiä. Videopaketit voivat olla monen kokoisia, pienempiä tai suurempia, riippuen eri tekijöistä.</p>
+<p>Video- ja audiokoodekkien tuottama data koteloidaan ensin Ogg-paketiksi. nämä paketit sijoitetaan sitten Ogg-sivuille. Paketti voidaan tarpeen mukaan joko jakaa useammalle sivulle, tai yhdistää muiden pakettien kanssa, jotta muuten osittain tyhjä paketti täyttyy.</p>
+<h3>Theoran videodatan koteloiminen</h3>
+<p>Koodaajan kehittämä Theoran videodata sisältää kahdenlaisia Ogg-paketteja: niin sanottuja avainkuvaruutuja (kutsutaan usein I-Frameksi), jotka ovat kokonaisia kuvia, ja P-Frameja, jotka kantavat ainoastaan viimeisimmän ja nykyisen kuvan eroja. </p>
+<p>Jotta annettu kuvaruutu voidaan näyttää annettuna aikana, dekooderin täytyy tietää edellinen avainkuvaruutu ja sen täytyy dekoodata kaikki kuvaruudut (mukaanlukien avainkuvaruutu) annetun kuvaruudun tosiasialliseen aikasijaintiin asti.</p>
+<p>Jotta videota voi dekoodata, dekooderi tarvitsee tietoa striimistä itsestään, esimerkiksi videon kuvaruutujen koosta. Tämä informaatio on sijoitettu otsikkopaketteihin striimin alkuun.</p>
+<h3>Vorbis-audiodatan koteloiminen</h3>
+<p>Enkooderin luoma Vorbis-audiodata kantaa tietyn määrän audionäytteitä. Näyte on audiodatan yksikkö. Näytteiden määrä Ogg-paketissa on määrätty ja se voi vaihdella vain kahden mahdollisen koon välillä, kuten striimin otsikossa on määritelty.</p>
+<p>Videodatan tapaan audiodatapaketit ovat myös riippuvaisia toisistaan. Jotta yksi audiopaketti voidaan dekoodata, edellistä pakettia tarvitaan.</p>
+<p>Audion dekoodaaja riippuu striimin parametreistä, kuten näytetaajuudesta, bittitaajuudesta, jne. nämä on tallennettu striimin otsikon paketteihin striimin alussa.</p>
+<h2>Ogg-kehikko</h2>
+<p>Kuten aiemmin sanottiin, videostriimi ei voi alkaa satunnaisesta ajankohdasta, sillä siinä on avainkuvaruutuja (I-Frame) ja delta-kuvaruutuja (P-Frame). Lisäksi audio on tallennettu paketeihin, joille on annettu ajoitusjyvät. </p>
+<p>Jotta synkronisaatio ja oikea aloituskohta on varmistettu, Ogg-kehikkosivut kantavat tietoa jokaisen striimin aloituspaikasta. Dekoodaaja, joka lukee Ogg-kehikon tietoa, voi sitten etsiä oikean audio- ja videokohdan ja alkaa soittamaan tästä kohdasta. </p>
+<p> </p>
+</div></div><ul Class="menu-goes-here"><li Class="booki-section">JOHDANTO</li><li><a href="/ogg-theora/index">OGG THEORA</a></li>
+<li><a href="/ogg-theora/ch002_tasta-kayttooppaasta">TÄSTÄ KÄYTTÖOPPAASTA</a></li>
+<li><a href="/ogg-theora/ch003_mita-video-on">MITÄ VIDEO ON?</a></li>
+<li><a href="/ogg-theora/ch004_mita-theora-on">MITÄ THEORA ON?</a></li>
+<li Class="booki-section">PERUSKÄSITTEET</li><li><a href="/ogg-theora/ch006_mika-on-koodekki">MIKÄ ON KOODEKKI?</a></li>
+<li><a href="/ogg-theora/ch007_sailot">SÄILÖT</a></li>
+<li Class="booki-section">TOISTO</li><li><a href="/ogg-theora/ch009_theoran-toistaminen">THEORAN TOISTAMINEN</a></li>
+<li><a href="/ogg-theora/ch010_toisto-vlclla">TOISTO VLC:LLÄ</a></li>
+<li><a href="/ogg-theora/ch011_miro">MIRO</a></li>
+<li Class="booki-section">THEORA VERKOSSA</li><li><a href="/ogg-theora/ch013_theora-verkossa">THEORA VERKOSSA</a></li>
+<li><a href="/ogg-theora/ch014_html5">HTML5</a></li>
+<li><a href="/ogg-theora/ch015_theora-sivuillasi">THEORA SIVUILLASI</a></li>
+<li><a href="/ogg-theora/ch016_hotelleja-theoralle">HOTELLEJA THEORALLE</a></li>
+<li Class="booki-section">ENKOODAUS</li><li><a href="/ogg-theora/ch018_johdanto-enkoodaukseen">JOHDANTO ENKOODAUKSEEN</a></li>
+<li><a href="/ogg-theora/ch019_firefogg">FIREFOGG</a></li>
+<li><a href="/ogg-theora/ch020_enkoodaus-vlclla">ENKOODAUS VLC:LLÄ</a></li>
+<li><a href="/ogg-theora/ch021_enkoodaus-ffmpeg2theoralla">ENKOODAUS FFMPEG2THEORALLA </a></li>
+<li><a href="/ogg-theora/ch022_thoggen">THOGGEN</a></li>
+<li Class="booki-section">TEKSTITYKSET</li><li><a href="/ogg-theora/ch024_tekstityksien-perusteet">TEKSTITYKSIEN PERUSTEET</a></li>
+<li><a href="/ogg-theora/ch025_jakelu">JAKELU</a></li>
+<li><a href="/ogg-theora/ch026_tekstityksien-liittaminen">TEKSTITYKSIEN LIITTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch027_tekstityksien-toistaminen">TEKSTITYKSIEN TOISTAMINEN</a></li>
+<li><a href="/ogg-theora/ch028_julkaiseminen">JULKAISEMINEN</a></li>
+<li Class="booki-section">SUORATOISTO</li><li><a href="/ogg-theora/ch030_suoratoiston-perusteet">SUORATOISTON PERUSTEET</a></li>
+<li><a href="/ogg-theora/ch031_icecast">ICECAST</a></li>
+<li><a href="/ogg-theora/ch032_tss">TSS</a></li>
+<li><a href="/ogg-theora/ch033_ffmpeg2theora-streamaus">FFMPEG2THEORA-STREAMAUS</a></li>
+<li><a href="/ogg-theora/ch034_suoratoisto-vlc-ohjelmalla">VLC-STREAMAUS</a></li>
+<li><a href="/ogg-theora/ch035_virtaustoiston-tallentaminen">VIRTAUSTOISTON TALLENTAMINEN</a></li>
+<li Class="booki-section">EDITOINTI</li><li><a href="/ogg-theora/ch037_johdanto-editointiin">JOHDANTO EDITOITIIN</a></li>
+<li><a href="/ogg-theora/ch038_pitivi">PITIVI</a></li>
+<li Class="booki-section">ESIKATSELU</li><li><a href="/ogg-theora/ch040_kuinka-esikatselua-kaytetaan">ESIKATSELUN KÄYTTÖ</a></li>
+<li><a href="/ogg-theora/ch041_tee-esikatselukuvia">TEE ESIKATSELUKUVIA</a></li>
+<li><a href="/ogg-theora/ch042_tee-diaesitys">TEE DIAESITYS</a></li>
+<li><a href="/ogg-theora/ch043_tee-esikatseluvideo">TEE ESIKATSELUVIDEO</a></li>
+<li Class="booki-section">EDITOINTI KOMENTORIVILTÄ</li><li><a href="/ogg-theora/ch045_komentorivi">THEORA JA KOMENTORIVI</a></li>
+<li><a href="/ogg-theora/ch046_theoran-teoria">THEORAN TEORIA</a></li>
+<li><a href="/ogg-theora/ch047_tiedoston-jakaminen">TIEDOSTON JAKAMINEN</a></li>
+<li><a href="/ogg-theora/ch048_tiedoston-leikkaaminen">TIEDOSTON LEIKKAAMINEN</a></li>
+<li><a href="/ogg-theora/ch049_tiedostojen-liittaminen">TIEDOSTOJEN LIITTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch050_tiedostojen-yhdistaminen">TIEDOSTOJEN YHDISTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch051_koon-muuttaminen">KOON MUUTTAMINEN</a></li>
+<li><a href="/ogg-theora/ch052_oggin-analysoiminen">OGGIN ANALYSOIMINEN</a></li>
+<li Class="booki-section">TEKIJÄT</li><li><a href="/ogg-theora/ch054_tekijat">TEKIJÄT</a></li>
+</ul>

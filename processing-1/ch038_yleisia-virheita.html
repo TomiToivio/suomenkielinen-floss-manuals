@@ -1,0 +1,139 @@
+<div id="main-content"><h1>Yleisiä virheitä</h1>
+<h2>Unexpected token</h2>
+<p><span id="result_box" class="long_text" lang="en"><span>Tämä virheviesti tulee usein, mikäli unohdat kirjoittaa puolipisteen ";" rivin loppuun, tai et ole sulkenut aaltosulkeita. Ohjelma näkee silloin kahden rivin komennon, jolloin syntaksi on väärin. </span></span></p>
+<pre>int kokonaisluku = 1
+int murtoluku = 0.1;
+</pre>
+<p><img title="erreurs2" src="_booki/processing-1/static/erreurs2-fi.png" alt="erreurs2" width="600" height="31"></p>
+<p>Oikea koodi on:</p>
+<pre><strong>int kokonaisluku = 1;</strong>
+int murtoluku = 0.1;</pre>
+<h2>Cannot find anything named</h2>
+<p><span id="result_box" class="long_text" lang="en"><span>Tämä virhe syntyy, kun kutsut muuttujaa, jota ei ole olemassa. Tarkasta, että olet julistanut muuttujan. </span></span></p>
+<pre>int numero2 = numero1 + 5;
+</pre>
+<p><img title="erreurs3" src="_booki/processing-1/static/erreurs3-fi.jpg" alt="erreurs3" width="600" height="31"></p>
+<p>Oikea koodi on:</p>
+<pre><strong>int numero1 = 10;</strong>
+int numero2 = numero1 + 5;
+</pre>
+<h2>Found one too many...</h2>
+<p><span id="result_box" class="long_text" lang="en"><span>Tämä virheviesti tulee, kun et ole sulkenut koodiblokkia aaltosululla. <br></span></span></p>
+<pre>void draw() {
+
+}
+
+void setup() {
+</pre>
+<p><img title="erreur4" src="_booki/processing-1/static/erreur4-fi.png" alt="erreur4" width="600" height="31"></p>
+<p>Oikea koodi on:</p>
+<pre>void draw() {
+
+}
+<strong> void setup() { }</strong>
+</pre>
+<h2>ArithmeticException: / by zero</h2>
+<pre>int jakaja = 0;
+println(1 / jakaja);</pre>
+<p><img title="erreur9" src="_booki/processing-1/static/erreur9-fi.png" alt="erreur9" width="535" height="30"></p>
+<p>Nollalla ei voi jakaa. Tarvittaessa voit varmistaa, että ohjelma ei yritä jakaa nollalla.</p>
+<pre>int jakaja = 0;
+if (jakaja != 0) {
+  println(1 / jakaja);
+} else {
+  println("Ei voi jakaa nollalla!");
+}
+</pre>
+<h2>Cannot convert ... to ...</h2>
+<p><span id="result_box" class="long_text" lang="en"><span>Tämä virhe tulee, kun yrität laittaa muuttujaan arvon, joka ei sovi muuttujan tyyppiin. <br></span></span></p>
+<pre>int a = 10;
+float b = 10.5;
+
+a = b;
+</pre>
+<p><img src="_booki/processing-1/static/erreur5-fi_1.png" alt=""></p>
+<p><span id="result_box" class="long_text" lang="en"><span>Voimme laittaa murtoluvun (float) muuttujaan, joka on tarkoitettu kokonaisluvulle (int), mutta silloin meidän täytyy muuntaa luku kokonaisluvuksi. Oikea koodi on: </span></span></p>
+<pre>int a = 10;
+float b = 10.5;
+
+<strong>a = int(b);</strong>
+</pre>
+<h2>ArrayIndexOutOfBoundsException</h2>
+<p><span id="result_box" class="long_text" lang="en"><span>Tämä virhe tulee, kun yrität päästä tietokentän (array) ulkopuolella olevaan osatekijään. Seuraavassa esimerkissä taulun koko on 3 ja yritämme päästä laatikkoon 4. </span></span></p>
+<pre>int[] numbers = new int[3];
+numbers[0] = 1;
+numbers[1] = 20;
+numbers[2] = 5;
+
+println(numbers[4]);
+</pre>
+<p><img title="erreur8" src="_booki/processing-1/static/erreur8-fi.png" alt="erreur8" width="535" height="30"></p>
+<p>Oikea koodi on:</p>
+<pre>int[] numbers = new int[3];
+numbers[0] = 1;
+numbers[1] = 20;
+numbers[2] = 5;
+
+<strong>println(numbers[3]); </strong></pre>
+<h2>NullPointerException</h2>
+<p><span id="result_box" class="long_text" lang="en"><span>Tämä virhe tulee, kun yrität päästä muuttujaan, jota ei ole muistissa. Kun yrität esimerkiksi päästä objektiin, jota ei ole vielä alustettu. </span></span></p>
+<pre>Ball myBall;
+
+void setup() {
+  myBall.x = 10;
+}
+
+class Ball {
+  int x;
+  int y;
+}
+</pre>
+<p><img title="erreur6" src="_booki/processing-1/static/erreur6-fi.png" alt="erreur6" width="535" height="30"></p>
+<p>Oikea koodi on:</p>
+<pre><strong>Ball myBall = new Ball();</strong>
+
+void setup() {
+  myBall.x = 10;
+}
+
+class Ball {
+  int x;
+  int y;
+}
+</pre></div><ul Class="menu-goes-here"><li Class="booki-section">Esittely</li><li><a href="/processing-1/index">Johdanto</a></li>
+<li><a href="/processing-1/ch002_esimerkkeja">Esimerkkejä</a></li>
+<li><a href="/processing-1/ch003_asennus">Asennus</a></li>
+<li Class="booki-section">Perusteet</li><li><a href="/processing-1/ch005_perusteet">Perusteet</a></li>
+<li Class="booki-section">Suunnittelu</li><li><a href="/processing-1/ch007_suunnittelutila">Suunnittelutila</a></li>
+<li><a href="/processing-1/ch008_muodot">Muodot</a></li>
+<li><a href="/processing-1/ch009_varit">Värit</a></li>
+<li><a href="/processing-1/ch010_kuvat">Kuvat</a></li>
+<li><a href="/processing-1/ch011_tekstit">Tekstit</a></li>
+<li Class="booki-section">Interaktiivisuus</li><li><a href="/processing-1/ch013_video">Video</a></li>
+<li><a href="/processing-1/ch014_videon-tuominen">Videon tuominen</a></li>
+<li><a href="/processing-1/ch015_mikrofoni">Mikrofoni</a></li>
+<li><a href="/processing-1/ch016_hiiri">Hiiri</a></li>
+<li><a href="/processing-1/ch017_nappaimisto">Näppäimistö</a></li>
+<li><a href="/processing-1/ch018_tulostaminen">Tulostaminen</a></li>
+<li Class="booki-section">Vienti</li><li><a href="/processing-1/ch020_verkkoon-vieminen">Verkkoon vieminen</a></li>
+<li Class="booki-section">Animaatio</li><li><a href="/processing-1/ch022_aanet">Äänet</a></li>
+<li><a href="/processing-1/ch023_draw-metodi">Draw-metodi</a></li>
+<li><a href="/processing-1/ch024_objektien-animointi">Objektien animointi</a></li>
+<li><a href="/processing-1/ch025_monien-objektien-animointi">Monien objektien animointi</a></li>
+<li><a href="/processing-1/ch026_aikajana">Aikajana</a></li>
+<li Class="booki-section">Ohjelmointi</li><li><a href="/processing-1/ch028_kommentit">Kommentit</a></li>
+<li><a href="/processing-1/ch029_objektit">Objektit</a></li>
+<li><a href="/processing-1/ch030_metodit">Metodit</a></li>
+<li><a href="/processing-1/ch031_listat">Listat</a></li>
+<li><a href="/processing-1/ch032_toistaminen">Toistaminen</a></li>
+<li><a href="/processing-1/ch033_ehdot">Ehdot</a></li>
+<li><a href="/processing-1/ch034_muuttujat">Muuttujat</a></li>
+<li><a href="/processing-1/ch035_muutokset">Muutokset</a></li>
+<li><a href="/processing-1/ch036_rajat">Rajat</a></li>
+<li Class="booki-section">Liitteet</li><li><a href="/processing-1/ch038_yleisia-virheita">Yleisiä virheitä</a></li>
+<li><a href="/processing-1/ch039_ulkoiset-kirjastot">Ulkoiset kirjastot</a></li>
+<li><a href="/processing-1/ch040_dokumentaatio">Dokumentaatio</a></li>
+<li><a href="/processing-1/ch041_arduino">Arduino</a></li>
+<li><a href="/processing-1/ch042_tasta-oppaasta">Tästä oppaasta</a></li>
+<li><a href="/processing-1/ch043_tekijat">Tekijät</a></li>
+</ul>

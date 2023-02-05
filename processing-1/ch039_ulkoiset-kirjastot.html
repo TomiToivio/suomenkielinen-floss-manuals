@@ -1,0 +1,83 @@
+<div id="main-content"><h1>Ulkoiset kirjastot</h1>
+<p><span id="result_box" class="long_text" lang="en"><span>Elämä on täynnä jännittäviä ongelmia, jotka odottavat ratkaisuaan. Kun kirjoitat ongelman ratkaisevan ohjelman, tahdot varmaankin jakaa hyödyn muiden kanssa. Jos julkaiset koodisi vapaalla lisenssillä, kuten GNU General Public License (GPL), muut voivat hyötyä siitä, sen sijaan että keksisivät pyörän uudelleen. <br></span><span> <br>Kirjasto on kokoelma luokkia, joita voidaan käyttää uudestaan kaikissa projekteissamme. Loputtomasti mielenkiintoisia Processing-kirjastoja on olemassa. Voit ladata kirjaston verkosta, purkaa sen arkiston, ja laittaa sen hakemistoon <strong>libraries</strong>. Hakemisto <strong>libraries</strong> on hakemiston <strong>Processing</strong> alla. </span></span></p>
+<p><span id="result_box" class="long_text" lang="en"><span>Joukko kirjastoja tulee Processingin mukana. Käyttääksesi kirjastoa ohjelmassasi voit valita sen nimen hakemistossa <strong>Sketch</strong> &gt; <strong>Import</strong> <strong>Library</strong>. </span><span>Nämä kirjastot ovat vapaita: käyttäjät voivat vapaasti ajaa, kopioida, jaella, tutkia, muuttaa ja parannella niiden koodia. </span></span></p>
+<h2><span id="result_box" class="long_text" lang="en"><span>Mistä kirjastoja löytyy?</span></span></h2>
+<p>Monet kirjastot eivät tule Processingin mukana, vaan ne täytyy ladata kirjaston ohjelmoijan verkkosivulta. Näin jakelu on helpompaa ja käyttäjät voivat saada kirjaston uusimman version.</p>
+<p>Yleisimmät kirjastot löytyvät kuitenkin Processingin verkkosivulta osoitteesta: <a title="Librairies Processing" href="http://processing.org/reference/libraries/">http://processing.org/reference/libraries/</a>.</p>
+<h2>Kirjaston asentaminen</h2>
+<p><span id="result_box" class="long_text" lang="en"><span>Asennamme nyt kirjaston, jonka lataamme netistä. <br></span><span> <br>Käytämme kirjastoa ShapeTween, koska sitä on helppo käyttää. Se tarjoaa joukon tapoja elementtien animointiin. Tällainen työkalu on hyödyllinen siistien animaatioiden tekemiseen. <br></span><span> <br>Sanalla "tween" kuvataan usein animaatioita ja kuvasiirtymiä. Tämä sana tulee englannista ja merkitsee kuvia, jotka piirretään avainruutujen väliin perinteisessä animaatiossa. "Tween"-ruutu luo liikkeen vaikutelman. Kuvassa luodaan liikettä lisäämällä animaatiota liikkeen alku- ja loppupisteen välille.  <br></span><span> <br>Processing-sivujen Libraries-sivulta löytyy linkki ShapeTween-sivuille: </span></span><a href="http://www.leebyron.com/else/shapetween/">http://www.leebyron.com/else/shapetween/</a>.</p>
+<p><img title="download2" src="_booki/processing-1/static/download2-fi.png" alt="download2" width="325" height="80"></p>
+<p><span id="result_box" class="long_text" lang="en"><span>Lataa arkisto ja pura zip-tiedosto. Puretun arkiston pitäisi sisältää hakemisto, jolla on kirjaston nimi, ja joka sisältää kirjaston tiedostot. Tämä hakemisto täytyy siirtää Processing-hakemiston alla olevaan Libraries-hakemistoon. Tämän jälkeen voit käynnistää Processingin uudestaan. </span></span></p>
+<h2><span id="result_box" class="long_text" lang="en"><span>Kokeile esimerkkiä</span></span></h2>
+<p><span id="result_box" class="long_text" lang="en"><span>Hyvät kirjastot sisältävät luokkiensa, metodiensa ja attribuuttiensa dokumentaation. Kirjastojen mukana tulee myös esimerkkejä. Jos esimerkkejä on tullut, voit kokeilla niitä hakemistosta <strong>File</strong> &gt; <strong>Sketchbook</strong> &gt; <strong>Examples</strong>. Kirjastomme nimen pitäisi olla siellä. Huomaa, että tämä toimii vain käyttöjärjestelmissä Mac OS X ja Windows. GNU/Linuxissa et näe esimerkkejä tässä hakemistossa. <br></span><span> <br></span></span></p>
+<p><img title="lib" src="_booki/processing-1/static/lib-fi.jpg" alt="lib" width="600" height="403"><br> </p>
+<p><span id="result_box" class="long_text" lang="en"><span>Jos kirjasto ei sisällä esimerkkejä, meidän täytyy hakea esimerkki netistä ja kopioida ja liittää se. Harjoitustyönä kopioimme ja liitämme esimerkin verkkosivulta ShapeTween. </span><span> <br><br></span><span>Krijaston verkkosivulla näet joukon esimerkkejä otsikolla Example Code. Napsauta esimerkkiä Basic Tween nähdäksesi hyvin yksinkertaisen hallitun liikkeen esimerkin.</span><span> <br><br></span><span>Kun olet saanut esimerkin toimimaan, voit muokata sitä, ja käyttää sitä omien kokeilujesi pohjana. </span></span></p>
+<p><img src="_booki/processing-1/static/Screen_shot_2010_09_09_at_17-05-37-fi_1.png" alt=""></p>
+<pre>import megamu.shapetween.*;
+
+Tween ani;
+
+void setup(){
+  size( 200, 200 );
+  ani = new Tween(this, 2, Tween.SECONDS);
+  ani.start();
+}
+
+void draw(){
+  background(200);
+
+  float x1 = 20;
+  float y1 = 30;
+
+  float x2 = 180;
+  float y2 = 190;
+
+  float x = lerp( x1, x2, ani.position() );
+  float y = lerp( y1, y2, ani.position() );
+
+  fill(0);
+  ellipse( x, y, 8, 8 );
+}
+
+void mousePressed(){
+  ani.start();
+}
+</pre>
+<h2>Kaupalliset kirjastot</h2>
+<p>Joskus lataat kirjaston ja huomaat, että se ei sisällä lähdekoodia. Kun katsot verkkosivua, näet sanat "All Rights Reserved" ilman sen kummempia selityksiä. Tässä tapauksessa kirjasto ei ole vapaa vaan kaupallinen. Voit käyttää sitä vapaasti, mutta ilman pääsyä sen koodiin. Et voi tutkia tai muuttaa sen toimintaa. Se ei ehkä toimi Processingin seuraavan version kanssa, jolloin et voi korjata sen yhteensopivuusongelmia. Jos nämä asiat ovat sinulle tärkeitä, ole tarkkana. Tarkasta aina että kirjaston mukana tulee lähdekoodi ja että koodissa on viittaus vapaaseen lisenssiin. Free Software Foundationin sivulla on lista lisensseistä, jotka sopivat yhteen GPL:n kanssa: <a href="http://www.fsf.org/">http://www.fsf.org/</a>.</p></div><ul Class="menu-goes-here"><li Class="booki-section">Esittely</li><li><a href="/processing-1/index">Johdanto</a></li>
+<li><a href="/processing-1/ch002_esimerkkeja">Esimerkkejä</a></li>
+<li><a href="/processing-1/ch003_asennus">Asennus</a></li>
+<li Class="booki-section">Perusteet</li><li><a href="/processing-1/ch005_perusteet">Perusteet</a></li>
+<li Class="booki-section">Suunnittelu</li><li><a href="/processing-1/ch007_suunnittelutila">Suunnittelutila</a></li>
+<li><a href="/processing-1/ch008_muodot">Muodot</a></li>
+<li><a href="/processing-1/ch009_varit">Värit</a></li>
+<li><a href="/processing-1/ch010_kuvat">Kuvat</a></li>
+<li><a href="/processing-1/ch011_tekstit">Tekstit</a></li>
+<li Class="booki-section">Interaktiivisuus</li><li><a href="/processing-1/ch013_video">Video</a></li>
+<li><a href="/processing-1/ch014_videon-tuominen">Videon tuominen</a></li>
+<li><a href="/processing-1/ch015_mikrofoni">Mikrofoni</a></li>
+<li><a href="/processing-1/ch016_hiiri">Hiiri</a></li>
+<li><a href="/processing-1/ch017_nappaimisto">Näppäimistö</a></li>
+<li><a href="/processing-1/ch018_tulostaminen">Tulostaminen</a></li>
+<li Class="booki-section">Vienti</li><li><a href="/processing-1/ch020_verkkoon-vieminen">Verkkoon vieminen</a></li>
+<li Class="booki-section">Animaatio</li><li><a href="/processing-1/ch022_aanet">Äänet</a></li>
+<li><a href="/processing-1/ch023_draw-metodi">Draw-metodi</a></li>
+<li><a href="/processing-1/ch024_objektien-animointi">Objektien animointi</a></li>
+<li><a href="/processing-1/ch025_monien-objektien-animointi">Monien objektien animointi</a></li>
+<li><a href="/processing-1/ch026_aikajana">Aikajana</a></li>
+<li Class="booki-section">Ohjelmointi</li><li><a href="/processing-1/ch028_kommentit">Kommentit</a></li>
+<li><a href="/processing-1/ch029_objektit">Objektit</a></li>
+<li><a href="/processing-1/ch030_metodit">Metodit</a></li>
+<li><a href="/processing-1/ch031_listat">Listat</a></li>
+<li><a href="/processing-1/ch032_toistaminen">Toistaminen</a></li>
+<li><a href="/processing-1/ch033_ehdot">Ehdot</a></li>
+<li><a href="/processing-1/ch034_muuttujat">Muuttujat</a></li>
+<li><a href="/processing-1/ch035_muutokset">Muutokset</a></li>
+<li><a href="/processing-1/ch036_rajat">Rajat</a></li>
+<li Class="booki-section">Liitteet</li><li><a href="/processing-1/ch038_yleisia-virheita">Yleisiä virheitä</a></li>
+<li><a href="/processing-1/ch039_ulkoiset-kirjastot">Ulkoiset kirjastot</a></li>
+<li><a href="/processing-1/ch040_dokumentaatio">Dokumentaatio</a></li>
+<li><a href="/processing-1/ch041_arduino">Arduino</a></li>
+<li><a href="/processing-1/ch042_tasta-oppaasta">Tästä oppaasta</a></li>
+<li><a href="/processing-1/ch043_tekijat">Tekijät</a></li>
+</ul>

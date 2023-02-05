@@ -1,0 +1,63 @@
+<html dir="None"><body><div id="main-content"><h1>Värienhallinta</h1>
+<p><br>Jokaisen graafisen ketjun kaikkien osien on hetkestä toiseen sovittava asiakirjan värintoistoindeksiin julkaisua varten. Täytyy osata ennakoida rajoitukset kun asiakirja jaetaan, ja varoa merkittäviä eroja, jotka paljastuisivat julkaistaessa. Näiden värierojen minimoimiseksi on suositeltavaa soveltaa värinhallintaa. Hallintaan liittyy useita vaiheita, kaikki liittyvät värien tuen rajoitteisiin, jotka on tärkeää tietää etukäteen. Värien hallinnan ytimessä ovat väriprofiilit, joihin löytyy yleisesti tunnettuja ICC-profiileja, joiden tavoitteena on toimia siltana kahden väriavaruuden välillä.</p>
+<p>Scribusin värinhallinta on saatavilla kohdasta Tiedosto &gt; Asetukset &gt; värinhallinta, joka on globaali ohjelmasta toiseen, ja Tiedosto &gt; Asetukset &gt; Asetukset asiakirja, joka rajaa sen soveltamisen vain nykyiseen dokumenttiin.</p>
+<p><img src="_booki/scribus-opas-1/static/ScreenHunter_05%20Jan.%2015%2021.17.gif" alt=""></p>
+<h2>Profiilin hankinta </h2>
+<p>Ketjun väriprofiilin hankinta yhdistää väritiedot resurssiin bittikartta tai vektori, kun se on luotu.</p>
+<p>Jos kyseessä on kamera, joka huolehtii kuvan väriprofiilista. Jos se on skannattu kuva, skanneri soveltaa profiilia. Jos se on vektorigrafiikkaa, suunnitteluohjelmisto sisällyttää profiilin. Nämä kolme esimerkkiä osoittavat asianmukaisen väriprofiilien hallinnoinnin monimutkaisuuden.</p>
+<p>Väriprofiilien pitää vastata toisiaan, kuten tapauksessa valokuva (ensimmäinen profiili), tuloste (toinen profiili) ja sitten skannattu (kolmas profiili). Profiilin hankinta on yleensä vapaaehtoista ja säilyttää alkuperäisen asiakirjan värit. </p>
+<h2>Korvaamaton RGB </h2>
+<p>Profiilin hankinta on useimmiten muodossa RGB, jolla on paljon laajempi väriavaruus, joka mahdollistaa tarkemman säädön. Profiili voi kuitenkin olla suoraan CMYK jos se on luotu, ja sen tiedetään tulevan osaksi tulostettavaa asiakirjaa.</p>
+<p>On mahdollista, varsinkin jos kyseessä on skannattu kuva, luoda oma profiili. Tämä käytäntö on lisätakuuna ennakoimassa julkaisun rajoitteita. Siihen liittyy erityisesti metodiikan asiantuntemus ja asianmukaiset välineet (ohjelmistot ja tarkennus). </p>
+<h2>Profiilit Scribusissa </h2>
+<p>Scribusissa profiilia RGB-kuva säädetään Asetukset-ikkunan Värien hallinta-välilehdestä. Valikosta [RGB] löytyy tehokas valikoima vakioprofiileja ja sertifioituja profiileja, joita sovelletaan kaikkiin RGB-kuviin. Scribus tukee CMYK-profiileja samalla tavalla, ehdottamalla pudotusvalikosta [CMYK] vakioprofiileita, joita sovelletaan ISO-standardin mukaan, tai voidaan asentaa muita tarkempia tai muokattuja profiileja.</p>
+<p>On mahdollista lisätä oma profiiliinsa ja tallentaa ne oikeisiin kansioihin, jotka ovat riippuvaisia käyttöjärjestelmästä. Windowsissa ne menevät hakemistoon \ Windows \ system32 \ spool \ drivers \ color. Mac-käyttäjät voivat käyttää joko jaettua hakemistoa / Library / ColorSync / Profiles tai käyttäjille, joilla ei ole järjestelmänvalvojan oikeuksia, hakemistossa / Users / &lt;käyttäjätunnus&gt; / Library / ColorSync / Profiles. Linux-jakeluissa tiedosto, joka sisältää profiilit on joko jaettana käyttäjien kesken kohdassa / usr / share / color / icc tai muille käyttäjille ilman pääkäyttäjän oikeuksia kohdassa / home / &lt;käyttäjätunnus&gt; /. color / ICC. Profiilit näistä luetteloista ladataan automaattisesti Scribusia käynnistettäessä.</p>
+<h2>Profiili monitorilla </h2>
+<p>Monitori kalibroidaan katsottaessa asiakirjaa digitaalisessa muodossa. RGB-tila on välttämätön ensinnäkin koska näyttö itsessään perustuu tähän tilaan. Hankinnan arvo RGB-profiilia varten muodostuu pikseleistä, eli on siis entistäkin tärkeämpää.</p>
+<p>Monitori kalibroidaan käyttämällä erityisiä ohjelmistoja. Tämä toiminta luo profiilin, joka heijastaa näytön ominaisuuksia, sen asetuksia ja sen ympäristöä (mukaan lukien työtilan kirkkaus). Tämä profiili voi sitten käyttää näyttöä asiakirjojen katsomiseen. Scribus tarjoaa mahdollisuuden ladata, kuten edellä, profiilin monitorille värinhallintaan, kohdasta [Näyttö]. Oletuksena profiili, jota valmistaja on käyttänyt.</p>
+<p><img src="_booki/scribus-opas-1/static/ScreenHunter_06%20Jan.%2015%2021.19.gif" alt="" width="600" height="150"></p>
+<h2>Profiilin toiminta </h2>
+<p>Monitorin ei ole tarkoitus muuttaa kuvaan integroitua profiilia, vaan tarjota paras näyttö mahdollisimman lähellä todellisia värejä. Digitaalinen valkoinen on todellakin kaukana todellisuudesta, koska on liian kirkas. Värit, jotka ympäröivät meitä läheisesti, liittyvät ympäristöön ja sen lämpötilaan, kylmyyteen (harmaa taivas) tai kuumuuteen (aurinkoinen iltapäivä). Neutraali työympäristö mahdollistaa paremman monitorin värintoiston valvonnan, varsinkin jos asiakirja on tarkoitettu tulostettavaksi. </p>
+<h2>Väriprofiili </h2>
+<p>Scribusissa valittuja profiileja sovelletaan kuviin, joihin sovelletaan profiilin värejä. On siis mahdollista toteuttaa kunnianhimoisempia RGB-profiileja bittikarttakuviin (jossa on laajempi kirjo), kun taas käyttäjä voi keskittyä eri profiiliin ja vastaavat RGB-värit ovat läsnä taitossa (teksti, lomakkeet jne.)... </p>
+<p>Ohella kahdessa eri valikossa on kaksi eri väriprofiilia, yksi RGB ja yksi CMYK. Ensinnäkin [RGB] varataan tarkoitettujen asiakirjojen jakelua digitaalisen median välityksellä, kuten netin kautta.</p>
+<p>Valitse kohta Käytä RGB-värejä, koska ei ole kyse painettavista väreistä. </p>
+<h2>Renderöinti </h2>
+<p>Profiilit olisi hyödytön ilman asiakirjan simulointia sellaisena kuin se näkyy julkaisun välineellä. Renderöinti mahdollistaa esikatselun rajoittamalla profiilit, jolloin voidaan korjata mahdolliset ongelmat.</p>
+<h2>Simuloi muuntaminen</h2>
+<p> </p>
+<p>Käytettävät profiilit sisältävät väritietoja. Tämä tieto on tärkeä, koska ne luonnehtivat alkuperäistä kuva ja sen jälkeen valmistautuvat muuntamaan kuvat ja värit tuettuun väriavaruuteen. </p>
+<p>Muunnosta profiilien välillä ei tehdä suoraan, ei edes kahden saman väriavaruuden profiilin välillä.</p>
+<p>Muuntaminen edellyttää siirtymistä muunnoksen tilaan, mahdollisimman laajassa tilassa L * a * b. Siksi kuvan RGB-profiili muunnetaan ensin L * a * b ennen kuin käytetään uuden profiilin RGB tai CMYK -värejä. Syynä on se, että profiilit eivät kata samoja värejä. Käytä laajempaa siirtymisen alaa, mikä voi merkittävästi vähentää muunnosvirheet kahden lähellä toisiaan olevan mutta ei identtisen arvon välillä.</p>
+<p><img src="_booki/scribus-opas-1/static/Scribus_fr-GestionDesCouleurs-profils-fr-old.png" alt=""></p>
+<h2>Simuloi suurinta värinkulutusta </h2>
+<p>Profiilia voidaan käyttää seurausten rajoittamiseksi analogisesta numeeriseen arvoon.</p>
+<p>Esimerkiksi kokomusta ruudulla ei ole sama kuin lopputuloksessa. Kuitenkin, kun se tulostetaan, asiakirjan sisältämä täysin musta muunnetaan vastaavaksi CMYK-arvoksi, joka kääntää itsensä päällekkäisille mustekerroksille. Intensiivinen sekoitus voi olla 75% syaania, 65% magentaa, 85% keltaista ja 90% mustaa, ja todennäköisesti synnyttää liian runsaan seoksen ja tahroja. </p>
+<p>Jotta voisit estää tahroja, profiilit tarjoavat maksimirajoituksen värinkulutukseen, joka sopii paperille. Joillakin laitteistoprofiililuetteloilla se voi olla 240% musteesta. Euroopan vakioprofiileissa ne on rajoitettu arvoihin 320% tai 300%.</p></div><ul Class="menu-goes-here"><li Class="booki-section">SCRIBUS</li><li><a href="/scribus-opas-1/index">MIKÄ SCRIBUS ON?</a></li>
+<li><a href="/scribus-opas-1/ch002_ennakkovaatimukset">ENNAKKOVAATIMUKSET</a></li>
+<li><a href="/scribus-opas-1/ch003_tasta-oppaasta">TÄSTÄ OPPAASTA</a></li>
+<li><a href="/scribus-opas-1/ch004_esimerkkeja-scribusin-kaytosta">ESIMERKKEJÄ SCRIBUSIN KÄYTÖSTÄ</a></li>
+<li Class="booki-section">ASENTAMINEN</li><li><a href="/scribus-opas-1/ch006_scribusin-asentaminen">SCRIBUSIN ASENTAMINEN</a></li>
+<li Class="booki-section">PERUSTEET</li><li><a href="/scribus-opas-1/ch008_kayton-aloittaminen">KÄYTÖN ALOITTAMINEN</a></li>
+<li Class="booki-section">KÄYTTÖ</li><li><a href="/scribus-opas-1/ch010_scribusin-kaytto">SCRIBUSIN KÄYTTÖ</a></li>
+<li><a href="/scribus-opas-1/ch011_suunnittelu">SUUNNITTELU</a></li>
+<li><a href="/scribus-opas-1/ch012_teksti-ja-grafiikka">TEKSTI JA GRAFIIKKA</a></li>
+<li><a href="/scribus-opas-1/ch013_lahteiden-valmistelu">LÄHTEIDEN VALMISTELU</a></li>
+<li><a href="/scribus-opas-1/ch014_formaatti">FORMAATTI</a></li>
+<li><a href="/scribus-opas-1/ch015_varien-valinta">VÄRIEN VALINTA</a></li>
+<li><a href="/scribus-opas-1/ch016_fonttien-valinta">FONTTIEN VALINTA</a></li>
+<li Class="booki-section">KÄYTÄNTÖJÄ</li><li><a href="/scribus-opas-1/ch018_tiedostojen-jarjestely">TIEDOSTOJEN JÄRJESTELY</a></li>
+<li><a href="/scribus-opas-1/ch019_mallit">MALLIT</a></li>
+<li><a href="/scribus-opas-1/ch020_kompositio">KOMPOSITIO</a></li>
+<li><a href="/scribus-opas-1/ch021_tyylitiedostot">TYYLITIEDOSTOT</a></li>
+<li><a href="/scribus-opas-1/ch022_skriptaus">SKRIPTAUS</a></li>
+<li Class="booki-section">TUOTANTO</li><li><a href="/scribus-opas-1/ch024_kuvien-ja-tekstin-tuominen">KUVIEN JA TEKSTIN TUOMINEN</a></li>
+<li><a href="/scribus-opas-1/ch025_kehykset">KEHYKSET</a></li>
+<li><a href="/scribus-opas-1/ch026_varienhallinta">VÄRIENHALLINTA</a></li>
+<li><a href="/scribus-opas-1/ch027_typografia">TYPOGRAFIA</a></li>
+<li><a href="/scribus-opas-1/ch028_laadunvalvonta">LAADUNVALVONTA</a></li>
+<li><a href="/scribus-opas-1/ch029_asiakirjojen-kokoaminen">ASIAKIRJOJEN KOKOAMINEN</a></li>
+<li><a href="/scribus-opas-1/ch030_lopullinen-tuotos">LOPULLINEN TUOTOS</a></li>
+<li Class="booki-section">LIITTEET</li><li><a href="/scribus-opas-1/ch032_toistuvia-ongelmia">TOISTUVIA ONGELMIA</a></li>
+<li><a href="/scribus-opas-1/ch033_tekijat">TEKIJÄT</a></li>
+</ul>

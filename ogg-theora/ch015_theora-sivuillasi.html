@@ -1,0 +1,96 @@
+<div id="main-content"><h1>Videot omalla sivustolla </h1>
+<div id="content">
+<p>Voit laittaa Ogg Theora -videot omalle verkkopalvelimelle, aivan kuin kuvat tai HTML-tiedostot.</p>
+<h2>Mime-tyypit</h2>
+<p>Jotta videot toimivat niillä täytyy olla oikea <strong>mime-tyyppi</strong>.</p>
+<p>Mime-tyyppi merkitsee tapaa erilaisten internetissä välitettyjen tiedostotyyppien tunnistamiseen. Tämä informaatio välitetään yleensä datan mukana. Lisätieto identifioi millaista informaatiota välitetään ja se ei yleensä ole ihmisten luettavisa, mutta ohjelmisto tulkitsee sen siten, että oikeanlainen data välitetään ja sen prosessoivat oikeanlaiset ohjelmat. Informaatio lähetetään siirretyn datan otsikossa.</p>
+<p>Otsikko on pieni määrä metadataa, joka lähetetään ohjelmasta toiseen, ja joka kuvailee siirretyn tiedon tyyppiä. Tyypillinen otsikko sisältää pituuden, määränpään, mime-tyypin jne.</p>
+<p>Mime-tyypeissä on kaksi osaa, tyyppi ja alatyyppi (joskin näihin kahteen viitataan vain "tyyppinä"). Tyyppi kirjoitetaan muodossa tyyppi/alatyyppi. On vain neljä tyyppikategoriaa - audio, video, teksti ja sovellus. Alatyyppejä on lukemattomia.</p>
+<p>Oikea mime-tyyppi Theora-videolle on "video/theora".</p>
+<p>Nykyisen palvelimen tulisi lähettää oikeat tiedot. Jos palvelimesi ei lähetä oikeita otsikoita, sinun täytyy muuttaa verkkopalvelimesi asetuksia. Jos käytät Apache-verkkopalvelinta (verkon suosituin palvelin) on kaksi tapaa tehdä tämä:</p>
+<ol><li>voit lisätä kaksi riviä Apache-verkkopalvelimen asetuksiin</li>
+<li>voit mahdollisesti tarjota lisäasetuksen laittamalla videokansioosi .htaccess -tiedoston</li>
+</ol><p>Ensimmäiseen strategiaan tarvitset pääsyn verkkopalvelimesi konfiguraatiotiedostoon (httpd.conf). Tässä tapauksessa kaikki verkkopalvelimen välittämät tiedostot lähettävät oikean tiedon. Tämä on paras ratkaisu. Kuitenkaan sinulla ei ole pääsyä verkkopalvelimen konfiguraatiotiedostoon (esimerkiksi, jos käytät jaettua verkkopalvelinpalvelua) ja tahdot ehkä kokeilla toista strategiaa. Toinen strategia vaikuttaa vain videoon, joka tarjotaan samasta hakemistosta, johon laitoit .htaccess-tiedoston.</p>
+<p>Molempia strategioita varten tarvitset informaation asiaankuuluvasta tiedostosta:</p>
+<pre>AddType video/ogg          .ogv
+AddType application/ogg    .ogg</pre>
+<p>Tiedostoille httpd.conf ja .htaccess voit sijoittaa tämän tiedon tiedoston loppuun. Jos sinulla ei ole .htaccess-tiedostoa, voit vain luoda tyhjän tiedoston ja lisätä tämän tiedon (muuta tietoa ei tarvita).</p>
+<h2>oggz-chop</h2>
+<p>Apachea käyttämällä voit myös ryhtyä paljon hienostuneemmaksi. Voit esimerkiksi mahdollistaa vain tiettyyn Theora-videon osaan viittaavien ja sen toistavien URLien käytön. Jos tahdot liittää vain osan videostasi verkkosivuusi tai sallia linkittämisen tiettyyn ajankohtaan videossa, voit käyttää oggz-chop -pakettia serverilläsi. Oggz-chop asennettuna voit käyttää osoitteena tiettyä videon osaa laittamalla siirros-parametsin urliin. Käyttäisit tätä näyttääksesi sekunnista 23 sekuntiin 42:</p>
+<pre> &lt;video src="http://example.com/video.ogv?t=23.0/42.0"&gt;&lt;/video&gt;</pre>
+<p>oggz-chopin asentaminen vaatii toimintamoduulin sallimista Apachessa ja oggz-chopin asentamista palvelimelle. Tämän toimintamoduulin lisääminen on tämän dokumentin laajuuden ulkopuolella, joten sinun on paras ottaa yhteyttä Apache-guruun tai lukea aiheesta dokumentaatiota ennen kuin yrität tätä. </p>
+<p>Kuitenkin... Jos sinulla on Apache2 asennettuna ja ylläpitäjän tunnus palvelimellesi, voit kokeilla tätä komentoa asentaaksesi toimintamoduulit:</p>
+<pre> sudo a2enmod actions</pre>
+<p>Yrität sitten omalla vastuullasi...</p>
+<p>oggz-chop on osa oggz-tools -pakettia, voit asentaa sen komennolla:</p>
+<pre>sudo apt-get install oggz-tools
+</pre>
+<p>Kun nuo on asennettu, sinun täytyy sallia oggz-chopin käyttö näillä kahdella rivillä Apachen konfiguraatiotiedostossa tai .htaccess-tiedostossa:</p>
+<pre>ScriptAlias /oggz-chop /usr/local/bin/oggz-chop
+Action    video/ogg    /oggz-chop</pre>
+<h2>Etäkäytön salliminen</h2>
+<p>Pelkästään kuvia voidaan laittaa verkkosivuille muilta sivustoilta, ei videoita, elleivät nuo sivustot nimenomaan salli tätä. Salliaksesi muiden sivustojen videoidesi käytön domainissaan, lisää tämä rivi Apachen konfiguraatio tai .htaccess -tiedostoon:</p>
+<pre>Header Set Access-Control-Allow-Origin "*"</pre>
+Tällä asetuksella palvelin vastaa lisäotsikolla 'Access-Control-Allow-Origin: *', joka tarkoittaa, että videot voidaan liittää sivuille missä tahansa domainissa sivulta sivulle. Jos tahdot rajoittaa pääsyn videoihin sallituksi ainoastaan osoitteesta <a href="http://example.org/" target="_top">http://example.org</a>, joudut muuttamaan sen tällaiseksi: <br><pre>Header Set Access-Control-Allow-Origin "http://example.org"</pre>
+<p>Huomaa, että nyt videota ei voida laittaa domaineihin, jotka ovat muita kuin example.org. Access-Control-Allow-Origin -otsikko voi myös sisältää pilkulla erotellun listan sallituista domaineista. </p>
+<p><a href="https://developer.mozilla.org/En/HTTP_access_control">https://developer.mozilla.org/En/HTTP_access_control</a> sisältää yksityiskohtaisemman kuvauksen http-pääsynvalvonnasta. </p>
+<h2>Videoiden tarjoaminen skriptillä </h2>
+<p>Vielä yksi vaihtoehto. Jos sinulla ei ole mahdollisuutta vaikuttaa palvelimesi asetuksiin, mutta tahdot silti käyttää videoita, voit käyttää pientä PHP tai CGI -skriptiä asettaaksesi oikeat otsikot ja tarjotaksesi videon. Sellainen skripti voisi näyttää tältä: </p>
+<pre>&lt;?php
+$video = basename($_GET['name']);
+if (file_exists($video)) {
+  $fp = fopen($video, 'rb');
+  header('Access-Control-Allow-Origin: *');
+  header('Content-Type: video/ogg');
+  header('Content-Length: ' . filesize($video));
+  fpassthru($fp);
+} else {
+  echo "404 - video not found";
+}
+?&gt;</pre>
+Jos skripti on sijoitettu nimellä index.php videohakemistoosi, voisit käyttää osoitetta <a href="http://example.com/videos/?name=test.ogv" target="_top">http://example.com/videos/?name=test.ogv</a> sen sijaan että linkität suoraan videoosi (<a href="http://example.com/videos/test.ogv" target="_top">http://example.com/videos/test.ogv</a>). <br><pre> &lt;video src="http://example.com/videos/?name=test.ogv"&gt;&lt;/video&gt;</pre>
+</div></div><ul Class="menu-goes-here"><li Class="booki-section">JOHDANTO</li><li><a href="/ogg-theora/index">OGG THEORA</a></li>
+<li><a href="/ogg-theora/ch002_tasta-kayttooppaasta">TÄSTÄ KÄYTTÖOPPAASTA</a></li>
+<li><a href="/ogg-theora/ch003_mita-video-on">MITÄ VIDEO ON?</a></li>
+<li><a href="/ogg-theora/ch004_mita-theora-on">MITÄ THEORA ON?</a></li>
+<li Class="booki-section">PERUSKÄSITTEET</li><li><a href="/ogg-theora/ch006_mika-on-koodekki">MIKÄ ON KOODEKKI?</a></li>
+<li><a href="/ogg-theora/ch007_sailot">SÄILÖT</a></li>
+<li Class="booki-section">TOISTO</li><li><a href="/ogg-theora/ch009_theoran-toistaminen">THEORAN TOISTAMINEN</a></li>
+<li><a href="/ogg-theora/ch010_toisto-vlclla">TOISTO VLC:LLÄ</a></li>
+<li><a href="/ogg-theora/ch011_miro">MIRO</a></li>
+<li Class="booki-section">THEORA VERKOSSA</li><li><a href="/ogg-theora/ch013_theora-verkossa">THEORA VERKOSSA</a></li>
+<li><a href="/ogg-theora/ch014_html5">HTML5</a></li>
+<li><a href="/ogg-theora/ch015_theora-sivuillasi">THEORA SIVUILLASI</a></li>
+<li><a href="/ogg-theora/ch016_hotelleja-theoralle">HOTELLEJA THEORALLE</a></li>
+<li Class="booki-section">ENKOODAUS</li><li><a href="/ogg-theora/ch018_johdanto-enkoodaukseen">JOHDANTO ENKOODAUKSEEN</a></li>
+<li><a href="/ogg-theora/ch019_firefogg">FIREFOGG</a></li>
+<li><a href="/ogg-theora/ch020_enkoodaus-vlclla">ENKOODAUS VLC:LLÄ</a></li>
+<li><a href="/ogg-theora/ch021_enkoodaus-ffmpeg2theoralla">ENKOODAUS FFMPEG2THEORALLA </a></li>
+<li><a href="/ogg-theora/ch022_thoggen">THOGGEN</a></li>
+<li Class="booki-section">TEKSTITYKSET</li><li><a href="/ogg-theora/ch024_tekstityksien-perusteet">TEKSTITYKSIEN PERUSTEET</a></li>
+<li><a href="/ogg-theora/ch025_jakelu">JAKELU</a></li>
+<li><a href="/ogg-theora/ch026_tekstityksien-liittaminen">TEKSTITYKSIEN LIITTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch027_tekstityksien-toistaminen">TEKSTITYKSIEN TOISTAMINEN</a></li>
+<li><a href="/ogg-theora/ch028_julkaiseminen">JULKAISEMINEN</a></li>
+<li Class="booki-section">SUORATOISTO</li><li><a href="/ogg-theora/ch030_suoratoiston-perusteet">SUORATOISTON PERUSTEET</a></li>
+<li><a href="/ogg-theora/ch031_icecast">ICECAST</a></li>
+<li><a href="/ogg-theora/ch032_tss">TSS</a></li>
+<li><a href="/ogg-theora/ch033_ffmpeg2theora-streamaus">FFMPEG2THEORA-STREAMAUS</a></li>
+<li><a href="/ogg-theora/ch034_suoratoisto-vlc-ohjelmalla">VLC-STREAMAUS</a></li>
+<li><a href="/ogg-theora/ch035_virtaustoiston-tallentaminen">VIRTAUSTOISTON TALLENTAMINEN</a></li>
+<li Class="booki-section">EDITOINTI</li><li><a href="/ogg-theora/ch037_johdanto-editointiin">JOHDANTO EDITOITIIN</a></li>
+<li><a href="/ogg-theora/ch038_pitivi">PITIVI</a></li>
+<li Class="booki-section">ESIKATSELU</li><li><a href="/ogg-theora/ch040_kuinka-esikatselua-kaytetaan">ESIKATSELUN KÄYTTÖ</a></li>
+<li><a href="/ogg-theora/ch041_tee-esikatselukuvia">TEE ESIKATSELUKUVIA</a></li>
+<li><a href="/ogg-theora/ch042_tee-diaesitys">TEE DIAESITYS</a></li>
+<li><a href="/ogg-theora/ch043_tee-esikatseluvideo">TEE ESIKATSELUVIDEO</a></li>
+<li Class="booki-section">EDITOINTI KOMENTORIVILTÄ</li><li><a href="/ogg-theora/ch045_komentorivi">THEORA JA KOMENTORIVI</a></li>
+<li><a href="/ogg-theora/ch046_theoran-teoria">THEORAN TEORIA</a></li>
+<li><a href="/ogg-theora/ch047_tiedoston-jakaminen">TIEDOSTON JAKAMINEN</a></li>
+<li><a href="/ogg-theora/ch048_tiedoston-leikkaaminen">TIEDOSTON LEIKKAAMINEN</a></li>
+<li><a href="/ogg-theora/ch049_tiedostojen-liittaminen">TIEDOSTOJEN LIITTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch050_tiedostojen-yhdistaminen">TIEDOSTOJEN YHDISTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch051_koon-muuttaminen">KOON MUUTTAMINEN</a></li>
+<li><a href="/ogg-theora/ch052_oggin-analysoiminen">OGGIN ANALYSOIMINEN</a></li>
+<li Class="booki-section">TEKIJÄT</li><li><a href="/ogg-theora/ch054_tekijat">TEKIJÄT</a></li>
+</ul>

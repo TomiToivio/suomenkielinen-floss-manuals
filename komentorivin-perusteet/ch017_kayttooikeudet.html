@@ -1,0 +1,147 @@
+<div id="main-content"><h1>Käyttöoikeudet</h1>
+<p>Tietokonejärjestelmäsi varastoi paljon tietoa tiedostoista. Tämä tieto pysyy normaalisti piilossa, kun luot ja käytät tiedostoja. Yksi ominaisuuksien joukko, johon törmäät, on käyttöoikeudet. Kuka voi muokata tiedostojasi? Toivottavasti ei jokainen järjestelmän käyttäjä (sillä monia järjestelmiä käyttävät nykyisin useammat käyttäjät). Tämä käyttöoppaan osa keskustelee omistajuudesta ja käyttöoikeuksista.</p>
+<p>Ensinnäkin, katsotaanpa, mitä järjestelmä itse voi kertoa tiedostoistaan. Suoritamme tutun "ls"-komennon valitsimella "-l", joka antaa pitkän listan:</p>
+<pre>$ <strong>ls -l</strong>
+total 72
+drwxr-xr-x   2 root root  4096 Oct  5 09:31 bin
+drwxr-xr-x   3 root root  4096 Oct  9 21:47 boot
+drwxr-xr-x   1 root root     0 Jan  1  1970 dev
+...</pre>
+<p>Ensimmäinen rivi:</p>
+<pre>total 72
+</pre>
+<p>näyttää kaikkien tiedostojen yhtenäiskoon <em>kilotavuissa</em> (kB). Loppu tarjoaa tietoa tiedostoista ja hakemistoista itsessään. Tämä tieto on ryhmitetty seitsemään palkkiin, joita voidaan luonnehtia seuraavasti:</p>
+<pre><strong>Käyttöoikeudet </strong><strong><strong>Linkit </strong></strong><strong>Omistaja Ryhmä Koko Muutospäivämäärä Tiedostonimi</strong></pre>
+<h2>Mitä voin tehdä? Mitä muut voivat tehdä?</h2>
+<p>Jokaisella tiedostolla ja hakemistolla järjestelmässä on <em>omistaja</em>, se kuuluu <em>ryhmään</em> ja siihen liittyy joukko <em>käyttöoikeuksia</em>. Yksinkertaisimmalla tasolla nämä käyttöluvat määrittelevät kolme pääsytasoa, yhden tiedoston omistajalle, yhden ryhmälle johon tiedosto kuuluu ja yhden muulle maailmalle. (Itse asiassa maailma tarkoittaa vain niitä ihmisiä, joilla on lupa kirjautua järjestelmään.)</p>
+<p>Katsotaanpa taas aiemmin näytettyä ulostuloa. Kolmannessa ja neljännessä palkissa näkyy omistaja (tässä tapauksessa pääkäyttäjä) ja ryhmä (myös pääkäyttäjä). Ensimmäisessä palkissa näkyy käyttöoikeudet hyvin tiiviissä muodossa, kuten tässä:</p>
+<p> </p>
+<pre>drwxr-xr-x</pre>
+<p>Ensimmäinen merkki tarkoittaa tiedoston tyyppiä, seuraavat kolme merkkiä näyttävät omistajan oikeudet, sitä seuraavat kolme ovat ryhmän oikeudet ja viimeiset kolme ovat muun maailman oikeudet.</p>
+<p>Seuraava taulukko näyttää ensimmäisen merkin merkityksen. Edellisessä esimerkissä oli kirjain "d", joka tarkoittaa hakemistoa. Jotkin näistä merkeistä ovat melko harvinaisia. Yleensä sinun tarvitsee ajatella vain tavallista tiedostoa ja hakemistoa.</p>
+<p align="center"> </p>
+<table border="1" cellspacing="1" cellpadding="1"><tbody><tr><td align="center"><strong>Merkki</strong></td>
+<td><strong>Kuvaus </strong></td>
+</tr><tr><td align="center">-</td>
+<td>tavallinen tiedosto</td>
+</tr><tr><td align="center">d</td>
+<td>hakemisto</td>
+</tr><tr><td align="center">l</td>
+<td>symbolinen linkki</td>
+</tr><tr><td align="center">b</td>
+<td>erityinen blokkitiedosto</td>
+</tr><tr><td align="center">c</td>
+<td>erityinen kirjaintiedosto</td>
+</tr><tr><td align="center">p</td>
+<td>FIFO (nimetty piippu)</td>
+</tr><tr><td align="center">s</td>
+<td>suoritinkanta</td>
+</tr><tr><td align="center">?</td>
+<td>ls ei ole tunnistanut tätä</td>
+</tr></tbody></table><p><br>Käyttöluvat on jaettu kolmeen tyyppiin:</p>
+<ul><li>Lue (r): lupa lukea tiedostoa</li>
+<li>Kirjoita (w): lupa kirjoittaa tiedostoon</li>
+<li>Suorita (x): lupa suorittaa tiedostoa</li>
+</ul><p>Yhdysmerkki (-) merkitsee mitä tahansa käyttölupaa, jota ei ole asetettu.</p>
+<p>Yksinkertaisempi tapa nähdä käyttölupien jakautuminen näytetään alla:</p>
+<pre>:tyyppi : omistaja : ryhmä : muu maailma:
+:d      : rwx      : r-x   : r-x
+</pre>
+<p>Jos tahdot nähdä tiedoston sisällön, tarvitset <em>lukuoikeuden</em>.  Jos tahdot muukata sen sisältöä, tarvitset <em>kirjoitusoikeuden</em>. Jos tiedosto on ohjelma ja tahdot suorittaa sen, tarvitset <em>suoritusoikeuden</em>.</p>
+<p>Jos tahdot nähdä hakemiston sisällön, tarvitset <em>sekä luku- että suoritusoikeudet, </em>pelkät<em> lukuoikeudet</em> eivät ole tarpeeksi.  Jos tahdot lisätä tai poistaa tiedostoja tuosta hakemistosta, tarvitset<em> kirjoitusoikeuksia.</em></p>
+<p>Palataanpa takaisin esimerkkiin ja pohditaan seuraavaa riviä:</p>
+<pre>drwxr-xr-x   2 root root  4096 Oct  5 09:31 bin
+</pre>
+<p>Kuten nyt näet, se on hakemisto. Kuinka voit saada selville, mitä <em>sinä</em> voit itse asiassa tehdä sillä? Sinun täytyy katsoa tiedostolle asetettua käyttäjää ja ryhmää. Mutta ensin: kuka sinä olet? </p>
+<pre>$ <strong>whoami</strong>
+joe
+</pre>
+<p>Juuri tämän "whoami" kertoo sinulle: kuka olet ja käyttäjätunnuksesi nimen. Kuten näet, et ole juurikäyttäjä. Juurikäyttäjä voi nähdä hakemiston sisällön ja lisätä siihen tiedostoja, mutta et ole juuri. Mikä ryhmäsi sitten on? </p>
+<pre>$ <strong>id -G -n</strong>
+joe dialout cdrom floppy audio video plugdev
+</pre>
+<p>Tämä on lista ryhmistä, joihin kuulut. Jos joku näistä ryhmistä olisi ollut "root", voisit nähdä hakemiston "/bin" sisällön, mutta et voisi lisätä siihen tiedostoja. Mutta et ole osa "root"-ryhmää. Ainoa jäljelläoleva vaihtoehto on "muu maailma", ja sinut on sisällytetty siihen, joten voit ainoastaan nähdä hakemiston sisällön. </p>
+<p>Katsotaanpa toista tiedostoa:</p>
+<pre>$ <strong>ls -l /etc/issue</strong>
+-rw-r--r-- 1 root root 36 2009-02-26 15:06 /etc/issue
+</pre>
+<p>Kuten voit nähdä, se on tavallinen tiedosto, jota "root" voi lukea ja kirjoittaa ja jota käyttäjät "root"-ryhmässä, missäpä he ovatkin, voivat vain lukea. Ja sitä sinä, "joe", voit myös vain lukea. </p>
+<p>Entäpä omat juttusi? Todennäköisesti sinulla on "Työpöytä" tai "Desktop" -hakemisto kotihakemistossasi. Tarkastamme sen käyttöluvat komennolla "ls -l", ja liitämme lisävalitsimen "-d", jotta näemme vain hakemiston "Desktop" rivin, emmekä sen alla olevia tiedostoja ja hakemistoja. </p>
+<pre>$ <strong>ls -l -d ~/Desktop</strong>
+drwxr-xr-x 8 joe joe 4096 2009-03-12 09:27 /home/joe/Desktop
+</pre>
+<p>Se hakemisto kuuluu sinulle! Ja käyttölupien mukaan voit lukea sisältöä ja laittaa sinne tiedostoja. Muut ihmiset voivat vain katsoa sen sisältöä.</p>
+<h2>Käyttölupien asettaminen komennolla chmod</h2>
+<p>Jos tahdot muuttaa tiedoston käyttölupia sinun täytyy omistaa se - et voi vain mennä muuttelemaan muiden ihmisten juttuja. Jos omistat tiedoston (tai hakemiston), voit muuttaa sen käyttölupia komennolla <code>"chmod"</code>. On kaksi tapaa määritellä uuden tiedoston käyttöluvat ja molemmissa on hyvät puolensa. Tarkastellaampa molempia.</p>
+<p>Luo harjoitushakemisto ja kopioi sinne pari tiedostoa:</p>
+<pre>$ <strong>mkdir ~/harjoitus</strong>
+$ <strong>cd ~/harjoitus</strong>
+$ <strong>cp /etc/issue /etc/motd .</strong>
+$ <strong>ls -l</strong>
+ total 8
+-rw-r--r-- 1 joe joe  36 2009-03-21 14:34 issue
+-rw-r--r-- 1 joe joe 354 2009-03-21 14:34 motd
+</pre>
+<p>Sanotaanpa, että tehdot tehdä tiedostosta "issue" luettavan ja kirjoitettavan ryhmällesi ja itsellesi. Tiedostosta "motd" tahdot tehdä luettavan ja kirjoitettavan vain itsellesi. Tämä merkitsee, että viimeisen ulostulon täytyy näyttää suunnilleen tältä: </p>
+<pre>$ <strong>ls -l</strong>
+ total 8
+-rw-rw---- 1 joe joe  36 2009-03-21 14:34 issue
+-rw------- 1 joe joe 354 2009-03-21 14:34 motd</pre>
+<p>Voit tehdä näin tiedostolle "issue":</p>
+<pre>$ <strong>chmod u=rw,g=rw,o= issue</strong></pre>
+<p>Tämä merkitsee:</p>
+<ul><li>"u=rw": aseta käyttäjän käyttöoikeuksiksi lue ja kirjoita</li>
+<li>"g=rw": aseta ryhmän käyttöoikeuksiksi lue ja kirjoita</li>
+<li>"o=": älä anna muille mitään lupia</li>
+</ul><p>Tiedostolle "motd" komento menee näin:</p>
+<pre>$ <strong>chmod u=rw,g=,o= motd</strong></pre>
+<p>Melko suoraviivaista, vai mitä? Myös paljon kirjoittamista. Lyhempi versio menisi näin:</p>
+<pre>$ <strong>chmod ug=rw,o= issue</strong>
+$ <strong>chmod u=rw,go= motd</strong></pre>
+<p>Se on hieman lyhempi, mutta on olemassa vieläkin lyhempi versio:</p>
+<pre>$ <strong>chmod 0660 issue</strong>
+</pre>
+<p>Tätä tarvitsee hieman selittää. Numerot merkitsevät samoja käyttölupia kuin yllä. Jos tahdot ymmärtää sen toiminnan, ajattele seuraavaa kaaviota:</p>
+<p align="center"> <img title="octal_notation_fi" src="_booki/komentorivin-perusteet/static/KomentorivinPerusteet-Permissions-octal_notation_fi-fi.png" alt="octal_notation_fi" width="600" height="391"></p>
+<p>Ylin rivi näyttää päämäärämme: tiedoston, jonka omistaja voi lukea, kirjoittaa ja suorittaa, jota ryhmä voi vain lukea ja suorittaa, ja jota muu maailma ei voi käyttää mitenkään. Jokainen kirjain symbolisessa notaatiossa vastaa bittiä binäärisessä esityksessä. Jos kirjain on paikalla, numero on "1", ja jos sitä ei ole, numero on "0". Ensimmäinen "1" luvussa "111" on "4", toinen on "2" ja kolmas on "1". Kun lisäät nämä yhteen, saat numeron "7". Kun teet saman kaikille muille kolmikoille, saat luvun "0750".</p>
+<p>Palataksemme edelliseen esimerkkiin, tiedostoon <em>"</em>issue," tahdomme lupien olevan "-rw-rw----", tämä antaa meille numerot "0", "4+2", "4+2" ja "0", josta tulee "0660". Voitko selvittää, mitä tämä on tiedostolle "motd"?</p></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/komentorivin-perusteet/index">Ota komento</a></li>
+<li Class="booki-section">Perusteet</li><li><a href="/komentorivin-perusteet/ch003_aloittaminen">Käytön aloittaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch004_syntaksi">Syntaksi</a></li>
+<li><a href="/komentorivin-perusteet/ch005_ympariinsa-siirtyminen">Ympäriinsä siirtyminen</a></li>
+<li><a href="/komentorivin-perusteet/ch006_tiedostorakenne">Tiedostorakenne</a></li>
+<li Class="booki-section">Komennot</li><li><a href="/komentorivin-perusteet/ch008_peruskomennot">Peruskomennot</a></li>
+<li><a href="/komentorivin-perusteet/ch009_jarjestelmanvalvojat">Järjestelmänvalvoja</a></li>
+<li><a href="/komentorivin-perusteet/ch010_useammat-tiedostot">Useammat tiedostot</a></li>
+<li><a href="/komentorivin-perusteet/ch011_kirjoita-vahemman">Kirjoita vähemmän</a></li>
+<li Class="booki-section">Keskivaikeita komentoja</li><li><a href="/komentorivin-perusteet/ch013_putkitus">Putkitus</a></li>
+<li><a href="/komentorivin-perusteet/ch014_komentohistoria">Komentohistoria</a></li>
+<li><a href="/komentorivin-perusteet/ch015_standarditiedostot">Standarditiedostot</a></li>
+<li Class="booki-section">Kehittyneempiä komentoja</li><li><a href="/komentorivin-perusteet/ch017_kayttooikeudet">Käyttöoikeudet</a></li>
+<li><a href="/komentorivin-perusteet/ch018_interaktiivinen-muokkaus">Interaktiivinen muokkaus</a></li>
+<li><a href="/komentorivin-perusteet/ch019_poistumisen-tarkastaminen">Poistumisen tarkastaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch020_alikomennot">Alikomennot</a></li>
+<li><a href="/komentorivin-perusteet/ch021_hakemistot">Hakemistot</a></li>
+<li><a href="/komentorivin-perusteet/ch022_kustomisointi">Kustomisointi</a></li>
+<li><a href="/komentorivin-perusteet/ch023_parametrien-korvaaminen">Parametrien korvaaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch024_gnuscreen">GNUScreen</a></li>
+<li><a href="/komentorivin-perusteet/ch025_ssh">SSH</a></li>
+<li><a href="/komentorivin-perusteet/ch026_ohjelmien-asentaminen">Ohjelmien asentaminen</a></li>
+<li Class="booki-section">Tekstieditorit</li><li><a href="/komentorivin-perusteet/ch028_tekstieditorit">Tekstieditorit</a></li>
+<li><a href="/komentorivin-perusteet/ch029_nano">Nano</a></li>
+<li><a href="/komentorivin-perusteet/ch030_vi-ja-vim">Vi ja Vim</a></li>
+<li><a href="/komentorivin-perusteet/ch031_emacs">Emacs</a></li>
+<li><a href="/komentorivin-perusteet/ch032_kedit">Kedit</a></li>
+<li><a href="/komentorivin-perusteet/ch033_gedit">Gedit</a></li>
+<li Class="booki-section">Skriptaus</li><li><a href="/komentorivin-perusteet/ch035_skriptaus">Skriptaus</a></li>
+<li><a href="/komentorivin-perusteet/ch036_skriptien-huoltaminen">Skriptien huoltaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch037_muut-kielet">Muut kielet</a></li>
+<li><a href="/komentorivin-perusteet/ch038_sed">Sed</a></li>
+<li><a href="/komentorivin-perusteet/ch039_awk">AWK</a></li>
+<li><a href="/komentorivin-perusteet/ch040_saannolliset-lausekkeet">Säännölliset lausekkeet</a></li>
+<li><a href="/komentorivin-perusteet/ch041_perl">Perl</a></li>
+<li><a href="/komentorivin-perusteet/ch042_ruby">Ruby</a></li>
+<li><a href="/komentorivin-perusteet/ch043_python">Python</a></li>
+<li Class="booki-section">Komennot nopeasti</li><li><a href="/komentorivin-perusteet/ch045_komentojen-pikaopas">Komentojen pikaopas</a></li>
+<li Class="booki-section">Liitteet</li><li><a href="/komentorivin-perusteet/ch047_tasta-kayttooppaasta">Tästä käyttöoppaasta</a></li>
+<li><a href="/komentorivin-perusteet/ch048_tekijat">Tekijät</a></li>
+</ul>

@@ -1,0 +1,78 @@
+<div id="main-content"><h1>Emacs</h1>
+<p>Emacs on hyvin tehokas tekstieditori. Voit käynnistää Emacsin kirjoittamalla sen nimen komentoriville.</p>
+<pre>$<strong> emacs</strong>
+</pre>
+<p>Jos käytät tyypillistä graafista GNU/Linux-jakelua, tämä komento avaa uuden ikkunna, jossa Emacs pyörii.</p>
+<p><img title="emacs_en" src="_booki/komentorivin-perusteet/static/KomentorivinPerusteet-Emacs-emacs_en-fi.png" alt="emacs_en" width="600" height="559">  <br> </p>
+<p>Emacs on editori, joka on niin tehokas, että monet käyttäjät avaavat Emacsin tietokoneen avattuaan ja jättävät sen päälle koko istunnon ajaksi. Jos tahdot pitää Emacsin päällä pidemmän aikaa, on hyödyllistä suorittaa Emacs taustalla, jotta komentorivi vapautuu toiselle komennolle.</p>
+<pre>$<strong> emacs &amp;</strong>
+</pre>
+<p>Joskus tahdot ehkä ajaa Emacsin suoraan pääteikkunassa. Käytä silloin valitsinta -<em>nw</em> (ei ikkunaa). You</p>
+<pre>$<strong> emacs -nw</strong>
+</pre>
+<p>Voit ladata tiedoston editoitavaksi käynnistäessäsi Emacsin antamalla tiedoston nimen <em>emacs</em>-komennon jälkeen. </p>
+<pre>$<strong> emacs <em>tiedostonimi</em></strong>
+</pre>
+<p><img title="Screenshot_emacs_montage.office.fsf.org_1_en" src="_booki/komentorivin-perusteet/static/KomentorivinPerusteet-Emacs-Screenshot_emacs_montage-office-fsf-org_1_en-fi.png" alt="Screenshot_emacs_montage.office.fsf.org_1_en" width="680" height="646"> </p>
+<h2>Peruseditointikomennot</h2>
+<p>Kun Emacs on päällä, on joukko peruseditointikomentoja, joita voit käyttää. Suurimmassa osassa tästä kirjasta käytämme merkintätapaa <strong>ctrl + x</strong> osoittamaan, että on tarpeen painaa <strong>Ctrl</strong> (Control) -näppäintä, ja sen jälkeen näppäintä <strong>x</strong> samanaikaisesti <strong>Ctrl</strong> -näppäimen ollessa pohjassa, jonka jälkeen molemmat näppäimet vapautetaan.  Tässä Emacs-luvussa käytämme Emacs-dokumentaation merkintätapaa, joka lyhentää näppäimet <strong>ctrl + x</strong> muotoon <strong>C-x</strong>.</p>
+<h3>C-x C-f (lataa tiedosto puskuriin)</h3>
+<p>Komento <strong>C-x</strong> <strong>C-f</strong> (paina <strong>Ctrl</strong>-näppäintä, paina ja vapauta <strong>x</strong>, paina ja vapauta <strong>f</strong>, vapauta <strong>Ctrl</strong>) lataa tiedoston levyltä Emacsin <em>puskuriin</em> (Emacsin työalue) editointia varten. Sinulta kysytään ladattavan tiedoston nimeä. Voit sen jälkeen tehdä muutoksia puskuriin kirjoittamalla ja käyttämällä muita Emacsin komentoja. Tätä puskuria ei tallenneta levylle, ennen kuin erikseen pyydät sitä, esimerkiksi komennolla <strong>C-x</strong> <strong>C-s</strong>.</p>
+<h3>C-x C-s (tallenna tiedosto puskuriin)</h3>
+<p>Komento <strong>C-x</strong> <strong>C-s</strong> tallentaa nykyisen Emacs-bufferin levylle nykyisenä nimettynä tiedostona. Tiedoston nimi on palkissa ikkunan alaosassa.</p>
+<p> </p>
+<h3>C-x C-c (poistu Emacsista)</h3>
+<p>Tämä komento poistuu Emacsista. Jos on jäljellä tallentamattomia puskureita, Emacs kysyy tahdotko tallentaa ne.</p>
+<h3>C-h t (aloittaa Emacs-oppaan)</h3>
+<p>Komento <strong>C-h</strong> <strong>t</strong> (paina näppäintä <strong>Ctrl</strong>, paina ja vapauta <strong>h</strong>, vapauta <strong>Ctrl</strong>, paina ja vapauta <strong>t</strong>) aloittaa Emacs-oppaan. Tämä opas esittelee Emacsin peruskomentoja askel askeleelta.</p>
+<h3>C-h ? (yleinen ohje)</h3>
+<p>Tämä komento tarjoaa joukon ohjevaihtoehtoja.</p>
+<h3>C-k (tuhoa rivi)</h3>
+<p>Komento <strong>C-k</strong> tuhoaa (poistaa) nykyisen rivin nykyisessä puskurissa kursorista rivin loppuun asti.</p>
+<h3>C-y (palauta rivi)</h3>
+<p>Tämä komento palauttaa viimeksi poistetun rivin tai joukon rivejä ja liimaa sen kursorin nykyiseen sijaintiin.</p>
+<h2>Muita Emacsin ominaisuuksia</h2>
+<p>Emacsissa on erilaisia tiloja erilaisten yleisten ja harvinaisten tiedostotyyppien muokkaamiseen. Näitä on tekstille, komentotulkkiskripteille, Python-skripteille ja niin edelleen. Jokainen tila määrittelee uudelleen esimerkiksi tabulaattorinäppäimen painalluksen vaikutukset, jotta se toimii sopivimmalla tavalla kyseiselle tiedostotyypille. Nämä tilat käynnistyvät automaattisesti tietyille tiedostotyypeille. Nämä tilat käynnistyvät automaattisesti monille tiedostotyypeille, riippuen tiedoston päätteestä tai tiedoston ensimmäisestä rivistä.</p>
+<p>Emacsia voi laajentaa. Voit ohjelmoida sen käyttäytymään kuten tahdot, esimerkiksi käyttämällä sisäänrakennettua, helposti käytettävää skriptikieltä Emacs Lisp. Katso lisätietoa Emacs-dokumentaatiosta.</p>
+<h2>Emacs-dokumentaatio</h2>
+<p>Emacs on dokumentoitu hyvin ilmaisissa lähteissä. Kirjoita <code>info emacs</code> komentorivillä (tai <strong>C-h</strong> <strong>r</strong> Emacsin sisältä) lukeaksesi koko virallisen dokumentaation. On myös lyhennetty opassivusto (kirjoita <code>man emacs komentorivillä</code>).  Aloittelijoille paras tapa Emacsin oppimiseen on aiemmin mainittu interaktiivinen opas. </p></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/komentorivin-perusteet/index">Ota komento</a></li>
+<li Class="booki-section">Perusteet</li><li><a href="/komentorivin-perusteet/ch003_aloittaminen">Käytön aloittaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch004_syntaksi">Syntaksi</a></li>
+<li><a href="/komentorivin-perusteet/ch005_ympariinsa-siirtyminen">Ympäriinsä siirtyminen</a></li>
+<li><a href="/komentorivin-perusteet/ch006_tiedostorakenne">Tiedostorakenne</a></li>
+<li Class="booki-section">Komennot</li><li><a href="/komentorivin-perusteet/ch008_peruskomennot">Peruskomennot</a></li>
+<li><a href="/komentorivin-perusteet/ch009_jarjestelmanvalvojat">Järjestelmänvalvoja</a></li>
+<li><a href="/komentorivin-perusteet/ch010_useammat-tiedostot">Useammat tiedostot</a></li>
+<li><a href="/komentorivin-perusteet/ch011_kirjoita-vahemman">Kirjoita vähemmän</a></li>
+<li Class="booki-section">Keskivaikeita komentoja</li><li><a href="/komentorivin-perusteet/ch013_putkitus">Putkitus</a></li>
+<li><a href="/komentorivin-perusteet/ch014_komentohistoria">Komentohistoria</a></li>
+<li><a href="/komentorivin-perusteet/ch015_standarditiedostot">Standarditiedostot</a></li>
+<li Class="booki-section">Kehittyneempiä komentoja</li><li><a href="/komentorivin-perusteet/ch017_kayttooikeudet">Käyttöoikeudet</a></li>
+<li><a href="/komentorivin-perusteet/ch018_interaktiivinen-muokkaus">Interaktiivinen muokkaus</a></li>
+<li><a href="/komentorivin-perusteet/ch019_poistumisen-tarkastaminen">Poistumisen tarkastaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch020_alikomennot">Alikomennot</a></li>
+<li><a href="/komentorivin-perusteet/ch021_hakemistot">Hakemistot</a></li>
+<li><a href="/komentorivin-perusteet/ch022_kustomisointi">Kustomisointi</a></li>
+<li><a href="/komentorivin-perusteet/ch023_parametrien-korvaaminen">Parametrien korvaaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch024_gnuscreen">GNUScreen</a></li>
+<li><a href="/komentorivin-perusteet/ch025_ssh">SSH</a></li>
+<li><a href="/komentorivin-perusteet/ch026_ohjelmien-asentaminen">Ohjelmien asentaminen</a></li>
+<li Class="booki-section">Tekstieditorit</li><li><a href="/komentorivin-perusteet/ch028_tekstieditorit">Tekstieditorit</a></li>
+<li><a href="/komentorivin-perusteet/ch029_nano">Nano</a></li>
+<li><a href="/komentorivin-perusteet/ch030_vi-ja-vim">Vi ja Vim</a></li>
+<li><a href="/komentorivin-perusteet/ch031_emacs">Emacs</a></li>
+<li><a href="/komentorivin-perusteet/ch032_kedit">Kedit</a></li>
+<li><a href="/komentorivin-perusteet/ch033_gedit">Gedit</a></li>
+<li Class="booki-section">Skriptaus</li><li><a href="/komentorivin-perusteet/ch035_skriptaus">Skriptaus</a></li>
+<li><a href="/komentorivin-perusteet/ch036_skriptien-huoltaminen">Skriptien huoltaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch037_muut-kielet">Muut kielet</a></li>
+<li><a href="/komentorivin-perusteet/ch038_sed">Sed</a></li>
+<li><a href="/komentorivin-perusteet/ch039_awk">AWK</a></li>
+<li><a href="/komentorivin-perusteet/ch040_saannolliset-lausekkeet">Säännölliset lausekkeet</a></li>
+<li><a href="/komentorivin-perusteet/ch041_perl">Perl</a></li>
+<li><a href="/komentorivin-perusteet/ch042_ruby">Ruby</a></li>
+<li><a href="/komentorivin-perusteet/ch043_python">Python</a></li>
+<li Class="booki-section">Komennot nopeasti</li><li><a href="/komentorivin-perusteet/ch045_komentojen-pikaopas">Komentojen pikaopas</a></li>
+<li Class="booki-section">Liitteet</li><li><a href="/komentorivin-perusteet/ch047_tasta-kayttooppaasta">Tästä käyttöoppaasta</a></li>
+<li><a href="/komentorivin-perusteet/ch048_tekijat">Tekijät</a></li>
+</ul>

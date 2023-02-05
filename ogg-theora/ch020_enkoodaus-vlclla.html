@@ -1,0 +1,91 @@
+<div id="main-content"><h1>Enkoodaus VLC:llä</h1>
+<p>VLC-mediasoitin (<a title="VLC media player" href="http://en.flossmanuals.net/bin/view/TheoraCookbook/www.videolan.org">www.videolan.org</a>) mahdollistaa videotiedostojen helpon koodauksen Theora-muotoon. Koodaus voidaan tehdä joko graafisen käyttöliittymän kautta tai komentoriviltä. Seuraavat ohjeet on kirjoitettu Ubuntussa toimivaa VLC:n 1.0.1 versiota varten.</p>
+<h2>Graafisen käyttöliittymän käyttö</h2>
+<p>Kun käynnistät VLC-mediasoittimen, sinut viedään suoraan sen pääikkunaan:</p>
+<p><img title="vlc_en" src="_booki/ogg-theora/static/TheoraCookbook-VLCEncoding-vlc_en-fi.png" alt="vlc_en" width="349" height="116"></p>
+<p> </p>
+<p>Media-valikossa voit valita <em>Convert/Save</em>. Tämä avaa seuraavan dialogin:</p>
+<p><img title="convertb_01_en" src="_booki/ogg-theora/static/TheoraCookbook-VLCEncoding-convertb_01_en-fi.png" alt="convertb_01_en" width="528" height="490"></p>
+<p> </p>
+<p>Kohdassa <em>File Selection </em>klikkaa <em>Add </em>ja valitse lähdevideo koodattavaksi. Sen jälkeen voit klikata <em>Convert/Save</em> valikon alaosassa. Tämä vie sinut koodausdialogiin:</p>
+<p><img title="convertb_02_en" src="_booki/ogg-theora/static/TheoraCookbook-VLCEncoding-convertb_02_en-fi.png" alt="convertb_02_en" width="520" height="389"></p>
+<p>Kohdassa <em>Destination</em> klikkaa <em>Browse</em> ja valitse sijainti sille Theora-tiedostolle, jonka tahdot luoda. Muistakaa, että oikea tiedostonimen laajennus Theora-tiedostolle on <strong>.ogv</strong>. Kohdassa <em>Settings </em>aseta profiili kohtaan <em>"Video - Theora + Vorbis (OGG)</em>".</p>
+<p>Sen jälkeen paina <em>Start</em> -nappia. Tämä aloittaa koodausprosessin ja vie sinut takaisin VLC:n päädialogiin:</p>
+<p><img title="convert_10_en" src="_booki/ogg-theora/static/TheoraCookbook-VLCEncoding-convert_10_en-fi.png" alt="convert_10_en" width="349" height="117"></p>
+<p>Ikkunan alaosassa on näkyvissä teksti "Streaming". Tämä osoittaa, että se on nopeasti koodaamassa tiedostoasi. Liukusäädin liikkuu hitaasti oikealle koodauksen edistyessä. Kun koodaus on valmis, liukusäädin siirtyy takaisin vasemmalle ja "Streaming" -teksti katoaa.</p>
+<h2>Kehittyneemmät vaihtoehdot </h2>
+<p>Jos et ole tyytyväinen koodauksen lopputulokseen, yritä muuttaa joitain kehittyneempiä koodausparametrejä. Edellisessä koodausdialogissa, ennen Startin painamista, paina nappia, jossa on työkaluikoni, juuri vasemmalle profiilin valinnasta:</p>
+<p><img title="convertc_01_en" src="_booki/ogg-theora/static/TheoraCookbook-VLCEncoding-convertc_01_en-fi.png" alt="convertc_01_en" width="504" height="123"></p>
+<p>Tämä avaa uuden dialogin, jossa on 4 välilehtä, jotka on nimetty; "Encapsulation", "Video codec", "Audio codec" ja "Subtitles". Varmista, että et muuta mitään parametrejä kohdassa "Encapsulation". Tarvitsemasi videon koodausoptiot ovat "Video codec" -välilehdessä, joka näytetään alla:<img title="converto_00_en" src="_booki/ogg-theora/static/TheoraCookbook-VLCEncoding-converto_00_en-fi.png" alt="converto_00_en" width="584" height="472"></p>
+<p>Jos koodauksen tuloksena oleva laatu on hyvin heikko, yritä nostaa <em>Bitratea</em>. Jos videon lähdemateriaalilla on hyvin korkea resoluutio, yritä asettaa <em>Scale</em> arvoon 0.5 koodataksesi puolella alkuperäisestä resoluutiosta. Tätä kirjoitettaessa videon resoluution muuttaminen ei toimi kunnolla kaikelle lähdemateriaalille, kun VLC 1.0.1 on käytössä. </p>
+<h2>Koodaus komentoriviltä</h2>
+<p>Jos koodaat suuren joukon tiedostoja Theora-muotoon, VLC-dialogin läpi klikkailu voi käydä pitkästyttäväksi ja virheitä tulee helposti. VLC:n komentorivikäyttöliittymä pelastaa tältä. Vaikka se ei ole yhtä intuitiivinen kuin graafinen käyttöliittymä, se antaa sinun toistaa täsmälleen koodausprosessin, jsosa on pysyvät parametrit.</p>
+<p>Seuraavien komentoja voit käyttää koodataksesi lähdevideosi (tässä tapauksessa tiedostoja kutsutaan nimillä "my_source_video.mp4" ja "my_theora_video.ogv" you can of course, use whatever name you want) samoilla parametreillä, joita käytetään graafisessa käyttöliittymässä yllä:</p>
+<pre>vlc my_source_video.mp4 \
+    --sout="#transcode{vcodec=theo,vb=800,scale=1,deinterlace=0,\
+              acodec=vorb,ab=128,channels=2,samplerate=44100}\
+            :standard{access=file,mux=ogg,dst='my_theora_video.ogv'}"
+</pre>
+<p>Kaikki aiemmin kehittyneemmissä koodausoptioissa määritellyt parametrit annetaan nyt tekstimuodossa. Ainoat merkitykselliset optiot, joiden merkitys ei ole heti selvä, ovat vb, joka merkitsee videon bittinopeutta, ja ab, joka merkitsee koodatun audion bittinopeutta.</p>
+<h3>Suositellut koodausoptiot</h3>
+<p>Yllä näytetty komentorivi pelkästään käyttää parametrejä, jotka annettiin graafisessa käyttöliittymässä, mikä ei ole mitenkään optimoitua Theoran koodaukseen. Voimme tehdä paljon paremmin käyttämällä optioita, jotka ovat tarjolla pelkästään komentorivillä. Parempi tapa voisi olla käyttää seuraavaa komentoriviä pohjana koodaukselle. Muuttele sitä sopimaan tarpeisiisi:</p>
+<pre>vlc my_source_video.mp4 \
+    --sout-theora-quality=5 \
+    --sout-vorbis-quality=1 \
+    --sout="#transcode{venc=theora,vcodec=theo,scale=0.1,deinterlace=0,\
+              croptop=0,cropbottom=0,cropleft=0,cropright=0,\
+              acodec=vorb,channels=2,samplerate=44100}\
+            :standard{access=file,mux=ogg,dst='my_theora_video.ogv'}"
+</pre>
+<p>Tässä esimerkissä videon ja audion laatu on spesifioitu numeroilla, jotka jatkuvat arvosta 0 (matalin laatu) arvoon 10 (korkein laatu). Jos tahdot poistaa mustat tai häiriöiset reunat videon ympäriltä, käytä optioita välillä croptop ja cropright. </p>
+<p>Nämä esimerkit vaativat, että VLC:n asennuksesi tulee VLC Theora -pluginin kanssa. Varmista pluginin olemassaolo kirjoittamalla:</p>
+<pre>vlc -p theora
+</pre>
+<p>Vaikka tämä printtaisi <em>"No matching module found"</em> voi edelleenkin olla mahdollista koodata se Theoraan, käyttämällä ffmpeg-pluginia, joka tukee myös Theoraa. Kuitenkin kehittyneempi<em> "--sout-theora-quality"</em> -optio ei ole tarjolla ffmpegissä.</p>
+<h3>Mikset käyttäisi graafista käyttöliittymää</h3>
+<p>Theora-koodekki toimii parhaiten, kun koodataan määritellylle videolaadulle. Koodaus annetulle kohdebittinopeudelle antaa aina huonompia tuloksia samalle tiedostokoolle. Valitettavasti ei ole tapaa määritellä videon kohdelaatua graafisen käyttöliittymän kautta, minkä vuoksi sinun ei pitäisi käyttää sitä mihinkään professionaaliseen koodaustyöhön. Huomaa myös, että et voi leikata videon reunoja kun koodaat graafisesta käyttöliittymästä.</p>
+<p> </p></div><ul Class="menu-goes-here"><li Class="booki-section">JOHDANTO</li><li><a href="/ogg-theora/index">OGG THEORA</a></li>
+<li><a href="/ogg-theora/ch002_tasta-kayttooppaasta">TÄSTÄ KÄYTTÖOPPAASTA</a></li>
+<li><a href="/ogg-theora/ch003_mita-video-on">MITÄ VIDEO ON?</a></li>
+<li><a href="/ogg-theora/ch004_mita-theora-on">MITÄ THEORA ON?</a></li>
+<li Class="booki-section">PERUSKÄSITTEET</li><li><a href="/ogg-theora/ch006_mika-on-koodekki">MIKÄ ON KOODEKKI?</a></li>
+<li><a href="/ogg-theora/ch007_sailot">SÄILÖT</a></li>
+<li Class="booki-section">TOISTO</li><li><a href="/ogg-theora/ch009_theoran-toistaminen">THEORAN TOISTAMINEN</a></li>
+<li><a href="/ogg-theora/ch010_toisto-vlclla">TOISTO VLC:LLÄ</a></li>
+<li><a href="/ogg-theora/ch011_miro">MIRO</a></li>
+<li Class="booki-section">THEORA VERKOSSA</li><li><a href="/ogg-theora/ch013_theora-verkossa">THEORA VERKOSSA</a></li>
+<li><a href="/ogg-theora/ch014_html5">HTML5</a></li>
+<li><a href="/ogg-theora/ch015_theora-sivuillasi">THEORA SIVUILLASI</a></li>
+<li><a href="/ogg-theora/ch016_hotelleja-theoralle">HOTELLEJA THEORALLE</a></li>
+<li Class="booki-section">ENKOODAUS</li><li><a href="/ogg-theora/ch018_johdanto-enkoodaukseen">JOHDANTO ENKOODAUKSEEN</a></li>
+<li><a href="/ogg-theora/ch019_firefogg">FIREFOGG</a></li>
+<li><a href="/ogg-theora/ch020_enkoodaus-vlclla">ENKOODAUS VLC:LLÄ</a></li>
+<li><a href="/ogg-theora/ch021_enkoodaus-ffmpeg2theoralla">ENKOODAUS FFMPEG2THEORALLA </a></li>
+<li><a href="/ogg-theora/ch022_thoggen">THOGGEN</a></li>
+<li Class="booki-section">TEKSTITYKSET</li><li><a href="/ogg-theora/ch024_tekstityksien-perusteet">TEKSTITYKSIEN PERUSTEET</a></li>
+<li><a href="/ogg-theora/ch025_jakelu">JAKELU</a></li>
+<li><a href="/ogg-theora/ch026_tekstityksien-liittaminen">TEKSTITYKSIEN LIITTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch027_tekstityksien-toistaminen">TEKSTITYKSIEN TOISTAMINEN</a></li>
+<li><a href="/ogg-theora/ch028_julkaiseminen">JULKAISEMINEN</a></li>
+<li Class="booki-section">SUORATOISTO</li><li><a href="/ogg-theora/ch030_suoratoiston-perusteet">SUORATOISTON PERUSTEET</a></li>
+<li><a href="/ogg-theora/ch031_icecast">ICECAST</a></li>
+<li><a href="/ogg-theora/ch032_tss">TSS</a></li>
+<li><a href="/ogg-theora/ch033_ffmpeg2theora-streamaus">FFMPEG2THEORA-STREAMAUS</a></li>
+<li><a href="/ogg-theora/ch034_suoratoisto-vlc-ohjelmalla">VLC-STREAMAUS</a></li>
+<li><a href="/ogg-theora/ch035_virtaustoiston-tallentaminen">VIRTAUSTOISTON TALLENTAMINEN</a></li>
+<li Class="booki-section">EDITOINTI</li><li><a href="/ogg-theora/ch037_johdanto-editointiin">JOHDANTO EDITOITIIN</a></li>
+<li><a href="/ogg-theora/ch038_pitivi">PITIVI</a></li>
+<li Class="booki-section">ESIKATSELU</li><li><a href="/ogg-theora/ch040_kuinka-esikatselua-kaytetaan">ESIKATSELUN KÄYTTÖ</a></li>
+<li><a href="/ogg-theora/ch041_tee-esikatselukuvia">TEE ESIKATSELUKUVIA</a></li>
+<li><a href="/ogg-theora/ch042_tee-diaesitys">TEE DIAESITYS</a></li>
+<li><a href="/ogg-theora/ch043_tee-esikatseluvideo">TEE ESIKATSELUVIDEO</a></li>
+<li Class="booki-section">EDITOINTI KOMENTORIVILTÄ</li><li><a href="/ogg-theora/ch045_komentorivi">THEORA JA KOMENTORIVI</a></li>
+<li><a href="/ogg-theora/ch046_theoran-teoria">THEORAN TEORIA</a></li>
+<li><a href="/ogg-theora/ch047_tiedoston-jakaminen">TIEDOSTON JAKAMINEN</a></li>
+<li><a href="/ogg-theora/ch048_tiedoston-leikkaaminen">TIEDOSTON LEIKKAAMINEN</a></li>
+<li><a href="/ogg-theora/ch049_tiedostojen-liittaminen">TIEDOSTOJEN LIITTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch050_tiedostojen-yhdistaminen">TIEDOSTOJEN YHDISTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch051_koon-muuttaminen">KOON MUUTTAMINEN</a></li>
+<li><a href="/ogg-theora/ch052_oggin-analysoiminen">OGGIN ANALYSOIMINEN</a></li>
+<li Class="booki-section">TEKIJÄT</li><li><a href="/ogg-theora/ch054_tekijat">TEKIJÄT</a></li>
+</ul>

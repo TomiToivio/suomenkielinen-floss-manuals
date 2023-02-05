@@ -1,0 +1,120 @@
+<div id="main-content"><h1>Näppäimistön tapahtumat</h1>
+<p><span id="result_box" class="long_text"><span> <br></span><span>Näppäimistön tapahtumat kaappaamalla ohjelma voi vastata käyttäjän toimenpiteisiin. Näytämme tässä kappaleessa kuinka haemme tiedon, joka liittyy näppäimistöön, ja me luomme yksinkertaisen kirjoituskoneen, jolla voimme kirjoitella tekstiä ruudulle. </span></span></p>
+<p><span id="result_box" class="long_text"><span>Viimeksi painetun näppäimen arvo tallennetaan muuttujaan, joka julistetaan Processingissa. Tämä muuttuja voi tallentaa vain yhden kirjaimen, jota symbolisoi esimerkiksi 'a', 'b', 'c'... Tässä tapauksessa suuri kirjain on eri kirjain kuin pieni kirjain. </span><span> <br><br></span><span>Seuraavassa esimerkissä näytämme ikkunassa merkin, joka vastaa painettua näppäintä. Tähän käytämme metodia text(). <br></span></span></p>
+<p><br><img src="_booki/processing-1/static/02_MachineAEcrire_Char_02-fi_1.png" alt=""> </p>
+<pre> void draw() {
+  background(204);
+  fill(0);
+  textSize(70);
+  text(key,30,70);
+}
+</pre>
+<p><span id="result_box" class="long_text"><span>Voimme kaapata ohjelmaamme, kun käyttäjä on painanut tai vapauttanut näppäimen näppäimistöllä, metodeilla keyPressed() ja keyReleased(). Nämä kaksi metodia Processing kutsuu automaattisesti, kun näppäimistön tila muuttuu. </span><span> <br><br></span><span>Seuraavassa esimerkissä keyPressed() ja KeyReleased() muuttavat muuttujan y arvoa, jolla kirjain sijoitetaan ruudulle. <br></span></span></p>
+<div id="gt-res-tools" class="g-section">
+<div id="gt-res-listen" class="gt-icon-c"><span class="gt-icon-text">Listen</span></div>
+<div id="gt-res-roman" class="gt-icon-c"><span class="gt-icon-text">Read phonetically</span></div>
+</div>
+<p><br><img src="_booki/processing-1/static/03_Pressed_Released_02-fi_1.png" alt=""> </p>
+<pre>int y = 0;
+
+void setup() {
+  size(130,200);
+  textSize(80);
+  stroke(0);
+  fill(0);
+}
+
+void draw() {
+  background(204);
+  line(10,100,120,100);
+  text(key,35,y);
+}
+
+void keyPressed(){
+  y = 180;
+}
+
+void keyReleased(){
+  y = 80;
+}</pre>
+<h2>Näppäinkomennot</h2>
+<p><span id="result_box" class="long_text"><span>Erikoisnäppäimet kuten nuolet (YLÖS, ALAS, VASEMMALLE, OIKEALLE) tai ALT, CONTROL, SHIFT tallennetaan muuttujaan keyCode. Testi if (key==CODED) kertoo onko painettu näppäin erikoisnäppäin vai eikö. Ohjelmassa meidän täytyy erottaa suuret ja pienet kirjaimet riippuen näppäimestä, jota tahdot testata.</span><span> <br><br></span><span>Seuraavassa esimerkissä luomme erityisen kirjoituskoneen, jossa on mahdollista liikuttaa tekstiä nuolilla. <br><br></span><span>Aina kun näppäintä on painettu, se tallennetaan merkkijonoon, joka näytetään draw() -komennolla käyttäen metodia text().</span></span></p>
+<p><br><img src="http://fr.flossmanuals.net/floss_fr/publish/Processing/rsrc/Processing/Evenement_Clavier/" alt="" width="0" height="0"> <img title="01_MachineAEcrire_02" src="_booki/processing-1/static/01_MachineAEcrire_02-fi.png" alt="01_MachineAEcrire_02" width="200" height="200"></p>
+<pre>String s = "";
+int x = 50;
+int y = 50;
+
+void setup() {
+  size(200,200);
+}
+
+void draw() {
+  background(255);
+  fill(0);
+  text(s, x, y);
+}
+
+void keyPressed() {
+  if (key == CODED){
+    if (keyCode == LEFT)   x  = x - 1;
+    if (keyCode == RIGHT)  x = x + 1;
+    if (keyCode == UP)     y = y - 1;
+    if (keyCode == DOWN)   y = y + 1;
+  }
+  else {
+    s = s + key;
+  }
+}</pre>
+<p><span id="result_box" class="long_text"><span>Huomaa aaltosulkujen käyttö jokaisen if-komennon jälkeen. Aaltosulut voidaan jättää pois, jos syntaksi toimii vain yhden komennon kohdalla. Käytämme myös String-tyyppistä muuttujaa, joka tallentaa sarjan merkkejä, ja joka on erittäin hyvä esimerkiksi lauseiden tallentamiseen.  </span><span> <br><br></span><span>Processing määrittelee myös muuttujan keyPressed. <strong></strong></span></span></p>
+<p><span id="result_box" class="long_text"><span><strong>Varoitus!</strong> Vaikka syntaksi on identtinen, sitä ei pidä sekoittaa metodiin keyPressed(), jolla on sama nimi. Tämä muuttuja kertoo meille aina, jos näppäintä painetaan, tai jos sitä ei voida käyttää metodissa draw(). </span><span> <br><br></span><span>Seuraavassa esimerkissä piirrämme ympyrän, jos painettu näppäin on 'c', neliön jos painettu näppäin on ´r´. <br></span></span></p>
+<p><img title="Cercle_Carre" src="_booki/processing-1/static/Cercle_Carre-fi.png" alt="Cercle_Carre" width="416" height="230"></p>
+<pre>void draw()
+{
+  rectMode(CENTER);
+  background(128);
+  if (keyPressed == true)
+  {
+    if (key == 'c') {
+      ellipse(50,50,90,90);
+    }
+    else if (key == 'r') {
+      rect(50,50,90,90);
+    }
+  }
+}</pre></div><ul Class="menu-goes-here"><li Class="booki-section">Esittely</li><li><a href="/processing-1/index">Johdanto</a></li>
+<li><a href="/processing-1/ch002_esimerkkeja">Esimerkkejä</a></li>
+<li><a href="/processing-1/ch003_asennus">Asennus</a></li>
+<li Class="booki-section">Perusteet</li><li><a href="/processing-1/ch005_perusteet">Perusteet</a></li>
+<li Class="booki-section">Suunnittelu</li><li><a href="/processing-1/ch007_suunnittelutila">Suunnittelutila</a></li>
+<li><a href="/processing-1/ch008_muodot">Muodot</a></li>
+<li><a href="/processing-1/ch009_varit">Värit</a></li>
+<li><a href="/processing-1/ch010_kuvat">Kuvat</a></li>
+<li><a href="/processing-1/ch011_tekstit">Tekstit</a></li>
+<li Class="booki-section">Interaktiivisuus</li><li><a href="/processing-1/ch013_video">Video</a></li>
+<li><a href="/processing-1/ch014_videon-tuominen">Videon tuominen</a></li>
+<li><a href="/processing-1/ch015_mikrofoni">Mikrofoni</a></li>
+<li><a href="/processing-1/ch016_hiiri">Hiiri</a></li>
+<li><a href="/processing-1/ch017_nappaimisto">Näppäimistö</a></li>
+<li><a href="/processing-1/ch018_tulostaminen">Tulostaminen</a></li>
+<li Class="booki-section">Vienti</li><li><a href="/processing-1/ch020_verkkoon-vieminen">Verkkoon vieminen</a></li>
+<li Class="booki-section">Animaatio</li><li><a href="/processing-1/ch022_aanet">Äänet</a></li>
+<li><a href="/processing-1/ch023_draw-metodi">Draw-metodi</a></li>
+<li><a href="/processing-1/ch024_objektien-animointi">Objektien animointi</a></li>
+<li><a href="/processing-1/ch025_monien-objektien-animointi">Monien objektien animointi</a></li>
+<li><a href="/processing-1/ch026_aikajana">Aikajana</a></li>
+<li Class="booki-section">Ohjelmointi</li><li><a href="/processing-1/ch028_kommentit">Kommentit</a></li>
+<li><a href="/processing-1/ch029_objektit">Objektit</a></li>
+<li><a href="/processing-1/ch030_metodit">Metodit</a></li>
+<li><a href="/processing-1/ch031_listat">Listat</a></li>
+<li><a href="/processing-1/ch032_toistaminen">Toistaminen</a></li>
+<li><a href="/processing-1/ch033_ehdot">Ehdot</a></li>
+<li><a href="/processing-1/ch034_muuttujat">Muuttujat</a></li>
+<li><a href="/processing-1/ch035_muutokset">Muutokset</a></li>
+<li><a href="/processing-1/ch036_rajat">Rajat</a></li>
+<li Class="booki-section">Liitteet</li><li><a href="/processing-1/ch038_yleisia-virheita">Yleisiä virheitä</a></li>
+<li><a href="/processing-1/ch039_ulkoiset-kirjastot">Ulkoiset kirjastot</a></li>
+<li><a href="/processing-1/ch040_dokumentaatio">Dokumentaatio</a></li>
+<li><a href="/processing-1/ch041_arduino">Arduino</a></li>
+<li><a href="/processing-1/ch042_tasta-oppaasta">Tästä oppaasta</a></li>
+<li><a href="/processing-1/ch043_tekijat">Tekijät</a></li>
+</ul>

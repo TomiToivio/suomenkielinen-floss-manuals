@@ -1,0 +1,74 @@
+<div id="main-content"><h1>Ogg-tiedostojen liitostaminen</h1>
+<div id="content">
+<p>Liittääksesi kaksi tai useampia Ogg-tiedostoja, joilla on audio- ja videostriimit, yhteen videotiedostoon ilman uutta koodausta on helppoa, mutta se voi johtaa samoihin synkronisointiongelmiin kuin oggCutin käyttö.</p>
+<p>Komentorivin työkalu oggCat luo uuden Ogg-tiedoston joukosta muita Ogg-tiedostoja.</p>
+<p> </p>
+Komento: <strong></strong><strong></strong> <br><pre>oggCat outputFile.ogv inputfile1.ogv inputfile2.ogv [ inputfile3.ogv [ .. ] ]</pre>
+<p>Kaikkien striimien parametrien täytyy sopia yhteen, jotta voit luoda Ogg-tiedoston. Jos yksi tai useampi syöttötiedoston parametri ei sovi yhteen, se tiedosto jätetään huomiotta, mutta ulostulotiedoston luomisen prosessi jatkuu. Ulostulotiedosto on toimiva Ogg-tiedosto. Se ei vain ole se Ogg-tiedosto, jota haluttiin.</p>
+<h2>Prosessi</h2>
+<p>oggCat lukee ensin tiedoston niin kuin se on. Kuitenkaan se ei käsittele tuntemattomia striimejä eikä integroi niitä ulostulotiedostoon.</p>
+<p>Löytääkseen vastaavan striimin seuraavista Ogg-tiedostoista, oggCat luo parametritaulukon, jossa on kaikki tarpeellinen tieto ensimmäisen tiedoston striimeistä (inputfile1.ogv), jolloin ensimmäinen tiedosto toimii "referenssinä".</p>
+<p>Seuraavissa tiedostoissa (inputfile2.ogv inputfile3.ogv ...) olevat striimit on testattu viitetaulukon parametrejä vastaan, joten ne eivät voi olla samassa järjestyksessä viitetiedoston kanssa.</p>
+<p><strong>Esimerkki:</strong></p>
+<pre>Ensimmäisessä Ogg-tiedostossa on yksi Theora ja yksi Vorbis -striimi. Theora-striimin videolla on 320x240 pikselin kuvakoko ja Vorbis-audiostriimillä on 32 kHz näytetaajuus.
+
+Seuraava tiedosto sisältää kolme striimiä: kaksi Theora-striimiä ja yhden Vorbis-striimin. oggCat-komento voi yhdistää ne niin kauan kuin on ainakin yksi Theora-striimi, jossa on yhteensopivat parametris (320x240 pikselin kuvakoko) ja audiostriimin parametrit sopivat myös yhteen. Toisessa Theora-striimissä voi olla mitä tahansa parametrejä. </pre>
+<p>Jos yhdenkään striimin parametrit eivät ole yhteensopivat, oggCat tulostaa rivin, joka ehdottaa kuinka tiedosto voidaisiin koodata uudestaan:</p>
+<pre>vorbis parameter compare: data rate not matching 32000 != 64000
+You may try to reencode with the datarate of the other file
+
+Please try to resample with the following command
+oggResize -D 32000 &lt;file see below&gt;</pre>
+<h2>cat-komennon käyttö</h2>
+<p>Toinen tapa yhdistää kaksi videota on yhden tiedoston liittäminen toisen tiedoston perään komentorivityökalulla <strong>cat</strong>. Tämä metodi laukaisee soittimen aloittamaan uuden dekoodaussession seuraavaa striimiä varten. </p>
+<p>Ogg-standardi sallii striimin avaamisen toisen striimin loppumisen jälkeen, mutta useimmat soittimet eivät toteuta tätä dekooderin session avauksen menetelmää. Niinpä metodi tulisi aina testata soittimilla, joita voidaan käyttää tämän session jälkeen.</p>
+<h2>oggCat ja oggz-chop</h2>
+<p>Kun tiedosto on luotu oggz-chop -komennon avulla, yhdistäminen ei ole mahdollista, sillä oggCat toimii eri tavalla.</p>
+<p>Tämä johtuu siitä, että tiedostot, joissa on kehikko, ja eri aikamittaukset, jotka on määritelty tässä kehikossa joka striimille (kuten on tapaus useimpien oggz-chopilla luotujen tiedostojen suhteen) ei voida liittää yhteen jatkuvaan striimiin. Tämän käytöksen aiheuttaa se tosiseikka, että kaksi ogg-striimiä voisi mennä päällekkäin. Esitetyt kuvaruudut olisivat esittämättömien päällä, koska niitä tarvitaan vain ensimmäisen videoruudun dekoodaukseen. Tämä ei ole mahdollista yhdessä Ogg-striimissä.</p>
+<h2>oggCatin synkronisointiongelmat </h2>
+<p>Yhden Ogg-tiedoston eri striimit eivät välttämättä ole (täsmälleen) samanpituisia. Yhdistämisprosessin aikana seuraava Ogg-tiedosto yhdistämislistalla laitetaan suoraan vastaavien edellisen tiedoston striimien perään ilman mitään aikaväliä. Niinpä seuraavan tiedoston synkronisointi kärsii ensimmäisen tiedoston epätarkasta striimin päättymisestä.</p>
+</div></div><ul Class="menu-goes-here"><li Class="booki-section">JOHDANTO</li><li><a href="/ogg-theora/index">OGG THEORA</a></li>
+<li><a href="/ogg-theora/ch002_tasta-kayttooppaasta">TÄSTÄ KÄYTTÖOPPAASTA</a></li>
+<li><a href="/ogg-theora/ch003_mita-video-on">MITÄ VIDEO ON?</a></li>
+<li><a href="/ogg-theora/ch004_mita-theora-on">MITÄ THEORA ON?</a></li>
+<li Class="booki-section">PERUSKÄSITTEET</li><li><a href="/ogg-theora/ch006_mika-on-koodekki">MIKÄ ON KOODEKKI?</a></li>
+<li><a href="/ogg-theora/ch007_sailot">SÄILÖT</a></li>
+<li Class="booki-section">TOISTO</li><li><a href="/ogg-theora/ch009_theoran-toistaminen">THEORAN TOISTAMINEN</a></li>
+<li><a href="/ogg-theora/ch010_toisto-vlclla">TOISTO VLC:LLÄ</a></li>
+<li><a href="/ogg-theora/ch011_miro">MIRO</a></li>
+<li Class="booki-section">THEORA VERKOSSA</li><li><a href="/ogg-theora/ch013_theora-verkossa">THEORA VERKOSSA</a></li>
+<li><a href="/ogg-theora/ch014_html5">HTML5</a></li>
+<li><a href="/ogg-theora/ch015_theora-sivuillasi">THEORA SIVUILLASI</a></li>
+<li><a href="/ogg-theora/ch016_hotelleja-theoralle">HOTELLEJA THEORALLE</a></li>
+<li Class="booki-section">ENKOODAUS</li><li><a href="/ogg-theora/ch018_johdanto-enkoodaukseen">JOHDANTO ENKOODAUKSEEN</a></li>
+<li><a href="/ogg-theora/ch019_firefogg">FIREFOGG</a></li>
+<li><a href="/ogg-theora/ch020_enkoodaus-vlclla">ENKOODAUS VLC:LLÄ</a></li>
+<li><a href="/ogg-theora/ch021_enkoodaus-ffmpeg2theoralla">ENKOODAUS FFMPEG2THEORALLA </a></li>
+<li><a href="/ogg-theora/ch022_thoggen">THOGGEN</a></li>
+<li Class="booki-section">TEKSTITYKSET</li><li><a href="/ogg-theora/ch024_tekstityksien-perusteet">TEKSTITYKSIEN PERUSTEET</a></li>
+<li><a href="/ogg-theora/ch025_jakelu">JAKELU</a></li>
+<li><a href="/ogg-theora/ch026_tekstityksien-liittaminen">TEKSTITYKSIEN LIITTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch027_tekstityksien-toistaminen">TEKSTITYKSIEN TOISTAMINEN</a></li>
+<li><a href="/ogg-theora/ch028_julkaiseminen">JULKAISEMINEN</a></li>
+<li Class="booki-section">SUORATOISTO</li><li><a href="/ogg-theora/ch030_suoratoiston-perusteet">SUORATOISTON PERUSTEET</a></li>
+<li><a href="/ogg-theora/ch031_icecast">ICECAST</a></li>
+<li><a href="/ogg-theora/ch032_tss">TSS</a></li>
+<li><a href="/ogg-theora/ch033_ffmpeg2theora-streamaus">FFMPEG2THEORA-STREAMAUS</a></li>
+<li><a href="/ogg-theora/ch034_suoratoisto-vlc-ohjelmalla">VLC-STREAMAUS</a></li>
+<li><a href="/ogg-theora/ch035_virtaustoiston-tallentaminen">VIRTAUSTOISTON TALLENTAMINEN</a></li>
+<li Class="booki-section">EDITOINTI</li><li><a href="/ogg-theora/ch037_johdanto-editointiin">JOHDANTO EDITOITIIN</a></li>
+<li><a href="/ogg-theora/ch038_pitivi">PITIVI</a></li>
+<li Class="booki-section">ESIKATSELU</li><li><a href="/ogg-theora/ch040_kuinka-esikatselua-kaytetaan">ESIKATSELUN KÄYTTÖ</a></li>
+<li><a href="/ogg-theora/ch041_tee-esikatselukuvia">TEE ESIKATSELUKUVIA</a></li>
+<li><a href="/ogg-theora/ch042_tee-diaesitys">TEE DIAESITYS</a></li>
+<li><a href="/ogg-theora/ch043_tee-esikatseluvideo">TEE ESIKATSELUVIDEO</a></li>
+<li Class="booki-section">EDITOINTI KOMENTORIVILTÄ</li><li><a href="/ogg-theora/ch045_komentorivi">THEORA JA KOMENTORIVI</a></li>
+<li><a href="/ogg-theora/ch046_theoran-teoria">THEORAN TEORIA</a></li>
+<li><a href="/ogg-theora/ch047_tiedoston-jakaminen">TIEDOSTON JAKAMINEN</a></li>
+<li><a href="/ogg-theora/ch048_tiedoston-leikkaaminen">TIEDOSTON LEIKKAAMINEN</a></li>
+<li><a href="/ogg-theora/ch049_tiedostojen-liittaminen">TIEDOSTOJEN LIITTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch050_tiedostojen-yhdistaminen">TIEDOSTOJEN YHDISTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch051_koon-muuttaminen">KOON MUUTTAMINEN</a></li>
+<li><a href="/ogg-theora/ch052_oggin-analysoiminen">OGGIN ANALYSOIMINEN</a></li>
+<li Class="booki-section">TEKIJÄT</li><li><a href="/ogg-theora/ch054_tekijat">TEKIJÄT</a></li>
+</ul>

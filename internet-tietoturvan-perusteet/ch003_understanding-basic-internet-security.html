@@ -1,0 +1,61 @@
+<div id="main-content"><h1>Tietoturvan perusteiden ymmärtäminen</h1>
+<p>Iinternet-tietoturvan perusteiden tutkiminen täytyy aloittaa verkon rakenteesta ja tietojen kulkureiteistä. Tämän tiedon avulla käyttäjä voi helpommin suojata itsensä.</p>
+<h2>Sähköpostipeli</h2>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/Pictogram_Information.png" alt="Huomaa!" width="128" height="128" align="left">Jotta voimme ymmärtää internetin toimintaa voimme verrata sitä tavalliseen maailmanlaajuiseen postijärjestelmään. Jotta voit viestiä ystäväsi kanssa, kirjoitat kirjeen ja viet sen lähimpään postilaatikkoon; tämän jälkeen se matkaa laajan verkoston läpi ja (toivottavasti) saavuttaa sen henkilön, jolle tiedot oli tarkoitettu. Internet toimii juuri näin, <em>mutta viesti on lähetetty avoimessa kuoressa ja jokainen postimies matkan varrella voi lukea viestin, muuttaa sen sisältöä ja/tai päämäärää sinun tietämättäsi. </em></p>
+<p><em><br></em></p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/salaamaton.jpg" alt="" width="600" height="142"></p>
+<p>Tämän estääkseen ihmiset ovat pitkän aikaa käyttäneet salakieliä viestiäkseen turvallisesti. Tässä luvussa selitämme kaksi salausmenetelmää. Ensimmäinen menetelmä selvittää <em>päästä päähän -salauksen,</em> eli salauksen koko matkalta lähettäjältä vastaanottajalle. Toinen menetelmä on reitin <em>osittainen salaus</em>.</p>
+<h2>Päästä päähän salaus</h2>
+<p>Jos salaat viestisi ja vain vastaanottaja voi lukea sen, se on merkityksetön kaikille postiljooneille matkan varrella, ja jos he muuttelevat sitä, huomaat sen heti. Jotta tällainen salaus toimisi, sinun tulee edelleenkin olla varma siitä, että voit luottaa vastaanottajaan, ja olla varma siitä, että vaihdat tietoa vastaanottajan etkä jonkun vastaanottajaksi tekeytyneen kanssa. Tätä menetelmää sanotaan <em>päästä päähän -salaukseksi</em> ja se on turvallisin tapa viestiä. Joudut myös varmistamaan, että kukaan ei katsele olkasi yli, kun kirjoitat viestiäsi. Joitain tässä kirjassa käsittelemiämme päästä päähän -salausmenetelmiä ovat <strong>HTTPS</strong> selausta varten ja <strong>PGP</strong> sähköpostia varten.</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/salaamaton.jpg" alt="" width="600" height="142"></p>
+<p>Valitettavasti päästä päähän -salaus voi toimia vain, jos sinulla ja ystävälläsi (lähteelläsi tai työtoverillasi) on työkalut, joita sen käyttöön tarvitaan. Lisäksi teidän täytyy sopia käytetystä salakielestä. Internetissä tämä merkitsee verkkosivua, jolla käyt, tai ihmisiä, joille lähetät sähköpostia. Tämä ei kuitenkaan ole aina välttämätöntä, sillä tietoturvaa voidaan parantaa myös salaamalla vain osa reitistä.</p>
+<h2>Osittain salattu sähköposti välityspalvelimen kautta</h2>
+<p>Palataksemme postianalogiaan, voit olla matkalla sortovaltiossa ja tahdot lähettää viestin ystävällesi kotona. Et luota postititoimistoon tai postiljooneihin tässä maassa. Joten ennen lähtöäsi pyysit paikallista postitoimistoasi toimimaan välittäjänä (välityspalvelin) ja sovit käytetystä salakielestä. Nyt voit kirjoittaa viestisi salakielellä, jota postitoimistosi käyttää. Voit lähettää tämän postitoimistoosi ja he huolehtivat viestisi välittämisestä ystävällesi. Tässä skenaariossa sinun täytyy luottaa paikalliseen postitoimistoosi, kaikkiin postiljooneihin sen jälkeen, sekä tietysti ystävääsi.</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/osittain_salattu.jpg" alt="" width="600" height="142"></p>
+<h2>Verkkosivuilla käyminen on viestintää</h2>
+<p>Tässä esimerkissä analogia käytti postin kirjeitä, ajattelit ehkä sähköposteja lukiessasi tätä. Vaikka se sopii sähköposteihin, sopii analogia myös kaikkeen muuhun internet-viestintään. Verkkosivulla käyminen on aivan kuin viestin lähettäminen ystävällesi: "Ole hyvä ja lähetä minulle kopio kirjastasi 1984." Tämän jälkeen ystäväsi lähettää kirjan sinulle.</p>
+<p>Seurataanpa esimerkkiä, jossa käyt verkkosivulla kotitietokoneeltasi:</p>
+<ol><li>Kirjoitat osoitteen http://freepressunlimited.org/.</li>
+<li>Pyyntö menee monien reitittimien kautta. Jokainen reititin lähettää kopion pyynnöstä reitittimelle, joka on lähempänä päämäärää, kunnes se löytää reitittimen, joka löytää tarkoitetun tietokoneen.</li>
+<li style="margin-bottom: 5px; margin-top: 0px;">Tämä tietokone lähettää tiedon takaisin sinulle, jolloin selaimesi antaa sinun näyttää sivun.</li>
+</ol><p>Verkkosivulta sinulle lähetetty viesti kulkee muiden laitteiden (tietokoneiden tai reitittimien) kautta. Viesti kulkee usein 5-30 laitteen kautta.</p>
+<p><img src="_booki/internet-tietoturvan-perusteet/static/Internet_1.jpg" alt="" width="600" height="149"></p>
+<p>Oletusarvoisesti informaatio matkaa internetissä turvattomalla tavalla. Tämä merkitsee, että viestiäsi voidaan salakuunnella tai muutella jokaisessa laitteessa. Jos olet kytkeytynyt verkkoon langattomasti, ihmiset voivat myös vain "virittäytyä" ilman kautta lähetetyn tiedon taajuudelle.</p>
+<p>Estääksesi tiedon vaarantumisen, sinun täytyy olla huolellinen seuraavien seikkojen suhteen:</p>
+<ul><li>Voitko luottaa verkon pääsypisteeseen (verkkoyhteyteesi). Jos tämä on suojaton langaton yhteys, kuka tahansa voi salakuunnella sitä. Jos se on fyysinen (kaapeliyhteys), verkko-operaattori voi salakuunnella sitä.</li>
+<li>Voitko luottaa tiedon ulostulopisteeseen (sivustoon jolla olet käymässä)?</li>
+<li>Viestitkö varmasti oikean päämäärän kanssa? Vai päätyivätkö pyyntösi palvelimelle, joka yrittää näyttää palvelimelta, jota etsit, mutta ei ole se?</li>
+</ul><p>Kirjan lopussa on syvällisempi ja teknisempi esittely verkon toiminnasta. Voit lukea sen, jos kaipaat tarkempaa tietoa.</p></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/internet-tietoturvan-perusteet/index">Johdanto</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch002_why-use-a-manual-on-internet-security">Miksi käyttää internet-tietoturvaopasta?</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch003_understanding-basic-internet-security">Internet-tietoturvan perusteiden ymmärtäminen</a></li>
+<li Class="booki-section">Yleinen turvallisuus</li><li><a href="/internet-tietoturvan-perusteet/ch005_secure-your-computer-general">Turvaa tietokoneesi (yleistä)</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch006_internet-cafes">Internet-kahvilat</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch007_software-on-usb-or-cd">Ohjelmat USB-tikulla tai CD:llä</a></li>
+<li Class="booki-section">Salasanojen turvaaminen</li><li><a href="/internet-tietoturvan-perusteet/ch009_keeping-passwords-safe">Salasanojen turvaaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch010_installing-a-password-manager">Salasanojen hallintaohjelman asentaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch011_encrypting-passwords-with-a-password-manager">Salasanojen salaaminen salasanojen hallintaohjelman avulla</a></li>
+<li Class="booki-section">Henkilökohtaisten tietojen turvaaminen</li><li><a href="/internet-tietoturvan-perusteet/ch013_introduction-to-securing-personal-data">Johdanto henkilökohtaisten tietojen turvaamiseen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch014_installing-truecrypt">TrueCryptin asentaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch015_using-truecrypt">TrueCryptin käyttö</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch016_setting-up-a-hidden-volume">Kätketyn osion luominen</a></li>
+<li Class="booki-section">Turvallinen selaaminen</li><li><a href="/internet-tietoturvan-perusteet/ch018_introduction-to-safe-browsing">Johdanto turvalliseen selaamiseen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch019_accessing-firefox-on-ubuntu">Firefoxin asennus Ubuntuun</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch020_installing-firefox-on-windows">Firefoxin asentaminen Windowsiin</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch021_protecting-your-internet-passwords">Internet-salasanojen suojaaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch022_extending-firefox">Firefoxin laajentaminen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch023_proxy-setting-and-foxyproxy">Välityspalvelimet ja FoxyProxy</a></li>
+<li Class="booki-section">Sähköpostin tietoturvan perusteet</li><li><a href="/internet-tietoturvan-perusteet/ch025_introduction-to-e-mail-safety">Johdanto sähköpostin tietoturvaan</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch026_start-using-thunderbird-mail">Thunderbird-sähköpostin käyttö</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch027_setting-up-secure-connections">Salattujen yhteyksien luominen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch028_some-additional-security-settings">Lisää turvallisuusasetuksia</a></li>
+<li Class="booki-section">Sähköpostien salaaminen</li><li><a href="/internet-tietoturvan-perusteet/ch030_introduction-to-mail-encryption-pgp">Johdanto sähköpostien salaamiseen (PGP)</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch031_installing-pgp-on-windows">PGP:n asentaminen Windowsiin</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch032_installing-pgp-on-ubuntu">PGP:n asentaminen Ubuntuun</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch033_creating-your-pgp-keys">PGP-avainten luominen</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch034_daily-pgp-usage">Päivittäinen PGP:n käyttö</a></li>
+<li Class="booki-section">TOR-opas</li><li><a href="/internet-tietoturvan-perusteet/ch036_using-tor">TOR-opas</a></li>
+<li Class="booki-section">Taustatietoa</li><li><a href="/internet-tietoturvan-perusteet/ch038_how-the-net-works">Kuinka verkko toimii</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch039_glossary">Sanasto</a></li>
+<li Class="booki-section">Tekijät</li><li><a href="/internet-tietoturvan-perusteet/ch041_tekijat">Tekijät</a></li>
+<li><a href="/internet-tietoturvan-perusteet/ch042_lisenssi">Lisenssi</a></li>
+</ul>

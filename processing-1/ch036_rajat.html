@@ -1,0 +1,83 @@
+<div id="main-content"><h1>Viivatyylit</h1>
+<p><span id="result_box" class="long_text"><span> <br></span><span>Rajaviivojen ja geometristen muotojen tyyliä voidaan muuttaa, jotta vältetään virheiden ilmestyminen viivojen leikkauskohtiin. Tähän tarkoitukseen käytetyt komennot esitellään alla. </span></span></p>
+<h2>smooth</h2>
+<p>Metodi <code>smooth()</code> mahdollistaa reunojen tasoittamisen. Sen avulla vältetään portaikkoefekti, joka tulee näkyville diagonaalisissa viivoissa.</p>
+<pre>line(10, 0, 100, 90);  // Ilman tasoitusta
+
+//Aktivoimme tasoituksen
+smooth();
+line(0, 10, 90, 100); // <span id="result_box" class="long_text"><span>Viiva tasoitettu </span></span></pre>
+<p><img src="_booki/processing-1/static/smooth-fi_1.png" alt=""></p>
+<h2>strokeWeight</h2>
+<p>Metodi <code>strokeWeight()</code> mahdollistaa viivan paksuuden muuttamisen.</p>
+<pre>line(10, 0, 100, 90); // Yhden pikselin paksuinen viiva
+strokeWeight(5); // Asetetaan paksuudeksi viisi pikseliä
+line(0, 10, 90, 100); // Viiden pikselin paksuinen viiva
+</pre>
+<p><img title="strokeWeight" src="_booki/processing-1/static/strokeWeight-fi.png" alt="strokeWeight" width="100" height="100"></p>
+<h2>strokeCap</h2>
+<p><span id="result_box" class="long_text"><span>Metodi <code>strokeCap ()</code> muuttaa viivan lopun ulkoasua. Tämä metodi ei ole hyödyllinen muodoissa. Sen arvot voivat olla </span><span>SQUARE, PROJECT tai ROUND. </span><span>Oletusarvoisesti käytetään arvoa ROUND. </span><span>Tämä metodi ei toimi OpenGL tai P3D -tilassa.</span></span></p>
+<pre>strokeWeight(10); // Määrittelemme paksuudeksi 10 pikseliä
+strokeCap(ROUND);
+line(20, 40, 60, 80);
+
+strokeCap(PROJECT);
+line(20, 20, 80, 80);
+
+strokeCap(SQUARE);
+line(40, 20, 80, 60);
+</pre>
+<p><img title="strokeCap" src="_booki/processing-1/static/strokeCap-fi.png" alt="strokeCap" width="100" height="100"></p>
+<h2>strokeJoin</h2>
+<p><span id="result_box" class="long_text"><span>Metodi <code>strokeJoin()</code> muuttaa kulmien ulkoasua. Sillä voi olla arvot</span><span> MITER, BEVEL tai ROUND. </span><span>Oletusarvoinen tila on MITER. Tämä metodi ei toimi </span><span>OpenGL tai P3D -tiloissa.</span></span></p>
+<pre>size(300, 100); // Muuttaa kuvan kokoa
+
+strokeWeight(10); // Määritellään paksuus 10 pikseliä
+
+strokeJoin(MITER); // Suorakulmat
+rect(20, 20, 60, 60);
+
+strokeJoin(BEVEL); // Karkeat kulmat
+rect(120, 20, 60, 60);
+
+strokeJoin(ROUND); // Pyöristetyt kulmat
+rect(220, 20, 60, 60);
+</pre>
+<p><br><img title="strokeJoin" src="_booki/processing-1/static/strokeJoin-fi.png" alt="strokeJoin" width="300" height="100"></p>
+<p><a title="Web analytics" href="http://piwik.org/"> <img src="http://adam.engagetv.com/piwik/piwik.php?url=http://fr.flossmanuals.net/Processing/Lesstylesdebordures&amp;action_name=&amp;idsite=1&amp;res=1024x768&amp;col=24&amp;h=20&amp;m=45&amp;s=7&amp;fla=1&amp;dir=0&amp;qt=1&amp;realp=0&amp;pdf=1&amp;wma=0&amp;java=0&amp;cookie=1&amp;title=Processing%20(fr)&amp;urlref=http://fr.flossmanuals.net/Processing/Introduction" alt="Piwik"></a></p></div><ul Class="menu-goes-here"><li Class="booki-section">Esittely</li><li><a href="/processing-1/index">Johdanto</a></li>
+<li><a href="/processing-1/ch002_esimerkkeja">Esimerkkejä</a></li>
+<li><a href="/processing-1/ch003_asennus">Asennus</a></li>
+<li Class="booki-section">Perusteet</li><li><a href="/processing-1/ch005_perusteet">Perusteet</a></li>
+<li Class="booki-section">Suunnittelu</li><li><a href="/processing-1/ch007_suunnittelutila">Suunnittelutila</a></li>
+<li><a href="/processing-1/ch008_muodot">Muodot</a></li>
+<li><a href="/processing-1/ch009_varit">Värit</a></li>
+<li><a href="/processing-1/ch010_kuvat">Kuvat</a></li>
+<li><a href="/processing-1/ch011_tekstit">Tekstit</a></li>
+<li Class="booki-section">Interaktiivisuus</li><li><a href="/processing-1/ch013_video">Video</a></li>
+<li><a href="/processing-1/ch014_videon-tuominen">Videon tuominen</a></li>
+<li><a href="/processing-1/ch015_mikrofoni">Mikrofoni</a></li>
+<li><a href="/processing-1/ch016_hiiri">Hiiri</a></li>
+<li><a href="/processing-1/ch017_nappaimisto">Näppäimistö</a></li>
+<li><a href="/processing-1/ch018_tulostaminen">Tulostaminen</a></li>
+<li Class="booki-section">Vienti</li><li><a href="/processing-1/ch020_verkkoon-vieminen">Verkkoon vieminen</a></li>
+<li Class="booki-section">Animaatio</li><li><a href="/processing-1/ch022_aanet">Äänet</a></li>
+<li><a href="/processing-1/ch023_draw-metodi">Draw-metodi</a></li>
+<li><a href="/processing-1/ch024_objektien-animointi">Objektien animointi</a></li>
+<li><a href="/processing-1/ch025_monien-objektien-animointi">Monien objektien animointi</a></li>
+<li><a href="/processing-1/ch026_aikajana">Aikajana</a></li>
+<li Class="booki-section">Ohjelmointi</li><li><a href="/processing-1/ch028_kommentit">Kommentit</a></li>
+<li><a href="/processing-1/ch029_objektit">Objektit</a></li>
+<li><a href="/processing-1/ch030_metodit">Metodit</a></li>
+<li><a href="/processing-1/ch031_listat">Listat</a></li>
+<li><a href="/processing-1/ch032_toistaminen">Toistaminen</a></li>
+<li><a href="/processing-1/ch033_ehdot">Ehdot</a></li>
+<li><a href="/processing-1/ch034_muuttujat">Muuttujat</a></li>
+<li><a href="/processing-1/ch035_muutokset">Muutokset</a></li>
+<li><a href="/processing-1/ch036_rajat">Rajat</a></li>
+<li Class="booki-section">Liitteet</li><li><a href="/processing-1/ch038_yleisia-virheita">Yleisiä virheitä</a></li>
+<li><a href="/processing-1/ch039_ulkoiset-kirjastot">Ulkoiset kirjastot</a></li>
+<li><a href="/processing-1/ch040_dokumentaatio">Dokumentaatio</a></li>
+<li><a href="/processing-1/ch041_arduino">Arduino</a></li>
+<li><a href="/processing-1/ch042_tasta-oppaasta">Tästä oppaasta</a></li>
+<li><a href="/processing-1/ch043_tekijat">Tekijät</a></li>
+</ul>

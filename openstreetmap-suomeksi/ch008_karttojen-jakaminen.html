@@ -1,0 +1,42 @@
+<div id="main-content"><h1>Karttojen jakaminen</h1>
+<p>Kun lisäät tietoa OpenStreetMapiin, tahdot ehkä myös jakaa työsi tulokset muiden kanssa. Tämä luku kertoo, kuinka voit jakaa tietosi muille ihmisille tai organisaatioille.</p>
+<p>Ensinnäkin sinun täytyy tietää, että <a class="vt-p" title="http://osm.org/go/0zRRntL6G-?m" href="http://openstreetmap.org/">openstreetmap.org</a> -verkkosivu tarjoaa pysyvät, muuttumattomat linkit sijaintiin, ja näissä linkeissä on pituus- ja leveyspiirit. URL-osoite itse kertoo sivulle, minkä sijainnin tahdot näyttää. Nämä linkit on helppo hakea kartalta. <a class="vt-p" title="http://osm.org/go/0zRRntL6G-?m" href="karttojen-jakaminen/www.openstreetmap.org">Openstreetmap.org</a>-sivulla voit napsauttaa Ikilinkki (<em>Permalink)</em> tai Lyhytosoite (<em>Shortlink)</em> kartan oikeassa alanurkassa, kun olet Kartta-välilehdellä (<em>View</em>).</p>
+<h2>Pysyvien linkkien luominen</h2>
+<p>Kun napsautat kartalla Ikilinkki, selaimesi osoiteriville ilmestyy pysyvän linkin URL, jonka voit sitten jakaa muille kopioimalla ja liittämällä sen sähköposteihin, verkkofoorumeille, blogin kommentteihin ja niin edelleen. Sinun täytyy olla karttavälilehdessä nähdäksesi Ikilinkki-vaihtoehdon.</p>
+<p>Tässä on Ikilinkin anatomia, jossa on kaikki parametrit, joita voit käyttää:</p>
+<p><tt>http://www.openstreetmap.org/index.html?lat=<em>[Pituuspiiri]</em>&amp;lon=<em>[Leveyspiiri]</em>&amp;zoom=<em>[Zoom]</em>&amp;layers=<em>[Tason koodi]</em></tt></p>
+<p><strong>Sijainti </strong>(<em>leveys-</em> ja<em> pituuspiiri</em>): Leveys- ja pituuspiiri ovat arvot <em>lat</em> ja <em>lon</em>, jotka esitetään arvoina <em>mlat</em> ja <em>mlon</em>, kun tahdot ilmaista merkin sijainnin. Voit kirjoittaa korkeintaan kuusi numeroa pilkun jälkeen näiden arvojen desimaaliksi.</p>
+<p><strong>Zoom</strong>: Zoom-taso on arvo väliltä 1 (joka tarkoittaa koko maapallon karttaa) kaikkein suurimpaan tarkkuuteen 18, joka näyttää kartan kävelymatkan etäisyydellä. Nähdäksesi kartan tai merkin maan sisällä, kokeile zoomia tasolla 6 tai 8. </p>
+<p><strong>Tasot</strong>: Tasot ovat valinnaisia ja oletusarvo on "Mapnik" eli <tt>layers=M</tt>. Tasot antavat sinun valita kartalle uuden ulkoasun. Voit käyttää oletusarvoa, tai käyttää arvoa <tt>O</tt> OpenStreetMapin renderöijäksi, tai käyttää arvoa <tt>layers=C</tt> saadaksesi Cyclemap-näkymän.</p>
+<p>Tasot ovat näppäriä, kun tahdot esimerkiksi löytää turvallisia pyöräilyreittejä. Voit myös napsauttaa plus-merkkiä nähdäksesi listan tasoista ja valita toisen tason, joka sitten näkyy ikilinkkinä selaimen osoitepalkissa. Nämä erot näkyvät lähinnä kartalla näkyvissä väreissä ja kirjasintyypeissä.</p>
+<p><img src="http://fi.flossmanuals.net/kirjoita/openstreetmap/_draft/_v/1.0/sharing-your-maps/static/baselayer_1.jpg" alt=""></p>
+<h2>Lyhytlinkkien luominen</h2>
+<p>Kuten näet, Ikilinkki on varsin pitkä URL, koska siinä on kaikki tiedot kartasta, jota katsot. Jos pidät lyhyistä URL-osoitteista, voit napsauttaa tekstiä Lyhytosoite kartan oikeassa alanurkassa, jolloin saat linkin selaimesi linkkiominaisuuksista tai Copy Link Location -valikosta. Tässä on esimerkiksi lyhytlinkki Lappeenrantaan: <a class="vt-p" title="http://osm.org/go/0zRRntL6G-?m" href="http://osm.org/go/0zRRn6L4-">http://osm.org/go/0zRRn6L4-</a>. </p>
+<p>Jos kaksoisnapsautat karttaa keskittääksesi sen kohtaan, jota tahdot korostaa, lyhytlinkkisi voi mennä keskitettyyn karttaan, jossa on merkki keskellä, jos lisäät merkit '<tt>?m</tt>' pitkän URL-osoitteen loppuun. Esimerkiksi tämä lyhytlinkki menee Lappeen kirkolle ja siinä on merkki Kirkkokadun ja Valtakadun risteyksessä: <a class="vt-p" title="http://osm.org/go/0zRRntL6G-?m" href="http://osm.org/go/0zRRntL6G-?m">http://osm.org/go/0zRRntL6G-?m</a>.</p>
+<p>Nämä lyhytlinkit ovat hyviä lähetettäväksi internetin pikaviestimellä tai tekstiviesteinä, tai käyttäen Twitteriä tai Facebookia, jotta ihmiset tulevat katsomaan karttaasi.</p>
+<h2>Kartan laittaminen verkkosivulle</h2>
+<p>Jos tahdot laittaa näkyviin kartan, joka ohjaa ihmiset polkupyöräreitin alkuun tai baarikiertueen alkamispisteeseen, tahdot ehkä HTML-koodin, jotka voit laittaa sivulle. Ihmiset voivat sen jälkeen katsoa karttaasi älypuhelimella tai tulostaa sen sivuiltasi. Saat helposti OpenStreetMapin koodin, jolla kartta laitetaan verkkosivulle. Toimi näin:</p>
+<ol><li>Kartta-välilehdessä (<em>View</em>) voit löytää osoitteen tai sijainnin zoomaamalla ja vetämällä karttaa niin että se näyttää tahtomaltasi.</li>
+<li>Mene Vienti-välilehteen (<em>Export</em>) ja valitse Vientimuoto (<em>Format to Export</em>) -otsikon alta HTML-koodi (<em>Embeddable HTML</em>).</li>
+<li>Voit lisäksi laittaa markkerin karttaan napsauttamalla "Lisää vietävään karttaan kohdemerkki" (<em>Add a marker to the map</em>) ja sen jälkeen kaksoisnapsauttamalla karttaa lisätäksesi merkin ja keskittääksesi kartan siihen pisteeseen.</li>
+<li>Kopioi HTML-koodi kohdasta Tulos (<em>Output</em>).</li>
+<li>Laita HTML-koodi verkkosivulle, jolle tahdot lisätä kartan.</li>
+</ol></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/openstreetmap-suomeksi/index">Yhteisöllisen kartanteon löytäminen</a></li>
+<li><a href="/openstreetmap-suomeksi/ch002_tervetuloa-openstreetmapin-kayttajaksi">Tervetuloa OpenStreetMapin käyttäjäksi</a></li>
+<li><a href="/openstreetmap-suomeksi/ch003_tasta-kirjasta">Tästä kirjasta</a></li>
+<li Class="booki-section">Aloittaminen</li><li><a href="/openstreetmap-suomeksi/ch005_ensimmainen-muokkauksesi">Ensimmäinen muokkauksesi</a></li>
+<li><a href="/openstreetmap-suomeksi/ch006_tiedon-keraaminen">Tiedon kerääminen GPS-vastaanottimella</a></li>
+<li><a href="/openstreetmap-suomeksi/ch007_tiedon-keraaminen-paperilla-ja-kynalla">Tiedon kerääminen paperilla ja kynällä</a></li>
+<li><a href="/openstreetmap-suomeksi/ch008_karttojen-jakaminen">Karttojen jakaminen</a></li>
+<li Class="booki-section">OpenStreetMapin editoiminen</li><li><a href="/openstreetmap-suomeksi/ch010_johdanto-openstreetmapin-editointiin">Johdanto OpenStreetMapin editointiin</a></li>
+<li><a href="/openstreetmap-suomeksi/ch011_editointi-potlatch-2-editorilla">Editointi Potlatch 2 -editorilla</a></li>
+<li><a href="/openstreetmap-suomeksi/ch012_editointi-josmilla">Johdanto editointiin JOSMilla</a></li>
+<li><a href="/openstreetmap-suomeksi/ch013_osm-kartan-editointi-josmilla">OSM-kartan editointi JOSMilla</a></li>
+<li><a href="/openstreetmap-suomeksi/ch014_viela-lisaa-josmia">Vielä lisää JOSMia</a></li>
+<li><a href="/openstreetmap-suomeksi/ch015_editointi-mobiilieditoreilla">Editointi mobiilieditoreilla</a></li>
+<li Class="booki-section">Tee kartasta omasi</li><li><a href="/openstreetmap-suomeksi/ch017_ota-openstreetmap-mukaasi">Ota OpenStreetMap mukaasi</a></li>
+<li><a href="/openstreetmap-suomeksi/ch018_openstreetmapin-tietomalli">OpenStreetMapin tietomalli</a></li>
+<li Class="booki-section">Lisätietoa</li><li><a href="/openstreetmap-suomeksi/ch020_tutkimusmatka-openstreetmap-yhteisoon">Tutkimusmatka OpenStreetMap-yhteisöön</a></li>
+<li><a href="/openstreetmap-suomeksi/ch021_hyodylliset-verkkosivut-ja-lahteet">Hyödylliset verkkosivut ja lähteet</a></li>
+<li><a href="/openstreetmap-suomeksi/ch022_tekijat">Tekijät</a></li>
+</ul>

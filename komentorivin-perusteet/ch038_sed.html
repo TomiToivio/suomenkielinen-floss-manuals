@@ -1,0 +1,194 @@
+<div id="main-content"><h1>Sed-tekstiohjelmointikieli</h1>
+<p>Sed (sanoista "stream editor", virrankäsittely) on hyötyohjelma, joka tekee muutoksia rivi kerrallaan. Sille annetut komennot ajetaan jokaisella sisääntulon rivillä vuorollaan. Se on hyödyllinen sekä tiedostojen käsittelyyn että prosessin ulostulon putkittamiseen muihin ohjelmiin, kuten tässä:</p>
+<pre>$<strong> wc -c * | sort -n | sed ...</strong>
+</pre>
+<h2>Perussyntaksi ja korvaus</h2>
+<p>Yleinen tapa käyttää Sediä on sanojen vaihtaminen tiedoston sisällä. Olet voinut käyttää "etsi ja korvaa" -toimintoa graafisissa tekstinkäsittelyohjelmissa. Sed voi tehdä tämän paljon tehokkaammin ja nopeammin:</p>
+<pre> $ <strong>sed "s/hölö/pölö/g" sisääntulotiedosto &gt; ulostulotiedosto</strong></pre>
+<p>Tutkitaanpa tätä yksinkertaista tiedostoa. Ensin kerromme komentotulkin ajaa komento <code>sed</code>. Tahtomamme käsittely on lainausmerkkien sisällä; palaamme tähän hetken päästä. Sen jälkeen kerromme Sedille <em>sisääntulotiedoston</em> ja käytämme komentotulkin uudelleensuuntausmerkkiä (&gt;) nimetäksemme <em>ulostulotiedoston</em>. Voit määritellä tahtoessasi monta sisääntulotiedostoa; Sed käsittelee ne järjestyksessä ja luo niistä yhden ulostulovirran.</p>
+<p>Tämä ilmaisu näyttää monimutkaiselta, mutta se on hyvin yksinkertainen, kunhan opit ymmärtämään sitä. Alussa oleva "s" merkitsee "korvaa" (englanniksi "substitute"). Tämä seuraa teksti, jonka tahdot löytää ja korvaava teksti, vinoviivat (/) toimivat erotusmerkkeinä. Niinpä Sedin täytyy löytää "hölö" sisääntulotiedostossa ja laittaa "pölö" sen tilalle. Vain ulostulotiedosto muuttuu; Sed ei koskaan muuta sisääntulotiedostoja.</p>
+<p>Lopussa oleva "g" tarkoittaa "globaalia", mikä merkitsee, että tämä operaatio tehdään koko riville. Jos jätät pois merkin "g" ja "hölö" näkyy kaksi kertaa samalla rivillä, ainoastaan ensimmäinen "hölö" muutetaan muotoon "pölö".</p>
+<pre>$ <strong>cat testitiedosto</strong>
+hölö pölö hölö pölö hölö pölö hölö pölö
+$ <strong>sed "s/hölö/pölö/g" testitiedosto &gt; muutettutestitiedosto</strong>
+$ <strong>cat muutettutestitiedosto</strong>
+pölö pölö pölö pölö pölö pölö pölö pölö
+</pre>
+<p>Kokeillaanpa tätä uudestaan ilman merkkiä <code>/g</code> komennossa ja katsotaan mitä tapahtuu.</p>
+<pre>$ <strong>cat testitiedosto</strong>
+hölö pölö hölö pölö hölö pölö hölö pölö
+$ <strong>sed "s/hölö/pölö/" testitiedosto &gt; muutettutestitiedosto</strong>
+$ <strong>cat muutettutestitiedosto</strong>
+pölö pölö hölö pölö hölö pölö hölö pölö
+</pre>
+<p>Huomaa, että ilman merkkiä "g" Sed teki korvauksen vain ensimmäiseen löytämäänsä sopivaan sanaan jokaisella rivillä. </p>
+<p>Tämä kaikki on hienoa, mutta entäpä jos tahtoisit muuttaa testitiedostossa vasta toisen sanan hölö? Muuttaaksesi tietyn sanan ilmentymän joudut määrittelemään numeron korvauskomentojen jälkeen.</p>
+<pre>$ <strong>sed "s/hölö/pölö/2" sisääntulotiedosto &gt; ulostulotiedosto </strong></pre>
+<p>Voit myös yhdistää tämän lippuun g (joissain Sedin versiossa) jättääksesi ensimmäisen ilmentymän entiselleen ja muuttaaksesi kaikki ilmentymät toisesta viimeiseen riviin asti. </p>
+<pre>$<strong> sed "s/hölö/pölö/2g" sisääntulotiedosto &gt; ulostulotiedosto</strong></pre>
+<h2>Sed-ilmaisut selitettynä</h2>
+<p>Sed ymmärtää säännöllisiä lauseita, joita käsittelee kokonainen luku tässä kirjassa. Tässä on joitain erikoismerkeistä, joita voit käyttää sopimaan siihen, mitä tahdot korvata.</p>
+<pre><strong>$</strong> sopii rivin loppuun
+<strong>^</strong> sopii rivin alkuun
+<strong>*</strong> sopii nollaan tai useampaan kappaleeseen edellistä merkkiä
+<strong>[ ]</strong> kaikki hakasulkujen sisällä olevat merkit sovitetaan
+</pre>
+<p>Voisit esimerkiksi muuttaa sanat "cat", "can" ja "car" sanaan "dog" tekemällä seuraavan:</p>
+<pre> $ <strong>sed "s/ca[tnr]/dog/g" sisääntulotiedosto &gt; ulostulotiedosto</strong></pre>
+<p>Poista mikä tahansa numerosarja. Ensinnäkin [0-9] varmistaa, että tarvitaan ainakin yksi numero sovitettavaksi. Seuraava [0-9] voidaan poistaa tai se voi olla peräkkäin miten tahansa monta kertaa, koska sitä seuraa metamerkki *. Lopulta numerot poistetaan, koska toisen ja kolmannen kauttaviivan välillä ei ole mitään, vaikka voisit laittaa siihen korvaavan tekstin. </p>
+<pre> $ <strong>sed "s/[0-9][0-9]*//g" sisääntulotiedosto &gt; ulostulotiedosto</strong></pre>
+<p>Jos ensimmäinen merkki ilmaisun siällä on tarke (^), Sed sovittaa ainoastaan, mikäli teksti on rivin alussa. </p>
+<pre>$<strong> echo dogs cats and dogs | sed "s/^dogs/doggy/"</strong>
+doggy cats and dogs</pre>
+<p>Dollarimerkki merkkijonon lopussa käskee Sedin sovittaa teksti ainoastaan, mikäli se on rivin lopussa.</p>
+<pre>$ <strong>echo dogs cats and cats | sed "s/cats$/kitty/"</strong>
+dogs cats and kitty</pre>
+<p>Rivi muuttuu vain, jos sovitettava merkkijono on siellä, missä vaadit sen olevan, jos sama teksti on jossain muualla lauseessa, sitä ei muuteta.</p>
+<h2>Poistaminen</h2>
+<p>Komento "d" poistaa kokonaisen rivin, jossa on sopiva merkkijono. Toisin kuin komento "s" komento "d" ottaa koko rivin.</p>
+<pre>$ <strong>cat testitiedosto</strong>
+line with a cat
+line with a dog
+line with another cat
+$ <strong>sed "/cat/d" testitiedosto &gt; uusitestitiedosto</strong>
+$ <strong>cat uusitestitiedosto</strong>
+line with a dog</pre>
+<p>Säännöllinen lause ^$ merkisee "sovita rivi, jossa ei ole mitään alun ja lopun välissä", toisin sanottuna, tyhjä rivi. Voit poistaa kaikki tyhjät rivit käyttäen komentoa "d" tuon säännöllisen lauseen kanssa:</p>
+<pre>$ <strong>sed "/^$/d" sisääntulotiedosto &gt; ulostulotiedosto</strong></pre>
+<h2>Tulostuksen hallinta</h2>
+<p>Oletetaanpa, että tahdot tulostaa joitain rivejä ja jättää loput tulostamatta. Sen sijaan että poistaisit rivit komennolla "d" voitkin määritellä, mitkä rivit pidetään.</p>
+<p>Tämä voidaan tehdä kahdella ominaisuudella:</p>
+<p>Määrittele valitsin <code>-n</code>, joka merkitsee "älä tulosta rivejä oletusarvoisesti".</p>
+<p>Lopeta merkkijono merkillä "p" tulostaaksesi rivin, joka sopii merkkijonoon.</p>
+<p>Näytämme tämän tiedoston, joka sisältää nimiä:</p>
+<pre>$ <strong>cat testitiedosto</strong>
+Mr. Jones
+Mrs. Jones
+Mrs. Lee                                                                        Mr. Lee
+</pre>
+<p>Olemme päättäneen käyttää aina "Ms" naisille, joten tahdomme muuttaa "Mrs." merkkijonoksi "Ms". Säännöllinen lauseke on:</p>
+<pre> s/Mrs\./Ms/
+</pre>
+<p>ja tulostaaksemme ainoastaan muutetut rivit, kirjoitamme: </p>
+<pre>$ <strong>sed -n "s/Mrs\./Ms/p" testfile</strong></pre>
+<h2>Monta hahmoa</h2>
+<p>Sedille voidaan laittaa useampia kuin yksi operaatio samaan aikaan. Voimme tehdä tämän määrittelemällä jokaisen hahmon valitsimen <code><span>-</span>e</code> jälkeen.</p>
+<pre>$ <strong>echo Gnus eat grass | sed -e "s/Gnus/Penguins/" -e "s/grass/fish/"</strong>
+Penguins eat fish.</pre>
+<h2>Muokkausten hallinta hahmoilla</h2>
+<p>Voimme myös olla tarkempia siitä, mihin riveihin hahmoja sovelletaan. Tarjoamalla hahmoa ennen operaatiota voit rajoittaa operaation riveihin, joilla on kyseinen hahmo.</p>
+<pre>$ <strong>cat testitiedosto</strong>
+one: number
+two: number
+three: number
+four: number
+one: number
+three: number
+two: number
+$ <strong>sed "/one/ s/number/1/" testitiedosto &gt; muutettutestitiedosto</strong>
+$ <strong>cat muutettutestitiedosto</strong>
+one 1
+two: number
+three: number
+four: number
+one: 1
+three: number
+two: number</pre>
+<p>Komento <code>sed</code> sai tässä esimerkissä kaksi hahmoa. Ensimmäinen hahmo, "one", hallitsee yksinkertaisesti Sedin muuttamia rivejä. Toinen hahmo korvaa merkkijonon "number" numerolla "1" noilla riveillä.</p>
+<p>Tämä toimii myös useampien hahmojen kanssa.</p>
+<pre>$ <strong>cat testitiedosto</strong>
+one: number
+two: number
+three: number
+four: number
+one: number
+three: number
+two: number
+$ <strong>sed -e "/one/ s/number/1/" -e "/two/ s/number/2/" \</strong>
+<strong> -e "/three/ s/number/3/" -e "/four/ s/number/4/" \</strong>
+<strong> &lt; testitiedosto &gt; muutettutestitiedosto</strong>
+$ <strong>cat muutettutestitiedosto</strong>
+one: 1
+two: 2
+three: 3
+four: 4
+one: 1
+three: 3
+two: 2</pre>
+<h2>Muokkausten hallinta rivinumeroiden avulla</h2>
+<p>Sen sijaan että määrittäisit hahmoja, jotka voivat toimia millä tahansa rivillä, voimme määritellä tarkan rivin tai rivejä muokattavaksi.</p>
+<pre>$ <strong>cat testitiedosto</strong>
+even number
+odd number
+odd number
+even number
+$ <strong>sed "2,3 s/number/1/" &lt; testitiedosto &gt; muutettutestitiedosto</strong>
+$ <strong>cat muutettutestitiedosto</strong>
+even number
+odd 1
+odd 1
+even number</pre>
+<p>Tämä pilkku toimii erottimena, joka käskee Sedin toimia vain riveillä kaksi ja kolme.</p>
+<pre>$<strong> cat testitiedosto</strong>
+even number
+odd number
+odd number
+$ <strong>sed -e "2,3 s/number/1/" -e "1 s/number/2/" &lt; testitiedosto &gt; muutettutestitiedosto</strong>
+$ <strong>cat muutettutestitiedosto</strong>
+even 2
+odd 1
+odd 1</pre>
+<p>Joskus et tiedä tarkalleen kuinka pitkä tiedosto on, mutta tahdot mennä määritellyltä riviltä tiedoston loppuun. Voit käyttää komentoa <code>wc</code> tai vastaavaa ja laskea rivien kokonaismäärän, mutta voit käyttää myös dollarimerkkiä ($) edustamaan viimeistä riviä: </p>
+<pre>$ <strong>sed "25,$ s/number/1/" &lt; testitiedosto &gt; muutettutestitiedosto</strong></pre>
+<p>Dollarimerkki $ on Sedin tapa sanoa: "rivin loppuun asti".</p>
+<h2>Sed-komentojen skriptaaminen</h2>
+<p>Käyttämällä valitsinta <code>-f</code> Sed-komennossa, voit syöttää Sedille listan komennoista, joita se voi ajaa. Voit esimerkiksi laittaa seuraavat hahmot tiedostoon, jonka nimi on <code></code> <em>sedkomennot</em>:</p>
+<pre>s/foo/bar/g
+s/dog/cat/g
+s/tree/houseg/
+s/little/big/g
+</pre>
+<p>Voit tehdä tämän yhteen tiedostoon kirjoittamalla seuraavan komennon:</p>
+<pre>$ <strong>sed -f sedkomennot &lt; sisääntulotiedosto &gt; ulostulotiedosto</strong></pre>
+<p>Jokaisen tiedostossa olevan komennon täytyy olla eri rivillä.</p>
+<p>Sedin kaikkia ominaisuuksia ei voida kuvata tässä luvussa. Itse asiassa Sedistä on kirjoitettu kokonaisia kirjoja, verkossa on monia loistavia oppaita Sedin käyttöön.</p></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/komentorivin-perusteet/index">Ota komento</a></li>
+<li Class="booki-section">Perusteet</li><li><a href="/komentorivin-perusteet/ch003_aloittaminen">Käytön aloittaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch004_syntaksi">Syntaksi</a></li>
+<li><a href="/komentorivin-perusteet/ch005_ympariinsa-siirtyminen">Ympäriinsä siirtyminen</a></li>
+<li><a href="/komentorivin-perusteet/ch006_tiedostorakenne">Tiedostorakenne</a></li>
+<li Class="booki-section">Komennot</li><li><a href="/komentorivin-perusteet/ch008_peruskomennot">Peruskomennot</a></li>
+<li><a href="/komentorivin-perusteet/ch009_jarjestelmanvalvojat">Järjestelmänvalvoja</a></li>
+<li><a href="/komentorivin-perusteet/ch010_useammat-tiedostot">Useammat tiedostot</a></li>
+<li><a href="/komentorivin-perusteet/ch011_kirjoita-vahemman">Kirjoita vähemmän</a></li>
+<li Class="booki-section">Keskivaikeita komentoja</li><li><a href="/komentorivin-perusteet/ch013_putkitus">Putkitus</a></li>
+<li><a href="/komentorivin-perusteet/ch014_komentohistoria">Komentohistoria</a></li>
+<li><a href="/komentorivin-perusteet/ch015_standarditiedostot">Standarditiedostot</a></li>
+<li Class="booki-section">Kehittyneempiä komentoja</li><li><a href="/komentorivin-perusteet/ch017_kayttooikeudet">Käyttöoikeudet</a></li>
+<li><a href="/komentorivin-perusteet/ch018_interaktiivinen-muokkaus">Interaktiivinen muokkaus</a></li>
+<li><a href="/komentorivin-perusteet/ch019_poistumisen-tarkastaminen">Poistumisen tarkastaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch020_alikomennot">Alikomennot</a></li>
+<li><a href="/komentorivin-perusteet/ch021_hakemistot">Hakemistot</a></li>
+<li><a href="/komentorivin-perusteet/ch022_kustomisointi">Kustomisointi</a></li>
+<li><a href="/komentorivin-perusteet/ch023_parametrien-korvaaminen">Parametrien korvaaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch024_gnuscreen">GNUScreen</a></li>
+<li><a href="/komentorivin-perusteet/ch025_ssh">SSH</a></li>
+<li><a href="/komentorivin-perusteet/ch026_ohjelmien-asentaminen">Ohjelmien asentaminen</a></li>
+<li Class="booki-section">Tekstieditorit</li><li><a href="/komentorivin-perusteet/ch028_tekstieditorit">Tekstieditorit</a></li>
+<li><a href="/komentorivin-perusteet/ch029_nano">Nano</a></li>
+<li><a href="/komentorivin-perusteet/ch030_vi-ja-vim">Vi ja Vim</a></li>
+<li><a href="/komentorivin-perusteet/ch031_emacs">Emacs</a></li>
+<li><a href="/komentorivin-perusteet/ch032_kedit">Kedit</a></li>
+<li><a href="/komentorivin-perusteet/ch033_gedit">Gedit</a></li>
+<li Class="booki-section">Skriptaus</li><li><a href="/komentorivin-perusteet/ch035_skriptaus">Skriptaus</a></li>
+<li><a href="/komentorivin-perusteet/ch036_skriptien-huoltaminen">Skriptien huoltaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch037_muut-kielet">Muut kielet</a></li>
+<li><a href="/komentorivin-perusteet/ch038_sed">Sed</a></li>
+<li><a href="/komentorivin-perusteet/ch039_awk">AWK</a></li>
+<li><a href="/komentorivin-perusteet/ch040_saannolliset-lausekkeet">Säännölliset lausekkeet</a></li>
+<li><a href="/komentorivin-perusteet/ch041_perl">Perl</a></li>
+<li><a href="/komentorivin-perusteet/ch042_ruby">Ruby</a></li>
+<li><a href="/komentorivin-perusteet/ch043_python">Python</a></li>
+<li Class="booki-section">Komennot nopeasti</li><li><a href="/komentorivin-perusteet/ch045_komentojen-pikaopas">Komentojen pikaopas</a></li>
+<li Class="booki-section">Liitteet</li><li><a href="/komentorivin-perusteet/ch047_tasta-kayttooppaasta">Tästä käyttöoppaasta</a></li>
+<li><a href="/komentorivin-perusteet/ch048_tekijat">Tekijät</a></li>
+</ul>

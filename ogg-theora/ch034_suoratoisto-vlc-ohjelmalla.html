@@ -1,0 +1,81 @@
+<div id="main-content"><h1>Suoratoisto VLC-ohjelmalla</h1>
+<p><strong>VLC</strong> voi myös suoratoistaa Theora-tiedostoja <strong>Icecast2</strong> -streamauspalvelimelle. Tämä toimii VLC versiosta 0.9.4 ylöspäin <strong>Ubuntussa</strong>, ja myös VLC:n aiemmilla versioilla Windowsissa (tosin prosessi on erilainen VLC:n aiemmissa versioissa). On mahdollista streamata videotiedostoja koneeltasi, elävää verkkokameran kuvaa tai käsin pideltyä kameraa. Jos sinulla on sylimikro, jossa on sisäänrakennettu kamera, voit streamata myös sitä käyttäen.</p>
+<p>Jos käytät Ubuntua, on parempi päivittää Ubuntun versio Intrepidiin (8.10) tai Jauntyyn (9.04), koska molemmissa on VLC:n versio, jolla on helppo streamata. Jos et tahdo päivittää käyttöjärjestelmää, joudut asentamaan VLC:n viimeisimmän version lähdetiedostosta - ole varovainen, VLC:n päivittäminen lähdetiedostoista on vaikeaa.</p>
+<h2>Suoratoistopalvelimen vaatimukset</h2>
+<p>Tutkimme striimausta <strong>Icecast-palvelimelle</strong>. Sinulla täytyy olla yhteys joko Icecast-palvelimelle tai johonkin, joka voi luoda sinulle käyttäjätilin ja tarjota pääsytiedot. Sinun täytyy tietää seuraavat seikat Icecast-palvelimesta:</p>
+<ul><li><strong>Verkkonimi</strong> tai <strong>IP-osoite</strong> <strong> </strong></li>
+<li><strong>Portti</strong> (Oletusarvo on <strong>8000</strong>)</li>
+<li><strong>Salasana </strong></li>
+<li><strong>Käyttäjänimi</strong> (Tämä ei välttämättä ole tarpeen riippuen <strong>Icecastin</strong> asetuksista.)</li>
+<li><strong>Mountpoint</strong> (Tämä ei välttämättä ole tarpeen riippuen <strong>Icecastin</strong> asetuksista.)</li>
+</ul><h2>Streamattavan videotiedoston valinta</h2>
+<p>Katsotaanpa streamausta käyttäen kannettavaan koneeseen sisäänrakennettua kameraa. Prosessi on hyvin samanlainen kuin käytettäessä ulkoista kameraa tai arkistoituja videotiedostoja.</p>
+<p>Ensin sinun täytyy avata <strong>VLC</strong>. Valitse nyt Streaming valikosta <strong>Media</strong>:</p>
+<p><img title="vlc_stream_en" src="_booki/ogg-theora/static/TheoraCookbook-VLCStreaming-vlc_stream_en-fi.png" alt="vlc_stream_en" width="367" height="257"></p>
+<p>Tämä avaa paneelin, josta voit valita videostreamin lähteen. </p>
+<p><img title="streamwindow_en" src="_booki/ogg-theora/static/TheoraCookbook-VLCStreaming-streamwindow_en-fi.png" alt="streamwindow_en" width="520" height="490"> </p>
+<p>Valitsemme viimeisen välilehden - <strong>Capture Device</strong>, tässä voisit kuitenkin valita toisen välilehden streamataksesi videota levykkeeltä (esimerkiksi DVD:ltä), arkistoiduista tiedostoista, tai välittää sisääntulevan videostreamin. Kaappauslaitteen ikkuna näyttää tälle:</p>
+<p><img title="streampanel" src="_booki/ogg-theora/static/TheoraCookbook-VLCStreaming-streampanel_en-fi.png" alt="streampanel" width="520" height="490"></p>
+<p>Jos kaikki toimii hyvin, sinun ei ehkä tarvitse muuttaa mitään asetuksia tässä ikkunassa. Sen sijaan napsauta vain Stream-nappulaa.</p>
+<h2>Streamin asetukset</h2>
+<p>Streamin asetuksien Outputs-kohdassa on osio Icecastin konfiguroimiseen.</p>
+<p><img title="icecastconf" src="_booki/ogg-theora/static/TheoraCookbook-VLCStreaming-icecastconf_en-fi.png" alt="icecastconf" width="599" height="70"> </p>
+<p>Sinun täytyy vain rastia laatikko ja täyttää yksityiskohdat. Tässä on muutama asia muistettavaksi:</p>
+<ol><li>Mountpoint alkaa aina merkillä "/".</li>
+<li>Osoite ei ala "http://".</li>
+<li>Yleensä et saa käyttäjänimeä Icecastiin. Tässä tapauksessa käyttäjänimi on "source".</li>
+<li>Portti on melkein aina 8000.</li>
+<li>Muoto kohdalle <strong>Login:pass</strong> on aivan kuin otsikko vihjaa - login, jota seuraa ":", sitten pass. Kaikki ilman välilyöntejä. Esimerkiksi striimi Icecast2:n oletusarvoiseen asennukseen (oletusarvoinen salasana on aina "letmein") olisi: <br><pre>source:letmein</pre>
+</li>
+</ol><p><img title="icecastdetails" src="_booki/ogg-theora/static/TheoraCookbook-VLCStreaming-icecastdetails_en-fi.png" alt="icecastdetails" width="599" height="69"> </p>
+<p>Kun kirjoitat tiedot, näet tekstin muuttuvan kohdassa 'Generated stream output field' ikkunan pohjalla.</p>
+<p><img title="mrl" src="_booki/ogg-theora/static/TheoraCookbook-VLCStreaming-mrl_en-fi.png" alt="mrl" width="558" height="74"></p>
+<p>Kokenut käyttäjä voisi kirjoittaa tämän tiedon suoraan käyttämättä tarjottuja kenttiä, mutta on paljon helpompaa täyttää laatikot, kuten vaaditaan.</p>
+<p> </p>
+<p>Nyt sinun täytyy vain painaa 'Stream' ja suoran lähetyksen streami lähtee Icecast2 -palvelimelle. Kuitenkaan VLC ei tarjoa kunnon virheilmoituksia, joten se voi istua aloillaan näyttäen sille, että streamaa onnessaan, vaikka todellisuudessa mitään ei tapahdu. VLC voi jopa näyttää "Streaming" statuspalkissa, mutta tämä ei merkitse mitään!</p>
+<p><img title="notstreaming" src="_booki/ogg-theora/static/TheoraCookbook-VLCStreaming-notstreaming_en-fi.png" alt="notstreaming" width="353" height="137"> </p>
+<p>Ainoa tapa saada selville toimiiko se, on katsoa Icecast-palvelimesi statussivua, tai käyttää videosoitinta toistamaan streami suoraan palvelimelta. </p></div><ul Class="menu-goes-here"><li Class="booki-section">JOHDANTO</li><li><a href="/ogg-theora/index">OGG THEORA</a></li>
+<li><a href="/ogg-theora/ch002_tasta-kayttooppaasta">TÄSTÄ KÄYTTÖOPPAASTA</a></li>
+<li><a href="/ogg-theora/ch003_mita-video-on">MITÄ VIDEO ON?</a></li>
+<li><a href="/ogg-theora/ch004_mita-theora-on">MITÄ THEORA ON?</a></li>
+<li Class="booki-section">PERUSKÄSITTEET</li><li><a href="/ogg-theora/ch006_mika-on-koodekki">MIKÄ ON KOODEKKI?</a></li>
+<li><a href="/ogg-theora/ch007_sailot">SÄILÖT</a></li>
+<li Class="booki-section">TOISTO</li><li><a href="/ogg-theora/ch009_theoran-toistaminen">THEORAN TOISTAMINEN</a></li>
+<li><a href="/ogg-theora/ch010_toisto-vlclla">TOISTO VLC:LLÄ</a></li>
+<li><a href="/ogg-theora/ch011_miro">MIRO</a></li>
+<li Class="booki-section">THEORA VERKOSSA</li><li><a href="/ogg-theora/ch013_theora-verkossa">THEORA VERKOSSA</a></li>
+<li><a href="/ogg-theora/ch014_html5">HTML5</a></li>
+<li><a href="/ogg-theora/ch015_theora-sivuillasi">THEORA SIVUILLASI</a></li>
+<li><a href="/ogg-theora/ch016_hotelleja-theoralle">HOTELLEJA THEORALLE</a></li>
+<li Class="booki-section">ENKOODAUS</li><li><a href="/ogg-theora/ch018_johdanto-enkoodaukseen">JOHDANTO ENKOODAUKSEEN</a></li>
+<li><a href="/ogg-theora/ch019_firefogg">FIREFOGG</a></li>
+<li><a href="/ogg-theora/ch020_enkoodaus-vlclla">ENKOODAUS VLC:LLÄ</a></li>
+<li><a href="/ogg-theora/ch021_enkoodaus-ffmpeg2theoralla">ENKOODAUS FFMPEG2THEORALLA </a></li>
+<li><a href="/ogg-theora/ch022_thoggen">THOGGEN</a></li>
+<li Class="booki-section">TEKSTITYKSET</li><li><a href="/ogg-theora/ch024_tekstityksien-perusteet">TEKSTITYKSIEN PERUSTEET</a></li>
+<li><a href="/ogg-theora/ch025_jakelu">JAKELU</a></li>
+<li><a href="/ogg-theora/ch026_tekstityksien-liittaminen">TEKSTITYKSIEN LIITTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch027_tekstityksien-toistaminen">TEKSTITYKSIEN TOISTAMINEN</a></li>
+<li><a href="/ogg-theora/ch028_julkaiseminen">JULKAISEMINEN</a></li>
+<li Class="booki-section">SUORATOISTO</li><li><a href="/ogg-theora/ch030_suoratoiston-perusteet">SUORATOISTON PERUSTEET</a></li>
+<li><a href="/ogg-theora/ch031_icecast">ICECAST</a></li>
+<li><a href="/ogg-theora/ch032_tss">TSS</a></li>
+<li><a href="/ogg-theora/ch033_ffmpeg2theora-streamaus">FFMPEG2THEORA-STREAMAUS</a></li>
+<li><a href="/ogg-theora/ch034_suoratoisto-vlc-ohjelmalla">VLC-STREAMAUS</a></li>
+<li><a href="/ogg-theora/ch035_virtaustoiston-tallentaminen">VIRTAUSTOISTON TALLENTAMINEN</a></li>
+<li Class="booki-section">EDITOINTI</li><li><a href="/ogg-theora/ch037_johdanto-editointiin">JOHDANTO EDITOITIIN</a></li>
+<li><a href="/ogg-theora/ch038_pitivi">PITIVI</a></li>
+<li Class="booki-section">ESIKATSELU</li><li><a href="/ogg-theora/ch040_kuinka-esikatselua-kaytetaan">ESIKATSELUN KÄYTTÖ</a></li>
+<li><a href="/ogg-theora/ch041_tee-esikatselukuvia">TEE ESIKATSELUKUVIA</a></li>
+<li><a href="/ogg-theora/ch042_tee-diaesitys">TEE DIAESITYS</a></li>
+<li><a href="/ogg-theora/ch043_tee-esikatseluvideo">TEE ESIKATSELUVIDEO</a></li>
+<li Class="booki-section">EDITOINTI KOMENTORIVILTÄ</li><li><a href="/ogg-theora/ch045_komentorivi">THEORA JA KOMENTORIVI</a></li>
+<li><a href="/ogg-theora/ch046_theoran-teoria">THEORAN TEORIA</a></li>
+<li><a href="/ogg-theora/ch047_tiedoston-jakaminen">TIEDOSTON JAKAMINEN</a></li>
+<li><a href="/ogg-theora/ch048_tiedoston-leikkaaminen">TIEDOSTON LEIKKAAMINEN</a></li>
+<li><a href="/ogg-theora/ch049_tiedostojen-liittaminen">TIEDOSTOJEN LIITTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch050_tiedostojen-yhdistaminen">TIEDOSTOJEN YHDISTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch051_koon-muuttaminen">KOON MUUTTAMINEN</a></li>
+<li><a href="/ogg-theora/ch052_oggin-analysoiminen">OGGIN ANALYSOIMINEN</a></li>
+<li Class="booki-section">TEKIJÄT</li><li><a href="/ogg-theora/ch054_tekijat">TEKIJÄT</a></li>
+</ul>

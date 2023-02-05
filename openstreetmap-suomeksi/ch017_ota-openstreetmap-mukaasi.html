@@ -1,0 +1,48 @@
+<div id="main-content"><h1>Ota OpenStreetMap-karttatieto mukaasi</h1>
+<p>Yksi suosituimmista tavoista käyttää OpenStreetMap-karttatietoa on käyttää sitä matkustaessa tai kun olet poissa tietokoneeltasi. Koska OpenStreetMap-tieto on vapaasti käytettävissä, voit käyttää olemassaolevia työkaluja muuntaaksesi tiedon formaatteihin, jotka sopivat moniin erilaisiin laitteisiin ja jopa tulostaa sen eri formaateissa ja eri koossa. Tässä luvussa tutkimme joitain monista tavoista, joilla voit käyttää tätä mahtavaa resurssia nyt, kun tiedät kuinka voit ottaa osaa sen kehittämiseen.</p>
+<h2>Navigointi OpenStreetMapilla</h2>
+<p>Voit käyttää OpenStreetMap-karttatietoa rakentaaksesi tiedostoja, jotka sopivat käytettäväksi Garmin GPS-navigointilaitteessa, kuten eTrex tai Nüvi. Tässä osassa lataamme valmiiksi muunnetun osan OpenStreetMapin karttatiedosta ja lataamme sen SD-kortille, joka voidaan laittaa Garmin-laitteeseen, jotta sitä voi käyttää tien päällä. On mahdollista muuntaa OpenStreetMap-karttatieto Garmin-formaatteihin itse käyttäen vapaita työkaluja, mutta se ei mahdu tähän oppaaseen. Oppiaksesi enemmän tästä prosessista, voit mennä katsomaan wikisivua osoitteessa  <a class="vt-p" href="http://wiki.osm.org/wiki/OSM_Map_On_Garmin">http://wiki.osm.org/wiki/OSM_Map_On_Garmin</a>.</p>
+<p>Aloittaaksesi voit mennä osoitteeseen <a class="vt-p" href="http://garmin.openstreetmap.nl/">http://garmin.openstreetmap.nl/</a>. Näet maailmankartan, joka on jaettu satoihin suorakulmion muotoisiin alueisiin ja muutaman pudotusvalikon, joissa on eri mantereet.</p>
+<p><img src="http://fi.flossmanuals.net/kirjoita/openstreetmap/_draft/_v/1.0/static/Screenshot%20at%202011-10-19%2020:04:39.png" alt="" width="600" height="197"></p>
+<p> </p>
+<p>Etsi maantieteellinen alue, jonka tahdot ladata Garmin-yksikköösi käyttäen pudotusvalikkoja. Vastaavat suorakulmiot kartalla korostuvat, jolloin näet minkä alueen ladattava tieto kattaa. Kun olet tyytyväinen valittuun alueeseen, voit etsiä kentän "Email Address" sivun vasemmalla puolella. Kirjoita sähköpostiosoitteesi ja paina "Build my map" -nappia pyytääksesi karttatietoa.</p>
+<p>Saat järjestelmältä sähköpostin, joka antaa sinulle prosessin seurantanumeron ja suurpiirteisen arvion odotusajastasi. Järjestelmä lähettää sinulle erillisellä sähköpostilla tiedon, kun se on käsitellyt pyytösi. Sähköpostissa on linkki ja joitain ohjeita sen käyttöön. Kun saat tämän sähköpostin, seuraa linkkiä sähköpostin alaosassa ja lataa zip-pakattu tiedosto<code> osm_routable_gmapsupp.zip</code> tiedostolistasta.</p>
+<p>Kun olet ladannut tämän tiedoston, pura .zip-tiedosto niin, että <code>gmapsupp.img</code> -tiedosto luodaan. Sinun täytyy kopioida tämä tiedosto tiettyyn hakemistoon SD-kortilla, jotta Garmin-yksikkö tunnistaa sen. Valitse Garmin-yksikkösi asetuksista "Mass storage mode" ja yhdistä se tietokoneeseesi USB-kaapelilla. Tämä laite ilmestyy nyt kovalevyksi tietokoneellesi. Kopioi <code>gmapsupp.img</code> -tiedosto laitteesi "Garmin" -hakemistoon.</p>
+<p>Kun tämä tiedosto on kopioitu, irroita Garmin-yksikkö turvallisesti tietokoneestasi ja irroita USB-kaapeli. Kun käynnistät Garmin-yksikkösi uudestaan, sinulla on käytössäsi uusia karttoja, jotka perustuvat OpenStreetMap-karttatietoon.</p>
+<h2>OpenStreetMap-kartan tulostaminen</h2>
+<p>Toinen yleinen tapa käyttää OpenStreetMap-karttatietoa on tulostaa se ja käyttää sitä ilman tietokonetta. Näit aiemmin, että Walking Papers antaa sinun tulostaa osia OpenStreetMapista, jotta sen muokkaaminen on helpompaa, mutta tässä esitellään toinen tapa tulostaa kartta, jotta voit luoda automaattisesti kartaston, jossa on tekstimuotoinen lista teistä ja avain, jonka avulla sitä on helppo käyttää.</p>
+<p>Mene aluksi sivulle <a class="vt-p" href="http://maposmatic.org/">http://maposmatic.org/</a>. Näet verkkosivun, joka antaa yleiskatsauksen MapOSMatic-verkkosivusta ja linkin kohtaan "Create a Map".</p>
+<p><img src="http://fi.flossmanuals.net/kirjoita/openstreetmap/_draft/_v/1.0/static/Screenshot%20at%202011-10-19%2020:45:00.png" alt="" width="523" height="292"> </p>
+<p>Napsauta nappia "Create a Map" aloittaaksesi kartan luomisen prosessin. Aluksi sinun täytyy valita karttasi kattama alue. Voit yrittää etsiä aluetta, josta olet kiinnostunut, tekstilaatikosta "City Name", mutta jos tämä ei toimi, voit napsauttaa nappia "Bounding box" ja pitää CTRL-näppäitä pohjassa, kun vedät hiirelläsi valitaksesi karttasi alueen. Kun olet valinnut kartalle tulevan alueen, napsauta "Generate"-nappia.</p>
+<p>Kun napsautat "Generate"-nappia, sivu joka näyttää pyytämäsi kartan statuksen ilmestyy ja latautuu ajoittain, päivittäen sijaintisi, kun jono muutuu. Lopulta karttasi renderöidään ja "Success"-kuva ilmestyy, osoittaen että karttasi on valmis ladattavaksi. Jos verkkoselaimesi lopettaa uudelleenlataamisen tai suljet sivun, voit mennä sivulle <a class="vt-p" href="http://maposmatic.org/jobs/">http://maposmatic.org/jobs/</a> nähdäksesi olemassaolevien karttojen tilat, mukana on sinun karttasi. Kun kartta on valmis, se tulee kahdessa osassa: karttasivuna ja hakemistosivuna. Molemmat näistä voidaan ladata PNG-, SVG- tai PDF-muodossa, jotta ne on helpompi tulostaa.</p>
+<p>Olet käyttänyt OpenStreetMap-karttatietoa luodaksesi nopeasti henkilökohtaisen kartaston. Jos jotain puuttuu kartaltasi, on helppoa lisätä se itse ja luoda kartta uudelleen myöhemmin.</p>
+<h2>Kartat älypuhelimessa</h2>
+<p>OpenStreetMap-karttatiedon näyttämiseen kykenevät älypuhelimet ovat hyvin yleisiä ja on olemassa monta erilaista vapaata ohjelmaa erilaisille mobiilialustoille. Voit käyttää OpenStreetMap-karttatietoa puhelimessasi navigoidaksesi tuntemattomilla seuduilla ja tutkiaksesi alueita ilman verkkoyhteyttä, jonka navigointityökalut yleensä vaativat. On olemassa muita sovelluksia erilaisille mobiilialustoille. Lisätietoa älypuhelimien OpenStreetMap-sovelluksista löydät sivulta <a class="vt-p" href="http://wiki.openstreetmap.org/wiki/Software/Mobile">http://wiki.openstreetmap.org/wiki/Software/Mobile</a>.</p>
+<p>Käsittelemme tässä yhden Android-sovelluksen: OsmAndin. OsmAnd on käännös käännökseltä toimiva navigaatiosovellus. Se toimii verkkoyhteydellä ja ilman verkkoyhteyttä. OsmAnd-projektilla on päämääränään saada navigaatio ilmaiseksi kaikkien saataville, minkä vuoksi se käyttää OpenStreetMap-karttatietoa.</p>
+<p><img src="http://fi.flossmanuals.net/kirjoita/openstreetmap/_draft/_v/1.0/static/android-osmand-routing.png" alt="" width="480" height="800"> </p>
+<p><em>OsmAnd </em></p>
+<h3>OsmAndin asentaminen Androidiin </h3>
+<ol><li>Mene ensin sivulle <a class="vt-p" href="http://osmand.net/">http://osmand.net/</a> puhelimesi verkkoselaimella ja paina "Installation"-linkkiä sivun vasemmalla puolella.</li>
+<li>Napsauta linkkiä "OsmAnd latest" aloittaaksesi ohjelman uusimman version lataamisen.</li>
+<li>Kun lataus on valmis, mene puhelimesi latausohjelmaan ja napsauta .apk-tiedostoa aloittaaksesi asennuksen. Jos tämä prosessi johtaa virheviestiin, joudut ehkä laittamaan kolmannen osapuolen sovellukset sallituiksi puhelimesi asetuksista ennen kuin yrität uudestaan.</li>
+<li>Kun sovellus on asennettu, aja se ja mene kohtaan 'Menu'→'Data for Offline Usage'→'Download data for offline usage'.</li>
+<li>Kun lataat karttatiedon osia tästä sovelluksen alueesta, se asennetaan puhelimeesi, jolloin se on näkyvillä ollessasi verkkoyhteyden ulottumattomissa.</li>
+</ol><p>Voit nyt käyttää OpenStreetMapia kännykälläsi ilman verkkoyhteyttä.</p></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/openstreetmap-suomeksi/index">Yhteisöllisen kartanteon löytäminen</a></li>
+<li><a href="/openstreetmap-suomeksi/ch002_tervetuloa-openstreetmapin-kayttajaksi">Tervetuloa OpenStreetMapin käyttäjäksi</a></li>
+<li><a href="/openstreetmap-suomeksi/ch003_tasta-kirjasta">Tästä kirjasta</a></li>
+<li Class="booki-section">Aloittaminen</li><li><a href="/openstreetmap-suomeksi/ch005_ensimmainen-muokkauksesi">Ensimmäinen muokkauksesi</a></li>
+<li><a href="/openstreetmap-suomeksi/ch006_tiedon-keraaminen">Tiedon kerääminen GPS-vastaanottimella</a></li>
+<li><a href="/openstreetmap-suomeksi/ch007_tiedon-keraaminen-paperilla-ja-kynalla">Tiedon kerääminen paperilla ja kynällä</a></li>
+<li><a href="/openstreetmap-suomeksi/ch008_karttojen-jakaminen">Karttojen jakaminen</a></li>
+<li Class="booki-section">OpenStreetMapin editoiminen</li><li><a href="/openstreetmap-suomeksi/ch010_johdanto-openstreetmapin-editointiin">Johdanto OpenStreetMapin editointiin</a></li>
+<li><a href="/openstreetmap-suomeksi/ch011_editointi-potlatch-2-editorilla">Editointi Potlatch 2 -editorilla</a></li>
+<li><a href="/openstreetmap-suomeksi/ch012_editointi-josmilla">Johdanto editointiin JOSMilla</a></li>
+<li><a href="/openstreetmap-suomeksi/ch013_osm-kartan-editointi-josmilla">OSM-kartan editointi JOSMilla</a></li>
+<li><a href="/openstreetmap-suomeksi/ch014_viela-lisaa-josmia">Vielä lisää JOSMia</a></li>
+<li><a href="/openstreetmap-suomeksi/ch015_editointi-mobiilieditoreilla">Editointi mobiilieditoreilla</a></li>
+<li Class="booki-section">Tee kartasta omasi</li><li><a href="/openstreetmap-suomeksi/ch017_ota-openstreetmap-mukaasi">Ota OpenStreetMap mukaasi</a></li>
+<li><a href="/openstreetmap-suomeksi/ch018_openstreetmapin-tietomalli">OpenStreetMapin tietomalli</a></li>
+<li Class="booki-section">Lisätietoa</li><li><a href="/openstreetmap-suomeksi/ch020_tutkimusmatka-openstreetmap-yhteisoon">Tutkimusmatka OpenStreetMap-yhteisöön</a></li>
+<li><a href="/openstreetmap-suomeksi/ch021_hyodylliset-verkkosivut-ja-lahteet">Hyödylliset verkkosivut ja lähteet</a></li>
+<li><a href="/openstreetmap-suomeksi/ch022_tekijat">Tekijät</a></li>
+</ul>

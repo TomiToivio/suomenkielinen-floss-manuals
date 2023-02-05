@@ -1,0 +1,169 @@
+<div id="main-content"><h1>Interaktiivinen editointi</h1>
+<p>Monet ihmiset, varsinkin aloittelijat, käyttävät nuolinäppäimiä siirtyäkseen ympäriinsä komentorivillä. Monet ihmiset voivat tehdä niin paljon nopeammin kuin kestäisi muistella monimutkaisempia mutta tehokkaampia vaihtoehtoja. Monet näistä menetelmistä ovat oppimisen arvoisia, joten esittelemme ne tässä.</p>
+<p>Komentotulkissa on kaksi erilaista valikoimaa <em>näppäinkomentoja</em>, jotka ovat inspiroineet kaksi tehokasta tekstieditoria, Emacs ja vi (luultavasti kaksi tehokkainta olemassaolevaa tekstieditoria). Käyttämällä näppäinkomentoja komentorivivelhot voivat kirjoittaa ja muokata jopa pitkiä komentorivejä sekunnin murto-osassa. Jos opettelet komentotulkin tarjoamia näppäinkomentoja, vaikka ne näyttäisivätkin aluksi epäkäytännöllisiltä, voit pian tehdä niin.</p>
+<p><strong>Huomaa:</strong> Voit käyttää Emacsin ja vi:n näppäinkomentoja ainoastaan, jos osaat kirjoittaa kymmensormijärjestelmällä. Jo et osaa, kannattaa opetella mahdollisimman nopeasti. Se on ehdottomasti sen arvoista. </p>
+<p>Oletusarvoisesti BASH-komentotulkki käyttää Emacsin näppäinkomentoja. Jos tahdot käyttää vi:n näppäinkomentoja, kirjoita seuraava komento:</p>
+<pre>$<strong> set -o vi</strong></pre>
+<p>Voit siirtyä takaisin Emacsin näppäinkomentoihin kirjoittamalla:</p>
+<pre>$<strong> set -o emacs</strong></pre>
+<p>Emacsin ja vi:n näppäinkomennot ovat ihan erilaisia, molempiin tottuminen vie aikaa. Sinun kannattaisi kokeilla molempia, jotta löytäisit itsellesi paremmin sopivan vaihtoehdon. Tämä kappale käsittelee oletusarvoisesti käytössä olevia Emacsin näppäinkomentoja. Jos opettelet vi:tä, voit siirtyä niihin näppäinkomentoihin, ja ne tuntuvat hyvin intuitiivisilta.</p>
+<p><strong>Vihje: </strong>Älä yritä opetella kaikkia näppäinkomentoja kerralla! Ihmisen aivoja ei ole suunniteltu sellaisiin asioihin, joten unohdat melkein kaikki niistä. Sen sijaan kannattaa opetella 4-5 käyttökelpoisimmalta vaikuttavaa näppäinkomentoa ja käyttää niitä säännöllisesti - oppia tekemällä. Myöhemmin voit palata tähän lukuun ja opetella lisää näppäinkomentoja. Pian pyörit vauhdilla komentorivillä!</p>
+<h2>Emacsin näppäinkomennot</h2>
+<p>Emacsin näppäinkomennoissa käytetään paljon <strong>Ctrl</strong> ja <strong>Alt</strong> -näppäimiä. Kokeneet Emacsin käyttäjät uudelleenkartoittavat usein <strong>CapsLock</strong> -näppäimensä näppäimeksi <strong>Ctrl</strong>, jotta voivat kirjoittaa Emacs-komentoja mukavammin (ja välttääkseen rasitusvammoja!). Kun aloitat Emacsin näppäinkomentojen säännöllisen käytön, neuvomme sinua tekemään samoin.</p>
+<h3>Liikkuminen ympäriinsä </h3>
+<p>Kaksi perusnäppäinkomentoa liikkumiseen ympäriinsä komentorivillä Emacs-tilassa ovat <strong>Ctrl + f</strong> ja <strong>Ctrl + b</strong>. Ne siirtävät kursoria yhden merkin oikealle tai vasemmalle:</p>
+<p> </p>
+<table border="1" cellspacing="1" cellpadding="1"><tbody><tr><td> Ctrl + f</td>
+<td> Liiku eteenpäin yksi merkki</td>
+</tr><tr><td> Ctrl + b</td>
+<td> Liiku taaksepäin yksi merkki</td>
+</tr></tbody></table><p>Tietenkin voit tehdä samat kursorinliikkeet käyttäen nuolinäppäimiä näppäimistölläsi. Kuten yllä mainittiin, voit käyttää Emacsin näppäinkomentoja <strong>Ctrl + f</strong> ja <strong>Ctrl + b</strong> ollaksesi tehokkaampi, sillä käsiesi ei tarvitse lähteä näppäimistön kirjainosasta. Et välttämättä huomaa nopeuseroa heti (varsinkaan jos et ole vielä nopea kirjoittaja), mutta kun saat enemmän kokemusta komentorivin käytöstä, et varmasti tahdo enää koskea nuolinäppäimiin!</p>
+<p>Seuraava taulukko listaa joitain näppäinkomentoja, joiden avulla voit navigoida komentorivillä vielä nopeammin:</p>
+<p> </p>
+<p> </p>
+<table border="1" cellspacing="1" cellpadding="1"><tbody><tr><td> Alt + f</td>
+<td> Liiku yksi sana eteenpäin</td>
+</tr><tr><td> Alt + b</td>
+<td> Liiku yksi sana taaksepäin</td>
+</tr><tr><td> Ctrl + a</td>
+<td> Liiku rivin alkuun</td>
+</tr><tr><td> Ctrl + e</td>
+<td> Liiku rivin loppuun</td>
+</tr></tbody></table><p> </p>
+<p>Käyttämällä ylläolevassa taulukossa esiteltyjä näppäinkomentoja voit nopeuttaa komentorivieditointia dramaattisesti. Jos esimerkiksi kirjoitat väärin hyvin pitkän tiedostonimen, näppäinkomento <strong>Alt + b</strong> vie kursorin takaisin sanan alkuun - hankalien merkki kerrallaan tapahtumien siirtymisten tekeminen nuolinäppäimillä on tarpeetonta. Näppäimet <strong>home</strong> ja <strong>end</strong> ovat vaihtoehto näppäinkomennoille <strong>Ctrl + a</strong> ja <strong>Ctrl + e</strong>.</p>
+<h3>Tekstin editoiminen</h3>
+<p>Kaksi yleisimmin käytettyä muokkauskomentoa ovat seuraavat:</p>
+<p> </p>
+<table border="1" cellspacing="1" cellpadding="1"><tbody><tr><td>Ctrl+t</td>
+<td>Vaihda kursoria ennen oleva merkki ja kursorin alla/jälkeen oleva merkki</td>
+</tr><tr><td>Alt+t</td>
+<td>Vaihda kursorin jälkeen oleva sana ja kursorin alla/jälkeen oleva sana </td>
+</tr></tbody></table><p>Näihin kahteen komentoon menee jonkin aikaa tottua, mutta molemmat ovat erittäin käyttökelposia. Komennon <strong>Ctrl + t</strong> päätoiminto on korjata kirjoitusvirheitä, komentoa <strong>Alt + t</strong> käytettiin usein "vetämään" sanaa eteenpäin komentorivillä. Katso seuraavaa komentoriviä (alleviivaus merkitsee kursorin sijaintia):</p>
+<pre>$<strong> echo yksi_kaksi kolme neljä </strong>
+</pre>
+<p> </p>
+<p>Jos painat tässä tilanteessa näppäimiä <strong>Alt + t</strong>, sana ennen kursoria ("yksi") vaihtuu sanaksi kursorin jälkeen ("kaksi"). Kokeile! Tulos näyttää tältä: </p>
+<p> </p>
+<pre>$<strong> echo kaksi yksi_kolme neljä </strong></pre>
+<p>Voit huomata kaksi asiaa. Ensinnäkin sanojen "yksi" ja "kaksi" järjestys on käännetty. Toiseksi kursori on siirtynyt eteenpäin sanan "yksi" mukana. Nyt kursorin siirtymisen hyvä puoli on se, että voit painaa <strong>Alt + t</strong> vielä kerran, jotta "yksi" vaihtaa paikkaa seuraavan sanan "kolme" kanssa:</p>
+<pre>$<strong> echo kaksi kolme yksi_neljä</strong>
+</pre>
+<p>Painamalla näppäimiä <strong>Alt + t</strong> toistuvasti, voit "vetää" sanaa eteenpäin, kunnes se on komentorivin lopussa. (Voit tietenkin tehdä saman yksittäiselle kirjaimelle käyttäen näppäimiä <strong>Ctrl + t</strong>.)</p>
+<p>Ensin näiden kahden paikanvaihtokomennon toiminta voi vaikuttaa hieman hämmentävältä. Leiki niillä jonkin aikaa, ja totut siihen.</p>
+<h3>Tekstin poistaminen ja palauttaminen</h3>
+<p>Tässä on näppäriä komentoja tekstin poistamiseen: </p>
+<p> </p>
+<table border="1" cellspacing="1" cellpadding="1"><tbody><tr><td> Ctrl + d</td>
+<td> Poistaa merkin kursorin alta</td>
+</tr><tr><td> Alt + d</td>
+<td> Poistaa kaiken tekstin kursorista nykyisen sanan loppuun</td>
+</tr><tr><td> Alt + askelpalautin</td>
+<td> Poistaa kaiken tekstin kursorista nykyisen sanan alkuun asti</td>
+</tr></tbody></table><p>Komennot <strong>Alt + d</strong> ja <strong>Alt + askelpalautin</strong> eivät poista tekstiä, vaan tappavat sen. Tappaminen eroaa poistamisesta siinä, että poistettu teksti on kadonnut pysyvästi, mutta tapetun tekstin voi palauttaa henkiin käyttämällä seuraavaa komentoa:</p>
+<p> </p>
+<table border="1" cellspacing="1" cellpadding="1"><tbody><tr><td> Ctrl + y</td>
+<td> Palauttaa aiemmin tapetun tekstin</td>
+</tr></tbody></table><p> </p>
+<p>Voimme nähdä esimerkin avulla miten tämä toimii:</p>
+<p> </p>
+<p> </p>
+<p> </p>
+<pre>$<strong> echo yksi kaksi </strong></pre>
+<p>Kursorin sijainnin osoittaa taas alaviiva. Jos painat tässä tilanteessa <strong>Alt + askelpalautin</strong>, sana "kaksi" ja sen jälkeen olevat välilyönnit tapetaan, jolloin komentorivi näyttää tältä:  </p>
+<pre>$<strong> echo yksi </strong></pre>
+<p>Jos nyt painat näppäimiä <strong>Ctrl + y</strong>, tapettu teksti palautetaan takaisin komentoriville. Voit tehdä tämän monta kertaa. Jos painat <strong>Ctrl + y</strong> kolme kertaa, näet seuraavan rivin:</p>
+<pre>$<strong> echo yksi kaksi kaksi kaksi </strong></pre>
+<p>Kuten voit nähdä, tekstin tappaminen on paljolti samanlainen kuin leikkaustoiminto useimmissa nykyaikaisissa tekstinkäsittelyohjelmissa. Jos tekstiä ei tapeta vaan poistetaan (painamalla <strong>Ctrl + d</strong>), sitä ei voida palauttaa komentoriville. Ainoa tapa palauttaa se on käyttää peruuta-toimintoa, joka esitellään alla.</p>
+<p>Seuraavassa on luultavasti tehokkaimmat komennot tekstin tappamiseen:</p>
+<p> </p>
+<table border="1" cellspacing="1" cellpadding="1"><tbody><tr><td> Ctrl + k</td>
+<td> Tapa kaikki teksti kursorista rivin loppuun</td>
+</tr><tr><td> Ctrl + u</td>
+<td> Tapa kaikki teksti kursorista rivin alkuun </td>
+</tr></tbody></table><p>Kuten tavallista, paras tapa oppia nämä komennot on kokeilla niillä. Huomaat, että pitkien tekstinpätkien tappaminen, ja milloin tarpeellista, palauttaminen, voi säästää paljon aikaa.</p>
+<p> </p>
+<p> </p>
+<h3>Muutosten peruuttaminen</h3>
+<p>Voit peruuttaa viimeisen tekemäsi muutoksen seuraavalla komennolla:</p>
+<p> </p>
+<table border="1" cellspacing="1" cellpadding="1"><tbody><tr><td> Ctrl + _</td>
+<td> Peruuta viimeinen muutos</td>
+</tr></tbody></table><p>Vaihtoehtoinen tapa tehdä sama asia on painaa näppäimiä <strong>Ctrl + xu</strong>. (Paina <strong>x</strong> ja <strong>u</strong> vuorotellen, kun pidät näppäintä <strong>Ctrl</strong> pohjassa.)</p>
+<h3>Navigoi komentotulkin historiassa</h3>
+<p>Komentotulkki tallentaa viimeksi antamasi komennot. Tämä mahdollistaa aiemmin kirjoitettujen komentojen palauttamisen, jolloin voit välttyä kirjoittamasta niitä uudelleen. Tässä on tärkeimpiä komentoja komentotulkin komentohistoriassa suunnistamiseen:</p>
+<p> </p>
+<table border="1" cellspacing="1" cellpadding="1"><tbody><tr><td> Ctrl + p</td>
+<td> Mene edelliseen komentoon historiassa</td>
+</tr><tr><td> Ctrl + n</td>
+<td> Mene seuraavaan komentoon historiassa</td>
+</tr><tr><td> Ctrl + &gt;</td>
+<td> Mene historian loppuun</td>
+</tr><tr><td> Ctrl + r</td>
+<td> Etsi historiasta aiemmin annettuja komentoja</td>
+</tr><tr><td valign="top"> Ctrl + g</td>
+<td valign="top"> Peruuta hakeminen historiasta</td>
+</tr></tbody></table><p>Katsotaanpa näiden komentojen toimintaa yksinkertaisen esimerkin avulla. Avaa komentotulkki ja kirjoita seuraavat komennot:</p>
+<pre>$<strong> echo kaksi</strong>
+kaksi
+$<strong> echo kolme</strong>
+<strong></strong>kolme
+$<strong> echo neljä</strong>
+<strong></strong>neljä
+</pre>
+<p>Kun olet kirjoittanut nämä komennot, sinulle jää tyhjä komentorivi odottamaan syötettäsi. Paina nyt näppäimiä <strong>Ctrl + p</strong>. Voit nähdä, että viimeksi kirjoitettu komento näkyy komentorivilläsi: "<code>echo neljä"</code>. Jos painat uudestaan <strong>Ctrl + p</strong>, siirryt pidemmälle "ylöspäin" komentohistoriassa, jolloin komentorivillä näkyy <code>"echo kolme"</code>. Paina nyt <strong>Ctrl + n</strong> ja näet tulleesi takaisin komentoon "<code>echo neljä"</code>: <strong>Ctrl + n</strong> toimii aivan kuin <strong>Ctrl + p</strong>, mutta toisin päin. Nuolinäppäimet <strong>ylös</strong> ja <strong>alas</strong> ovat vaihtoehdot näille.</p>
+<p>Painettuasi näppäimiä <strong>Ctrl + p</strong> ja kenties <strong>Ctrl + n</strong> muutaman kerran, voit mennä takaisin komentoriville, jota kirjoitit ennen kuin aloitit historiassa navigoimisen. Voit tehdä tämän painamalla <strong>Ctrl + &gt;</strong>.</p>
+<p>Kuten voit havaita, komentorivin historia on vain pitkä lista viimeaikaisia komentoja. Voit siirtyä ylös ja alas listalla painamalla <strong>Ctrl + p</strong> ja <strong>Ctrl + n</strong>. Ja voit painaa näppäintä <strong>Enter</strong> enter milloin tahansa suorittaaksesi valitun komentorivin.</p>
+<p>Koska komentorivin historia on vain pitkä lista, se on myös etsittävissä. Tämä tehdään useimmiten komennolla <strong>Ctrl + R</strong>. Oletetaanpa, että olet antanut komennot "<code>echo kaksi"</code>, "<code>echo kolme"</code> ja "<code>echo neljä</code>". Yritä painaa <strong>Ctrl + R</strong> nyt. Voit nähdä, että uusi komentokehote ilmestyy, ja se sanoo "reverse-i-search". Jos kirjoitat kirjaimen "k", hyppäät välittömästi historian viimeiselle komentoriville, joka sisältää kirjaimen "k", joka on tietenkin "echo kolme". Sieltä voit käyttää komentoja <strong>Ctrl + p</strong> ja <strong>Ctrl + n</strong> navigoidaksesi historiassa, kuten aiemmin on mainittu. Tai voit muokata hakua kirjoittamalla toisen kirjaimen, esimerkiksi "a". Silloin hyppäät komentoon "echo kaksi", koska se on viimeisin komento, joka sisältää kirjaimet "a". Tai voit vain peruuttaa haun painamalla <strong>Ctrl + g</strong>.</p>
+<p>Jos olet hieman eksyksissä käyttäessäsi komentotulkin historiatoimintoja, älä huolestu! Jos harjoittelet, opit pian siirtymään rutiinimaisesti edestakaisin komentotulkin historiassa, jolloin vältät pitkien komentorivien kirjoittamisen uudestaan. </p>
+<h2>Interaktiivinen editointi: esimerkki</h2>
+<p>Seuraava esimerkki näyttää sinulle, kuinka interaktiivinen editointi nopeuttaa valtavasti työtäsi. Oletetaanpa, että olet kirjoittanut seuraavan komentorivin:</p>
+<pre>$<strong> echoo ne two three</strong>
+bash: echoo: command not found
+</pre>
+<p>Bash heittää virheen, koska komentoa "echoo" ei ole olemassa. Tarkoitit tietenkin komentoa "echo one two three". Ehkä yllätyt, että tarvitaan vain viisi näppäinkomentoa korjaamaan tämä virhe:</p>
+<ol><li>Paina <strong>Ctrl + p</strong> saadaksesi edellisen komentorivin ruudulle, nimittäin väärin kirjoitetun komentorivin.</li>
+<li>Paina <strong>Ctrl + a</strong> siirtääksesi kursorin rivin alkuun.</li>
+<li>Paina <strong>Alt + f</strong> siirtääksesi kursorin yhden sanan eteenpäin. Kursori on nyt väärin kirjoitettujen sanojen "echoo" ja "ne" välissä.</li>
+<li>Paina <strong>Ctrl + t</strong>. Näet että kursoria edeltävä "o" ja kursorin alla oleva välivyönti on vaihdettu keskenään: "echoo ne" on nyt "echo one".</li>
+<li>Paina lopuksi <strong>Enter</strong> suorittaaksesi korjatun komentorivin.</li>
+</ol></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/komentorivin-perusteet/index">Ota komento</a></li>
+<li Class="booki-section">Perusteet</li><li><a href="/komentorivin-perusteet/ch003_aloittaminen">Käytön aloittaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch004_syntaksi">Syntaksi</a></li>
+<li><a href="/komentorivin-perusteet/ch005_ympariinsa-siirtyminen">Ympäriinsä siirtyminen</a></li>
+<li><a href="/komentorivin-perusteet/ch006_tiedostorakenne">Tiedostorakenne</a></li>
+<li Class="booki-section">Komennot</li><li><a href="/komentorivin-perusteet/ch008_peruskomennot">Peruskomennot</a></li>
+<li><a href="/komentorivin-perusteet/ch009_jarjestelmanvalvojat">Järjestelmänvalvoja</a></li>
+<li><a href="/komentorivin-perusteet/ch010_useammat-tiedostot">Useammat tiedostot</a></li>
+<li><a href="/komentorivin-perusteet/ch011_kirjoita-vahemman">Kirjoita vähemmän</a></li>
+<li Class="booki-section">Keskivaikeita komentoja</li><li><a href="/komentorivin-perusteet/ch013_putkitus">Putkitus</a></li>
+<li><a href="/komentorivin-perusteet/ch014_komentohistoria">Komentohistoria</a></li>
+<li><a href="/komentorivin-perusteet/ch015_standarditiedostot">Standarditiedostot</a></li>
+<li Class="booki-section">Kehittyneempiä komentoja</li><li><a href="/komentorivin-perusteet/ch017_kayttooikeudet">Käyttöoikeudet</a></li>
+<li><a href="/komentorivin-perusteet/ch018_interaktiivinen-muokkaus">Interaktiivinen muokkaus</a></li>
+<li><a href="/komentorivin-perusteet/ch019_poistumisen-tarkastaminen">Poistumisen tarkastaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch020_alikomennot">Alikomennot</a></li>
+<li><a href="/komentorivin-perusteet/ch021_hakemistot">Hakemistot</a></li>
+<li><a href="/komentorivin-perusteet/ch022_kustomisointi">Kustomisointi</a></li>
+<li><a href="/komentorivin-perusteet/ch023_parametrien-korvaaminen">Parametrien korvaaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch024_gnuscreen">GNUScreen</a></li>
+<li><a href="/komentorivin-perusteet/ch025_ssh">SSH</a></li>
+<li><a href="/komentorivin-perusteet/ch026_ohjelmien-asentaminen">Ohjelmien asentaminen</a></li>
+<li Class="booki-section">Tekstieditorit</li><li><a href="/komentorivin-perusteet/ch028_tekstieditorit">Tekstieditorit</a></li>
+<li><a href="/komentorivin-perusteet/ch029_nano">Nano</a></li>
+<li><a href="/komentorivin-perusteet/ch030_vi-ja-vim">Vi ja Vim</a></li>
+<li><a href="/komentorivin-perusteet/ch031_emacs">Emacs</a></li>
+<li><a href="/komentorivin-perusteet/ch032_kedit">Kedit</a></li>
+<li><a href="/komentorivin-perusteet/ch033_gedit">Gedit</a></li>
+<li Class="booki-section">Skriptaus</li><li><a href="/komentorivin-perusteet/ch035_skriptaus">Skriptaus</a></li>
+<li><a href="/komentorivin-perusteet/ch036_skriptien-huoltaminen">Skriptien huoltaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch037_muut-kielet">Muut kielet</a></li>
+<li><a href="/komentorivin-perusteet/ch038_sed">Sed</a></li>
+<li><a href="/komentorivin-perusteet/ch039_awk">AWK</a></li>
+<li><a href="/komentorivin-perusteet/ch040_saannolliset-lausekkeet">Säännölliset lausekkeet</a></li>
+<li><a href="/komentorivin-perusteet/ch041_perl">Perl</a></li>
+<li><a href="/komentorivin-perusteet/ch042_ruby">Ruby</a></li>
+<li><a href="/komentorivin-perusteet/ch043_python">Python</a></li>
+<li Class="booki-section">Komennot nopeasti</li><li><a href="/komentorivin-perusteet/ch045_komentojen-pikaopas">Komentojen pikaopas</a></li>
+<li Class="booki-section">Liitteet</li><li><a href="/komentorivin-perusteet/ch047_tasta-kayttooppaasta">Tästä käyttöoppaasta</a></li>
+<li><a href="/komentorivin-perusteet/ch048_tekijat">Tekijät</a></li>
+</ul>

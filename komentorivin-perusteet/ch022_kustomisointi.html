@@ -1,0 +1,303 @@
+<div id="main-content"><h1>Hyödyllistä kustomisointia</h1>
+<p>Voit todella tehdä komentotulkista omanlaisesti, soveltamalla jokaista ominaisuutta toimintatapaasi (ja jopa erilaisia toimintatapoja joilla toimit viikosta toiseen). Tässä osassa katsomme nopeita muutoksia, joita voit tehdä. Skriptaus on tapa laajentaa ja yhdistää komentotulkin tarjoamia ominaisuuksia ja esitellään myöhemmin.</p>
+<h2>Muuttujat</h2>
+<p>Jokaisessa komentotulkissa on <em>muuttujaksi</em> kutsuttu konsepti. Muuttujat koostuvat kahdesta osasta: muuttujan <em>nimestä </em>ja muuttujan <em>arvosta</em>. Jos sanoisin "x=6", "x" on muuttujan nimi ja "6" on sen arvo.  Nähdäksesi muuttujan arvon, laitat dollarimerkin muuttujan nimen eteen. Tässä on yksinkertainen esimerkki. <br><br></p>
+<pre>$ <strong>x=6</strong>
+$ <strong>echo $x</strong>
+6
+$</pre>
+<p>Yllä viimeinen rivi <em>asettaa</em> numeron "6" muuttujaan "x" ja toinen rivi pyytää komentotulkkia näyttämään "x":n arvon. Huomaa, että laitamme dollarimerkin muuttujan nimen eteen kun tahdomme nähdä sen arvon, mutta emme koskaan käytä dollarimerkkiä, kun asetamme sille arvon.</p>
+<p>Joten mikä tahansa dollarimerkillä ($) alkava tulkitaan komentotulkin taholta muuttujaksi. Yksi muuttuja hiippaili aiempaan lukuun poistumistilasta: huomasit, että "$?" sisältää edellisen komennon poistumistilan.</p>
+<p>Mitä muita hyödyllisiä asioita voimme tehdä muuttujilla? Yleinen käyttö on vähentää kirjoittamista. Sanotaanpa, että tiedostot projektiin, jota olet työstänyt koko viikonlopun, on tallennettu hakemistoon, jota kutsutaan nimellä <em>"/home/jsmith/projects/foo/confoobulator"</em>.  "<em>/home/jsmith/projects/foo/confoobulator"</em> on paljon kirjoitettavaa, mutta voit vähentää kirjoittamista tallentamalla arvon muuttujaan.</p>
+<pre>$<strong> p=/home/jsmith/projects/foo/confoobulator</strong></pre>
+<p>Nyt voit siirtyä projektihakemistoosi kirjoittamalla</p>
+<pre>$<strong> cd $p</strong></pre>
+<p>Voit poistaa muuttujan arvon asettamalla sen tyhjäksi merkkijonoksi:</p>
+<pre>$<strong> VAR=""</strong></pre>
+<p>tain käyttämällä komentoa <code>"unset"</code>:</p>
+<pre>$<strong> unset VAR</strong></pre>
+<h2>Tavalliset muuttujat ja ympäristömuuttujat</h2>
+<p>Useimmat komentotulkit (sisältäen GNU Bash -komentotulkin) tunnistavat kahdenlaisia muuttujia: <em>tavalliset muuttujat ja ympäristömuuttujat</em>. Tavallinen muuttuja on tarjolla komentotulkillesi, muttei ohjelmille, joita komentotulkki suorittaa. Sen sijaan ympäristömuuttuja on tarjolla sekä komentotulkille että sen käyttämille komennoille. Tavallisen muuttujan voi muuttaa ympäristömuuttujaksi käyttämällä komentoa <code>"export"</code>.  Jos kirjoittaisin</p>
+<pre>$ <strong>export p</strong></pre>
+<p>Tavallisesta muuttujasta "p" tulee ympäristömuuttuja, jota mikä tahansa komentopäätteen käyttämä komento voi käyttää.</p>
+<h2>Komentopäätteen muuttujat</h2>
+<p>Komentopääte tarjoaa listan omista muuttujistaan. Esimerkiksi komennon "<code>whoami"</code> (joka näytettiin kirjan alkupäässä) ulostulo on sama kuin "$USER". Kotihakemistosi tallennetaan muuttujaan "$HOME". Voit nähdä minkä tahansa muuttujan laittamalla sen komentoon "echo":</p>
+<pre>$ <strong>echo $HOME</strong></pre>
+<p>Esimerkin ensimmäinen dollarimerkki on vain komentokehote, sillä ei ole mitään tekemistä muuttujien kanssa.</p>
+<p>Voit nähdä komentotulkin sisäänrakennetut muuttujat (itse asiassa alaryhmä, joka tunnetaan <em>ympäristömuuttujina</em>) komennolla:</p>
+<pre>$ <strong>env</strong>
+<strong></strong>SHELL=/bin/bash
+USER=jsmith
+PATH=/usr/local/bin:/usr/bin:/bin:/usr/games
+PWD=/home/jsmith
+HOME=/home/smith
+_=/usr/bin/env
+...</pre>
+<p>Ulostulosi näyttää varmasti erilaiselta, mutta monet muuttujien nimet ovat samoja. Jotkin näistä ovat hyödyllisiä myöhemmin.</p>
+<ul><li>"SHELL" on polku komentotulkkiisi.</li>
+<li>"USER" on käyttäjänimesi. Kun kirjauduit GNU/Linux -järjestelmään, tämä on käyttäjänimi, jonka kirjoitit.</li>
+<li>"PATH" on lista hakemistoja, jossa erottimena ovat kaksoispisteet. Kun ajat komennon (kuten <code>"cat"</code> tai "<code>ls"</code>), komentotulkkisi katsoo näihin hakemistoihin löytääkseen suoritettavan ohjelman. Puhumme enemmän muuttujasta "PATH" hetken päästä.</li>
+<li>"PWD" on nykyinen työhakemistosi (eli kansio, jossa olet).</li>
+<li>"HOME" on kotihakemistosi. Aloitat tästä hakemistosta, kun kirjaudut sisään ensimmäisen kerran. </li>
+<li>"_" on viimeksi suoritettu komento. Tässä tapauksessa "/usr/bin/env".</li>
+</ul><p> </p>
+<h2>Muuttujien laajenemisen kontrolli</h2>
+<p>Jos laitat muuttujan kiinni muihin kirjaimiin, komentotulkki ei tunnista sitä. Esimerkiksi seuraava ei toimi:</p>
+<pre>$ <strong>curr=myfile</strong>
+$ <strong>rm $curr1.jpeg</strong>
+rm: .jpeg: No such file or directory                                           
+</pre>
+<p>Virheviesti voi olla hämmentävä. Tapahtui näin: komentotulkki näki muuttujan nimeltä<strong><strong> </strong></strong>"$curr1". Kun se ei voinut löytää sellaista muuttujaa, se korvasi sen tyhjällä merkkijonolla. Niinpä yritit loppujen lopuksi suorittaa komennon:</p>
+<pre>$ <strong>rm .jpeg</strong></pre>
+<p>Jos tahdot poistaa tiedoston "myfile1.jpeg", käytä se aaltosulkuja muuttujan ympärillä, jotta komentotulkki tietää missä muuttujan nimi loppuu:</p>
+<pre>$ <strong>rm ${curr}1.jpeg</strong></pre>
+<h2>Hakupolku</h2>
+<p>Olemme katsoneet monia esimerkkejä komentojen suorittamisesta. Jos kirjoitan "ls -l" komentorivillä, komentotulkkini ajaa komennon "<code>ls</code>", mikä tekee listan tiedostoja. Komento <code>"ls"</code> on itse asiassa ohjelma, joka on tietokoneen kovalevyllä. Voit kysyä komentotulkintasi missä komento asustaa käyttämällä komentoa <code>"which"</code>.  Jos kirjoitan</p>
+<pre>$ <strong>which ls</strong></pre>
+<p>niin päätteeni vastaa hakemistolla "/bin/ls", joka kertoo minulle, että komento "<code>ls"</code> on ohjelma, joka elää kovalevyni hakemistossa "<em>/bin"</em>. Voimme jopa käyttää komentoa <code>"ls"</code> etsimään itseään</p>
+<pre>$ <strong>ls -l /bin/ls</strong>
+-rwxr-xr-x 1 root root 92672 2007-01-30 15:48 /bin/ls
+</pre>
+<p>Komentotulkkini löysi komennon <code>"ls"</code> käyttämällä ympäristömuuttujaa "PATH".</p>
+<pre>PATH=/usr/local/bin:/usr/bin:/bin:/usr/games</pre>
+<p>Muuttuja "PATH" on lista hakemistoja, jotka on eroteltu kaksoispisteillä. Kun kirjoitin "<code>ls"</code>, komentotulkkini katsoi komentoja hakemistossa <em>"/usr/local/bin/ls"</em>, sitten "<em>/usr/bin/ls"</em>, ja lopulta <em>"/bin/ls"</em>.  "<em>/bin/ls"</em> on komennon sijaintipaikka, joten komentotulkkini pystyi ajamaan sen. Jos ei olisi ollut hakemistoa, komentotulkkini olisi kokeillut hakemistoa "<em>/usr/games/ls</em>", ja sitten lopettanut.</p>
+<p> </p>
+<h2>Konfiguraatiotiedostot</h2>
+<p>Olet ehkä nähnyt monta siistiä kustomisaatiota kirjassa - tai ehkä ajatellut muutamia omia kustomisaatioitasi - ja olet ehkä valmis tallentamaan niistä muutamia, jotta voit käyttää niitä uudelleen jokaisessa pääteistunnossa. Kaikki, mitä määrittelet päätteessä, on menetetty, kun suljet pääteikkunan. Joten nyt on hyvä aika katsoa konfiguraatiotiedostoja, jotka tallentavat käyttökelpoiset kustomisaatiot istuntojen välillä.</p>
+<p>Kotihakemistosi sisältää useita kätkettyjä tiedostoja, jotka sisältävät asetukset päätteelle ja muille ohjelmille. Lisäksi on kokonaisia kätkettyjä hakemistoja, joihin ohjelmat tallentavat tietoa, kuten värit, jotka päätit laittaa työpöydällesi.</p>
+<p>Kuinka nämä hakemistot on kätketty? Yksinkertaisen käytännön kautta: mikä tahansa pisteellä (.) alkava tiedosto on kätketty. Tiedostonhallintaohjelma työpöydälläsi ei näytä sinulle kätkettyjä tiedostoja, ellet valitse erikoisvalitsinta, jolla näet kätketyt tiedostot. Vastaavasti pääte ei näytä niitä oletusarvoisesti <code>"ls"</code>-komentoa. Näyttäksesi ne päätteessä, lisää valitsin "<code>-a</code>", joka näyttää kaikki tiedostot:</p>
+<p> </p>
+<pre>$ <strong>ls -a</strong>
+<strong>.</strong>
+..
+.bash_history
+.bash_logout
+.bashrc
+.irssi
+.profile
+foo
+examplefile
+</pre>
+<p>Edellisessä listauksessa (joka näyttää erilaiselta omassa järjestelmässäsi) tiedostot "<em>.bashrc</em>" ja "<em>.profile</em>" ovat erityisen mielenkiintomme kohteina. Tiedosto <em>".bashrc</em>" liittyy tiettyyn komentotulkin tyyppiin (komentotulkkeja on monia erilaisia), jota kutsutaan Bashiksi, kun taas "<em>.profile"</em>-tiedoston lukevat muutkin komentotulkit, mikäli päätä käyttää jotain muutakin kuin Bashia.</p>
+<p>Bash-konfiguraatio toimii hyvin yksinkertaisella tavalla: Bash vain suorittaa komennot käynnistyessään, täsmälleen kuin olisit kirjoittanut ne ennen minkään muun tekemistä. Niinpä mikä tahansa, mitä näet tässä osassa, ja mistä pidät - alias, funktio, muutos ympäristömuuttujaan jne. - sopii laitettavaksi konfiguraatiotiedostoon. Kokonaisia skriptejä voidaan lisätä.</p>
+<p>Aloitustiedostoissasi on luultavasti komentoja jo valmiiksi. Jotkin on asennettu yhdessä käyttöjärjestelmän kanssa, kun taas toiset ovat työpaikkojen ylläpitäjien lisäämiä. Muuttaaksesi näitä kustomisaatioita tai lisätäksesi omiasi, katso tekstieditoreita käsittelevä osa tästä kirjasta. Valitse yksi tekstieditori ja opettele noin tusina sen peruskomentoja, jotta voit tehdä minimaalisen editoinnin, jota tarvitaan omien kustomisaatioiden tekemiseen.</p>
+<h2>Funktiot</h2>
+<p>Voit yhdistää joukon komentoja ja antaa sille nimen; voit käyttää tätä nimeä kuin mitä tahansa muuta komentoa. Harkitse funktion kirjoittamista aina, kun käytät samoja komentoja toistuvasti. Voit myös kirjoittaa taipuisan funktion kirjoittamista, jolloin funktion toiminta perustuu parametreihin, aivan kuin muidenkin komentojen toiminta.</p>
+<p>Yksinkertaisena esimerkkinä, oletetaan, että tahdot tallentaa tiedon hakemistoon joka päivä:</p>
+<pre><strong>echo ENTRY -------------- &gt;&gt;~/save/log</strong>
+<strong>date &gt;&gt;~/save/log</strong>
+<strong>du -c &gt;&gt;~/save/log</strong>
+<strong>ls -R &gt;&gt;~/save/log</strong>
+<strong>echo &gt;&gt;~/save/log</strong>
+</pre>
+<p>Tallentaaksesi komentosi funktioon, anna komento nimeltä <code>"function</code>", jota seuraa nimi, jonka tahdot antaa sille, ja komennot aaltosulkujen sisällä. Huomaa, että olemme käyttäneet ristikkomerkkejä (#) lisätäksemme joitain kommentteja, jotta muistat myöhemmin, mitä varten funktio on tehty. Komentotulkki jättää ristikkomerkin ja sitä seuraavan tekstin huomiotta.</p>
+<pre><strong>function savelog {</strong>
+<strong># Lisää tietoa tästä hakemistosta lokitiedostoon, ~/save/log</strong>
+<strong>  echo ENTRY -------------- &gt;&gt;~/save/log</strong>
+<strong>  date &gt;&gt;~/save/log</strong>
+<strong>  du -c &gt;&gt;~/save/log # Alihakemistojen koko</strong>
+<strong></strong><strong>  ls -R &gt;&gt;~/save/log # Tiedostojen listaus</strong>
+<strong></strong><strong>  echo &gt;&gt;~/save/log</strong>
+<strong>}</strong>
+</pre>
+<p>Nyt voit käyttää komentoa <code>"savelog</code>" ja suorittaa sisällytetyt komennot. Voit laittaa funktion määritelmän aloitustiedostoon, jotta et enää koskaan joudu kirjoittelemaan määritelmää uudestaan.</p>
+<p>Edellinen esimerkki oli ehkä hieman liioiteltu, sillä harvoinpa kirjoitat samat komennot peräkkäin. Voit kuitenkin usein käyttää monimutkaista komentoa, jonka ajat eri tiedostoille, tai muille kohteille.</p>
+<p>Tässä on esimerkiksi komento, joka näyttää sinulle eron tiedoston nykyisen version ja viimeksi muokatun version välillä, jos muokkaa Emacsilla. Emacs tallentaa tiedostosi vanhan version luomalla uuden tiedoston samalla nimellä, mutta lisää siihen tilden (~). Tässä esimerkissä katsomme eroja tiedoston "<em>txtfile</em>" ja varmuuskopion "<em>txtfile~"</em> välillä:</p>
+<pre>$<strong> diff txtfile~ txtfile | less</strong>
+</pre>
+<p>Tämä on juuri sopivan monimutkaista (ja yleistä) ollakseen tarpeeksi arvokasta funktioon tallennettavaksi. Tahdot kuitenkin antaa tiedostonimen argumenttina, jotta voit käyttää funktiota mihin tahansa tiedostoon, jota editoit. Määrittele siis parametri "$1", joka on erikoismuuttuja, jota funktio ymmärtää:</p>
+<pre><strong>function d~ {</strong>
+<strong># Vertaile Emacsin varmuuskopiota nykyiseen versioon.</strong>
+<strong>  diff -u $1~ $1 | less</strong>
+<strong> }</strong>
+</pre>
+<p>Nyt voit käyttää uutta <code>"d~"</code> -komentoasi mihin tahansa tiedostoon, jolla on varmuuskopio:</p>
+<pre>$ <strong>d~ txtfile</strong></pre>
+<p>Kuten voit arvata, funktio voi ottaa korkeintaan yhdeksän parametria, joihin voit viitata nimillä "$1", "$2", aina "$9" asti. Jos tahdot enemmän kuin yhdeksän parametria, voit tallentaa parametrin ja poistaa sen listasta:</p>
+<pre><strong>function manyargs {</strong>
+<strong>  $arg=$1</strong>
+<strong>  shift</strong>
+<strong>  ...</strong>
+<strong>}</strong> 
+</pre>
+<p>Ensimmäinen asia, jonka tämä funktio tekee, on tallentaa ensimmäinen parametri omaan "$arg" -muuttujaansa. Komento "<code>shift</code>" poistaa parametrin "$1" ja siirtää kaikki muut tiedostot eteenpäin, jolloin toinen argumentti on nyt "$1". Skriptausta käsittelevässä osassa näet, kuinka parametreja tai muita asioita voi käsitellä yhden kerrallaan silmukoiden avulla.</p>
+<p>Jos tahdot siirtää kaikki parametrit komennolle, käytä muotoa "$*". Esimerkiksi seuraava funktio "<code>orth"</code> suorittaa "spell"-hyötyohjelman mille tahansa merkkijonolle, jonka annat sille:</p>
+<pre><strong>function orth () {</strong>
+<strong>  echo $* | spell</strong>
+<strong>}</strong>
+</pre>
+<p>Funktiot voivat sisältää yhdistelmälauseita, kuten if/then-rakenteita. Näyttääksemme kuinka tehokkaita funktioiden ja yhdistelmälauseiden yhdistelmät voivat olla, lisäämme tähän if/then-lauseen, joka näytettiin aiemmin komentojen epäonnistumista käsittelevässä osassa.</p>
+<pre><strong>function helpme() { if man $1 then echo "nyt tiedät enemmän aiheesta $1" else apropos $1 fi</strong>
+<strong>} </strong></pre>
+<p>Joten seuraava:</p>
+<pre>$ <strong><strong>helpme draw</strong></strong></pre>
+<p> vastaa nyt tätä:</p>
+<pre><strong><strong> </strong> if man draw</strong>
+<strong> then echo "nyt tiedät enemmän aiheesta draw"</strong>
+<strong> else apropos draw</strong>
+<strong> fi</strong>
+</pre>
+<p>Kunhan arvaat mitä virheitä tai muita tiloja lopputuloksena on, voit käsitellä ne automaattisesti funktiosa.</p>
+<h2>Tiedostojen lähteiden lisääminen</h2>
+<p>Jos tämä luku on innostanut sinua kirjoittamaan omia kustomisaatioitasi ja tallentamaan ne tiedostoihin, niin hyvä. Mutta lopulta sinulla on paljon erilaisia funktioita, jotka sijoittuvat eri kategorioihin, ja pidät hämmentävänä pitää niitä kaikkia yhdessä tiedostossa. Tässä vaiheessa voit aloittaa komentojen, muuttujien asetusten ja funktioiden varastoinnin eri tiedostoihin, jotka sopivat eri tarpeisiin, ja lukea ne  <em>".bashrc"</em> -tiedostoosi tai mihin tahansa muuhun skriptiin. Käytä vain pistettä lukeaksesi tiedoston ja saadaksesi komentotulkin suorittamaan sen sisällön:</p>
+<pre><em><strong>.  skriptitiedosto</strong></em></pre>
+<p>On tärkeää laittaa välilyönti pisteen jälkeen, ennen tiedostonimeä.</p>
+<h2>Kehotteiden asettaminen</h2>
+<p>Kun bash tai joku muu komentotulkki odottaa käyttäjän kirjoittavan komennon, se näyttää komentokehotteen, joka voi olla niin yksinkertainen tai monimutkainen kuin haluat. Minimaalinen komentokehote voisi olla</p>
+<pre>$</pre>
+<p>Oletusarvoinen komentokehote näyttää suunnilleen tältä:</p>
+<pre> user@host:~$</pre>
+<p>Jossa "user" on käyttäjänimi, "host" on tietokoneen nimi, "~" on työhakemisto, lyhenne käyttäjän kotihakemistosta, joka on yleensä "<em>/home/user"</em>, ja "$" merkitsee, että nykyinen käyttäjä ei ole pääkäyttäjä (root).</p>
+<p>Muutaaksesi komentokehotetta voit antaa uuden arvon muuttujalle "PS1". Tehdäksesi muutoksesta pysyvän voit laittaa tämän muuttujan asetuksen tiedostoon <em>".profile"</em>, jonka Bash lukee aina käynnistyessään. Oletusarvo on "\u@\h:\w\$", määritellen käyttäjänimen, tietokoneen, työhakemiston, sekä koristemerkit. Seuraava taulukko kuvailee kentät, jotka voivat näkyä komentokehotteessa, sekä muutamat muut käyttökelpoiset merkit. Komentotulkki voi soittaa päätteen "kelloa", joka on nykyisin yleensä piippaus, se voi sisältää monia rivin alkuun palautusta merkitsevän "\r" -komennon sisältäviä rivejä, se voi sisältää yhdistettyjä päätteenhallinnan jatkoja, jotka alkavat yleensä pakomerkillä. Emme selitä kaikki näitä vaihtoehtoja tässä. Katso lisätietoa oppaasta <em>Bash Reference Manual</em>, jonka kirjoittajat ovat Brian Fox ja Chet Ramey. <a href="http://www.gnu.org/software/bash/manual/">http://www.gnu.org/software/bash/manual/</a></p>
+<table style="width: 578px;" border="1" cellspacing="0" cellpadding="3"><tbody><tr><td align="center">\a</td>
+<td>ASCII-kellomerkki (07)</td>
+<td align="center">\d</td>
+<td>päivämäärä muodossa "viikonpäivä, kuukausi, päivä" (esim. "Tue May 26")</td>
+</tr><tr><td align="center">\]</td>
+<td>lopettaa tulostumattomien merkkien jakson</td>
+<td align="center">\e</td>
+<td>ASCII-pakomerkki (033)</td>
+</tr><tr><td align="center">\h</td>
+<td>tietokoneen nimi ensimmäiseen pisteeseen '.' asti</td>
+<td align="center">\H</td>
+<td>tietokoneen nimi</td>
+</tr><tr><td align="center">\j</td>
+<td>komentotulkin juuri nyt suorittamien töiden määrä</td>
+<td align="center">\l</td>
+<td>komentotulkin päätelaitteen nimi</td>
+</tr><tr><td align="center">\n</td>
+<td>uusi rivi</td>
+<td align="center">\r</td>
+<td>palautus rivin alkuun</td>
+</tr><tr><td align="center">\s</td>
+<td>päätteen nimi, perusnimi muuttujalle $0 (osa, joka seuraa viimeistä kauttaviivaa)</td>
+<td align="center">\t</td>
+<td>nykyinen aika 24 tunnin TT:MM:SS-muodossa</td>
+</tr><tr><td align="center">\T</td>
+<td>nykyinen aika 12 tunnin TT:MM:SS -muodossa</td>
+<td align="center">\@</td>
+<td>nykyinen aika 12 tunnin aamupäivä/iltapäivä-muodossa</td>
+</tr><tr><td align="center">\A</td>
+<td>nykyinen aika 24 tunnin TT:MM-muodossa</td>
+<td align="center">\u</td>
+<td>nykyisen käyttäjän käyttäjänimi</td>
+</tr><tr><td align="center">\v</td>
+<td>Bashin versio (esim. 2.00)</td>
+<td align="center">\V</td>
+<td>Bashin julkaisu, versio + korjaustiedoston numero (esim. 2.00.0)</td>
+</tr><tr><td align="center">\w</td>
+<td>nykyinen työhakemisto</td>
+<td align="center">\W</td>
+<td>nykyisen työhakemiston perusnimi</td>
+</tr><tr><td align="center">\!</td>
+<td>tämän komennon numero historiassa</td>
+<td align="center">\#</td>
+<td>tämän komennon komentonumero</td>
+</tr><tr><td align="center">\$</td>
+<td>jos voimassa oleva käyttäjän numero on 0 (root), merkki #, muuten merkki $</td>
+<td align="center">\nnn</td>
+<td>merkki, joka vastaa oktaalinumeroa nnn</td>
+</tr><tr><td align="center">\\</td>
+<td>kauttaviiva</td>
+<td align="center">\[</td>
+<td>aloita sarja tulostamattomia merkkejä, joita voitaisiin käyttää asettamaan päätteenhallintajakso komentokehotteeseen</td>
+</tr></tbody></table><p>Esimerkki:</p>
+<pre>$<strong> PS1="\a\d, \e[31m\t\r\n\e[0m\u@\h:\w $"</strong>
+</pre>
+<p>aiheuttaisi äänen tietokoneelta, näkyvä kehote olisi</p>
+<pre>Mon Mar 23, 13:47:43
+user@host:~ $
+</pre>
+<p>jossa aika on kirjoitettu punaisella. Tämä käyttää merkkiä "\d" merkitsemään päivää, merkkiä "\[31m" laittamaan päälle punaisen värin, merkkiä "\t" näyttämään ajan, "\e[0m" kääntää punaisen pois päältä, "\r\n" palauttaa kursorin rivin alkuun ja aloittaa uuden rivin, loput on kuin oletuksessa.</p>
+<p>Tehdäksesi asioista mielenkiintoisempia voit ajaa komennon kehotteen sisällä laittamalla sen merkkien "[\$( )]" sisään. Tämä esimerkki laskee tiedostojen määrän nykyisessä hakemistossa laskemalla rivit "(<code>wc -l</code>)", jotka putkitetaan hakemistolistauksesta "(<code>ls</code>)".</p>
+<p> </p>
+<pre>$<strong> PS1="\u@\h [\$(ls | wc -l)]:\$ "</strong>
+user@host [3]:$
+</pre>
+<h2>Pääkäyttäjän oikeudet</h2>
+<p>Jokaisen käyttäjän hakemistossa olevien konfiguraatiotiedostojen lisäksi järjestelmässä on paljon konfiguraatiotiedostoja, jotka hallitsevat järjestelmänlaajuista toimintaa. Joskus on tarpeellista muokata sellaista käsin, käyttäen tekstieditoria. Tässä osassa näytämme, kuin käyttäjälle voi antaa pääkäyttäjän oikeudet, mikä on järjestelmänlaajuinen ilmiö, jota hallitsee tiedosto <em>"/etc/sudoers"</em>.</p>
+<p>Ei ole välttämättä järkevää muokata tätä tiedostoa tavallisessa tekstieditorissa. Komento <code>"sudoedit"</code> tarjoaa turvallisemman tavan muokata konfiguraatiotiedostoja.</p>
+<pre>$<strong> sudoedit /etc/sudoers</strong></pre>
+<p>Tämä tekee tilapäisen kopion tiedostosta ja avaa kopion editorissa. Voit ohittaa oletusarvoisen editorin asettamalla ympäristömuuttujan "VISUAL" tai "EDITOR" arvoksi "vi", "emacs", tai mitä tahansa tahdotkin.</p>
+<p>Käyttöluparivit tiedostossa "<em>/etc/sudoers</em>" määrittelevät käyttäjän, mitä seuraa tietokoneet, joilla käyttäjä voi käyttää komentoa <code>"sudo"</code>, minkä ryhmien jäsenenä käyttäjä voi toimia, ja mitä komentoja käyttäjä voi suorittaa komennolla <code>"sudo</code>".</p>
+<p>Yrityksen tai koulun järjestelmänvalvojalla voi olla tämän näköisiä oikeuksia.</p>
+<pre>operator       ALL = DUMPS, KILL, SHUTDOWN, HALT, REBOOT, PRINTING,\
+                       sudoedit /etc/printcap, /usr/oper/bin/
+</pre>
+<p>(Merkki '\' jatkaa käyttölupia seuraavalla rivillä.) Tämä antaa luvan käyttää tiettyä komentojoukkoa, sekä muokata kahta tiettyä konfiguraatiotiedostoa, mutta ei muita. Antaaksesi jollekin oikeuden käyttää mitä tahansa pääkäyttäjän komentoa käyttäen komentoa "<code>sudo"</code>, aseta käyttäjänimen käyttölupariviksi:</p>
+<pre><em>username</em> ALL = (ALL) ALL
+</pre>
+<p>Tämä antaa sinun muokata mitä tahansa konfiguraatiotiedostoa tietokoneellasi.</p>
+<h2>Lokalisaatio</h2>
+<p>Eri maat käyttävät erilaisia käytäntöjä eri asioissa: kirjoitusmerkit, valuutat, päivämäärien ja aikojen muotoilut, jopa paperin koko ja muoto. Tietokoneita voidaan opastaa käyttämään tiettyä kieltä, sekä valitsemaan kielen tietty versio tietyssä maassa. Tämä kustomoidun tiedon yhdistelmä nähdään komennolla <em>"locale"</em>.</p>
+<p>Kaikki lokalisaatioasetukset raportoidaan komennolla "<code>locale</code>". Esimerkiksi:</p>
+<p> </p>
+<pre>$ <strong>locale</strong>
+LANG=fi_FI.UTF-8
+LC_CTYPE="fi_FI.UTF-8"
+LC_NUMERIC="fi_FI.UTF-8"
+LC_TIME="fi_FI.UTF-8"
+LC_COLLATE="fi_FI.UTF-8"
+LC_MONETARY="fi_FI.UTF-8"
+LC_MESSAGES="fi_FI.UTF-8"
+LC_PAPER="fi_FI.UTF-8"
+LC_NAME="fi_FI.UTF-8"
+LC_ADDRESS="fi_FI.UTF-8"
+LC_TELEPHONE="fi_FI.UTF-8"
+LC_MEASUREMENT="fi_FI.UTF-8"
+LC_IDENTIFICATION="fi_FI.UTF-8"
+LC_ALL=
+
+</pre>
+<p>Kieliasetus "LANG <span>fi</span><strong>_FI.UTF-8</strong>" määrittelee suomen kieleksi, Suomen maaksi, ja merkistön koodaukseksi arvon "Unicode UTF-8". Raha on "euro". </p>
+<p>Määrittelet yleensä kielen ja maan, kun asennat käyttöjärjestelmäsi, kaikki ohjelmat mukaanlukien komentopäätteen ottavat nuo arvot käyttöön. Alunperin oli oletettu, että kieli, maa ja kirjainkoodaus olisivat yhdessä, mutta globalisoituvasssa maailmassa voi tapahtua niin, että Yhdysvalloissa oleskeleva unkarilainen voisi valita käyttöön merkistökoodauksen UTF-8, ranskankielen, metrisen (SI) mittajärjestelmän, rahayksikön euro, Sveitsin osoite- ja puhelinnumeromuotoilut ja Yhdysvaltojen letter-paperikoon.</p>
+<p>Voit muuttaa kaikkia näitä asetuksia päätteessäsi asettamalla sopivan merkkijonon asiaankuuluvaan ympäristömuuttujaan. Hyväksytyt arvot lokalisointiasetuksille asetetaan komennon "locale" valitsimilla.</p>
+<pre>$<strong> locale -m # saatavilla olevat merkistöt </strong></pre>
+<p><strong></strong>ANSI_X3.110-1983 ANSI_X3.4-1968 ARMSCII-8 ASMO_449 BIG5 BIG5-HKSCS ... # Ubuntu 8.10 tarjoaa 226 vaihtoehtoa</p>
+<p>$<strong> locale -a # listaa koneella saatavilla olevat englannin- ja suomenkieliset lokalisaatiot </strong></p>
+<p><strong></strong>en_AU.utf8 en_BW.utf8 en_CA.utf8 en_DK.utf8 en_GB.utf8 en_HK.utf8 en_IE.utf8 en_IN en_NG en_NZ.utf8 en_PH.utf8 en_SG.utf8 en_US.utf8 en_ZA.utf8 en_ZW.utf8 fi_FI.utf8 POSIX</p>
+<p>Saat erilaisia sijaintispesifikaatioita riippuen kielistä ja merkistökoodauksista, joita on valittu järjestelmääsi asennusaikaan tai muutettu myöhemmin.</p>
+<p>Muuttaaksesi asetuksiasi voit tarkastaa oikean formaatin käyttäen näitä komentoja ja asettaa sijainnin ympäristömuuttujat vastaavasti tiedostoon "<em>.profile"</em>.</p>
+<p>Toinen olennainen lokalisaation elementti on tahtomasi näppäimistön asettelu, jonka voit asettaa komennolla "<code>loadkeys</code>" komentoriviä varten ja komennolla "<code>setxkbmap"</code> graafista käyttöjärjestelmää X Window System varten.</p>
+<pre>$ <strong>loadkeys de-latin1 # Saksa</strong>
+</pre></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/komentorivin-perusteet/index">Ota komento</a></li>
+<li Class="booki-section">Perusteet</li><li><a href="/komentorivin-perusteet/ch003_aloittaminen">Käytön aloittaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch004_syntaksi">Syntaksi</a></li>
+<li><a href="/komentorivin-perusteet/ch005_ympariinsa-siirtyminen">Ympäriinsä siirtyminen</a></li>
+<li><a href="/komentorivin-perusteet/ch006_tiedostorakenne">Tiedostorakenne</a></li>
+<li Class="booki-section">Komennot</li><li><a href="/komentorivin-perusteet/ch008_peruskomennot">Peruskomennot</a></li>
+<li><a href="/komentorivin-perusteet/ch009_jarjestelmanvalvojat">Järjestelmänvalvoja</a></li>
+<li><a href="/komentorivin-perusteet/ch010_useammat-tiedostot">Useammat tiedostot</a></li>
+<li><a href="/komentorivin-perusteet/ch011_kirjoita-vahemman">Kirjoita vähemmän</a></li>
+<li Class="booki-section">Keskivaikeita komentoja</li><li><a href="/komentorivin-perusteet/ch013_putkitus">Putkitus</a></li>
+<li><a href="/komentorivin-perusteet/ch014_komentohistoria">Komentohistoria</a></li>
+<li><a href="/komentorivin-perusteet/ch015_standarditiedostot">Standarditiedostot</a></li>
+<li Class="booki-section">Kehittyneempiä komentoja</li><li><a href="/komentorivin-perusteet/ch017_kayttooikeudet">Käyttöoikeudet</a></li>
+<li><a href="/komentorivin-perusteet/ch018_interaktiivinen-muokkaus">Interaktiivinen muokkaus</a></li>
+<li><a href="/komentorivin-perusteet/ch019_poistumisen-tarkastaminen">Poistumisen tarkastaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch020_alikomennot">Alikomennot</a></li>
+<li><a href="/komentorivin-perusteet/ch021_hakemistot">Hakemistot</a></li>
+<li><a href="/komentorivin-perusteet/ch022_kustomisointi">Kustomisointi</a></li>
+<li><a href="/komentorivin-perusteet/ch023_parametrien-korvaaminen">Parametrien korvaaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch024_gnuscreen">GNUScreen</a></li>
+<li><a href="/komentorivin-perusteet/ch025_ssh">SSH</a></li>
+<li><a href="/komentorivin-perusteet/ch026_ohjelmien-asentaminen">Ohjelmien asentaminen</a></li>
+<li Class="booki-section">Tekstieditorit</li><li><a href="/komentorivin-perusteet/ch028_tekstieditorit">Tekstieditorit</a></li>
+<li><a href="/komentorivin-perusteet/ch029_nano">Nano</a></li>
+<li><a href="/komentorivin-perusteet/ch030_vi-ja-vim">Vi ja Vim</a></li>
+<li><a href="/komentorivin-perusteet/ch031_emacs">Emacs</a></li>
+<li><a href="/komentorivin-perusteet/ch032_kedit">Kedit</a></li>
+<li><a href="/komentorivin-perusteet/ch033_gedit">Gedit</a></li>
+<li Class="booki-section">Skriptaus</li><li><a href="/komentorivin-perusteet/ch035_skriptaus">Skriptaus</a></li>
+<li><a href="/komentorivin-perusteet/ch036_skriptien-huoltaminen">Skriptien huoltaminen</a></li>
+<li><a href="/komentorivin-perusteet/ch037_muut-kielet">Muut kielet</a></li>
+<li><a href="/komentorivin-perusteet/ch038_sed">Sed</a></li>
+<li><a href="/komentorivin-perusteet/ch039_awk">AWK</a></li>
+<li><a href="/komentorivin-perusteet/ch040_saannolliset-lausekkeet">Säännölliset lausekkeet</a></li>
+<li><a href="/komentorivin-perusteet/ch041_perl">Perl</a></li>
+<li><a href="/komentorivin-perusteet/ch042_ruby">Ruby</a></li>
+<li><a href="/komentorivin-perusteet/ch043_python">Python</a></li>
+<li Class="booki-section">Komennot nopeasti</li><li><a href="/komentorivin-perusteet/ch045_komentojen-pikaopas">Komentojen pikaopas</a></li>
+<li Class="booki-section">Liitteet</li><li><a href="/komentorivin-perusteet/ch047_tasta-kayttooppaasta">Tästä käyttöoppaasta</a></li>
+<li><a href="/komentorivin-perusteet/ch048_tekijat">Tekijät</a></li>
+</ul>

@@ -1,0 +1,77 @@
+<div id="main-content"><h1>Firefogg</h1>
+<div id="content">
+<p>Firefogg on Firefox-verkkoselaimen laajennuksen nimi. Firefogg lisää tuen videoiden koodaamiseksi Theoraan käyttäen miellyttävää verkkokäyttöliittymää. Se myös mahdollistaa verkkosivujen käytön videonlatauspalveluun, joka ottaa videoita tietokoneeltasi, kääntää ne lennossa Theora-muotoon ja lataa luodun Theora-tiedoston verkkosivulle.</p>
+<h2>Asennus</h2>
+<p>Firefogg vaatii Firefox-verkkoselainta, vähintään versiota 3.5. Jos Firefox-versiosi on venhampi, tai jos sinulla ei ole lainkaan Firefoxia asennettuna, vieraile sivulla <a title="Get Firefox" href="http://en.flossmanuals.net/bin/view/TheoraCookbook/www.mozilla.com">www.mozilla.com</a> ladataksesi ajan tasalla olevan version.</p>
+<p>Kun sinulla on viimeisin Firefoxin versio, käytä sitä vieraillaksesi Firefoggin kotisivulla <a title="Download Firefogg" href="http://en.flossmanuals.net/bin/view/TheoraCookbook/www.firefogg.org">www.firefogg.org</a>:</p>
+<p><img title="ffi_00_en" src="_booki/ogg-theora/static/TheoraCookbook-FireFOGG-ffi_00_en-fi.png" alt="ffi_00_en" width="560" height="526"></p>
+<p>Nyt voit klikata <em>Install Firefogg</em>. Sivun yläosassa Firefox pyytää sinua sallimaan uuden tiedoston asentamisen:</p>
+<p><img title="ffi_02_en" src="_booki/ogg-theora/static/TheoraCookbook-FireFOGG-ffi_02_en-fi.png" alt="ffi_02_en" width="611" height="407"> </p>
+<p>Klikkaa <em>Allow</em>, jolloin seuraava dialogi ilmestyy:</p>
+<p><img title="ffi_02_en" src="_booki/ogg-theora/static/TheoraCookbook-FireFOGG-ffi_02_en-fi.png" alt="ffi_02_en" width="611" height="407"></p>
+<p>Klikkaa <em>Install Now.</em> Asennuksen jälkeen sinua pyydetään käynnistämään Firefox uudelleen. Klikkaa <em>Restart Firefox</em> päästäksesi eteenpäin.</p>
+<h2>Ensimmäisen videosi koodaaminen</h2>
+<p>Koodataksesi videoita Firefoggilla tarvitset internet-yhteyden. Osia koodausohjelmasta on internetissä ja ne asennetaan tietokoneellesi.</p>
+<p>Koodausohjelma käynnistetään käymällä osoitteessa <a title="Encode Videos with Firefogg" href="http://firefogg.org/make">http://firefogg.org/make</a>. Seuraava sivusto tulee näkyviin: </p>
+<p><img title="ffi_00_en" src="_booki/ogg-theora/static/TheoraCookbook-FireFOGG-ffi_00_en-fi.png" alt="ffi_00_en" width="560" height="526"></p>
+<p>Klikkaa <em>Select File</em>, jolloin esiin ilmestyy tiedostodialogi, joka antaa sinun valita lähdetiedosto koodattavaksi. Tässä esimerkissä me käytämme videota <em>my_source_video.mp4. </em>Tiedoston valitsemisen jälkeen sinut tuodaan dialogiin, joka kysyy videon koodauksen parametrejä:</p>
+<p><img title="ffd_01_en" src="_booki/ogg-theora/static/TheoraCookbook-FireFOGG-ffd_01_en-fi.png" alt="ffd_01_en" width="624" height="526"> </p>
+<p>Valitse tällä kertaa vain <em>Save Ogg. </em>Sinua pyydetään valitsemaan luotavan Theora-tiedoston nimi. Muista. Me valitsemme nimen <em>my_theora_video.ogv</em> (muista, oikea tiedostonimen pääte Theora-videoille on .ogv). Nyt koodaus alkaa, käyttäen oletusarvoisia parametrejä: </p>
+<p><img title="ffd_03_en" src="_booki/ogg-theora/static/TheoraCookbook-FireFOGG-ffd_03_en-fi.png" alt="ffd_03_en" width="624" height="526"></p>
+<p>Nyt täytyy odottaa koodausprosessin 100% valmistumista ja sitten se on valmis. </p>
+<h2>Kehittyneemmät koodausoptiot</h2>
+<p>Käyttäen oletusarvoista parametrien joukkoa videon koodaukseen tuottaa hyvin pieniä Theora-tiedostoja, jotka on optimoitu videon striimaukseen verkossa. Videon näkyvä laatu on itse asiassa aika matala useimpien makuun. Mutta odota, Firefogg on yhtä kehittynyt kuin useimmat muut Theora-koodaajat. Pienellä säätämisellä voidaan luoda helposti korkealaatuisia videoita. Säätövaihtoehdot ovat näkyvillä verkkosivulla Save Ogg -nappulan alla.</p>
+<p>Helpoin tapa koodauksen säätämiseen on valita yksi kolmesta ennakkoasetusvaihtoehdosta Preset-valikosta: </p>
+<p><img title="ffc_04_en" src="_booki/ogg-theora/static/TheoraCookbook-FireFOGG-ffc_04_en-fi.png" alt="ffc_04_en" width="620" height="526"></p>
+<p>Kahta ensimmäistä ennakkovalintaa kutsutaan <em>nimillä Web Video Theora</em> ja <em>Low Bandwidth Theora. </em>Molemmat on optimoitu videon striimaukseen internetissä. Jos aiot toistaa luotuja Theora-tiedostoja ainoastaan CD:ltä, USB-tikuilta tai tietokoneesi kovalevyltä, sinun ei pitäisi käyttää niitä. Käytä ennakkoasetusta <em>High Quality Theora</em> niiden sijaan.</p>
+<h3>Omat asetukset</h3>
+<p>Useampia koodausprosessin yksityiskohtia voidaan konfiguroida valitsemalla <em>Custom Settings </em>ja säätämällä alemman tason optioita muissa tarjolla olevissa valikoissa. Katsotaanpa tärkeintä valikkoa,  <em>Basic Quality and Resolution Control</em>:</p>
+<p><img src="http://en.flossmanuals.net/floss/pub/TheoraCookbook/FirefoggEncoding/" alt="" width="0" height="0"><img title="ffc-06_1_en" src="_booki/ogg-theora/static/TheoraCookbook-FireFOGG-ffc-06_1_en-fi.png" alt="ffc-06_1_en" width="560" height="526"></p>
+<p>Tässä voit määritellä luodun Theora-tiedoston laadun. Voit myös muuttaa koodatun videon kuvaruudun kokoa. Videon koodaaminen kohdelaatuun (kohdebittinopeuden sijasta) on suositeltu koodaustila Theoraa varten, joten yleensä et tahdo kokeilla muita koodausvaihtoehtoja muissa valikoissa.</p>
+<h2>Muita tapoja käyttää Firefoggia</h2>
+<p>Kun Firefogg on asennettu, sitä voidaan käyttää muilla sitä tukevilla verkkosivuilla. Lista näistä sivuita on osoitteessa <a title="Sites using Firefogg" href="http://firefogg.org/sites">http://firefogg.org/sites</a>.</p>
+</div></div><ul Class="menu-goes-here"><li Class="booki-section">JOHDANTO</li><li><a href="/ogg-theora/index">OGG THEORA</a></li>
+<li><a href="/ogg-theora/ch002_tasta-kayttooppaasta">TÄSTÄ KÄYTTÖOPPAASTA</a></li>
+<li><a href="/ogg-theora/ch003_mita-video-on">MITÄ VIDEO ON?</a></li>
+<li><a href="/ogg-theora/ch004_mita-theora-on">MITÄ THEORA ON?</a></li>
+<li Class="booki-section">PERUSKÄSITTEET</li><li><a href="/ogg-theora/ch006_mika-on-koodekki">MIKÄ ON KOODEKKI?</a></li>
+<li><a href="/ogg-theora/ch007_sailot">SÄILÖT</a></li>
+<li Class="booki-section">TOISTO</li><li><a href="/ogg-theora/ch009_theoran-toistaminen">THEORAN TOISTAMINEN</a></li>
+<li><a href="/ogg-theora/ch010_toisto-vlclla">TOISTO VLC:LLÄ</a></li>
+<li><a href="/ogg-theora/ch011_miro">MIRO</a></li>
+<li Class="booki-section">THEORA VERKOSSA</li><li><a href="/ogg-theora/ch013_theora-verkossa">THEORA VERKOSSA</a></li>
+<li><a href="/ogg-theora/ch014_html5">HTML5</a></li>
+<li><a href="/ogg-theora/ch015_theora-sivuillasi">THEORA SIVUILLASI</a></li>
+<li><a href="/ogg-theora/ch016_hotelleja-theoralle">HOTELLEJA THEORALLE</a></li>
+<li Class="booki-section">ENKOODAUS</li><li><a href="/ogg-theora/ch018_johdanto-enkoodaukseen">JOHDANTO ENKOODAUKSEEN</a></li>
+<li><a href="/ogg-theora/ch019_firefogg">FIREFOGG</a></li>
+<li><a href="/ogg-theora/ch020_enkoodaus-vlclla">ENKOODAUS VLC:LLÄ</a></li>
+<li><a href="/ogg-theora/ch021_enkoodaus-ffmpeg2theoralla">ENKOODAUS FFMPEG2THEORALLA </a></li>
+<li><a href="/ogg-theora/ch022_thoggen">THOGGEN</a></li>
+<li Class="booki-section">TEKSTITYKSET</li><li><a href="/ogg-theora/ch024_tekstityksien-perusteet">TEKSTITYKSIEN PERUSTEET</a></li>
+<li><a href="/ogg-theora/ch025_jakelu">JAKELU</a></li>
+<li><a href="/ogg-theora/ch026_tekstityksien-liittaminen">TEKSTITYKSIEN LIITTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch027_tekstityksien-toistaminen">TEKSTITYKSIEN TOISTAMINEN</a></li>
+<li><a href="/ogg-theora/ch028_julkaiseminen">JULKAISEMINEN</a></li>
+<li Class="booki-section">SUORATOISTO</li><li><a href="/ogg-theora/ch030_suoratoiston-perusteet">SUORATOISTON PERUSTEET</a></li>
+<li><a href="/ogg-theora/ch031_icecast">ICECAST</a></li>
+<li><a href="/ogg-theora/ch032_tss">TSS</a></li>
+<li><a href="/ogg-theora/ch033_ffmpeg2theora-streamaus">FFMPEG2THEORA-STREAMAUS</a></li>
+<li><a href="/ogg-theora/ch034_suoratoisto-vlc-ohjelmalla">VLC-STREAMAUS</a></li>
+<li><a href="/ogg-theora/ch035_virtaustoiston-tallentaminen">VIRTAUSTOISTON TALLENTAMINEN</a></li>
+<li Class="booki-section">EDITOINTI</li><li><a href="/ogg-theora/ch037_johdanto-editointiin">JOHDANTO EDITOITIIN</a></li>
+<li><a href="/ogg-theora/ch038_pitivi">PITIVI</a></li>
+<li Class="booki-section">ESIKATSELU</li><li><a href="/ogg-theora/ch040_kuinka-esikatselua-kaytetaan">ESIKATSELUN KÄYTTÖ</a></li>
+<li><a href="/ogg-theora/ch041_tee-esikatselukuvia">TEE ESIKATSELUKUVIA</a></li>
+<li><a href="/ogg-theora/ch042_tee-diaesitys">TEE DIAESITYS</a></li>
+<li><a href="/ogg-theora/ch043_tee-esikatseluvideo">TEE ESIKATSELUVIDEO</a></li>
+<li Class="booki-section">EDITOINTI KOMENTORIVILTÄ</li><li><a href="/ogg-theora/ch045_komentorivi">THEORA JA KOMENTORIVI</a></li>
+<li><a href="/ogg-theora/ch046_theoran-teoria">THEORAN TEORIA</a></li>
+<li><a href="/ogg-theora/ch047_tiedoston-jakaminen">TIEDOSTON JAKAMINEN</a></li>
+<li><a href="/ogg-theora/ch048_tiedoston-leikkaaminen">TIEDOSTON LEIKKAAMINEN</a></li>
+<li><a href="/ogg-theora/ch049_tiedostojen-liittaminen">TIEDOSTOJEN LIITTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch050_tiedostojen-yhdistaminen">TIEDOSTOJEN YHDISTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch051_koon-muuttaminen">KOON MUUTTAMINEN</a></li>
+<li><a href="/ogg-theora/ch052_oggin-analysoiminen">OGGIN ANALYSOIMINEN</a></li>
+<li Class="booki-section">TEKIJÄT</li><li><a href="/ogg-theora/ch054_tekijat">TEKIJÄT</a></li>
+</ul>

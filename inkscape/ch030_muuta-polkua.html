@@ -1,0 +1,126 @@
+<div id="main-content"><h1>Polunmuokkaustehosteet</h1>
+<div id="content">
+<p><strong>Muokkaa polun tehosteita</strong> toimii missä tahansa valitussa <strong>polkujen</strong> joukossa. Se muokkaa niitä eri tavoin luomatta uusia polkuja tai tuhoamatta vanhoja polkuja.  </p>
+<h2>Tarjolla olevat tehosteet</h2>
+<h3>Kuori ja perspektiivi</h3>
+<blockquote>
+<p>Kartoittaa polun rajauslaatikon nelikulmioon saadakseen aikaan perspektiivivaikutelman. Nämä kaksi tehostetta ovat aika samanlaisia, mutta eroa on saadun vaikutelman luonnollisuuden asteella. </p>
+<p>Näin sitä käytetään:</p>
+<ol><li>Piirrä muutettavaksi tarkoittamasi polku.</li>
+<li>Piirrä ja sijoita neljän solmun polku (kuoren kehys).</li>
+<li>Sijoita muutettavaksi tarkoitettu polku kuoren kehyksen sisälle tai päälle.</li>
+<li>Valitse polku, jonka tahdot muuttaa ensin, ja liitä sen jälkeen valinta kuoren kehykseen. Neljän solmun alkuperäinen valinta on kellon suuntaisesti polun rajauslaatikon ympärillä. Muutos alkaa vasemmasta yläkulmasta.</li>
+<li>Käytä tehostetta.</li>
+</ol>Tässä on ero: <br><img title="envelope_perspective" src="_booki/inkscape/static/Inkscape-ModifyPathEffects-envelope_perspectiveFI-fi.png" alt="envelope_perspectiveFI.png" width="427" height="225"></blockquote>
+<h3>Lisää solmuja</h3>
+<blockquote>
+<p>Lisää solmuja valittuihin polkuihin. Jokainen valitun polun osa jaetaan yhtä pitkiin osiin (maksimipituuden mukaan). Pituudet mitataan SVG-käyttäjäyksiköinä, jotka lasketaan polun tiedoista ja jotka eivät ota huomioon mitään muunnoksia.</p>
+<p>Alla parametrit esimerkille:</p>
+<dl><dd>
+<ul><li>Jakomenetelmä</li>
+</ul><dl><dt></dt><dd>osien määrän mukaan
+<ul><li>Osien maksimipituus (pikseliä): 5</li>
+<li>Osien määrä: 2</li>
+</ul></dd></dl></dd></dl><p><img title="AddNodes" src="_booki/inkscape/static/Inkscape-ModifyPathEffects-AddNodes_en-fi.png" alt="AddNodes" width="270" height="90"></p>
+</blockquote>
+<h3>Värien merkitsijät sopimaan viivaan</h3>
+<blockquote>
+<p>Nykyinen SVG 1.1 -spesifikaatio ei salli saman värin käyttämistä polkuun ja sen merkitsijöihin. Tämä laajennus on tilapäinen tapa korjata se (kunnes uusi ja parempi SVG-spesifikaatio tulee). Muuta vain viivan väriä polussasi ja kutsu tätä efektiä värittääksesi sen merkitsijät uudelleen sopimaan viivaan. </p>
+<p><img title="ColorMarkers" src="_booki/inkscape/static/Inkscape-ModifyPathEffects-ColorMarkers_en-fi.png" alt="ColorMarkers" width="270" height="126"></p>
+</blockquote>
+<h3>Tasoita bezier-käyrät</h3>
+<blockquote>
+<p>Tasoittaa polut nykyisessä valinnassa, tekee jokaisen polun suurin piirtein jokaisen polun moniviivalla, jonka osat sopivat määritellyille tasaisuuden kriteereille. Pienemmät tasaisuusarvot tekevät tasaisemman viivan. </p>
+<p> </p>
+<p>Esimerkin parametrit alla:</p>
+<ul><li>Tasaisuus:10</li>
+</ul><p> </p>
+<p><img src="http://wiki.inkscape.org/wiki/images/FlattenBeziersExample.png" alt=""></p>
+</blockquote>
+<a name="Fractalize"></a>
+<h3>Fraktalisoi</h3>
+<blockquote>
+<p>Korvaa valitun polun jokaisen osan vääntyneellä viivalla, joka on jaettu annettuun syvyyteen asti, ja jolla on satunnaisesti siirretyt solmut.</p>
+<p>Mahdolliset vaihtoehdot ovat:</p>
+<p>Esimerkkiparametrit alla:</p>
+<ul><ul><li>Alijakoja</li>
+</ul>
+6
+<ul><li>Tasaisuus</li>
+</ul>
+4.0</ul><a name="Jitter_nodes"></a>
+<p><img src="http://wiki.inkscape.org/wiki/images/FractalizeExample.png" alt=""></p>
+</blockquote>
+<h3>Täristä solmuja</h3>
+<blockquote>
+<p>Siirtää solmuja satunnaisesti (ja vaihtoehtoisesti solmujen kahvoja) </p>
+<p>Esimerkkiparametrit alla:</p>
+<ul><li>Maksimisiirto X-suunnassa: 50.0</li>
+<li>Maksimisiirto Y-suunnassa: 50.0</li>
+<li>Siirrä solmuja: rastittu</li>
+<li>Siirrä solmujen kahvoja: rastittu</li>
+<li>Käytä normaalijakoa: rastittu</li>
+</ul><p><img title="JitterNodes" src="_booki/inkscape/static/Inkscape-ModifyPathEffects-JitterNodes_en-fi.png" alt="JitterNodes" width="368" height="137"></p>
+</blockquote>
+<h3>Suorista osia</h3>
+<blockquote>
+<p>Suoristaa mutkalla olevan osan käyttäjän määrittelemälle tasolle (prosentteina) käyttäen kahta vaihtoehtoista toimintamallia (<strong>1</strong> merkitsee pyöristettyjä kulmia, <strong>2</strong> merkitsee vähemmän pyöristettyjä kulmia).</p>
+<p>Esimerkin parametrit alla:</p>
+<ul><li>Prosenttia:50</li>
+<ul><li>Käytös</li>
+</ul>
+1</ul><p><img src="http://wiki.inkscape.org/wiki/images/StraightenSegmentsExample.png" alt=""></p>
+</blockquote>
+<p> </p>
+<h3>Pyörre</h3>
+<blockquote>
+<p>Vääntää valitut polut määritellyn keskipisteen ympärille.</p>
+<p>Esimerkin parametrit alla:</p>
+<ul><li>Pyörteen määrä: 15</li>
+<li>Kieritys kellon suuntaan: rastittu</li>
+</ul><p><img title="Whirl" src="_booki/inkscape/static/Inkscape-ModifyPathEffects-Whirl_en-fi.png" alt="Whirl" width="510" height="205"></p>
+</blockquote>
+</div></div><ul Class="menu-goes-here"><li Class="booki-section">INKSCAPEN KÄYTTÖOHJE</li><li><a href="/inkscape/index">INKSCAPE-OHJE</a></li>
+<li><a href="/inkscape/ch002_svg">SVG-VEKTORIGRAFIIKKA</a></li>
+<li Class="booki-section">ASENNUS</li><li><a href="/inkscape/ch004_asennus-windowsiin">ASENNUS WINDOWSIIN</a></li>
+<li Class="booki-section">PERUSTEET</li><li><a href="/inkscape/ch006_kayttoliittyma">KÄYTTÖLIITTYMÄ</a></li>
+<li><a href="/inkscape/ch007_tiedostojen-kaytto">TIEDOSTOJEN KÄYTTÖ</a></li>
+<li Class="booki-section">PIKAOPAS</li><li><a href="/inkscape/ch009_kuvakkeiden-luominen">KUVAKKEIDEN LUOMINEN</a></li>
+<li Class="booki-section">TYÖKALULAATIKKO</li><li><a href="/inkscape/ch011_valinta">VALINTA</a></li>
+<li><a href="/inkscape/ch012_solmu">SOLMU</a></li>
+<li><a href="/inkscape/ch013_muokkaus">MUOKKAUS</a></li>
+<li><a href="/inkscape/ch014_zoomaus">ZOOMAUS</a></li>
+<li><a href="/inkscape/ch015_suorakulmio">SUORAKULMIO</a></li>
+<li><a href="/inkscape/ch016_kolmiulotteinen-laatikko">KOLMIULOTTEINEN LAATIKKO</a></li>
+<li><a href="/inkscape/ch017_ellipsi">ELLIPSI</a></li>
+<li><a href="/inkscape/ch018_tahti">TÄHTI</a></li>
+<li><a href="/inkscape/ch019_spiraali">SPIRAALI</a></li>
+<li><a href="/inkscape/ch020_lyijykyna">LYIJYKYNÄ</a></li>
+<li><a href="/inkscape/ch021_kuulakarkikyna">BÉZIER</a></li>
+<li><a href="/inkscape/ch022_kalligrafia">KALLIGRAFIA</a></li>
+<li><a href="/inkscape/ch023_pyyhekumi">PYYHEKUMI</a></li>
+<li><a href="/inkscape/ch024_sankotaytto">SANKOTÄYTTÖ</a></li>
+<li><a href="/inkscape/ch025_teksti">TEKSTI</a></li>
+<li><a href="/inkscape/ch026_liitin">LIITIN</a></li>
+<li><a href="/inkscape/ch027_liukuvari">LIUKUVÄRI</a></li>
+<li><a href="/inkscape/ch028_pipetti">PIPETTI</a></li>
+<li Class="booki-section">POLUT</li><li><a href="/inkscape/ch030_muuta-polkua">MUUTA POLKUA</a></li>
+<li Class="booki-section">TEKSTI</li><li><a href="/inkscape/ch032_tekstin-tyyli">TEKSTIN TYYLI</a></li>
+<li><a href="/inkscape/ch033_tekstin-efektit">TEKSTIN EFEKTIT</a></li>
+<li><a href="/inkscape/ch034_teksti-ja-polut">TEKSTI JA POLUT</a></li>
+<li Class="booki-section">USEAMMAN OBJEKTIN OPERAATIOT</li><li><a href="/inkscape/ch036_kopioi-kloonaa-ja-monista">KOPIOI, KLOONAA JA MONISTA</a></li>
+<li><a href="/inkscape/ch037_leikkaus-ja-peitteet">LEIKKAUS JA PEITTEET</a></li>
+<li Class="booki-section">KOHTEIDEN SIJOITTELU</li><li><a href="/inkscape/ch039_sijoittelu">SIJOITTELU</a></li>
+<li><a href="/inkscape/ch040_jaa-ja-tasaa">JAA JA TASAA</a></li>
+<li Class="booki-section">KOHTEIDEN JÄRJESTELY</li><li><a href="/inkscape/ch042_tasot">TASOT</a></li>
+<li><a href="/inkscape/ch043_ryhmittely">RYHMITTELY</a></li>
+<li Class="booki-section">KOHTEIDEN TYYLI</li><li><a href="/inkscape/ch045_tyyli">TYYLI</a></li>
+<li><a href="/inkscape/ch046_taytto-ja-viiva">TÄYTTÖ JA VIIVA</a></li>
+<li Class="booki-section">POLKUTEHOSTE</li><li><a href="/inkscape/ch048_polkutehosteet">POLKUTEHOSTEET</a></li>
+<li><a href="/inkscape/ch049_hammasrattaat">HAMMASRATTAAT</a></li>
+<li><a href="/inkscape/ch050_muoto-polkua-pitkin">MUOTO POLKUA PITKIN</a></li>
+<li Class="booki-section">SVG-SUODATTIMET</li><li><a href="/inkscape/ch052_suodattimet">SUODATTIMET</a></li>
+<li Class="booki-section">ASETUKSET</li><li><a href="/inkscape/ch054_varinhallinta">VÄRINHALLINTA</a></li>
+<li Class="booki-section">LIITTEET</li><li><a href="/inkscape/ch056_oppaasta">KÄYTTÖOHJEESTA</a></li>
+<li><a href="/inkscape/ch057_lisenssi">LISENSSI</a></li>
+</ul>

@@ -1,0 +1,85 @@
+<div id="main-content"><h1>SVG-suodattimet</h1>
+<h2>Perusteet</h2>
+<p>SVG:n suodattimet eroavat esimerkiksi GIMP:n suodattimista siten, että mikä GIMP:ssä on suodatin, on SVG:ssä suodinosa. Suodatin voi SVG:ssä sisältää useita suodinosia. Esimerkiksi SVG-suodatin, joka luo tuliefektin, koostuu suodinosista <em>turbulenssi, värimatriisi</em> ja <em>Gauss-sumennus</em>. SVG-suodattimet eivät muuta pysyvästi kohdettaan. Suodattimia voi käyttää SVG-tiedostossa sekä vektori- että bittikarttakohteille.</p>
+<p>SVG-suodattimia käyttäessä on hyvä muistaa, että ne käsittelevät aina kuvan bittikarttaesitystä. Muokattaessa kuvaa suodatettu kohde piirretään bittikarttakuvaksi, ja suodatin suoritetaan tälle kuvalle aina alkuperäisen kohteen muuttuessa, tai kun siitä tarvitaan toisen kokoinen versio.</p>
+<h2>Suodinosat</h2>
+<p>Inkscape tukee seuraavia SVG:n suodinosia:</p>
+<ul><li><strong>Sekoita</strong> (feBlend) tarjoaa useimmista muistakin kuvankäsittelyohjelmista tuttuja tapoja kuvien yhdistämiseen. Näitä tapoja ovat kertova, rasteri, tummenna ja vaalenna. On hyvä kuitenkin huomata, että jos kohde yhdistetään osittain läpinäkyvän taustan kanssa, tausta yhdistetään kuvaan kahdesti, ja suodatetun kohteen ympärillä taustasta tulee vähemmän läpinäkyvä. Tämä on rajoitus nykyisessä SVG-versiossa, ei virhe Inkscapessa.</li>
+<li><strong>Värimatriisi</strong> (feColorMatrix) muuntaa jokaisen kuvan pikselin väriarvon annetulla matriisilla. Tämä mahdollistaa esimerkiksi kuvan muuntamisen harmaasävyiseksi, värikylläisyyden säätämisen ja värisävyn vaihtamisen.</li>
+<li><strong>Yhdiste</strong> (feComposite) yhdistää kaksi kuvaa käyttäen jotain Porter-Duff sekoitustilaa tai SVG-standardissa määriteltyä aritmeettista tilaa. Porter-Duff sekoitustilat ovat oleellisesti kuville suoritettavia logiikan laskutoimituksia. Esimerkiksi xor eli poissulkeva tai -tilassa näkyviin jäävät ne alueet, jotka ovat läpinäkymättömiä jommassa kummassa syötekuvassa, mutta eivät molemmissa. Aritmeettisessa tilassa voit määritellä neljä kerrointa, k1-k4, joiden perusteella lasketaan tuotettavan kuvan kunkin pikselin väri seuraavasti: k1 * ensimmäisen kuvan väri * toisen kuvan väri + k2 * ensimmäisen kuvan väri + k3 * toisen kuvan väri + k4.</li>
+<li><strong>Konvoluutio</strong> (feConvolveMatrix) on suodatin, joka laskee tuotettavan värin lähellä olevien pikseleiden värien ja annettujen kertoimien perusteella. Tyypillisiä konvoluutiolla tuotettavia efektejä ovat sumennus, terävöitys, kohokuviointi ja reunantunnistus. Huomaathan, että vaikka tällä suodinosalla voi luoda Gauss-sumennuksen, sille on oma suodinosansa, joka toimii nopeammin ja ei riipu kuvan resoluutiosta.</li>
+<li>Valaistussuotimet <strong>Hämärä valaistus</strong> (feDiffuseLighting) ja <strong>Heijastusvalo</strong> (feSpecularLighting) luovat valaistuskartan syötekuvalle. Koska SVG:ssä ei ole olemassa kolmatta ulottuvuutta, jonka perusteella valaistuksen voisi laskea, nämä suodatinosat käyttävät syötekuvan läpinäkyvyyttä korkeuskarttana: mitä läpinäkyvämpi kuva kohta on, sitä kauempana katsojasta sen kohdan tulkitaan olevan. Inkscape-jakelupaketissa on mukana esimerkkejä näiden suodattimien käytöstä, sijainnissa share/examples/lighting_filters.svg.</li>
+<li><strong>Poikkeutuskartta</strong> (feDisplacementMap) siirtää ensimmäisen syötekuvan pikseleitä toisen syötteen värien mukaan. Tuotettavan kuvan kohdan väri valitaan toisen syötekuvan värin määräämän matkan päästä ensimmäisestä syötekuvasta. Tunnettuja esimerkkejä tästä suodattimesta ovat kuvan kierto ja pullistus, jotka löytyvätkin useimmista kuvankäsittelyohjelmista, sekä myös joistain näytönsäästäjistä, joissa kiertymä tai pullistuma liikkuu ympäri työpöytää.</li>
+<li><strong>Täyttö</strong> (feFlood) luo tasaisella värillä täytetyn kuvan. Tämä on käyttökelpoinen lähinnä jonkin muun suodinosan kanssa käytettynä, värjäämään tuotettua kuvaa.</li>
+<li><strong>Gauss-sumennus</strong> (feGaussianBlur) sumentaa kohdettaan. Tämä mahdollistaa useiden muuten vaikeasti jäljiteltävien ilmiöiden esittämisen, kuten vapaamuotoiset varjot ja kirkkaat kohdat, depth of field ???, heittovarjot, hehkut jne. Sumennettuja kohteita voi myös käyttää maskeina, mikä mahdollistaa maskien häivytetyt reunat.</li>
+<li><strong>Kuva</strong> (feImage) tuo ulkoisen kuvatiedoston tai osan nykyistä SVG-tiedostoa osaksi suodatinta. Tätä voisi käyttää esimerkiksi tuomaan kuvatiedoston poikkeutuskartta-suodinosan poikkeutuskartaksi tai valaistussuotimien korkeuskartaksi.</li>
+<li><strong>Yhdistä</strong> (feMerge) yhdistää useita suodattimen väliaikaisia kuvia yhdeksi kuvaksi. Tämä käyttää tavallista alpha-yhdistämistä, kuten muutenkin asetettaessa kohteita päällekkäin SVG-kuvassa. Tämä suodatinosa vastaa useiden Sekoita-suodatinosien käyttöä normaalitilassa tai Yhdiste-suodatinosien käyttöä yli-tilassa.</li>
+<li><strong>Morfologia</strong> (feMorphology) tarjoaa toiminnot Kuluta ja Laajenna. Kuluta levittää tummia ja läpinäkyviä alueita vaaleammille ja vähemmän läpinäkyville alueille, kun taas laajenna levittää vaaleita ja läpinäkymättömiä alueita. Yksivärisille kohteille tämä yksinkertaisesti tarkoittaa, että kuluta kutistaa kohdetta ja laajenna laajentaa sitä.</li>
+<li><strong>Siirtymä</strong> (feOffset) siirtää kuvaa käyttäjän antaman määrän. Tämä on hyödyllinen esimerkiksi heittovarjon tekemiseen, missä varjon pitää olla vähän eri paikassa kuin alkuperäisen kohteen.</li>
+<li><strong>Turbulenssi</strong> (feTurbulence) luo <span class="external text">Perlin-kohinaa</span>. Tällainen kohina on käyttökelpoista monien luonnonilmiöiden jäljittelyssä, esimerkiksi pilvien, tulen ja savun. Lisäksi Perlin-kohinalla voi hyvin luoda monimutkaisia kuviointeja, kuten marmoria tai graniittia.</li>
+</ul><h2>Käyttöliittymä suodattimille </h2>
+<h3>Suodatintehosteiden muokkausikkunan osat </h3>
+<p>Suodatintehosteiden luominen ja muokkaaminen tapahtuu omassa ikkunassaan, joka löytyy Inkscapen valikoista paikasta <span class="menu">Kohde </span>&gt;<span class="menu"> Suodatintehosteet...</span>.</p>
+<p><img title="ScreenHunter_07_Jan._10_22.33" src="_booki/inkscape/static/Inkscape-SVGFilterEffects-ScreenHunter_07_Jan-_10_22-33-fi.gif" alt="ScreenHunter_07_Jan._10_22.33" width="428" height="822"> </p>
+<p>Ikkunan vasemmalla reunalla on lista tiedostossa tällä hetkellä olevista suodattimista. </p>
+<h3>Suodattimien hallinta</h3>
+<ul><li>Uusia suodattimia voi luoda <strong>Uusi</strong>-napista suodatinlistan alla.</li>
+<li>Suodattimen voi kahdentaa tai poistaa napsauttamalla sitä hiiren oikealla napilla suodatinlistassa.</li>
+<li>Suodattimen kaksoisnapsauttaminen suodatinlistassa asettaa sen käyttöön valituille kohteille.</li>
+<li>Valittuissa kohteissa käytössä olevat suodattimet on merkitty suodatinlistassa. Jos valituissa kohteissa on käytössä useita suodattimia, ne kaikki on merkitty.</li>
+</ul><h3>Suodinosien hallinta</h3>
+<p>Toisessa, ikkunan vasemmalla puolen olevassa, listassa näkyvät valitun suodattimen sisältämät <strong>suodatinosat</strong>.</p>
+<ul><li>Uuden suodatinosan suodattimeen voi lisätä valitsemalla haluamansa listan alla olevasta alasvetovalikosta ja napsauttamalla sen vieressä olevaa Lisää tehoste -nappia.</li>
+<li>Listassa olevan suodinosan napsauttaminen oikealla napilla mahdollistaa suodinosan kahdentamisen ja poistamisen.</li>
+<li>Suodinosia voi uudelleenjärjestellä raahaamalla niitä listassa uusille paikoille.</li>
+<li>Kun suodinosa on valittuna, listan alla oleva Tehosteen parametrit -alue näyttää valittuna olevan suodinosan asetukset. Muutokset asetuksissa näkyvät suoraan kuvassa.</li>
+<li>Suodinosan syötekuvat ovat myös parametreja, mutta ne eivät näy Tehosteen parametrit -alueella, vaan viivoina suodinosien listalla, Yhteydet-sarakkeessa.</li>
+<li>Suodinosan ottamat syötekuvat näkyvät kolmioina. Yleensä suodinosa ottaa yksi tai kaksi syötekuvaa, muutama ei ota yhtään ja yhdistä ottaa kuinka monta vain. Mistä syöte tulee, voi valita raahaamalla kolmiosta haluttuun lähtöpaikkaan.</li>
+<li>On olemassa kuusi yleistä syötettä, jotka suodinosalle voi antaa: <em>Lähdegrafiikka</em>, <em>Lähde-alpha</em>, <em>Taustakuva</em>, <em>Taustan alpha</em>, <em>Täyttöväri</em> ja <em>Taustan väri</em>. Nämä näkyvät pystysuorina palkkeina suodinlistan oikeassa laidassa. Raahaa suodinosan syötekolmiosta haluamaasi näistä käyttääksesi sitä.</li>
+<li>Suodinosat voivat ottaa syötteekseen myös toisen suodinosan tuloksen. Tämän voi tehdä raahaamalla suodinosan syötekolmiosta ylöspäin haluttuun kuvalähteeseen. Suodinosat eivät voi käyttää alempana listassa olevien suodinosien tuloksia syötteinään.</li>
+<li>Syötekolmion napsauttaminen palauttaa sen oletuslähteeseensä. <em>Yhdistä</em>-suodinosan syötekolmion napsauttaminen kadottaa sen.</li>
+<li>Yhdistä-suodinosalla on aina tyhjä syötekolmio viimeisenä. Siitä raahaamalla voi lisätä uuden syötteen suodinosalle. </li>
+</ul></div><ul Class="menu-goes-here"><li Class="booki-section">INKSCAPEN KÄYTTÖOHJE</li><li><a href="/inkscape/index">INKSCAPE-OHJE</a></li>
+<li><a href="/inkscape/ch002_svg">SVG-VEKTORIGRAFIIKKA</a></li>
+<li Class="booki-section">ASENNUS</li><li><a href="/inkscape/ch004_asennus-windowsiin">ASENNUS WINDOWSIIN</a></li>
+<li Class="booki-section">PERUSTEET</li><li><a href="/inkscape/ch006_kayttoliittyma">KÄYTTÖLIITTYMÄ</a></li>
+<li><a href="/inkscape/ch007_tiedostojen-kaytto">TIEDOSTOJEN KÄYTTÖ</a></li>
+<li Class="booki-section">PIKAOPAS</li><li><a href="/inkscape/ch009_kuvakkeiden-luominen">KUVAKKEIDEN LUOMINEN</a></li>
+<li Class="booki-section">TYÖKALULAATIKKO</li><li><a href="/inkscape/ch011_valinta">VALINTA</a></li>
+<li><a href="/inkscape/ch012_solmu">SOLMU</a></li>
+<li><a href="/inkscape/ch013_muokkaus">MUOKKAUS</a></li>
+<li><a href="/inkscape/ch014_zoomaus">ZOOMAUS</a></li>
+<li><a href="/inkscape/ch015_suorakulmio">SUORAKULMIO</a></li>
+<li><a href="/inkscape/ch016_kolmiulotteinen-laatikko">KOLMIULOTTEINEN LAATIKKO</a></li>
+<li><a href="/inkscape/ch017_ellipsi">ELLIPSI</a></li>
+<li><a href="/inkscape/ch018_tahti">TÄHTI</a></li>
+<li><a href="/inkscape/ch019_spiraali">SPIRAALI</a></li>
+<li><a href="/inkscape/ch020_lyijykyna">LYIJYKYNÄ</a></li>
+<li><a href="/inkscape/ch021_kuulakarkikyna">BÉZIER</a></li>
+<li><a href="/inkscape/ch022_kalligrafia">KALLIGRAFIA</a></li>
+<li><a href="/inkscape/ch023_pyyhekumi">PYYHEKUMI</a></li>
+<li><a href="/inkscape/ch024_sankotaytto">SANKOTÄYTTÖ</a></li>
+<li><a href="/inkscape/ch025_teksti">TEKSTI</a></li>
+<li><a href="/inkscape/ch026_liitin">LIITIN</a></li>
+<li><a href="/inkscape/ch027_liukuvari">LIUKUVÄRI</a></li>
+<li><a href="/inkscape/ch028_pipetti">PIPETTI</a></li>
+<li Class="booki-section">POLUT</li><li><a href="/inkscape/ch030_muuta-polkua">MUUTA POLKUA</a></li>
+<li Class="booki-section">TEKSTI</li><li><a href="/inkscape/ch032_tekstin-tyyli">TEKSTIN TYYLI</a></li>
+<li><a href="/inkscape/ch033_tekstin-efektit">TEKSTIN EFEKTIT</a></li>
+<li><a href="/inkscape/ch034_teksti-ja-polut">TEKSTI JA POLUT</a></li>
+<li Class="booki-section">USEAMMAN OBJEKTIN OPERAATIOT</li><li><a href="/inkscape/ch036_kopioi-kloonaa-ja-monista">KOPIOI, KLOONAA JA MONISTA</a></li>
+<li><a href="/inkscape/ch037_leikkaus-ja-peitteet">LEIKKAUS JA PEITTEET</a></li>
+<li Class="booki-section">KOHTEIDEN SIJOITTELU</li><li><a href="/inkscape/ch039_sijoittelu">SIJOITTELU</a></li>
+<li><a href="/inkscape/ch040_jaa-ja-tasaa">JAA JA TASAA</a></li>
+<li Class="booki-section">KOHTEIDEN JÄRJESTELY</li><li><a href="/inkscape/ch042_tasot">TASOT</a></li>
+<li><a href="/inkscape/ch043_ryhmittely">RYHMITTELY</a></li>
+<li Class="booki-section">KOHTEIDEN TYYLI</li><li><a href="/inkscape/ch045_tyyli">TYYLI</a></li>
+<li><a href="/inkscape/ch046_taytto-ja-viiva">TÄYTTÖ JA VIIVA</a></li>
+<li Class="booki-section">POLKUTEHOSTE</li><li><a href="/inkscape/ch048_polkutehosteet">POLKUTEHOSTEET</a></li>
+<li><a href="/inkscape/ch049_hammasrattaat">HAMMASRATTAAT</a></li>
+<li><a href="/inkscape/ch050_muoto-polkua-pitkin">MUOTO POLKUA PITKIN</a></li>
+<li Class="booki-section">SVG-SUODATTIMET</li><li><a href="/inkscape/ch052_suodattimet">SUODATTIMET</a></li>
+<li Class="booki-section">ASETUKSET</li><li><a href="/inkscape/ch054_varinhallinta">VÄRINHALLINTA</a></li>
+<li Class="booki-section">LIITTEET</li><li><a href="/inkscape/ch056_oppaasta">KÄYTTÖOHJEESTA</a></li>
+<li><a href="/inkscape/ch057_lisenssi">LISENSSI</a></li>
+</ul>

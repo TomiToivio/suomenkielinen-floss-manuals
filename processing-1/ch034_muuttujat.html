@@ -1,0 +1,113 @@
+<div id="main-content"><h1>Muuttujat</h1>
+<p><span id="result_box" class="long_text"><span>Muuttuja on tietty arvo, jonka tietokone tallentaa muistiinsa. Se on kuin pakkaus, jonka koko sopii tietynlaiselle tiedolle. Sitä luonnehtii nimi, jonka avulla voimme helposti käyttää sitä. </span></span></p>
+<p><img title="illustration_variables_memoire_1" src="_booki/processing-1/static/illustration_variables_memoire_1-fi.png" alt="illustration_variables_memoire_1" width="512" height="74"></p>
+<p><span id="result_box" class="long_text"><span>On erilaisia muuttujatyyppejä: kokonaisnumeroita (int), desimaalinumeroita (float), tekstiä (String) ja tosi/epätosi -arvoja (boolean). Desimaali, kuten 3.14159 ei ole tyyppiä int vaan tyyppiä float. Huomaa, että käytämme desimaalinumeroille pistettä emmekä pilkkua. Niinpä kirjoitamme 3.14159. Muuttujat voidaan luoda näin: </span></span></p>
+<pre>float x = 3.14159;
+int y = 3;
+</pre>
+<p><span id="result_box" class="long_text"><span>Muuttujan nimi voi sisältää kirjaimia, numeroita ja muita merkkejä, kuten alaviivan. Kun ohjelma kohtaa tämän muuttujan nimen, se voi lukea tai kirjoittaa tähän tilaan. Seuraavana on lista muuttujista yksinkertaisten esimerkkien kanssa. Muuttujalla on tyyppi, nimi ja arvo, joka voidaan lukea ja jota voidaan muuttaa. </span></span></p>
+<h2><strong>int </strong></h2>
+<p>Processingin syntaksissa voit tallentaa kokonaisluvun, kuten 3, int -tyyppiseen muuttujaan. <code></code></p>
+<pre>int kokonaisluku;
+kokonaisluku = 3;
+print(kokonaisluku);
+</pre>
+<p><img src="_booki/processing-1/static/var_int-tiff-fi_1.png" alt=""></p>
+<h2>float</h2>
+<p>Muuttuja float on desimaalinumero, kuten 2.3456.</p>
+<pre>float desimaali;
+desimaali = PI;
+print(desimaali);</pre>
+<p><img title="float_var.tiff" src="_booki/processing-1/static/float_var-tiff-fi.png" alt="float_var.tiff" width="250" height="18"></p>
+<h2>double</h2>
+<p>Muuttuja double on myös desimaalinumero, mutta tarkempi kuin float.</p>
+<pre>double pitka_desimaali;
+pitka_desimaali = PI;
+print(pitka_desimaali);
+</pre>
+<p><img title="double_var.tiff" src="_booki/processing-1/static/double_var-tiff-fi.png" alt="double_var.tiff" width="250" height="15"> </p>
+<h2>boolean</h2>
+<p><span id="result_box" class="long_text"><span>Muuttujalla boolean on vain kaksi tilaa. Nämä tilat ovat tosi (true) ja epätosi (false). Sitä käytetään ehdoissa tutkimaan onko ilmaisu tosi vai väärä. </span></span></p>
+<pre>boolean onkotosi;⁞
+onkotosi = true;
+println(onkotosi);
+</pre>
+<p><img src="_booki/processing-1/static/char_bool-fi_1.jpg" alt=""></p>
+<h2>char</h2>
+<p><span id="result_box" class="long_text"><span>Muuttujaan char voidaan tallentaa kirjoitusmerkki. Huomaa heittomerkkien käyttö lainausmerkkien sijasta. </span></span></p>
+<pre>char kirjain;
+kirjain = 'A';
+print(kirjain);
+</pre>
+<p><img src="_booki/processing-1/static/char_var-tiff-fi_1.png" alt=""></p>
+<h2>string</h2>
+<p>Käytetään tekstin tallentamiseen. Huomaa lainausmerkkien käyttö.</p>
+<pre>String teksti;
+teksti = "Moi!";
+print(teksti);
+</pre>
+<p><img title="ScreenHunter_04 Feb. 09 16.43_1" src="_booki/processing-1/static/ScreenHunter_04-20Feb-2009-2016-43_1-fi.gif" alt="ScreenHunter_04 Feb. 09 16.43_1" width="35" height="20"></p>
+<h2>color</h2>
+<p>Tallentaa värin. On usein hyödyllinen, kun tahdot käyttää samoja värejä.</p>
+<p><del><img title="damier.tiff" src="_booki/processing-1/static/damier-tiff-fi.png" alt="damier.tiff" width="99" height="99"></del><ins></ins></p>
+<p> </p>
+<p> </p>
+<pre>noStroke();
+color valkoinen = color(255, 255, 255);
+color musta = color(0, 0, 0);
+
+fill(valkoinen); rect(0, 0, 25, 25);
+fill(musta);  rect(25, 0, 25, 25);
+fill(valkoinen); rect(50, 0, 25, 25);
+fill(musta); rect(75, 0, 25, 25);
+
+fill(musta); rect(0, 25, 25, 25);
+fill(valkoinen); rect(25, 25, 25, 25);
+fill(musta); rect(50, 25, 25, 25);
+fill(valkoinen); rect(75, 25, 25, 25);
+
+fill(valkoinen); rect(0, 50, 25, 25);
+fill(musta); rect(25, 50, 50, 25);
+fill(valkoinen); rect(50, 50, 75, 25);
+fill(musta); rect(75, 50, 100, 25);
+
+fill(musta); rect(0, 75, 25, 25);
+fill(valkoinen); rect(25, 75, 25, 25);
+fill(musta); rect(50, 75, 25, 25);
+fill(valkoinen); rect(75, 75, 25, 25);</pre></div><ul Class="menu-goes-here"><li Class="booki-section">Esittely</li><li><a href="/processing-1/index">Johdanto</a></li>
+<li><a href="/processing-1/ch002_esimerkkeja">Esimerkkejä</a></li>
+<li><a href="/processing-1/ch003_asennus">Asennus</a></li>
+<li Class="booki-section">Perusteet</li><li><a href="/processing-1/ch005_perusteet">Perusteet</a></li>
+<li Class="booki-section">Suunnittelu</li><li><a href="/processing-1/ch007_suunnittelutila">Suunnittelutila</a></li>
+<li><a href="/processing-1/ch008_muodot">Muodot</a></li>
+<li><a href="/processing-1/ch009_varit">Värit</a></li>
+<li><a href="/processing-1/ch010_kuvat">Kuvat</a></li>
+<li><a href="/processing-1/ch011_tekstit">Tekstit</a></li>
+<li Class="booki-section">Interaktiivisuus</li><li><a href="/processing-1/ch013_video">Video</a></li>
+<li><a href="/processing-1/ch014_videon-tuominen">Videon tuominen</a></li>
+<li><a href="/processing-1/ch015_mikrofoni">Mikrofoni</a></li>
+<li><a href="/processing-1/ch016_hiiri">Hiiri</a></li>
+<li><a href="/processing-1/ch017_nappaimisto">Näppäimistö</a></li>
+<li><a href="/processing-1/ch018_tulostaminen">Tulostaminen</a></li>
+<li Class="booki-section">Vienti</li><li><a href="/processing-1/ch020_verkkoon-vieminen">Verkkoon vieminen</a></li>
+<li Class="booki-section">Animaatio</li><li><a href="/processing-1/ch022_aanet">Äänet</a></li>
+<li><a href="/processing-1/ch023_draw-metodi">Draw-metodi</a></li>
+<li><a href="/processing-1/ch024_objektien-animointi">Objektien animointi</a></li>
+<li><a href="/processing-1/ch025_monien-objektien-animointi">Monien objektien animointi</a></li>
+<li><a href="/processing-1/ch026_aikajana">Aikajana</a></li>
+<li Class="booki-section">Ohjelmointi</li><li><a href="/processing-1/ch028_kommentit">Kommentit</a></li>
+<li><a href="/processing-1/ch029_objektit">Objektit</a></li>
+<li><a href="/processing-1/ch030_metodit">Metodit</a></li>
+<li><a href="/processing-1/ch031_listat">Listat</a></li>
+<li><a href="/processing-1/ch032_toistaminen">Toistaminen</a></li>
+<li><a href="/processing-1/ch033_ehdot">Ehdot</a></li>
+<li><a href="/processing-1/ch034_muuttujat">Muuttujat</a></li>
+<li><a href="/processing-1/ch035_muutokset">Muutokset</a></li>
+<li><a href="/processing-1/ch036_rajat">Rajat</a></li>
+<li Class="booki-section">Liitteet</li><li><a href="/processing-1/ch038_yleisia-virheita">Yleisiä virheitä</a></li>
+<li><a href="/processing-1/ch039_ulkoiset-kirjastot">Ulkoiset kirjastot</a></li>
+<li><a href="/processing-1/ch040_dokumentaatio">Dokumentaatio</a></li>
+<li><a href="/processing-1/ch041_arduino">Arduino</a></li>
+<li><a href="/processing-1/ch042_tasta-oppaasta">Tästä oppaasta</a></li>
+<li><a href="/processing-1/ch043_tekijat">Tekijät</a></li>
+</ul>

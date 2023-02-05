@@ -1,0 +1,80 @@
+<div id="main-content"><h1>Värinhallinta</h1>
+<div id="content">
+<h2>Vaatimukset </h2>
+<p>*.icc - väliprofiilitiedostojen täytyy olla jossain seuraavista kansioista, jotta ne listataan asetusikkunan pudotusvalikoissa.</p>
+<h4> Linux:<em></em></h4>
+<p><em>/home/<strong>&lt;user&gt;</strong>/.local/share/color/icc <br>/home/<strong>&lt;user&gt;</strong>/.config/.color/icc <br>/usr/local/share/color/icc <br>/usr/share/color/icc <br>/usr/share/gdm/color/icc <br></em></p>
+<h4>Windows (Inkscape 0.47+):</h4>
+<p><em>C:\Documents and Settings\<strong>&lt;user&gt;</strong>\My Documents\color\icc <br>C:\Documents and Settings\<strong>&lt;user&gt;</strong>\Application Data\.color\icc</em> <br><em>C:\Documents and Settings\All Users\Documents\color\icc</em> <br><em>C:\Documents and Settings\All Users\Application Data\.color\icc</em> <br><em>&lt;application directory&gt;\share\color\icc</em></p>
+<h2>Kalibroitu SVG-väri, johon sisältyy CMYK</h2>
+<p>Inkscape tukee värien hallinnan värimäärityksiä, jotka käyttävät muita väriavaruuksia kuin sRGB (esimerkiksi Adobe RGB, tai kalibroidut CMYK-värit eli syaani, magenta, keltainen ja musta). SVG-tiedostossa tämä tehdään käyttäen optionaalisia "icc-color(...)" värikomponentteja, jotka kuvaillaan SVG 1.1 spesifikaation osassa 11.2 "Specifying paint". Varmistuksena käytetään sRGB-arvoa työvirroille, joissa ei ole värinhallintaa. Tämä mahdollistaa kalibroitujen väriavaruuksien käytön, sisältäen CMYK-arvot, jotka säilyvät eri sovellusten välillä.</p>
+<p>CMS-värinhallintasivulehti mahdollistaa näiden värien muokkaamisen.</p>
+<p><img title="ScreenHunter_08_Jan._10_22.43" src="_booki/inkscape/static/Inkscape-ColorManagement-ScreenHunter_08_Jan-_10_22-43-fi.gif" alt="CMYK" width="434" height="420"> </p>
+<h2>Näytön säätäminen</h2>
+<p><span class="menu">Välinhallintasivulehti Inkscapen asetukset -sivulla tarjoaa vaihtoehtoja näytön säätöä varten:</span></p>
+<ul><li><strong>Näytön profiili</strong>. Tässä voit asettaa ICC-tiedoston kalibroitua ja profiilinäyttöä varten.</li>
+<li><strong>Hae profiili näytöltä</strong>. X11-pohjaisissa järjestelmissä (kuten Unix ja Mac OSX) voidaan ottaa käyttöön <span class="external text">ICC Profiles In X Specification</span> (tai XICC). Tämän spesifikaation tuki versiolle 0.2 on toteutettu. Tämän vaihtoehdon ottaminen käyttöön valitsemalla profiilin haku näytöltä siirtää Inkscapen käyttämään ruutuihin liitetyt profiilit ajon aikana. Tämä mahdollistaa näytön asetusten muuttamisen lennosta, ja asettamisen/tyhjentämisen jokaista näyttöä kohden. Tämä on erityisen helppoa moninäyttöisille konfiguraatioille.</li>
+</ul><blockquote>
+<p>Kun XICC-tuki on päällä, ikkunat säätävät itsensä oikean profiilin mukaan, kun niitä siirretään näytöltä toiselle. Jos ikkunat siirretään monitoreille, joihin ei ole liitetty profiilia, säätöjen asetus siirtyy pois päältä. Kun ikkunat siirretään ruuduille, joilla on profiilit, säädin siirtyy päälle. </p>
+</blockquote>
+<ul><li>
+<p><strong>Näytön sovitustapa</strong>. Voit valita<strong> Havainnollisen, suhteellisen kolorimetrisen, kylläisyyden </strong>tai<strong> absoluuttisen kolorimetrisen. </strong></p>
+<ul><li><strong>Havainnollinen</strong> sovitustapa estää asteikon leikkaamisen säilyttämällä suhteet värien välillä.</li>
+<li><strong>Kylläisyys</strong> säilyttää kylläisyyden ja sopii parhaiten indeksoitujen väripalettien piirroksille, kuten logoille.</li>
+<li><strong>Suhteellinen kolorimetrinen</strong> sovitustapa kartoittaa alkuperäisen valkoisen värin paperin väriin ja kääntää muut värit vastaavasti.</li>
+<li><strong>Absoluuttinen kolorimetrinen</strong> sovitustapa yrittää toteuttaa lähimmän yhteensopivuuden, mutta sopii parhaiten pistevärien työvirtoihin.</li>
+</ul></li>
+</ul><p>Täytyy huomata, että näytön säätäminen on säädetty päälle tai pois päältä erikseen jokaiselle Inkscapen ikkunalle. Tämän vuoksi yhtä dokumenttia voi tarkastella samaan aikaan säädettynä tai säätämättä käyttäen monia eri ikkunoita. Vierityspalkin oikeassa alanurkassa on kytkin, jolla voi kääntää näytön säädön päälle tai pois. Ilman profiiliasetuksia tämä säädin on pois käytöstä, jotta on nähtävissä että profiilia ei ole asetettu.</p>
+<p>Värihallintalehti mahdollistaa printterin ja muiden tulostuslaitteiden asetusten tekemisen:</p>
+<ul><li><strong>Jäljittele tulosta näytöllä</strong> vaihtoehto mahdollistaa pehmeän tarkastuksen - dokumentti näyttää täsmälleen samalta kuin printteristä tullessaan.</li>
+<li><strong>Merkkaa toistoalan ulkopuoliset värit</strong>. Kaikilla laitteilla on oma valikoimansa värejä joita ne voivat tuottaa, olkoon kyseessä näyttö tai printteri. Tämä vaihtoehto mahdollistaa värien merkitsemisen, joita ei voida tuottaa päämääränä olevassa väriavaruudessa käyttäjän määrittelemällä värillä. Oletusarvoisesti käytetään harmaata väriä.</li>
+<li><strong>Laiteprofiili</strong>. Tämä on ICC-profiili tulostuslaitteelle (joka on yleensä printteri). Euroopassa suositellaan käyttämään oletusarvoisesti profiilia <strong>Euroscale Uncoated v2</strong>, Yhdysvalloissa suositellaan käyttämään profiilia — <strong>U.S. Web Coated (SWOP) v2</strong> tai <strong>U.S. Sheet-fed Coated v2</strong>.</li>
+<li><strong>Laitteen sovitustapa</strong>. Voit valita havainnollisen, suhteellisen kolorimetrisen, kylläisyyden tai absoluuttisen kolorimetrisen.</li>
+<li><strong>Mustanpään tasaus</strong>. Tarkoituksena on kartoittaa dynaaminen kuvan värijoukko tulostuslaitteen dynaamiseen värijoukkoon, jotta kontrasti ei katoa. Sitä käytetään yleensä julkaisuihin, joissa on paljon täysvärigrafiikkaa, kuten valokuvia. Huomaa, että mustanpään tasausta käytetään vain suhteellisessa kolorimetrisessä renderöinnissä ja se tulisi ottaa pois päältä muita renderöintityyppejä varten. </li>
+<li><strong>Säilytä musta</strong>. Saa Inkscapen tekemään parhaansa tuottaakseen samantasoista mustuutta tulosteessa.</li>
+</ul><h2>ICC-profiilien luominen</h2>
+<p>ICC-profiilien luomista varten suositellaan vapaita ohjelmistoja LProf ja ArgyllCMS.</p>
+</div></div><ul Class="menu-goes-here"><li Class="booki-section">INKSCAPEN KÄYTTÖOHJE</li><li><a href="/inkscape/index">INKSCAPE-OHJE</a></li>
+<li><a href="/inkscape/ch002_svg">SVG-VEKTORIGRAFIIKKA</a></li>
+<li Class="booki-section">ASENNUS</li><li><a href="/inkscape/ch004_asennus-windowsiin">ASENNUS WINDOWSIIN</a></li>
+<li Class="booki-section">PERUSTEET</li><li><a href="/inkscape/ch006_kayttoliittyma">KÄYTTÖLIITTYMÄ</a></li>
+<li><a href="/inkscape/ch007_tiedostojen-kaytto">TIEDOSTOJEN KÄYTTÖ</a></li>
+<li Class="booki-section">PIKAOPAS</li><li><a href="/inkscape/ch009_kuvakkeiden-luominen">KUVAKKEIDEN LUOMINEN</a></li>
+<li Class="booki-section">TYÖKALULAATIKKO</li><li><a href="/inkscape/ch011_valinta">VALINTA</a></li>
+<li><a href="/inkscape/ch012_solmu">SOLMU</a></li>
+<li><a href="/inkscape/ch013_muokkaus">MUOKKAUS</a></li>
+<li><a href="/inkscape/ch014_zoomaus">ZOOMAUS</a></li>
+<li><a href="/inkscape/ch015_suorakulmio">SUORAKULMIO</a></li>
+<li><a href="/inkscape/ch016_kolmiulotteinen-laatikko">KOLMIULOTTEINEN LAATIKKO</a></li>
+<li><a href="/inkscape/ch017_ellipsi">ELLIPSI</a></li>
+<li><a href="/inkscape/ch018_tahti">TÄHTI</a></li>
+<li><a href="/inkscape/ch019_spiraali">SPIRAALI</a></li>
+<li><a href="/inkscape/ch020_lyijykyna">LYIJYKYNÄ</a></li>
+<li><a href="/inkscape/ch021_kuulakarkikyna">BÉZIER</a></li>
+<li><a href="/inkscape/ch022_kalligrafia">KALLIGRAFIA</a></li>
+<li><a href="/inkscape/ch023_pyyhekumi">PYYHEKUMI</a></li>
+<li><a href="/inkscape/ch024_sankotaytto">SANKOTÄYTTÖ</a></li>
+<li><a href="/inkscape/ch025_teksti">TEKSTI</a></li>
+<li><a href="/inkscape/ch026_liitin">LIITIN</a></li>
+<li><a href="/inkscape/ch027_liukuvari">LIUKUVÄRI</a></li>
+<li><a href="/inkscape/ch028_pipetti">PIPETTI</a></li>
+<li Class="booki-section">POLUT</li><li><a href="/inkscape/ch030_muuta-polkua">MUUTA POLKUA</a></li>
+<li Class="booki-section">TEKSTI</li><li><a href="/inkscape/ch032_tekstin-tyyli">TEKSTIN TYYLI</a></li>
+<li><a href="/inkscape/ch033_tekstin-efektit">TEKSTIN EFEKTIT</a></li>
+<li><a href="/inkscape/ch034_teksti-ja-polut">TEKSTI JA POLUT</a></li>
+<li Class="booki-section">USEAMMAN OBJEKTIN OPERAATIOT</li><li><a href="/inkscape/ch036_kopioi-kloonaa-ja-monista">KOPIOI, KLOONAA JA MONISTA</a></li>
+<li><a href="/inkscape/ch037_leikkaus-ja-peitteet">LEIKKAUS JA PEITTEET</a></li>
+<li Class="booki-section">KOHTEIDEN SIJOITTELU</li><li><a href="/inkscape/ch039_sijoittelu">SIJOITTELU</a></li>
+<li><a href="/inkscape/ch040_jaa-ja-tasaa">JAA JA TASAA</a></li>
+<li Class="booki-section">KOHTEIDEN JÄRJESTELY</li><li><a href="/inkscape/ch042_tasot">TASOT</a></li>
+<li><a href="/inkscape/ch043_ryhmittely">RYHMITTELY</a></li>
+<li Class="booki-section">KOHTEIDEN TYYLI</li><li><a href="/inkscape/ch045_tyyli">TYYLI</a></li>
+<li><a href="/inkscape/ch046_taytto-ja-viiva">TÄYTTÖ JA VIIVA</a></li>
+<li Class="booki-section">POLKUTEHOSTE</li><li><a href="/inkscape/ch048_polkutehosteet">POLKUTEHOSTEET</a></li>
+<li><a href="/inkscape/ch049_hammasrattaat">HAMMASRATTAAT</a></li>
+<li><a href="/inkscape/ch050_muoto-polkua-pitkin">MUOTO POLKUA PITKIN</a></li>
+<li Class="booki-section">SVG-SUODATTIMET</li><li><a href="/inkscape/ch052_suodattimet">SUODATTIMET</a></li>
+<li Class="booki-section">ASETUKSET</li><li><a href="/inkscape/ch054_varinhallinta">VÄRINHALLINTA</a></li>
+<li Class="booki-section">LIITTEET</li><li><a href="/inkscape/ch056_oppaasta">KÄYTTÖOHJEESTA</a></li>
+<li><a href="/inkscape/ch057_lisenssi">LISENSSI</a></li>
+</ul>

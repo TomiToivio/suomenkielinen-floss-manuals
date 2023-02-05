@@ -1,0 +1,92 @@
+<div id="main-content"><h1>PiTiVi</h1>
+<div id="content">
+<p><strong>PiTiVi</strong> on videoeditori GNU/Linux -käyttöjärjestelmään. Se tukee Ogg Theora -videon tuomista ja viemistä. Juuri nyt se tukee peruseditointia, videoleikkeiden leikkaamista, aikajanalle järjestämistä ja äänitasojen säätämistä.</p>
+<p>PiTiVillä on oma dokumentaationsa, jota tahdot ehkä lukea. Se löytyy osoitteesta<a href="http://www.pitivi.org/wiki/Manual#Proposed" target="_top">http://www.pitivi.org/wiki/Manual#Proposed</a></p>
+<p>Erittäin hyvä PDF-muodossa oleva manuaali on myös saatavilla osoitteesta <a href="http://jeff.ecchi.ca/blog/?p=897%20" target="_blank">http://jeff.ecchi.ca/blog/?p=897 </a></p>
+<h2>Asentaminen</h2>
+<p>PiTiVi toimii vain GNU/Linux -käyttöjärjestelmässä. Jos sinulla on Ubuntu Jaunty (9.04), voit asentaa erittäin käyttökelpoisen version PiTiVistä komentoriviltä (päätteestä) komennolla:</p>
+<pre>sudo apt-get install pitivi</pre>
+<p>Sinulta kysytään salasanaa, sen kirjoitettuasi asennus tapahtuu automaattisesti.</p>
+<p>Kun asennus on valmis, voit avata PiTiVin Sovellukset-valikosta (listattu kohdassa <strong>Ääni &amp; Video</strong>).</p>
+<p><img title="pitivi_en" src="_booki/ogg-theora/static/TheoraCookbook-PiTivi-pitivi_en-fi.png" alt="pitivi_en" width="600" height="360"></p>
+Voit myös katsoa linkistä <a href="http://pitivi.org/wiki/Downloads" target="_blank">http://pitivi.org/wiki/Downloads</a>ohjeita uudempien versioiden asennukseen. PiTiViä kehitetään juuri nyt aktiivisesti, uusia versioita tulee säännöllisesti. 
+<h2>Videon tuominen</h2>
+<p>Kun olet avannut PiTiVin, voit painaa plus (+) näppäintä käyttöliittymässä, jotta voit Tuoda leikkeitä.</p>
+<p><img title="plus" src="_booki/ogg-theora/static/TheoraCookbook-PiTivi-plus_en-fi.png" alt="plus" width="292" height="103"> </p>
+<p>Tuodut viedoleikkeet on lisätty <strong>Clip Libraryyn</strong>. Voit käyttää kaikkia formaatteja, joita <strong>GStreamer</strong> tukee. Jos et tiedä mitä tämä tarkoittaa, helpoin tapa tietää mitkä tiedostot toimivat PiTiVillä on soittaa niitä Totemissa (löytyy Ääni ja Video -sovellusvalikosta ja on nimetty "Elokuvasoittimeksi"). Jos tiedosto toimii Elokuvasoittimessa, sitä voidaan käyttää myös PiTiVin videoleikkeenä.</p>
+<p>Voit jatkaa leikkeiden lisäämistä Clip Libraryyn (digitaalisen kellon videon on luonut Riccardo Iaconelli). Niitä voi lisätä niin paljon kuin haluat.</p>
+<p><img title="cliplibrary" src="_booki/ogg-theora/static/TheoraCookbook-PiTivi-cliplibrary_en-fi.png" alt="cliplibrary" width="387" height="202"></p>
+<h2>Videoleikkeiden lisääminen</h2>
+<p>Kun olet tuonut videoleikkeet, joita tahdot käyttää, voit viedä ne Clip Librarystä alla olevalle aikajanalle. </p>
+<p><img title="drag" src="_booki/ogg-theora/static/TheoraCookbook-PiTivi-drag_en-fi.png" alt="drag" width="321" height="501"> </p>
+<p>Jos lisäät monta videoleikettä aikajanalle, ne näkyvät hieman erilaisissa väreissä ja tiedostonimet näkyvillä:</p>
+<p><img title="twovids" src="_booki/ogg-theora/static/TheoraCookbook-PiTivi-twovids_en-fi.png" alt="twovids" width="600" height="360"></p>
+<p>Jos et näe tällaisia yksityiskohtia, käytä zoomaustyökaluja lähentääksesi ja loitontaaksesi aikajanaa:</p>
+<p><img title="zoom" src="_booki/ogg-theora/static/TheoraCookbook-PiTivi-zoom_en-fi.png" alt="zoom" width="242" height="118"></p>
+<h2>Toisto</h2>
+<p>Kun videoleike on aikajanalla, et näe yksittäisiä kuvaruutuja, mutta voit vetää liukusäädintä eteenpäin ja taaksepäin nähdäksesi videon.</p>
+<p><img title="timeline" src="_booki/ogg-theora/static/TheoraCookbook-PiTivi-timeline_en-fi.png" alt="timeline" width="600" height="360"></p>
+<p>Kun toistat tällaista videota, voit nähdä toiston sijainnin (ajan) punaisella viivalla, joka on aikajanalla:</p>
+<p><img title="slider" src="_booki/ogg-theora/static/TheoraCookbook-PiTivi-slider_en-fi.png" alt="slider" width="542" height="302"></p>
+<h2>Liikkuvat videoleikkeet</h2>
+<p>Voit siirtää videoleikkeitä ympäriinsä vetämällä niitä pitkin aikajanaa. </p>
+<h2>Leikkeiden leikkaus</h2>
+<p>Valitse saksi-ikoni leikataksesi leikkeen kahtia: </p>
+<p><img title="scissors_en" src="_booki/ogg-theora/static/TheoraCookbook-PiTivi-scissors_en-fi.png" alt="scissors_en" width="257" height="117"></p>
+<p>Siirrä sitten kursoria ympäri aikajanaa. Näet oranssin viivan ilmestyvän, se näyttää leikkauksen potentiaalisen sijainnin: </p>
+<p><img title="scis2" src="_booki/ogg-theora/static/TheoraCookbook-PiTivi-scis2_en-fi.png" alt="scis2" width="219" height="164"></p>
+<p>Kun oranssi viiva on oikeassa paikassa, klikkaa aikajanaa ja valittu videoleike leikataan kahtia siinä pisteessä. </p>
+<h2>Videoleikkeiden poistaminen</h2>
+<p>Poistaaksesi videoleikkeen klikkaa sitä kursorilla, jotta se valitaan, ja paina sitten roskakori-ikonia: </p>
+<p><img title="trash" src="_booki/ogg-theora/static/TheoraCookbook-PiTivi-trash_en-fi.png" alt="trash" width="250" height="91"></p>
+<h2>Vienti Ogg Theoraan</h2>
+<p>Kun projektisi on valmis vietäväksi, voit klikata Piirrä Projekti -nappia:</p>
+<p><img title="render" src="_booki/ogg-theora/static/TheoraCookbook-PiTivi-render_en-fi.png" alt="render" width="191" height="72"> </p>
+<p>Näet nyt renderöintiasetusten ikkunan:</p>
+<p><img title="renderwin" src="_booki/ogg-theora/static/TheoraCookbook-PiTivi-renderwin_en-fi.png" alt="renderwin" width="294" height="213"></p>
+<p>Klikkaa Valitse tiedosto ja valitse paikka, johon tahdot tallentaa viedyn tiedoston. Voit myös muokata koodausasetuksia painamalla Muokkaa, kun asetukset sopivat tarpeisiisi, paina Tallenna ja hae kahvia. </p>
+</div></div><ul Class="menu-goes-here"><li Class="booki-section">JOHDANTO</li><li><a href="/ogg-theora/index">OGG THEORA</a></li>
+<li><a href="/ogg-theora/ch002_tasta-kayttooppaasta">TÄSTÄ KÄYTTÖOPPAASTA</a></li>
+<li><a href="/ogg-theora/ch003_mita-video-on">MITÄ VIDEO ON?</a></li>
+<li><a href="/ogg-theora/ch004_mita-theora-on">MITÄ THEORA ON?</a></li>
+<li Class="booki-section">PERUSKÄSITTEET</li><li><a href="/ogg-theora/ch006_mika-on-koodekki">MIKÄ ON KOODEKKI?</a></li>
+<li><a href="/ogg-theora/ch007_sailot">SÄILÖT</a></li>
+<li Class="booki-section">TOISTO</li><li><a href="/ogg-theora/ch009_theoran-toistaminen">THEORAN TOISTAMINEN</a></li>
+<li><a href="/ogg-theora/ch010_toisto-vlclla">TOISTO VLC:LLÄ</a></li>
+<li><a href="/ogg-theora/ch011_miro">MIRO</a></li>
+<li Class="booki-section">THEORA VERKOSSA</li><li><a href="/ogg-theora/ch013_theora-verkossa">THEORA VERKOSSA</a></li>
+<li><a href="/ogg-theora/ch014_html5">HTML5</a></li>
+<li><a href="/ogg-theora/ch015_theora-sivuillasi">THEORA SIVUILLASI</a></li>
+<li><a href="/ogg-theora/ch016_hotelleja-theoralle">HOTELLEJA THEORALLE</a></li>
+<li Class="booki-section">ENKOODAUS</li><li><a href="/ogg-theora/ch018_johdanto-enkoodaukseen">JOHDANTO ENKOODAUKSEEN</a></li>
+<li><a href="/ogg-theora/ch019_firefogg">FIREFOGG</a></li>
+<li><a href="/ogg-theora/ch020_enkoodaus-vlclla">ENKOODAUS VLC:LLÄ</a></li>
+<li><a href="/ogg-theora/ch021_enkoodaus-ffmpeg2theoralla">ENKOODAUS FFMPEG2THEORALLA </a></li>
+<li><a href="/ogg-theora/ch022_thoggen">THOGGEN</a></li>
+<li Class="booki-section">TEKSTITYKSET</li><li><a href="/ogg-theora/ch024_tekstityksien-perusteet">TEKSTITYKSIEN PERUSTEET</a></li>
+<li><a href="/ogg-theora/ch025_jakelu">JAKELU</a></li>
+<li><a href="/ogg-theora/ch026_tekstityksien-liittaminen">TEKSTITYKSIEN LIITTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch027_tekstityksien-toistaminen">TEKSTITYKSIEN TOISTAMINEN</a></li>
+<li><a href="/ogg-theora/ch028_julkaiseminen">JULKAISEMINEN</a></li>
+<li Class="booki-section">SUORATOISTO</li><li><a href="/ogg-theora/ch030_suoratoiston-perusteet">SUORATOISTON PERUSTEET</a></li>
+<li><a href="/ogg-theora/ch031_icecast">ICECAST</a></li>
+<li><a href="/ogg-theora/ch032_tss">TSS</a></li>
+<li><a href="/ogg-theora/ch033_ffmpeg2theora-streamaus">FFMPEG2THEORA-STREAMAUS</a></li>
+<li><a href="/ogg-theora/ch034_suoratoisto-vlc-ohjelmalla">VLC-STREAMAUS</a></li>
+<li><a href="/ogg-theora/ch035_virtaustoiston-tallentaminen">VIRTAUSTOISTON TALLENTAMINEN</a></li>
+<li Class="booki-section">EDITOINTI</li><li><a href="/ogg-theora/ch037_johdanto-editointiin">JOHDANTO EDITOITIIN</a></li>
+<li><a href="/ogg-theora/ch038_pitivi">PITIVI</a></li>
+<li Class="booki-section">ESIKATSELU</li><li><a href="/ogg-theora/ch040_kuinka-esikatselua-kaytetaan">ESIKATSELUN KÄYTTÖ</a></li>
+<li><a href="/ogg-theora/ch041_tee-esikatselukuvia">TEE ESIKATSELUKUVIA</a></li>
+<li><a href="/ogg-theora/ch042_tee-diaesitys">TEE DIAESITYS</a></li>
+<li><a href="/ogg-theora/ch043_tee-esikatseluvideo">TEE ESIKATSELUVIDEO</a></li>
+<li Class="booki-section">EDITOINTI KOMENTORIVILTÄ</li><li><a href="/ogg-theora/ch045_komentorivi">THEORA JA KOMENTORIVI</a></li>
+<li><a href="/ogg-theora/ch046_theoran-teoria">THEORAN TEORIA</a></li>
+<li><a href="/ogg-theora/ch047_tiedoston-jakaminen">TIEDOSTON JAKAMINEN</a></li>
+<li><a href="/ogg-theora/ch048_tiedoston-leikkaaminen">TIEDOSTON LEIKKAAMINEN</a></li>
+<li><a href="/ogg-theora/ch049_tiedostojen-liittaminen">TIEDOSTOJEN LIITTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch050_tiedostojen-yhdistaminen">TIEDOSTOJEN YHDISTÄMINEN</a></li>
+<li><a href="/ogg-theora/ch051_koon-muuttaminen">KOON MUUTTAMINEN</a></li>
+<li><a href="/ogg-theora/ch052_oggin-analysoiminen">OGGIN ANALYSOIMINEN</a></li>
+<li Class="booki-section">TEKIJÄT</li><li><a href="/ogg-theora/ch054_tekijat">TEKIJÄT</a></li>
+</ul>

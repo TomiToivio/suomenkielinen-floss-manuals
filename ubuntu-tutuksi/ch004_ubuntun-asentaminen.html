@@ -1,0 +1,64 @@
+<html dir="None"><body><div id="main-content"><h1>Ubuntun asentaminen</h1>
+<p class="line862">Tämä asennusopas on tehty Ubuntun versiolle 10.04 LTS.</p>
+<p class="line874">Voit kokeilla Ubuntua CD-levyltä ennen asennuspäätöksen tekemistä. Muutoksia tietokoneellesi ei tällöin tehdä.</p>
+<p>Mikäli olet asentamassa Ubuntun Windowsin rinnalle, katso ohjeita <a href="http://wiki.ubuntu-fi.org/Asentaminen_Windowsin_rinnalle">tästä Ubuntu-sivujen oppaasta</a>. Opas voi auttaa myös muiden käyttöjärjestelmien rinnalle asentamisessa (kuten OS X).</p>
+<h2>Yleistä asentamisesta</h2>
+<p class="line874">Ubuntu toimii useimmissa PC-tietokoneissa (myös Apple), niin vanhoissa kuin uusissakin, mutta joidenkin lisälaitteiden kanssa voi olla ongelmia. Monet laitevalmistajat eivät noudata standardeja tai tee minkäänlaista yhteistyötä Linux-yhteisön kanssa, joten kannattaa siis kokeilla Ubuntun käynnistyttyä CD-levyltä (katso alempana) oheislaitteiden toimivuutta. Laitehankintoja tehtäessä kannattaa vaatia tuotteelta toimivuutta Linuxissa, mieluiten ilman erillisten ajureiden asentamista.</p>
+<p class="line862">Jos Ubuntusta tai sen asentamisesta on kysyttävää, kannattaa tutustua tämän oppaan lisäksi myös <a href="http://wiki.ubuntu-fi.org/Ohjeet">Ubuntu-sivujen ohjeet</a>-sivun linkkeihin tai pyytää apua <a class="http" href="http://forum.ubuntu-fi.org/">Ubuntu-sivujen keskustelualueilla</a>.</p>
+<p><em><strong>Tärkeää</strong>: kokonaisen käyttöjärjestelmän asentaminen on aina riskialtista, vaikka se oltaisiin tehty mahdollisimman sujuvaksi. Jos sinulla on entuudestaan koneessasi käyttöjärjestelmä, ja haluat pitää sen tietoineen etkä tyhjentää tietokoneesi koko kovalevyä Ubuntua varten, on suositeltavaa varmuuskopioida tärkeimmät tiedostosi esim. CD-levylle tai USB-kovalevylle. Ubuntun asennusohjelmaa tulee käyttää erityisen tarkkaavaisesti, sillä asennusohjelmalla on mahdollista poistaa kaikki koneellasi entuudestaan oleva tieto. </em></p>
+<h2>Asennusopas</h2>
+<p>Asennusopas alkaa siitä, kun tietokonetta ollaan käynnistämässä joko saadulta tai itse kirjoitetulta Ubuntu-CD-levyltä.</p>
+<p> </p>
+<p class="line862">Jos syötät Ubuntu-CD-levyn asemaan Windows-käyttöjärjestelmän ollessa käynnissä, tulee esille valikko, josta tulee Ubuntun kokeilua tai asentamista varten valita ensimmäinen valinta <strong><em>Esittely ja täysi asennus</em></strong>. Tällöin ehdotetaan tietokoneen käynnistämistä uudelleen CD-levyltä. Valittavissa on myös asennus Windowsin "sisälle", mitä ei käsitellä tässä asennusoppaassa.</p>
+<p> </p>
+<table style="width: 583px; border: 1px dotted #000000; border-collapse: collapse; height: 516px;" cellpadding="5"><tbody><tr><td style="border: 1px dotted #000000;">0. <strong>Käynnistys CD-levyltä</strong> <br> Koneesi käynnistyy nyt Ubuntun CD-levyltä. Jos et saa tätä ruutua näkyviin, katso koneesi ohjekirjasta, kuinka tietokone käynnistetään CD-levyltä.</td>
+<td style="border: 1px dotted #000000;"> <img src="_booki/ubuntu-tutuksi/static/0_boot.jpg" alt=""></td>
+</tr><tr><td style="border: 1px dotted #000000;">
+<p>1. <strong>Kielen valinta</strong> <br> Mikäli et halua asentaa Ubuntua englanniksi, valitse oheisesta ikkunasta kieleksi <em>suomi</em>.</p>
+<strong>Huom. suomen kielen lataaminen vaatii Internet-yhteyden, jonka voi käydä kytkemässä päällä kohdan ”Kokeile Ubuntu 10.04 LTS” kautta. Voit myös käyttää <a href="http://wiki.ubuntu-fi.org/Ubuntu_Finnish_Remix">Ubuntu Finnish Remixiä</a> tai Ubuntun DVD-versiota, joilla kaikki suomennokset ovat valmiiksi asennuslevyllä. Ubuntun käyttäminen CD-levyltä on hidasta, ja tarkoitettu lähinnä laitteiston ja Internet-yhteyden testaamista varten.</strong></td>
+<td style="border: 1px dotted #000000;">
+<p><img src="_booki/ubuntu-tutuksi/static/1_kielen_valinta.jpg" alt=""></p>
+<p><img src="_booki/ubuntu-tutuksi/static/2_asenna.jpg" alt=""></p>
+</td>
+</tr><tr><td style="border: 1px dotted #000000;">
+<p class="line862">2. <strong>Mikä on sijaintisi?</strong> Valitse sijaintisi aikavyöhykkeen valitsemista varten. Yleensä valmiina on valittuna Helsinki/Suomi. Jos kellonaika on väärin, voit korjata asian asennuksen jälkeen.</p>
+</td>
+<td style="border: 1px dotted #000000;"><img src="_booki/ubuntu-tutuksi/static/3_aika.jpg" alt=""><br> </td>
+</tr><tr><td style="border: 1px dotted #000000;"> 
+<p class="line862">3. <strong>Näppäimistön asettelu.</strong> Asennusohjelma suosittelee valmiiksi suomalaista näppäinasettelua. Voit kokeilla näppäimistön toimimvuutta tarjolla olevaan laatikkoon. Mikäli käytössä on jonkin muun maan näppäimistö, voit yrittää löytää oikean näppäinasettelun arvaa-toiminnan avulla, tai valitsemalla oma näppäinasettelu.</p>
+</td>
+<td style="border: 1px dotted #000000;"><img src="_booki/ubuntu-tutuksi/static/4_napit.jpg" alt=""> </td>
+</tr><tr><td style="border: 1px dotted #000000;"> 4. <strong>Levytilan valmistelu</strong>. <br> Tämä on usein tärkein tietojen säilyttämisen kannalta ja mahdollisesti hankalin kohta asennuksessa. Levytilan valmistelussa, eli osioinnissa, määritellään, mikä osa tietokoneesi kovalevystä annetaan Ubuntun käyttöön. Mikäli asennat Ubuntua Windowsin rinnalle katso ohjeita sivulta Asentaminen Windowsin rinnalle. Automaattisesti toimivat vaihtoehdot ovat lueteltu alla. Jos mahdollista, käytä aina jotain näistä: ne eivät vaadi osioinnin tekemistä käsin. <br><br> 4-1.<strong>Käytä koko levyä</strong>. Valitse tämä vain, jos sinulla ei ole entuudestaan koneellasi asennettua käyttöjärjestelmää tai et tarvitse toista käyttöjärjestelmää ja sinulla on kaikki tärkeät tiedostosi varmuuskopioituina. Eli ettet tarvitse kovalevyllä jo olevia tietoja. <br><br> 4-2. <strong>Asenna rinnakkain, valitsemismahdollisuus jokaisella käynnistyskerralla</strong>. <br> Valitse tämä, jos haluat säilyttää entisen käyttöjärjestelmäsi ja/tai olemassa olevalla osiolla olevat asiakirjasi ja muut tiedostot. Liukusäätimellä valitaan pienennettävän osion uusi koko (Ubuntulle annetaan jäljelle jäävä tila). Sen voi asettaa esimerkiksi puoleen väliin. Muihin kuin kyseessä olevaan osioon ei kosketa. <br><br> 4-3. <strong>Osioi itse</strong>. <br> Jos muokkaat itse osiotaulua, katso Osiointi-sivulta lisätietoja.</td>
+<td style="border: 1px dotted #000000;">
+<p><img src="_booki/ubuntu-tutuksi/static/5_osiointi1.jpg" alt=""> </p>
+<p><img src="_booki/ubuntu-tutuksi/static/5_osiointi2.jpg" alt=""> </p>
+</td>
+</tr><tr><td style="border: 1px dotted #000000;">5. <strong>Kuka olet?</strong> <br> Täytä kentät haluamillasi tiedoilla. Pidä valitsemasi salasana hyvin mielessäsi. Tietokoneen nimellä ei tavallisesti ole juuri merkitystä, joten voit pitää sen oletusarvoisena tai valita itse keksimäsi nimen.</td>
+<td style="border: 1px dotted #000000;"><img src="_booki/ubuntu-tutuksi/static/6_nimi.jpg" alt=""> </td>
+</tr><tr><td style="border: 1px dotted #000000;">6. <strong>Valmiina asennukseen</strong>. <br> Levytilan valmistelun jälkeen näytetään yhteenvetoruutu. Jos kaikki vaikuttaa oikealta, napsauta Asenna-painiketta. Muussa tapauksessa voit palata tekemään muutoksia edellisiin kohtiin, tai perua asennuksen.</td>
+<td style="border: 1px dotted #000000;"><img src="_booki/ubuntu-tutuksi/static/7_tiedot.jpg" alt=""> </td>
+</tr><tr><td style="border: 1px dotted #000000;">7. <strong>Asennetaan järjestelmä</strong>. <br> Ubuntua asennetaan ja tarvittavia kielipaketteja ladataan verkosta. Asennus voi kestää kymmeniä minuutteja.</td>
+<td style="border: 1px dotted #000000;">
+<p> </p>
+<p><img src="_booki/ubuntu-tutuksi/static/8_asennus1.jpg" alt=""> </p>
+<p><img src="_booki/ubuntu-tutuksi/static/8_asennus2.jpg" alt=""> </p>
+</td>
+</tr><tr><td style="border: 1px dotted #000000;">8. <strong>Käynnistetään järjestelmä uudelleen</strong>. <br> Poista Asennus-levy cd-asemasta ja paina enteriä käynnistääksesi tietokoneen uudelleen.</td>
+<td style="border: 1px dotted #000000;">
+<p><img src="_booki/ubuntu-tutuksi/static/9_reboot.jpg" alt=""> </p>
+<p><img src="_booki/ubuntu-tutuksi/static/10_reboot.jpg" alt=""> </p>
+</td>
+</tr><tr><td style="border: 1px dotted #000000;">9. <strong>Valmista</strong>. <br> Käyttäjätunnuksen ja salasanan syötön jälkeen valmis Ubuntu-asennus näyttää tältä. Onneksi olkoon!</td>
+<td style="border: 1px dotted #000000;"> <img src="_booki/ubuntu-tutuksi/static/11_valmis.jpg" alt=""></td>
+</tr></tbody></table><p> </p>
+<p class="line874"><small>Tämä asennusopas on otettu Ubuntu Suomi -sivuilta osoitteesta <a href="http://wiki.ubuntu-fi.org/Asentaminen">http://wiki.ubuntu-fi.org/Asentaminen</a>. Asennusoppaan tekijänoikeudet: Timo Jyrinki, Petri Järvisalo. Sivun sisältö on käytettävissä valintasi mukaan <a class="http" href="http://www.gnu.org/copyleft/fdl.html">GNU Free Documentation</a> -lisenssillä (ilman kansitekstejä tai vakiolukuja) ja/tai Creative Commonsin <a class="http" href="http://creativecommons.org/licenses/by-sa/3.0/deed.fi">Nimeä-Tarttuva 3.0</a> -lisenssillä. Kuvien osalta täytyy kuitenkin muistaa että Ubuntu on Canonical:n tavaramerkki, joten vaikka niitä saa vapaasti edelleenjakaa, ne eivät ole mainittujen lisenssien alla käytettävissä mihin tahansa tarkoitukseen.</small></p>
+<p> </p></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/ubuntu-tutuksi/index">Mikä on Linux?</a></li>
+<li><a href="/ubuntu-tutuksi/ch002_miten-ubuntu-eroaa-windowsista">Miten Ubuntu eroaa Windowsista?</a></li>
+<li Class="booki-section">Kokeileminen ja asentaminen</li><li><a href="/ubuntu-tutuksi/ch004_ubuntun-asentaminen">Ubuntun asentaminen</a></li>
+<li Class="booki-section">Käyttö</li><li><a href="/ubuntu-tutuksi/ch006_ubuntun-peruskaytto">Ubuntun peruskäyttö</a></li>
+<li><a href="/ubuntu-tutuksi/ch007_internet-selailu">Internet-selailu</a></li>
+<li><a href="/ubuntu-tutuksi/ch008_toimisto-ohjelmisto">Toimisto-ohjelmisto</a></li>
+<li Class="booki-section">Ylläpito</li><li><a href="/ubuntu-tutuksi/ch010_ubuntun-perusyllapito">Ubuntun perusylläpito</a></li>
+<li><a href="/ubuntu-tutuksi/ch011_komentorivi">Komentorivi</a></li>
+<li Class="booki-section">Liitteet</li><li><a href="/ubuntu-tutuksi/ch013_lisenssi">Lisenssi</a></li>
+</ul>

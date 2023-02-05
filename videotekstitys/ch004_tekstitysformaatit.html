@@ -1,0 +1,122 @@
+<div id="main-content"><h1>Tiedostomuodot
+</h1>
+<p>Tekstitystiedoston muoto määrittelee automaattisesti tekstityksen ja ajastuksen sisältävän tiedoston (teksti tai kuva) muodon. Jotkin tekstipohjaiset muodot mahdollistavat myös tyylin määrittelyn, esimerkiksi värien tai tekstityksen sijainnin määrittämisen.
+  <br></p>
+<p>Joitain tekstityksien tiedostomuotoja:
+  <br></p>
+<ol><li> <strong>Micro DVD (.sub)</strong> - tekstiin perustuva formaatti, jossa on videoruutuihin perustuva ajastus, mutta ei tekstin tyylin määrittelyä.</li>
+  <li><strong>Sub Rip (.srt)</strong> - tekstiin perustuva formaatti, jossa on videon pituuteen perustuva ajastus, eikä tekstin tyylin määrittelyä.
+  <br></li>
+  <li><strong>VOB Sub (.sub, .idx) </strong>- kuvaan perustuva formaatti, jota käytetään yleensä DVD:ssä.
+  <br></li>
+  <li><strong>Sub Station Alpha / Advanced Sub Station (.ssa, .ass)</strong> - tekstiin perustuva formaatti, joka perustuu videon kestoon, ja jossa on tekstin tyylin määrittely ja metadatan tiedot.
+  <br></li>
+  <li><strong>Sub Viewer (.sub)</strong> - tekstiin perustuva formaatti, jossa on videon pituuden ajastus, tekstin tyylin määrittely ja metadata.
+  <br></li>
+</ol><h2>Esimerkkejä
+</h2>
+<p>Katsotaanpa monien tekstitystiedostojen todellista sisältöä. Ne näyttävät vain tekstin "Tämä on ensimmäinen tekstitykseni!" videon toiston ensimmäisten 10 sekunnin aikana. Nämä kaikki tehtiin avoimen lähdekoodin tekstitysohjelma Jublerin avulla.
+  <br></p>
+<p>Ensimmäinen huomattava asia on, että jokainen tiedosto on yksinkertaisesti tekstitiedosto, sitä voi muokata millä tahansa editorilla, kuten vi:llä GNU/Linuxissa, Text Editissä Macilla, tai Notepadilla Windowsissa.
+  <br></p>
+<p>Seuraava esimerkki on Micro DVD -tekstitystiedosto (olettaen 25 ruutua sekunnissa):
+  <br></p>
+<pre>{0}{250}Tämä on ensimmäinen tekstitykseni!</pre>
+<p>Sub Rip -tekstitystiedostona:
+  <br></p>
+<pre> 1
+00:00:00,000 --&gt; 00:00:10,000
+Tämä on ensimmäinen tekstitykseni!</pre>
+<p> Sub Station Alpha (.ssa) -tiedostona:
+</p>
+<pre>[Script Info]
+; Edited with Jubler subtitle editor
+Title:
+Original Script: andycat
+Update Details:
+ScriptType: v4.00
+Collisions: Normal
+PlayResX: 320
+PlayResY: 288
+PlayDepth: 0
+Timer: 100,0000
+
+[V4 Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, TertiaryColour, BackColour, Bold, Italic, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, AlphaLevel, Encoding
+Style: Default,Arial Unicode MS,31,&amp;HFFFFFF,&amp;H00FFFF,&amp;H000000,&amp;H404040,0,0,1,0,2,2,20,20,20,255,0
+
+[Events]
+Format: Marked, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:10.00,*Default,,0000,0000,0000,,Tämä on ensimmäinen tekstitykseni!
+ </pre>
+<p>Advanced Sub Station (.ass) -tiedostona:
+  <br></p>
+<pre>[Script Info]
+; Edited with Jubler subtitle editor
+Title:
+Original Script: andycat
+Update Details:
+ScriptType: v4.00+
+Collisions: Normal
+PlayResX: 320
+PlayResY: 288
+PlayDepth: 0
+Timer: 100,0000
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Arial Unicode MS,31,&amp;H00FFFFFF,&amp;H0000FFFF,&amp;H4B000000,&amp;H4B404040,0,0,0,0,100,100,0,0,1,0,2,2,20,20,
+20,0
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:10.00,*Default,,0000,0000,0000,,Tämä on ensimmäinen tekstitykseni!
+ </pre>
+<p>Sub Viewer (.sub) -tiedostona:
+</p>
+<pre>[INFORMATION]
+[TITLE]
+[AUTHOR]andycat
+[SOURCE]
+[FILEPATH]
+[DELAY]0
+[COMMENT]Edited with Jubler subtitle editor
+[END INFORMATION]
+[SUBTITLE]
+[COLF]&amp;HFFFFFF,[STYLE]bd,[SIZE]18,[FONT]Arial
+00:00:00.00,00:00:10.00
+Tämä on ensimmäinen tekstitykseni!
+ </pre>
+<p>On olemassa lukemattomia tiedostomuotoja (katso <a href="http://diveintomark.org/archives/2009/01/07/give-part-4-captioning">http://diveintomark.org/archives/2009/01/07/give-part-4-captioning</a> - tärkeimmät tässä käsittelemättä jääneet tiedostomuodot ovat MPEG4 Timed Text, SMIL ja SAMI).
+  <br></p>
+<h2>Tiedostomuotojen vertailua
+</h2>
+<p>
+</p>
+<p>Tekstitystiedostomuotojen vertailuja on seuraavilla sivuilla:<a href="http://www.annodex.net/node/8">
+  <br>http://www.annodex.net/node/8</a>
+  <br><a href="http://en.wikipedia.org/wiki/Subtitles">http://en.wikipedia.org/wiki/Subtitles </a>
+</p>
+<h2>Tuetut tiedostomuodot avoimen lähdekoodin videosoittimissa
+  <br></h2> Lista avoimen lähdekoodin VLC-videosoittimen tukemista tiedostomuodoista löytyy osoitteesta:
+<br><a href="http://wiki.videolan.org/Subtitles%20">http://wiki.videolan.org/Subtitles</a></div><ul Class="menu-goes-here"><li Class="booki-section">Johdanto</li><li><a href="/videotekstitys/index">Johdanto</a></li>
+<li Class="booki-section">Yleiskatsaus</li><li><a href="/videotekstitys/ch003_tekstitykset">Tekstitykset</a></li>
+<li><a href="/videotekstitys/ch004_tekstitysformaatit">Tekstitysformaatit</a></li>
+<li><a href="/videotekstitys/ch005_tekstitysten-loytaminen">Tekstitysten löytäminen</a></li>
+<li><a href="/videotekstitys/ch006_tekstitysten-luominen">Tekstitysten luominen</a></li>
+<li><a href="/videotekstitys/ch007_tekstitysten-jakaminen">Tekstitysten jakaminen</a></li>
+<li Class="booki-section">Jubler</li><li><a href="/videotekstitys/ch009_jubler">Jubler</a></li>
+<li><a href="/videotekstitys/ch010_jublerin-asetukset">Jublerin asetukset</a></li>
+<li><a href="/videotekstitys/ch011_jublerin-aaniasetukset">Jublerin ääniasetukset</a></li>
+<li><a href="/videotekstitys/ch012_jublerin-tekstitykset">Jublerin tekstitykset</a></li>
+<li><a href="/videotekstitys/ch013_tiedostojen-kaytto">Tiedostojen käyttö</a></li>
+<li Class="booki-section">Tekstityksien toistaminen</li><li><a href="/videotekstitys/ch015_tekstityksien-toistaminen">Tekstityksien toistaminen</a></li>
+<li Class="booki-section">Avidemux</li><li><a href="/videotekstitys/ch017_avidemuxin-kaytto">Avidemuxin käyttö</a></li>
+<li><a href="/videotekstitys/ch018_tekstityksien-polttaminen">Tekstityksien polttaminen</a></li>
+<li Class="booki-section">Muut työkalut</li><li><a href="/videotekstitys/ch020_gnome-subtitles">GNOME Subtitles</a></li>
+<li><a href="/videotekstitys/ch021_gaupol">Gaupol</a></li>
+<li><a href="/videotekstitys/ch022_subtitle-editor">Subtitle Editor</a></li>
+<li Class="booki-section">Jakelu</li><li><a href="/videotekstitys/ch024_verkkovideon-kaantaminen">Verkkovideon kääntäminen</a></li>
+<li><a href="/videotekstitys/ch025_videon-cms-jakelu">Videon CMS-jakelu</a></li>
+<li Class="booki-section">Tekijät</li><li><a href="/videotekstitys/ch027_tekijat">Tekijät</a></li>
+</ul>

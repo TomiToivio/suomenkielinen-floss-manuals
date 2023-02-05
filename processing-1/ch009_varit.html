@@ -1,0 +1,133 @@
+<div id="main-content"><h1>Värit</h1>
+<p><span id="result_box"><span>Piirrä kuva ruudulle ja muuta pikselien väriä. Pikselit ovat pieniä alueita, yleensä neliömäisiä, joilla on väri. Jokaisella värillä on kolme kanavaa, jotka ovat punainen, vihreä ja sininen. 100% arvo jokaisella kanavalla on valkoinen. 0% arvo jokaisella kanavalla on musta. Se on valoa, ei maalia. Niinpä jokaisen kanavan arvon kasvaessa sen väri vaalenee. </span></span></p>
+<p><span id="result_box"><span>Esimerkiksi 100% punainen, 80% vihreä, 20% sininen antaa värin oranssi. Metodi</span></span><code> fill()</code><span id="result_box"><span> antaa meidän määritellä värin seuraaville piirrettäville muodoille. Jokainen värikanava annetaan asteikolla 0-255. Niinpä 80% arvosta 255 on 204 ja 20% arvosta 255 on 51. </span></span></p>
+<h2>Taustavärit</h2>
+<p>Voit muuttaa taustaväriä metodilla <code>background().</code> Huomaa: komento <code>background()</code> pyyhkii ruudun edellisen komennon jälkeen!</p>
+<pre>background(0, 0, 0);
+</pre>
+<p><img src="_booki/processing-1/static/ab_chaos-tiff-fi_1.png" alt=""></p>
+<h2>Täyttöväri</h2>
+<p>Joka kerta kun piirrät muodon, se tehdään täyttövärillä, joka valitaan tässä vaiheessa. Se tehdään kutsumalla metodia <code>fill()</code>.</p>
+<p><img title="carre_orange.tiff" src="_booki/processing-1/static/carre_orange-tiff-fi.png" alt="carre_orange.tiff" width="100" height="100"></p>
+<pre>noStroke();
+fill(255, 204, 51);
+rect(25, 25, 50, 50);</pre>
+<p><span id="result_box"><span>Processing tarjoaa erilaisia formaatteja värin ilmaisemiseen. Jos teet verkko-ohjelmointia, tunnet luultavasti heksadesimaaliformaatin. Kirjoitamme siis: </span></span></p>
+<pre>fill(#ffcc33);
+rect(25, 25, 50, 50);
+</pre>
+<p><span id="result_box"><span>Voit määritellä värin alfakanava-arvon. Se esittää värin läpinäkyvyyden. Tehdäksemme tämän menetelmälle täytyy tarjota neljä arvoa. Neljäs arvo on alfa-arvo. </span></span></p>
+<pre>noStroke();
+fill(255, 204, 51); // oranssi
+rect(25, 25, 50, 50);
+fill(255, 255, 255, 127); // valkoinen osittain läpinäkyvä
+rect(35, 35, 50, 50);
+</pre>
+<p><img title="carre_film.tiff" src="_booki/processing-1/static/carre_film-tiff-fi.png" alt="carre_film.tiff" width="101" height="100"></p>
+<p><span id="result_box"><span>Jos tahdot valita värin, joka on harmaan sävy, voimme antaa yhden parametrin komennolle. Se on harmaan arvo väliltä 0-255. </span></span></p>
+<p><img src="_booki/processing-1/static/carre_gris-tiff-fi_1.png" alt=""></p>
+<pre>fill(127);
+rect(25, 25, 50, 50);
+</pre>
+<p>Voit ottaa muotojen täytön pois päältä kutsumalla metodia <code>noFill()</code>.</p>
+<h2>Ääriviivan väri</h2>
+<p>Muuttaaksesi ääriviivan väriä, voit kutsua metodia <code>stroke()</code>, jonka parametreinä on halutun värin kanavat. Kutsu komentoa <code>noStroke()</code> poistaaksesi ääriviivan värit.</p>
+<p><img src="_booki/processing-1/static/smilie-tiff-fi_1.png" alt=""></p>
+<pre>size(200, 200); 
+smooth();
+background(255); // piirrämme valkoisen taustan 
+
+stroke(#000000); // ääriviiva on musta
+fill(#FFFF00);  // täyte on keltainen
+strokeWeight(5);
+
+translate(width / 2, height / 2);
+
+ellipse(0, 0, 120, 120);
+
+stroke(255, 0, 0); // viiva on punainen
+line(20, -40, 20, 0);
+
+stroke(0, 0, 255); // viiva on sininen
+line(-20, -40, -20, 0);
+
+noFill(); // seuraavaa muotoa ei täytetä
+stroke(#000000);  // viivasta tulee musta
+bezier(-45, 0, -45, 60, 45, 60, 45, 0);</pre>
+<h2>Värimuutosten laajuus</h2>
+<p><span id="result_box"><span>Oletusarvoisesti mikä tahansa tyylimuutos (täytön väri tai esineen muoto tai paksuus) vaikuttaa kaikkee⁞n, jonka maalaat. Rajoittaaksesi näiden muutosten laajuutta voit laittaa muutoksesi komentojen </span><span><code>pushStyle ()</code> ja <code>popStyle ()</code>⁞ väliin.</span></span></p>
+<p><img title="multi_quadrat.tiff" src="_booki/processing-1/static/multi_quadrat-tiff-fi.png" alt="multi_quadrat.tiff" width="97" height="97"></p>
+<pre>size(100, 100);
+background(255);
+
+stroke(#000000);
+fill(#FFFF00); 
+strokeWeight(1);
+rect(10, 10, 10, 10);
+
+pushStyle(); // Avaa tyylin "sulkeet"
+
+stroke(#FF0000);
+fill(#00FF00);
+strokeWeight(5);
+rect(40, 40, 20, 20);
+
+popStyle(); // Sulkee tyylin "sulkeet" 
+
+rect(80, 80, 10, 10);
+</pre>
+<p>Harjoitus:</p>
+<p>Poista komennot <code>pushStyle()</code> <span>ja </span><code>popStyle()</code> ja tarkkaile muutoksia.</p>
+<h2>Väriavaruus</h2>
+<p><span id="result_box"><span>Värien valinnassa punainen, vihreä ja sininen on yksi mahdollisista väriavaruuksista. Processing tarjoaa myös HSB-tilan. Tämä merkitsee "hue, saturation, brighness", eli väri, kylläisyys, kirkkaus. Valitsemme arvon 0-100 jokaiselle kanavalle. Väri on numero, joka valitsee värin sijainnin kromaattisella skaalalla, joka on sateenkaari. Punainen on vasemmalla, sen jälkeen tulevat oranssi, keltainen, vihreä, sininen ja purppura.</span></span></p>
+<p>Metodi <code>colorMode() </code>on käyttökelpoinen muutettaessa numeroskaalaa, jolla määritellään värit ja muutetaan väriavaruutta. Esimerkiksi komento <code>colorMode(RGB, 1.0)</code> muuttaa skaalan, jota käytetään määrittämään jokaista värikanavaa, joten se menee nollasta ykköseen.</p>
+<p><span id="result_box"><span>Tässä muutamme väritilaksi HSB:n tehdäksemme liukuvärin, joka muistuttaa sateenkaaren värejä.  <br></span></span></p>
+<p><img src="_booki/processing-1/static/color_spectrum-tiff-fi_1.png" alt=""></p>
+<pre>noStroke();
+size(400, 128);
+
+// Väri määritellään numeroilla 0-400
+colorMode(HSB, 400, 100, 100);
+
+// Se on 400 toistoa...
+for (int i = 0; i &lt; 400; i++) {
+  fill(i, 128, 128);
+  rect(i, 0, 1, 128);
+}
+</pre></div><ul Class="menu-goes-here"><li Class="booki-section">Esittely</li><li><a href="/processing-1/index">Johdanto</a></li>
+<li><a href="/processing-1/ch002_esimerkkeja">Esimerkkejä</a></li>
+<li><a href="/processing-1/ch003_asennus">Asennus</a></li>
+<li Class="booki-section">Perusteet</li><li><a href="/processing-1/ch005_perusteet">Perusteet</a></li>
+<li Class="booki-section">Suunnittelu</li><li><a href="/processing-1/ch007_suunnittelutila">Suunnittelutila</a></li>
+<li><a href="/processing-1/ch008_muodot">Muodot</a></li>
+<li><a href="/processing-1/ch009_varit">Värit</a></li>
+<li><a href="/processing-1/ch010_kuvat">Kuvat</a></li>
+<li><a href="/processing-1/ch011_tekstit">Tekstit</a></li>
+<li Class="booki-section">Interaktiivisuus</li><li><a href="/processing-1/ch013_video">Video</a></li>
+<li><a href="/processing-1/ch014_videon-tuominen">Videon tuominen</a></li>
+<li><a href="/processing-1/ch015_mikrofoni">Mikrofoni</a></li>
+<li><a href="/processing-1/ch016_hiiri">Hiiri</a></li>
+<li><a href="/processing-1/ch017_nappaimisto">Näppäimistö</a></li>
+<li><a href="/processing-1/ch018_tulostaminen">Tulostaminen</a></li>
+<li Class="booki-section">Vienti</li><li><a href="/processing-1/ch020_verkkoon-vieminen">Verkkoon vieminen</a></li>
+<li Class="booki-section">Animaatio</li><li><a href="/processing-1/ch022_aanet">Äänet</a></li>
+<li><a href="/processing-1/ch023_draw-metodi">Draw-metodi</a></li>
+<li><a href="/processing-1/ch024_objektien-animointi">Objektien animointi</a></li>
+<li><a href="/processing-1/ch025_monien-objektien-animointi">Monien objektien animointi</a></li>
+<li><a href="/processing-1/ch026_aikajana">Aikajana</a></li>
+<li Class="booki-section">Ohjelmointi</li><li><a href="/processing-1/ch028_kommentit">Kommentit</a></li>
+<li><a href="/processing-1/ch029_objektit">Objektit</a></li>
+<li><a href="/processing-1/ch030_metodit">Metodit</a></li>
+<li><a href="/processing-1/ch031_listat">Listat</a></li>
+<li><a href="/processing-1/ch032_toistaminen">Toistaminen</a></li>
+<li><a href="/processing-1/ch033_ehdot">Ehdot</a></li>
+<li><a href="/processing-1/ch034_muuttujat">Muuttujat</a></li>
+<li><a href="/processing-1/ch035_muutokset">Muutokset</a></li>
+<li><a href="/processing-1/ch036_rajat">Rajat</a></li>
+<li Class="booki-section">Liitteet</li><li><a href="/processing-1/ch038_yleisia-virheita">Yleisiä virheitä</a></li>
+<li><a href="/processing-1/ch039_ulkoiset-kirjastot">Ulkoiset kirjastot</a></li>
+<li><a href="/processing-1/ch040_dokumentaatio">Dokumentaatio</a></li>
+<li><a href="/processing-1/ch041_arduino">Arduino</a></li>
+<li><a href="/processing-1/ch042_tasta-oppaasta">Tästä oppaasta</a></li>
+<li><a href="/processing-1/ch043_tekijat">Tekijät</a></li>
+</ul>
